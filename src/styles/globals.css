@@ -1,0 +1,45 @@
+:root {
+  --white: #fff;
+  --pink: #ec3793;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+  background-color: #e2dfda;
+  color: #153f45;
+  padding: 0;
+  margin: 0;
+  font-family: Poppins, 'PT Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: black;
+    background: #E2DFDA;
+  }
+} */
