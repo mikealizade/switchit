@@ -34,6 +34,12 @@ a {
   box-sizing: border-box;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

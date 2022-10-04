@@ -5,19 +5,19 @@ import * as S from '@components/Button/Button.style'
 type ButtonProps = {
   onClick?: () => void
   children: string | React.ReactNode
-  type: string
+  type: 'button' | 'reset' | 'submit'
   mode?: string
   disabled?: boolean
 }
 
-export const Button = ({
+export const Button: NextPage<ButtonProps> = ({
   onClick,
   children,
   type = 'button',
   mode = 'primary',
   disabled = false,
-}: ButtonProps): JSX.Element => (
-  <S.Button type='button' onClick={onClick} className={mode} disabled={disabled}>
+}): JSX.Element => (
+  <S.Button type={type} onClick={onClick} className={mode} disabled={disabled}>
     {children}
   </S.Button>
 )

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { navigation, subNav } from 'src/utils/constants'
 import { Button } from '@components/Button/Button'
-import * as S from '@components/hero/Hero.style'
+import * as S from '@components/Hero/Hero.style'
 import speechBubbles from '../../../public/speech_bubbles.png'
 
 export const Hero: NextPage = () => {
@@ -17,7 +17,7 @@ export const Hero: NextPage = () => {
           ut laboris exercitation exercitation laborum pariatur.
         </S.Text>
       </S.Content>
-      <Button type='primary'>Find Out More</Button>
+      <Button type='button'>Find Out More</Button>
     </S.Hero>
   )
 }

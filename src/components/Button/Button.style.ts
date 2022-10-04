@@ -15,17 +15,8 @@ export const Button = styled.button`
   outline: none;
   cursor: pointer;
   justify-content: center;
-  background-color: ${({ className }) => (className === 'primary' ? 'var(--pink)' : 'beige')};
+  background-color: ${({ className }) => (className === 'primary' ? 'var(--pink)' : 'lightgrey')};
   color: var(--white);
-
-  /* a,
-  &.primary {
-
-    &:focus,
-    &:hover {
-      opacity: 0.5;
-    }
-  } */
 
   &:disabled {
     background-color: #ccc;
@@ -33,4 +24,9 @@ export const Button = styled.button`
     cursor: default;
     pointer-events: none;
   }
+`
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: flex-start;
 `

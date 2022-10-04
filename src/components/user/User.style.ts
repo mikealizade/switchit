@@ -4,6 +4,11 @@ export const UserContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  div:nth-child(2) {
+    margin-left: auto;
+    margin-right: 30px;
+  }
 `
 
 export const User = styled.div`
@@ -20,4 +25,8 @@ export const User = styled.div`
 
 export const Score = styled.div`
   color: var(--pink);
+`
+
+export const UserName = styled.span`
+  text-transform: capitalize;
 `

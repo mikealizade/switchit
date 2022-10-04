@@ -1,29 +1,55 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import user from '../../../public/me.jpg'
-import * as S from '@components/user/User.style'
+import { Button } from '@components/Button/Button'
+import * as S from '@components/User/User.style'
+import { useRouter } from 'next/router'
+import { useUser } from '@auth0/nextjs-auth0'
 
-type PageProps = {
-  data: any
-}
+// type PageProps = {
+//   data: any
+// }
 
-export const User: NextPage<PageProps> = ({
-  data: {
-    results: [
-      {
-        name: { first = '', last = '' },
-        picture: { thumbnail = '' },
-      },
-    ],
-  },
-}: any) => {
+export const User: NextPage = () => {
+  const {
+    user: { sid = '', nickname = '', picture = '' } = {},
+    error = {},
+    isLoading = false,
+  } = useUser()
+  const router = useRouter()
+
+  const logIn = () => {
+    router.replace('/api/auth/login')
+  }
+
+  const logOut = () => {
+    router.replace('/api/auth/logout')
+  }
+
   return (
     <S.UserContainer>
-      <S.User>
-        <Image src={thumbnail} alt={`${first} ${last}`} width={50} height={50} unoptimized />
-        <span>Hi {first}, welcome back!</span>
-      </S.User>
-      <S.Score>120</S.Score>
+      {sid ? (
+        <>
+          <S.User>
+            <Image src={picture || ''} alt={nickname || ''} width={50} height={50} unoptimized />
+            <span>
+              Hi <S.UserName>{nickname}</S.UserName>, welcome back!
+            </span>
+          </S.User>
+          <S.Score>120</S.Score>
+          <Button type='button' onClick={logOut}>
+            Log out
+          </Button>
+        </>
+      ) : (
+        <>
+          <S.User>
+            <span>Hi, welcome back!</span>
+          </S.User>
+          <Button type='button' onClick={logIn}>
+            Log in
+          </Button>
+        </>
+      )}
     </S.UserContainer>
   )
 }

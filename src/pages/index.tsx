@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Dashboard from '@modules/dashboard/Dashboard'
+import Dashboard from '@modules/Dashboard/Dashboard'
 
 export async function getStaticProps() {
   const response = await fetch('https://randomuser.me/api/')

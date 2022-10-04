@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { navigation, subNav } from 'src/utils/constants'
 import logo from '../../../public/switchit_logo.png'
-import * as S from '@components/navigation/Navigation.style'
+import * as S from '@components/Navigation/Navigation.style'
 
 type Nav = { text: string; route: string }
 

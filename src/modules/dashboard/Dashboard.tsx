@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Navigation } from '@components/navigation/Navigation'
-import { User } from '@components/user/User'
-import { Hero } from '@components/hero/Hero'
-import * as S from '@modules/dashboard/Dashboard.style'
+import { Navigation } from '@components/Navigation/Navigation'
+import { User } from '@components/User/User'
+import { Hero } from '@components/Hero/Hero'
+// import { Form } from '@components/Form/Form'
+import * as S from '@modules/Dashboard/Dashboard.style'
 
 type PageProps = {
   userData: any
@@ -21,8 +22,9 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
       <S.Dashboard>
         <Navigation />
         <S.Content>
-          <User data={userData} />
+          <User />
           <Hero />
+          {/* <Form /> */}
         </S.Content>
         <S.Aside>aside</S.Aside>
       </S.Dashboard>
