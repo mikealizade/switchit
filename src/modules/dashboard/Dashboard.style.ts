@@ -3,10 +3,7 @@ import styled from 'styled-components'
 export const Dashboard = styled.div`
   display: flex;
   padding: 20px;
-
-  > div {
-    min-height: calc(100vh - 40px);
-  }
+  min-height: 100vh;
 `
 
 export const Content = styled.main`
@@ -23,4 +20,16 @@ export const Aside = styled.aside`
   min-width: 350px;
   background-color: var(--white);
   border-radius: 0 8px 8px 0;
+`
+
+export const SwitchingJourney = styled.div`
+  display: flex;
+  column-gap: 20px;
+  flex-wrap: wrap;
+`
+
+export const Header = styled.h2`
+  font-size: inherit;
+  font-weight: normal;
+  width: 100%;
 `
