@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { setUser } from '@store/user/userSlice'
 import { Button } from '@components/Button/Button'
 import * as S from '@components/User/User.style'
 import { useRouter } from 'next/router'
@@ -10,7 +13,9 @@ import { useUser } from '@auth0/nextjs-auth0'
 // }
 
 export const User: NextPage = () => {
+  const dispatch = useDispatch()
   const {
+    user = {},
     user: { sid = '', nickname = '', picture = '' } = {},
     error = {},
     isLoading = false,
@@ -24,6 +29,10 @@ export const User: NextPage = () => {
   const logOut = () => {
     router.replace('/api/auth/logout')
   }
+
+  useEffect(() => {
+    dispatch(setUser(user))
+  }, [user, dispatch])
 
   return (
     <S.UserContainer>
