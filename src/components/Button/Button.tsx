@@ -21,3 +21,15 @@ export const Button: NextPage<ButtonProps> = ({
     {children}
   </S.Button>
 )
+
+export const TextButton: NextPage<ButtonProps> = ({
+  onClick,
+  children,
+  type = 'button',
+  mode = 'primary',
+  disabled = false,
+}): JSX.Element => (
+  <S.TextButton type={type} onClick={onClick} className={mode} disabled={disabled}>
+    {children}
+  </S.TextButton>
+)

@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-import { setUser } from '@store/user/userSlice'
-import { Button } from '@components/Button/Button'
-import * as S from '@components/User/User.style'
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0'
+import { setUser } from '@state/user/userSlice'
+import { Button } from '@components/Button/Button'
+import * as S from '@components/User/User.style'
 
 // type PageProps = {
 //   data: any
@@ -20,18 +20,27 @@ export const User: NextPage = () => {
     error = {},
     isLoading = false,
   } = useUser()
-  const router = useRouter()
+  const { replace } = useRouter()
 
+  console.log('user', user)
   const logIn = () => {
-    router.replace('/api/auth/login')
+    replace('/api/auth/login')
   }
 
   const logOut = () => {
-    router.replace('/api/auth/logout')
+    replace('/api/auth/logout')
+  }
+
+  const callHandler = async () => {
+    const data = await fetch('/api/hello')
+    const response = await data.json()
+
+    console.log('>> reponse', response)
   }
 
   useEffect(() => {
     dispatch(setUser(user))
+    callHandler()
   }, [user, dispatch])
 
   return (

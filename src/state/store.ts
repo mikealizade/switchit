@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import userReducer from 'src/store/user/userSlice'
+import userReducer from 'src/state/user/userSlice'
 
 const rootReducer = combineReducers({
   user: userReducer,

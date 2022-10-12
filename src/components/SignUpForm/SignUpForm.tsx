@@ -1,15 +1,26 @@
 import { useEffect } from 'react'
 import type { NextPage } from 'next'
+import { useDispatch } from 'react-redux'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
+import { useUser } from '@auth0/nextjs-auth0'
+import { setUser } from '@state/user/userSlice'
 import { Input } from '@components/Input/Input'
-import { FormButtons } from '@components/FormButtons/FormButtons'
+import { Button, TextButton } from '@components/Button/Button'
 
-export const Form: NextPage<{ data?: any; disabled?: boolean }> = ({ data, disabled }) => {
+export const SignUpForm: NextPage<{
+  data?: any
+  disabled?: boolean
+  nextSlide: () => void
+  previousSlide: () => void
+}> = ({ data, disabled, nextSlide, previousSlide }) => {
+  const { user = {}, error = {}, isLoading = false } = useUser()
+  const dispatch = useDispatch()
   const methods = useForm()
   const { handleSubmit, reset } = methods
 
   const onSubmit = (data: FieldValues): void => {
-    console.log('>> data', data)
+    dispatch(setUser({ ...user, ...data }))
+    nextSlide()
   }
 
   const onCancel = (): void => {
@@ -30,9 +41,9 @@ export const Form: NextPage<{ data?: any; disabled?: boolean }> = ({ data, disab
           {...methods}
           minLength={1}
           maxLength={50}
-          pattern='alpha'
-          message='Please enter a valid name'
-          disabled={disabled}
+          // pattern='alpha'
+          // message='Please enter a valid name'
+          // disabled={disabled}
           required={false}
         />
         <Input
@@ -42,23 +53,17 @@ export const Form: NextPage<{ data?: any; disabled?: boolean }> = ({ data, disab
           {...methods}
           minLength={1}
           maxLength={50}
-          pattern='alpha'
-          message='Please enter a valid name'
-          disabled={disabled}
+          // pattern='alpha'
+          // message='Please enter a valid name'
+          // disabled={disabled}
           required={false}
         />
-        <Input
-          name='email'
-          label='Email'
-          {...(data && { defaultValue: data.email })}
-          {...methods}
-          pattern='email'
-          message='Please enter a valid email address'
-          disabled={disabled}
-          required={false}
-          // validate={checkEmail}
-        />
-        <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} />
+        <Button type='submit' disabled={false}>
+          {'Next'}
+        </Button>
+        <TextButton type='button' mode='text' onClick={nextSlide}>
+          Skip
+        </TextButton>
       </form>
     </FormProvider>
   )

@@ -11,9 +11,15 @@ export const user = createSlice({
     setUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
       state.user = action.payload
     },
+    updateUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
+      state.user = {
+        ...state.user,
+        ...action.payload,
+      }
+    },
   },
 })
 
-export const { setUser } = user.actions
+export const { setUser, updateUser } = user.actions
 
 export default user.reducer
