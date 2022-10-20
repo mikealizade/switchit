@@ -1,22 +1,21 @@
-import type { NextPage } from 'next'
-import Dashboard from '@modules/Dashboard/Dashboard'
 import PostSignupFlow from '@modules/PostSignupFlow/PostSignupFlow'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
 
-export async function getStaticProps() {
-  const response = await fetch('https://randomuser.me/api/')
-  const userData = await response.json()
+const Home = () => {
+  const router = useRouter()
+  const { user = {}, user: { isNewUser = false } = {} } = useUser()
 
-  return {
-    props: {
-      userData,
-    },
-  }
-}
+  console.log('>> user', user)
 
-const isNewUser = true
+  useEffect(() => {
+    if (!isNewUser) {
+      router.replace('/dashboard')
+    }
+  }, [isNewUser, router])
 
-const Home: NextPage = ({ userData }: any) => {
-  return <>{isNewUser ? <PostSignupFlow /> : <Dashboard userData={userData} />}</>
+  if (isNewUser) return <PostSignupFlow />
 }
 
 export default Home

@@ -1,6 +1,27 @@
+@font-face {
+  font-family: 'Konsolev Regular';
+  src: url(../../public/fonts/Konsolev-Regular.woff2) format('woff2'),
+    url(../../public/fonts/Konsolev-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Konsolev SemiBold';
+  src: url(../../public/fonts/Konsolev-Semibold.woff2) format('woff2'),
+    url(../../public/fonts/Konsolev-Semibold.woff) format('woff');
+}
+
 :root {
   --white: #fff;
+  --black: #000;
   --pink: #ec3793;
+  --grey: #999;
+  --slate: #858997;
+  --cadetBlue: #aeb0c7;
+  --dodgerBlue: #5351fb;
+  --aurora: #00cd98;
+  --sushi: #7dbc42;
+  --mustard: #f6b900;
+  --vermilion: #f64000;
 }
 
 html {
@@ -13,13 +34,20 @@ body {
   color: #153f45;
   padding: 0;
   margin: 0;
-  font-family: Poppins, 'PT Sans', sans-serif;
+  font-family: 'Konsolev Regular', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ul,
+ol {
+  list-style: none;
+}
+
+ul,
 ol,
+h1,
+h2,
 h3,
 p {
   margin: 0;

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Navigation } from '@components/Navigation/Navigation'
 import { User } from '@components/User/User'
 import { Hero } from '@components/Hero/Hero'
-import { SwitchingJourney } from '@components/SwitchingJourney/SwitchingJourney'
+import { SmallCard } from '@components/SwitchingJourney/SwitchingJourney'
 import * as S from '@modules/Dashboard/Dashboard.style'
 
 type PageProps = {
@@ -26,9 +26,9 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
           <Hero />
           <S.SwitchingJourney>
             <S.Header>Switching Journeys</S.Header>
-            <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
-            <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
-            <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
+            <SmallCard title='Banks' text='4/5 steps' image='placeholder.png' />
+            <SmallCard title='Banks' text='4/5 steps' image='placeholder.png' />
+            <SmallCard title='Banks' text='4/5 steps' image='placeholder.png' />
           </S.SwitchingJourney>
           {/* <Form /> */}
         </S.Content>

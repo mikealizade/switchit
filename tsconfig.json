@@ -6,7 +6,8 @@
       "@styles/*": ["src/styles/*"],
       "@modules/*": ["src/modules/*"],
       "@utils/*": ["src/utils/*"],
-      "@store/*": ["src/store/*"]
+      "@state/*": ["src/state/*"],
+      "@helpers/*": ["src/helpers/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

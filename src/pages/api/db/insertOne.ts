@@ -1,16 +1,17 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { connectToDatabase } from '@helpers/mongodb'
 
-export const insertOne = async (req, res) => {
+const insertOne = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()
   const { body } = req
-  const { payload, collection } = body
-  console.log(payload, collection)
 
   try {
-    await db.collection(process.env[collection]).insertOne(payload)
+    await db.collection('users').insertOne(body)
     res.status(200).json({ result: 'success' })
   } catch (e) {
     console.error(e)
     res.status(500).send(e)
   }
 }
+
+export default insertOne

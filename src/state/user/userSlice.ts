@@ -1,19 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState: any = {
-  user: {},
-}
+const initialState: any = {}
 
 export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
-      state.user = action.payload
+      return action.payload
     },
     updateUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
-      state.user = {
-        ...state.user,
+      return {
+        ...state,
         ...action.payload,
       }
     },

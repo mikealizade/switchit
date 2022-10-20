@@ -1,16 +1,11 @@
 import { MongoClient } from 'mongodb'
 
-type DB = {
-  DATABASE_URL: string
-  MONGO_DB: string
-}
-
 type Opts = {
   useNewUrlParser: boolean
   useUnifiedTopology: boolean
 }
 
-const { DATABASE_URL = '', MONGO_DB = '' } = process.env
+const { MONGO_URI = '', MONGO_DB = '' } = process.env
 
 /**
  * Global is used here to maintain a cached connection across hot reloads
@@ -24,6 +19,7 @@ if (!cached) {
 }
 
 export async function connectToDatabase() {
+  console.log('process.env.MONGO_URI', process.env.MONGO_URI)
   if (cached.conn) {
     return cached.conn
   }
@@ -34,7 +30,7 @@ export async function connectToDatabase() {
       useUnifiedTopology: true,
     }
 
-    cached.promise = MongoClient.connect(DATABASE_URL, opts).then(client => {
+    cached.promise = MongoClient.connect(MONGO_URI, opts).then(client => {
       return {
         client,
         db: client.db(MONGO_DB),
