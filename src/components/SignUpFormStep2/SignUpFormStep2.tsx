@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@state/store'
+import { useUser } from '@auth0/nextjs-auth0'
+// import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { updateUser } from '@state/user/userSlice'
 import { Input } from '@components/Input/Input'
@@ -13,16 +14,17 @@ export const SignUpFormStep2: NextPage<{
   nextSlide: () => void
   previousSlide: () => void
 }> = ({ data, nextSlide, previousSlide }) => {
-  const userData = useSelector((state: RootState) => state.user)
+  // const userData = useSelector((state: RootState) => state.user)
+  const { user = {} } = useUser()
   const methods = useForm()
   const { replace } = useRouter()
   const dispatch = useDispatch()
   const { handleSubmit, reset } = methods
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
-    const user = { ...userData, ...data, points: 0 }
+    const userData = { ...user, ...data, points: 0 }
 
-    dispatch(updateUser(user))
+    dispatch(updateUser(userData))
     const response = await fetch('/api/db/insertOne', {
       method: 'POST',
       headers: {
@@ -31,7 +33,6 @@ export const SignUpFormStep2: NextPage<{
       body: JSON.stringify(user),
     })
 
-    console.log('>> response', response)
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`)
     }
@@ -40,16 +41,8 @@ export const SignUpFormStep2: NextPage<{
     if (result === 'success') replace('/dashboard')
   }
 
-  const onCancel = (): void => {
-    reset()
-  }
-
-  // const logIn = () => {
-  //   replace('/api/auth/login')
-  // }
-
-  // const logOut = () => {
-  //   replace('/api/auth/logout')
+  // const onCancel = (): void => {
+  //   reset()
   // }
 
   useEffect(() => {
@@ -58,13 +51,6 @@ export const SignUpFormStep2: NextPage<{
 
   return (
     <FormProvider {...methods}>
-      {/* <Button type='button' onClick={logOut}>
-        Log out
-      </Button>
-
-      <Button type='button' onClick={logIn}>
-        Log in
-      </Button> */}
       <form onSubmit={handleSubmit(onSubmit)} className='form'>
         <Input
           name='programCode'

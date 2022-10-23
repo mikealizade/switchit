@@ -9,12 +9,12 @@ export const PointsTotal = styled.div`
 export const Title = styled.h2`
   font-family: 'Konsolev SemiBold', sans-serif;
   color: var(--slate);
-  font-size: 1.6rem;
+  font-size: var(--fsBase);
   margin: 0;
 `
 
 export const TotalPoints = styled.p`
-  font-size: 2.4rem;
+  font-size: var(--fsLarge4);
   display: flex;
   align-items: center;
   color: var(--cadetBlue);
@@ -27,7 +27,7 @@ export const TotalPoints = styled.p`
 
 export const PointTypes = styled.ul`
   margin: 0;
-  font-size: 1.6rem;
+  font-size: var(--fsBase);
   font-weight: bold;
   row-gap: 20px;
   display: flex;
@@ -66,7 +66,7 @@ export const Item = styled.li`
 `
 
 export const PointType = styled.p`
-  font-size: 1.4rem;
+  font-size: var(--fsSmall4);
   color: var(--slate);
   font-weight: initial;
 `

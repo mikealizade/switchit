@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 
-export const Card = styled.div<{ column?: boolean; shadow?: boolean; compact?: boolean }>`
+export const Card = styled.div<{
+  column?: boolean
+  shadow?: boolean
+  compact?: boolean
+}>`
   display: flex;
   flex-direction: ${({ column }) => (column ? 'column' : 'flex')};
   box-shadow: ${({ shadow }) =>
@@ -11,5 +15,4 @@ export const Card = styled.div<{ column?: boolean; shadow?: boolean; compact?: b
   border-radius: 10px;
   background-color: var(--white);
   padding: ${({ compact }) => (compact ? '20px' : '40px 30px')};
-  margin: ${({ shadow }) => (shadow ? '20px' : '0')};
 `

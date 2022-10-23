@@ -1,11 +1,6 @@
 import { useState } from 'react'
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import * as S from '@components/PointsChart/PointsChart.style'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { EventType } from '@utils/types'
-import me from '../../../public/me.jpg'
 
 export const PointsChart: NextPage = () => {
   const pointTypes = [

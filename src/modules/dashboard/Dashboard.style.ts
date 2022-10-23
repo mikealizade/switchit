@@ -1,11 +1,5 @@
 import styled from '@emotion/styled'
 
-export const Dashboard = styled.div`
-  display: flex;
-  padding: 20px;
-  min-height: 100vh;
-`
-
 export const Content = styled.main`
   background-color: #f2f0ed;
   display: flex;

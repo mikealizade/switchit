@@ -3,9 +3,11 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
-import { setUser } from '@state/user/userSlice'
+// import { setUser } from '@state/user/userSlice'
 import { Button } from '@components/Button/Button'
+import { fetcher } from '@utils/functions'
 import * as S from '@components/User/User.style'
 
 type User = {
@@ -28,29 +30,19 @@ type User = {
 export const User: NextPage = () => {
   const dispatch = useDispatch()
   const {
-    user = {},
     user: { sub = '', nickname = '', picture = '' } = {},
-    error = {},
+    // error = {},
     isLoading = false,
   } = useUser()
   const { replace } = useRouter()
+  const { data: { user } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
   const [userData, setUserData] = useState<User>()
 
-  console.log('>> user >>>', user)
-  const fetchUserData = async (): Promise<void> => {
-    const response = await fetch(`/api/db/user/${sub}`)
-    const { user = {} } = await response.json()
-
-    setUserData(user)
-  }
+  // console.log({ user })
 
   useEffect(() => {
-    sub && fetchUserData()
-  }, [sub])
-
-  useEffect(() => {
-    dispatch(setUser(user))
-  }, [user, dispatch])
+    user?._id && setUserData(user)
+  }, [user])
 
   return (
     <S.UserContainer>

@@ -23,10 +23,10 @@ export const SwitchingJourney = styled.div`
   }
 
   h3 {
-    font-size: 1.6rem;
+    font-size: var(--fsBase);
   }
 
   p {
-    font-size: 3rem;
+    font-size: var(--fsVLarge3);
   }
 `

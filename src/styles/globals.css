@@ -13,6 +13,8 @@
 :root {
   --white: #fff;
   --black: #000;
+  --base: #153f45;
+  --beige: #e2dfda;
   --pink: #ec3793;
   --grey: #999;
   --slate: #858997;
@@ -22,6 +24,24 @@
   --sushi: #7dbc42;
   --mustard: #f6b900;
   --vermilion: #f64000;
+  --haze: #edf0f0;
+  --fsSmall0: 1rem;
+  --fsSmall1: 1.1rem;
+  --fsSmall2: 1.2rem;
+  --fsSmall3: 1.3rem;
+  --fsSmall4: 1.4rem;
+  --fsSmall5: 1.5rem;
+  --fsBase: 1.6rem;
+  --fsMedium7: 1.7rem;
+  --fsMedium8: 1.8rem;
+  --fsMedium9: 1.9rem;
+  --fsLarge0: 2rem;
+  --fsLarge1: 2.1rem;
+  --fsLarge2: 2.2rem;
+  --fsLarge3: 2.3rem;
+  --fsLarge4: 2.4rem;
+  --fsVLarge3: 3rem;
+  --fsVLarge6: 3.6rem;
 }
 
 html {
@@ -29,9 +49,9 @@ html {
 }
 
 body {
-  font-size: 2rem;
-  background-color: #e2dfda;
-  color: #153f45;
+  font-size: var(--fsBase);
+  background-color: var(--beige);
+  color: var(--base);
   padding: 0;
   margin: 0;
   font-family: 'Konsolev Regular', sans-serif;
@@ -93,7 +113,7 @@ a {
 }
 
 .swiper-slide {
-  font-size: 18px;
+  font-size: var(--fsMedium8);
   background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,13 +138,18 @@ a {
   height: 20px;
   text-align: center;
   line-height: 20px;
-  font-size: 12px;
-  color: #000;
+  font-size: var(--fsSmall2);
+  color: var(--black);
   opacity: 1;
   background: rgba(0, 0, 0, 0.2);
 }
 
 .swiper-pagination-bullet-active {
-  color: #fff;
+  color: var(--white);
   background: #007aff;
+}
+
+.grey-card {
+  border-radius: 10px;
+  background-color: var(--haze);
 }

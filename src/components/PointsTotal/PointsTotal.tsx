@@ -5,7 +5,14 @@ import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@components/PointsTotal/PointsTotal.style'
 import { ProfileTitle } from '@modules/Profile/Profile.style'
 
-export const PointsTotal: NextPage = () => {
+export type PointsTotalProps = {
+  pointTypes: {
+    type: number
+    points: number
+  }
+}
+
+export const PointsTotal: NextPage<PointsTotalProps> = () => {
   const pointTypes = [
     { type: 'Sharing Codes', points: 150 },
     { type: 'Media Posted', points: 80 },

@@ -28,7 +28,7 @@ export const ProfileHead = styled.header`
 
 export const Name = styled.h1`
   margin: 0;
-  font-size: 24px;
+  font-size: var(--fsLarge4);
   font-weight: bold;
 `
 
@@ -37,7 +37,7 @@ export const Location = styled.p`
 `
 
 export const Points = styled.p`
-  font-size: 1.4rem;
+  font-size: var(--fsmall4);
   color: grey;
   display: flex;
   align-items: center;

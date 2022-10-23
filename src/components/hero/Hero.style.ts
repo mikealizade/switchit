@@ -27,5 +27,5 @@ export const Content = styled.div`
 `
 
 export const Text = styled.p`
-  font-size: 1.6rem;
+  font-size: var(--fsBase);
 `
