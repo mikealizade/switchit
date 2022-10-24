@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="12px" viewBox="0 0 22 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>switching icon</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon/menu/switch/white" transform="translate(0.000000, -5.000000)" stroke="#FFFFFF">
+            <g id="switching-icon" transform="translate(1.150000, 5.750000)">
+                <rect id="Rectangle" x="0" y="0" width="19.55" height="10.2124465" rx="5.10622326"></rect>
+                <circle id="Oval" cx="14.3328068" cy="5.104615" r="3.34196282"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

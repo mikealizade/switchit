@@ -6,7 +6,7 @@ import { Button } from '@components/Button/Button'
 import * as S from '@components/Hero/Hero.style'
 import speechBubbles from '../../../public/speech_bubbles.png'
 
-export const Hero: NextPage = () => {
+export const Hero: NextPage = (): JSX.Element => {
   return (
     <S.Hero>
       <Image src={speechBubbles} alt='' />

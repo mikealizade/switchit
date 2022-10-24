@@ -12,20 +12,20 @@ export type ProfileSummaryProps = {
 
 export const ProfileSummary: NextPage<ProfileSummaryProps> = ({
   data: { proudAction = '', supportedCampaigns = '', switchingStatement = '' } = {},
-}) => {
+}): JSX.Element => {
   return (
     <S.ProfileSummary>
       <S.SummaryItem>
         <h2>Switching Statement/Why I Switch</h2>
-        <EditableInput defaultValue={switchingStatement} />
+        <EditableInput name='switchingStatement' defaultValue={switchingStatement} />
       </S.SummaryItem>
       <S.SummaryItem>
         <h2>Campaigns I support</h2>
-        <EditableInput defaultValue={supportedCampaigns} />
+        <EditableInput name='supportedCampaigns' defaultValue={supportedCampaigns} />
       </S.SummaryItem>
       <S.SummaryItem>
         <h2>Climate action I’m proud of</h2>
-        <EditableInput defaultValue={proudAction} />
+        <EditableInput name='proudAction' defaultValue={proudAction} />
       </S.SummaryItem>
     </S.ProfileSummary>
   )

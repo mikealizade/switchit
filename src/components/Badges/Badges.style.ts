@@ -19,4 +19,6 @@ export const Item = styled.li`
   row-gap: 12px;
   font-family: 'Konsolev SemiBold';
   font-size: var(--fsSmall5);
+  background: transparent 14px center no-repeat;
+  padding-left: 55px;
 `

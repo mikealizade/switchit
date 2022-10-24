@@ -1,16 +1,19 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { navigation, subNav } from 'src/utils/constants'
 import logo from '../../../public/switchit_logo.png'
 import * as S from '@components/Navigation/Navigation.style'
+import { useState } from 'react'
 
-type Nav = { text: string; route: string }
+type Nav = { text: string; route: string; icon?: string }
 
-export const Navigation: NextPage = () => {
+export const Navigation: NextPage = (): JSX.Element => {
   const { pathname } = useRouter()
-  const isActive = (path: string): string => (pathname === path ? 'active' : '')
+  const [current, setHover] = useState('')
+  const isActive = (route: string): boolean => pathname === `/${route}`
 
   return (
     <S.Nav>
@@ -20,10 +23,21 @@ export const Navigation: NextPage = () => {
       </S.Logo>
 
       <S.Navigation>
-        {navigation.map(({ text, route }: Nav) => (
+        {navigation.map(({ text, route, icon }: Nav) => (
           <li key={route}>
-            <Link href={route}>
-              <a className={isActive(route)}>{text}</a>
+            <Link href={`/${route}`}>
+              <a
+                onMouseEnter={() => setHover(route)}
+                onMouseLeave={() => setHover('')}
+                style={{
+                  backgroundImage: `url(${icon}${
+                    isActive(route) || current === route ? '_on' : ''
+                  }.svg)`,
+                }}
+                className={cs(route, { ['active']: isActive(route) })}
+              >
+                {text}
+              </a>
             </Link>
           </li>
         ))}
@@ -33,7 +47,7 @@ export const Navigation: NextPage = () => {
         {subNav.map(({ text, route }: Nav) => (
           <li key={route}>
             <Link href={route}>
-              <a className={isActive(route)}>{text}</a>
+              <a className={cs(route, { ['active']: isActive(route) })}>{text}</a>
             </Link>
           </li>
         ))}

@@ -40,7 +40,7 @@ export const Select: FC<SelectProps> = ({
   isLoading,
   required,
   disabled,
-}) => {
+}): JSX.Element => {
   const { control } = useForm()
   const hasError = errors?.[name]
   const {

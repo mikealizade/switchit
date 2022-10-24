@@ -11,7 +11,7 @@ export type ClimateImpactReportProps = {
 
 export const ClimateImpactReport: NextPage<ClimateImpactReportProps> = ({
   data: { carbonRemoved = 0, trashRemoved = 0 },
-}) => {
+}): JSX.Element => {
   return (
     <S.ClimateImpactReport>
       <ProfileTitle>Climate Impact Report</ProfileTitle>

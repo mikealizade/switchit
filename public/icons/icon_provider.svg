@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="21px" viewBox="0 0 22 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bank icon</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/provider/bank/teal" transform="translate(0.000000, -1.000000)">
+            <g id="bank-icon" transform="translate(1.000000, 2.000000)">
+                <g id="Group-2" stroke="#153F45" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9">
+                    <polygon id="Path" points="10.1281037 0 0 5.30863787 0 6.05664452 19.9525542 6.05664452 19.9525542 5.26445183"></polygon>
+                    <polyline id="Path" points="19.1080183 6.05664452 19.1080183 7.29385382 0.847698877 7.29385382 0.847698877 6.05664452"></polyline>
+                    <line x1="2.84991302" y1="7.49584718" x2="2.84991302" y2="15.7712625" id="Path"></line>
+                    <line x1="4.41562549" y1="7.51478405" x2="4.41562549" y2="15.7712625" id="Path"></line>
+                    <polyline id="Path" points="0.860351099 17.7249169 0.860351099 16.1563123 19.1206706 16.1563123 19.1206706 17.7249169"></polyline>
+                    <rect id="Rectangle" x="0.00948916654" y="17.7501661" width="19.9905108" height="1.24983389"></rect>
+                    <line x1="7.07891824" y1="7.48637874" x2="7.07891824" y2="15.7649502" id="Path"></line>
+                    <line x1="8.64463071" y1="7.50531561" x2="8.64463071" y2="15.7649502" id="Path"></line>
+                    <line x1="11.3079235" y1="7.48953488" x2="11.3079235" y2="15.7681063" id="Path"></line>
+                    <line x1="12.8736359" y1="7.51162791" x2="12.8736359" y2="15.7681063" id="Path"></line>
+                    <line x1="15.5337656" y1="7.48953488" x2="15.5337656" y2="15.7681063" id="Path"></line>
+                    <line x1="17.0994781" y1="7.51162791" x2="17.0994781" y2="15.7681063" id="Path"></line>
+                </g>
+                <g id="Group" transform="translate(2.691760, 7.495847)"></g>
+                <g id="Group" transform="translate(6.920765, 7.486379)"></g>
+                <g id="Group" transform="translate(11.149771, 7.489535)"></g>
+                <g id="Group" transform="translate(15.375613, 7.489535)"></g>
+            </g>
+        </g>
+    </g>
+</svg>

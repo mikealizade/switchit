@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>community icon</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="community-icon" stroke="#FFFFFF" transform="translate(1.150000, 1.150000)">
+            <ellipse id="Oval" cx="10.3101748" cy="8.80923064" rx="2.57270778" ry="2.56467204"></ellipse>
+            <ellipse id="Oval" cx="4.44581959" cy="2.9631925" rx="1.10581299" ry="1.10235903"></ellipse>
+            <ellipse id="Oval" cx="16.1874258" cy="14.700263" rx="1.10581299" ry="1.10235903"></ellipse>
+            <ellipse id="Oval" cx="17.6639924" cy="1.88011672" rx="1.88600759" ry="1.88011672"></ellipse>
+            <ellipse id="Oval" cx="1.88600759" cy="16.8503452" rx="1.88600759" ry="1.88011672"></ellipse>
+            <ellipse id="Oval" cx="10.3198466" cy="17.6698833" rx="1.88600759" ry="1.88011672"></ellipse>
+            <line x1="10.3101748" y1="11.3739027" x2="10.3101748" y2="15.7929804" id="Path"></line>
+            <line x1="12.1284796" y1="10.5897172" x2="15.4588143" y2="13.9096498" id="Path"></line>
+            <line x1="12.1284796" y1="7.04802729" x2="16.1422906" y2="3.04996712" id="Path"></line>
+            <line x1="3.37546999" y1="15.7736972" x2="8.49831794" y2="10.6668502" id="Path"></line>
+            <line x1="5.24858179" y1="3.72809469" x2="8.51443766" y2="6.98374979" id="Path"></line>
+        </g>
+    </g>
+</svg>

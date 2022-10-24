@@ -57,7 +57,13 @@ const Title = (props: DialogTitleProps) => {
   )
 }
 
-export const Modal: NextPage<ModalProps> = ({ title, children, isOpen, btnText, toggleModal }) => {
+export const Modal: NextPage<ModalProps> = ({
+  title,
+  children,
+  isOpen,
+  btnText,
+  toggleModal,
+}): JSX.Element => {
   return (
     <div>
       <BootstrapDialog

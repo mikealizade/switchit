@@ -6,28 +6,23 @@ import * as S from '@components/PointsTotal/PointsTotal.style'
 import { ProfileTitle } from '@modules/Profile/Profile.style'
 
 export type PointsTotalProps = {
-  pointTypes: {
-    type: number
+  data: Array<{
+    type: string
     points: number
-  }
+  }>
+  points: number
 }
 
-export const PointsTotal: NextPage<PointsTotalProps> = () => {
-  const pointTypes = [
-    { type: 'Sharing Codes', points: 150 },
-    { type: 'Media Posted', points: 80 },
-    { type: 'Switching Campaigns', points: 50 },
-    { type: 'Provider Switching Actions', points: 20 },
-  ]
+export const PointsTotal: NextPage<PointsTotalProps> = ({ data = [], points = 0 }): JSX.Element => {
   return (
     <S.PointsTotal>
       <ProfileTitle>Switch It Points</ProfileTitle>
       <S.TotalPoints>
-        <FontAwesomeIcon size='sm' icon={faStar} /> 268 Points
+        <FontAwesomeIcon size='sm' icon={faStar} /> {points} Points
       </S.TotalPoints>
-      <PointsChart />
+      <PointsChart data={data} total={points} />
       <S.PointTypes>
-        {pointTypes.map(({ type, points }: { type: string; points: number }) => (
+        {data.map(({ type, points }: { type: string; points: number }) => (
           <S.Item key={type}>
             <S.PointType>{type}</S.PointType>
             <S.Points>{points}pt</S.Points>

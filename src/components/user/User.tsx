@@ -27,7 +27,7 @@ type User = {
   points: number
 }
 
-export const User: NextPage = () => {
+export const User: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
   const {
     user: { sub = '', nickname = '', picture = '' } = {},

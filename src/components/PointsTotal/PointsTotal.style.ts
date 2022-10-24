@@ -48,17 +48,17 @@ export const Item = styled.li`
     border-radius: 50%;
     background-color: var(--dodgerBlue);
   }
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     &:before {
       background-color: var(--aurora);
     }
   }
-  &:nth-child(3) {
+  &:nth-of-type(3) {
     &:before {
       background-color: var(--mustard);
     }
   }
-  &:nth-child(4) {
+  &:nth-of-type(4) {
     &:before {
       background-color: var(--vermilion);
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="19px" viewBox="0 0 22 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>breakup letter icon</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon/switching/breakup-letter/teal" transform="translate(0.000000, -2.000000)" stroke="#004046">
+            <g id="breakup-letter-icon" transform="translate(1.000000, 3.000000)">
+                <path d="M18.7544327,2.09716086 C17.9208474,0.987341712 16.6957296,0.20890518 15.3127357,0.036961368 C11.9405042,-0.378830032 9.98284166,2.85058739 9.98284166,2.85058739 C9.98284166,2.85058739 8.05991186,-0.341315019 4.68768031,0.0744763816 C3.30152895,0.246420194 2.07641111,1.02485673 1.24598331,2.13467588 C-4.20705405,9.39070475 10.0049443,17 10.0049443,17 C10.0049443,17 24.2043126,9.35318974 18.7544327,2.09716086 Z" id="Path"></path>
+                <polyline id="Path" points="14.565445 0.00980471514 13 3.9711067 15 6.43837614 13.1492147 9.00980472"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

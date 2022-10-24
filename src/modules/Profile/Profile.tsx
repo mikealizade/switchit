@@ -7,7 +7,7 @@ import { Badge } from '@components/Badges/Badges'
 import { Card } from '@components/Card/Card'
 import { ProfileHead } from '@components/ProfileHead/ProfileHead'
 import { ProfileSummary, ProfileSummaryProps } from '@components/ProfileSummary/ProfileSummary'
-import { SharingCodes, SharingCodesProps } from '@components/SharingCodes/SharingCodes'
+import { SharingCodes } from '@components/SharingCodes/SharingCodes'
 import {
   ClimateImpactReport,
   ClimateImpactReportProps,
@@ -18,12 +18,11 @@ import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTot
 import { CheckList } from '@components/CheckList/CheckList'
 import * as S from '@modules/Profile/Profile.style'
 
-// icons
 // fetch custom hook
-// responsive mobile
-// add mongoose
-// make profile data driven
 // deploy to vercel staging
+//---//
+// mongodb compass
+// error handling / errorboundary
 
 type User = {
   _id: string
@@ -51,7 +50,7 @@ type User = {
 
 const Profile = (): JSX.Element => {
   const {
-    user: { sub = '', nickname = '', picture = '' } = {},
+    user: { sub = '' } = {},
     // error = {},
     isLoading = false,
   } = useUser()
@@ -62,12 +61,17 @@ const Profile = (): JSX.Element => {
       badges = [],
       sharingCodes = 0,
       climateImpactReport = {},
-      switchItPoints = {},
+      switchItPoints = [],
       summary = {},
     } = {},
   } = userData || {}
+  const [points, setTotalPoints] = useState(switchItPoints)
 
-  console.log({ userData })
+  useEffect(() => {
+    const totalPoints = switchItPoints.reduce((acc: number, item: any) => acc + item.points, 0)
+
+    setTotalPoints(totalPoints)
+  }, [switchItPoints])
 
   useEffect(() => {
     user?._id && setUserData(user)
@@ -87,10 +91,10 @@ const Profile = (): JSX.Element => {
         <S.ProfileContainer>
           <S.ProfileColumn>
             <Card column>
-              <ProfileHead />
+              <ProfileHead points={points} />
               <ProfileSummary data={summary} />
               <Card column shadow>
-                <PointsTotal />
+                <PointsTotal data={switchItPoints} points={points} />
               </Card>
             </Card>
           </S.ProfileColumn>

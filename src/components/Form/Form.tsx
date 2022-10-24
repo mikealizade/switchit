@@ -4,7 +4,10 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { Input } from '@components/Input/Input'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 
-export const Form: NextPage<{ data?: any; disabled?: boolean }> = ({ data, disabled }) => {
+export const Form: NextPage<{ data?: any; disabled?: boolean }> = ({
+  data,
+  disabled,
+}): JSX.Element => {
   const methods = useForm()
   const { handleSubmit, reset } = methods
 

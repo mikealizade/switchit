@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
-import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { fetcher } from '@utils/functions'
-import * as S from '@components/EditableInput/EditableInput.style'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import * as S from '@components/EditableInput/EditableInput.style'
 
-export const EditableInput: NextPage<{ defaultValue: string }> = ({ defaultValue = '' }) => {
+export const EditableInput: NextPage<{ name: string; defaultValue: string }> = ({
+  name = '',
+  defaultValue = '',
+}): JSX.Element => {
   const [isEditing, setEdit] = useState(false)
   const [value, setValue] = useState(defaultValue)
   const {
@@ -15,22 +17,34 @@ export const EditableInput: NextPage<{ defaultValue: string }> = ({ defaultValue
     // error = {},
     isLoading = false,
   } = useUser()
-  const { data: { user } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
 
   const edit = () => {
     setEdit(!isEditing)
   }
 
   const save = async () => {
-    // save to db
+    const body = {
+      filter: { sub },
+      payload: { $set: { [`profile.summary.${name}`]: value } },
+      collection: 'users',
+      upsert: false,
+    }
+
     setEdit(false)
-    await fetcher(`/api/db/user/${sub}`, {
+    await fetcher(`/api/db/updateOne`, {
       method: 'POST',
-      body: JSON.stringify(value),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
     })
   }
 
-  const updateField = ({ target: { value } }: { target: { value: string } }) => {
+  const updateField = ({
+    target: { name, value },
+  }: {
+    target: { name: string; value: string }
+  }) => {
     setValue(() => value)
   }
 
@@ -42,7 +56,7 @@ export const EditableInput: NextPage<{ defaultValue: string }> = ({ defaultValue
     <S.EditableInputContainer>
       <S.EditableInput
         type='text'
-        name='switchStatement'
+        name={name}
         value={value}
         readOnly={!isEditing}
         onChange={updateField}

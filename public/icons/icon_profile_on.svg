@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="21px" viewBox="0 0 17 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon/menu/profile/white" transform="translate(-2.000000, -1.000000)" stroke="#FFFFFF">
+            <g id="Group" transform="translate(3.450000, 2.300000)">
+                <ellipse id="Oval" cx="7.48100633" cy="4.18603743" rx="4.19842434" ry="4.18603743"></ellipse>
+                <path d="M12.8416554,18.4 C15.2832284,18.262262 15.2141556,14.5014158 14.5624688,12.4622945 C13.9107821,10.4231733 12.1659434,9.09969081 10.9796933,9.60872254 C9.29491785,10.7285924 8.88348427,11.001074 7.475,11.001074 L7.475,11.001074 C6.06651573,11.001074 5.65808532,10.7285924 3.97030672,9.60872254 C2.78405664,9.09969081 1.03921791,10.420179 0.38753116,12.4622945 C-0.264155594,14.5044101 -0.333228384,18.262262 2.10834457,18.4 C3.46577504,18.4 11.4872281,18.4 12.8416554,18.4 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

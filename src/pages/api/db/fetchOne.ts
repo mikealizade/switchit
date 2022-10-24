@@ -3,11 +3,7 @@ import { connectToDatabase } from '@helpers/mongodb'
 
 const fetchOne = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()
-  const { query, body } = req
-
-  // console.log('>> req', req)
-
-  // const { qry, collection } = query
+  const { body } = req
 
   console.log('>> body', body)
 

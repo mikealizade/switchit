@@ -13,7 +13,7 @@ export const SignUpForm: NextPage<{
   disabled?: boolean
   nextSlide: () => void
   previousSlide: () => void
-}> = ({ data, disabled, nextSlide, previousSlide }) => {
+}> = ({ data, disabled, nextSlide, previousSlide }): JSX.Element => {
   const { user = {}, error = {}, isLoading = false } = useUser()
   const dispatch = useDispatch()
   const methods = useForm()

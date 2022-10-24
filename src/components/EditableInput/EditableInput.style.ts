@@ -15,6 +15,10 @@ export const EditableInput = styled.input`
   &:read-only {
     border: 1px solid var(--white);
     padding: 6px 0;
+
+    &:focus {
+      outline: 0;
+    }
   }
 `
 

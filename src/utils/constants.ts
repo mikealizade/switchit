@@ -11,49 +11,58 @@ export const emailRegex =
 export const navigation = [
   {
     text: 'Profile',
-    route: '/profile',
+    route: 'profile',
+    icon: '/icons/icon_profile',
   },
   {
     text: 'Dashboard',
-    route: '/dashboard',
+    route: 'dashboard',
+    icon: '/icons/icon_dashboard',
   },
   {
     text: 'Switching',
-    route: '/wwitching',
+    route: 'switching',
+    icon: '/icons/icon_switching',
   },
   {
     text: 'Impact',
-    route: '/impact',
+    route: 'impact',
+    icon: '/icons/icon_impact',
   },
   {
-    text: 'Campaigns',
-    route: '/campaigns',
+    text: 'Programs',
+    route: 'programs',
+    icon: '/icons/icon_programs',
   },
   {
-    text: 'Academy',
-    route: '/academy',
+    text: 'News & Blog',
+    route: 'news',
+    icon: '/icons/icon_news',
   },
   {
     text: 'Community',
-    route: '/community',
+    route: 'community',
+    icon: '/icons/icon_community',
   },
 ]
 
 export const subNav = [
   {
     text: 'Donate',
-    route: '/donate',
+    route: 'donate',
   },
   {
     text: 'Settings',
-    route: '/settings',
+    route: 'settings',
   },
   {
     text: 'Help',
-    route: '/help',
+    route: 'help',
   },
   {
     text: 'Log Out',
-    route: '/logout',
+    route: 'logout',
   },
 ]
+
+const apiRoutes = {}

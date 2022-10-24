@@ -3,18 +3,25 @@ import { ProfileTitle } from '@modules/Profile/Profile.style'
 import * as S from '@components/Badges/Badges.style'
 
 export type Badge = {
-  badge: 'Campaigns  Completed'
-  total: 1
+  badge: string
+  total: number
 }
 
-export const Badges: NextPage<{ data: Badge[] }> = ({ data = [] }) => {
+const icons: [string, string, string, string] = ['provider', 'programs', 'news', 'friends']
+
+export const Badges: NextPage<{ data: Badge[] }> = ({ data = [] }): JSX.Element => {
   return (
     <S.Badges>
       <ProfileTitle>Awards Badges</ProfileTitle>
 
       <S.BadgesList>
-        {data.map(({ badge, total }: { badge: string; total: number }) => (
-          <S.Item key={badge}>
+        {data.map(({ badge, total }: Badge, i) => (
+          <S.Item
+            key={badge}
+            style={{
+              backgroundImage: `url(/icons/icon_${icons[i]}.svg)`,
+            }}
+          >
             {total} x {badge}
           </S.Item>
         ))}

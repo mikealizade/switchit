@@ -39,7 +39,7 @@ export const Input: FC<InputProps> = ({
   message,
   validate,
   placeholder = '',
-}) => {
+}): JSX.Element => {
   const hasError = errors?.[name as keyof FieldError]
   const errorMessage = errors?.[name]?.message as string
 

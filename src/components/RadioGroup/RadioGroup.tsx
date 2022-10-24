@@ -26,7 +26,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   register,
   disabled,
   required,
-}) => {
+}): JSX.Element => {
   const hasError = errors && errors[name as keyof FieldError]
 
   return (

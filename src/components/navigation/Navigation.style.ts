@@ -5,7 +5,7 @@ export const Nav = styled.nav`
   min-width: 230px;
   background-color: var(--white);
   border-radius: 8px 0 0 8px;
-  padding: 30px;
+  padding: 20px;
   row-gap: 100px;
   display: flex;
   position: absolute;
@@ -32,10 +32,11 @@ export const Navigation = styled.ul`
     flex-direction: column;
 
     a {
-      padding: 6px 18px;
+      padding: 8px 18px 6px 48px;
       border-radius: 8px;
       background-color: var(--white);
       font-size: var(--fsMedium8);
+      background: transparent 14px center no-repeat;
 
       &.active,
       &:hover {
@@ -43,6 +44,9 @@ export const Navigation = styled.ul`
         color: var(--white);
       }
     }
+  }
+  + ul a {
+    padding-left: 0;
   }
 `
 

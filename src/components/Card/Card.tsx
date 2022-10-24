@@ -13,7 +13,7 @@ export const Card: NextPage<CardProps> = ({
   shadow = false,
   compact = false,
   children,
-}) => {
+}): JSX.Element => {
   return (
     <S.Card column={column} shadow={shadow} compact={compact}>
       {children}

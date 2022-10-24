@@ -15,7 +15,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   register,
   disabled,
   required,
-}) => {
+}): JSX.Element => {
   const hasError = errors?.[name as keyof FieldError]
 
   return (

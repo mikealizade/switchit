@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import me from '../../../public/me.jpg'
 
-export const ProfileHead: NextPage = () => {
+export const ProfileHead: NextPage<{ points: number }> = ({ points = 0 }): JSX.Element => {
   return (
     <S.ProfileHead>
       <div>
@@ -16,7 +16,7 @@ export const ProfileHead: NextPage = () => {
         <S.Location>London, UK</S.Location>
         <S.Points>
           <FontAwesomeIcon size='sm' icon={faStar} />
-          20 points
+          {points} points
         </S.Points>
       </div>
     </S.ProfileHead>

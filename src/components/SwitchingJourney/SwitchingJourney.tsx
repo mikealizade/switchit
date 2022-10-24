@@ -9,7 +9,11 @@ type SwitchingJourneyProps = {
   image: string
 }
 
-export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({ title, text, image }) => {
+export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
+  title,
+  text,
+  image,
+}): JSX.Element => {
   return (
     <S.SwitchingJourney>
       <Image src={placeholder} alt='' width={30} height={30} />

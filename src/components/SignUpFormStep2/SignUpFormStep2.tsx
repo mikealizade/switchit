@@ -13,7 +13,7 @@ export const SignUpFormStep2: NextPage<{
   data?: any
   nextSlide: () => void
   previousSlide: () => void
-}> = ({ data, nextSlide, previousSlide }) => {
+}> = ({ data, nextSlide, previousSlide }): JSX.Element => {
   // const userData = useSelector((state: RootState) => state.user)
   const { user = {} } = useUser()
   const methods = useForm()

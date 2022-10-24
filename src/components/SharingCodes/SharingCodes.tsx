@@ -5,9 +5,9 @@ import { faShareNodes, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import * as S from '@components/SharingCodes/SharingCodes.style'
 import { ProfileTitle } from '@modules/Profile/Profile.style'
 
-export type SharingCodesProps = { total: number }
+type SharingCodesProps = { total: number }
 
-export const SharingCodes: NextPage<SharingCodesProps> = ({ total }) => {
+export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Element => {
   return (
     <S.SharingCodes>
       <ProfileTitle>Sharing Codes</ProfileTitle>
