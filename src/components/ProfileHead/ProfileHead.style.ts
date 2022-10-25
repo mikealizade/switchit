@@ -30,6 +30,7 @@ export const Name = styled.h1`
   margin: 0;
   font-size: var(--fsLarge4);
   font-weight: bold;
+  text-transform: capitalize;
 `
 
 export const Location = styled.p`

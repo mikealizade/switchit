@@ -7,7 +7,7 @@ export const PointsChart = styled.ul`
 `
 
 export const Item = styled.li`
-  &:nth-of-type {
+  &:nth-of-type(1) {
     background-color: var(--dodgerBlue);
     border-radius: 20px 0 0 20px;
   }
@@ -24,4 +24,9 @@ export const Item = styled.li`
     background-color: var(--vermilion);
     border-radius: 0 20px 20px 0;
   }
+`
+
+export const ItemEmpty = styled.li`
+  background-color: var(--haze);
+  border-radius: 20px;
 `

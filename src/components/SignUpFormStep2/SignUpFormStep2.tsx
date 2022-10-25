@@ -2,27 +2,28 @@ import { useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { useUser } from '@auth0/nextjs-auth0'
-// import { RootState } from '@state/store'
+// import { useUser } from '@auth0/nextjs-auth0'
+import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { updateUser } from '@state/user/userSlice'
 import { Input } from '@components/Input/Input'
 import { Button, TextButton } from '@components/Button/Button'
+import { defaultProfile } from '@utils/constants'
 
 export const SignUpFormStep2: NextPage<{
   data?: any
   nextSlide: () => void
   previousSlide: () => void
 }> = ({ data, nextSlide, previousSlide }): JSX.Element => {
-  // const userData = useSelector((state: RootState) => state.user)
-  const { user = {} } = useUser()
+  const user = useSelector((state: RootState) => state.user)
+  // const { user = {} } = useUser()
   const methods = useForm()
   const { replace } = useRouter()
   const dispatch = useDispatch()
   const { handleSubmit, reset } = methods
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
-    const userData = { ...user, ...data, points: 0 }
+    const userData = { ...user, ...defaultProfile, ...data }
 
     dispatch(updateUser(userData))
     const response = await fetch('/api/db/insertOne', {
@@ -30,7 +31,7 @@ export const SignUpFormStep2: NextPage<{
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(userData),
     })
 
     if (!response.ok) {

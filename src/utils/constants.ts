@@ -66,3 +66,42 @@ export const subNav = [
 ]
 
 const apiRoutes = {}
+
+export const defaultProfile = {
+  profile: {
+    intro: {
+      switchingStatement: '',
+      supportedCampaigns: '',
+      proudAction: '',
+    },
+    sharingCodes: 0,
+    badges: [
+      {
+        badge: 'Providers Switched',
+        total: 0,
+      },
+      {
+        badge: 'Campaigns  Completed',
+        total: 0,
+      },
+      {
+        badge: 'Academy Articles Read',
+        total: 0,
+      },
+      {
+        badge: 'People I helped Switch',
+        total: 0,
+      },
+    ],
+    climateImpactReport: {
+      carbonRemoved: 0,
+      trashRemoved: 0,
+    },
+    switchItPoints: [
+      { type: 'Sharing Codes', points: 0 },
+      { type: 'Media Posted', points: 0 },
+      { type: 'Switching Campaigns', points: 0 },
+      { type: 'Provider Switching Actions', points: 0 },
+    ],
+  },
+}

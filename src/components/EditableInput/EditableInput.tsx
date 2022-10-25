@@ -58,6 +58,7 @@ export const EditableInput: NextPage<{ name: string; defaultValue: string }> = (
         type='text'
         name={name}
         value={value}
+        {...(!value && { placeholder: 'Click edit button to start typing' })}
         readOnly={!isEditing}
         onChange={updateField}
       />

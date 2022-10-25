@@ -5,7 +5,7 @@ export const UserContainer = styled.section`
   justify-content: space-between;
   align-items: center;
 
-  div:nth-child(2) {
+  div:nth-of-type(2) {
     margin-left: auto;
     margin-right: 30px;
   }

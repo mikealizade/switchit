@@ -12,9 +12,9 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
     <S.SharingCodes>
       <ProfileTitle>Sharing Codes</ProfileTitle>
       <S.TotalShared>
-        <FontAwesomeIcon size='sm' icon={faShareNodes} />
         {total}
-        <FontAwesomeIcon size='sm' icon={faPaperPlane} />
+        {/* <FontAwesomeIcon size='sm' icon={faPaperPlane} /> */}
+        <FontAwesomeIcon size='lg' icon={faShareNodes} />
       </S.TotalShared>
     </S.SharingCodes>
   )

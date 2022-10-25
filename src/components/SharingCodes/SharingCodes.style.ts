@@ -26,4 +26,6 @@ export const TotalShared = styled.div`
   justify-content: flex-start;
   column-gap: 30px;
   align-items: center;
+  font-size: var(--fsHuge0);
+  font-family: 'Konsolev SemiBold';
 `
