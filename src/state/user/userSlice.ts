@@ -12,18 +12,17 @@ type User = {
   email_verified: string
   sub: string
   sid: string
-  age: number
-  location: string
-  programCode: string
-  referralCode: string
-  points: number
+  age?: number
+  location?: string
+  programCode?: string
+  referralCode?: string
 }
 
 export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
+    setUser: (state, action: PayloadAction<User>) => {
       return action.payload
     },
     updateUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
