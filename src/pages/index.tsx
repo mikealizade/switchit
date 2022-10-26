@@ -10,9 +10,6 @@ import useSWR from 'swr'
 const Home = () => {
   const router = useRouter()
   const { user, user: { sub = '' } = {}, isLoading } = useUser()
-
-  console.log('user >>>>>', user)
-
   const dispatch = useDispatch()
   const [isNewUser, setNewUser] = useState(null)
 
@@ -38,8 +35,6 @@ const Home = () => {
       router.replace('/dashboard')
     }
   }, [isNewUser, router])
-
-  if (isLoading) return <div>Loading...</div>
 
   if (!isLoading && !user) {
     router.replace('/logout')
