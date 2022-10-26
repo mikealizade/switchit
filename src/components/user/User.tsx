@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 // import { setUser } from '@state/user/userSlice'
-import { Button } from '@components/Button/Button'
+// import { Button } from '@components/Button/Button'
 import { fetcher } from '@utils/functions'
 import * as S from '@components/User/User.style'
 
@@ -30,19 +30,27 @@ type User = {
 export const User: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
   const {
+    // user: authUser,
     user: { sub = '', nickname = '', picture = '' } = {},
     // error = {},
     isLoading = false,
   } = useUser()
-  const { replace } = useRouter()
-  const { data: { user } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
-  const [userData, setUserData] = useState<User>()
+  // const { replace } = useRouter()
+  // const {
+  //   data: {
+  //     user: {
+  //       user_metadata: { isNewUser },
+  //     },
+  //   } = {},
+  //   error,
+  // } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
+  // const [userData, setUserData] = useState<User>()
 
-  // console.log({ user })
+  // console.log(22, { isNewUser })
 
-  useEffect(() => {
-    user?._id && setUserData(user)
-  }, [user])
+  // useEffect(() => {
+  //   user?._id && setUserData(user)
+  // }, [user])
 
   return (
     <S.UserContainer>
@@ -54,19 +62,13 @@ export const User: NextPage = (): JSX.Element => {
               Hi <S.UserName>{nickname}</S.UserName>, welcome back!
             </span>
           </S.User>
-          <S.Score>{userData?.points}</S.Score>
-          <Button type='button' onClick={() => replace('/api/auth/logout')}>
-            Log out
-          </Button>
+          {/* <S.Score>{userData?.points}</S.Score> */}
         </>
       ) : (
         <>
           <S.User>
             <span>Hi, welcome back!</span>
           </S.User>
-          <Button type='button' onClick={() => replace('/api/auth/login')}>
-            Log in
-          </Button>
         </>
       )}
     </S.UserContainer>

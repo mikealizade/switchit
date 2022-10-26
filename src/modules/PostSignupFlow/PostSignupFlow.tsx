@@ -11,13 +11,13 @@ import { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import * as S from '@modules/PostSignupFlow/PostSignupFlow.style'
+import Logo from '../../../public/switchit_logo.png'
 
 // Log in flow TODOs
 // sign up, new pw links
 // social log ins wih icons
 // save user and user meta to db on sign up
 // prev slide
-// correct data saved on certain slides
 
 const pagination = {
   clickable: true,
@@ -46,14 +46,17 @@ const PostSignupFlow: NextPage = () => {
       </Head>
 
       <S.PostSignupFlowContainer>
-        <Image
-          src='https://switchit.green/wp-content/uploads/2022/02/switch-it-icon.png'
-          alt='SwitchIt logo'
-          width={76}
-          height={40}
-          unoptimized
-          className='logo'
-        />
+        <S.Logo>
+          <Image
+            src={Logo}
+            alt='SwitchIt logo'
+            width={76}
+            height={40}
+            unoptimized
+            className='logo'
+          />
+          <span>Switch It</span>
+        </S.Logo>
 
         <S.Content>
           <Swiper
@@ -67,7 +70,7 @@ const PostSignupFlow: NextPage = () => {
           >
             <SwiperSlide>
               <S.SwiperHeader>
-                You don’t have to change your life to change the world.
+                You don&apos;t have to change your life to change the world.
               </S.SwiperHeader>
               <p>
                 Switch It can help you switch your money out of the fossil fuel industry AND
@@ -109,11 +112,11 @@ const PostSignupFlow: NextPage = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <S.SwiperHeader>Let’s get some basic information</S.SwiperHeader>
+              <S.SwiperHeader>Let&apos;s get some basic information</S.SwiperHeader>
               <SignUpForm nextSlide={nextSlide} previousSlide={previousSlide} />
             </SwiperSlide>
             <SwiperSlide>
-              <S.SwiperHeader>Let’s get some more information</S.SwiperHeader>
+              <S.SwiperHeader>Let&apos;s get some more information</S.SwiperHeader>
               <SignUpFormStep2 nextSlide={nextSlide} previousSlide={previousSlide} />
             </SwiperSlide>
           </Swiper>

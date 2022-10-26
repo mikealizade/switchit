@@ -1,7 +1,5 @@
 import type { NextPage } from 'next'
-import Link from 'next/link'
 import Image from 'next/image'
-import { navigation, subNav } from 'src/utils/constants'
 import { Button } from '@components/Button/Button'
 import * as S from '@components/Hero/Hero.style'
 import speechBubbles from '../../../public/speech_bubbles.png'

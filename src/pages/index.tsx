@@ -1,21 +1,40 @@
 import PostSignupFlow from '@modules/PostSignupFlow/PostSignupFlow'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
+import { fetcher } from '@utils/functions'
+import useSWR from 'swr'
 
 const Home = () => {
   const router = useRouter()
-  const { user = {}, user: { isNewUser = false } = {} } = useUser()
+  const { user, user: { sub = '' } = {} } = useUser()
 
-  console.log('>> user', user)
+  console.log('user', user)
+
+  const [isNewUser, setNewUser] = useState(null)
+
+  const fetchUserData = useCallback(async () => {
+    // useSWR doesnt work here?
+    const response = await fetch(`/api/db/user/${sub}`)
+    const { user: { user_metadata: { isNewUser = false } = {} } = {} } = await response.json()
+
+    setNewUser(isNewUser)
+  }, [sub])
 
   useEffect(() => {
-    if (!isNewUser) {
+    sub && fetchUserData()
+  }, [sub, fetchUserData])
+
+  console.log('user', user)
+  console.log('isNewUser', isNewUser)
+
+  useEffect(() => {
+    if (isNewUser !== null && !isNewUser) {
       router.replace('/dashboard')
     }
   }, [isNewUser, router])
 
-  if (isNewUser) return <PostSignupFlow />
+  if (isNewUser !== null && isNewUser) return <PostSignupFlow />
 }
 
 export default Home

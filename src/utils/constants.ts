@@ -59,10 +59,6 @@ export const subNav = [
     text: 'Help',
     route: 'help',
   },
-  {
-    text: 'Log Out',
-    route: 'logout',
-  },
 ]
 
 const apiRoutes = {}

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
+import { useUser } from '@auth0/nextjs-auth0'
 import { navigation, subNav } from 'src/utils/constants'
 import logo from '../../../public/switchit_logo.png'
 import * as S from '@components/Navigation/Navigation.style'
@@ -11,6 +12,11 @@ import { useState } from 'react'
 type Nav = { text: string; route: string; icon?: string }
 
 export const Navigation: NextPage = (): JSX.Element => {
+  const {
+    user: { sub = '', nickname = '', picture = '' } = {},
+    // error = {},
+    isLoading = false,
+  } = useUser()
   const { pathname } = useRouter()
   const [current, setHover] = useState('')
   const isActive = (route: string): boolean => pathname === `/${route}`
@@ -51,6 +57,19 @@ export const Navigation: NextPage = (): JSX.Element => {
             </Link>
           </li>
         ))}
+        {sub ? (
+          <li>
+            <Link href='/api/auth/logout'>
+              <a className=''>Log out</a>
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link href='/api/auth/login'>
+              <a className=''>Log in</a>
+            </Link>
+          </li>
+        )}
       </S.Navigation>
     </S.Nav>
   )

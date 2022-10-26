@@ -1,5 +1,12 @@
 import styled from '@emotion/styled'
 
+export const Logo = styled.a`
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  font-size: var(--fsMedium8);
+`
+
 export const PostSignupFlowContainer = styled.main`
   display: flex;
   justify-content: flex-start;
@@ -26,7 +33,7 @@ export const Content = styled.div`
   border-radius: 8px;
   border: 1px solid #e9e9e9;
   width: 100%;
-  padding: 75px;
+  padding: 120px;
   justify-content: flex-start;
   margin: 0;
   opacity: 0.9;
@@ -41,6 +48,8 @@ export const Content = styled.div`
 
 export const SwiperHeader = styled.h1`
   margin: 0 0 30px;
+  font-family: 'Konsolev SemiBold';
+  font-size: 50px;
 
   ~ button {
     &:last-of-type {

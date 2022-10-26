@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-// import { useUser } from '@auth0/nextjs-auth0'
 import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { updateUser } from '@state/user/userSlice'
@@ -16,30 +15,35 @@ export const SignUpFormStep2: NextPage<{
   previousSlide: () => void
 }> = ({ data, nextSlide, previousSlide }): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
-  // const { user = {} } = useUser()
   const methods = useForm()
   const { replace } = useRouter()
   const dispatch = useDispatch()
   const { handleSubmit, reset } = methods
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
-    const userData = { ...user, ...defaultProfile, ...data }
+    try {
+      const userData = { ...user, ...defaultProfile, ...data }
+      const body = {
+        filter: { sub: user.sub },
+        payload: userData,
+        collection: 'users',
+        upsert: false,
+      }
+      const response = await fetch('/api/db/upsertOne', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+      const { result } = await response.json()
 
-    dispatch(updateUser(userData))
-    const response = await fetch('/api/db/insertOne', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
+      dispatch(updateUser(userData))
 
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`)
+      if (result === 'success') replace('/dashboard')
+    } catch (error) {
+      //toast
     }
-
-    const { result } = await response.json()
-    if (result === 'success') replace('/dashboard')
   }
 
   // const onCancel = (): void => {

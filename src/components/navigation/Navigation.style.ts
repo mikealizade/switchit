@@ -45,8 +45,12 @@ export const Navigation = styled.ul`
       }
     }
   }
-  + ul a {
-    padding-left: 0;
+  + ul {
+    padding-bottom: 20px;
+
+    a {
+      padding-left: 20px;
+    }
   }
 `
 
