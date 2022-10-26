@@ -23,6 +23,7 @@ import * as S from '@modules/Profile/Profile.style'
 //---//
 // mongodb compass
 // error handling / errorboundary
+//protect routes withPageAuthRequired
 
 // case 00105328
 
@@ -53,7 +54,6 @@ type User = {
 const Profile = (): JSX.Element => {
   const {
     user: { sub = '' } = {},
-
     // error = {},
     isLoading = false,
   } = useUser()
@@ -70,7 +70,6 @@ const Profile = (): JSX.Element => {
   } = userData || {}
   const [points, setTotalPoints] = useState(switchItPoints)
 
-  console.log('user', user)
   useEffect(() => {
     const totalPoints = switchItPoints.reduce((acc: number, item: any) => acc + item.points, 0)
 

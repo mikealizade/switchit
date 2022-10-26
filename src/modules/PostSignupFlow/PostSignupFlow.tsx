@@ -46,19 +46,18 @@ const PostSignupFlow: NextPage = () => {
       </Head>
 
       <S.PostSignupFlowContainer>
-        <S.Logo>
-          <Image
-            src={Logo}
-            alt='SwitchIt logo'
-            width={76}
-            height={40}
-            unoptimized
-            className='logo'
-          />
-          <span>Switch It</span>
-        </S.Logo>
-
         <S.Content>
+          <S.Logo>
+            <Image
+              src={Logo}
+              alt='SwitchIt logo'
+              width={76}
+              height={40}
+              unoptimized
+              className='logo'
+            />
+            <span>Switch It</span>
+          </S.Logo>
           <Swiper
             pagination={pagination}
             modules={[Pagination]}

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   display: flex;
   column-gap: 15px;
   align-items: center;
@@ -16,13 +16,6 @@ export const PostSignupFlowContainer = styled.main`
     right center;
   background-size: 50%;
 
-  > span {
-    position: fixed !important;
-    left: 50px;
-    top: 50px;
-    z-index: 1;
-  }
-
   button[class^='primary'] {
     width: 100%;
   }
@@ -33,13 +26,12 @@ export const Content = styled.div`
   border-radius: 8px;
   border: 1px solid #e9e9e9;
   width: 100%;
-  padding: 120px;
+  padding: 70px 120px 120px;
   justify-content: flex-start;
   margin: 0;
   opacity: 0.9;
   display: flex;
   flex-direction: column;
-  row-gap: 50px;
 
   @media (min-width: 768px) {
     width: 50%;
