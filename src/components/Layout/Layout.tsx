@@ -11,7 +11,6 @@ const AppContainer = styled.div<{ isSignUp: boolean }>`
   flex-direction: column;
   padding: ${({ isSignUp }) => (isSignUp ? '0' : '20px')};
   min-height: 100vh;
-  flex: auto;
 
   ${() => mediaQuery.laptop} {
     flex-direction: row;
@@ -22,6 +21,7 @@ const AppContent = styled.main`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  flex: auto;
 `
 
 export const Aside = styled.aside`
