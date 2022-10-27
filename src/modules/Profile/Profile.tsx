@@ -19,7 +19,6 @@ import { CheckList } from '@components/CheckList/CheckList'
 import * as S from '@modules/Profile/Profile.style'
 
 // fetch custom hook
-// deploy to vercel staging
 //---//
 // mongodb compass
 // error handling / errorboundary
@@ -71,7 +70,7 @@ const Profile = (): JSX.Element => {
   const [points, setTotalPoints] = useState(switchItPoints)
 
   useEffect(() => {
-    const totalPoints = switchItPoints.reduce((acc: number, item: any) => acc + item.points, 0)
+    const totalPoints = switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
 
     setTotalPoints(totalPoints)
   }, [switchItPoints])
@@ -90,7 +89,6 @@ const Profile = (): JSX.Element => {
       </Head>
 
       <S.Content>
-        <User />
         <S.ProfileContainer>
           <S.ProfileColumn>
             <Card column>
@@ -114,11 +112,6 @@ const Profile = (): JSX.Element => {
           </S.ProfileColumn>
         </S.ProfileContainer>
       </S.Content>
-      <S.Aside>
-        <Card shadow>
-          <CheckList />
-        </Card>
-      </S.Aside>
     </>
   )
 }

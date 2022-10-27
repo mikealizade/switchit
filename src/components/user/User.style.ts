@@ -4,6 +4,8 @@ export const UserContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 40px 40px 10px;
+  background-color: var(--pampas);
 
   div:nth-of-type(2) {
     margin-left: auto;

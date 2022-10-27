@@ -27,7 +27,6 @@ const Impact = (): JSX.Element => {
       </Head>
 
       <S.Content>
-        <User />
         <S.ProfileContainer>
           <S.ProfileColumn>
             <Card column>impact content</Card>
@@ -37,11 +36,6 @@ const Impact = (): JSX.Element => {
           </S.ProfileColumn>
         </S.ProfileContainer>
       </S.Content>
-      <S.Aside>
-        <Card shadow>
-          <CheckList />
-        </Card>
-      </S.Aside>
     </>
   )
 }

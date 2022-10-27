@@ -27,7 +27,6 @@ const Community = (): JSX.Element => {
       </Head>
 
       <S.Content>
-        <User />
         <S.ProfileContainer>
           <S.ProfileColumn>
             <Card column>community content</Card>
@@ -37,11 +36,6 @@ const Community = (): JSX.Element => {
           </S.ProfileColumn>
         </S.ProfileContainer>
       </S.Content>
-      <S.Aside>
-        <Card shadow>
-          <CheckList />
-        </Card>
-      </S.Aside>
     </>
   )
 }

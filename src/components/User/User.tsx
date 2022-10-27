@@ -1,8 +1,8 @@
-// import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-// import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 // import { setUser } from '@state/user/userSlice'
@@ -30,27 +30,17 @@ type User = {
 export const User: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
   const {
-    // user: authUser,
     user: { sub = '', nickname = '', picture = '' } = {},
     // error = {},
     isLoading = false,
   } = useUser()
-  // const { replace } = useRouter()
-  // const {
-  //   data: {
-  //     user: {
-  //       user_metadata: { isNewUser },
-  //     },
-  //   } = {},
-  //   error,
-  // } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
-  // const [userData, setUserData] = useState<User>()
+  const { pathname } = useRouter()
+  const { data: { user = {} } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
+  const [userData, setUserData] = useState<User>()
 
-  // console.log(22, { isNewUser })
-
-  // useEffect(() => {
-  //   user?._id && setUserData(user)
-  // }, [user])
+  useEffect(() => {
+    user?._id && setUserData(user)
+  }, [user])
 
   return (
     <S.UserContainer>
@@ -62,7 +52,7 @@ export const User: NextPage = (): JSX.Element => {
               Hi <S.UserName>{nickname}</S.UserName>, welcome back!
             </span>
           </S.User>
-          {/* <S.Score>{userData?.points}</S.Score> */}
+          {pathname !== '/profile' && <S.Score>{userData?.points}</S.Score>}
         </>
       ) : (
         <>

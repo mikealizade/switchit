@@ -13,6 +13,7 @@ export const Content = styled.main`
 export const Aside = styled.aside`
   padding: 30px;
   min-width: 400px;
+  width: 400px;
   background-color: var(--white);
   border-radius: 0 8px 8px 0;
 `

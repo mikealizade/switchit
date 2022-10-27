@@ -1,30 +1,13 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { UserProvider } from '@auth0/nextjs-auth0'
-import styled from '@emotion/styled'
 import { Provider } from 'react-redux'
-import { useRouter } from 'next/router'
 import { store } from 'src/state/store'
-import { Navigation } from '@components/Navigation/Navigation'
-import { mediaQuery } from '@utils/functions'
+import { Layout } from '@components/Layout/Layout'
 import '@styles/globals.css'
 import 'normalize.css'
 
-const AppContent = styled.div<{ isSignUp: boolean }>`
-  display: flex;
-  flex-direction: column;
-  padding: ${({ isSignUp }) => (isSignUp ? '0' : '20px')};
-  min-height: 100vh;
-
-  ${() => mediaQuery.laptop} {
-    flex-direction: row;
-  }
-`
-
 const App = ({ Component, pageProps }: AppProps) => {
-  const { pathname } = useRouter()
-  const isSignUp = pathname === '/'
-
   return (
     <UserProvider>
       <Provider store={store}>
@@ -35,10 +18,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           <meta name='viewport' content='width=device-width, initial-scale=1' />
         </Head>
 
-        <AppContent isSignUp={isSignUp}>
-          {!isSignUp && <Navigation />}
+        <Layout>
           <Component {...pageProps} />
-        </AppContent>
+        </Layout>
       </Provider>
     </UserProvider>
   )

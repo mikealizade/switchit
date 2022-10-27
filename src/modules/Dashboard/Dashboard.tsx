@@ -21,7 +21,6 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
 
       <>
         <S.Content>
-          <User />
           <Hero />
           <S.SwitchingJourney>
             <S.Header>Switching Journeys</S.Header>
@@ -31,7 +30,6 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
           </S.SwitchingJourney>
           {/* <Form /> */}
         </S.Content>
-        <S.Aside>aside</S.Aside>
       </>
     </>
   )
