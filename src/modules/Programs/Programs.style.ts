@@ -10,13 +10,6 @@ export const Content = styled.main`
   row-gap: 50px;
 `
 
-export const Aside = styled.aside`
-  padding: 30px;
-  min-width: 400px;
-  background-color: var(--white);
-  border-radius: 0 8px 8px 0;
-`
-
 export const ProfileContainer = styled.section`
   display: flex;
   column-gap: 30px;

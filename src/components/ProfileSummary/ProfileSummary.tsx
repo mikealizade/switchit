@@ -3,14 +3,12 @@ import * as S from '@components/ProfileSummary/ProfileSummary.style'
 import { EditableInput } from '@components/EditableInput/EditableInput'
 
 export type ProfileSummaryProps = {
-  data: {
-    proudAction: string
-    supportedCampaigns: string
-    switchingStatement: string
-  }
+  proudAction: string
+  supportedCampaigns: string
+  switchingStatement: string
 }
 
-export const ProfileSummary: NextPage<ProfileSummaryProps> = ({
+export const ProfileSummary: NextPage<{ data: Partial<ProfileSummaryProps> }> = ({
   data: { proudAction = '', supportedCampaigns = '', switchingStatement = '' } = {},
 }): JSX.Element => {
   return (

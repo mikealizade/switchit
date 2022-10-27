@@ -17,4 +17,4 @@ export const mediaQuery = Object.entries(breakpoints)
     return acc
   }, {} as { [index: string]: string })
 
-export const fetcher: Fetcher<any, string> = (...args) => fetch(...args).then(res => res.json())
+export const fetcher: Fetcher = (...args: any) => fetch.apply(null, args).then(res => res.json())

@@ -9,13 +9,6 @@ export const Content = styled.main`
   row-gap: 50px;
 `
 
-export const Aside = styled.aside`
-  padding: 30px;
-  min-width: 350px;
-  background-color: var(--white);
-  border-radius: 0 8px 8px 0;
-`
-
 export const SwitchingJourney = styled.div`
   display: flex;
   gap: 20px;

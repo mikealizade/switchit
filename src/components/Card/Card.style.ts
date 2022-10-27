@@ -15,4 +15,10 @@ export const Card = styled.div<{
   border-radius: 10px;
   background-color: var(--white);
   padding: ${({ compact }) => (compact ? '20px' : '40px 30px')};
+  height: 100%;
+
+  > div {
+    height: auto;
+    margin-top: auto;
+  }
 `

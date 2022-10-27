@@ -13,9 +13,8 @@ import {
   ClimateImpactReportProps,
 } from '@components/ClimateImpactReport/ClimateImpactReport'
 import { Badges } from '@components/Badges/Badges'
-import { fetcher } from '@utils/functions'
 import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTotal'
-import { CheckList } from '@components/CheckList/CheckList'
+import { fetcher } from '@utils/functions'
 import * as S from '@modules/Profile/Profile.style'
 
 // fetch custom hook
@@ -57,7 +56,7 @@ const Profile = (): JSX.Element => {
     isLoading = false,
   } = useUser()
   const { data: { user } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
-  const [userData, setUserData] = useState<User>()
+  const [userData, setUserData] = useState<User>(user)
   const {
     profile: {
       badges = [],
@@ -66,8 +65,8 @@ const Profile = (): JSX.Element => {
       switchItPoints = [],
       summary = {},
     } = {},
-  } = userData || {}
-  const [points, setTotalPoints] = useState(switchItPoints)
+  } = userData
+  const [points, setTotalPoints] = useState(0)
 
   useEffect(() => {
     const totalPoints = switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)

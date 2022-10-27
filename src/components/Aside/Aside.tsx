@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import { Card } from '@components/Card/Card'
 import { CheckList } from '@components/CheckList/CheckList'
-
-import { useRouter } from 'next/router'
 
 const asideConfig = {
   '/profile': (
@@ -15,5 +14,5 @@ const asideConfig = {
 export const Aside = (): JSX.Element => {
   const { pathname } = useRouter()
 
-  return asideConfig[pathname]
+  return asideConfig[pathname as keyof typeof asideConfig]
 }

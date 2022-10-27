@@ -5,15 +5,15 @@ import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@components/PointsTotal/PointsTotal.style'
 import { ProfileTitle } from '@modules/Profile/Profile.style'
 
-export type PointsTotalProps = {
-  data: Array<{
-    type: string
-    points: number
-  }>
+export type PointsTotalProps = Array<{
+  type: string
   points: number
-}
+}>
 
-export const PointsTotal: NextPage<PointsTotalProps> = ({ data = [], points = 0 }): JSX.Element => {
+export const PointsTotal: NextPage<{ data: PointsTotalProps; points: number }> = ({
+  data = [],
+  points = 0,
+}): JSX.Element => {
   return (
     <S.PointsTotal>
       <ProfileTitle>Switch It Points</ProfileTitle>

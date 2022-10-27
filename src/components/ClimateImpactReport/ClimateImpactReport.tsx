@@ -3,13 +3,11 @@ import { ProfileTitle } from '@modules/Profile/Profile.style'
 import * as S from '@components/ClimateImpactReport/ClimateImpactReport.style'
 
 export type ClimateImpactReportProps = {
-  data: {
-    carbonRemoved: number
-    trashRemoved: number
-  }
+  carbonRemoved: number
+  trashRemoved: number
 }
 
-export const ClimateImpactReport: NextPage<ClimateImpactReportProps> = ({
+export const ClimateImpactReport: NextPage<{ data: Partial<ClimateImpactReportProps> }> = ({
   data: { carbonRemoved = 0, trashRemoved = 0 },
 }): JSX.Element => {
   return (

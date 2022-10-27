@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { UserProfile } from '@auth0/nextjs-auth0'
 
 const initialState: any = {}
 
@@ -22,7 +23,7 @@ export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
+    setUser: (state, action: PayloadAction<User | UserProfile>) => {
       return action.payload
     },
     updateUser: (state, action: PayloadAction<{ [key: string]: string }>) => {
