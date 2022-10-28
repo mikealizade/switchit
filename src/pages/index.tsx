@@ -10,8 +10,13 @@ import useSWR from 'swr'
 const Home = () => {
   const router = useRouter()
   const { user, user: { sub = '' } = {}, isLoading } = useUser()
+
+  // console.log('user', user)
+
   const dispatch = useDispatch()
   const [isNewUser, setNewUser] = useState(null)
+
+  // console.log('isNewUser', isNewUser)
 
   const fetchUserData = useCallback(async () => {
     try {
@@ -37,7 +42,7 @@ const Home = () => {
   }, [isNewUser, router])
 
   if (!isLoading && !user) {
-    router.replace('/logout')
+    router.replace('/signedout')
   }
 
   if (isNewUser !== null && isNewUser) return <PostSignupFlow />

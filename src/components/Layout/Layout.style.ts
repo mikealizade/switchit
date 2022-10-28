@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const AppContainer = styled.div<{ isSignUp: boolean }>`
+export const AppContainer = styled.div<{ isHome: boolean }>`
   display: flex;
   flex-direction: column;
-  padding: ${({ isSignUp }) => (isSignUp ? '0' : '20px')};
+  padding: ${({ isHome }) => (isHome ? '0' : '20px')};
   min-height: 100vh;
 
   ${() => mediaQuery.laptop} {

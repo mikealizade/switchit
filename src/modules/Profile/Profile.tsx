@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import useSWR from 'swr'
+import useSWR, { SWRResponse } from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { User } from '@components/User/User'
 import { Badge } from '@components/Badges/Badges'
@@ -55,7 +55,10 @@ const Profile = (): JSX.Element => {
     // error = {},
     isLoading = false,
   } = useUser()
-  const { data: { user } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
+  const { data: { user = {} } = {}, error }: SWRResponse = useSWR(
+    sub ? `/api/db/user/${sub}` : null,
+    fetcher,
+  )
   const [userData, setUserData] = useState<User>(user)
   const {
     profile: {
