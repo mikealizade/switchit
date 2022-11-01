@@ -15,6 +15,7 @@ export const ProfileContainer = styled.section`
   column-gap: 20px;
   flex-wrap: wrap;
   row-gap: 20px;
+  position: relative;
 
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;

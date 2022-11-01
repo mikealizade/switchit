@@ -4,7 +4,7 @@ import { mediaQuery } from '@utils/functions'
 export const Nav = styled.nav`
   min-width: 230px;
   background-color: var(--white);
-  border-radius: 8px 0 0 8px;
+  border-radius: 16px 0 0 16px;
   padding: 20px;
   row-gap: 100px;
   display: flex;

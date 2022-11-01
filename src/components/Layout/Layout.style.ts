@@ -17,6 +17,9 @@ export const AppContent = styled.main`
   flex-direction: column;
   min-height: 100vh;
   flex: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 16px 16px 0;
 `
 
 export const Aside = styled.aside`

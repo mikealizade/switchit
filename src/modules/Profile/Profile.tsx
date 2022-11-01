@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useContext } from 'react'
 import Head from 'next/head'
 import useSWR, { SWRResponse } from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
@@ -15,11 +15,8 @@ import {
 import { Badges } from '@components/Badges/Badges'
 import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTotal'
 import { fetcher } from '@utils/functions'
-import * as S from '@modules/Profile/Profile.style'
-
-import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
-
 import { CheckList } from '@components/CheckList/CheckList'
+import * as S from '@modules/Profile/Profile.style'
 
 // fetch custom hook
 //---//
@@ -75,6 +72,11 @@ const Profile = (): JSX.Element => {
   } = userData
   const [points, setTotalPoints] = useState(0)
 
+  // const isDrawerOpen = useContext(ProfileContext)
+  // const [isDrawerOpen, toggleDrawer] = useState(false)
+
+  // console.log('isDrawerOpen', isDrawerOpen)
+
   useEffect(() => {
     const totalPoints = switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
 
@@ -124,7 +126,6 @@ const Profile = (): JSX.Element => {
             </S.ProfileColumn>
           </S.ProfileColumn>
         </S.ProfileContainer>
-        {/* <ProfileDrawer /> */}
       </S.Content>
     </>
   )

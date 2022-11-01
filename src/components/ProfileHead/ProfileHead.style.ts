@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 export const ProfileHead = styled.header`
   display: flex;
   column-gap: 40px;
+  flex-direction: column;
+  row-gap: 160px;
 
   div {
     display: flex;
@@ -11,7 +13,12 @@ export const ProfileHead = styled.header`
 
     &:first-child {
       flex: 1;
+      background-color: var(--sushi);
+      border-radius: 15px;
+      margin: -35px;
+      position: relative;
     }
+
     &:last-child {
       flex: 2;
     }
@@ -20,9 +27,12 @@ export const ProfileHead = styled.header`
   img,
   span {
     border-radius: 50%;
-    width: 132px !important;
-    height: 132px !important;
-    max-width: none !important;
+    width: 140px !important;
+    height: 140px !important;
+    position: absolute;
+    border: 1px solid var(--white) !important;
+    left: 20px;
+    bottom: -70px;
   }
 `
 
