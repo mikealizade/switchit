@@ -12,9 +12,9 @@ export const Content = styled.main`
 
 export const ProfileContainer = styled.section`
   display: flex;
-  column-gap: 30px;
+  column-gap: 20px;
   flex-wrap: wrap;
-  row-gap: 30px;
+  row-gap: 20px;
 
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;
@@ -24,12 +24,28 @@ export const ProfileContainer = styled.section`
 export const ProfileColumn = styled.section`
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
-  flex: 5;
+  row-gap: 20px;
+  /* flex: 2; */
 
   + section {
     flex: 4;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    > section {
+      flex: 1;
+    }
+    > div {
+      transition: all 1s linear;
+      display: flex;
+      align-self: flex-start;
+    }
   }
+`
+
+export const ProfileColumnUser = styled(ProfileColumn)`
+  flex-direction: inherit;
 `
 
 export const ProfileTitle = styled.h2`

@@ -4,18 +4,18 @@ import * as S from '@components/Card/Card.style'
 type CardProps = {
   column?: boolean
   shadow?: boolean
-  compact?: boolean
+  padded?: boolean
   children: React.ReactNode
 }
 
 export const Card: NextPage<CardProps> = ({
   column = false,
   shadow = false,
-  compact = false,
+  padded = false,
   children,
 }): JSX.Element => {
   return (
-    <S.Card column={column} shadow={shadow} compact={compact}>
+    <S.Card column={column} shadow={shadow} padded={padded}>
       {children}
     </S.Card>
   )

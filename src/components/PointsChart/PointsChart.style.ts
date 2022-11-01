@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 export const PointsChart = styled.ul`
   display: flex;
   width: 100%;
-  height: 10px;
+  height: 20px;
 `
 
 export const Item = styled.li`

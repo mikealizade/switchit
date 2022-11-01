@@ -17,6 +17,10 @@ import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTot
 import { fetcher } from '@utils/functions'
 import * as S from '@modules/Profile/Profile.style'
 
+import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
+
+import { CheckList } from '@components/CheckList/CheckList'
+
 // fetch custom hook
 //---//
 // mongodb compass
@@ -92,27 +96,35 @@ const Profile = (): JSX.Element => {
 
       <S.Content>
         <S.ProfileContainer>
-          <S.ProfileColumn>
-            <Card column>
+          <S.ProfileColumnUser>
+            <Card column padded>
               <ProfileHead points={points} />
               <ProfileSummary data={summary} />
-              <Card column shadow>
+            </Card>
+          </S.ProfileColumnUser>
+          <S.ProfileColumn>
+            <S.ProfileColumn>
+              <Card>
+                <SharingCodes total={sharingCodes} />
+              </Card>
+              <Card>
+                <Badges data={badges} />
+              </Card>
+              <Card column>
                 <PointsTotal data={switchItPoints} points={points} />
               </Card>
-            </Card>
-          </S.ProfileColumn>
-          <S.ProfileColumn>
-            <Card>
-              <SharingCodes total={sharingCodes} />
-            </Card>
-            <Card>
-              <Badges data={badges} />
-            </Card>
-            <Card>
-              <ClimateImpactReport data={climateImpactReport} />
-            </Card>
+            </S.ProfileColumn>
+            <S.ProfileColumn>
+              <Card>
+                <ClimateImpactReport data={climateImpactReport} />
+              </Card>
+              <Card>
+                <CheckList />
+              </Card>
+            </S.ProfileColumn>
           </S.ProfileColumn>
         </S.ProfileContainer>
+        {/* <ProfileDrawer /> */}
       </S.Content>
     </>
   )

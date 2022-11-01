@@ -10,7 +10,7 @@ export const Badges = styled.div`
 export const BadgesList = styled.ul`
   display: flex;
   flex-direction: column;
-  row-gap: 45px;
+  row-gap: 30px;
 `
 
 export const Item = styled.li`

@@ -4,7 +4,7 @@ export const ProfileSummary = styled.ul`
   color: var(--sushi);
   display: flex;
   flex-direction: column;
-  row-gap: 22px;
+  row-gap: 30px;
 `
 
 export const SummaryItem = styled.li`

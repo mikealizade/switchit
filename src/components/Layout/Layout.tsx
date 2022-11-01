@@ -10,6 +10,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { pathname } = useRouter()
   const isHome = pathname === '/'
   const isSignedOut = pathname === '/signedout'
+  const isProfile = pathname === '/profile'
 
   return (
     <S.AppContainer isHome={isHome}>
@@ -26,13 +27,24 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
           ) : (
             <>
               <Navigation />
-              <S.AppContent>
-                <User />
-                {children}
-              </S.AppContent>
-              <S.Aside>
-                <AsideContent />
-              </S.Aside>
+              {isProfile ? (
+                <>
+                  <S.AppContent>
+                    <User />
+                    {children}
+                  </S.AppContent>
+                </>
+              ) : (
+                <>
+                  <S.AppContent>
+                    <User />
+                    {children}
+                  </S.AppContent>
+                  <S.Aside>
+                    <AsideContent />
+                  </S.Aside>
+                </>
+              )}
             </>
           )}
         </>
