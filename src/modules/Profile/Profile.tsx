@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, useContext } from 'react'
 import Head from 'next/head'
 import useSWR, { SWRResponse } from 'swr'
+import { useDispatch, useSelector } from 'react-redux'
 import { useUser } from '@auth0/nextjs-auth0'
 import { User } from '@components/User/User'
 import { Badge } from '@components/Badges/Badges'
@@ -15,6 +16,7 @@ import {
 import { Badges } from '@components/Badges/Badges'
 import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTotal'
 import { fetcher } from '@utils/functions'
+import { setUser } from '@state/user/userSlice'
 import { CheckList } from '@components/CheckList/CheckList'
 import * as S from '@modules/Profile/Profile.style'
 
@@ -51,6 +53,7 @@ type User = {
 }
 
 const Profile = (): JSX.Element => {
+  const dispatch = useDispatch()
   const {
     user: { sub = '' } = {},
     // error = {},
@@ -72,11 +75,6 @@ const Profile = (): JSX.Element => {
   } = userData
   const [points, setTotalPoints] = useState(0)
 
-  // const isDrawerOpen = useContext(ProfileContext)
-  // const [isDrawerOpen, toggleDrawer] = useState(false)
-
-  // console.log('isDrawerOpen', isDrawerOpen)
-
   useEffect(() => {
     const totalPoints = switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
 
@@ -84,8 +82,11 @@ const Profile = (): JSX.Element => {
   }, [switchItPoints])
 
   useEffect(() => {
-    user?._id && setUserData(user)
-  }, [user])
+    if (user?._id) {
+      setUserData(user)
+      dispatch(setUser(user))
+    }
+  }, [user, dispatch])
 
   return (
     <>
@@ -105,25 +106,23 @@ const Profile = (): JSX.Element => {
             </Card>
           </S.ProfileColumnUser>
           <S.ProfileColumn>
-            <S.ProfileColumn>
-              <Card>
-                <SharingCodes total={sharingCodes} />
-              </Card>
-              <Card>
-                <Badges data={badges} />
-              </Card>
-              <Card column>
-                <PointsTotal data={switchItPoints} points={points} />
-              </Card>
-            </S.ProfileColumn>
-            <S.ProfileColumn>
-              <Card>
-                <ClimateImpactReport data={climateImpactReport} />
-              </Card>
-              <Card>
-                <CheckList />
-              </Card>
-            </S.ProfileColumn>
+            <Card>
+              <SharingCodes total={sharingCodes} />
+            </Card>
+            <Card>
+              <Badges data={badges} />
+            </Card>
+            <Card column>
+              <PointsTotal data={switchItPoints} points={points} />
+            </Card>
+          </S.ProfileColumn>
+          <S.ProfileColumn>
+            <Card>
+              <ClimateImpactReport data={climateImpactReport} />
+            </Card>
+            <Card>
+              <CheckList />
+            </Card>
           </S.ProfileColumn>
         </S.ProfileContainer>
       </S.Content>

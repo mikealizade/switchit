@@ -44,8 +44,8 @@ export const Input: FC<InputProps> = ({
   const errorMessage = errors?.[name]?.message as string
 
   return (
-    <label htmlFor={name} className={cs({ ['error']: hasError })}>
-      {label}{' '}
+    <S.Label htmlFor={name} className={cs({ ['error']: hasError })}>
+      {label}
       {required && (
         <span className='required' aria-hidden='true'>
           *
@@ -81,6 +81,6 @@ export const Input: FC<InputProps> = ({
           {errorMessage ?? 'This field is required'}
         </p>
       )}
-    </label>
+    </S.Label>
   )
 }

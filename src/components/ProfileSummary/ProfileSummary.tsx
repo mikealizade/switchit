@@ -15,15 +15,18 @@ export const ProfileSummary: NextPage<{ data: Partial<ProfileSummaryProps> }> = 
     <S.ProfileSummary>
       <S.SummaryItem>
         <h2>Switching Statement/Why I Switch</h2>
-        <EditableInput name='switchingStatement' defaultValue={switchingStatement} />
+        <p>{switchingStatement}</p>
+        {/* <EditableInput name='switchingStatement' defaultValue={switchingStatement} /> */}
       </S.SummaryItem>
       <S.SummaryItem>
         <h2>Campaigns I support</h2>
-        <EditableInput name='supportedCampaigns' defaultValue={supportedCampaigns} />
+        <p>{supportedCampaigns}</p>
+        {/* <EditableInput name='supportedCampaigns' defaultValue={supportedCampaigns} /> */}
       </S.SummaryItem>
       <S.SummaryItem>
         <h2>Climate action I’m proud of</h2>
-        <EditableInput name='proudAction' defaultValue={proudAction} />
+        <p>{proudAction}</p>
+        {/* <EditableInput name='proudAction' defaultValue={proudAction} /> */}
       </S.SummaryItem>
     </S.ProfileSummary>
   )

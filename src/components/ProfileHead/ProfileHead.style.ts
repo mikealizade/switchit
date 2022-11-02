@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
-export const ProfileHead = styled.header`
+export const ProfileHead = styled.header<{ isProfile?: boolean }>`
   display: flex;
   column-gap: 40px;
   flex-direction: column;
-  row-gap: 160px;
+  row-gap: ${({ isProfile }) => (isProfile ? '90px' : '160px')};
 
   div {
     display: flex;
@@ -15,7 +15,7 @@ export const ProfileHead = styled.header`
       flex: 1;
       background-color: var(--sushi);
       border-radius: 15px;
-      margin: -35px;
+      margin: ${({ isProfile }) => (isProfile ? '0' : '-35px')};
       position: relative;
     }
 
@@ -31,7 +31,7 @@ export const ProfileHead = styled.header`
     height: 140px !important;
     position: absolute;
     border: 1px solid var(--white) !important;
-    left: 20px;
+    left: ${({ isProfile }) => (isProfile ? 'calc(50% - 70px);' : '20px')};
     bottom: -70px;
   }
 `
@@ -41,6 +41,14 @@ export const Name = styled.h1`
   font-size: var(--fsLarge4);
   font-weight: bold;
   text-transform: capitalize;
+`
+
+export const ProfileName = styled.h2`
+  margin: 0;
+  font-size: var(--fsLarge1);
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: center;
 `
 
 export const Location = styled.p`

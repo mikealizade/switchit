@@ -17,11 +17,11 @@ export const FormButtons: FC<FormButtonProps> = ({
   text = 'Save',
 }): JSX.Element => (
   <S.Buttons>
-    <Button type='submit' disabled={isSubmitting || disabled}>
-      {isSubmitting ? 'Saving' : text}
-    </Button>
     <Button type='reset' mode='secondary' onClick={onCancel}>
       Cancel
+    </Button>
+    <Button type='submit' disabled={isSubmitting || disabled}>
+      {isSubmitting ? 'Saving' : text}
     </Button>
   </S.Buttons>
 )

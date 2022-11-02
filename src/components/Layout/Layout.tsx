@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import { createContext, useEffect, useState, useContext } from 'react'
 
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -8,18 +7,13 @@ import { User } from '@components/User/User'
 import { Aside as AsideContent } from '@components/Aside/Aside'
 import * as S from '@components/Layout/Layout.style'
 import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
-
-export const ProfileContext = createContext<{ isDrawerOpen: boolean; toggleDrawer: any }>({
-  isDrawerOpen: false,
-  toggleDrawer: undefined,
-})
+import { ProfileProvider } from '@utils/ProfileDrawerContext'
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const { pathname } = useRouter()
   const isHome = pathname === '/'
   const isSignedOut = pathname === '/signedout'
   const isProfile = pathname === '/profile'
-  const [isDrawerOpen, toggleDrawer] = useState(false)
 
   return (
     <S.AppContainer isHome={isHome}>
@@ -38,18 +32,13 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
               <Navigation />
               {isProfile ? (
                 <>
-                  <ProfileContext.Provider
-                    value={{
-                      isDrawerOpen,
-                      toggleDrawer,
-                    }}
-                  >
+                  <ProfileProvider>
                     <S.AppContent>
                       <User />
                       {children}
                       <ProfileDrawer />
                     </S.AppContent>
-                  </ProfileContext.Provider>
+                  </ProfileProvider>
                 </>
               ) : (
                 <>

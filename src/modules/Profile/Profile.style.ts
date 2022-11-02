@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
+import { Form } from '@styles/common.style'
 
 export const Content = styled.main`
   background-color: #f2f0ed;
@@ -30,17 +31,10 @@ export const ProfileColumn = styled.section`
 
   + section {
     flex: 4;
-    flex-direction: row;
     gap: 20px;
-    flex-wrap: wrap;
 
     > section {
       flex: 1;
-    }
-    > div {
-      transition: all 1s linear;
-      display: flex;
-      align-self: flex-start;
     }
   }
 `
@@ -52,4 +46,13 @@ export const ProfileColumnUser = styled(ProfileColumn)`
 export const ProfileTitle = styled.h2`
   font-size: var(--fsBase);
   color: var(--slate);
+  position: relative;
+`
+
+export const ProfileForm = styled(Form)`
+  fieldset {
+    height: 500px;
+    overflow-y: auto;
+    border: 0;
+  }
 `

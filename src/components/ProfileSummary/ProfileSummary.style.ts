@@ -17,4 +17,8 @@ export const SummaryItem = styled.li`
     margin: 0;
     font-size: initial;
   }
+
+  p {
+    color: initial;
+  }
 `
