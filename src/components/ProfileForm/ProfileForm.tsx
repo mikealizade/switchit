@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
+import { useDrawer } from '@hooks/useDrawer'
 import { Input } from '@components/Input/Input'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
@@ -17,6 +18,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 }): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
+  const { toggleDrawer } = useDrawer()
   const { handleSubmit, reset } = methods
   const { user: { sub, nickname = '', picture = '' } = {}, isLoading = false } = useUser()
   const {
@@ -34,10 +36,12 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   const onSubmit = async (data: FieldValues): Promise<void> => {
     console.log('>> data', data)
     await save(data)
+    toggleDrawer('')()
   }
 
   const onCancel = (): void => {
     reset()
+    toggleDrawer('')()
   }
 
   const save = async (data): Promise<void> => {
@@ -59,7 +63,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   useEffect(() => {
     reset && reset(data)
-  }, [data, reset])
+  }, [data, reset, toggleDrawer])
 
   return (
     <>
@@ -95,7 +99,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
               minLength={1}
               maxLength={50}
-              pattern='alpha'
+              pattern='alphanumeric'
               message='Please enter a valid username'
               disabled={disabled}
               required={false}

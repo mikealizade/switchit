@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 export const Buttons = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   column-gap: 30px;
   margin-top: 50px;
 `
