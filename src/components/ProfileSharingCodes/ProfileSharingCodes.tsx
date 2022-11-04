@@ -1,28 +1,35 @@
 import React from 'react'
 import type { NextPage } from 'next'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '@state/store'
 import { Tabs as StylesTabs } from '@components/Tabs/Tabs.style'
-import * as S from '@components/ProfileSharingCodes/ProfileSharingCodes.style'
-
+import { useShareCode } from '@hooks/useShareCode'
 import { Tabs } from '@components/Tabs/Tabs'
+import * as S from '@components/ProfileSharingCodes/ProfileSharingCodes.style'
+import { ShareButton } from '@styles/common.style'
+
+//<a href='sms:+18664504185?&body=Hi%2520there%252C%2520I%2527d%2520like%2520to%2520place%2520an%2520order%2520for...'> text msg
 
 export const ProfileSharingCodes: NextPage = (): JSX.Element => {
-  const onCancel = () => {
-    //
-  }
+  const user = useSelector((state: RootState) => state.user)
+  const shareCode = useShareCode()
+  const {
+    profile: { sharingCodes = [] },
+  } = user
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <S.Share key='1'>
-      <S.ShareButton type='button' onClick={onCancel}>
+      <ShareButton type='button' onClick={() => shareCode()}>
         Share
-      </S.ShareButton>
+      </ShareButton>
 
       <S.SentCodes>
         <p>Sent</p>
-        {55}
+        {sharingCodes.length}
       </S.SentCodes>
     </S.Share>,
     <>
-      <p key='2'>
+      <p>
         Get the word out and earn points - a win win. Share your unique referral link with a friend,
         collegue, or family member and track your impact.
       </p>

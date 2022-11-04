@@ -65,7 +65,7 @@ export const Tabs: NextPage<TabsProps> = ({
       <>
         {panels.map((panel: React.ReactNode, i: number) => {
           return (
-            <Panel key={`panel-${panel}`} value={value} index={i}>
+            <Panel key={`panel-${i}`} value={value} index={i}>
               {panel}
             </Panel>
           )

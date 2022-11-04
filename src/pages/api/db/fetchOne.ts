@@ -5,7 +5,7 @@ const fetchOne = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()
   const { body } = req
 
-  console.log('>> body', body)
+  // console.log('>> body', body)
 
   try {
     const result = await db.collection('users').findOne()

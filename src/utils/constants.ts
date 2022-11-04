@@ -5,6 +5,9 @@ export const regexConfig: Record<string, string> = {
   phone: '^[0-9 ()+]+$',
 }
 
+export const whatsAppUrl =
+  'https://wa.me/?text=Hey%20there!%20Use%20this%20referral%20code%20to%20switch%20banks%20'
+
 export const emailRegex =
   /^(([^<>()[\].,;:\s@£"]+(\.[^<>()[\].,;:\s@£"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([^\-<>()[\].,;:\s@"]([^<>()[\].,;:\s@"]*[^\-<>()[\].,;:\s@"])?)(\.[^\-<>()[\].,;:\s@"]([^<>()[\].,;:\s@"]*[^\-<>()[\].,;:\s@"])?)*(\.[^\-<>()[\].,;:\s@"]([^<>()[\].,;:\s@"]*[^\-<>()[\].,;:\s@"]))))$/
 
@@ -65,12 +68,12 @@ const apiRoutes = {}
 
 export const defaultProfile = {
   profile: {
-    intro: {
+    summary: {
       switchingStatement: '',
-      supportedCampaigns: '',
-      proudAction: '',
+      campaigns: '',
+      proudActions: '',
     },
-    sharingCodes: 0,
+    sharingCodes: [],
     badges: [
       {
         badge: 'Providers Switched',

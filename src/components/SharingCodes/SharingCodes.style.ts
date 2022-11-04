@@ -23,7 +23,7 @@ export const SharingCodes = styled.div`
 
 export const TotalShared = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   column-gap: 30px;
   align-items: center;
   font-size: var(--fsHuge0);

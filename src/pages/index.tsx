@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import PostSignupFlow from '@modules/PostSignupFlow/PostSignupFlow'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
-import { useUser, UserProfile } from '@auth0/nextjs-auth0'
+import { useDispatch } from 'react-redux'
+import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher } from '@utils/functions'
 import useSWR from 'swr'
@@ -10,26 +10,23 @@ import useSWR from 'swr'
 const Home = () => {
   const router = useRouter()
   const { user, user: { sub = '' } = {}, isLoading } = useUser()
-
-  // console.log('user', user)
-
   const dispatch = useDispatch()
   const [isNewUser, setNewUser] = useState(null)
-
-  // console.log('isNewUser', isNewUser)
 
   const fetchUserData = useCallback(async () => {
     try {
       // useSWR doesnt work here?
+      // user data is only retrieved here from db when user signs in as user redirected to '/' only one time
       const response = await fetch(`/api/db/user/${sub}`)
-      const { user: { user_metadata: { isNewUser = false } = {} } = {} } = await response.json()
+      const { user: userData, user: { user_metadata: { isNewUser = false } = {} } = {} } =
+        await response.json()
 
       setNewUser(isNewUser)
-      user && dispatch(setUser(user))
+      dispatch(setUser(userData))
     } catch {
       // show error
     }
-  }, [sub, user, dispatch])
+  }, [sub, dispatch])
 
   useEffect(() => {
     sub && fetchUserData()

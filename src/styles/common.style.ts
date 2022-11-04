@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Button } from '@components/Button/Button.style'
 
 export const Ellipsis = styled.div`
   position: absolute;
@@ -29,4 +30,14 @@ export const Form = styled.form`
   input {
     margin-top: 10px;
   }
+`
+
+export const ShareButton = styled(Button)<{ small?: boolean }>`
+  background-color: var(--pink);
+  padding: ${({ small }) => (small ? '8px 20px' : '13px 30px')};
+  align-self: center;
+  width: ${({ small }) => (small ? '150px' : '200px')};
+  border-radius: 20px;
+  font-size: 2.7rem;
+  box-shadow: 1px 3px 5px var(--gallery);
 `

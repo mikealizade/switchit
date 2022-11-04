@@ -3,6 +3,7 @@ import Head from 'next/head'
 import useSWR, { SWRResponse } from 'swr'
 import { useDispatch, useSelector } from 'react-redux'
 import { useUser } from '@auth0/nextjs-auth0'
+import { RootState } from '@state/store'
 import { User } from '@components/User/User'
 import { Badge } from '@components/Badges/Badges'
 import { Card } from '@components/Card/Card'
@@ -39,7 +40,6 @@ type User = {
   sub: string
   sid: string
   age: number
-  location: string
   programCode: string
   referralCode: string
   points: number
@@ -47,27 +47,19 @@ type User = {
     badges: Badge[]
     climateImpactReport: ClimateImpactReportProps
     summary: ProfileSummaryProps
-    sharingCodes: number
+    sharingCodes: Array<string>
     switchItPoints: PointsTotalProps
   }
 }
 
 const Profile = (): JSX.Element => {
   const dispatch = useDispatch()
-  const {
-    user: { sub = '' } = {},
-    // error = {},
-    isLoading = false,
-  } = useUser()
-  const { data: { user = {} } = {}, error }: SWRResponse = useSWR(
-    sub ? `/api/db/user/${sub}` : null,
-    fetcher,
-  )
+  const user = useSelector((state: RootState) => state.user)
   const [userData, setUserData] = useState<User>(user)
   const {
     profile: {
       badges = [],
-      sharingCodes = 0,
+      sharingCodes = [],
       climateImpactReport = {},
       switchItPoints = [],
       summary = {},
@@ -82,9 +74,8 @@ const Profile = (): JSX.Element => {
   }, [switchItPoints])
 
   useEffect(() => {
-    if (user?._id) {
+    if (user) {
       setUserData(user)
-      dispatch(setUser(user))
     }
   }, [user, dispatch])
 
@@ -107,7 +98,7 @@ const Profile = (): JSX.Element => {
           </S.ProfileColumnUser>
           <S.ProfileColumn>
             <Card>
-              <SharingCodes total={sharingCodes} />
+              <SharingCodes total={sharingCodes.length} />
             </Card>
             <Card>
               <Badges data={badges} />

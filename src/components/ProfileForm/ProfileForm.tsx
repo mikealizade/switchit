@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import type { NextPage } from 'next'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useDrawer } from '@hooks/useDrawer'
@@ -9,6 +9,7 @@ import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
 import { fetcher } from '@utils/functions'
+import { setUser } from '@state/user/userSlice'
 import * as S from '@components/ProfileHead/ProfileHead.style'
 import * as St from '@modules/Profile/Profile.style'
 
@@ -16,25 +17,22 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   data,
   disabled,
 }): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
+  const dispatch = useDispatch()
   const { toggleDrawer } = useDrawer()
   const { handleSubmit, reset } = methods
-  const { user: { sub, nickname = '', picture = '' } = {}, isLoading = false } = useUser()
+  const { user: { sub } = {}, isLoading = false } = useUser()
+  const user = useSelector((state: RootState) => state.user)
   const {
-    profile: {
-      summary: {
-        proudActions = '',
-        campaigns = '',
-        switchingStatement = '',
-        username = '',
-        location = '',
-      } = {},
-    } = {},
+    nickname = '',
+    picture = '',
+    username = '',
+    location = '',
+    profile,
+    profile: { summary: { proudActions = '', campaigns = '', switchingStatement = '' } = {} } = {},
   } = user
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
-    console.log('>> data', data)
     await save(data)
     toggleDrawer('')()
   }
@@ -45,9 +43,17 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   }
 
   const save = async (data): Promise<void> => {
+    const { nickname, username, location, ...rest } = data
     const body = {
       filter: { sub },
-      payload: { $set: { [`profile.summary`]: data } },
+      payload: {
+        $set: {
+          [`profile.summary`]: rest,
+          [`nickname`]: nickname,
+          [`username`]: username,
+          [`location`]: location,
+        },
+      },
       collection: 'users',
       upsert: false,
     }
@@ -59,6 +65,17 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
       },
       body: JSON.stringify(body),
     })
+
+    dispatch(
+      setUser({
+        ...user,
+        ...{ nickname, username, location },
+        profile: {
+          ...profile,
+          summary: rest,
+        },
+      }),
+    )
   }
 
   useEffect(() => {
@@ -81,7 +98,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
         <St.ProfileForm onSubmit={handleSubmit(onSubmit)} className='form'>
           <fieldset>
             <Input
-              name='name'
+              name='nickname'
               label='Name'
               {...(nickname && { defaultValue: nickname })}
               {...methods}

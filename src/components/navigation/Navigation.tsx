@@ -13,7 +13,7 @@ type Nav = { text: string; route: string; icon?: string }
 
 export const Navigation: NextPage = (): JSX.Element => {
   const {
-    user: { sub = '', nickname = '', picture = '' } = {},
+    user: { sub = '' } = {},
     // error = {},
     isLoading = false,
   } = useUser()

@@ -17,8 +17,8 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
     section: '',
   })
 
-  const toggleDrawer = (section: string) => () => {
-    setToggleDrawer({ isDrawerOpen: !isDrawerOpen, section })
+  const toggleDrawer = (section: string, isOpen?: boolean) => () => {
+    setToggleDrawer({ isDrawerOpen: isOpen ?? !isDrawerOpen, section })
   }
 
   return (

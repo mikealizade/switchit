@@ -10,8 +10,6 @@ export type Badge = {
 const icons: [string, string, string, string] = ['provider', 'programs', 'news', 'friends']
 
 export const Badges: NextPage<{ data: Badge[] }> = ({ data = [] }): JSX.Element => {
-  console.log('data', data)
-
   return (
     <S.Badges>
       <ProfileTitle>Awards Badges</ProfileTitle>

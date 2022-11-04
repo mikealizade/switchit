@@ -1,6 +1,6 @@
-// import { useEffect, useRef, useState } from 'react'
-// import { useUser } from '@auth0/nextjs-auth0'
+import { useEffect, useRef, useState } from 'react'
 import { useDrawer } from '@hooks/useDrawer'
+import { usePrevious } from '@hooks/usePrevious'
 import { ProfileForm } from '@components/ProfileForm/ProfileForm'
 import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
 import * as S from '@components/ProfileDrawer/ProfileDrawer.style'
@@ -17,20 +17,24 @@ const drawerConfig = {
 }
 
 export const ProfileDrawer = (): JSX.Element => {
-  // const { user: { nickname = '', picture = '' } = {}, isLoading = false } = useUser()
   const { isDrawerOpen, section, toggleDrawer } = useDrawer()
+  const prevSection = usePrevious(section)
+
+  console.log('section', section)
+  console.log('prevSection', prevSection)
+
   // const sectionRef = useRef('')
   // sectionRef.current = section
   // const [isOpen, setOpen] = useState(false)
 
   // console.log('sectionRef.current', sectionRef.current)
 
-  // useEffect(() => {
-  //   console.log('section', section)
-  //   if (isDrawerOpen) {
-  //     setOpen(true)
-  //   }
-  // }, [section, isDrawerOpen])
+  useEffect(() => {
+    console.log('section', section)
+    if (section !== prevSection && !isDrawerOpen) {
+      toggleDrawer(section, true)
+    }
+  }, [section, prevSection, isDrawerOpen])
 
   return (
     <S.ProfileDrawer isDrawerOpen={isDrawerOpen}>

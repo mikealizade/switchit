@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
-// import { setUser } from '@state/user/userSlice'
-// import { Button } from '@components/Button/Button'
+import { setUser } from '@state/user/userSlice'
 import { fetcher } from '@utils/functions'
 import * as S from '@components/User/User.style'
 
@@ -29,25 +29,36 @@ type User = {
 
 export const User: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
+  const { pathname } = useRouter()
   const {
-    user: { sub = '', nickname = '', picture = '' } = {},
+    user: { sub = '' } = {},
     // error = {},
     isLoading = false,
   } = useUser()
-  const { pathname } = useRouter()
-  const { data: { user = {} } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
+  const {
+    nickname = '',
+    picture = '',
+    sub: userId = '',
+  } = useSelector((state: RootState) => state.user)
   const [userData, setUserData] = useState<User>()
+  const { data: { user = {} } = {}, error } = useSWR(
+    !userId ? `/api/db/user/${sub}` : null,
+    fetcher,
+  )
 
   useEffect(() => {
-    user?._id && setUserData(user)
-  }, [user])
+    if (user?._id) {
+      setUserData(user)
+      dispatch(setUser(user))
+    }
+  }, [user, dispatch])
 
   return (
     <S.UserContainer>
-      {sub ? (
+      {userId ? (
         <>
           <S.User>
-            <Image src={picture || ''} alt={nickname || ''} width={50} height={50} unoptimized />
+            <Image src={picture} alt={nickname} width={50} height={50} unoptimized />
             <span>
               Hi <S.UserName>{nickname}</S.UserName>, welcome back!
             </span>
