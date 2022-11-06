@@ -23,32 +23,12 @@ export const SignUpFormStep2: NextPage<{
   const onSubmit = async (data: FieldValues): Promise<void> => {
     try {
       const userData = { ...user, ...defaultProfile, ...data }
-      const body = {
-        filter: { sub: user.sub },
-        payload: userData,
-        collection: 'users',
-        upsert: false,
-      }
-      const response = await fetch('/api/db/upsertOne', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
-      const { result } = await response.json()
-
-      dispatch(updateUser(userData))
-
-      if (result === 'success') replace('/dashboard')
+      window.localStorage.setItem('userData', JSON.stringify(userData))
+      replace('/api/auth/signup')
     } catch (error) {
       //toast
     }
   }
-
-  // const onCancel = (): void => {
-  //   reset()
-  // }
 
   useEffect(() => {
     reset && reset(data)

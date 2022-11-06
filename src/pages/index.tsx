@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react'
-import PostSignupFlow from '@modules/PostSignupFlow/PostSignupFlow'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { useUser } from '@auth0/nextjs-auth0'
@@ -28,21 +27,56 @@ const Home = () => {
     }
   }, [sub, dispatch])
 
+  const saveUserData = useCallback(
+    async (isNewUser: boolean) => {
+      const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
+      const newUserdata = {
+        ...user,
+        ...storedUser,
+        isNewUser,
+      }
+
+      const body = {
+        filter: { sub },
+        payload: { $set: newUserdata },
+        collection: 'users',
+        upsert: false,
+      }
+
+      await fetcher(`/api/db/updateOne`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+
+      window.localStorage.removeItem('userData')
+      dispatch(setUser(newUserdata))
+    },
+    [user, sub, dispatch],
+  )
+
   useEffect(() => {
     sub && fetchUserData()
   }, [sub, fetchUserData])
 
   useEffect(() => {
-    if (isNewUser !== null && !isNewUser) {
+    // if (isNewUser !== null && !isNewUser) {
+    if (isNewUser) {
+      saveUserData(isNewUser)
+    }
+
+    if (isNewUser !== null) {
       router.replace('/dashboard')
     }
-  }, [isNewUser, router])
+  }, [isNewUser, router, saveUserData])
 
   if (!isLoading && !user) {
     router.replace('/signedout')
   }
 
-  if (isNewUser !== null && isNewUser) return <PostSignupFlow />
+  // if (isNewUser !== null && isNewUser) return <PostSignupFlow />
 }
 
 export default Home

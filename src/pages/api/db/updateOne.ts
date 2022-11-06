@@ -6,6 +6,8 @@ const updateOne = async (req: NextApiRequest, res: NextApiResponse) => {
   const { body } = req
   const { filter, payload, upsert, collection } = body
 
+  console.log('{ filter, payload, upsert, collection }', { filter, payload, upsert, collection })
+
   try {
     await db.collection(collection).updateOne(filter, payload, { upsert })
     res.status(200).json({ result: 'success' })
