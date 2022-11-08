@@ -4,10 +4,13 @@ import { useDispatch } from 'react-redux'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher } from '@utils/functions'
+import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
+
 import useSWR from 'swr'
 
 const Home = () => {
   const router = useRouter()
+  const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const { user, user: { sub = '' } = {}, isLoading } = useUser()
   const dispatch = useDispatch()
   const [isNewUser, setNewUser] = useState(null)
@@ -29,33 +32,57 @@ const Home = () => {
 
   const saveUserData = useCallback(
     async (isNewUser: boolean) => {
-      const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
-      const newUserdata = {
-        ...user,
-        ...storedUser,
-        isNewUser,
+      try {
+        const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
+        const newUserdata = {
+          ...user,
+          ...storedUser,
+          isNewUser,
+        }
+
+        const body = {
+          filter: { sub },
+          payload: { $set: newUserdata },
+          collection: 'users',
+          upsert: false,
+        }
+
+        await fetcher(`/api/db/updateOne`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        })
+
+        checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
+
+        window.localStorage.removeItem('userData')
+        dispatch(setUser(newUserdata))
+      } catch (error) {
+        //error
       }
-
-      const body = {
-        filter: { sub },
-        payload: { $set: newUserdata },
-        collection: 'users',
-        upsert: false,
-      }
-
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
-
-      window.localStorage.removeItem('userData')
-      dispatch(setUser(newUserdata))
     },
-    [user, sub, dispatch],
+    [user, sub, dispatch, checkReferralCodeAndUpdate],
   )
+
+  // const handleReferralCode = useCallback(() => {
+  //   const params = new URLSearchParams(window.location.search)
+  //   const code = params.get('referralCode')
+
+  //   if (code) {
+  //     checkReferralCodeAndUpdate(`?referralCode=${code}`)
+  //     //go thru users to see if code exists
+  //     // if it exists, add points to current and linked users
+  //     // add curreent sub to linked user
+  //     // add linked user sub to current user
+  //   }
+  // }, [checkReferralCodeAndUpdate])
+
+  // useEffect(() => {
+  //   console.log('rendered')
+  //   handleReferralCode()
+  // }, [handleReferralCode])
 
   useEffect(() => {
     sub && fetchUserData()

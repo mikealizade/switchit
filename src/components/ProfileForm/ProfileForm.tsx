@@ -8,8 +8,8 @@ import { Input } from '@components/Input/Input'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
-import { fetcher } from '@utils/functions'
 import { setUser } from '@state/user/userSlice'
+import { useUpdateUser } from '@hooks/useUpdateUser'
 import * as S from '@components/ProfileHead/ProfileHead.style'
 import * as St from '@modules/Profile/Profile.style'
 
@@ -20,6 +20,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   const methods = useForm()
   const dispatch = useDispatch()
   const { toggleDrawer } = useDrawer()
+  const updateUser = useUpdateUser()
   const { handleSubmit, reset } = methods
   const { user: { sub } = {}, isLoading = false } = useUser()
   const user = useSelector((state: RootState) => state.user)
@@ -44,26 +45,12 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   const save = async (data): Promise<void> => {
     const { nickname, username, location, ...rest } = data
-    const body = {
-      filter: { sub },
-      payload: {
-        $set: {
-          [`profile.summary`]: rest,
-          [`nickname`]: nickname,
-          [`username`]: username,
-          [`location`]: location,
-        },
-      },
-      collection: 'users',
-      upsert: false,
-    }
 
-    await fetcher(`/api/db/updateOne`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
+    updateUser({
+      [`profile.summary`]: rest,
+      [`nickname`]: nickname,
+      [`username`]: username,
+      [`location`]: location,
     })
 
     dispatch(

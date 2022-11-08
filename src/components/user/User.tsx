@@ -8,9 +8,8 @@ import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher } from '@utils/functions'
-import * as S from '@components/User/User.style'
-
 import { useUpdateUser } from '@hooks/useUpdateUser'
+import * as S from '@components/User/User.style'
 
 type User = {
   _id: string

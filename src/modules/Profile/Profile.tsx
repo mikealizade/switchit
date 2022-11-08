@@ -10,6 +10,7 @@ import { Card } from '@components/Card/Card'
 import { ProfileHead } from '@components/ProfileHead/ProfileHead'
 import { ProfileSummary, ProfileSummaryProps } from '@components/ProfileSummary/ProfileSummary'
 import { SharingCodes } from '@components/SharingCodes/SharingCodes'
+import { SwitchingFriends } from '@components/SwitchingFriends/SwitchingFriends'
 import {
   ClimateImpactReport,
   ClimateImpactReportProps,
@@ -57,6 +58,7 @@ const Profile = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
   const [userData, setUserData] = useState<User>(user)
   const {
+    friends = [],
     profile: {
       badges = [],
       sharingCodes = [],
@@ -66,6 +68,8 @@ const Profile = (): JSX.Element => {
     } = {},
   } = userData
   const [points, setTotalPoints] = useState(0)
+
+  console.log('friends', friends)
 
   useEffect(() => {
     const totalPoints = switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
@@ -108,6 +112,9 @@ const Profile = (): JSX.Element => {
             </Card>
           </S.ProfileColumn>
           <S.ProfileColumn>
+            <Card>
+              <SwitchingFriends data={friends} />
+            </Card>
             <Card>
               <ClimateImpactReport data={climateImpactReport} />
             </Card>

@@ -7,8 +7,11 @@ import { Aside as AsideContent } from '@components/Aside/Aside'
 import * as S from '@components/Layout/Layout.style'
 import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
 import { ProfileProvider } from '@utils/ProfileDrawerContext'
+import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
+import { useCallback, useEffect } from 'react'
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
+  const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const { pathname, replace } = useRouter()
   const isHome = pathname === '/'
   const isSignedOut = pathname === '/signedout'
@@ -16,8 +19,25 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const isProfile = pathname === '/profile'
 
   const onSignUp = () => {
-    replace('/signup')
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get('referralCode')
+    const route = code ? `/signup?referralCode=${code}` : '/signup'
+    replace(route)
   }
+
+  // const handleReferralCode = useCallback(() => {
+  //   const params = new URLSearchParams(window.location.search)
+  //   const code = params.get('referralCode')
+
+  //   if (code) {
+  //     checkReferralCodeAndUpdate(`?referralCode=${code}`)
+  //   }
+  // }, [checkReferralCodeAndUpdate])
+
+  // useEffect(() => {
+  //   console.log('rendered')
+  //   handleReferralCode()
+  // }, [handleReferralCode])
 
   if (isHome || isSigningUp) {
     return <>{children}</>

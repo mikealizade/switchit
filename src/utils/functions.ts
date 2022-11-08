@@ -18,3 +18,13 @@ export const mediaQuery = Object.entries(breakpoints)
   }, {} as { [index: string]: string })
 
 export const fetcher: Fetcher = (...args: any) => fetch.apply(null, args).then(res => res.json())
+
+export const getPostBody = (body: any) => {
+  return {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  }
+}

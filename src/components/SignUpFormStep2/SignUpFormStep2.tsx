@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,18 +17,26 @@ export const SignUpFormStep2: NextPage<{
   const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
   const { replace } = useRouter()
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const { handleSubmit, reset } = methods
+  const [referralCode, setReferralCode] = useState('')
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
     try {
-      const userData = { ...user, ...defaultProfile, ...data }
+      const userData = { ...user, ...defaultProfile, ...data, referralCode }
       window.localStorage.setItem('userData', JSON.stringify(userData))
       replace('/api/auth/signup')
     } catch (error) {
       //toast
     }
   }
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get('referralCode')
+
+    code && setReferralCode(code)
+  }, [setReferralCode])
 
   useEffect(() => {
     reset && reset(data)
@@ -50,7 +58,7 @@ export const SignUpFormStep2: NextPage<{
         <Input
           name='referralCode'
           label='Do you have a referral code?'
-          {...(data && { defaultValue: data.referralCode })}
+          {...(data || (referralCode && { defaultValue: data?.referralCode || referralCode }))}
           {...methods}
           minLength={1}
           maxLength={50}

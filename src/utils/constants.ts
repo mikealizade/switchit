@@ -67,6 +67,7 @@ export const subNav = [
 const apiRoutes = {}
 
 export const defaultProfile = {
+  friends: [],
   profile: {
     summary: {
       switchingStatement: '',

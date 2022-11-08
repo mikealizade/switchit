@@ -4,9 +4,7 @@ import { connectToDatabase } from '@helpers/mongodb'
 const updateOne = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()
   const { body } = req
-  const { filter, payload, upsert, collection } = body
-
-  console.log('{ filter, payload, upsert, collection }', { filter, payload, upsert, collection })
+  const { filter, payload, upsert = false, collection = 'users' } = body
 
   try {
     await db.collection(collection).updateOne(filter, payload, { upsert })
