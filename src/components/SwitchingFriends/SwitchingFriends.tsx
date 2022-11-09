@@ -8,18 +8,18 @@ import { ProfileTitle } from '@modules/Profile/Profile.style'
 
 export const SwitchingFriends: NextPage = (): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
-  const [pals, fetchFriends] = useFriends()
+  const friends = useFriends()
 
-  useEffect(() => {
-    sub && fetchFriends()
-  }, [sub])
+  // useEffect(() => {
+  //   sub && fetchFriends()
+  // }, [sub])
 
   return (
     <S.SwitchingFriends>
       <ProfileTitle>Switching Friends</ProfileTitle>
 
       <S.Friends>
-        {pals.map(({ nickname, picture }: { nickname: string; picture: string }) => (
+        {friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (
           <S.Friend key={nickname}>
             <Image
               src={picture}

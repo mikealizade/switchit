@@ -6,6 +6,7 @@ export const UserContainer = styled.section`
   align-items: center;
   padding: 40px 40px 10px;
   background-color: var(--pampas);
+  min-height: 104px;
 
   div:nth-of-type(2) {
     margin-left: auto;

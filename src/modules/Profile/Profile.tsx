@@ -23,10 +23,8 @@ import * as S from '@modules/Profile/Profile.style'
 // fetch custom hook
 //---//
 // mongodb compass
-// error handling / errorboundary
+// error handling
 //protect routes withPageAuthRequired
-
-// case 00105328
 
 type User = {
   _id: string

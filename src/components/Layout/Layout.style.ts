@@ -20,6 +20,7 @@ export const AppContent = styled.main`
   position: relative;
   overflow: hidden;
   border-radius: 0 16px 16px 0;
+  background-color: var(--pampas);
 `
 
 export const Aside = styled.aside`

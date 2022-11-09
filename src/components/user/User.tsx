@@ -9,6 +9,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher } from '@utils/functions'
 import { useUpdateUser } from '@hooks/useUpdateUser'
+import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/User/User.style'
 
 type User = {
@@ -33,21 +34,17 @@ export const User: NextPage = (): JSX.Element => {
   const { pathname } = useRouter()
   const updateUser = useUpdateUser()
   const {
-    user: { sub = '' } = {},
-    // error = {},
-    isLoading = false,
-  } = useUser()
-  const {
     nickname = '',
     picture = '',
     sub: userId = '',
     isNewUser,
   } = useSelector((state: RootState) => state.user)
-  const [userData, setUserData] = useState<User>()
+  const { user: { sub = '' } = {} } = useUser()
   const { data: { user = {} } = {}, error } = useSWR(
     !userId ? `/api/db/user/${sub}` : null,
     fetcher,
   ) as SWRResponse
+  const [userData, setUserData] = useState<User>()
 
   const updateIsNewUser = useCallback(async () => {
     updateUser({ isNewUser: false, user_metadata: { isNewUser: false } })
@@ -67,7 +64,9 @@ export const User: NextPage = (): JSX.Element => {
 
   return (
     <S.UserContainer>
-      {isNewUser ? (
+      {!userId ? (
+        <Loader />
+      ) : isNewUser ? (
         <S.User>
           <span>
             Hi <S.UserName>{nickname}</S.UserName>, first time welcome message!

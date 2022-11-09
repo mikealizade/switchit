@@ -1,25 +1,18 @@
-import { useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
 import { fetcher } from '@utils/functions'
+import useSWR, { SWRResponse } from 'swr'
+
+interface Friend {
+  nickname: string
+  picture: string
+}
 
 export const useFriends = () => {
   const { user: { sub = '' } = {} } = useUser()
-  const [friends, setFriends] = useState([])
+  const { data: friends = [] }: any = useSWR(
+    `/api/db/findFriends?id=${sub}`,
+    fetcher,
+  ) as SWRResponse
 
-  const fetchFriends = async (): Promise<void> => {
-    if (sub) {
-      try {
-        const { result }: any = await fetcher(`/api/db/findFriends?id=${sub}`)
-        const friends = result.map(
-          ({ nickname, picture }: { nickname: string; picture: string }) => ({ nickname, picture }),
-        )
-
-        setFriends(friends)
-      } catch {
-        //error
-      }
-    }
-  }
-
-  return [friends, fetchFriends] as any[]
+  return friends.map(({ nickname, picture }: Friend) => ({ nickname, picture }))
 }

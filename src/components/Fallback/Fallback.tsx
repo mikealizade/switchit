@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
+import * as S from '@components/Fallback/Fallback.style'
 
 export const Fallback: NextPage<{ error: string }> = ({ error }): JSX.Element => {
   return (
-    <div>
+    <S.Fallback>
       <p>An error has occurred.</p>
       <p>{error}</p>
-    </div>
+    </S.Fallback>
   )
 }

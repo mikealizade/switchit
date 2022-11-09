@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { useDrawer } from '@hooks/useDrawer'
+import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/ProfileHead/ProfileHead.style'
 import { ProfileEllipsis } from '@styles/common.style'
 
@@ -19,10 +20,14 @@ export const ProfileHead: NextPage<{ points: number }> = ({ points = 0 }): JSX.E
   return (
     <S.ProfileHead>
       <div>
-        {picture && nickname && (
-          <Image src={picture} alt={nickname} width={132} height={132} unoptimized priority />
+        {!picture ? (
+          <Loader />
+        ) : (
+          <>
+            <Image src={picture} alt={nickname} width={132} height={132} unoptimized priority />
+            <ProfileEllipsis onClick={toggleDrawer('profile')}>...</ProfileEllipsis>
+          </>
         )}
-        <ProfileEllipsis onClick={toggleDrawer('profile')}>...</ProfileEllipsis>
       </div>
       <div>
         <S.Name>{nickname}</S.Name>

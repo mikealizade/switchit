@@ -71,7 +71,6 @@ const Home = () => {
   }, [sub, fetchUserData])
 
   useEffect(() => {
-    // if (isNewUser !== null && !isNewUser) {
     if (isNewUser) {
       saveUserData(isNewUser)
     }
@@ -84,8 +83,6 @@ const Home = () => {
   if (!isLoading && !user) {
     router.replace('/signedout')
   }
-
-  // if (isNewUser !== null && isNewUser) return <PostSignupFlow />
 }
 
 export default Home
