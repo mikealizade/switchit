@@ -66,24 +66,6 @@ const Home = () => {
     [user, sub, dispatch, checkReferralCodeAndUpdate],
   )
 
-  // const handleReferralCode = useCallback(() => {
-  //   const params = new URLSearchParams(window.location.search)
-  //   const code = params.get('referralCode')
-
-  //   if (code) {
-  //     checkReferralCodeAndUpdate(`?referralCode=${code}`)
-  //     //go thru users to see if code exists
-  //     // if it exists, add points to current and linked users
-  //     // add curreent sub to linked user
-  //     // add linked user sub to current user
-  //   }
-  // }, [checkReferralCodeAndUpdate])
-
-  // useEffect(() => {
-  //   console.log('rendered')
-  //   handleReferralCode()
-  // }, [handleReferralCode])
-
   useEffect(() => {
     sub && fetchUserData()
   }, [sub, fetchUserData])

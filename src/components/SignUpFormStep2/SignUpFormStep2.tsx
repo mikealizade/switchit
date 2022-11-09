@@ -17,7 +17,6 @@ export const SignUpFormStep2: NextPage<{
   const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
   const { replace } = useRouter()
-  // const dispatch = useDispatch()
   const { handleSubmit, reset } = methods
   const [referralCode, setReferralCode] = useState('')
 

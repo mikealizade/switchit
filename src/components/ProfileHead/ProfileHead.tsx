@@ -20,7 +20,7 @@ export const ProfileHead: NextPage<{ points: number }> = ({ points = 0 }): JSX.E
     <S.ProfileHead>
       <div>
         {picture && nickname && (
-          <Image src={picture} alt={nickname} width={132} height={132} unoptimized />
+          <Image src={picture} alt={nickname} width={132} height={132} unoptimized priority />
         )}
         <ProfileEllipsis onClick={toggleDrawer('profile')}>...</ProfileEllipsis>
       </div>

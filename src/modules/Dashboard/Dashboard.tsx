@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { User } from '@components/User/User'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
 import { SwitchingJourney } from '@components/SwitchingJourney/SwitchingJourney'
 import * as S from '@modules/Dashboard/Dashboard.style'
@@ -19,7 +20,7 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
-      <>
+      <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <Hero />
           <S.SwitchingJourney>
@@ -30,7 +31,7 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
           </S.SwitchingJourney>
           {/* <Form /> */}
         </S.Content>
-      </>
+      </ErrorBoundary>
     </>
   )
 }

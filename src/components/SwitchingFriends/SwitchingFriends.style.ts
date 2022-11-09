@@ -2,6 +2,8 @@ import styled from '@emotion/styled'
 
 export const SwitchingFriends = styled.div`
   display: flex;
+  flex-direction: column;
+  row-gap: 30px;
 `
 
 export const Friends = styled.ul`

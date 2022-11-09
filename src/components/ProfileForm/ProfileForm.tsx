@@ -43,7 +43,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
     toggleDrawer('')()
   }
 
-  const save = async (data): Promise<void> => {
+  const save = async (data: FieldValues): Promise<void> => {
     const { nickname, username, location, ...rest } = data
 
     updateUser({

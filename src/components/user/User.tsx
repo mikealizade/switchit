@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
+import useSWR, { SWRResponse } from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher } from '@utils/functions'
@@ -47,7 +47,7 @@ export const User: NextPage = (): JSX.Element => {
   const { data: { user = {} } = {}, error } = useSWR(
     !userId ? `/api/db/user/${sub}` : null,
     fetcher,
-  )
+  ) as SWRResponse
 
   const updateIsNewUser = useCallback(async () => {
     updateUser({ isNewUser: false, user_metadata: { isNewUser: false } })

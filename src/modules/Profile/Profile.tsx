@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import useSWR, { SWRResponse } from 'swr'
 import { useDispatch, useSelector } from 'react-redux'
-import { useUser } from '@auth0/nextjs-auth0'
+import { ErrorBoundary } from 'react-error-boundary'
 import { RootState } from '@state/store'
+import { Fallback } from '@components/Fallback/Fallback'
 import { User } from '@components/User/User'
 import { Badge } from '@components/Badges/Badges'
 import { Card } from '@components/Card/Card'
@@ -17,8 +17,6 @@ import {
 } from '@components/ClimateImpactReport/ClimateImpactReport'
 import { Badges } from '@components/Badges/Badges'
 import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTotal'
-import { fetcher } from '@utils/functions'
-import { setUser } from '@state/user/userSlice'
 import { CheckList } from '@components/CheckList/CheckList'
 import * as S from '@modules/Profile/Profile.style'
 
@@ -58,7 +56,6 @@ const Profile = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
   const [userData, setUserData] = useState<User>(user)
   const {
-    friends = [],
     profile: {
       badges = [],
       sharingCodes = [],
@@ -69,10 +66,11 @@ const Profile = (): JSX.Element => {
   } = userData
   const [points, setTotalPoints] = useState(0)
 
-  console.log('friends', friends)
-
   useEffect(() => {
-    const totalPoints = switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
+    const totalPoints: number = switchItPoints.reduce(
+      (acc: number, { points }: any) => acc + points,
+      0,
+    )
 
     setTotalPoints(totalPoints)
   }, [switchItPoints])
@@ -92,38 +90,40 @@ const Profile = (): JSX.Element => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
-      <S.Content>
-        <S.ProfileContainer>
-          <S.ProfileColumnUser>
-            <Card column padded>
-              <ProfileHead points={points} />
-              <ProfileSummary data={summary} />
-            </Card>
-          </S.ProfileColumnUser>
-          <S.ProfileColumn>
-            <Card>
-              <SharingCodes total={sharingCodes.length} />
-            </Card>
-            <Card>
-              <Badges data={badges} />
-            </Card>
-            <Card column>
-              <PointsTotal data={switchItPoints} points={points} />
-            </Card>
-          </S.ProfileColumn>
-          <S.ProfileColumn>
-            <Card>
-              <SwitchingFriends data={friends} />
-            </Card>
-            <Card>
-              <ClimateImpactReport data={climateImpactReport} />
-            </Card>
-            <Card>
-              <CheckList />
-            </Card>
-          </S.ProfileColumn>
-        </S.ProfileContainer>
-      </S.Content>
+      <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
+        <S.Content>
+          <S.ProfileContainer>
+            <S.ProfileColumnUser>
+              <Card column padded>
+                <ProfileHead points={points} />
+                <ProfileSummary data={summary} />
+              </Card>
+            </S.ProfileColumnUser>
+            <S.ProfileColumn>
+              <Card>
+                <SharingCodes total={sharingCodes.length} />
+              </Card>
+              <Card>
+                <Badges data={badges} />
+              </Card>
+              <Card column>
+                <PointsTotal data={switchItPoints} points={points} />
+              </Card>
+            </S.ProfileColumn>
+            <S.ProfileColumn>
+              <Card>
+                <SwitchingFriends />
+              </Card>
+              <Card>
+                <ClimateImpactReport data={climateImpactReport} />
+              </Card>
+              <Card>
+                <CheckList />
+              </Card>
+            </S.ProfileColumn>
+          </S.ProfileContainer>
+        </S.Content>
+      </ErrorBoundary>
     </>
   )
 }
