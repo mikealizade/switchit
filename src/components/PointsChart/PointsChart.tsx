@@ -11,7 +11,15 @@ export const PointsChart: NextPage<{ total: number; data: any }> = ({
       {data?.length ? (
         data.map(({ type, points }: { type: string; points: number }) => {
           const percentage = (points / total) * 100
-          return <S.Item key={type} style={{ width: `${percentage}%` }}></S.Item>
+          if (percentage < 1) return null
+
+          return (
+            <S.Item
+              className={type.replace(' ', '').toLowerCase()}
+              key={type}
+              style={{ width: `${percentage}%` }}
+            ></S.Item>
+          )
         })
       ) : (
         <S.ItemEmpty style={{ width: '100%' }}></S.ItemEmpty>

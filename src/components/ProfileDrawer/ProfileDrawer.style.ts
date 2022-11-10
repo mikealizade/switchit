@@ -6,9 +6,9 @@ export const ProfileDrawer = styled.aside<{ isDrawerOpen: boolean }>`
   flex-direction: column;
   gap: 40px;
   border-radius: 16px;
-  width: 468px;
-  max-width: 468px;
-  min-width: 468px;
+  width: 480px;
+  max-width: 480px;
+  min-width: 480px;
   position: absolute;
   right: 0;
   top: 0;
@@ -17,6 +17,7 @@ export const ProfileDrawer = styled.aside<{ isDrawerOpen: boolean }>`
   transition: all 0.2s ease-in-out;
   padding: 35px 70px;
   z-index: 1;
+  box-shadow: 1px 1px 5px var(--slate);
 `
 
 export const BackLink = styled.h2`

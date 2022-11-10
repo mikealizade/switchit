@@ -7,22 +7,32 @@ export const PointsChart = styled.ul`
 `
 
 export const Item = styled.li`
-  &:nth-of-type(1) {
-    background-color: var(--dodgerBlue);
+  &:first-of-type {
     border-radius: 20px 0 0 20px;
   }
 
-  &:nth-of-type(2) {
-    background-color: var(--aurora);
-    border-radius: 0;
-  }
-  &:nth-of-type(3) {
-    background-color: var(--mustard);
-    border-radius: 0;
-  }
-  &:nth-of-type(4) {
-    background-color: var(--vermilion);
+  &:last-of-type {
     border-radius: 0 20px 20px 0;
+  }
+
+  &:only-child {
+    border-radius: 20px;
+  }
+
+  &.sharingcodes {
+    background-color: var(--dodgerBlue);
+  }
+
+  &.mediaposted {
+    background-color: var(--aurora);
+  }
+
+  &.switchingcampaigns {
+    background-color: var(--mustard);
+  }
+
+  &.providerswitching {
+    background-color: var(--vermilion);
   }
 `
 
