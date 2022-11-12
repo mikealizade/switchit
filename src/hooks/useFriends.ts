@@ -9,10 +9,7 @@ interface Friend {
 
 export const useFriends = () => {
   const { user: { sub = '' } = {} } = useUser()
-  const { data: friends = [] }: any = useSWR(
-    `/api/db/findFriends?id=${sub}`,
-    fetcher,
-  ) as SWRResponse
+  const { data: friends = [] } = useSWR(`/api/db/findFriends?id=${sub}`, fetcher) as SWRResponse
 
   return friends.map(({ nickname, picture }: Friend) => ({ nickname, picture }))
 }

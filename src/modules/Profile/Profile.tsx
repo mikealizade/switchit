@@ -18,7 +18,7 @@ import {
 import { Badges } from '@components/Badges/Badges'
 import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTotal'
 import { CheckList } from '@components/CheckList/CheckList'
-import * as S from '@modules/Profile/Profile.style'
+import * as S from '@styles/common.style'
 
 // fetch custom hook
 //---//
@@ -90,14 +90,14 @@ const Profile = (): JSX.Element => {
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
-          <S.ProfileContainer>
-            <S.ProfileColumnUser>
+          <S.ColumnContainer>
+            <S.ColumnUser>
               <Card column padded>
                 <ProfileHead points={points} />
                 <ProfileSummary data={summary} />
               </Card>
-            </S.ProfileColumnUser>
-            <S.ProfileColumn>
+            </S.ColumnUser>
+            <S.Column>
               <Card>
                 <SharingCodes total={sharingCodes.length} />
               </Card>
@@ -107,8 +107,8 @@ const Profile = (): JSX.Element => {
               <Card column>
                 <PointsTotal data={switchItPoints} points={points} />
               </Card>
-            </S.ProfileColumn>
-            <S.ProfileColumn>
+            </S.Column>
+            <S.Column>
               <Card>
                 <SwitchingFriends />
               </Card>
@@ -118,8 +118,8 @@ const Profile = (): JSX.Element => {
               <Card>
                 <CheckList />
               </Card>
-            </S.ProfileColumn>
-          </S.ProfileContainer>
+            </S.Column>
+          </S.ColumnContainer>
         </S.Content>
       </ErrorBoundary>
     </>

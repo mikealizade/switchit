@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Card = styled.div<{
+export const Card = styled.section<{
   column?: boolean
   shadow?: boolean
   padded?: boolean

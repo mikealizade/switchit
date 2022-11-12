@@ -7,7 +7,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { useDrawer } from '@hooks/useDrawer'
 import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/ProfileHead/ProfileHead.style'
-import { ProfileEllipsis } from '@styles/common.style'
+import { ProfileEllipsis } from '@modules/Profile/Profile.style'
 
 export const ProfileHead: NextPage<{ points: number }> = ({ points = 0 }): JSX.Element => {
   const { toggleDrawer } = useDrawer()

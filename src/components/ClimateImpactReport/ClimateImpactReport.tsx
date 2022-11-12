@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { ProfileTitle } from '@modules/Profile/Profile.style'
+import { Title } from '@styles/common.style'
 import * as S from '@components/ClimateImpactReport/ClimateImpactReport.style'
 
 export type ClimateImpactReportProps = {
@@ -12,7 +12,7 @@ export const ClimateImpactReport: NextPage<{ data: Partial<ClimateImpactReportPr
 }): JSX.Element => {
   return (
     <S.ClimateImpactReport>
-      <ProfileTitle>Climate Impact Report</ProfileTitle>
+      <Title>Climate Impact Report</Title>
       <S.ReportContainer>
         <div className='grey-card'>
           <S.MainTotal>{carbonRemoved}</S.MainTotal>

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import { ProfileTitle } from '@modules/Profile/Profile.style'
 import * as S from '@components/Badges/Badges.style'
+import { Title } from '@styles/common.style'
 
 export type Badge = {
   badge: string
@@ -12,7 +12,7 @@ const icons: [string, string, string, string] = ['provider', 'programs', 'news',
 export const Badges: NextPage<{ data: Badge[] }> = ({ data = [] }): JSX.Element => {
   return (
     <S.Badges>
-      <ProfileTitle>Awards Badges</ProfileTitle>
+      <Title>Awards Badges</Title>
 
       <S.BadgesList>
         {data.map(({ badge, total }: Badge, i) => (

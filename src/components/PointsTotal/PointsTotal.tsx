@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@components/PointsTotal/PointsTotal.style'
-import { ProfileTitle } from '@modules/Profile/Profile.style'
+import { Title } from '@styles/common.style'
 
 export type PointsTotalProps = Array<{
   type: string
@@ -16,7 +16,7 @@ export const PointsTotal: NextPage<{ data: PointsTotalProps; points: number }> =
 }): JSX.Element => {
   return (
     <S.PointsTotal>
-      <ProfileTitle>Switch It Points</ProfileTitle>
+      <Title>Switch It Points</Title>
       <S.TotalPoints>
         <FontAwesomeIcon size='sm' icon={faStar} /> {points} Points
       </S.TotalPoints>

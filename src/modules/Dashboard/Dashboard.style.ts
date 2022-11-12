@@ -15,8 +15,8 @@ export const SwitchingJourney = styled.div`
   flex-wrap: wrap;
 `
 
-export const Header = styled.h2`
-  font-size: inherit;
-  font-weight: normal;
-  width: 100%;
-`
+// export const Header = styled.h2`
+//   font-size: inherit;
+//   font-weight: normal;
+//   width: 100%;
+// `

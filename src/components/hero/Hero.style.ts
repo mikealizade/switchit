@@ -10,7 +10,7 @@ export const Hero = styled.div`
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.2);
 
   > span {
-    flex: 2;
+    flex: 1;
   }
 
   > button {
@@ -24,8 +24,13 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  flex: 5;
+`
+
+export const Title = styled.h2`
+  font-size: var(--fsVLarge6);
 `
 
 export const Text = styled.p`
-  font-size: var(--fsBase);
+  font-size: var(--fsLarge0);
 `

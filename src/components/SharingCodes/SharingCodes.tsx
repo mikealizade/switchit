@@ -3,9 +3,8 @@ import { useDrawer } from '@hooks/useDrawer'
 import { useShareCode } from '@hooks/useShareCode'
 import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/SharingCodes/SharingCodes.style'
-import { ProfileTitle } from '@modules/Profile/Profile.style'
-import { ShareButton } from '@styles/common.style'
-import { Ellipsis } from '@styles/common.style'
+import { Title } from '@styles/common.style'
+import { ShareButton, Ellipsis } from '@styles/common.style'
 
 type SharingCodesProps = { total: number }
 
@@ -15,10 +14,10 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
 
   return (
     <S.SharingCodes>
-      <ProfileTitle>
+      <Title>
         Sharing Codes
         <Ellipsis onClick={toggleDrawer('sharingCodes')}>...</Ellipsis>
-      </ProfileTitle>
+      </Title>
       {!total ? (
         <Loader />
       ) : (

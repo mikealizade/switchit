@@ -9,7 +9,7 @@ export const Hero: NextPage = (): JSX.Element => {
     <S.Hero>
       <Image src={speechBubbles} alt='' />
       <S.Content>
-        <h3>Talking points</h3>
+        <S.Title>Talking points</S.Title>
         <S.Text>
           Unlock tips and tricks to approaching groups in your community. Voluptate adipisicing non
           ut laboris exercitation exercitation laborum pariatur.

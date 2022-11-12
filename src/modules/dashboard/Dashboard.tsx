@@ -4,13 +4,27 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
 import { SwitchingJourney } from '@components/SwitchingJourney/SwitchingJourney'
-import * as S from '@modules/Dashboard/Dashboard.style'
+import { Card } from '@components/Card/Card'
+import { Blog } from '@components/Blog/Blog'
+import * as S from '@styles/common.style'
 
-type PageProps = {
-  userData: any
+type Post = {
+  title: string
+  created: string
+  text: string
+  summary: string
+  tags: Array<string>
+  expiry: string
+  imageUrl: string
 }
 
-const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
+type PageProps = {
+  data: {
+    posts: Array<Post>
+  }
+}
+
+const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }: any) => {
   return (
     <>
       <Head>
@@ -23,13 +37,16 @@ const Dashboard: NextPage<PageProps> = ({ userData }: any) => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <Hero />
-          <S.SwitchingJourney>
-            <S.Header>Switching Journeys</S.Header>
-            <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
-            <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
-            <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
-          </S.SwitchingJourney>
-          {/* <Form /> */}
+          <S.ColumnContainer>
+            <S.Column>
+              <Card>
+                <Blog data={posts} />
+              </Card>
+              <Card>
+                <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
+              </Card>
+            </S.Column>
+          </S.ColumnContainer>
         </S.Content>
       </ErrorBoundary>
     </>

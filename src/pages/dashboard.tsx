@@ -1,20 +1,19 @@
 import type { NextPage } from 'next'
 import Dashboard from '@modules/Dashboard/Dashboard'
-import PostSignupFlow from '@modules/PostSignupFlow/PostSignupFlow'
 
-// export async function getStaticProps() {
-//   const response = await fetch('https://randomuser.me/api/')
-//   const userData = await response.json()
+const dev = process.env.NODE_ENV !== 'production'
 
-//   return {
-//     props: {
-//       userData,
-//     },
-//   }
-// }
+export const server = dev ? 'http://localhost:3000' : 'https://your_deployment.server.com'
 
-const DashboardPage: NextPage = ({ userData }: any) => {
-  return <Dashboard userData={userData} />
+export async function getStaticProps() {
+  const res = await fetch(`${server}/api/db/fetchBlogPosts`)
+  const posts = await res.json()
+
+  return { props: { posts } }
+}
+
+const DashboardPage: NextPage = ({ posts }: any) => {
+  return <Dashboard data={{ posts }} />
 }
 
 export default DashboardPage

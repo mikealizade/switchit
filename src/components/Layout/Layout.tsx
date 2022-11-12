@@ -14,6 +14,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const isSignedOut = pathname === '/signedout'
   const isSigningUp = pathname === '/signup'
   const isProfile = pathname === '/profile'
+  const isDashboard = pathname === '/dashboard'
 
   const onSignUp = () => {
     const params = new URLSearchParams(window.location.search)
@@ -39,17 +40,18 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
       ) : (
         <>
           <Navigation />
-          {isProfile ? (
-            <>
-              <ProfileProvider>
-                <S.AppContent>
-                  <User />
-                  {children}
-                  <ProfileDrawer />
-                </S.AppContent>
-              </ProfileProvider>
-            </>
-          ) : (
+          {/* {isProfile || isDashboard ? ( */}
+          <>
+            <ProfileProvider>
+              <S.AppContent>
+                <User />
+                {children}
+                <ProfileDrawer />
+              </S.AppContent>
+            </ProfileProvider>
+          </>
+          {/* ) 
+          : (
             <>
               <S.AppContent>
                 <User />
@@ -59,7 +61,8 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
                 <AsideContent />
               </S.Aside>
             </>
-          )}
+          )
+          } */}
         </>
       )}
     </S.AppContainer>

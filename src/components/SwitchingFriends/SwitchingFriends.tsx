@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useFriends } from '@hooks/useFriends'
 import { useUser } from '@auth0/nextjs-auth0'
 import * as S from '@components/SwitchingFriends/SwitchingFriends.style'
-import { ProfileTitle } from '@modules/Profile/Profile.style'
+import { Title } from '@styles/common.style'
 
 export const SwitchingFriends: NextPage = (): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
@@ -16,7 +16,7 @@ export const SwitchingFriends: NextPage = (): JSX.Element => {
 
   return (
     <S.SwitchingFriends>
-      <ProfileTitle>Switching Friends</ProfileTitle>
+      <Title>Switching Friends</Title>
 
       <S.Friends>
         {friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (
