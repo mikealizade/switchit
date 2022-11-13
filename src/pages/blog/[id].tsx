@@ -18,7 +18,7 @@ export async function getStaticProps() {
   return { props: { posts } }
 }
 
-const BlogPage: NextPage<{ posts: Posts }> = ({ posts }): JSX.Element => {
+const BlogPage: NextPage<{ posts: Posts }> = ({ posts = [] }): JSX.Element => {
   const router = useRouter()
   const { id } = router.query
   const post = posts.find(({ id: postId }: { id: string }) => postId === id) as Post
