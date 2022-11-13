@@ -27,7 +27,7 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  /* flex: 2; */
+  flex: 1;
 
   + section {
     flex: 4;
@@ -37,10 +37,6 @@ export const Column = styled.div`
       flex: 1;
     }
   }
-`
-
-export const ColumnUser = styled(Column)`
-  flex-direction: inherit;
 `
 
 export const Title = styled.h2`

@@ -14,9 +14,3 @@ export const SwitchingJourney = styled.div`
   gap: 20px;
   flex-wrap: wrap;
 `
-
-// export const Header = styled.h2`
-//   font-size: inherit;
-//   font-weight: normal;
-//   width: 100%;
-// `

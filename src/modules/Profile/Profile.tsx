@@ -91,12 +91,12 @@ const Profile = (): JSX.Element => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <S.ColumnContainer>
-            <S.ColumnUser>
+            <S.Column>
               <Card column padded>
                 <ProfileHead points={points} />
                 <ProfileSummary data={summary} />
               </Card>
-            </S.ColumnUser>
+            </S.Column>
             <S.Column>
               <Card>
                 <SharingCodes total={sharingCodes.length} />

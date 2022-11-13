@@ -1,18 +1,29 @@
 import type { NextPage } from 'next'
 import Dashboard from '@modules/Dashboard/Dashboard'
-
-const dev = process.env.NODE_ENV !== 'production'
-
-export const server = dev ? 'http://localhost:3000' : 'https://your_deployment.server.com'
+import { baseUrl } from '@utils/constants'
 
 export async function getStaticProps() {
-  const res = await fetch(`${server}/api/db/fetchBlogPosts`)
+  const res = await fetch(`${baseUrl}/api/db/fetchBlogPosts`)
   const posts = await res.json()
 
   return { props: { posts } }
 }
 
-const DashboardPage: NextPage = ({ posts }: any) => {
+export type Post = {
+  id: string
+  created: string
+  title: string
+  summary: string
+  text: string
+  authorId: string
+  tags: Array<string>
+  expiry: string
+  imageUrl: string
+}
+
+export type Posts = Array<Post>
+
+const DashboardPage: NextPage<{ posts: Posts }> = ({ posts }) => {
   return <Dashboard data={{ posts }} />
 }
 

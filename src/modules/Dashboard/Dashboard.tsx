@@ -7,20 +7,11 @@ import { SwitchingJourney } from '@components/SwitchingJourney/SwitchingJourney'
 import { Card } from '@components/Card/Card'
 import { Blog } from '@components/Blog/Blog'
 import * as S from '@styles/common.style'
-
-type Post = {
-  title: string
-  created: string
-  text: string
-  summary: string
-  tags: Array<string>
-  expiry: string
-  imageUrl: string
-}
+import { Posts } from '@pages/dashboard'
 
 type PageProps = {
   data: {
-    posts: Array<Post>
+    posts: Posts
   }
 }
 
@@ -42,6 +33,13 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }: any) => {
               <Card>
                 <Blog data={posts} />
               </Card>
+            </S.Column>
+            <S.Column>
+              <Card>
+                <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
+              </Card>
+            </S.Column>
+            <S.Column>
               <Card>
                 <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
               </Card>

@@ -1,22 +1,19 @@
 import type { NextPage } from 'next'
 import { Title } from '@styles/common.style'
 import * as S from '@components/Blog/Blog.style'
-import { ReplayCircleFilled } from '@mui/icons-material'
 import { useRouter } from 'next/router'
 
 export type Blog = {
-  id: number
+  id: string
   title: string
-  summary: number
+  summary: string
 }
 
 export const Blog: NextPage<{ data: Blog[] }> = ({ data = [] }): JSX.Element => {
   const [{ id, title = '', summary = '' }] = data
   const { replace } = useRouter()
 
-  // console.log('blog', blog)
-
-  const readBlogPost = (id: number) => () => {
+  const readBlogPost = (id: string) => () => {
     replace(`/blog/${id}`)
   }
 

@@ -5,14 +5,14 @@ import { Fallback } from '@components/Fallback/Fallback'
 import * as S from '@modules/Blog/Blog.style'
 
 type PageProps = {
-  post: {
-    title: string
-    text: string
-    created: string
-  }
+  title: string
+  text: string
+  created: string
 }
 
-const Blog: NextPage<PageProps> = ({ post: { title = '', text = '', created = '' } }: any) => {
+const Blog: NextPage<{ post: PageProps }> = ({
+  post: { title = '', text = '', created = '' },
+}: any) => {
   return (
     <>
       <Head>
