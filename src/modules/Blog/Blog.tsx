@@ -11,8 +11,8 @@ type PageProps = {
 }
 
 const Blog: NextPage<{ post: PageProps }> = ({
-  post: { title = '', text = '', created = '' },
-}: any) => {
+  post: { title = '', text = '', created = '' } = {},
+}) => {
   return (
     <>
       <Head>
