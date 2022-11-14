@@ -7,12 +7,10 @@ import { Posts, Post } from '@pages/dashboard'
 export async function getStaticPaths() {
   // const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
   // const [post] = await res.json()
-  // const paths = posts.map(({ id }: { id: string }) => ({ params: { id } }))
+  const paths = [{ id: '2' }].map(({ id }: { id: string }) => ({ params: { id } }))
 
   return {
-    paths: {
-      id: { params: { id: '2' } },
-    },
+    paths,
     fallback: false,
   }
 }
