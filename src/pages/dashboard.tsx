@@ -2,6 +2,16 @@ import type { NextPage } from 'next'
 import Dashboard from '@modules/Dashboard/Dashboard'
 // import { baseUrl } from '@utils/constants'
 
+// export async function fetchPosts() {
+//   // Call an external API endpoint to get posts
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
+//   const random = await res.json()
+//   const res1 = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findFeaturedPost`)
+//   const featured = await res1.json()
+
+//   return [...random, ...featured]
+// }
+
 export async function getStaticProps() {
   //ultimately combine queries
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
