@@ -5,8 +5,8 @@ import { baseUrl } from '@utils/constants'
 import { Posts, Post } from '@pages/dashboard'
 
 export async function getStaticPaths() {
-  const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
-  const [post] = await res.json()
+  // const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
+  // const [post] = await res.json()
   // const paths = posts.map(({ id }: { id: string }) => ({ params: { id } }))
 
   return {
