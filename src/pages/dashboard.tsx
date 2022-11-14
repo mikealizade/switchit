@@ -16,7 +16,7 @@ export async function getStaticProps() {
   //ultimately combine queries
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
   const random = await res.json()
-  const res1 = await fetch(`${baseUrl}/api/db/findFeaturedPost`)
+  const res1 = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findFeaturedPost`)
   const featured = await res1.json()
   const posts = [...random, ...featured]
 
