@@ -6,19 +6,21 @@ import { Posts, Post } from '@pages/dashboard'
 
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
-  const posts = await res.json()
-  const paths = posts.map(({ id }: { id: string }) => ({ params: { id } }))
+  const [post] = await res.json()
+  // const paths = posts.map(({ id }: { id: string }) => ({ params: { id } }))
+
   return {
-    paths,
-    fallback: true,
-    //The paths that have not been generated at build time will not result in a 404 page.
-    //Instead, fallback: true This will be used to automatically render
-    //the page with the required props.
+    paths: {
+      id: post?.id,
+    },
+    fallback: false,
   }
 }
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
+export async function getStaticProps(context: any) {
+  const id = context.params.id
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findPost?id=${id}`)
   const posts = await res.json()
 
   return { props: { posts } }
