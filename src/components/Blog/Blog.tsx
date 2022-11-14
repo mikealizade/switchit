@@ -10,7 +10,7 @@ export type Blog = {
 }
 
 export const Blog: NextPage<{ data: Blog[] }> = ({ data = [] }): JSX.Element => {
-  const [{ id, title = '', summary = '' }] = data
+  const [{ id = '', title = '', summary = '' } = {}] = data
   const { replace } = useRouter()
 
   const readBlogPost = (id: string) => () => {
