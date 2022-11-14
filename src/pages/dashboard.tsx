@@ -12,16 +12,16 @@ import { baseUrl } from '@utils/constants'
 //   return [...random, ...featured]
 // }
 
-// export async function getStaticProps() {
-//   //ultimately combine queries
-//   const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
-//   const random = await res.json()
-//   const res1 = await fetch(`${baseUrl}/api/db/findFeaturedPost`)
-//   const featured = await res1.json()
-//   const posts = [...random, ...featured]
+export async function getStaticProps() {
+  //ultimately combine queries
+  const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
+  const random = await res.json()
+  const res1 = await fetch(`${baseUrl}/api/db/findFeaturedPost`)
+  const featured = await res1.json()
+  const posts = [...random, ...featured]
 
-//   return { props: { posts } }
-// }
+  return { props: { posts } }
+}
 
 export type Post = {
   id: string
@@ -39,7 +39,7 @@ export type Post = {
 export type Posts = Array<Post>
 
 const DashboardPage: NextPage<{ posts: Posts }> = ({ posts = [] }) => {
-  return <Dashboard data={{ posts: [] }} />
+  return <Dashboard data={{ posts }} />
 }
 
 export default DashboardPage
