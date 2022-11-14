@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 
   return {
     paths: {
-      id: post?.id,
+      id: '2',
     },
     fallback: false,
   }
