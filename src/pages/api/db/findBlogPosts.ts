@@ -3,10 +3,9 @@ import { connectToDatabase } from '@helpers/mongodb'
 
 const fetchBlogPosts = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()
-  // const { query: { id = '' } = {} } = req
 
   try {
-    const result = await db.collection('blog').find({}).toArray() //find returns a cursor so cast to array
+    const result = await db.collection('blog').find({}).toArray()
 
     res.status(200).json(result)
   } catch (e) {
