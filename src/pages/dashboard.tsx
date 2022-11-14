@@ -1,10 +1,14 @@
 import type { NextPage } from 'next'
 import Dashboard from '@modules/Dashboard/Dashboard'
-import { baseUrl } from '@utils/constants'
+// import { baseUrl } from '@utils/constants'
 
 export async function getStaticProps() {
-  const res = await fetch(`${baseUrl}/api/db/fetchBlogPosts`)
-  const posts = await res.json()
+  //ultimately combine queries
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
+  const random = await res.json()
+  const res1 = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findFeaturedPost`)
+  const featured = await res1.json()
+  const posts = [...random, ...featured]
 
   return { props: { posts } }
 }
@@ -19,6 +23,7 @@ export type Post = {
   tags: Array<string>
   expiry: string
   imageUrl: string
+  isFeatured: boolean
 }
 
 export type Posts = Array<Post>

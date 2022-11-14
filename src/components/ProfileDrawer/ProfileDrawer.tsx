@@ -20,8 +20,8 @@ export const ProfileDrawer = (): JSX.Element => {
   const { isDrawerOpen, section, toggleDrawer } = useDrawer()
   const prevSection = usePrevious(section)
 
-  console.log('section', section)
-  console.log('prevSection', prevSection)
+  // console.log('section', section)
+  // console.log('prevSection', prevSection)
 
   // const sectionRef = useRef('')
   // sectionRef.current = section
@@ -29,12 +29,12 @@ export const ProfileDrawer = (): JSX.Element => {
 
   // console.log('sectionRef.current', sectionRef.current)
 
-  useEffect(() => {
-    console.log('section', section)
-    if (section !== prevSection && !isDrawerOpen) {
-      toggleDrawer(section, true)
-    }
-  }, [section, prevSection, isDrawerOpen])
+  // useEffect(() => {
+  //   console.log('section', section)
+  //   if (section !== prevSection && !isDrawerOpen) {
+  //     toggleDrawer(section, true)
+  //   }
+  // }, [section, prevSection, isDrawerOpen])
 
   return (
     <S.ProfileDrawer isDrawerOpen={isDrawerOpen}>

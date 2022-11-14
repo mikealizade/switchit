@@ -25,7 +25,7 @@ const Blog: NextPage<{ post: PageProps }> = ({
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <S.PostTitle>{title}</S.PostTitle>
-          <S.PostDate>{created}</S.PostDate>
+          <S.PostDate>{created.substring(0, 15)}</S.PostDate>
           <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
         </S.Content>
       </ErrorBoundary>

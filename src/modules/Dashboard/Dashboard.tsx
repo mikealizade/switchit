@@ -1,13 +1,18 @@
+import { useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@state/store'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
 import { SwitchingJourney } from '@components/SwitchingJourney/SwitchingJourney'
 import { Card } from '@components/Card/Card'
 import { Blog } from '@components/Blog/Blog'
 import * as S from '@styles/common.style'
-import { Posts } from '@pages/dashboard'
+import { Posts, Post } from '@pages/dashboard'
+import { SharingCodes } from '@components/SharingCodes/SharingCodes'
+import { User } from '@modules/Profile/Profile'
 
 type PageProps = {
   data: {
@@ -15,7 +20,11 @@ type PageProps = {
   }
 }
 
-const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }: any) => {
+const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
+  const user = useSelector((state: RootState) => state.user)
+  const { profile: { sharingCodes = [] } = {} } = user
+  const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
+
   return (
     <>
       <Head>
@@ -27,7 +36,7 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }: any) => {
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
-          <Hero />
+          <Hero post={featuredPost} />
           <S.ColumnContainer>
             <S.Column>
               <Card>
@@ -36,7 +45,7 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }: any) => {
             </S.Column>
             <S.Column>
               <Card>
-                <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
+                <SharingCodes total={sharingCodes.length} />
               </Card>
             </S.Column>
             <S.Column>

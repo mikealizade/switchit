@@ -7,7 +7,7 @@ export const Hero = styled.div`
   border-radius: 10px;
   background-color: var(--white);
   padding: 30px;
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
 
   > span {
     flex: 1;

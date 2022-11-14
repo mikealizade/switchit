@@ -26,7 +26,7 @@ import * as S from '@styles/common.style'
 // error handling
 //protect routes withPageAuthRequired
 
-type User = {
+export type User = {
   _id: string
   nickname: string
   name: string

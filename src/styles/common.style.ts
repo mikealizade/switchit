@@ -8,14 +8,14 @@ export const Content = styled.main`
   flex-direction: column;
   flex-grow: 1;
   padding: 40px;
-  row-gap: 50px;
+  row-gap: 25px;
 `
 
 export const ColumnContainer = styled.section`
   display: flex;
-  column-gap: 20px;
+  column-gap: 25px;
   flex-wrap: wrap;
-  row-gap: 20px;
+  row-gap: 25px;
   position: relative;
 
   ${() => mediaQuery.xlaptop} {
@@ -26,7 +26,7 @@ export const ColumnContainer = styled.section`
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 25px;
   flex: 1;
 
   + section {
