@@ -41,9 +41,14 @@ export const navigation = [
     route: 'programs',
     icon: '/icons/icon_programs',
   },
+  // {
+  //   text: 'News & Blog',
+  //   route: 'news',
+  //   icon: '/icons/icon_news',
+  // },
   {
-    text: 'News & Blog',
-    route: 'news',
+    text: 'Resources',
+    route: 'resources',
     icon: '/icons/icon_news',
   },
   {

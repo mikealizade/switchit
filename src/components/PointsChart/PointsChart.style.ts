@@ -31,7 +31,7 @@ export const Item = styled.li`
     background-color: var(--mustard);
   }
 
-  &.providerswitching {
+  &.providerswitchingactions {
     background-color: var(--vermilion);
   }
 `

@@ -14,11 +14,11 @@ export const Title = styled.h2`
 `
 
 export const TotalPoints = styled.p`
-  font-size: var(--fsLarge4);
+  font-size: var(--fsVLarge3);
   display: flex;
   align-items: center;
   color: var(--cadetBlue);
-  column-gap: 20px;
+  column-gap: 10px;
 
   svg {
     width: 40px;

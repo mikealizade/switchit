@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
 import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@components/PointsTotal/PointsTotal.style'
 import { Title } from '@styles/common.style'
@@ -18,7 +17,8 @@ export const PointsTotal: NextPage<{ data: PointsTotalProps; points: number }> =
     <S.PointsTotal>
       <Title>Switch It Points</Title>
       <S.TotalPoints>
-        <FontAwesomeIcon size='sm' icon={faStar} /> {points} Points
+        <Image src={'/icons/icon_star_grey.svg'} alt='' width={45} height={45} />
+        {points} Points
       </S.TotalPoints>
       <PointsChart data={data} total={points} />
       <S.PointTypes>

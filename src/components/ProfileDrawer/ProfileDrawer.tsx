@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { useDrawer } from '@hooks/useDrawer'
 import { usePrevious } from '@hooks/usePrevious'
 import { ProfileForm } from '@components/ProfileForm/ProfileForm'
@@ -39,7 +40,7 @@ export const ProfileDrawer = (): JSX.Element => {
   return (
     <S.ProfileDrawer isDrawerOpen={isDrawerOpen}>
       <S.BackLink onClick={toggleDrawer('')}>
-        <S.Chevron>&lsaquo;</S.Chevron>
+        <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
         {drawerConfig[section as keyof typeof drawerConfig]?.backLink}
       </S.BackLink>
       {drawerConfig[section as keyof typeof drawerConfig]?.component}

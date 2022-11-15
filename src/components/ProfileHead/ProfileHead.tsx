@@ -2,8 +2,6 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { RootState } from '@state/store'
 import { useSelector } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { useDrawer } from '@hooks/useDrawer'
 import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/ProfileHead/ProfileHead.style'
@@ -14,7 +12,8 @@ export const ProfileHead: NextPage<{ points: number }> = ({ points = 0 }): JSX.E
   const {
     nickname = '',
     picture = '',
-    profile: { summary: { location = '' } = {} } = {},
+    location = '',
+    // username = '',
   } = useSelector((state: RootState) => state.user)
 
   return (
@@ -32,10 +31,11 @@ export const ProfileHead: NextPage<{ points: number }> = ({ points = 0 }): JSX.E
       <div>
         <S.Name>{nickname}</S.Name>
         <S.Location>{location}</S.Location>
-        <S.Points>
+        {/* <S.Location>{username}</S.Location> */}
+        {/* <S.Points>
           <FontAwesomeIcon size='sm' icon={faStar} />
           {points} points
-        </S.Points>
+        </S.Points> */}
       </div>
     </S.ProfileHead>
   )

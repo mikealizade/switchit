@@ -24,11 +24,6 @@ export const BackLink = styled.h2`
   font-size: var(--fsLarge);
   display: flex;
   align-items: center;
-  column-gap: 6px;
+  column-gap: 10px;
   cursor: pointer;
-`
-
-export const Chevron = styled.span`
-  font-size: var(--fsVLarge3);
-  color: var(--pink);
 `

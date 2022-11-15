@@ -43,6 +43,8 @@ export const Title = styled.h2`
   font-size: var(--fsBase);
   color: var(--slate);
   position: relative;
+  display: flex;
+  justify-content: space-between;
 `
 
 export const Form = styled.form`
@@ -79,5 +81,5 @@ export const Ellipsis = styled.div`
   bottom: 15px;
   right: 0;
   cursor: pointer;
-  font-size: var(--fsVLarge3);
+  font-size: var(--fsLarge);
 `

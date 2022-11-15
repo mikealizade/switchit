@@ -15,7 +15,7 @@ export const PointsChart: NextPage<{ total: number; data: any }> = ({
 
           return (
             <S.Item
-              className={type.replace(' ', '').toLowerCase()}
+              className={type.replace(/\s/g, '').toLowerCase()}
               key={type}
               style={{ width: `${percentage}%` }}
             ></S.Item>

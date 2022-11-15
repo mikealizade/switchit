@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="36px" viewBox="0 0 42 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>airplane</title>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="PROFILE---ACTIVE-USER-Copy-15" transform="translate(-1079.000000, -527.000000)" stroke="#FFFFFF" stroke-width="1.5">
+            <g id="Group-6" transform="translate(949.000000, 509.000000)">
+                <g id="airplane" transform="translate(131.000000, 19.000000)">
+                    <polyline id="Path" points="39.8736842 0.208845209 10.9473684 20.1744472 0 15.6633907 40 0 35.1157895 30.1154791 18.8210526 23.3906634 39.9578947 0.0835380835"></polyline>
+                    <polyline id="Path" points="10.9473684 20.1744472 16.8842105 34 23.4526316 25.3538084"></polyline>
+                    <line x1="18.8210526" y1="23.4324324" x2="16.8842105" y2="34" id="Path"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
