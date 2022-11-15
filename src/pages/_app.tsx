@@ -7,6 +7,15 @@ import { Layout } from '@components/Layout/Layout'
 import '@styles/globals.css'
 import 'normalize.css'
 
+// TODOs
+// deploy fix
+// auth0 login on deployment url
+// CDN for pdfs and images
+// mongodb compass
+// error handling
+// protect routes withPageAuthRequired
+//Case 00108281
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <UserProvider>

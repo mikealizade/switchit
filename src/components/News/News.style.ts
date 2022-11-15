@@ -10,6 +10,7 @@ export const NewsList = styled.ul`
   width: 100%;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 `
 
 export const Item = styled.li`
@@ -19,6 +20,7 @@ export const Item = styled.li`
   border-radius: 8px;
   box-shadow: 1px 1px 4px var(--haze);
   padding: 20px;
+  flex: 0 0 48%;
 `
 
 export const Title = styled.h3`
@@ -33,6 +35,10 @@ export const Download = styled.a`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+
+  > span {
+    width: 100% !important;
+  }
 `
 
 export const ResourcesTitle = styled.h2`
@@ -41,7 +47,7 @@ export const ResourcesTitle = styled.h2`
   position: relative;
   display: flex;
   justify-content: flex-start;
-  column-gap: 30px;
+  column-gap: 20px;
   align-items: center;
   color: inherit;
 `

@@ -9,11 +9,19 @@ import { Hero } from '@components/Hero/Hero'
 import { Card } from '@components/Card/Card'
 import * as S from '@styles/common.style'
 import { News } from '@components/News/News'
-import { User } from '@modules/Profile/Profile'
 
-type PageProps = any
+export type Resource = {
+  id: string
+  type: string
+  title: string
+  summary: string
+  resource: string
+  isFeatured: boolean
+}
 
-const Resources: NextPage<PageProps> = () => {
+export type ResourcesType = Resource[]
+
+const Resources: NextPage<{ resources: ResourcesType }> = ({ resources }) => {
   const user = useSelector((state: RootState) => state.user)
   // const { profile: { sharingCodes = [] } = {} } = user
   // const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
@@ -33,7 +41,7 @@ const Resources: NextPage<PageProps> = () => {
           <S.ColumnContainer>
             <S.Column>
               <Card>
-                <News />
+                <News resources={resources} />
               </Card>
             </S.Column>
             <S.Column>

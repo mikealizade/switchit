@@ -20,13 +20,6 @@ import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTot
 import { CheckList } from '@components/CheckList/CheckList'
 import * as S from '@styles/common.style'
 
-// fetch custom hook
-//---//
-// mongodb compass
-// error handling
-//protect routes withPageAuthRequired
-//Case 00108281
-
 export type User = {
   _id: string
   nickname: string

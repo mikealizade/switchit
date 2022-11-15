@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import * as S from '@components/News/News.style'
-import { Title } from '@styles/common.style'
+import { ResourcesType } from '@modules/Resources/Resources'
 
-export const News: NextPage = (): JSX.Element => {
+export const News: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {
   return (
     <S.News>
       <S.ResourcesTitle>
@@ -12,22 +12,23 @@ export const News: NextPage = (): JSX.Element => {
       </S.ResourcesTitle>
 
       <S.NewsList>
-        <S.Item>
-          <S.Download href='/resources/coach_routes.pdf' download='temp.pdf'>
-            <S.Title>PDF title</S.Title>
-            <S.Intro>
-              Velit ex voluptate ea tempor laborum fugiat sunt laborum laborum exercitation minim.
-            </S.Intro>
-          </S.Download>
-        </S.Item>
-        <S.Item>
-          <S.Download href='/resources/coach_routes.pdf' download='temp.pdf'>
-            <S.Title>PDF title</S.Title>
-            <S.Intro>
-              Velit ex voluptate ea tempor laborum fugiat sunt laborum laborum exercitation minim.
-            </S.Intro>
-          </S.Download>
-        </S.Item>
+        {resources.map(({ id, title, summary, resource }) => {
+          return (
+            <S.Item key={id}>
+              <S.Download href={`/resources/${resource}`} download={resource}>
+                <S.Title>{title}</S.Title>
+                <S.Intro>{summary}</S.Intro>
+                <Image
+                  src={'/resources/resource_pdf.png'}
+                  alt=''
+                  width='100%'
+                  height='100%'
+                  objectFit='contain'
+                />
+              </S.Download>
+            </S.Item>
+          )
+        })}
       </S.NewsList>
     </S.News>
   )
