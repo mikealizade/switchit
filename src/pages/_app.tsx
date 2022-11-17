@@ -8,13 +8,15 @@ import '@styles/globals.css'
 import 'normalize.css'
 
 // TODOs
-// deploy fix
-// auth0 login on deployment url
-// CDN for pdfs and images
+//// social media login
+//// edit email and pw in auth0
+//// upload user image
+//// CDN for pdfs and images
+//// donate
 // mongodb compass
 // error handling
 // protect routes withPageAuthRequired
-//Case 00108281
+//Case 00108281`
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

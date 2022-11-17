@@ -5,7 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { Fallback } from '@components/Fallback/Fallback'
-import { Hero } from '@components/Hero/Hero'
+import { DashboardHero } from '@components/Hero/DashboardHero'
 import { SwitchingJourney } from '@components/SwitchingJourney/SwitchingJourney'
 import { Card } from '@components/Card/Card'
 import { Blog } from '@components/Blog/Blog'
@@ -36,7 +36,7 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
-          <Hero post={featuredPost} />
+          <DashboardHero post={featuredPost} />
           <S.ColumnContainer>
             <S.Column>
               <Card>
@@ -50,7 +50,7 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
             </S.Column>
             <S.Column>
               <Card>
-                <SwitchingJourney title='Banks' text='4/5 steps' image='placeholder.png' />
+                <SwitchingJourney title='Bank Switching Journey' progress={2} />
               </Card>
             </S.Column>
           </S.ColumnContainer>

@@ -24,7 +24,6 @@ export type ResourcesType = Resource[]
 const Resources: NextPage<{ resources: ResourcesType }> = ({ resources }) => {
   const user = useSelector((state: RootState) => state.user)
   // const { profile: { sharingCodes = [] } = {} } = user
-  // const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
 
   return (
     <>
@@ -37,7 +36,7 @@ const Resources: NextPage<{ resources: ResourcesType }> = ({ resources }) => {
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
-          {/* <Hero post={featuredPost} /> */}
+          <Hero type='resources' />
           <S.ColumnContainer>
             <S.Column>
               <Card>

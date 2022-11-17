@@ -4,18 +4,13 @@ import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { User } from '@components/User/User'
 import { Card } from '@components/Card/Card'
+import { Hero } from '@components/Hero/Hero'
 import { fetcher } from '@utils/functions'
-import { CheckList } from '@components/CheckList/CheckList'
-import * as S from '@modules/Switching/Switching.style'
+// import * as S from '@modules/Switching/Switching.style'
+import * as S from '@styles/common.style'
 
 const Switching = (): JSX.Element => {
   // const { user: { sub = '' } = {}, isLoading = false } = useUser()
-  // const { data: { user } = {}, error } = useSWR(sub ? `/api/db/user/${sub}` : null, fetcher)
-  // const [userData, setUserData] = useState<User>()
-
-  // useEffect(() => {
-  //   user?._id && setUserData(user)
-  // }, [user])
 
   return (
     <>
@@ -27,14 +22,18 @@ const Switching = (): JSX.Element => {
       </Head>
 
       <S.Content>
-        <S.ProfileContainer>
-          <S.ProfileColumn>
-            <Card column>switching content</Card>
-          </S.ProfileColumn>
-          <S.ProfileColumn>
+        <Hero type='switching' />
+        <S.ColumnContainer>
+          <S.Column>
             <Card>content</Card>
-          </S.ProfileColumn>
-        </S.ProfileContainer>
+          </S.Column>
+          <S.Column>
+            <Card>content</Card>
+          </S.Column>
+          <S.Column>
+            <Card>content</Card>
+          </S.Column>
+        </S.ColumnContainer>
       </S.Content>
     </>
   )

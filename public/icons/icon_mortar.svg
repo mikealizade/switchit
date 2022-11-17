@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="92px" viewBox="0 0 105 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>acedemy icon 2</title>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="ACADEMY" transform="translate(-405.000000, -231.000000)" stroke="#153F45" stroke-width="6.5">
+            <g id="acedemy-icon" transform="translate(409.000000, 235.000000)">
+                <polygon id="Path" points="48.4761827 35.4409657 0 17.0313089 48.8255034 0 96.6506793 17.0313089"></polygon>
+                <path d="M20.4511377,25.0637495 C20.4511377,25.0637495 20.4511377,45.5805356 20.4511377,48.1788005 C20.4511377,50.7770653 31.1848093,56.4488872 48.5238173,56.4488872 C65.8628253,56.4488872 76.1360288,50.7770653 76.1360288,48.1788005 C76.1360288,45.5805356 76.1360288,24.9053187 76.1360288,24.9053187" id="Path"></path>
+                <ellipse id="Oval" cx="90.6010804" cy="61.2968691" rx="6.39891963" ry="6.38476047"></ellipse>
+                <line x1="90.5693239" y1="54.7536779" x2="90.5693239" y2="19.3919276" id="Path"></line>
+                <line x1="90.5693239" y1="84" x2="90.5693239" y2="67.8083742" id="Path"></line>
+            </g>
+        </g>
+    </g>
+</svg>

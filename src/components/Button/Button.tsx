@@ -7,6 +7,7 @@ type ButtonProps = {
   children: string | React.ReactNode
   type: 'button' | 'reset' | 'submit'
   mode?: string
+  size?: string
   disabled?: boolean
 }
 
@@ -16,8 +17,9 @@ export const Button: NextPage<ButtonProps> = ({
   type = 'button',
   mode = 'primary',
   disabled = false,
+  size = 'normal',
 }): JSX.Element => (
-  <S.Button type={type} onClick={onClick} className={mode} disabled={disabled}>
+  <S.Button type={type} onClick={onClick} className={mode} disabled={disabled} size={size}>
     {children}
   </S.Button>
 )

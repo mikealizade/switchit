@@ -40,10 +40,11 @@ export const User: NextPage = (): JSX.Element => {
     isNewUser,
   } = useSelector((state: RootState) => state.user)
   const { user: { sub = '' } = {} } = useUser()
-  const { data: { user = {} } = {}, error } = useSWR(
-    !userId ? `/api/db/user/${sub}` : null,
-    fetcher,
-  ) as SWRResponse
+  const {
+    data: { user = {} } = {},
+    error,
+    isValidating,
+  } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const [userData, setUserData] = useState<User>()
 
   const updateIsNewUser = useCallback(async () => {
@@ -64,7 +65,7 @@ export const User: NextPage = (): JSX.Element => {
 
   return (
     <S.UserContainer>
-      {!userId ? (
+      {isValidating ? (
         <Loader />
       ) : isNewUser ? (
         <S.User>

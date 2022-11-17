@@ -7,13 +7,14 @@ export const Buttons = styled.div`
   margin-top: 50px;
 `
 
-export const Button = styled.button`
-  padding: 10px 30px;
+export const Button = styled.button<{ size: string }>`
+  padding: ${({ size }) => (size === 'normal' ? '10px 30px' : '5px 20px')};
   min-width: 118px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  font-family: 'Konsolev SemiBold', sans-serif;
-  font-size: inherit;
+  font-family: ${({ size }) =>
+    size === 'normal' ? '`Konsolev Regular`, sans-serif' : '`Konsolev SemiBold`, sans-serif'};
+  font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsSmall4)')};
   line-height: 1.75;
   border-radius: 10px;
   letter-spacing: 0.5px;

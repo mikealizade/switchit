@@ -1,31 +1,21 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@components/Button/Button'
-import speechBubbles from '../../../public/speech_bubbles.png'
-import { Post } from '@pages/dashboard'
-import { useRouter } from 'next/router'
+import { heroConfig, HeroConfig } from '@utils/constants'
 import * as S from '@components/Hero/Hero.style'
 
-export const Hero: NextPage<{ post: Post }> = ({
-  post: { id = '', title = '', summary = '' } = {},
-}): JSX.Element => {
-  const { replace } = useRouter()
-
-  const readBlogPost = (id: string) => () => {
-    replace(`/blog/${id}`)
-  }
-
+export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => {
   return (
     <S.Hero>
-      <Image src={speechBubbles} alt='' />
+      <Image
+        src={`/icons/${heroConfig[type as keyof HeroConfig].icon}`}
+        alt=''
+        width={60}
+        height={60}
+      />
       <S.Content>
-        <S.Title>{title}</S.Title>
-        <S.Text>{summary}</S.Text>
+        <S.Title>{heroConfig[type as keyof HeroConfig].title}</S.Title>
+        <S.Text>{heroConfig[type as keyof HeroConfig].text}</S.Text>
       </S.Content>
-      <Button type='button' onClick={readBlogPost(id)}>
-        Find Out More
-      </Button>
     </S.Hero>
   )
 }

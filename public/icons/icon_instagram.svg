@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="CUSTOM-PROGRAM---SOCIALS" transform="translate(-981.000000, -466.000000)" stroke="#404041" stroke-width="1.2">
+            <g id="Group-16" transform="translate(325.000000, 393.000000)">
+                <g id="Group" transform="translate(657.000000, 74.000000)">
+                    <path d="M13.3965876,0 L26.6999584,0 C29.6163129,0 32,2.38368706 32,5.30004161 L32,26.6999584 C32,29.6163129 29.6163129,32 26.6999584,32 L5.30004161,32 C2.38368706,32 0,29.6163129 0,26.6999584 L0,5.30004161 C0,2.38368706 2.38368706,0 5.30004161,0 L13.3965876,0" id="Path"></path>
+                    <circle id="Oval" cx="16.019975" cy="16.193092" r="7.28422805"></circle>
+                    <circle id="Oval" cx="25.2883895" cy="6.35205993" r="2.31710362"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

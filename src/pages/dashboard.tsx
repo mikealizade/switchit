@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Dashboard from '@modules/Dashboard/Dashboard'
-// import { baseUrl } from '@utils/constants'
+import { baseUrl } from '@utils/constants'
 
 // export async function getStaticPaths() {
 //   // const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
@@ -24,9 +24,9 @@ import Dashboard from '@modules/Dashboard/Dashboard'
 
 export async function getServerSideProps() {
   //ultimately combine queries
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findRandomPost`)
+  const res = await fetch(`${baseUrl}/api/db/findRandomPost`)
   const random = await res.json()
-  const res1 = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/db/findFeaturedPost`)
+  const res1 = await fetch(`${baseUrl}/api/db/findFeaturedPost`)
   const featured = await res1.json()
   const posts = [...random, ...featured]
 

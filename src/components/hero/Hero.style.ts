@@ -6,7 +6,7 @@ export const Hero = styled.div`
   column-gap: 20px;
   border-radius: 10px;
   background-color: var(--white);
-  padding: 30px;
+  padding: 50px 100px 50px 30px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
 
   > span {
@@ -17,6 +17,10 @@ export const Hero = styled.div`
     flex: 1;
     align-self: flex-end;
   }
+`
+
+export const DashboardHero = styled(Hero)`
+  padding: 30px;
 `
 
 export const Content = styled.div`
