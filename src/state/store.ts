@@ -2,9 +2,11 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import userReducer from 'src/state/user/userSlice'
+import drawerReducer from 'src/state/drawer/drawerSlice'
 
 const rootReducer = combineReducers({
   user: userReducer,
+  drawer: drawerReducer,
 })
 
 export const store = configureStore({

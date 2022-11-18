@@ -7,9 +7,10 @@ import { useRouter } from 'next/router'
 import useSWR, { SWRResponse } from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
-import { fetcher } from '@utils/functions'
+import { fetcher, getTotalPoints } from '@utils/functions'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import { Loader } from '@components/Loader/Loader'
+
 import * as S from '@components/User/User.style'
 
 type User = {
@@ -38,6 +39,7 @@ export const User: NextPage = (): JSX.Element => {
     picture = '',
     sub: userId = '',
     isNewUser,
+    totalPoints = 0,
   } = useSelector((state: RootState) => state.user)
   const { user: { sub = '' } = {} } = useUser()
   const {
@@ -56,7 +58,13 @@ export const User: NextPage = (): JSX.Element => {
       try {
         setUserData(user)
         updateIsNewUser()
-        dispatch(setUser({ ...user, ...(isNewUser && { isNewUser: false }) }))
+        dispatch(
+          setUser({
+            ...user,
+            ...(isNewUser && { isNewUser: false }),
+            totalPoints: getTotalPoints(user.profile.switchItPoints),
+          }),
+        )
       } catch {
         throw new Error('user not updated!')
       }
@@ -76,12 +84,17 @@ export const User: NextPage = (): JSX.Element => {
       ) : (
         <>
           <S.User>
-            <Image src={picture} alt={nickname} width={50} height={50} unoptimized />
-            <span>
-              Hi <S.UserName>{nickname}</S.UserName>, welcome back!
-            </span>
+            {picture && <Image src={picture} alt={nickname} width={50} height={50} unoptimized />}
+            <S.WelcomeMsg>
+              Welcome back, <S.UserName>{nickname}</S.UserName>
+            </S.WelcomeMsg>
           </S.User>
-          {pathname !== '/profile' && <S.Score>{userData?.points}</S.Score>}
+          {pathname !== '/profile' && (
+            <S.Score>
+              {totalPoints}
+              <Image src={'/icons/icon_star.svg'} alt='' width={45} height={45} />
+            </S.Score>
+          )}
         </>
       )}
     </S.UserContainer>

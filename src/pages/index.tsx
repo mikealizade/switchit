@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
-import { fetcher } from '@utils/functions'
+import { fetcher, getTotalPoints } from '@utils/functions'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
 
 import useSWR from 'swr'
@@ -24,7 +24,9 @@ const Home = () => {
         await response.json()
 
       setNewUser(isNewUser)
-      dispatch(setUser(userData))
+      dispatch(
+        setUser({ ...userData, totalPoints: getTotalPoints(userData.profile.switchItPoints) }),
+      )
     } catch {
       // show error
     }

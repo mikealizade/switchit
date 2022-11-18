@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
-import { Tabs as StylesTabs } from '@components/Tabs/Tabs.style'
+import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useShareCode } from '@hooks/useShareCode'
 import { Tabs } from '@components/Tabs/Tabs'
 import * as S from '@components/ProfileSharingCodes/ProfileSharingCodes.style'
@@ -42,9 +42,9 @@ export const ProfileSharingCodes: NextPage = (): JSX.Element => {
 
   return (
     <>
-      <StylesTabs>
+      <StyledTabs>
         <Tabs tabs={['Overview & History', 'How It Works']} panels={panels}></Tabs>
-      </StylesTabs>
+      </StyledTabs>
     </>
   )
 }

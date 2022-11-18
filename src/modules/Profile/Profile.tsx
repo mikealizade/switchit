@@ -7,16 +7,16 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { User } from '@components/User/User'
 import { Badge } from '@components/Badges/Badges'
 import { Card } from '@components/Card/Card'
-import { ProfileHead } from '@components/ProfileHead/ProfileHead'
-import { ProfileSummary, ProfileSummaryProps } from '@components/ProfileSummary/ProfileSummary'
-import { SharingCodes } from '@components/SharingCodes/SharingCodes'
-import { SwitchingFriends } from '@components/SwitchingFriends/SwitchingFriends'
+import { ProfileHead } from './components/ProfileHead/ProfileHead'
+import { ProfileSummary, ProfileSummaryProps } from './components/ProfileSummary/ProfileSummary'
+import { SharingCodes } from '@modules/Dashboard/components/SharingCodes/SharingCodes'
+import { SwitchingFriends } from './components/SwitchingFriends/SwitchingFriends'
 import {
   ClimateImpactReport,
   ClimateImpactReportProps,
-} from '@components/ClimateImpactReport/ClimateImpactReport'
+} from './components/ClimateImpactReport/ClimateImpactReport'
 import { Badges } from '@components/Badges/Badges'
-import { PointsTotal, PointsTotalProps } from '@components/PointsTotal/PointsTotal'
+import { PointsTotal, PointsTotalProps } from './components/PointsTotal/PointsTotal'
 import { CheckList } from '@components/CheckList/CheckList'
 import * as S from '@styles/common.style'
 
@@ -33,7 +33,7 @@ export type User = {
   age: number
   programCode: string
   referralCode: string
-  points: number
+  totalPoints: number
   profile: {
     badges: Badge[]
     climateImpactReport: ClimateImpactReportProps
@@ -56,16 +56,6 @@ const Profile = (): JSX.Element => {
       summary = {},
     } = {},
   } = userData
-  const [points, setTotalPoints] = useState(0)
-
-  useEffect(() => {
-    const totalPoints: number = switchItPoints.reduce(
-      (acc: number, { points }: any) => acc + points,
-      0,
-    )
-
-    setTotalPoints(totalPoints)
-  }, [switchItPoints])
 
   useEffect(() => {
     if (user) {
@@ -87,7 +77,7 @@ const Profile = (): JSX.Element => {
           <S.ColumnContainer>
             <S.Column>
               <Card column padded>
-                <ProfileHead points={points} />
+                <ProfileHead />
                 <ProfileSummary data={summary} />
               </Card>
             </S.Column>
@@ -99,7 +89,7 @@ const Profile = (): JSX.Element => {
                 <Badges data={badges} />
               </Card>
               <Card column>
-                <PointsTotal data={switchItPoints} points={points} />
+                <PointsTotal data={switchItPoints} />
               </Card>
             </S.Column>
             <S.Column>

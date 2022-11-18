@@ -1,16 +1,11 @@
 import { useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { Title } from '@styles/common.style'
-import * as S from '@components/SwitchingJourney/SwitchingJourney.style'
-
-import { CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
-
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import ProgressProvider from './ProgressProvider'
-
-// Animation
-import { easeQuadInOut } from 'd3-ease'
+import 'react-circular-progressbar/dist/styles.css'
+import { Title } from '@styles/common.style'
+import * as S from '@modules/Dashboard/components/SwitchingJourney/SwitchingJourney.style'
 
 type SwitchingJourneyProps = {
   title: string
@@ -21,7 +16,7 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
   title,
   progress,
 }): JSX.Element => {
-  const [valueEnd, setValueEnd] = useState(66)
+  const [valueEnd, setValueEnd] = useState((progress / 5) * 100)
 
   return (
     <S.SwitchingJourney>
@@ -36,7 +31,6 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
             {(value: number) => (
               <CircularProgressbarWithChildren
                 value={value}
-                // text={`${value}%`}
                 styles={{
                   // Customize the root svg element
                   root: {},

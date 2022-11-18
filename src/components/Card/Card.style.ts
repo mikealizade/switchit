@@ -14,10 +14,4 @@ export const Card = styled.section<{
   border-radius: 10px;
   background-color: var(--white);
   padding: ${({ padded }) => (padded ? '60px' : '40px 30px')};
-  /* height: 100%; */
-
-  /* > div {
-    height: auto;
-    margin-top: auto;
-  } */
 `

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { Title } from '@styles/common.style'
-import * as S from '@components/Blog/Blog.style'
+import * as S from '@modules/Dashboard/components/Blog/Blog.style'
 import { useRouter } from 'next/router'
 
 export type Blog = {

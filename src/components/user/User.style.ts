@@ -26,8 +26,19 @@ export const User = styled.div`
   }
 `
 
+export const WelcomeMsg = styled.div`
+  font-size: var(--fsLarge3);
+`
+
 export const Score = styled.div`
   color: var(--pink);
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  span {
+    width: 30px !important;
+  }
 `
 
 export const UserName = styled.span`

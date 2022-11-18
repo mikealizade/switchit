@@ -28,3 +28,6 @@ export const getPostBody = (body: any) => {
     body: JSON.stringify(body),
   }
 }
+
+export const getTotalPoints = switchItPoints =>
+  switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import * as S from '@components/ProfileSummary/ProfileSummary.style'
+import * as S from '@modules/Profile/components/ProfileSummary/ProfileSummary.style'
 import { EditableInput } from '@components/EditableInput/EditableInput'
 
 export type ProfileSummaryProps = {

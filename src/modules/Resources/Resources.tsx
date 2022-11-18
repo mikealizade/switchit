@@ -8,7 +8,7 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
 import { Card } from '@components/Card/Card'
 import * as S from '@styles/common.style'
-import { News } from '@components/News/News'
+import { News } from '@modules/Resources/components/News/News'
 
 export type Resource = {
   id: string

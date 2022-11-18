@@ -9,8 +9,8 @@ import 'normalize.css'
 
 // TODOs
 //// social media login
-//// edit email and pw in auth0
 //// upload user image
+//// edit email and pw in auth0
 //// CDN for pdfs and images
 //// donate
 // mongodb compass

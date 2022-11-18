@@ -4,9 +4,8 @@ import Link from 'next/link'
 import { Navigation } from '@components/Navigation/Navigation'
 import { User } from '@components/User/User'
 import { Aside as AsideContent } from '@components/Aside/Aside'
-import * as S from '@components/Layout/Layout.style'
 import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
-import { ProfileProvider } from '@utils/ProfileDrawerContext'
+import * as S from '@components/Layout/Layout.style'
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const { pathname, replace } = useRouter()
@@ -15,6 +14,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const isSigningUp = pathname === '/signup'
   const isProfile = pathname === '/profile'
   const isDashboard = pathname === '/dashboard'
+  const showUser = pathname !== '/settings'
 
   const onSignUp = () => {
     const params = new URLSearchParams(window.location.search)
@@ -42,13 +42,11 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
           <Navigation />
           {/* {isProfile || isDashboard ? ( */}
           <>
-            <ProfileProvider>
-              <S.AppContent>
-                <User />
-                {children}
-                <ProfileDrawer />
-              </S.AppContent>
-            </ProfileProvider>
+            <S.AppContent>
+              {showUser && <User />}
+              {children}
+              <ProfileDrawer />
+            </S.AppContent>
           </>
           {/* ) 
           : (

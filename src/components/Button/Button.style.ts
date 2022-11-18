@@ -4,10 +4,10 @@ export const Buttons = styled.div`
   display: flex;
   justify-content: center;
   column-gap: 30px;
-  margin-top: 50px;
+  row-gap: 40px;
 `
 
-export const Button = styled.button<{ size: string }>`
+export const Button = styled.button<{ size?: string }>`
   padding: ${({ size }) => (size === 'normal' ? '10px 30px' : '5px 20px')};
   min-width: 118px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,

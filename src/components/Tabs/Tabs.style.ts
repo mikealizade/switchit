@@ -14,6 +14,12 @@ export const Tabs = styled.div`
     height: 3px;
   }
 
+  .MuiTabs-flexContainer {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 40px;
+  }
+
   .profile-tabs {
     margin-bottom: 60px;
     button {
