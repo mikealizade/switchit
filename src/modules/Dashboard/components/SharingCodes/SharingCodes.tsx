@@ -21,7 +21,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
         Sharing Codes
         <Ellipsis onClick={() => dispatch(toggleDrawer('sharingCodes'))}>...</Ellipsis>
       </Title>
-      {!total ? (
+      {!total && isNaN(total) ? (
         <Loader />
       ) : (
         <S.TotalShared>

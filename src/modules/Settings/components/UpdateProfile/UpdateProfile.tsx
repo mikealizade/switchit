@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
 import { RootState } from '@state/store'
 import { Button } from '@components/Button/Button'
+import { FileUploader } from './FileUploader'
 import * as S from '@modules/Settings/Settings.style'
 
 export const UpdateProfile: NextPage = (): JSX.Element => {
@@ -26,9 +27,10 @@ export const UpdateProfile: NextPage = (): JSX.Element => {
         <S.Name>{nickname}</S.Name>
         <S.Email>{email}</S.Email>
       </S.NameEmail>
-      <Button type='button' mode='primary' onClick={uploadProflePicture}>
-        Update Profile Picture
-      </Button>
+      <FileUploader />
+      {/* <Button type='button' mode='primary' onClick={uploadProflePicture}> */}
+      {/* Update Profile Picture */}
+      {/* </Button> */}
     </S.UpdateProfile>
   )
 }

@@ -29,5 +29,5 @@ export const getPostBody = (body: any) => {
   }
 }
 
-export const getTotalPoints = switchItPoints =>
+export const getTotalPoints = (switchItPoints = []) =>
   switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)

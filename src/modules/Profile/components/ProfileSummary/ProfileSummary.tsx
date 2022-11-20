@@ -15,7 +15,7 @@ export const ProfileSummary: NextPage<{ data: Partial<ProfileSummaryProps> }> = 
     <S.ProfileSummary>
       <S.SummaryItem>
         <h2>Switching Statement/Why I Switch</h2>
-        <p>switchingStatement</p>
+        <p>{switchingStatement}</p>
       </S.SummaryItem>
       <S.SummaryItem>
         <h2>Campaigns I support</h2>

@@ -3,16 +3,17 @@ import Head from 'next/head'
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { Provider } from 'react-redux'
 import { store } from 'src/state/store'
-import { Layout } from '@components/Layout/Layout'
+import Layout from '@components/Layout/Layout'
 import '@styles/globals.css'
 import 'normalize.css'
 
 // TODOs
-//// social media login
 //// upload user image
-//// edit email and pw in auth0
 //// CDN for pdfs and images
+//// social media login
+//// edit email and pw in auth0
 //// donate
+// mobile
 // mongodb compass
 // error handling
 // protect routes withPageAuthRequired

@@ -1,16 +1,10 @@
-import { useEffect, useState, useCallback } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
-import useSWR, { SWRResponse } from 'swr'
-import { useUser } from '@auth0/nextjs-auth0'
-import { setUser } from '@state/user/userSlice'
-import { fetcher, getTotalPoints } from '@utils/functions'
-import { useUpdateUser } from '@hooks/useUpdateUser'
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import { Loader } from '@components/Loader/Loader'
-
 import * as S from '@components/User/User.style'
 
 type User = {
@@ -30,46 +24,14 @@ type User = {
   points: number
 }
 
-export const User: NextPage = (): JSX.Element => {
-  const dispatch = useDispatch()
+export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
-  const updateUser = useUpdateUser()
   const {
     nickname = '',
     picture = '',
-    sub: userId = '',
     isNewUser,
     totalPoints = 0,
   } = useSelector((state: RootState) => state.user)
-  const { user: { sub = '' } = {} } = useUser()
-  const {
-    data: { user = {} } = {},
-    error,
-    isValidating,
-  } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
-  const [userData, setUserData] = useState<User>()
-
-  const updateIsNewUser = useCallback(async () => {
-    updateUser({ isNewUser: false, user_metadata: { isNewUser: false } })
-  }, [updateUser])
-
-  useEffect(() => {
-    if (user?._id) {
-      try {
-        setUserData(user)
-        updateIsNewUser()
-        dispatch(
-          setUser({
-            ...user,
-            ...(isNewUser && { isNewUser: false }),
-            totalPoints: getTotalPoints(user.profile.switchItPoints),
-          }),
-        )
-      } catch {
-        throw new Error('user not updated!')
-      }
-    }
-  }, [isNewUser, user, updateIsNewUser, dispatch])
 
   return (
     <S.UserContainer>

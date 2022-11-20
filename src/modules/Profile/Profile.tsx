@@ -51,6 +51,7 @@ const Profile = (): JSX.Element => {
     profile: {
       badges = [],
       sharingCodes = [],
+
       climateImpactReport = {},
       switchItPoints = [],
       summary = {},
