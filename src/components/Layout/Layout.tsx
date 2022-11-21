@@ -2,9 +2,7 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Navigation } from '@components/Navigation/Navigation'
-import { User } from '@components/User/User'
 import { Aside as AsideContent } from '@components/Aside/Aside'
-import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
 import * as S from '@components/Layout/Layout.style'
 import useSWR, { SWRResponse } from 'swr'
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0'
@@ -15,8 +13,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
 import { useUpdateUser } from '@hooks/useUpdateUser'
+import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
+import SignedInApp from '@modules/SignedInApp/SignedInApp'
 
-const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
+export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const { pathname, replace } = useRouter()
   const isHome = pathname === '/'
   const isSignedOut = pathname === '/signedout'
@@ -30,26 +30,12 @@ const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const dispatch = useDispatch()
   const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const updateUser = useUpdateUser()
-
   const {
     data: { user = {} } = {},
     error,
     isValidating,
   } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const { user_metadata: { isNewUser = false } = {} } = user || {}
-
-  const onSignUp = () => {
-    const params = new URLSearchParams(window.location.search)
-
-    console.log('params', params)
-
-    const code = params.get('referralCode')
-
-    console.log('code', code)
-
-    const route = code ? `/signup?referralCode=${code}` : '/signup'
-    replace(route)
-  }
 
   const saveUserData = useCallback(
     async (isNewUser: boolean) => {
@@ -121,23 +107,15 @@ const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   return (
     <S.AppContainer isHome={isHome}>
       {isSignedOut ? (
-        <div>
-          You are signed out
-          <br />
-          <Link href='/api/auth/login'>Sign in</Link>
-          <br />
-          <p onClick={onSignUp}>Sign up</p>
-        </div>
+        <SignedOutLanding />
       ) : (
         <>
           <Navigation />
           {/* {isProfile || isDashboard ? ( */}
           <>
-            <S.AppContent>
-              {showUser && <User isValidating={isValidating} />}
+            <SignedInApp showUser={showUser} isValidating={isValidating}>
               {children}
-              <ProfileDrawer />
-            </S.AppContent>
+            </SignedInApp>
           </>
           {/* ) 
           : (
@@ -157,5 +135,3 @@ const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
     </S.AppContainer>
   )
 }
-
-export default withPageAuthRequired(Layout)

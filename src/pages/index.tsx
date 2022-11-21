@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0'
 
-const Home = () => {
+const Index = () => {
   const router = useRouter()
   const { user, isLoading } = useUser()
 
@@ -14,4 +14,4 @@ const Home = () => {
   }
 }
 
-export default Home
+export default Index
