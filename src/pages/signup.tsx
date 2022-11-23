@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import PostSignupFlow from '@modules/PostSignupFlow/PostSignupFlow'
+import Signup from '@modules/Signup/Signup'
 
 const SignUpJourney: NextPage = () => {
-  return <PostSignupFlow />
+  return <Signup />
 }
 
 export default SignUpJourney

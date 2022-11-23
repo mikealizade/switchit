@@ -1,22 +1,23 @@
-import { useEffect } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
 import { useFriends } from '@hooks/useFriends'
-import { useUser } from '@auth0/nextjs-auth0'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
 import * as S from '@modules/Profile/components/SwitchingFriends/SwitchingFriends.style'
-import { Title } from '@styles/common.style'
+import { Title, Ellipsis } from '@styles/common.style'
 
 export const SwitchingFriends: NextPage = (): JSX.Element => {
-  const { user: { sub = '' } = {} } = useUser()
-  const friends = useFriends()
-
-  // useEffect(() => {
-  //   sub && fetchFriends()
-  // }, [sub])
+  const dispatch = useDispatch()
+  const friends = useFriends() // replace with useSelector once friends available app wide?
 
   return (
     <S.SwitchingFriends>
-      <Title>Switching Friends</Title>
+      <Title>
+        Switching Friends
+        <Ellipsis onClick={() => dispatch(toggleDrawer('friends'))}>
+          <Image src={'/icons/icon_ellipsis.svg'} alt='' width={25} height={25} />
+        </Ellipsis>
+      </Title>
 
       <S.Friends>
         {friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (

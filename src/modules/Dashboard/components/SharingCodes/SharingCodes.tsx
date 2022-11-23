@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useDrawer } from '@hooks/useDrawer'
+import Image from 'next/image'
 import { useShareCode } from '@hooks/useShareCode'
 import { Loader } from '@components/Loader/Loader'
 import { useDispatch } from 'react-redux'
@@ -19,7 +19,9 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
     <S.SharingCodes>
       <Title>
         Sharing Codes
-        <Ellipsis onClick={() => dispatch(toggleDrawer('sharingCodes'))}>...</Ellipsis>
+        <Ellipsis onClick={() => dispatch(toggleDrawer('sharingCodes'))}>
+          <Image src={'/icons/icon_ellipsis.svg'} alt='' width={25} height={25} />
+        </Ellipsis>
       </Title>
       {!total && isNaN(total) ? (
         <Loader />

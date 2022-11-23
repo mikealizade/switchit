@@ -10,7 +10,7 @@ import { SignUpFormStep2 } from '@components/SignUpFormStep2/SignUpFormStep2'
 import { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import * as S from '@modules/PostSignupFlow/PostSignupFlow.style'
+import * as S from '@modules/Signup/Signup.style'
 import Logo from '../../../public/switchit_logo.png'
 
 // Log in flow TODOs
@@ -26,7 +26,7 @@ const pagination = {
   },
 }
 
-const PostSignupFlow: NextPage = () => {
+const Signup: NextPage = () => {
   const [swiper, setSwiper] = useState<SwiperType>()
 
   const nextSlide = () => {
@@ -125,4 +125,4 @@ const PostSignupFlow: NextPage = () => {
   )
 }
 
-export default PostSignupFlow
+export default Signup

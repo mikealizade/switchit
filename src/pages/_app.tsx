@@ -8,16 +8,13 @@ import '@styles/globals.css'
 import 'normalize.css'
 
 // TODOs
-//// upload user image
-//// CDN for pdfs and images
 //// social media login
 //// edit email and pw in auth0
 //// donate
+// pw page
 // mobile
 // mongodb compass
 // error handling
-// protect routes withPageAuthRequired
-//Case 00108281`
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

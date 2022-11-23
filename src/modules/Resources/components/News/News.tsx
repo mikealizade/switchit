@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import * as S from '@modules/Resources/components/News/News.style'
 import { ResourcesType } from '@modules/Resources/Resources'
+import { awsS3Uri } from '@utils/constants'
 
 export const News: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {
   return (
@@ -13,13 +14,15 @@ export const News: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX
 
       <S.NewsList>
         {resources.map(({ id, title, summary, resource }) => {
+          const resourceUri = `${awsS3Uri}/resources/pdfs/${resource}`
+
           return (
             <S.Item key={id}>
-              <S.Download href={`/resources/${resource}`} download={resource}>
+              <S.Download href={`${resourceUri}.pdf`} target='_blank' download={resource}>
                 <S.Title>{title}</S.Title>
                 <S.Intro>{summary}</S.Intro>
                 <Image
-                  src={'/resources/resource_pdf.png'}
+                  src={`${resourceUri}.png`}
                   alt=''
                   width='100%'
                   height='100%'

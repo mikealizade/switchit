@@ -5,7 +5,7 @@ import { Navigation } from '@components/Navigation/Navigation'
 import { Aside as AsideContent } from '@components/Aside/Aside'
 import * as S from '@components/Layout/Layout.style'
 import useSWR, { SWRResponse } from 'swr'
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0'
+import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher, getTotalPoints } from '@utils/functions'
 import { useEffect, useState, useCallback } from 'react'
@@ -37,7 +37,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const { user_metadata: { isNewUser = false } = {} } = user || {}
 
-  const saveUserData = useCallback(
+  const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {
       try {
         const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
@@ -83,7 +83,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
     if (user?._id) {
       try {
         if (isNewUser) {
-          saveUserData(isNewUser)
+          saveNewUserData(isNewUser)
           updateIsNewUser()
         } else {
           dispatch(
@@ -98,7 +98,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
         throw new Error('user not updated!')
       }
     }
-  }, [isNewUser, user, updateIsNewUser, saveUserData, dispatch])
+  }, [isNewUser, user, updateIsNewUser, saveNewUserData, dispatch])
 
   if (isHome || isSigningUp) {
     return <>{children}</>

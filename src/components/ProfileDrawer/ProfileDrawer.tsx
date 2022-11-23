@@ -5,6 +5,7 @@ import { usePrevious } from '@hooks/usePrevious'
 import { RootState } from '@state/store'
 import { ProfileForm } from '@components/ProfileForm/ProfileForm'
 import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
+import { ProfileFriends } from '@components/ProfileFriends/ProfileFriends'
 import * as S from '@components/ProfileDrawer/ProfileDrawer.style'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
@@ -17,6 +18,10 @@ const drawerConfig = {
   sharingCodes: {
     component: <ProfileSharingCodes />,
     backLink: 'Sharing Codes',
+  },
+  friends: {
+    component: <ProfileFriends />,
+    backLink: 'Friends',
   },
 }
 

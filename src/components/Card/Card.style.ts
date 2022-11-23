@@ -13,5 +13,5 @@ export const Card = styled.section<{
   row-gap: 80px;
   border-radius: 10px;
   background-color: var(--white);
-  padding: ${({ padded }) => (padded ? '60px' : '40px 30px')};
+  padding: ${({ padded }) => (padded ? '60px' : '30px')};
 `

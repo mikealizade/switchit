@@ -3,7 +3,14 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['https://randomuser.me/api/'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'switchit-green.s3.eu-west-2.amazonaws.com',
+        // port: '',
+        // pathname: '/account123/**',
+      },
+    ],
   },
   typescript: {
     // !! WARN !!

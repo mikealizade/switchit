@@ -4,6 +4,7 @@ export const SwitchingFriends = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  flex: 1;
 `
 
 export const Friends = styled.ul`

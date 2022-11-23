@@ -78,7 +78,7 @@ export const ShareButton = styled(Button)<{ small?: boolean }>`
 
 export const Ellipsis = styled.div`
   position: absolute;
-  bottom: 15px;
+  bottom: auto;
   right: 0;
   cursor: pointer;
   font-size: var(--fsLarge);
