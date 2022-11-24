@@ -21,7 +21,7 @@ export const regexConfig: Record<string, string> = {
 
 const dev = process.env.NODE_ENV !== 'production'
 
-export const baseUrl = dev ? 'http://localhost:3002' : 'https://switchit-weld.vercel.app'
+export const baseUrl = dev ? 'http://localhost:3000' : 'https://switchit-weld.vercel.app'
 
 export const awsS3Uri = 'https://switchit-green.s3.eu-west-2.amazonaws.com'
 

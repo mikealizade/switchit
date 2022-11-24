@@ -6,14 +6,14 @@ export const ProfileDrawer = styled.aside<{ isDrawerOpen: boolean }>`
   flex-direction: column;
   gap: 40px;
   border-radius: 16px;
-  width: 480px;
-  max-width: 480px;
-  min-width: 480px;
+  width: 466px;
+  max-width: 466px;
+  min-width: 466px;
   position: absolute;
   right: 0;
   top: 0;
   height: 100%;
-  transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateX(0)' : 'translateX(500px)')};
+  transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateX(0)' : 'translateX(470px)')};
   transition: all 0.2s ease-in-out;
   padding: 35px 70px;
   z-index: 1;

@@ -9,6 +9,7 @@ import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
 import { setUser } from '@state/user/userSlice'
+import { showToast } from '@state/toast/toastSlice'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
 import * as St from '@modules/Profile/Profile.style'
@@ -35,12 +36,12 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
     await save(data)
-    toggleDrawer('')()
+    // toggleDrawer('')()
   }
 
   const onCancel = (): void => {
     reset()
-    toggleDrawer('')()
+    // toggleDrawer('')()
   }
 
   const save = async (data: FieldValues): Promise<void> => {
@@ -63,6 +64,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
         },
       }),
     )
+    dispatch(showToast({ isVisible: true, message: 'User updated successfully', type: 'success' }))
   }
 
   useEffect(() => {

@@ -4,11 +4,13 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import userReducer from 'src/state/user/userSlice'
 import drawerReducer from 'src/state/drawer/drawerSlice'
 import friendsReducer from 'src/state/friends/friendsSlice'
+import toastReducer from 'src/state/toast/toastSlice'
 
 const rootReducer = combineReducers({
   user: userReducer,
   drawer: drawerReducer,
   friends: friendsReducer,
+  toast: toastReducer,
 })
 
 export const store = configureStore({

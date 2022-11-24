@@ -15,6 +15,7 @@ import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpd
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
+import { Toast } from '@components/Toast/Toast'
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const { pathname, replace } = useRouter()
@@ -106,6 +107,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
 
   return (
     <S.AppContainer isHome={isHome}>
+      <Toast />
       {isSignedOut ? (
         <SignedOutLanding />
       ) : (

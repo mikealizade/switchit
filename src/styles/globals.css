@@ -149,3 +149,24 @@ fieldset {
   border-radius: 10px;
   background-color: var(--haze);
 }
+
+.success [class*='MuiSnackbarContent'] {
+  background-color: var(--sushi);
+  font-size: var(--fsBase);
+}
+
+.error [class*='MuiSnackbarContent'] {
+  background-color: var(--vermilion);
+  font-size: var(--fsBase);
+}
+
+.info [class*='MuiSnackbarContent'] {
+  background-color: var(--dodgerBlue);
+  font-size: var(--fsBase);
+}
+
+.transparent [class*='MuiSnackbarContent'] {
+  background-color: transparent;
+  box-shadow: none;
+  font-size: var(--fsBase);
+}
