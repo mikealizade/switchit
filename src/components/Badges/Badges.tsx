@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { Ellipsis } from '@components/Ellipsis/Ellipsis'
 import * as S from '@components/Badges/Badges.style'
 import { Title } from '@styles/common.style'
 
@@ -12,7 +13,10 @@ const icons: [string, string, string, string] = ['provider', 'programs', 'news',
 export const Badges: NextPage<{ data: Badge[] }> = ({ data = [] }): JSX.Element => {
   return (
     <S.Badges>
-      <Title>Awards Badges</Title>
+      <Title>
+        Awards Badges
+        <Ellipsis section='awardsbadges' />
+      </Title>
 
       <S.BadgesList>
         {data.map(({ badge, total }: Badge, i) => (

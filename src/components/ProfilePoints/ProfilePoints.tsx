@@ -1,49 +1,66 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
+import Image from 'next/image'
 import { RootState } from '@state/store'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useShareCode } from '@hooks/useShareCode'
 import { Tabs } from '@components/Tabs/Tabs'
-import * as S from '@components/ProfileFriends/ProfileFriends.style'
-import { ShareButton } from '@styles/common.style'
+import { PointsChart } from '@components/PointsChart/PointsChart'
+import * as S from '@components/ProfilePoints/ProfilePoints.style'
+import { PointsTotal } from '@modules/Profile/components/PointsTotal/PointsTotal'
 
 export const ProfilePoints: NextPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
   const shareCode = useShareCode()
   const {
-    profile: { sharingCodes = [] },
+    profile: { switchItPoints = [] },
+    totalPoints,
   } = user
 
   const panels: [React.ReactNode, React.ReactNode, React.ReactNode] = [
-    <S.Share key='feed'>
-      <ShareButton type='button' onClick={() => shareCode()}>
-        Share
-      </ShareButton>
-
-      <S.SentCodes>
-        <p>Sent</p>
-        {sharingCodes.length}
-      </S.SentCodes>
-    </S.Share>,
-    <div key='history'>History content</div>,
+    // <PointsTotal key='overview' data={switchItPoints} />,
     <>
+      <PointsChart data={switchItPoints} total={totalPoints} />
+      <S.TotalPoints>
+        <Image src={'/icons/icon_star_grey.svg'} alt='' width={25} height={25} />
+        {totalPoints} Points
+      </S.TotalPoints>
+      <S.Header>Breakdown</S.Header>
+      <S.PointTypes>
+        {switchItPoints.map(({ type, points }: { type: string; points: number }) => (
+          <S.Item key={type}>
+            <S.PointType>{type}</S.PointType>
+            <S.Points>{points}pt</S.Points>
+          </S.Item>
+        ))}
+      </S.PointTypes>
+    </>,
+    <div key='history'>10/5/23 - Banks switched</div>,
+    <>
+      <S.Header>About Points</S.Header>
       <p>
         Track your impact by earning points, and use those points to give back. Every year we
         partner with a new nonprofit to expand our reach. We believe tackling climate change is
         wholistic. Points can be spent in our coin store and are earned through a variety of
         different actions across the Switch It web app.
       </p>
-      <p>
-        Earn points if your friends join, earn more points if they switch, and if your friends
-        friends switch? You guessed it. More points.
-      </p>
+      <S.Header>Scoring Breakdown</S.Header>
+      <S.Scoring>
+        <li>1 x Send a code</li>
+        <li>5 x Post a Google Review</li>
+        <li>10 x An invited friend creates a profile</li>
+        <li>15 x Post to socials</li>
+        <li>50 x Writee your breakup letter</li>
+        <li>100 x Write a hello letter</li>
+        <li>500 x Start a program</li>
+      </S.Scoring>
     </>,
   ]
 
   return (
     <>
-      <StyledTabs>
+      <StyledTabs wide>
         <Tabs tabs={['Overview', 'History', 'How It Works']} panels={panels}></Tabs>
       </StyledTabs>
     </>

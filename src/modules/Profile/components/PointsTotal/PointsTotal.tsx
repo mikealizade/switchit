@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { PointsChart } from '@components/PointsChart/PointsChart'
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
+import { Ellipsis } from '@components/Ellipsis/Ellipsis'
 
 import * as S from '@modules/Profile/components/PointsTotal/PointsTotal.style'
 import { Title } from '@styles/common.style'
@@ -17,7 +18,10 @@ export const PointsTotal: NextPage<{ data: PointsTotalProps }> = ({ data = [] })
 
   return (
     <S.PointsTotal>
-      <Title>Switch It Points</Title>
+      <Title>
+        Switch It Points
+        <Ellipsis section='points' />
+      </Title>
       <S.TotalPoints>
         <Image src={'/icons/icon_star_grey.svg'} alt='' width={45} height={45} />
         {totalPoints} Points

@@ -5,34 +5,27 @@ export const ProfileHead = styled.header<{ isProfile?: boolean }>`
   column-gap: 40px;
   flex-direction: column;
   row-gap: ${({ isProfile }) => (isProfile ? '90px' : '160px')};
+  position: relative;
 
-  div {
+  .picture {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
 
     &:first-child {
-      flex: 1;
       background-color: var(--sushi);
       border-radius: 15px;
       margin: ${({ isProfile }) => (isProfile ? '0' : '-35px')};
-      position: relative;
     }
-
-    &:last-child {
-      flex: 2;
+    span {
+      border-radius: 50%;
+      width: 140px !important;
+      height: 140px !important;
+      position: absolute;
+      border: 2px solid var(--white) !important;
+      left: ${({ isProfile }) => (isProfile ? 'calc(50% - 70px);' : '20px')};
+      bottom: -70px;
     }
-  }
-
-  img,
-  span {
-    border-radius: 50%;
-    width: 140px !important;
-    height: 140px !important;
-    position: absolute;
-    border: 1px solid var(--white) !important;
-    left: ${({ isProfile }) => (isProfile ? 'calc(50% - 70px);' : '20px')};
-    bottom: -70px;
   }
 `
 
@@ -43,11 +36,24 @@ export const Name = styled.h1`
   text-transform: capitalize;
 `
 
+export const ProfileNames = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+`
+
 export const ProfileName = styled.h2`
   margin: 0;
-  font-size: var(--fsLarge1);
-  font-weight: bold;
+  font-size: var(--fsMedium8);
   text-transform: capitalize;
+  text-align: center;
+`
+
+export const Username = styled.div`
+  margin: 0;
+  font-size: var(--fsBase);
+  color: var(--slate);
+  font-weight: bold;
   text-align: center;
 `
 

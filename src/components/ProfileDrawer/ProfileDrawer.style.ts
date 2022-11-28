@@ -15,7 +15,7 @@ export const ProfileDrawer = styled.aside<{ isDrawerOpen: boolean }>`
   height: 100%;
   transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateX(0)' : 'translateX(470px)')};
   transition: all 0.2s ease-in-out;
-  padding: 35px 70px;
+  padding: 35px 40px;
   z-index: 1;
   box-shadow: 1px 1px 5px var(--slate);
 `

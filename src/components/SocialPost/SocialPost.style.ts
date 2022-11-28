@@ -28,6 +28,15 @@ export const Content = styled.div`
   flex-direction: column;
   padding: 30px;
   border-radius: 20px;
+  border: 0;
+  white-space: pre-wrap;
+  &[contenteditable='true'] {
+    border: 2px solid var(--sushi);
+  }
+
+  img {
+    width: 100% !important;
+  }
 `
 
 export const Buttons = styled.div`

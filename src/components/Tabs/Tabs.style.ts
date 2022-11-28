@@ -1,13 +1,10 @@
 import styled from '@emotion/styled'
 
-export const Tabs = styled.div`
+export const Tabs = styled.div<{ wide?: boolean }>`
   display: flex;
   flex-direction: column;
   flex: initial;
-
-  .MuiTabs-flexContainer {
-    justify-content: space-between;
-  }
+  overflow-y: auto;
 
   .MuiTabs-indicator {
     background-color: var(--pink);
@@ -17,7 +14,7 @@ export const Tabs = styled.div`
   .MuiTabs-flexContainer {
     display: flex;
     justify-content: flex-start;
-    column-gap: 40px;
+    column-gap: ${({ wide }) => (wide ? '10px' : '30px')};
   }
 
   .profile-tabs {

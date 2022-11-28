@@ -1,27 +1,21 @@
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import { useShareCode } from '@hooks/useShareCode'
 import { Loader } from '@components/Loader/Loader'
-import { useDispatch } from 'react-redux'
+import { Ellipsis } from '@components/Ellipsis/Ellipsis'
 import * as S from '@modules/Dashboard/components/SharingCodes/SharingCodes.style'
 import { Title } from '@styles/common.style'
-import { ShareButton, Ellipsis } from '@styles/common.style'
-import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { ShareButton } from '@styles/common.style'
 
 type SharingCodesProps = { total: number }
 
 export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Element => {
-  // const { toggleDrawer } = useDrawer()
-  const dispatch = useDispatch()
   const shareCode = useShareCode()
 
   return (
     <S.SharingCodes>
       <Title>
         Sharing Codes
-        <Ellipsis onClick={() => dispatch(toggleDrawer('sharingCodes'))}>
-          <Image src={'/icons/icon_ellipsis.svg'} alt='' width={25} height={25} />
-        </Ellipsis>
+        <Ellipsis section='sharingCodes' />
       </Title>
       {!total && isNaN(total) ? (
         <Loader />

@@ -65,6 +65,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
       }),
     )
     dispatch(showToast({ isVisible: true, message: 'User updated successfully', type: 'success' }))
+    // toast(true, 'User updated successfully', 'success')
   }
 
   useEffect(() => {
@@ -74,14 +75,15 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   return (
     <>
       <S.ProfileHead isProfile>
-        <div>
+        <div className='picture'>
           {picture && nickname && (
             <Image src={picture} alt={nickname} width={132} height={132} unoptimized />
           )}
         </div>
-        <div>
+        <S.ProfileNames>
           <S.ProfileName>{nickname}</S.ProfileName>
-        </div>
+          <S.Username>{username}</S.Username>
+        </S.ProfileNames>
       </S.ProfileHead>
       <FormProvider {...methods}>
         <St.ProfileForm onSubmit={handleSubmit(onSubmit)} className='form'>

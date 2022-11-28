@@ -13,7 +13,7 @@ export const Toast = () => {
     if (isVisible) {
       delay = setTimeout(() => {
         dispatch(showToast({ isVisible: false }))
-      }, 2000)
+      }, 4000)
     }
 
     return () => {

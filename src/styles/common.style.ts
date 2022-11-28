@@ -18,6 +18,13 @@ export const ColumnContainer = styled.section`
   row-gap: 25px;
   position: relative;
 
+  grid-column: 2/3;
+  column-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  /* grid-template-columns: repeat(auto-fill, minmax(min(33%, 33%), 1fr)); */
+
+  display: grid;
+
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;
   }

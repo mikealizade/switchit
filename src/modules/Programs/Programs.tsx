@@ -6,9 +6,15 @@ import { SocialPost } from '@components/SocialPost/SocialPost'
 import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
 import * as S from '@styles/common.style'
+import { socialPostsConfig, SocialPostConfig } from '@utils/constants'
 
 const Programs = (): JSX.Element => {
   // const { user: { sub = '' } = {}, isLoading = false } = useUser()
+  const school = 'lse' //from db?
+  const type = 'twitter' //from db?
+  const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
+
+  console.log('socialTwitter', socialTwitter)
 
   return (
     <>
@@ -23,18 +29,33 @@ const Programs = (): JSX.Element => {
         <Hero type='programs' />
         <S.ColumnContainer>
           <S.Column>
-            <Card>
-              <SocialPost school='lse' type='twitter' />
+            <Card column>
+              {socialTwitter.map((postsArray, i) => {
+                console.log('postsArray', postsArray)
+                return (
+                  <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
+                )
+              })}
             </Card>
           </S.Column>
           <S.Column>
-            <Card>
-              <SocialPost school='lse' type='facebook' />
+            <Card column>
+              {socialTwitter.map((postsArray, i) => {
+                console.log('postsArray', postsArray)
+                return (
+                  <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
+                )
+              })}
             </Card>
           </S.Column>
           <S.Column>
-            <Card>
-              <SocialPost school='lse' type='instagram' />
+            <Card column>
+              {socialTwitter.map((postsArray, i) => {
+                console.log('postsArray', postsArray)
+                return (
+                  <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
+                )
+              })}
             </Card>
           </S.Column>
         </S.ColumnContainer>
