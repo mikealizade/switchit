@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="51px" viewBox="0 0 51 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>magnifying glass</title>
+    <g id="bank-switching-journey---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="SWITCHING-JOURNEY---active-user-Copy-2" transform="translate(-368.000000, -860.000000)" stroke="#153F45" stroke-width="0.85">
+            <g id="Group-8" transform="translate(337.000000, 839.000000)">
+                <g id="magnifying-glass" transform="translate(32.000000, 22.000000)">
+                    <ellipse id="Oval" cx="18.7974138" cy="18.8298791" rx="18.7974138" ry="18.8298791"></ellipse>
+                    <ellipse id="Oval" cx="18.7974138" cy="18.8298791" rx="14.7844828" ry="14.8100173"></ellipse>
+                    <path d="M18.7974138,7.95509499 C23.7818966,7.95509499 27.9637931,11.2979275 29.2732759,15.8678756" id="Path"></path>
+                    <path d="M34.0465517,29.7892919 L48.112931,43.8799655 C49.2956897,45.0647668 49.2956897,46.9689119 48.112931,48.111399 L48.112931,48.111399 C46.9301724,49.2962003 45.0293103,49.2962003 43.8887931,48.111399 L29.8224138,34.0207254" id="Path"></path>
+                    <path d="M38.3551724,34.1476684 C37.087931,35.6709845 35.6939655,37.1096718 34.1310345,38.3791019" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

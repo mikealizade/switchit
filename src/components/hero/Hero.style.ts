@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 export const Hero = styled.div`
   display: flex;
   justify-content: space-between;
-  column-gap: 20px;
+  column-gap: 50px;
   border-radius: 10px;
   background-color: var(--white);
   padding: 50px 100px 50px 30px;

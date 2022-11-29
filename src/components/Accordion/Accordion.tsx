@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import Image from 'next/image'
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion'
@@ -6,6 +6,12 @@ import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/Accord
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import * as S from './Accordion.style'
+
+type Award = {
+  count: number
+  type: string
+  icon: string
+}
 
 const AccordionItem = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -23,24 +29,18 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     expandIcon={<Image src={'/icons/icon_chevron_right.svg'} alt='' width={18} height={18} />}
     {...props}
   />
-))(({ theme }) => ({
+))(() => ({
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
   },
 }))
 
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+const AccordionDetails = styled(MuiAccordionDetails)(() => ({
   fontSize: '2rem',
 }))
 
-type Award = {
-  count: number
-  type: string
-  icon: string
-}
-
 export const Accordion = ({ data }: { data: any }) => {
-  const [expanded, setExpanded] = React.useState<string | false>('panel1')
+  const [expanded, setExpanded] = useState<string | false>('')
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false)
@@ -50,7 +50,7 @@ export const Accordion = ({ data }: { data: any }) => {
     <S.AccordionContainer>
       {data.map(({ count, type, icon }: Award, i: number) => (
         <AccordionItem
-          key='type'
+          key={`type${i}`}
           expanded={expanded === `panel${i}`}
           onChange={handleChange(`panel${i}`)}
         >

@@ -1,12 +1,20 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
 import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { User } from '@components/User/User'
 import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
 import { fetcher } from '@utils/functions'
-// import * as S from '@modules/Switching/Switching.style'
+import {
+  SwitchingColumnContainer,
+  SwitchingColumn,
+  Header,
+  StartJourneyContainer,
+  StartJourney,
+} from '@modules/Switching/Switching.style'
 import * as S from '@styles/common.style'
 
 const Switching = (): JSX.Element => {
@@ -23,17 +31,33 @@ const Switching = (): JSX.Element => {
 
       <S.Content>
         <Hero type='switching' />
-        <S.ColumnContainer>
+        <SwitchingColumnContainer>
+          <SwitchingColumn>
+            <Card column>
+              <Header>Active Journeys</Header>
+              <Card shadow>
+                <StartJourneyContainer>
+                  <Link href='/switching/selectBank'>
+                    <StartJourney>
+                      <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                      Start a Switching Journey
+                    </StartJourney>
+                  </Link>
+                  <p>
+                    Have multiple bank accounts? No problem!
+                    <br /> {`We'll switch one at a time.`}
+                  </p>
+                </StartJourneyContainer>
+              </Card>
+            </Card>
+          </SwitchingColumn>
           <S.Column>
-            <Card>content</Card>
+            <Card stretch column>
+              Completed Journeys
+              <p>{`You haven't completed any journeys`}</p>
+            </Card>
           </S.Column>
-          <S.Column>
-            <Card>content</Card>
-          </S.Column>
-          <S.Column>
-            <Card>content</Card>
-          </S.Column>
-        </S.ColumnContainer>
+        </SwitchingColumnContainer>
       </S.Content>
     </>
   )

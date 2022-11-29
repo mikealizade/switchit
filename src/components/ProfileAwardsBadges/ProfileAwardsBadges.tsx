@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
 import { RootState } from '@state/store'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { useShareCode } from '@hooks/useShareCode'
 import { Tabs } from '@components/Tabs/Tabs'
 import * as S from '@components/ProfileAwardsBadges/ProfileAwardsBadges.style'
 import Link from 'next/link'
@@ -12,11 +11,10 @@ import { Accordion } from '@components/Accordion/Accordion'
 
 export const ProfileAwardsBadges: NextPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
-  const shareCode = useShareCode()
-  const {
-    profile: { switchItPoints = [] },
-    totalPoints,
-  } = user
+  // const {
+  //   profile: { switchItPoints = [] },
+  //   totalPoints,
+  // } = user
 
   const data = [
     {

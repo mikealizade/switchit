@@ -7,7 +7,7 @@ export const SocialPost = styled.div`
   flex: 1;
   background-color: var(--white);
 
-  > span:first-child {
+  > span:first-of-type {
     align-self: flex-start;
   }
 `

@@ -12,7 +12,7 @@ export const ProfileHead = styled.header<{ isProfile?: boolean }>`
     flex-direction: column;
     row-gap: 12px;
 
-    &:first-child {
+    &:first-of-type {
       background-color: var(--sushi);
       border-radius: 15px;
       margin: ${({ isProfile }) => (isProfile ? '0' : '-35px')};

@@ -18,12 +18,25 @@ export const Button = styled.button<{ size?: string }>`
   line-height: 1.75;
   border-radius: 10px;
   letter-spacing: 0.5px;
-  border: 0;
+  /* border: 0; */
   outline: none;
   cursor: pointer;
   justify-content: center;
-  background-color: ${({ className }) => (className === 'primary' ? 'var(--pink)' : 'lightgrey')};
-  color: var(--white);
+  background-color: ${({ className }) =>
+    className === 'primary'
+      ? 'var(--pink)'
+      : className === 'secondary'
+      ? 'var(--white)'
+      : 'lightgrey'};
+  border: 1px solid
+    ${({ className }) =>
+      className === 'primary' || className === 'secondary' ? 'var(--pink)' : 'lightgrey'};
+  color: ${({ className }) =>
+    className === 'primary'
+      ? 'var(--white)'
+      : className === 'secondary'
+      ? 'var(--pink)'
+      : 'lightgrey'};
 
   &[type='reset'] {
     background-color: #e2dfda;
@@ -35,6 +48,7 @@ export const Button = styled.button<{ size?: string }>`
     color: #222;
     cursor: default;
     pointer-events: none;
+    border: 1px solid transparent;
   }
 `
 

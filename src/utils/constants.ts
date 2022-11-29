@@ -135,9 +135,9 @@ export const defaultProfile = {
 
 export const heroConfig: HeroConfig = {
   switching: {
-    title: 'Switching',
-    text: 'Mollit ipsum quis sunt culpa irure laboris.',
-    icon: 'icon_mortar.svg',
+    title: `What We're Switching`,
+    text: 'We’re kicking off 2023 with current accounts and student accounts in the UK. But we’ve heard you! Information is coming soon on business banking, pensions, credit cards and we’re launching in the US in July. Follow us on socials and sign up for our newsletters to stay tuned on launches and more. We’re so excited that you’re switching with us!',
+    icon: 'icon_switching_earth.svg',
   },
   impact: {
     title: 'Impact',

@@ -12,11 +12,11 @@ export const ClimateImpactReport = styled.div`
     flex-direction: column;
     row-gap: 10px;
 
-    &:first-child {
+    &:first-of-type {
       width: 100%;
     }
 
-    &:not(:first-child) {
+    &:not(:first-of-type) {
       flex: 1;
     }
   }

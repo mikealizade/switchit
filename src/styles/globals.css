@@ -15,6 +15,7 @@
   --black: #000;
   --base: #153f45;
   --beige: #e2dfda;
+  --sand: #f2f0ed;
   --pink: #ec3793;
   --grey: #999;
   --slate: #858997;
@@ -29,6 +30,7 @@
   --haze: #edf0f0;
   --alabaster: #f5f5f5;
   --pampas: #f2f0ed;
+  --nileBlue: #153f45;
   --fsSmall0: 1rem;
   --fsSmall1: 1.1rem;
   --fsSmall2: 1.2rem;
@@ -44,6 +46,7 @@
   --fsLarge2: 2.2rem;
   --fsLarge3: 2.3rem;
   --fsLarge4: 2.4rem;
+  --fsLarge9: 2.9rem;
   --fsVLarge3: 3rem;
   --fsVLarge6: 3.6rem;
   --fsHuge0: 4rem;
@@ -143,6 +146,37 @@ fieldset {
 .swiper-pagination-bullet-active {
   color: var(--white);
   background: #007aff;
+}
+
+.react-select [class$='control'] {
+  border-radius: 10px;
+  border-color: var(--grey);
+}
+
+.react-select [class$='control'] + [class$='menu'] {
+  border-radius: 10px;
+  background-color: var(--sand);
+  padding: 10px;
+  font-size: var(--fsMedium7);
+}
+
+.react-select [class$='control'] + [class$='menu'] div div {
+  border-radius: 8px;
+}
+
+.react-select [class$='control'] + [class$='menu'] div div:focus-visible,
+.react-select [class$='control'] + [class$='menu'] div div:active,
+.react-select [class$='control'] + [class$='menu'] div div:hover {
+  background-color: var(--nileBlue);
+  color: var(--white);
+}
+
+.react-select [class$='control'] + [class$='menu'] div [class$='option'] {
+  background-color: var(--sand);
+}
+
+.react-select [class$='IndicatorsContainer'] {
+  display: none;
 }
 
 .grey-card {
