@@ -4,7 +4,7 @@ import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
-import * as S from '@pages/switching/Switching.style'
+import * as S from '@modules/Switching/PreSwitching.style'
 import Link from 'next/link'
 
 const ChooseJourney = (): JSX.Element => {

@@ -6,10 +6,10 @@ import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
 import { setSelectedBank } from '@state/bank/bankSlice'
-import * as S from '@pages/switching/Switching.style'
+import * as S from '@modules/Switching/PreSwitching.style'
 import { Select } from '@components/Select/Select'
 
-export const BankFinder = (): JSX.Element => {
+const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
   const { replace } = useRouter()
   const { data, error } = useSWR('/api/bankdata', fetcher)
@@ -81,3 +81,5 @@ export const BankFinder = (): JSX.Element => {
     </S.BankFinder>
   )
 }
+
+export default BankFinder
