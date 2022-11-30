@@ -1,14 +1,26 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
+import { Column } from '@styles/common.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import Link from 'next/link'
 
 const ChooseJourney = (): JSX.Element => {
+  const dispatch = useDispatch()
   const { replace } = useRouter()
+  const [type, setActive] = useState('readyToSwitch')
+  const route = type === 'readyToSwitch' ? '/switching/selectaction' : '/switching/selectaction2'
+
+  const selectJourney = (type: string) => () => {
+    setActive(type)
+    dispatch(toggleDrawer(type))
+  }
 
   return (
     <>
@@ -20,39 +32,55 @@ const ChooseJourney = (): JSX.Element => {
       </Head>
 
       <Content>
-        <Card column padded>
-          <S.HeaderContainer>
-            <S.Header>{`Let's figure out the best journey for you.`}</S.Header>
-            <S.Subheader>{`Please select which of the following best describes what you'd like to do.`}</S.Subheader>
-          </S.HeaderContainer>
+        <S.SwitchingColumnContainer>
+          <S.SwitchingColumn>
+            <Card column padded>
+              <S.HeaderContainer>
+                <S.Header>{`Let's figure out the best journey for you.`}</S.Header>
+                <S.Subheader>{`Please select which of the following best describes what you'd like to do.`}</S.Subheader>
+              </S.HeaderContainer>
 
-          <S.Section>
-            <S.ChooseJourneyLink isActive>
-              <Link href='/switching/selectaction'>
-                {` Ready to switch or can't switch but still want to open a green bank account`}
-              </Link>
-            </S.ChooseJourneyLink>
-            <S.ChooseJourneyLink>
-              <Link href='/switching/selectaction'>
-                Not ready to switch but still want to use my voice to act
-              </Link>
-            </S.ChooseJourneyLink>
-          </S.Section>
+              <S.Section>
+                <S.ChooseJourneyLink
+                  onClick={selectJourney('readyToSwitch')}
+                  isActive={type === 'readyToSwitch'}
+                >
+                  {/* <Link href='/switching/selectaction'> */}
+                  {` Ready to switch or can't switch but still want to open a green bank account`}
+                  {/* </Link> */}
+                </S.ChooseJourneyLink>
+                <S.ChooseJourneyLink
+                  onClick={selectJourney('notReadyToSwitch')}
+                  isActive={type === 'notReadyToSwitch'}
+                >
+                  {/* <Link href='/switching/selectaction'> */}
+                  Not ready to switch but still want to use my voice to act
+                  {/* </Link> */}
+                </S.ChooseJourneyLink>
+              </S.Section>
 
-          <S.Section>
-            {/* <S.ButtonContainer>
-              <Button
-                type='button'
-                onClick={() => {
-                  replace('/switching/selectaction')
-                }}
-              >
-                Next
-              </Button>
-            </S.ButtonContainer> */}
-            <ProgressBar step={3} />
-          </S.Section>
-        </Card>
+              <S.Section>
+                <S.ButtonContainer>
+                  <Button
+                    type='button'
+                    onClick={() => {
+                      dispatch(toggleDrawer(''))
+                      replace(route)
+                    }}
+                  >
+                    Next
+                  </Button>
+                </S.ButtonContainer>
+                <ProgressBar step={3} />
+              </S.Section>
+            </Card>
+          </S.SwitchingColumn>
+          <Column>
+            <Card stretch column>
+              <h2>Impact Card</h2>
+            </Card>
+          </Column>
+        </S.SwitchingColumnContainer>
       </Content>
     </>
   )

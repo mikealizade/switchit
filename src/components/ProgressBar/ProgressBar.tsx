@@ -30,7 +30,7 @@ export const ProgressBar: FC<{ step: number }> = ({ step }) => {
   useEffect(() => {
     setTimeout(() => {
       setStep(step)
-    }, 500)
+    }, 300)
   }, [step])
 
   const state = `${newStep * 20}%`

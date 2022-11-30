@@ -1,6 +1,26 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
+export const SwitchingColumnContainer = styled.section`
+  display: flex;
+  column-gap: 25px;
+  flex-wrap: wrap;
+  row-gap: 25px;
+  position: relative;
+
+  ${() => mediaQuery.xlaptop} {
+    row-gap: inherit;
+  }
+`
+
+export const SwitchingColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  flex: 2;
+  flex-wrap: wrap;
+`
+
 export const Header = styled.h2`
   font-size: var(--fsLarge9);
 
@@ -67,9 +87,8 @@ export const BankScoreContainer = styled.div`
   flex: 1;
 `
 export const BankData = styled.div`
-  flex: 4;
+  flex: 3;
   line-height: 20px;
-  padding-right: 100px;
 `
 
 export const ProgressText = styled.div`
@@ -118,6 +137,7 @@ export const ButtonContainer = styled.div`
   justify-content: flex-end;
   margin-left: auto;
   flex: 1;
+  column-gap: 30px;
 
   button {
     align-self: flex-end;
@@ -160,6 +180,7 @@ export const ActionSelector = styled.ul`
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 export const Item = styled.li`
@@ -197,6 +218,7 @@ export const MetaData = styled.div`
   justify-content: space-between;
   font-size: var(--fsSmall3);
   margin-top: auto;
+  width: 100%;
 `
 
 export const LinkContainer = styled.div`
@@ -206,4 +228,42 @@ export const LinkContainer = styled.div`
   justify-content: space-between;
   row-gap: 10px;
   flex: 1;
+`
+
+//start journey
+
+export const StepSelector = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  row-gap: 22px;
+  flex: 1;
+  flex-direction: column;
+`
+
+export const StepItem = styled.li`
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 30px;
+`
+
+export const StepContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 5px;
+  justify-content: flex-start;
+`
+
+export const StepHeader = styled.h3`
+  font-size: var(--fsLarge0);
+  color: var(--black);
+  font-weight: normal;
+`
+
+export const StepText = styled.p`
+  font-size: var(--fsMedium9);
 `

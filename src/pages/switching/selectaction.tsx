@@ -1,67 +1,29 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
+import { actionsConfig } from '@utils/constants'
+import { Column } from '@styles/common.style'
 import * as S from '@modules/Switching/PreSwitching.style'
-import Link from 'next/link'
-
-const actionsConfig = [
-  {
-    text: 'Switch To or Open A Green Bank Account',
-    icon: 'hand',
-    duration: '3',
-    pointsEarned: '100',
-    route: 'welcome-to-switching-journey',
-  },
-  {
-    text: `Write your 'breakup' letter`,
-    icon: 'brokenheart',
-    duration: '2',
-    pointsEarned: '50',
-    route: 'breakup-letter',
-  },
-  {
-    text: `Write your 'hello' letter`,
-    icon: 'wave',
-    duration: '2',
-    pointsEarned: '50',
-    route: 'hello-letter',
-  },
-  {
-    text: 'Post To Socials',
-    icon: 'socialposts',
-    duration: '4',
-    pointsEarned: '25',
-    route: 'post-to-socials',
-  },
-  {
-    text: 'Tell Your Community',
-    icon: 'speechbubbles',
-    duration: '3',
-    pointsEarned: '100',
-    route: 'tell-your-community',
-  },
-  {
-    text: 'Write Reviews',
-    icon: 'reviews',
-    duration: '2',
-    pointsEarned: '50',
-    route: 'write-reviews',
-  },
-  {
-    text: 'Tell Us How It Went',
-    icon: 'camera',
-    duration: '3',
-    pointsEarned: '100',
-    route: 'how-it-went',
-  },
-]
+import { useRef, useState } from 'react'
+import { SelectActionCard } from '@components/SelectActionCard/SelectActionCard'
+import { SelectActionContainer } from '@components/SelectActionCard/SelectActionCard.style'
 
 const SelectAction = (): JSX.Element => {
   const { replace } = useRouter()
+  const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
+  const [, setAction] = useState(actionsConfig[0])
+  const indexRef = useRef(0)
+
+  const selectAction = (index: number) => () => {
+    setRoute(actionsConfig[index].route)
+    setAction(actionsConfig[index])
+    indexRef.current = index
+  }
 
   return (
     <>
@@ -73,45 +35,62 @@ const SelectAction = (): JSX.Element => {
       </Head>
 
       <Content>
-        <Card column padded>
-          <S.HeaderContainer>
-            <S.Header>{`Let’s design your switching journey, and maximise your impact`}</S.Header>
-            <S.Subheader>{`Select which of the following actions you’d like to take. The more actions completed, the bigger the impact. Don’t worry, you can always add more later`}</S.Subheader>
-          </S.HeaderContainer>
+        <S.SwitchingColumnContainer>
+          <S.SwitchingColumn>
+            <Card column padded>
+              <S.HeaderContainer>
+                <S.Header>{`Let's design your switching journey, and maximise your impact`}</S.Header>
+                <S.Subheader>{`Select which of the following actions you'd like to take. The more actions completed, the bigger the impact. Don't worry, you can always add more later`}</S.Subheader>
+              </S.HeaderContainer>
 
-          <S.Section>
-            <S.ActionSelector>
-              {actionsConfig.map(({ text, icon, duration, pointsEarned, route }) => (
-                <S.Item key={route}>
-                  <Link href={`/switching/${route}`}>
-                    <S.LinkContainer>
-                      <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
-                      <h3>{text}</h3>
-                      <S.MetaData>
-                        <span>{duration}min</span>
-                        <span>{pointsEarned}pts</span>
-                      </S.MetaData>
-                    </S.LinkContainer>
-                  </Link>
-                </S.Item>
-              ))}
-            </S.ActionSelector>
-          </S.Section>
+              <S.Section>
+                <S.ActionSelector>
+                  {actionsConfig.map(({ text, icon, duration, pointsEarned, route }, i: number) => (
+                    <S.Item key={route}>
+                      <S.LinkContainer onClick={selectAction(i)}>
+                        <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
+                        <h3>{text}</h3>
+                        <S.MetaData>
+                          <span>{duration}min</span>
+                          <span>{pointsEarned}pts</span>
+                        </S.MetaData>
+                      </S.LinkContainer>
+                    </S.Item>
+                  ))}
+                </S.ActionSelector>
+              </S.Section>
 
-          <S.Section>
-            <S.ButtonContainer>
-              <Button
-                type='button'
-                onClick={() => {
-                  replace('/switching/selectaction')
-                }}
-              >
-                Next
-              </Button>
-            </S.ButtonContainer>
-            <ProgressBar step={4} />
-          </S.Section>
-        </Card>
+              <S.Section>
+                <S.ButtonContainer>
+                  <Button
+                    type='button'
+                    onClick={() => {
+                      // replace(selectedRoute)
+                      replace('/switching/start-journey')
+                    }}
+                  >
+                    Next
+                  </Button>
+                </S.ButtonContainer>
+                <ProgressBar step={4} />
+              </S.Section>
+            </Card>
+          </S.SwitchingColumn>
+          <Column>
+            <Card stretch column>
+              <h2>Impact Card</h2>
+              <SelectActionContainer>
+                {actionsConfig.map((action, i) => (
+                  <SelectActionCard
+                    key={action.route}
+                    action={action}
+                    isActive={i === indexRef.current}
+                  />
+                ))}
+              </SelectActionContainer>
+            </Card>
+          </Column>
+        </S.SwitchingColumnContainer>
       </Content>
     </>
   )
