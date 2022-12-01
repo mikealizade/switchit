@@ -8,6 +8,7 @@ import { updateUser } from '@state/user/userSlice'
 import { Input } from '@components/Input/Input'
 import { Button, TextButton } from '@components/Button/Button'
 import { defaultProfile } from '@utils/constants'
+import { Form } from '@styles/common.style'
 
 export const SignUpFormStep2: NextPage<{
   data?: any
@@ -43,35 +44,37 @@ export const SignUpFormStep2: NextPage<{
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)} className='form'>
-        <Input
-          name='programCode'
-          label='Do you have a program code?'
-          {...(data && { defaultValue: data.programCode })}
-          {...methods}
-          minLength={1}
-          maxLength={50}
-          required={false}
-        />
-        <p>Find out more about our school programs at our …</p>
-        <Input
-          name='referralCode'
-          label='Do you have a referral code?'
-          {...(data || (referralCode && { defaultValue: data?.referralCode || referralCode }))}
-          {...methods}
-          minLength={1}
-          maxLength={50}
-          required={false}
-        />
-        <p>
-          Did you know you can … *earn point, etc by sending your friends, family and collegues
-          invites? Find more on our communities page.
-        </p>
-        <Button type='submit'>Next</Button>
-        <TextButton type='submit' mode='text'>
-          Skip
-        </TextButton>
-      </form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <fieldset>
+          <Input
+            name='programCode'
+            label='Do you have a program code?'
+            {...(data && { defaultValue: data.programCode })}
+            {...methods}
+            minLength={1}
+            maxLength={50}
+            required={false}
+          />
+          <p>Find out more about our school programs at our …</p>
+          <Input
+            name='referralCode'
+            label='Do you have a referral code?'
+            {...(data || (referralCode && { defaultValue: data?.referralCode || referralCode }))}
+            {...methods}
+            minLength={1}
+            maxLength={50}
+            required={false}
+          />
+          <p>
+            Did you know you can … *earn point, etc by sending your friends, family and collegues
+            invites? Find more on our communities page.
+          </p>
+          <Button type='submit'>Next</Button>
+          <TextButton type='submit' mode='text'>
+            Skip
+          </TextButton>
+        </fieldset>
+      </Form>
     </FormProvider>
   )
 }

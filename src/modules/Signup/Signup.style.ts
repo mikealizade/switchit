@@ -17,7 +17,7 @@ export const PostSignupFlowContainer = styled.main`
   background-size: 50%;
 
   button[class^='primary'] {
-    width: 100%;
+    align-self: normal;
   }
 `
 

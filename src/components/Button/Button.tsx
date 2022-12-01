@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import * as S from '@components/Button/Button.style'
 
 type ButtonProps = {
-  onClick?: () => void
+  onClick?: (data?: any) => void
   children: string | React.ReactNode
   type: 'button' | 'reset' | 'submit'
   mode?: string

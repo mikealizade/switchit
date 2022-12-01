@@ -57,6 +57,7 @@ export const Title = styled.h2`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  align-self: stretch;
 
   fieldset {
     display: flex;
@@ -66,10 +67,14 @@ export const Form = styled.form`
 
   label {
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
   }
 
   input {
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    border: 1px solid var(--grey);
   }
 `
 

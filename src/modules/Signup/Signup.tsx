@@ -8,6 +8,8 @@ import { Button, TextButton } from '@components/Button/Button'
 import { SignUpForm } from '@components/SignUpForm/SignUpForm'
 import { SignUpFormStep2 } from '@components/SignUpFormStep2/SignUpFormStep2'
 import { Pagination } from 'swiper'
+import { Modal } from '@components/Modal/Modal'
+import { useModal } from '@hooks/useModal'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import * as S from '@modules/Signup/Signup.style'
@@ -28,6 +30,7 @@ const pagination = {
 
 const Signup: NextPage = () => {
   const [swiper, setSwiper] = useState<SwiperType>()
+  const [isModalVisible, setToggleModal] = useModal()
 
   const nextSlide = () => {
     swiper?.slideNext()
@@ -35,6 +38,10 @@ const Signup: NextPage = () => {
 
   const previousSlide = () => {
     swiper?.slidePrev()
+  }
+
+  const onToggleModal = (isVisible: boolean) => (): void => {
+    setToggleModal(isVisible!)
   }
 
   return (
@@ -112,7 +119,11 @@ const Signup: NextPage = () => {
 
             <SwiperSlide>
               <S.SwiperHeader>Let&apos;s get some basic information</S.SwiperHeader>
-              <SignUpForm nextSlide={nextSlide} previousSlide={previousSlide} />
+              <SignUpForm
+                nextSlide={nextSlide}
+                previousSlide={previousSlide}
+                setToggleModal={setToggleModal}
+              />
             </SwiperSlide>
             <SwiperSlide>
               <S.SwiperHeader>Let&apos;s get some more information</S.SwiperHeader>
@@ -120,6 +131,21 @@ const Signup: NextPage = () => {
             </SwiperSlide>
           </Swiper>
         </S.Content>
+        {isModalVisible && (
+          <Modal
+            title='Why do we want to know this information?'
+            confirmText='OK'
+            cancelText='Cancel'
+            onConfirm={onToggleModal(false)}
+            onClose={onToggleModal(false)}
+          >
+            Sunt aute anim magna velit irure dolore. Sunt do nostrud nulla anim. Deserunt
+            reprehenderit non cupidatat enim nostrud irure non. Nulla duis nostrud dolore elit nisi
+            nostrud incididunt eu voluptate aute incididunt aliqua tempor ipsum. Commodo cillum
+            commodo ad duis in. Elit et velit sint enim magna adipisicing commodo commodo aute
+            proident. Do id incididunt sint ullamco occaecat Lorem eiusmod in cupidatat nostrud id.
+          </Modal>
+        )}
       </S.PostSignupFlowContainer>
     </>
   )

@@ -4,26 +4,29 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
-import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { fetcher } from '@utils/functions'
 import { setSelectedBank } from '@state/bank/bankSlice'
-import { Modal } from '@components/Modal/Modal'
-import { Input } from '@components/Input/Input'
-import { FormButtons } from '@components/FormButtons/FormButtons'
 import { countries } from '@utils/countries'
-import * as S from '@modules/Switching/PreSwitching.style'
 import { Select } from '@components/Select/Select'
+import { Modal } from '@components/Modal/Modal'
+import { useModal } from '@hooks/useModal'
+import { Input } from '@components/Input/Input.style'
+import * as S from '@modules/Switching/PreSwitching.style'
+import { Form } from '@styles/common.style'
+
+type Sort = { label: string }
 
 const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
-  const methods = useForm()
   const { replace } = useRouter()
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [banks, setBanks] = useState([])
   const [isBankSelected, selectBank] = useState(false)
-  const [isOpen, setOpen] = useState(false)
   const [country, setCountry] = useState('')
-  const { handleSubmit, reset } = methods
+  const [isConfirmation, setConfirmation] = useState(false)
+  const [value, setValue] = useState('')
+  const [isModalVisible, setToggleModal] = useModal()
+  const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
 
   const onSelectBank = (value: string) => {
     selectBank(true)
@@ -34,16 +37,26 @@ const BankFinder = (): JSX.Element => {
     setCountry(value)
   }
 
-  const onSubmit = (data: any): void => {
-    // dispatch(setUser({ ...user, ...data }))
+  const onSubmit = (): void => {
+    if (!isConfirmation) {
+      console.log('country', country)
+      console.log('value', value)
+      setConfirmation(true)
+    }
+    if (isConfirmation) {
+      resetForm()
+    }
   }
 
   const onCancel = (): void => {
-    setOpen(false)
+    setToggleModal(false)
   }
 
-  const onToggleModal = (): void => {
-    setOpen(!isOpen)
+  const resetForm = (): void => {
+    setToggleModal(false)
+    setConfirmation(false)
+    setValue('')
+    setCountry('')
   }
 
   useEffect(() => {
@@ -66,7 +79,7 @@ const BankFinder = (): JSX.Element => {
             <Select
               name='bankfinder'
               defaultValue={{ value: '', label: 'Select your bank...' }}
-              options={banks.sort(({ label: a }, { label: b }) => (a < b ? -1 : a > b ? 1 : 0))}
+              options={banks.sort(sortSelect)}
               onChange={onSelectBank}
             />
           </S.BankList>
@@ -78,7 +91,7 @@ const BankFinder = (): JSX.Element => {
               type='button'
               mode='secondary'
               onClick={() => {
-                setOpen(true)
+                setToggleModal(true)
               }}
             >
               {`My bank isn't listed`}
@@ -97,7 +110,7 @@ const BankFinder = (): JSX.Element => {
         <S.ViewResearch>
           <p>
             Interested in our research? We have conducted a thorough analysis of the financial
-            services sector.{' '}
+            services sector.
             <a href='#' target='_blank'>
               Find our resources and criteria for recommendation.
             </a>
@@ -106,40 +119,43 @@ const BankFinder = (): JSX.Element => {
         <ProgressBar step={1} />
       </S.BankFinder>
 
-      <Modal title='Help Us Help You' btnText='Submit' isOpen={isOpen} toggleModal={onToggleModal}>
-        <p>
-          {`Looks like we haven't gotten to your bank yet but we're always digging into new providers.
-        Submit your bank below and we'll reach out when we've got the data`}
-        </p>
-
-        <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <fieldset>
-              <Input
-                name='bankName'
-                label='Bank'
-                // {...(bankName && { defaultValue: bankName })}
-                {...methods}
-                minLength={1}
-                maxLength={50}
-                pattern='alpha'
-                message='Please enter a bank name'
-                disabled={false}
-                required={false}
-              />
-              <Select
-                name='countries'
-                defaultValue={{ value: '', label: 'Select country' }}
-                options={countries.sort(({ label: a }, { label: b }) =>
-                  a < b ? -1 : a > b ? 1 : 0,
-                )}
-                onChange={onSelectCountry}
-              />
-            </fieldset>
-            <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} />
-          </form>
-        </FormProvider>
-      </Modal>
+      {isModalVisible && (
+        <Modal
+          title={isConfirmation ? '' : 'Help Us Help You'}
+          confirmText={isConfirmation ? 'Done' : `Submit`}
+          showCancel={!isConfirmation}
+          cancelText='Cancel'
+          onConfirm={onSubmit}
+          onClose={onCancel}
+          isDisabled={!value || !country}
+        >
+          {isConfirmation ? (
+            <p>Thanks for letting us know!</p>
+          ) : (
+            <>
+              <p>
+                {`Looks like we haven't gotten to your bank yet but we're always digging into new providers.
+        Submit your bank below and we'll reach out when we've got the data.`}
+              </p>
+              <Form>
+                <fieldset>
+                  <label>Bank</label>
+                  <Input name='bankName' value={value} onChange={e => setValue(e.target.value)} />
+                  <label>
+                    Country
+                    <Select
+                      name='countries'
+                      defaultValue={{ value: '', label: 'Select country' }}
+                      options={countries.sort(sortSelect)}
+                      onChange={onSelectCountry}
+                    />
+                  </label>
+                </fieldset>
+              </Form>
+            </>
+          )}
+        </Modal>
+      )}
     </>
   )
 }

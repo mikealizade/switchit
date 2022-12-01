@@ -9,7 +9,6 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   row-gap: 12px;
-  color: #8e8d8d;
 `

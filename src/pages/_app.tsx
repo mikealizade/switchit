@@ -4,8 +4,8 @@ import { UserProvider } from '@auth0/nextjs-auth0'
 import { Provider } from 'react-redux'
 import { store } from 'src/state/store'
 import { Layout } from '@components/Layout/Layout'
-import '@styles/globals.css'
 import 'normalize.css'
+import '@styles/globals.css'
 
 // TODOs
 //// social media login

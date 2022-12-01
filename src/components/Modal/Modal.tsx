@@ -1,89 +1,52 @@
-import * as React from 'react'
+import { FC } from 'react'
 import { Button } from '@components/Button/Button'
-import { styled } from '@mui/material/styles'
-import Dialog from '@mui/material/Dialog'
-import DialogTitle from '@mui/material/DialogTitle'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import IconButton from '@mui/material/IconButton'
-import CloseIcon from '@mui/icons-material/Close'
-import { NextPage } from 'next'
+import * as S from './Modal.style'
 
 type ModalProps = {
-  title?: string
+  mode?: string
   children: React.ReactNode
-  isOpen: boolean
-  btnText: string
-  toggleModal: () => void
-}
-
-interface DialogTitleProps {
-  id: string
-  children?: React.ReactNode
+  title?: string
+  confirmText?: string
+  loadingText?: string
+  cancelText?: string
+  isLoading?: boolean
+  isDisabled?: boolean
+  showCancel?: boolean
+  onConfirm: (data: any) => void
   onClose: () => void
 }
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(5),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(3),
-  },
-}))
-
-const Title = (props: DialogTitleProps) => {
-  const { children, onClose, ...other } = props
-
-  return (
-    <DialogTitle sx={{ m: 0, p: 2, fontSize: '1.8rem', fontWeight: 'bold' }} {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          aria-label='close'
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 3,
-            color: theme => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
-  )
-}
-
-export const Modal: NextPage<ModalProps> = ({
-  title,
+export const Modal: FC<ModalProps> = ({
+  mode = '',
   children,
-  isOpen,
-  btnText,
-  toggleModal,
+  title = '',
+  confirmText = 'Confirm',
+  loadingText = 'Confirming',
+  cancelText,
+  onConfirm,
+  onClose,
+  showCancel = true,
+  isLoading = false,
+  isDisabled = false,
 }): JSX.Element => {
   return (
-    <div>
-      <BootstrapDialog
-        onClose={toggleModal}
-        aria-labelledby='customized-dialog-title'
-        open={isOpen}
-        sx={{
-          fontSize: '1.6rem',
-          minWidth: '400px',
-        }}
-      >
-        <Title id='customized-dialog-title' onClose={toggleModal}>
-          {title}
-        </Title>
-        <DialogContent dividers>{children} </DialogContent>
-        <DialogActions>
-          <Button type='button' onClick={toggleModal}>
-            {btnText}
+    <>
+      <S.ModalContainer data-testid='modal-bg' {...(onClose && { onClick: onClose })} />
+      <S.ModalContent role='dialog'>
+        {title && <h2>{title}</h2>}
+        <S.ModalBody>{children}</S.ModalBody>
+
+        <S.ButtonsContainer>
+          {showCancel && (
+            <Button type='button' mode='secondary' onClick={onClose}>
+              {cancelText}
+            </Button>
+          )}
+          <Button type='button' disabled={isDisabled} onClick={onConfirm}>
+            {confirmText}
           </Button>
-        </DialogActions>
-      </BootstrapDialog>
-    </div>
+        </S.ButtonsContainer>
+      </S.ModalContent>
+    </>
   )
 }
