@@ -43,6 +43,11 @@ export const SwitchingColumnContainer = styled.section`
   flex-wrap: wrap;
   row-gap: 25px;
   position: relative;
+  flex-direction: column;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+  }
 
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;
@@ -61,8 +66,10 @@ export const Header = styled.h2`
   width: 100%;
   font-size: inherit;
 
-  + section {
-    width: 50%;
+  ${() => mediaQuery.laptop} {
+    + section {
+      width: 50%;
+    }
   }
 `
 

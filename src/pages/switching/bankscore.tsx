@@ -14,6 +14,8 @@ import { RootState } from '@state/store'
 import { Column } from '@styles/common.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 
+// TODO links to good bank buttons
+
 type BankResult = { score: number; scoreHeadline: string; scoreCopy: string; info: string }
 
 const colourConfig = {
@@ -73,6 +75,7 @@ const BankScore = (): JSX.Element => {
                       <CircularProgressbarWithChildren
                         value={value}
                         circleRatio={0.7}
+                        strokeWidth={17}
                         styles={buildStyles({
                           rotation: 0.65,
                           strokeLinecap: 'round',
@@ -95,18 +98,32 @@ const BankScore = (): JSX.Element => {
                   <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
                   <p>{scoreCopy}</p>
                 </S.Rating>
-                <S.ButtonContainer>
-                  <Button
-                    type='button'
-                    onClick={() => {
-                      replace('/switching/choosejourney')
-                    }}
-                  >
-                    Next
-                  </Button>
+                <S.ButtonContainer alignLeft={score === 5}>
+                  {score === 5 ? (
+                    <>
+                      <Button type='button' onClick={() => {}}>
+                        Check Another Bank
+                      </Button>
+                      <Button type='button' onClick={() => {}}>
+                        I’m Still Interested In Other Green Banks
+                      </Button>
+                      <Button type='button' onClick={() => {}}>
+                        What Else Can I Do To Act?
+                      </Button>
+                    </>
+                  ) : (
+                    <Button
+                      type='button'
+                      onClick={() => {
+                        replace('/switching/choosejourney')
+                      }}
+                    >
+                      Next
+                    </Button>
+                  )}
                 </S.ButtonContainer>
               </S.BankRating>
-              <ProgressBar step={2} />
+              {/* <ProgressBar step={2} /> */}
             </Card>
           </S.SwitchingColumn>
           <Column>

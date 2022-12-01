@@ -139,8 +139,15 @@ const BankFinder = (): JSX.Element => {
               </p>
               <Form>
                 <fieldset>
-                  <label>Bank</label>
-                  <Input name='bankName' value={value} onChange={e => setValue(e.target.value)} />
+                  <label htmlFor='bankName'>
+                    Bank
+                    <Input
+                      id='bankName'
+                      name='bankName'
+                      value={value}
+                      onChange={e => setValue(e.target.value)}
+                    />
+                  </label>
                   <label>
                     Country
                     <Select

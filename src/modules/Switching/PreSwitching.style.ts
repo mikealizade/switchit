@@ -7,6 +7,11 @@ export const SwitchingColumnContainer = styled.section`
   flex-wrap: wrap;
   row-gap: 25px;
   position: relative;
+  flex-direction: column;
+
+  ${() => mediaQuery.laptop} {
+    flex-direction: row;
+  }
 
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;
@@ -72,9 +77,13 @@ export const Buttons = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  column-gap: 40px;
+  /* column-gap: 40px; */
   flex-wrap: wrap;
   row-gap: 20px;
+
+  ${() => mediaQuery.tablet} {
+    column-gap: 40px;
+  }
 `
 
 export const BankInfo = styled.div`
@@ -87,7 +96,7 @@ export const BankScoreContainer = styled.div`
   flex: 1;
 `
 export const BankData = styled.div`
-  flex: 3;
+  flex: 2;
   line-height: 20px;
 `
 
@@ -120,7 +129,7 @@ export const ViewResearch = styled.div`
 export const BankRating = styled.div`
   font-size: var(--fsMedium9);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   row-gap: 30px;
 `
 
@@ -132,15 +141,17 @@ export const Rating = styled.div`
   flex: 4;
 `
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{ alignLeft: boolean }>`
   display: flex;
   justify-content: flex-end;
-  margin-left: auto;
+  margin-left: ${({ alignLeft }) => (alignLeft ? '0' : 'auto')};
   flex: 1;
   column-gap: 30px;
+  flex-direction: column;
+  row-gap: 15px;
 
   button {
-    align-self: flex-end;
+    align-self: ${({ alignLeft }) => (alignLeft ? 'flex-start' : 'flex-end')};
   }
 `
 
@@ -248,6 +259,10 @@ export const StepItem = styled.li`
   align-items: center;
   justify-content: flex-start;
   column-gap: 30px;
+
+  > span {
+    min-width: 35px;
+  }
 `
 
 export const StepContainer = styled.div`
