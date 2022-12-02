@@ -261,3 +261,34 @@ export const actionsConfig = [
     actionText: `We want to know how it went. We also want other people to know how it went, why you switched, and anything else. Send a video of you cutting up your card, or your switching manifesto to help us out or to post publically`,
   },
 ]
+
+export const startJourneyConfig = [
+  {
+    step: 'Step 1',
+    text: 'Choose And Switch To or Open A Green Bank Account',
+  },
+  {
+    step: 'Step 2',
+    text: `Write your 'Breakup' letter`,
+  },
+  {
+    step: 'Step 3',
+    text: `Write your 'Hello' letter`,
+  },
+  {
+    step: 'Step 4',
+    text: 'Post to Socials',
+  },
+  {
+    step: 'Step 5',
+    text: 'Tell Your Community',
+  },
+  {
+    step: 'Step 6',
+    text: 'Write Reviews',
+  },
+  {
+    step: 'Step 7',
+    text: 'Tell Us How It Went',
+  },
+]

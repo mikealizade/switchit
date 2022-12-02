@@ -23,5 +23,14 @@ export const Item = styled.li<{ isActive: boolean }>`
   place-items: center;
   color: ${({ isActive }) => (isActive ? 'var(--sushi)' : 'var(--grey)')};
   width: 20%;
-  padding-left: 10px;
+  font-size: var(--fsSmall5);
+  font-family: 'Konsolev SemiBold';
+
+  &:nth-child(4) {
+    justify-content: center;
+  }
+
+  &:nth-child(5) {
+    justify-content: flex-end;
+  }
 `

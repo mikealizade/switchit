@@ -13,7 +13,7 @@ import Link from 'next/link'
 
 const ChooseJourney = (): JSX.Element => {
   const dispatch = useDispatch()
-  const { replace } = useRouter()
+  const { push } = useRouter()
   const [type, setActive] = useState('readyToSwitch')
   const route = type === 'readyToSwitch' ? '/switching/selectaction' : '/switching/selectaction2'
 
@@ -65,7 +65,7 @@ const ChooseJourney = (): JSX.Element => {
                     type='button'
                     onClick={() => {
                       dispatch(toggleDrawer(''))
-                      replace(route)
+                      push(route)
                     }}
                   >
                     Next

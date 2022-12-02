@@ -18,7 +18,7 @@ type Sort = { label: string }
 
 const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
-  const { replace } = useRouter()
+  const { push } = useRouter()
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [banks, setBanks] = useState([])
   const [isBankSelected, selectBank] = useState(false)
@@ -100,7 +100,7 @@ const BankFinder = (): JSX.Element => {
               type='button'
               disabled={!isBankSelected}
               onClick={() => {
-                replace('/switching/bankscore')
+                push('/switching/bankscore')
               }}
             >
               Next
@@ -110,7 +110,7 @@ const BankFinder = (): JSX.Element => {
         <S.ViewResearch>
           <p>
             Interested in our research? We have conducted a thorough analysis of the financial
-            services sector.
+            services sector.{' '}
             <a href='#' target='_blank'>
               Find our resources and criteria for recommendation.
             </a>

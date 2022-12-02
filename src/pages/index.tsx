@@ -2,15 +2,15 @@ import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0'
 
 const Index = () => {
-  const router = useRouter()
+  const { push } = useRouter()
   const { user, isLoading } = useUser()
 
   if (user) {
-    router.replace('/dashboard')
+    push('/dashboard')
   }
 
   if (!isLoading && !user) {
-    router.replace('/signedout')
+    push('/signedout')
   }
 }
 

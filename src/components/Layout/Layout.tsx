@@ -18,7 +18,7 @@ import SignedInApp from '@modules/SignedInApp/SignedInApp'
 import { Toast } from '@components/Toast/Toast'
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
-  const { pathname, replace } = useRouter()
+  const { pathname } = useRouter()
   const isHome = pathname === '/'
   const isSignedOut = pathname === '/signedout'
   const isSigningUp = pathname === '/signup'

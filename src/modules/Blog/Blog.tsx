@@ -24,9 +24,11 @@ const Blog: NextPage<{ post: PageProps }> = ({
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
-          <S.PostTitle>{title}</S.PostTitle>
-          <S.PostDate>{created.substring(0, 15)}</S.PostDate>
-          <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
+          <S.BlogCard column>
+            <S.PostTitle>{title}</S.PostTitle>
+            <S.PostDate>{created.substring(0, 15)}</S.PostDate>
+            <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
+          </S.BlogCard>
         </S.Content>
       </ErrorBoundary>
     </>

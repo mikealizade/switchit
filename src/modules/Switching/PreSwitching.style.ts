@@ -88,7 +88,13 @@ export const Buttons = styled.div`
 
 export const BankInfo = styled.div`
   display: flex;
-  column-gap: 70px;
+  flex-direction: column;
+  row-gap: 40px;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+    column-gap: 70px;
+  }
 `
 
 export const BankScoreContainer = styled.div`
@@ -141,13 +147,13 @@ export const Rating = styled.div`
   flex: 4;
 `
 
-export const ButtonContainer = styled.div<{ alignLeft: boolean }>`
+export const ButtonContainer = styled.div<{ column?: boolean; alignLeft?: boolean }>`
   display: flex;
   justify-content: flex-end;
   margin-left: ${({ alignLeft }) => (alignLeft ? '0' : 'auto')};
   flex: 1;
   column-gap: 30px;
-  flex-direction: column;
+  flex-direction: ${({ column }) => (column ? 'column' : 'row')};
   row-gap: 15px;
 
   button {
@@ -194,9 +200,11 @@ export const ActionSelector = styled.ul`
   justify-content: center;
 `
 
-export const Item = styled.li`
+export const Item = styled.li<{ isActive?: boolean }>`
   border: 2px solid var(--nileBlue);
-  background-color: var(--white);
+  color: ${({ isActive }) => (isActive ? 'var(--white)' : 'var(--nileBlue)')};
+  background-color: ${({ isActive }) => (isActive ? 'var(--nileBlue)' : 'var(--white)')};
+  border: 1px solid ${({ isActive }) => (isActive ? 'var(--white)' : 'var(--nileBlue)')};
   border-radius: 10px;
   padding: 12px;
   flex: 1;

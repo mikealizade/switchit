@@ -3,7 +3,7 @@ import * as S from './ProgressBar.style'
 
 const containerStyle = {
   borderRadius: '16px',
-  background: 'var(--beige',
+  background: 'var(--beige)',
 }
 
 const contentStyle = {
@@ -12,7 +12,6 @@ const contentStyle = {
   textAlign: 'center',
   lineHeight: '24px',
   fontFamily: 'sans-serif',
-  transition: '1s',
   borderRadius: '16px',
 } as const
 
@@ -25,26 +24,32 @@ const steps: string[] = [
 ]
 
 export const ProgressBar: FC<{ step: number }> = ({ step }) => {
-  const [newStep, setStep] = useState(0)
+  const [style, setStyle] = useState<Record<string, string>>({
+    ...contentStyle,
+    width: `${(step - 1) * 20}%`,
+  })
 
   useEffect(() => {
-    setTimeout(() => {
-      setStep(step)
-    }, 300)
+    const delay = setTimeout(() => {
+      setStyle({ ...contentStyle, width: `${step * 20}%`, transition: '1s' })
+    }, 800)
+
+    return () => {
+      clearTimeout(delay)
+    }
   }, [step])
 
-  const state = `${newStep * 20}%`
   return (
     <S.ProgressBarContainer>
       <div style={containerStyle}>
-        <div style={{ ...contentStyle, width: state }}></div>
+        <div style={{ ...style }}></div>
       </div>
       <S.Steps>
-        {steps.map((step: string, i: number) => {
+        {steps.map((item: string, i: number) => {
           const index = (i += 1)
           return (
-            <S.Item key={step} isActive={newStep === index}>
-              {step}
+            <S.Item key={item} isActive={step >= index}>
+              {item}
             </S.Item>
           )
         })}

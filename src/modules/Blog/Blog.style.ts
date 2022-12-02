@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Card } from '@components/Card/Card.style'
 
 export const Content = styled.main`
   background-color: #f2f0ed;
@@ -7,6 +8,10 @@ export const Content = styled.main`
   flex-grow: 1;
   padding: 40px;
   row-gap: 50px;
+`
+
+export const BlogCard = styled(Card)`
+  row-gap: 40px;
 `
 
 export const PostTitle = styled.h2`

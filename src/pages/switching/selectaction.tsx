@@ -13,10 +13,12 @@ import { useRef, useState } from 'react'
 import { SelectActionCard } from '@components/SelectActionCard/SelectActionCard'
 import { SelectActionContainer } from '@components/SelectActionCard/SelectActionCard.style'
 
+type ActionsConfig = typeof actionsConfig[0]
+
 const SelectAction = (): JSX.Element => {
-  const { replace } = useRouter()
+  const { push } = useRouter()
   const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
-  const [, setAction] = useState(actionsConfig[0])
+  const [currentAction, setAction] = useState<ActionsConfig | null>(null)
   const indexRef = useRef(0)
 
   const selectAction = (index: number) => () => {
@@ -46,7 +48,7 @@ const SelectAction = (): JSX.Element => {
               <S.Section>
                 <S.ActionSelector>
                   {actionsConfig.map(({ text, icon, duration, pointsEarned, route }, i: number) => (
-                    <S.Item key={route}>
+                    <S.Item key={route} isActive={icon === currentAction?.icon}>
                       <S.LinkContainer onClick={selectAction(i)}>
                         <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
                         <h3>{text}</h3>
@@ -64,9 +66,10 @@ const SelectAction = (): JSX.Element => {
                 <S.ButtonContainer>
                   <Button
                     type='button'
+                    disabled={!currentAction}
                     onClick={() => {
-                      // replace(selectedRoute)
-                      replace('/switching/start-journey')
+                      // push(selectedRoute)
+                      push('/switching/start-journey')
                     }}
                   >
                     Next

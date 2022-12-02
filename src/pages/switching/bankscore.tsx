@@ -27,7 +27,7 @@ const colourConfig = {
 }
 
 const BankScore = (): JSX.Element => {
-  const { replace } = useRouter()
+  const { push } = useRouter()
   const selectedBank = useSelector((state: RootState) => state.selectedBank)
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
@@ -48,9 +48,9 @@ const BankScore = (): JSX.Element => {
       setBankScore({ ...result, info })
       setValueEnd((score / 5) * 100)
     }
-  }, [data, score, selectedBank, replace])
+  }, [data, score, selectedBank])
 
-  if (!selectedBank) replace('/switching')
+  if (!selectedBank) push('/switching')
 
   return (
     <>
@@ -98,7 +98,7 @@ const BankScore = (): JSX.Element => {
                   <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
                   <p>{scoreCopy}</p>
                 </S.Rating>
-                <S.ButtonContainer alignLeft={score === 5}>
+                <S.ButtonContainer alignLeft={score === 5} column>
                   {score === 5 ? (
                     <>
                       <Button type='button' onClick={() => {}}>
@@ -115,7 +115,7 @@ const BankScore = (): JSX.Element => {
                     <Button
                       type='button'
                       onClick={() => {
-                        replace('/switching/choosejourney')
+                        push('/switching/choosejourney')
                       }}
                     >
                       Next
@@ -123,7 +123,7 @@ const BankScore = (): JSX.Element => {
                   )}
                 </S.ButtonContainer>
               </S.BankRating>
-              {/* <ProgressBar step={2} /> */}
+              <ProgressBar step={2} />
             </Card>
           </S.SwitchingColumn>
           <Column>
