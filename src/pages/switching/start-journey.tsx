@@ -76,7 +76,7 @@ const SelectAction = (): JSX.Element => {
                   <Button
                     type='button'
                     onClick={() => {
-                      push(selectedRoute)
+                      push('/switching/action-choose-bank')
                     }}
                   >
                     Start Journey

@@ -131,6 +131,64 @@ export const defaultProfile = {
       { type: 'Provider Switching Actions', points: 0 },
     ],
   },
+  letters: {
+    personal: {
+      hello: '',
+      breakup: '',
+    },
+    business: {
+      hello: '',
+      breakup: '',
+    },
+  },
+  switchingJourneys: {
+    personal: [
+      {
+        isStep1Complete: false,
+      },
+      {
+        isStep2Complete: false,
+      },
+      {
+        isStep3Complete: false,
+      },
+      {
+        isStep4Complete: false,
+      },
+      {
+        isStep5Complete: false,
+      },
+      {
+        isStep6Complete: false,
+      },
+      {
+        isStep7Complete: false,
+      },
+    ],
+    business: [
+      {
+        isStep1Complete: false,
+      },
+      {
+        isStep2Complete: false,
+      },
+      {
+        isStep3Complete: false,
+      },
+      {
+        isStep4Complete: false,
+      },
+      {
+        isStep5Complete: false,
+      },
+      {
+        isStep6Complete: false,
+      },
+      {
+        isStep7Complete: false,
+      },
+    ],
+  },
 }
 
 export const heroConfig: HeroConfig = {
