@@ -1,114 +1,18 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
-import { Button, TextButton } from '@components/Button/Button'
-import { actionsConfig } from '@utils/constants'
+import { bankConfig } from '@utils/constants'
 import { HeaderContainer, Header, Subheader, Section } from '@modules/Switching/PreSwitching.style'
 import { useEffect, useState } from 'react'
-import * as S from './ActionChooseBank.style'
-
-type ActionsConfig = typeof actionsConfig[0]
-
-const bankConfig = [
-  {
-    accountTypes: ['personal'],
-    icon: 'starling',
-    bank: 'Starling Bank',
-    details: 'Best current account',
-    score: '5',
-    fee: '0',
-    project: '',
-    link: 'https://www.starlingbank.com',
-    features: ['app', 'savings', 'deposits', 'mortgages'],
-    meta: {
-      personal: ['High  Street', 'Desktop Banking'],
-      student: ['High  Street', 'Desktop Banking'],
-    },
-  },
-  {
-    accountTypes: ['personal', 'student'],
-    icon: 'monzo',
-    bank: 'Monzo',
-    details: '',
-    score: '',
-    fee: '',
-    project: '',
-    link: 'https://monzo.com',
-    features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
-    meta: {
-      personal: ['High  Street', 'Desktop Banking'],
-      student: ['High  Street', 'Desktop Banking'],
-    },
-  },
-  {
-    accountTypes: ['personal', 'student'],
-    icon: 'triodos',
-    bank: 'Triodos Bank',
-    details: '',
-    score: '',
-    fee: '',
-    project: '',
-    link: 'https://www.triodos.co.uk',
-    features: ['branches', 'app', 'savings', 'mortgages'],
-    meta: {
-      personal: ['High  Street', 'Desktop Banking'],
-      student: ['High  Street', 'Desktop Banking'],
-    },
-  },
-  {
-    accountTypes: ['student'],
-    icon: 'nationwide',
-    bank: 'Nationwide',
-    details: '',
-    score: '',
-    fee: '',
-    project: '',
-    link: 'https://www.nationwide.co.uk',
-    features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
-    meta: {
-      personal: ['High  Street', 'Desktop Banking'],
-      student: ['High  Street', 'Desktop Banking'],
-    },
-  },
-]
-
-const accountTypes = ['personal', 'student']
-
-const accountFeatures = [
-  {
-    type: 'branches',
-    text: 'Physical branches',
-  },
-  {
-    type: 'app',
-    text: 'Mobile app',
-  },
-  {
-    type: 'savings',
-    text: 'Savings account',
-  },
-  {
-    type: 'deposits',
-    text: 'International deposits',
-  },
-  {
-    type: 'mortgages',
-    text: 'Mortgages',
-  },
-]
+import { BankFilters } from '@modules/Switching/BankFilters'
+import { BanksTable } from '@modules/Switching/BanksTable'
 
 const ActionChooseBank = (): JSX.Element => {
   const { push } = useRouter()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
-  const [expandedRow, setExpandRow] = useState<number | null>(null)
-
-  const expandRow = (index: number) => () => {
-    setExpandRow(index)
-  }
 
   useEffect(() => {
     console.log('selectedAccountTypes', selectedAccountTypes)
@@ -151,114 +55,13 @@ const ActionChooseBank = (): JSX.Element => {
           </HeaderContainer>
 
           <Section>
-            <S.BankFilter>
-              <S.AccountList>
-                <li>
-                  <h3>Account Type</h3>
-                </li>
-                {accountTypes.map(accountType => {
-                  return (
-                    <li key={accountType}>
-                      <S.AccountTypeButton
-                        type='button'
-                        isActive={selectedAccountTypes.includes(accountType)}
-                        onClick={() =>
-                          selectAccountType(accountTypes => {
-                            if (selectedAccountTypes.includes(accountType)) {
-                              return selectedAccountTypes.filter(
-                                (type: string) => type !== accountType,
-                              )
-                            }
-                            return [...accountTypes, ...[accountType]]
-                          })
-                        }
-                      >
-                        {accountType}
-                      </S.AccountTypeButton>
-                    </li>
-                  )
-                })}
-              </S.AccountList>
-              <S.AccountList>
-                <li>
-                  <h3>Account Features</h3>
-                </li>
-                {accountFeatures.map(({ type, text }: { type: string; text: string }) => {
-                  return (
-                    <li key={type}>
-                      <S.Label>
-                        <S.Checkbox
-                          isActive={selectedFeatures.includes(type)}
-                          onClick={() =>
-                            selectFeatures(features => {
-                              if (selectedFeatures.includes(type)) {
-                                return selectedFeatures.filter(
-                                  (feature: string) => feature !== type,
-                                )
-                              }
-                              return [...features, ...[type]]
-                            })
-                          }
-                        />
-                        {text}
-                      </S.Label>
-                    </li>
-                  )
-                })}
-              </S.AccountList>
-            </S.BankFilter>
-
-            <S.BanksTable>
-              <thead>
-                <tr>
-                  <th scope='col'>Bank</th>
-                  <th scope='col'>Details</th>
-                  <th scope='col'>Switch It Score</th>
-                  <th scope='col'>Monthly Fee</th>
-                  <th scope='col'>Latest Green Project</th>
-                  <th scope='col'></th>
-                  <th scope='col'></th>
-                </tr>
-              </thead>
-              <tbody>
-                {bankData.map(({ bank, details, score, fee, project, meta }, i: number) => (
-                  <>
-                    <tr key={bank}>
-                      <td scope='row'>{bank}</td>
-                      <td>{details}</td>
-                      <td>{score}</td>
-                      <td>{fee}</td>
-                      <td>{project}</td>
-                      <td>
-                        <Button type='button' mode='primary' size='small' onClick={() => {}}>
-                          Make The Switch
-                        </Button>
-                      </td>
-                      <td>
-                        <TextButton type='button' mode='primary' onClick={expandRow(i)}>
-                          Details{' '}
-                          <Image
-                            src={`/icons/icon_chevron_${expandedRow === i ? 'down' : 'right'}.svg`}
-                            alt=''
-                            width={15}
-                            height={15}
-                          />
-                        </TextButton>
-                      </td>
-                    </tr>
-                    <S.ExpandableRow isExpanded={expandedRow === i}>
-                      <td colSpan={7}>
-                        <S.BankMeta>
-                          {meta.personal.map(item => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </S.BankMeta>
-                      </td>
-                    </S.ExpandableRow>
-                  </>
-                ))}
-              </tbody>
-            </S.BanksTable>
+            <BankFilters
+              selectedAccountTypes={selectedAccountTypes}
+              selectedFeatures={selectedFeatures}
+              selectAccountType={selectAccountType}
+              selectFeatures={selectFeatures}
+            />
+            <BanksTable bankData={bankData} />
           </Section>
         </Card>
       </Content>

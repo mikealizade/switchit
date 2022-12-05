@@ -350,3 +350,91 @@ export const startJourneyConfig = [
     text: 'Tell Us How It Went',
   },
 ]
+
+export const bankConfig = [
+  {
+    accountTypes: ['personal'],
+    icon: 'starling',
+    bank: 'Starling Bank',
+    details: 'Best current account',
+    score: '5',
+    fee: '0',
+    project: '',
+    link: 'https://www.starlingbank.com',
+    features: ['app', 'savings', 'deposits', 'mortgages'],
+    meta: {
+      personal: ['High  Street', 'Desktop Banking'],
+      student: ['High  Street', 'Desktop Banking'],
+    },
+  },
+  {
+    accountTypes: ['personal', 'student'],
+    icon: 'monzo',
+    bank: 'Monzo',
+    details: '',
+    score: '',
+    fee: '',
+    project: '',
+    link: 'https://monzo.com',
+    features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
+    meta: {
+      personal: ['High  Street', 'Desktop Banking'],
+      student: ['High  Street', 'Desktop Banking'],
+    },
+  },
+  {
+    accountTypes: ['personal', 'student'],
+    icon: 'triodos',
+    bank: 'Triodos Bank',
+    details: '',
+    score: '',
+    fee: '',
+    project: '',
+    link: 'https://www.triodos.co.uk',
+    features: ['branches', 'app', 'savings', 'mortgages'],
+    meta: {
+      personal: ['High  Street', 'Desktop Banking'],
+      student: ['High  Street', 'Desktop Banking'],
+    },
+  },
+  {
+    accountTypes: ['student'],
+    icon: 'nationwide',
+    bank: 'Nationwide',
+    details: '',
+    score: '',
+    fee: '',
+    project: '',
+    link: 'https://www.nationwide.co.uk',
+    features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
+    meta: {
+      personal: ['High  Street', 'Desktop Banking'],
+      student: ['High  Street', 'Desktop Banking'],
+    },
+  },
+]
+
+export const accountTypes = ['personal', 'student']
+
+export const accountFeatures = [
+  {
+    type: 'branches',
+    text: 'Physical branches',
+  },
+  {
+    type: 'app',
+    text: 'Mobile app',
+  },
+  {
+    type: 'savings',
+    text: 'Savings account',
+  },
+  {
+    type: 'deposits',
+    text: 'International deposits',
+  },
+  {
+    type: 'mortgages',
+    text: 'Mortgages',
+  },
+]

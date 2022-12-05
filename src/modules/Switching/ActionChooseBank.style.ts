@@ -17,6 +17,8 @@ export const AccountList = styled.ul`
   display: flex;
   column-gap: 18px;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
 
   h3 {
     font-size: var(--fsSmall9);
@@ -44,9 +46,16 @@ export const Checkbox = styled.span<{ isActive?: boolean }>`
   display: inline-block;
   border-radius: 4px;
   width: 15px;
+  min-width: 15px;
   height: 15px;
   background-color: ${({ isActive }) => (isActive ? 'var(--nileBlue)' : 'var(--white)')};
   border: 1px solid var(--nileBlue);
+`
+
+export const ClearFiltersButton = styled(AccountTypeButton)`
+  align-self: flex-start;
+  background-color: #bed3d9;
+  border: 0;
 `
 
 export const BanksTable = styled.table`
