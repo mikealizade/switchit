@@ -10,10 +10,10 @@ import * as S from '@components/Hero/Hero.style'
 export const DashboardHero: NextPage<{ post: Post }> = ({
   post: { id = '', title = '', summary = '' } = {},
 }): JSX.Element => {
-  const { replace } = useRouter()
+  const { push } = useRouter()
 
   const readBlogPost = (id: string) => () => {
-    replace(`/blog/${id}`)
+    push(`/blog/${id}`)
   }
 
   return (

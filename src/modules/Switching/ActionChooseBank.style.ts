@@ -70,6 +70,15 @@ export const BanksTable = styled.table`
   th {
     border: 0;
   }
+
+  /* img {
+    width: auto !important;
+    height: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+    min-height: auto !important;
+    max-height: none !important;
+  } */
 `
 
 export const ExpandableRow = styled.tr<{ isExpanded?: boolean }>`

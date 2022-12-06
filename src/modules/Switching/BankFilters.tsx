@@ -1,16 +1,12 @@
 import { FC } from 'react'
-import useSWR from 'swr'
-import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
 import { accountTypes, accountFeatures } from '@utils/constants'
-// import * as S from '@modules/Switching/PreSwitching.style'
 import * as S from './ActionChooseBank.style'
 
 type BankFilterProps = {
   selectedAccountTypes: string[]
   selectedFeatures: string[]
-  selectAccountType: (types: string[]) => void
-  selectFeatures: (features: string[]) => void
+  selectAccountType: (types: string[] | ((types: string[]) => string[])) => void
+  selectFeatures: (features: string[] | ((types: string[]) => string[])) => void
 }
 
 export const BankFilters: FC<BankFilterProps> = ({
@@ -19,9 +15,6 @@ export const BankFilters: FC<BankFilterProps> = ({
   selectAccountType,
   selectFeatures,
 }): JSX.Element => {
-  const dispatch = useDispatch()
-  const { push } = useRouter()
-
   const clearFilters = () => {
     selectAccountType([])
     selectFeatures([])
@@ -40,7 +33,7 @@ export const BankFilters: FC<BankFilterProps> = ({
                 type='button'
                 isActive={selectedAccountTypes.includes(accountType)}
                 onClick={() =>
-                  selectAccountType(accountTypes => {
+                  selectAccountType((accountTypes: string[]): string[] => {
                     if (selectedAccountTypes.includes(accountType)) {
                       return selectedAccountTypes.filter((type: string) => type !== accountType)
                     }
@@ -63,7 +56,7 @@ export const BankFilters: FC<BankFilterProps> = ({
             <li key={type}>
               <S.Label
                 onClick={() =>
-                  selectFeatures(features => {
+                  selectFeatures((features: string[]): string[] => {
                     if (selectedFeatures.includes(type)) {
                       return selectedFeatures.filter((feature: string) => feature !== type)
                     }

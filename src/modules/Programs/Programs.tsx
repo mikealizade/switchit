@@ -8,13 +8,43 @@ import { Hero } from '@components/Hero/Hero'
 import * as S from '@styles/common.style'
 import { socialPostsConfig, SocialPostConfig } from '@utils/constants'
 
-const Programs = (): JSX.Element => {
-  // const { user: { sub = '' } = {}, isLoading = false } = useUser()
+export const PostToSocials = () => {
   const school = 'lse' //from db?
   const type = 'twitter' //from db?
   const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
 
-  console.log('socialTwitter', socialTwitter)
+  return (
+    <S.ColumnContainer>
+      <S.Column>
+        <Card column>
+          {socialTwitter.map((postsArray, i) => {
+            console.log('postsArray', postsArray)
+            return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
+          })}
+        </Card>
+      </S.Column>
+      <S.Column>
+        <Card column>
+          {socialTwitter.map((postsArray, i) => {
+            console.log('postsArray', postsArray)
+            return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
+          })}
+        </Card>
+      </S.Column>
+      <S.Column>
+        <Card column>
+          {socialTwitter.map((postsArray, i) => {
+            console.log('postsArray', postsArray)
+            return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
+          })}
+        </Card>
+      </S.Column>
+    </S.ColumnContainer>
+  )
+}
+
+const Programs = (): JSX.Element => {
+  // const { user: { sub = '' } = {}, isLoading = false } = useUser()
 
   return (
     <>
@@ -27,38 +57,7 @@ const Programs = (): JSX.Element => {
 
       <S.Content>
         <Hero type='programs' />
-        <S.ColumnContainer>
-          <S.Column>
-            <Card column>
-              {socialTwitter.map((postsArray, i) => {
-                console.log('postsArray', postsArray)
-                return (
-                  <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
-                )
-              })}
-            </Card>
-          </S.Column>
-          <S.Column>
-            <Card column>
-              {socialTwitter.map((postsArray, i) => {
-                console.log('postsArray', postsArray)
-                return (
-                  <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
-                )
-              })}
-            </Card>
-          </S.Column>
-          <S.Column>
-            <Card column>
-              {socialTwitter.map((postsArray, i) => {
-                console.log('postsArray', postsArray)
-                return (
-                  <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
-                )
-              })}
-            </Card>
-          </S.Column>
-        </S.ColumnContainer>
+        <PostToSocials />
       </S.Content>
     </>
   )

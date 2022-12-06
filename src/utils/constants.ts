@@ -135,10 +135,12 @@ export const defaultProfile = {
     personal: {
       hello: '',
       breakup: '',
+      isLetterSent: false,
     },
     business: {
       hello: '',
       breakup: '',
+      isLetterSent: false,
     },
   },
   switchingJourneys: {
@@ -354,13 +356,13 @@ export const startJourneyConfig = [
 export const bankConfig = [
   {
     accountTypes: ['personal'],
+    route: 'starling',
     icon: 'starling',
     bank: 'Starling Bank',
     details: 'Best current account',
     score: '5',
     fee: '0',
     project: '',
-    link: 'https://www.starlingbank.com',
     features: ['app', 'savings', 'deposits', 'mortgages'],
     meta: {
       personal: ['High  Street', 'Desktop Banking'],
@@ -369,13 +371,13 @@ export const bankConfig = [
   },
   {
     accountTypes: ['personal', 'student'],
+    route: 'monzo',
     icon: 'monzo',
     bank: 'Monzo',
     details: '',
     score: '',
     fee: '',
     project: '',
-    link: 'https://monzo.com',
     features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
     meta: {
       personal: ['High  Street', 'Desktop Banking'],
@@ -384,13 +386,13 @@ export const bankConfig = [
   },
   {
     accountTypes: ['personal', 'student'],
+    route: 'triodos',
     icon: 'triodos',
     bank: 'Triodos Bank',
     details: '',
     score: '',
     fee: '',
     project: '',
-    link: 'https://www.triodos.co.uk',
     features: ['branches', 'app', 'savings', 'mortgages'],
     meta: {
       personal: ['High  Street', 'Desktop Banking'],
@@ -399,13 +401,13 @@ export const bankConfig = [
   },
   {
     accountTypes: ['student'],
+    route: 'nationwide',
     icon: 'nationwide',
     bank: 'Nationwide',
     details: '',
     score: '',
     fee: '',
     project: '',
-    link: 'https://www.nationwide.co.uk',
     features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
     meta: {
       personal: ['High  Street', 'Desktop Banking'],
@@ -438,3 +440,17 @@ export const accountFeatures = [
     text: 'Mortgages',
   },
 ]
+
+export const actionText = {
+  chooseBank: `Banks can't buy spaces on our site. We recommend banks based on our strict internal standards for reducing the investment in fossil fuels. Find out more here`,
+  breakupLetter: `We've set you up for success with a prewritten letter below. Feel free to update, change, edit any of the text. We'll send it on the 1st of the month along with everyone else`,
+  helloLetter: 'We all love a bit of positive reinforcement.',
+  postToSocials:
+    'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
+  tellCommunity:
+    'Use these prewritten letters to send to your community via email - or even snail mail! Your custom sharing code (which can also be found in your profile) will allow you to text friends on Whatsapp',
+  leaveReviews:
+    'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
+  tellUs:
+    'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
+}
