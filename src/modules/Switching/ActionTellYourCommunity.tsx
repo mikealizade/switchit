@@ -20,11 +20,12 @@ export const ActionTellYourCommunity: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column padded>
             <ActionHeader
               header='Action: Tell Your Community'
               subHeader='Aunts and uncles not on Instagram?'
               text={actionText.tellCommunity}
+              step='5'
             />
 
             <h3>Letters</h3>

@@ -8,10 +8,11 @@ import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { actionsConfig } from '@utils/constants'
 import { Column } from '@styles/common.style'
-import * as S from '@modules/Switching/PreSwitching.style'
 import { useRef, useState } from 'react'
 import { SelectActionCard } from '@components/SelectActionCard/SelectActionCard'
 import { SelectActionContainer } from '@components/SelectActionCard/SelectActionCard.style'
+import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
+import * as S from '@modules/Switching/PreSwitching.style'
 
 type ActionsConfig = typeof actionsConfig[0]
 
@@ -37,8 +38,8 @@ const SelectAction = (): JSX.Element => {
       </Head>
 
       <Content>
-        <S.SwitchingColumnContainer>
-          <S.SwitchingColumn>
+        <SwitchingColumnContainer>
+          <SwitchingColumn>
             <Card column padded>
               <S.HeaderContainer>
                 <S.Header>{`Let's design your switching journey, and maximise your impact`}</S.Header>
@@ -78,7 +79,7 @@ const SelectAction = (): JSX.Element => {
                 <ProgressBar step={4} />
               </S.Section>
             </Card>
-          </S.SwitchingColumn>
+          </SwitchingColumn>
           <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
@@ -93,7 +94,7 @@ const SelectAction = (): JSX.Element => {
               </SelectActionContainer>
             </Card>
           </Column>
-        </S.SwitchingColumnContainer>
+        </SwitchingColumnContainer>
       </Content>
     </>
   )

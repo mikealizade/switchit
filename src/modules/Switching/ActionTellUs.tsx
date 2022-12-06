@@ -20,11 +20,12 @@ export const ActionTellUs: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column padded>
             <ActionHeader
               header='Action: Tell Us How It Went'
               subHeader='Get the word out'
               text={actionText.tellUs}
+              step='7'
             />
             <S.Buttons>
               <Button type='button' size='small' onClick={onNext}>

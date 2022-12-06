@@ -86,11 +86,12 @@ export const ActionBreakupLetter: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column padded>
             <ActionHeader
               header='Action: Write Your Breakup Letter'
               subHeader='Tell your old bank how you really feel'
               text={actionText.breakupLetter}
+              step='2'
             />
 
             <S.Container>

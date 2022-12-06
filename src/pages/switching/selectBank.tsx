@@ -3,7 +3,7 @@ import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import BankFinder from '../../modules/Switching/BankFinder'
 import { Column } from '@styles/common.style'
-import * as S from '@modules/Switching/PreSwitching.style'
+import * as S from '@modules/Switching/Switching.style'
 
 const SelectBank = (): JSX.Element => {
   return (

@@ -10,11 +10,19 @@ import '@styles/globals.css'
 // TODOs
 //// social media login
 //// edit email and pw in auth0
-//// donate
+// donate
+// email
 // pw page
-// mobile
+// all pages responsive
 // mongodb compass
 // error handling
+// analytics
+// Sentry
+// linting and linting on commit
+// lighthouse
+// security
+// cypress tests
+// db backups
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

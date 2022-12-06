@@ -7,7 +7,7 @@ export const Content = styled.main`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 40px;
+  padding: 40px 0 40px 40px;
   row-gap: 25px;
 `
 
@@ -34,7 +34,8 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 25px;
-  flex: 1;
+  flex: 3;
+  min-width: 400px;
 
   + section {
     flex: 4;

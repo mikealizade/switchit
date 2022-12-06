@@ -12,6 +12,7 @@ import ProgressProvider from '@modules/Dashboard/components/SwitchingJourney/Pro
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { Column } from '@styles/common.style'
+import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 
 // TODO links to good bank buttons
@@ -62,8 +63,8 @@ const BankScore = (): JSX.Element => {
       </Head>
 
       <Content>
-        <S.SwitchingColumnContainer>
-          <S.SwitchingColumn>
+        <SwitchingColumnContainer>
+          <SwitchingColumn>
             <Card column padded>
               <S.Header>
                 The results are in for <strong>{selectedBank}</strong> and your bank scored ...
@@ -125,13 +126,13 @@ const BankScore = (): JSX.Element => {
               </S.BankRating>
               <ProgressBar step={2} />
             </Card>
-          </S.SwitchingColumn>
+          </SwitchingColumn>
           <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
           </Column>
-        </S.SwitchingColumnContainer>
+        </SwitchingColumnContainer>
       </Content>
     </>
   )

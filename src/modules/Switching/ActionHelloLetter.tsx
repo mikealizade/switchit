@@ -48,11 +48,12 @@ export const ActionHelloLetter: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column padded>
             <ActionHeader
               header='Action: Write Your Hello Letter'
               subHeader={`Tell your new bank why you've switched`}
               text={actionText.helloLetter}
+              step='3'
             />
 
             <S.Container>

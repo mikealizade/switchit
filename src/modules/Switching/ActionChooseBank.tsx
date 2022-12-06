@@ -6,8 +6,8 @@ import { BankFilters } from '@modules/Switching/BankFilters'
 import { BanksTable } from '@modules/Switching/BanksTable'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionText } from '@utils/constants'
-import { Section } from '@modules/Switching/PreSwitching.style'
-import { Content } from '@styles/common.style'
+import * as S from '@modules/Switching/Switching.style'
+import { Content, Column } from '@styles/common.style'
 
 export const ActionChooseBank = (): JSX.Element => {
   const [bankData, setBankData] = useState(bankConfig)
@@ -47,23 +47,33 @@ export const ActionChooseBank = (): JSX.Element => {
       </Head>
 
       <Content>
-        <Card column padded>
-          <ActionHeader
-            header='Action Choose Your Bank'
-            subHeader={`We've found 4 switch-worthy banks for you`}
-            text={actionText.chooseBank}
-          />
+        <S.SwitchingColumnContainer>
+          <S.SwitchingColumn>
+            <Card column padded>
+              <ActionHeader
+                header='Action Choose Your Bank'
+                subHeader={`We've found 4 switch-worthy banks for you`}
+                text={actionText.chooseBank}
+                step='1'
+              />
 
-          <Section>
-            <BankFilters
-              selectedAccountTypes={selectedAccountTypes}
-              selectedFeatures={selectedFeatures}
-              selectAccountType={selectAccountType}
-              selectFeatures={selectFeatures}
-            />
-            <BanksTable bankData={bankData} />
-          </Section>
-        </Card>
+              <S.Section>
+                <BankFilters
+                  selectedAccountTypes={selectedAccountTypes}
+                  selectedFeatures={selectedFeatures}
+                  selectAccountType={selectAccountType}
+                  selectFeatures={selectFeatures}
+                />
+                <BanksTable bankData={bankData} />
+              </S.Section>
+            </Card>
+          </S.SwitchingColumn>
+          <Column>
+            <Card stretch column>
+              <h2>Impact Card</h2>
+            </Card>
+          </Column>
+        </S.SwitchingColumnContainer>
       </Content>
     </>
   )

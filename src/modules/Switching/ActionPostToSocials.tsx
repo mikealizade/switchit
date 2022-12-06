@@ -21,11 +21,12 @@ export const ActionPostToSocials: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column padded>
             <ActionHeader
               header='Action: Post To Socials'
               subHeader='Get the word out'
               text={actionText.postToSocials}
+              step='4'
             />
 
             <PostToSocials />

@@ -1,15 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-// export const Content = styled.main`
-//   background-color: #f2f0ed;
-//   display: flex;
-//   flex-direction: column;
-//   flex-grow: 1;
-//   padding: 40px;
-//   row-gap: 50px;
-// `
-
 export const ProfileContainer = styled.section`
   display: flex;
   column-gap: 30px;
@@ -58,8 +49,14 @@ export const SwitchingColumn = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 25px;
-  flex: 2;
+  flex: 7;
   flex-wrap: wrap;
+`
+
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
 `
 
 export const Header = styled.h2`

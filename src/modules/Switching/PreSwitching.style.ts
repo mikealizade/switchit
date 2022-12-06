@@ -1,31 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const SwitchingColumnContainer = styled.section`
-  display: flex;
-  column-gap: 25px;
-  flex-wrap: wrap;
-  row-gap: 25px;
-  position: relative;
-  flex-direction: column;
-
-  ${() => mediaQuery.laptop} {
-    flex-direction: row;
-  }
-
-  ${() => mediaQuery.xlaptop} {
-    row-gap: inherit;
-  }
-`
-
-export const SwitchingColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 25px;
-  flex: 2;
-  flex-wrap: wrap;
-`
-
 export const Header = styled.h2`
   font-size: var(--fsLarge9);
 

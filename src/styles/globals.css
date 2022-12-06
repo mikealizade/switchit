@@ -10,6 +10,12 @@
     url(../../public/fonts/Konsolev-Semibold.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Konsolev LightItalic';
+  src: url(../../public/fonts/Konsolev-LightItalic.woff2) format('woff2'),
+    url(../../public/fonts/Konsolev-LightItalic.woff) format('woff');
+}
+
 :root {
   --white: #fff;
   --black: #000;

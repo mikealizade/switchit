@@ -8,8 +8,8 @@ import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { Column } from '@styles/common.style'
+import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
-import Link from 'next/link'
 
 const ChooseJourney = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -32,8 +32,8 @@ const ChooseJourney = (): JSX.Element => {
       </Head>
 
       <Content>
-        <S.SwitchingColumnContainer>
-          <S.SwitchingColumn>
+        <SwitchingColumnContainer>
+          <SwitchingColumn>
             <Card column padded>
               <S.HeaderContainer>
                 <S.Header>{`Let's figure out the best journey for you.`}</S.Header>
@@ -74,13 +74,13 @@ const ChooseJourney = (): JSX.Element => {
                 <ProgressBar step={3} />
               </S.Section>
             </Card>
-          </S.SwitchingColumn>
+          </SwitchingColumn>
           <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
           </Column>
-        </S.SwitchingColumnContainer>
+        </SwitchingColumnContainer>
       </Content>
     </>
   )

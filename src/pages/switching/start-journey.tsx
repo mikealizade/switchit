@@ -5,8 +5,10 @@ import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
+import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionsConfig, startJourneyConfig } from '@utils/constants'
 import { Column } from '@styles/common.style'
+import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import { useState } from 'react'
 
@@ -30,16 +32,15 @@ const SelectAction = (): JSX.Element => {
       </Head>
 
       <Content>
-        <S.SwitchingColumnContainer>
-          <S.SwitchingColumn>
+        <SwitchingColumnContainer>
+          <SwitchingColumn>
             <Card column padded>
-              <S.HeaderContainer>
-                <S.Header>Welcome to your switching journey!</S.Header>
-                <S.Subheader>
-                  Congrats on creating this super cool custom switching journey. Click on the first
-                  action to get started
-                </S.Subheader>
-              </S.HeaderContainer>
+              <ActionHeader
+                header='Welcome to your switching journey!'
+                subHeader='Congrats on creating this super cool custom switching journey. Click on the first action to get started'
+                text='Congrats on creating this super cool custom switching journey. Click on the first
+                action to get started'
+              />
 
               <S.Section>
                 <S.StepSelector>
@@ -85,13 +86,13 @@ const SelectAction = (): JSX.Element => {
                 <ProgressBar step={5} />
               </S.Section>
             </Card>
-          </S.SwitchingColumn>
+          </SwitchingColumn>
           <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
           </Column>
-        </S.SwitchingColumnContainer>
+        </SwitchingColumnContainer>
       </Content>
     </>
   )
