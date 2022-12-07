@@ -27,12 +27,17 @@ export const Aside = styled.aside`
   min-width: 400px;
   width: 400px;
   background-color: var(--pampas);
-  /* border-radius: 0 8px 8px 0; */
-
+  border-radius: 0 10px 10px 0;
   display: flex;
   flex-direction: column;
-  /* border-radius: 10px; */
-  /* background-color: var(--white); */
-  /* padding: 30px; */
   flex: 1;
+`
+
+export const AsideContent = styled.div`
+  display: flex;
+  background-color: var(--white);
+  border-radius: 10px;
+  flex-direction: column;
+  flex: 1;
+  padding: 40px;
 `

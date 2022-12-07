@@ -1,6 +1,21 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
+import { RootState } from '@state/store'
+import { actionsConfig } from '@utils/constants'
 import * as S from '@components/SelectActionCard/SelectActionCard.style'
+
+export const SelectActionCards = () => {
+  const actionCardIndex = useSelector((state: RootState) => state.actionCardIndex)
+
+  return (
+    <S.SelectActionContainer>
+      {actionsConfig.map((action, i) => (
+        <SelectActionCard key={action.route} action={action} isActive={i === actionCardIndex} />
+      ))}
+    </S.SelectActionContainer>
+  )
+}
 
 export const SelectActionCard: NextPage<{ action: any; isActive: boolean }> = ({
   action: { actionTitle, actionText, icon },

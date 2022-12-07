@@ -1,14 +1,12 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import { Navigation } from '@components/Navigation/Navigation'
-import { Aside as AsideContent } from '@components/Aside/Aside'
 import * as S from '@components/Layout/Layout.style'
 import useSWR, { SWRResponse } from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
 import { fetcher, getTotalPoints } from '@utils/functions'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
@@ -113,25 +111,9 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
       ) : (
         <>
           <Navigation />
-          {/* {isProfile || isDashboard ? ( */}
-          <>
-            <SignedInApp showUser={showUser} isValidating={isValidating}>
-              {children}
-            </SignedInApp>
-          </>
-          {/* ) 
-          : (
-            <>
-              <S.AppContent>
-                <User />
-                {children}
-              </S.AppContent>
-              <S.Aside>
-                <AsideContent />
-              </S.Aside>
-            </>
-          )
-          } */}
+          <SignedInApp showUser={showUser} isValidating={isValidating}>
+            {children}
+          </SignedInApp>
         </>
       )}
     </S.AppContainer>

@@ -2,31 +2,30 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { actionsConfig, actionText } from '@utils/constants'
-import { Column } from '@styles/common.style'
 import { useRef, useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { SelectActionCard } from '@components/SelectActionCard/SelectActionCard'
-import { SelectActionContainer } from '@components/SelectActionCard/SelectActionCard.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
+import { setActionCard } from '@state/actionCard/actionCardSlice'
 
 type ActionsConfig = typeof actionsConfig[0]
 
 const SelectAction = (): JSX.Element => {
   const { push } = useRouter()
+  const dispatch = useDispatch()
   const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
   const [currentAction, setAction] = useState<ActionsConfig | null>(null)
-  const indexRef = useRef(0)
 
   const selectAction = (index: number) => () => {
     setRoute(actionsConfig[index].route)
     setAction(actionsConfig[index])
-    indexRef.current = index
+    dispatch(setActionCard(index))
   }
 
   return (
@@ -81,20 +80,6 @@ const SelectAction = (): JSX.Element => {
               </S.Section>
             </Card>
           </SwitchingColumn>
-          <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-              <SelectActionContainer>
-                {actionsConfig.map((action, i) => (
-                  <SelectActionCard
-                    key={action.route}
-                    action={action}
-                    isActive={i === indexRef.current}
-                  />
-                ))}
-              </SelectActionContainer>
-            </Card>
-          </Column>
         </SwitchingColumnContainer>
       </Content>
     </>

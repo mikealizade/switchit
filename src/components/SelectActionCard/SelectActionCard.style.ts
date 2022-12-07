@@ -4,22 +4,22 @@ import { mediaQuery } from '@utils/functions'
 export const SelectActionContainer = styled.div`
   position: relative;
   min-height: 400px;
+  flex: 1;
 `
 
 export const SelectActionCard = styled.aside`
   display: flex;
   flex-direction: column;
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.2);
   row-gap: 30px;
   border-radius: 10px;
-  background-color: var(--white);
+  background-color: var(--porcelain);
   padding: 30px;
   height: auto;
   opacity: 0;
   transition: opacity 0.5s linear;
   position: absolute;
   left: 0;
-  top: 0;
+  bottom: 0;
 
   ${() => mediaQuery.tablet} {
     height: 332px;
@@ -35,6 +35,10 @@ export const SelectActionCard = styled.aside`
 
   &.isActive {
     opacity: 1;
+  }
+
+  p {
+    font-size: var(--fsBase);
   }
 `
 

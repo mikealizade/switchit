@@ -6,6 +6,7 @@ import drawerReducer from 'src/state/drawer/drawerSlice'
 import friendsReducer from 'src/state/friends/friendsSlice'
 import toastReducer from 'src/state/toast/toastSlice'
 import bankReducer from 'src/state/bank/bankSlice'
+import actionCardReducer from 'src/state/actionCard/actionCardSlice'
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   friends: friendsReducer,
   toast: toastReducer,
   selectedBank: bankReducer,
+  actionCardIndex: actionCardReducer,
 })
 
 export const store = configureStore({
