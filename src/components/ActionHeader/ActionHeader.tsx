@@ -7,7 +7,7 @@ import * as S from '@components/ActionHeader/ActionHeader.style'
 type ActionHeader = {
   header: string
   subHeader: string
-  text: string
+  text?: string
   step?: string
 }
 
@@ -21,16 +21,18 @@ export const ActionHeader: NextPage<ActionHeader> = ({
 
   return (
     <HeaderContainer>
-      <S.StepContainer>
-        <div onClick={() => back()}>
-          <Image src={'/icons/icon_chevron_left.svg'} alt='' width={25} height={25} />
-        </div>
+      {step && (
+        <S.StepContainer>
+          <div onClick={() => back()}>
+            <Image src={'/icons/icon_chevron_left.svg'} alt='' width={25} height={25} />
+          </div>
 
-        <S.StepCounter>Step {step} of 7</S.StepCounter>
-      </S.StepContainer>
+          <S.StepCounter>Step {step} of 7</S.StepCounter>
+        </S.StepContainer>
+      )}
       <Header>{header}</Header>
       <Subheader>{subHeader}</Subheader>
-      <p>{text}</p>
+      {text && <p>{text}</p>}
     </HeaderContainer>
   )
 }

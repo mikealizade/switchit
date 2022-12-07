@@ -33,22 +33,20 @@ const Switching = (): JSX.Element => {
         <Hero type='switching' />
         <SwitchingColumnContainer>
           <SwitchingColumn>
-            <Card column>
-              <Header>Active Journeys</Header>
-              <Card shadow>
-                <StartJourneyContainer>
-                  <Link href='/switching/selectBank'>
-                    <StartJourney>
-                      <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-                      Start a Switching Journey
-                    </StartJourney>
-                  </Link>
-                  <p>
-                    Have multiple bank accounts? No problem!
-                    <br /> {`We'll switch one at a time.`}
-                  </p>
-                </StartJourneyContainer>
-              </Card>
+            <Header>Active Journeys</Header>
+            <Card shadow>
+              <StartJourneyContainer>
+                <Link href='/switching/selectBank'>
+                  <StartJourney>
+                    <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                    Start a Switching Journey
+                  </StartJourney>
+                </Link>
+                <p>
+                  Have multiple bank accounts? No problem!
+                  <br /> {`We'll switch one at a time.`}
+                </p>
+              </StartJourneyContainer>
             </Card>
           </SwitchingColumn>
           <S.Column>

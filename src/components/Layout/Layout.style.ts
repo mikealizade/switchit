@@ -19,14 +19,20 @@ export const AppContent = styled.main`
   flex: auto;
   position: relative;
   overflow: hidden;
-  border-radius: 0 16px 16px 0;
   background-color: var(--pampas);
 `
 
 export const Aside = styled.aside`
-  padding: 30px;
+  display: flex;
   min-width: 400px;
   width: 400px;
-  background-color: var(--white);
-  border-radius: 0 8px 8px 0;
+  background-color: var(--pampas);
+  /* border-radius: 0 8px 8px 0; */
+
+  display: flex;
+  flex-direction: column;
+  /* border-radius: 10px; */
+  /* background-color: var(--white); */
+  /* padding: 30px; */
+  flex: 1;
 `

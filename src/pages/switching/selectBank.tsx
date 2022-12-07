@@ -4,6 +4,7 @@ import { Content } from '@styles/common.style'
 import BankFinder from '../../modules/Switching/BankFinder'
 import { Column } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
+import { Header } from '@modules/Switching/PreSwitching.style'
 
 const SelectBank = (): JSX.Element => {
   return (
@@ -19,15 +20,15 @@ const SelectBank = (): JSX.Element => {
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
             <Card column>
-              <S.Header>{`First, let's see how your bank stacks up...`}</S.Header>
+              <Header>{`First, let's see how your bank stacks up...`}</Header>
               <BankFinder />
             </Card>
           </S.SwitchingColumn>
-          <Column>
+          {/* <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
-          </Column>
+          </Column> */}
         </S.SwitchingColumnContainer>
       </Content>
     </>

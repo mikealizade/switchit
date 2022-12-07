@@ -6,9 +6,10 @@ import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
-import { actionsConfig } from '@utils/constants'
+import { actionsConfig, actionText } from '@utils/constants'
 import { Column } from '@styles/common.style'
 import { useRef, useState } from 'react'
+import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { SelectActionCard } from '@components/SelectActionCard/SelectActionCard'
 import { SelectActionContainer } from '@components/SelectActionCard/SelectActionCard.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
@@ -41,10 +42,10 @@ const SelectAction = (): JSX.Element => {
         <SwitchingColumnContainer>
           <SwitchingColumn>
             <Card column padded>
-              <S.HeaderContainer>
-                <S.Header>{`Let's design your switching journey, and maximise your impact`}</S.Header>
-                <S.Subheader>{`Select which of the following actions you'd like to take. The more actions completed, the bigger the impact. Don't worry, you can always add more later`}</S.Subheader>
-              </S.HeaderContainer>
+              <ActionHeader
+                header={`Let's design your switching journey, and maximise your impact`}
+                subHeader={`Select which of the following actions you'd like to take. The more actions completed, the bigger the impact.`}
+              />
 
               <S.Section>
                 <S.ActionSelector>

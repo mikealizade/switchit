@@ -68,11 +68,11 @@ export const ActionChooseBank = (): JSX.Element => {
               </S.Section>
             </Card>
           </S.SwitchingColumn>
-          <Column>
+          {/* <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
-          </Column>
+          </Column> */}
         </S.SwitchingColumnContainer>
       </Content>
     </>

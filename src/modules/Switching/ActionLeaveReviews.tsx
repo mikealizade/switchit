@@ -10,7 +10,7 @@ import { actionText } from '@utils/constants'
 import { Buttons } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, Column } from '@styles/common.style'
-import { TileLinks, Item } from '@modules/Switching/ActionLeaveReviews.style'
+import { TileLinks, Item, Anchor } from '@modules/Switching/ActionLeaveReviews.style'
 
 export const ActionLeaveReviews: NextPage = () => {
   const { push } = useRouter()
@@ -35,10 +35,14 @@ export const ActionLeaveReviews: NextPage = () => {
 
                 <TileLinks>
                   <Item>
-                    <Image src={'/icons/icon_trustpilot.svg'} alt='' width={25} height={25} />
+                    <Anchor href='https://uk.trustpilot.com/' target='_blank' rel='noreferrer'>
+                      <Image src={'/icons/icon_trustpilot.png'} alt='' width={203} height={50} />
+                    </Anchor>
                   </Item>
                   <Item>
-                    <Image src={'/icons/icon_trustpilot.svg'} alt='' width={25} height={25} />
+                    <Anchor href='https://www.google.co.uk/' target='_blank' rel='noreferrer'>
+                      <Image src={'/icons/icon_google.png'} alt='' width={100} height={100} />
+                    </Anchor>
                   </Item>
                 </TileLinks>
                 <Buttons>
@@ -48,11 +52,11 @@ export const ActionLeaveReviews: NextPage = () => {
                 </Buttons>
               </Card>
             </S.SwitchingColumn>
-            <Column>
+            {/* <Column>
               <Card stretch column>
                 <h2>Impact Card</h2>
               </Card>
-            </Column>
+            </Column> */}
           </S.SwitchingColumnContainer>
         </Content>
       </ErrorBoundary>

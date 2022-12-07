@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const SocialPost = styled.div`
   display: flex;
@@ -41,7 +42,21 @@ export const Content = styled.div`
 
 export const Buttons = styled.div`
   display: flex;
-  column-gap: 20px;
+  column-gap: 10px;
+  row-gap: 10px;
   justify-content: flex-end;
   padding: 10px;
+  flex-wrap: wrap;
+
+  ${() => mediaQuery.tablet} {
+    flex-wrap: nowrap;
+    flex: initial;
+  }
+
+  button {
+    flex: 1;
+    ${() => mediaQuery.tablet} {
+      flex: initial;
+    }
+  }
 `

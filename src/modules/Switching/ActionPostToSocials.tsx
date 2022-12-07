@@ -21,7 +21,7 @@ export const ActionPostToSocials: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column padded>
+          <Card column>
             <ActionHeader
               header='Action: Post To Socials'
               subHeader='Get the word out'

@@ -5,7 +5,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { SocialPost } from '@components/SocialPost/SocialPost'
 import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
-import * as S from '@styles/common.style'
+import * as S from './Programs.style'
 import { socialPostsConfig, SocialPostConfig } from '@utils/constants'
 
 export const PostToSocials = () => {
@@ -14,32 +14,32 @@ export const PostToSocials = () => {
   const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
 
   return (
-    <S.ColumnContainer>
-      <S.Column>
-        <Card column>
-          {socialTwitter.map((postsArray, i) => {
-            console.log('postsArray', postsArray)
-            return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
-          })}
-        </Card>
-      </S.Column>
-      <S.Column>
-        <Card column>
-          {socialTwitter.map((postsArray, i) => {
-            console.log('postsArray', postsArray)
-            return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
-          })}
-        </Card>
-      </S.Column>
-      <S.Column>
-        <Card column>
-          {socialTwitter.map((postsArray, i) => {
-            console.log('postsArray', postsArray)
-            return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
-          })}
-        </Card>
-      </S.Column>
-    </S.ColumnContainer>
+    <S.ProgramContainer>
+      <S.Program>
+        {/* <Card column> */}
+        {socialTwitter.map((postsArray, i) => {
+          console.log('postsArray', postsArray)
+          return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
+        })}
+        {/* </Card> */}
+      </S.Program>
+      <S.Program>
+        {/* <Card column> */}
+        {socialTwitter.map((postsArray, i) => {
+          console.log('postsArray', postsArray)
+          return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
+        })}
+        {/* </Card> */}
+      </S.Program>
+      <S.Program>
+        {/* <Card column> */}
+        {socialTwitter.map((postsArray, i) => {
+          console.log('postsArray', postsArray)
+          return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
+        })}
+        {/* </Card> */}
+      </S.Program>
+    </S.ProgramContainer>
   )
 }
 

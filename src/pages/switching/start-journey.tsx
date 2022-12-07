@@ -6,7 +6,7 @@ import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { actionsConfig, startJourneyConfig } from '@utils/constants'
+import { actionsConfig, startJourneyConfig, actionText } from '@utils/constants'
 import { Column } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
@@ -38,8 +38,6 @@ const SelectAction = (): JSX.Element => {
               <ActionHeader
                 header='Welcome to your switching journey!'
                 subHeader='Congrats on creating this super cool custom switching journey. Click on the first action to get started'
-                text='Congrats on creating this super cool custom switching journey. Click on the first
-                action to get started'
               />
 
               <S.Section>
@@ -87,11 +85,11 @@ const SelectAction = (): JSX.Element => {
               </S.Section>
             </Card>
           </SwitchingColumn>
-          <Column>
+          {/* <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
-          </Column>
+          </Column> */}
         </SwitchingColumnContainer>
       </Content>
     </>

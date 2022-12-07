@@ -7,6 +7,7 @@ import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
+import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Column } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
@@ -35,10 +36,10 @@ const ChooseJourney = (): JSX.Element => {
         <SwitchingColumnContainer>
           <SwitchingColumn>
             <Card column padded>
-              <S.HeaderContainer>
-                <S.Header>{`Let's figure out the best journey for you.`}</S.Header>
-                <S.Subheader>{`Please select which of the following best describes what you'd like to do.`}</S.Subheader>
-              </S.HeaderContainer>
+              <ActionHeader
+                header={`Let's figure out the best journey for you.`}
+                subHeader={`Please select which of the following best describes what you'd like to do.`}
+              />
 
               <S.Section>
                 <S.ChooseJourneyLink
@@ -75,11 +76,11 @@ const ChooseJourney = (): JSX.Element => {
               </S.Section>
             </Card>
           </SwitchingColumn>
-          <Column>
+          {/* <Column>
             <Card stretch column>
               <h2>Impact Card</h2>
             </Card>
-          </Column>
+          </Column> */}
         </SwitchingColumnContainer>
       </Content>
     </>
