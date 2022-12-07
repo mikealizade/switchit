@@ -10,15 +10,22 @@ import { countries } from '@utils/countries'
 import { Select } from '@components/Select/Select'
 import { Modal } from '@components/Modal/Modal'
 import { useModal } from '@hooks/useModal'
+import { useToast } from '@hooks/useToast'
 import { Input } from '@components/Input/Input.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import { Form } from '@styles/common.style'
 
 type Sort = { label: string }
 
+type NotListedBank = {
+  value: string
+  country: string
+}
+
 const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()
+  const toast = useToast()
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [banks, setBanks] = useState([])
   const [isBankSelected, selectBank] = useState(false)
@@ -37,11 +44,32 @@ const BankFinder = (): JSX.Element => {
     setCountry(value)
   }
 
+  const saveNotListedBank = async (notListedBank: NotListedBank) => {
+    try {
+      const body = {
+        filter: {},
+        payload: { $push: { [`banksNotListed`]: notListedBank } },
+        collection: 'banksNotListed',
+        upsert: false,
+      }
+
+      await fetcher(`/api/db/updateOne`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+      toast(true, 'Thanks for letting us know about your bank!', 'success')
+    } catch (error) {
+      toast(true, 'An  error occurred submitting your bank', 'error')
+    }
+  }
+
   const onSubmit = (): void => {
     if (!isConfirmation) {
-      console.log('country', country)
-      console.log('value', value)
       setConfirmation(true)
+      saveNotListedBank({ value, country })
     }
     if (isConfirmation) {
       resetForm()

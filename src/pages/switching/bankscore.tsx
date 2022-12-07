@@ -127,11 +127,6 @@ const BankScore = (): JSX.Element => {
               <ProgressBar step={2} />
             </Card>
           </SwitchingColumn>
-          {/* <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-            </Card>
-          </Column> */}
         </SwitchingColumnContainer>
       </Content>
     </>

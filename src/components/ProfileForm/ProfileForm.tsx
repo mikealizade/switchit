@@ -11,6 +11,7 @@ import Image from 'next/image'
 import { setUser } from '@state/user/userSlice'
 import { showToast } from '@state/toast/toastSlice'
 import { useUpdateUser } from '@hooks/useUpdateUser'
+import { useToast } from '@hooks/useToast'
 import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
 import * as St from '@modules/Profile/Profile.style'
 
@@ -22,6 +23,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   const dispatch = useDispatch()
   const { toggleDrawer } = useDrawer()
   const updateUser = useUpdateUser()
+  const toast = useToast()
   const { handleSubmit, reset } = methods
   const { user: { sub } = {}, isLoading = false } = useUser()
   const user = useSelector((state: RootState) => state.user)
@@ -45,27 +47,30 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   }
 
   const save = async (data: FieldValues): Promise<void> => {
-    const { nickname, username, location, ...rest } = data
+    try {
+      const { nickname, username, location, ...rest } = data
 
-    updateUser({
-      [`profile.summary`]: rest,
-      [`nickname`]: nickname,
-      [`username`]: username,
-      [`location`]: location,
-    })
+      updateUser({
+        [`profile.summary`]: rest,
+        [`nickname`]: nickname,
+        [`username`]: username,
+        [`location`]: location,
+      })
 
-    dispatch(
-      setUser({
-        ...user,
-        ...{ nickname, username, location },
-        profile: {
-          ...profile,
-          summary: rest,
-        },
-      }),
-    )
-    dispatch(showToast({ isVisible: true, message: 'User updated successfully', type: 'success' }))
-    // toast(true, 'User updated successfully', 'success')
+      dispatch(
+        setUser({
+          ...user,
+          ...{ nickname, username, location },
+          profile: {
+            ...profile,
+            summary: rest,
+          },
+        }),
+      )
+      toast(true, 'Your details have been updated successfully', 'success')
+    } catch (error) {
+      toast(true, 'An error occurred your details', 'error')
+    }
   }
 
   useEffect(() => {

@@ -24,11 +24,6 @@ const SelectBank = (): JSX.Element => {
               <BankFinder />
             </Card>
           </S.SwitchingColumn>
-          {/* <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-            </Card>
-          </Column> */}
         </S.SwitchingColumnContainer>
       </Content>
     </>
