@@ -2,17 +2,24 @@ import Head from 'next/head'
 import { Card } from '@components/Card/Card'
 import { bankConfig } from '@utils/constants'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { BankFilters } from '@modules/Switching/BankFilters'
 import { BanksTable } from '@modules/Switching/BanksTable'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import { Button } from '@components/Button/Button'
 import { actionText } from '@utils/constants'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, Column } from '@styles/common.style'
 
 export const ActionChooseBank = (): JSX.Element => {
+  const { push } = useRouter()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
+
+  const onNext = () => {
+    push('/switching/action-breakup-letter')
+  }
 
   useEffect(() => {
     console.log('selectedAccountTypes', selectedAccountTypes)
@@ -67,6 +74,11 @@ export const ActionChooseBank = (): JSX.Element => {
                 <BanksTable bankData={bankData} />
               </S.Section>
             </Card>
+            <S.Buttons>
+              <Button type='button' size='small' onClick={onNext}>
+                Next
+              </Button>
+            </S.Buttons>
           </S.SwitchingColumn>
           {/* <Column>
             <Card stretch column>

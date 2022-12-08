@@ -67,9 +67,9 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
           },
         }),
       )
-      toast(true, 'Your details have been updated successfully', 'success')
+      toast('Your details have been updated successfully', 'success')
     } catch (error) {
-      toast(true, 'An error occurred your details', 'error')
+      toast('An error occurred your details', 'error')
     }
   }
 

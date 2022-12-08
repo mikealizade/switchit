@@ -4,8 +4,8 @@ import { showToast } from '@state/toast/toastSlice'
 export const useToast = () => {
   const dispatch = useDispatch()
 
-  const toast = (isVisible = false, message = '', type = '') => {
-    dispatch(showToast({ isVisible, message, type }))
+  const toast = (message = '', type = '') => {
+    dispatch(showToast({ isVisible: true, message, type }))
   }
 
   return toast

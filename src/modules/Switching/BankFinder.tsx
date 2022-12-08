@@ -60,9 +60,8 @@ const BankFinder = (): JSX.Element => {
         },
         body: JSON.stringify(body),
       })
-      toast(true, 'Thanks for letting us know about your bank!', 'success')
     } catch (error) {
-      toast(true, 'An  error occurred submitting your bank', 'error')
+      toast('An error occurred submitting your bank', 'error')
     }
   }
 

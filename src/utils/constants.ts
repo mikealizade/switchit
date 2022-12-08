@@ -131,18 +131,7 @@ export const defaultProfile = {
       { type: 'Provider Switching Actions', points: 0 },
     ],
   },
-  letters: {
-    personal: {
-      hello: '',
-      breakup: '',
-      isLetterSent: false,
-    },
-    business: {
-      hello: '',
-      breakup: '',
-      isLetterSent: false,
-    },
-  },
+  letters: [],
   switchingJourneys: {
     personal: [
       {

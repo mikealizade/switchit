@@ -21,7 +21,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
         <Loader />
       ) : (
         <S.TotalShared>
-          {total} x{/* <FontAwesomeIcon size='sm' icon={faPaperPlane} /> */}
+          {total} x
           <ShareButton small type='button' onClick={() => shareCode()}>
             Share
           </ShareButton>

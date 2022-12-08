@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
 import { fetcher } from '@utils/functions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 import * as S from '@components/EditableInput/EditableInput.style'
 
 export const EditableInput: NextPage<{ name: string; defaultValue: string }> = ({
@@ -64,11 +62,11 @@ export const EditableInput: NextPage<{ name: string; defaultValue: string }> = (
       />
       {isEditing ? (
         <S.EditIcon onClick={save}>
-          <FontAwesomeIcon size='sm' icon={faFloppyDisk} />
+          {/* <FontAwesomeIcon size='sm' icon={faFloppyDisk} /> */}
         </S.EditIcon>
       ) : (
         <S.EditIcon onClick={edit}>
-          <FontAwesomeIcon size='sm' icon={faPenToSquare} />
+          {/* <FontAwesomeIcon size='sm' icon={faPenToSquare} /> */}
         </S.EditIcon>
       )}
     </S.EditableInputContainer>

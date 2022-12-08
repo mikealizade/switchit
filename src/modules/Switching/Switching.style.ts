@@ -92,9 +92,20 @@ export const Container = styled.div`
   display: flex;
   row-gap: 20px;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
   border-radius: 30px;
   flex: 1;
+
+  ${() => mediaQuery.tablet} {
+    padding: 20px;
+  }
+
+  [contenteditable='true'] {
+    border: 2px solid var(--sushi);
+    border-radius: 10px;
+    outline: 2px;
+    padding: 20px;
+  }
 `
 
 export const Content = styled.div`
@@ -108,9 +119,6 @@ export const Content = styled.div`
   white-space: pre-wrap;
   min-height: 300px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-  &[contenteditable='true'] {
-    border: 2px solid var(--sushi);
-  }
 
   p {
     font-size: var(--fsBase) !important;
@@ -123,7 +131,20 @@ export const Content = styled.div`
 
 export const Buttons = styled.div`
   display: flex;
+  flex-direction: column;
   column-gap: 20px;
-  justify-content: flex-end;
-  padding: 10px;
+  row-gap: 10px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  flex: 1;
+
+  ${() => mediaQuery.tablet} {
+    justify-content: flex-end;
+    flex-direction: row;
+    padding: 20px 0;
+  }
+
+  button:nth-child(3) {
+    margin-left: auto;
+  }
 `

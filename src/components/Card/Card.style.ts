@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const Card = styled.section<{
   column?: boolean
@@ -15,6 +16,10 @@ export const Card = styled.section<{
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '80px')};
   border-radius: 10px;
   background-color: var(--white);
-  padding: ${({ padded }) => (padded ? '60px' : '30px')};
+  padding: 30px;
   flex: ${({ stretch }) => (stretch ? '1' : 'none')};
+
+  ${() => mediaQuery.tablet} {
+    padding: ${({ padded }) => (padded ? '60px' : '30px')};
+  }
 `
