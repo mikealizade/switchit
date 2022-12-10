@@ -3,7 +3,6 @@ import Head from 'next/head'
 import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { SocialPost } from '@components/SocialPost/SocialPost'
-import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
 import * as S from './Programs.style'
 import { socialPostsConfig, SocialPostConfig } from '@utils/constants'
@@ -16,28 +15,22 @@ export const PostToSocials = () => {
   return (
     <S.ProgramContainer>
       <S.Program>
-        {/* <Card column> */}
         {socialTwitter.map((postsArray, i) => {
           console.log('postsArray', postsArray)
           return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
         })}
-        {/* </Card> */}
       </S.Program>
       <S.Program>
-        {/* <Card column> */}
         {socialTwitter.map((postsArray, i) => {
           console.log('postsArray', postsArray)
           return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
         })}
-        {/* </Card> */}
       </S.Program>
       <S.Program>
-        {/* <Card column> */}
         {socialTwitter.map((postsArray, i) => {
           console.log('postsArray', postsArray)
           return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
         })}
-        {/* </Card> */}
       </S.Program>
     </S.ProgramContainer>
   )

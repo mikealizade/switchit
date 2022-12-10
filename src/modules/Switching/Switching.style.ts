@@ -59,6 +59,15 @@ export const Section = styled.div`
   row-gap: 40px;
 `
 
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  > section {
+    flex: 1;
+  }
+`
+
 export const Header = styled.h2`
   width: 100%;
   font-size: inherit;
@@ -144,7 +153,7 @@ export const Buttons = styled.div`
     padding: 20px 0;
   }
 
-  button:nth-child(3) {
+  button:nth-of-type() {
     margin-left: auto;
   }
 `

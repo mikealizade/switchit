@@ -4,14 +4,39 @@ export const UserContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 40px 10px;
+  padding: 40px 40px 5px;
   background-color: var(--pampas);
-  min-height: 104px;
+`
 
-  div:nth-of-type(2) {
-    margin-left: auto;
-    margin-right: 30px;
+export const UserDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+`
+
+export const SignedInUser = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 12px;
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 8px 15px 8px 8px;
+  box-shadow: 1px 1px 3px var(--gallery);
+
+  img {
+    border-radius: 50%;
   }
+`
+
+export const Notifications = styled(SignedInUser)`
+  justify-content: center;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  padding: 8px;
+  cursor: pointer;
 `
 
 export const User = styled.div`

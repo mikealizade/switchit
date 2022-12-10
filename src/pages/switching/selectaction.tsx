@@ -1,26 +1,34 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@state/store'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
-import { actionsConfig, actionText } from '@utils/constants'
-import { useRef, useState } from 'react'
+import { actionsConfig, journeyTypes } from '@utils/constants'
+import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
-import { setActionCard } from '@state/actionCard/actionCardSlice'
+import { setActionCard } from '@state/switchingJourney/switchingJourneySlice'
 
 type ActionsConfig = typeof actionsConfig[0]
 
 const SelectAction = (): JSX.Element => {
   const { push } = useRouter()
   const dispatch = useDispatch()
+  const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys.personal)
+  const journeyType = useSelector((state: RootState) => state.switchingJourney.journeyType)
   const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
   const [currentAction, setAction] = useState<ActionsConfig | null>(null)
+  const filterActionType = ({ type }: { type: string }) =>
+    journeyType === journeyTypes.noBankAccount
+      ? type !== 'breakup' && type !== 'reviews'
+      : journeyType === journeyTypes.notReadyToSwitch
+      ? type !== 'hello'
+      : true
 
   const selectAction = (index: number) => () => {
     setRoute(actionsConfig[index].route)
@@ -48,18 +56,24 @@ const SelectAction = (): JSX.Element => {
 
               <S.Section>
                 <S.ActionSelector>
-                  {actionsConfig.map(({ text, icon, duration, pointsEarned, route }, i: number) => (
-                    <S.Item key={route} isActive={icon === currentAction?.icon}>
-                      <S.LinkContainer onClick={selectAction(i)}>
-                        <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
-                        <h3>{text}</h3>
-                        <S.MetaData>
-                          <span>{duration}min</span>
-                          <span>{pointsEarned}pts</span>
-                        </S.MetaData>
-                      </S.LinkContainer>
-                    </S.Item>
-                  ))}
+                  {actionsConfig
+                    .filter(filterActionType)
+                    .map(({ text, icon, duration, pointsEarned, route }, i: number) => (
+                      <S.Item
+                        key={route}
+                        isActive={icon === currentAction?.icon}
+                        isCompleted={stepsCompleted.includes(i)}
+                      >
+                        <S.LinkContainer onClick={selectAction(i)}>
+                          <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
+                          <h3>{text}</h3>
+                          <S.MetaData>
+                            <span>{duration}min</span>
+                            <span>{pointsEarned}pts</span>
+                          </S.MetaData>
+                        </S.LinkContainer>
+                      </S.Item>
+                    ))}
                 </S.ActionSelector>
               </S.Section>
 

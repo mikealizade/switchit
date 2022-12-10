@@ -21,15 +21,15 @@ type BankResult = { score: number; scoreHeadline: string; scoreCopy: string; inf
 
 const colourConfig = {
   '1': '#DE2E2E',
-  '2': '#DE2E2E',
-  '3': '#F99844',
-  '4': '#F99844',
+  '2': '#FF7200',
+  '3': '#FCB11B',
+  '4': '#E9DE3A',
   '5': '#7DBC42',
 }
 
 const BankScore = (): JSX.Element => {
   const { push } = useRouter()
-  const selectedBank = useSelector((state: RootState) => state.selectedBank)
+  const selectedBank = useSelector((state: RootState) => state.switchingJourney.selectedBank)
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
     score: 0,
@@ -65,10 +65,14 @@ const BankScore = (): JSX.Element => {
       <Content>
         <SwitchingColumnContainer>
           <SwitchingColumn>
-            <Card column padded>
+            <Card column padded rowGap={40}>
               <S.Header>
                 The results are in for <strong>{selectedBank}</strong> and your bank scored ...
               </S.Header>
+              <S.Rating>
+                <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
+                <p>{scoreCopy}</p>
+              </S.Rating>
               <S.BankInfo>
                 <S.BankScoreContainer>
                   <ProgressProvider valueStart={1} valueEnd={valueEnd}>
@@ -91,14 +95,16 @@ const BankScore = (): JSX.Element => {
                     )}
                   </ProgressProvider>
                 </S.BankScoreContainer>
-                <S.BankData>{info}</S.BankData>
               </S.BankInfo>
 
               <S.BankRating>
-                <S.Rating>
-                  <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
-                  <p>{scoreCopy}</p>
-                </S.Rating>
+                <S.BankData>
+                  <S.BankDataHeader>
+                    Why did {selectedBank} score {score}/5
+                  </S.BankDataHeader>
+                  {info}
+                </S.BankData>
+
                 <S.ButtonContainer alignLeft={score === 5} column>
                   {score === 5 ? (
                     <>
@@ -106,7 +112,7 @@ const BankScore = (): JSX.Element => {
                         Check Another Bank
                       </Button>
                       <Button type='button' onClick={() => {}}>
-                        I’m Still Interested In Other Green Banks
+                        {`I'm Still Interested In Other Green Banks`}
                       </Button>
                       <Button type='button' onClick={() => {}}>
                         What Else Can I Do To Act?

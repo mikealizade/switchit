@@ -65,6 +65,8 @@ export const BankInfo = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 40px;
+  align-items: center;
+  justify-content: center;
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;
@@ -73,12 +75,22 @@ export const BankInfo = styled.div`
 `
 
 export const BankScoreContainer = styled.div`
-  width: 200px;
+  min-width: 200px;
+  max-width: 250px;
   flex: 1;
 `
+
 export const BankData = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
   flex: 2;
   line-height: 20px;
+  font-size: var(--fsBase);
+`
+
+export const BankDataHeader = styled.h2`
+  font-size: var(--fsMedium6);
 `
 
 export const ProgressText = styled.div`
@@ -172,14 +184,16 @@ export const ActionSelector = styled.ul`
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 `
 
-export const Item = styled.li<{ isActive?: boolean }>`
+export const Item = styled.li<{ isActive?: boolean; isCompleted: boolean }>`
   border: 2px solid var(--nileBlue);
   color: ${({ isActive }) => (isActive ? 'var(--white)' : 'var(--nileBlue)')};
   background-color: ${({ isActive }) => (isActive ? 'var(--nileBlue)' : 'var(--white)')};
-  border: 1px solid ${({ isActive }) => (isActive ? 'var(--white)' : 'var(--nileBlue)')};
+  border: 1px solid
+    ${({ isActive, isCompleted }) =>
+      isCompleted ? 'var(--sushi)' : isActive ? 'var(--white)' : 'var(--nileBlue)'};
   border-radius: 10px;
   padding: 12px;
   flex: 1;
@@ -188,6 +202,7 @@ export const Item = styled.li<{ isActive?: boolean }>`
   transition: all 0.1s linear;
   display: flex;
   cursor: pointer;
+  pointer-events: ${({ isCompleted }) => (isCompleted ? 'none' : 'all')};
 
   &:hover {
   }

@@ -12,14 +12,14 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
   children,
 }): JSX.Element => {
   const { pathname } = useRouter()
-  const isProfile = pathname === '/profile'
+  const hasDrawer = pathname === '/profile' || pathname === '/switching/choosejourney'
 
   return (
     <>
       <S.AppContent>
         {showUser && <User isValidating={isValidating} />}
         {children}
-        {isProfile && <ProfileDrawer />}
+        {hasDrawer && <ProfileDrawer />}
       </S.AppContent>
       {pathname.includes('/switching/') && (
         <S.Aside>

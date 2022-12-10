@@ -27,6 +27,7 @@ type User = {
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
   const {
+    email = '',
     nickname = '',
     picture = '',
     isNewUser,
@@ -35,6 +36,8 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
 
   return (
     <S.UserContainer>
+      {/* <S.UserWelcome></S.UserWelcome> */}
+
       {isValidating ? (
         <Loader />
       ) : isNewUser ? (
@@ -46,17 +49,29 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
       ) : (
         <>
           <S.User>
-            {picture && <Image src={picture} alt={nickname} width={50} height={50} unoptimized />}
             <S.WelcomeMsg>
               Welcome back, <S.UserName>{nickname}</S.UserName>
             </S.WelcomeMsg>
           </S.User>
-          {pathname !== '/profile' && (
-            <S.Score>
-              {totalPoints}
-              <Image src={'/icons/icon_star.svg'} alt='' width={45} height={45} />
-            </S.Score>
-          )}
+          <S.UserDetails>
+            {pathname !== '/profile' && (
+              <S.Score>
+                {totalPoints}
+                <Image src={'/icons/icon_star.svg'} alt='' width={45} height={45} />
+              </S.Score>
+            )}
+            {picture && (
+              <>
+                <S.SignedInUser>
+                  <Image src={picture} alt={nickname} width={30} height={30} unoptimized />
+                  <p>{email}</p>
+                </S.SignedInUser>
+                <S.Notifications>
+                  <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />
+                </S.Notifications>
+              </>
+            )}
+          </S.UserDetails>
         </>
       )}
     </S.UserContainer>

@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { setJourneyType } from '@state/switchingJourney/switchingJourneySlice'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import { journeyTypes } from '@utils/constants'
 import { Column } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
@@ -16,12 +18,16 @@ const ChooseJourney = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()
   const [type, setActive] = useState('readyToSwitch')
-  const route = type === 'readyToSwitch' ? '/switching/selectaction' : '/switching/selectaction2'
 
   const selectJourney = (type: string) => () => {
     setActive(type)
     dispatch(toggleDrawer(type))
+    dispatch(setJourneyType(type))
   }
+
+  useEffect(() => {
+    dispatch(setJourneyType(type))
+  }, [type, dispatch])
 
   return (
     <>
@@ -43,16 +49,16 @@ const ChooseJourney = (): JSX.Element => {
 
               <S.Section>
                 <S.ChooseJourneyLink
-                  onClick={selectJourney('readyToSwitch')}
-                  isActive={type === 'readyToSwitch'}
+                  onClick={selectJourney(journeyTypes.readyToSwitch)}
+                  isActive={type === journeyTypes.readyToSwitch}
                 >
                   {/* <Link href='/switching/selectaction'> */}
                   {` Ready to switch or can't switch but still want to open a green bank account`}
                   {/* </Link> */}
                 </S.ChooseJourneyLink>
                 <S.ChooseJourneyLink
-                  onClick={selectJourney('notReadyToSwitch')}
-                  isActive={type === 'notReadyToSwitch'}
+                  onClick={selectJourney(journeyTypes.notReadyToSwitch)}
+                  isActive={type === journeyTypes.notReadyToSwitch}
                 >
                   {/* <Link href='/switching/selectaction'> */}
                   Not ready to switch but still want to use my voice to act
@@ -66,7 +72,7 @@ const ChooseJourney = (): JSX.Element => {
                     type='button'
                     onClick={() => {
                       dispatch(toggleDrawer(''))
-                      push(route)
+                      push('/switching/selectaction')
                     }}
                   >
                     Next

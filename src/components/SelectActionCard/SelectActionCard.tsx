@@ -6,7 +6,7 @@ import { actionsConfig } from '@utils/constants'
 import * as S from '@components/SelectActionCard/SelectActionCard.style'
 
 export const SelectActionCards = () => {
-  const actionCardIndex = useSelector((state: RootState) => state.actionCardIndex)
+  const actionCardIndex = useSelector((state: RootState) => state.switchingJourney.actionCardIndex)
 
   return (
     <S.SelectActionContainer>

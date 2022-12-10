@@ -133,52 +133,8 @@ export const defaultProfile = {
   },
   letters: [],
   switchingJourneys: {
-    personal: [
-      {
-        isStep1Complete: false,
-      },
-      {
-        isStep2Complete: false,
-      },
-      {
-        isStep3Complete: false,
-      },
-      {
-        isStep4Complete: false,
-      },
-      {
-        isStep5Complete: false,
-      },
-      {
-        isStep6Complete: false,
-      },
-      {
-        isStep7Complete: false,
-      },
-    ],
-    business: [
-      {
-        isStep1Complete: false,
-      },
-      {
-        isStep2Complete: false,
-      },
-      {
-        isStep3Complete: false,
-      },
-      {
-        isStep4Complete: false,
-      },
-      {
-        isStep5Complete: false,
-      },
-      {
-        isStep6Complete: false,
-      },
-      {
-        isStep7Complete: false,
-      },
-    ],
+    personal: [],
+    student: [],
   },
 }
 
@@ -249,6 +205,7 @@ export const actionsConfig = [
   {
     text: 'Switch To or Open A Green Bank Account',
     icon: 'hand',
+    type: 'switch',
     duration: '3',
     pointsEarned: '100',
     route: 'welcome-to-switching-journey',
@@ -258,6 +215,7 @@ export const actionsConfig = [
   {
     text: `Write your 'breakup' letter`,
     icon: 'brokenheart',
+    type: 'breakup',
     duration: '2',
     pointsEarned: '50',
     route: 'breakup-letter',
@@ -267,6 +225,7 @@ export const actionsConfig = [
   {
     text: `Write your 'hello' letter`,
     icon: 'wave',
+    type: 'hello',
     duration: '2',
     pointsEarned: '50',
     route: 'hello-letter',
@@ -276,6 +235,7 @@ export const actionsConfig = [
   {
     text: 'Post To Socials',
     icon: 'socialposts',
+    type: 'socials',
     duration: '4',
     pointsEarned: '25',
     route: 'post-to-socials',
@@ -285,6 +245,7 @@ export const actionsConfig = [
   {
     text: 'Tell Your Community',
     icon: 'speechbubbles',
+    type: 'tellcommunity',
     duration: '3',
     pointsEarned: '100',
     route: 'tell-your-community',
@@ -294,6 +255,7 @@ export const actionsConfig = [
   {
     text: 'Write Reviews',
     icon: 'reviews',
+    type: 'reviews',
     duration: '2',
     pointsEarned: '50',
     route: 'write-reviews',
@@ -303,6 +265,7 @@ export const actionsConfig = [
   {
     text: 'Tell Us How It Went',
     icon: 'camera',
+    type: 'tellUs',
     duration: '3',
     pointsEarned: '100',
     route: 'how-it-went',
@@ -442,4 +405,10 @@ export const actionText = {
     'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
   tellUs:
     'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
+}
+
+export enum journeyTypes {
+  readyToSwitch = 'readyToSwitch',
+  notReadyToSwitch = 'notReadyToSwitch',
+  noBankAccount = 'noBankAccount',
 }

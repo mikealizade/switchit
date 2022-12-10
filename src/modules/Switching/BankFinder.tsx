@@ -5,12 +5,13 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
-import { setSelectedBank } from '@state/bank/bankSlice'
+import { setSelectedBank, setJourneyType } from '@state/switchingJourney/switchingJourneySlice'
 import { countries } from '@utils/countries'
 import { Select } from '@components/Select/Select'
 import { Modal } from '@components/Modal/Modal'
 import { useModal } from '@hooks/useModal'
 import { useToast } from '@hooks/useToast'
+import { journeyTypes } from '@utils/constants'
 import { Input } from '@components/Input/Input.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import { Form } from '@styles/common.style'
@@ -42,6 +43,11 @@ const BankFinder = (): JSX.Element => {
 
   const onSelectCountry = (value: string) => {
     setCountry(value)
+  }
+
+  const onNoBankAccountSelect = () => {
+    dispatch(setJourneyType(journeyTypes.noBankAccount))
+    push('/switching/selectaction')
   }
 
   const saveNotListedBank = async (notListedBank: NotListedBank) => {
@@ -111,7 +117,7 @@ const BankFinder = (): JSX.Element => {
             />
           </S.BankList>
           <S.Buttons>
-            <Button type='button' mode='secondary' onClick={() => {}}>
+            <Button type='button' mode='secondary' onClick={onNoBankAccountSelect}>
               {`I don't have a bank account yet`}
             </Button>
             <Button

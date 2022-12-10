@@ -5,12 +5,15 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { User } from '@components/User/User'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@state/store'
 import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
 import { fetcher } from '@utils/functions'
 import {
   SwitchingColumnContainer,
   SwitchingColumn,
+  Row,
   Header,
   StartJourneyContainer,
   StartJourney,
@@ -18,6 +21,8 @@ import {
 import * as S from '@styles/common.style'
 
 const Switching = (): JSX.Element => {
+  const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
+
   // const { user: { sub = '' } = {}, isLoading = false } = useUser()
 
   return (
@@ -34,20 +39,23 @@ const Switching = (): JSX.Element => {
         <SwitchingColumnContainer>
           <SwitchingColumn>
             <Header>Active Journeys</Header>
-            <Card shadow>
-              <StartJourneyContainer>
-                <Link href='/switching/selectBank'>
-                  <StartJourney>
-                    <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-                    Start a Switching Journey
-                  </StartJourney>
-                </Link>
-                <p>
-                  Have multiple bank accounts? No problem!
-                  <br /> {`We'll switch one at a time.`}
-                </p>
-              </StartJourneyContainer>
-            </Card>
+            <Row>
+              <Card shadow>
+                <StartJourneyContainer>
+                  <Link href='/switching/selectBank'>
+                    <StartJourney>
+                      <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                      Start a Switching Journey
+                    </StartJourney>
+                  </Link>
+                  <p>
+                    Have multiple bank accounts? No problem!
+                    <br /> {`We'll switch one at a time.`}
+                  </p>
+                </StartJourneyContainer>
+              </Card>
+              {!!stepsCompleted?.length && <Card shadow>new component here</Card>}
+            </Row>
           </SwitchingColumn>
           <S.Column>
             <Card stretch column>

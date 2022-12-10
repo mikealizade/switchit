@@ -68,7 +68,7 @@ const sanitizeConf = {
 export const ActionBreakupLetter: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const { push } = useRouter()
-  const selectedBank = useSelector((state: RootState) => state.selectedBank)
+  const selectedBank = useSelector((state: RootState) => state.switchingJourney.selectedBank)
   const user = useSelector((state: RootState) => state.user)
   const { nickname, letters = [] } = user
   const [currentLetter, setLetter] = useState('')
@@ -78,10 +78,17 @@ export const ActionBreakupLetter: NextPage = () => {
   // const [canSave, setCanSave] = useState(false)
   const text = useRef('')
   const toast = useToast()
+  // text.current = letters.length
+  //   ? letters.find(
+  //       ({ type, accountType }: Letter) => type === 'breakup' && accountType === 'personal',
+  //     )?.letterText
+  //   : getDefaultLetterText(selectedBank, nickname)
 
   const onSave = async () => {
     setIsLetterSaved(true)
     const letterText = sanitizeHtml(text.current, sanitizeConf)
+
+    console.log('text.current save fnc', text.current)
 
     try {
       const body = {
@@ -151,10 +158,7 @@ export const ActionBreakupLetter: NextPage = () => {
   }
 
   const onChange = ({ target: { value } }: { target: { value: string } }) => {
-    console.log('value', value)
-
     text.current = value
-    console.log('text.current', text.current)
   }
 
   const onToggleEditable = () => {
@@ -166,21 +170,22 @@ export const ActionBreakupLetter: NextPage = () => {
       const [letter] = letters.filter(
         ({ type, accountType }: Letter) => type === 'breakup' && accountType === 'personal',
       )
-      setLetter(letter?.letterText)
+      text.current = letter?.letterText
+      setLetter(text.current)
     } else {
       if (nickname) {
-        setLetter(getDefaultLetterText(selectedBank, nickname))
+        text.current = getDefaultLetterText(selectedBank, nickname)
+        setLetter(text.current)
       }
     }
-  }, [letters, selectedBank, nickname])
+  }, [letters, text, selectedBank, nickname])
 
-  useEffect(() => {
-    if (currentLetter) {
-      text.current = currentLetter
-    }
-  }, [currentLetter])
-
-  console.log('text.current', text.current)
+  // useEffect(() => {
+  //   if (currentLetter) {
+  //     text.current = currentLetter
+  //     setLetter(text.current)
+  //   }
+  // }, [currentLetter])
 
   return (
     <>
