@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
-import classNames from 'classnames'
 import { useUser } from '@auth0/nextjs-auth0'
+import { useRouter } from 'next/router'
 import { useToast } from '@hooks/useToast'
 import { fetcher } from '@utils/functions'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import * as S from '@components/Button/Button.style'
 
 type ButtonProps = {
@@ -12,6 +13,7 @@ type ButtonProps = {
   size?: string
   disabled?: boolean
   step: number
+  onSend: () => void
 }
 
 export const SaveStepButton: NextPage<ButtonProps> = ({
@@ -21,17 +23,27 @@ export const SaveStepButton: NextPage<ButtonProps> = ({
   disabled = false,
   size = 'normal',
   step = 0,
+  onSend,
 }): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
-  const toast = useToast()
+  const { currentJourneyId, currentJourney } = useGetCurrentJourney()
 
-  const onSaveStep = (step: { [key: string]: boolean }) => async () => {
+  console.log('currentJourney', currentJourney)
+
+  const toast = useToast()
+  const { push } = useRouter()
+
+  const onSave = (step: number) => async () => {
+    // save journey to db
     try {
       const body = {
         filter: { sub },
         payload: {
-          $set: {
-            [`switchingJourneys.personal`]: step,
+          $push: {
+            [`switchJourneys`]: {
+              ...currentJourney,
+              completedSteps: [...currentJourney!.completedSteps, step],
+            },
           },
         },
         collection: 'users',
@@ -45,19 +57,20 @@ export const SaveStepButton: NextPage<ButtonProps> = ({
         },
         body: JSON.stringify(body),
       })
+
+      // save letter to db
+      onSend()
     } catch (error) {
       toast('An error occurred', 'error')
     }
   }
 
+  if (!currentJourneyId || !currentJourney) {
+    push('/switching')
+  }
+
   return (
-    <S.Button
-      type={type}
-      onClick={onSaveStep({ [`isStep${step}Complete`]: true })}
-      className={mode}
-      disabled={disabled}
-      size={size}
-    >
+    <S.Button type={type} onClick={onSave(step)} className={mode} disabled={disabled} size={size}>
       {children}
     </S.Button>
   )

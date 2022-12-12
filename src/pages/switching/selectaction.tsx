@@ -12,21 +12,25 @@ import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
-import { setActionCard } from '@state/switchingJourney/switchingJourneySlice'
+import { setActionCard } from '@state/preSwitchJourney/preSwitchJourneySlice'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 
 type ActionsConfig = typeof actionsConfig[0]
 
 const SelectAction = (): JSX.Element => {
   const { push } = useRouter()
   const dispatch = useDispatch()
-  const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys.personal)
-  const journeyType = useSelector((state: RootState) => state.switchingJourney.journeyType)
+  const { currentJourney, currentJourneyType } = useGetCurrentJourney()
+  const completedSteps = currentJourney?.completedSteps
+  // const completedSteps = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
+  // const { currentJourneyId, journeys } = useSelector((state: RootState) => state.switchJourneys)
+  // const currentJourneyType = journeys.find(({ id }) => id === currentJourneyId)?.journeyType
   const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
   const [currentAction, setAction] = useState<ActionsConfig | null>(null)
   const filterActionType = ({ type }: { type: string }) =>
-    journeyType === journeyTypes.noBankAccount
+    currentJourneyType === journeyTypes.noBankAccount
       ? type !== 'breakup' && type !== 'reviews'
-      : journeyType === journeyTypes.notReadyToSwitch
+      : currentJourneyType === journeyTypes.notReadyToSwitch
       ? type !== 'hello'
       : true
 
@@ -62,7 +66,7 @@ const SelectAction = (): JSX.Element => {
                       <S.Item
                         key={route}
                         isActive={icon === currentAction?.icon}
-                        isCompleted={stepsCompleted.includes(i)}
+                        isCompleted={!!completedSteps?.includes(i)}
                       >
                         <S.LinkContainer onClick={selectAction(i)}>
                           <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
@@ -83,11 +87,10 @@ const SelectAction = (): JSX.Element => {
                     type='button'
                     disabled={!currentAction}
                     onClick={() => {
-                      // push(selectedRoute)
-                      push('/switching/start-journey')
+                      push(selectedRoute)
                     }}
                   >
-                    Next
+                    Take This Step
                   </Button>
                 </S.ButtonContainer>
                 <ProgressBar step={4} />

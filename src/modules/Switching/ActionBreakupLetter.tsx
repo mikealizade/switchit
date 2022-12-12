@@ -68,21 +68,20 @@ const sanitizeConf = {
 export const ActionBreakupLetter: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const { push } = useRouter()
-  const selectedBank = useSelector((state: RootState) => state.switchingJourney.selectedBank)
+  const selectedBank = useSelector((state: RootState) => state.preSwitchJourney.selectedBank)
+  const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
+
+  console.log('stepsCompleted', stepsCompleted)
+
   const user = useSelector((state: RootState) => state.user)
   const { nickname, letters = [] } = user
   const [currentLetter, setLetter] = useState('')
   const [isEditable, setEdit] = useState(false)
   const [isLetterSent, setIsLetterSent] = useState(false)
   const [isLetterSaved, setIsLetterSaved] = useState(false)
-  // const [canSave, setCanSave] = useState(false)
   const text = useRef('')
   const toast = useToast()
-  // text.current = letters.length
-  //   ? letters.find(
-  //       ({ type, accountType }: Letter) => type === 'breakup' && accountType === 'personal',
-  //     )?.letterText
-  //   : getDefaultLetterText(selectedBank, nickname)
+  const isStepCompleted = stepsCompleted?.includes(2)
 
   const onSave = async () => {
     setIsLetterSaved(true)
@@ -197,6 +196,7 @@ export const ActionBreakupLetter: NextPage = () => {
               subHeader='Tell your old bank how you really feel'
               text={actionText.breakupLetter}
               step='2'
+              isStepCompleted={isStepCompleted}
             />
 
             <S.Container>
@@ -216,6 +216,8 @@ export const ActionBreakupLetter: NextPage = () => {
                 onNext={onNext}
                 isLetterSent={isLetterSent}
                 isLetterSaved={isLetterSaved}
+                isStepComplete={isStepCompleted}
+                step={2}
               />
             </S.Container>
           </Card>

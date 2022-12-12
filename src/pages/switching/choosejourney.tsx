@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
-import { setJourneyType } from '@state/switchingJourney/switchingJourneySlice'
+import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
@@ -21,13 +21,13 @@ const ChooseJourney = (): JSX.Element => {
 
   const selectJourney = (type: string) => () => {
     setActive(type)
-    dispatch(toggleDrawer(type))
-    dispatch(setJourneyType(type))
+    // dispatch(toggleDrawer(type))
+    dispatch(setJourneyData({ journeyType: type }))
   }
 
-  useEffect(() => {
-    dispatch(setJourneyType(type))
-  }, [type, dispatch])
+  // useEffect(() => {
+  //   dispatch(setJourneyData(type))
+  // }, [type, dispatch])
 
   return (
     <>
@@ -72,7 +72,7 @@ const ChooseJourney = (): JSX.Element => {
                     type='button'
                     onClick={() => {
                       dispatch(toggleDrawer(''))
-                      push('/switching/selectaction')
+                      push('/switching/action-choose-bank')
                     }}
                   >
                     Next

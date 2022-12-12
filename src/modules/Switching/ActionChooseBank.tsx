@@ -18,7 +18,7 @@ export const ActionChooseBank = (): JSX.Element => {
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
 
   const onNext = () => {
-    push('/switching/action-breakup-letter')
+    push('/switching/selectaction')
   }
 
   useEffect(() => {

@@ -3,6 +3,9 @@ import { mediaQuery } from '@utils/functions'
 
 export const Header = styled.h2`
   font-size: var(--fsLarge9);
+  display: flex;
+  place-items: center;
+  column-gap: 15px;
 
   strong {
     font-family: 'Konsolev SemiBold';

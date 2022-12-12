@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { HeaderContainer, Header, Subheader } from '@modules/Switching/PreSwitching.style'
+import { HeaderContainer, Header, Subheader, StepItem } from '@modules/Switching/PreSwitching.style'
 import * as S from '@components/ActionHeader/ActionHeader.style'
 
 type ActionHeader = {
@@ -9,6 +9,7 @@ type ActionHeader = {
   subHeader: string
   text?: string
   step?: string
+  isStepCompleted?: boolean
 }
 
 export const ActionHeader: NextPage<ActionHeader> = ({
@@ -16,6 +17,7 @@ export const ActionHeader: NextPage<ActionHeader> = ({
   subHeader,
   text,
   step,
+  isStepCompleted,
 }): JSX.Element => {
   const { back } = useRouter()
 
@@ -30,9 +32,16 @@ export const ActionHeader: NextPage<ActionHeader> = ({
           <S.StepCounter>Step {step} of 7</S.StepCounter>
         </S.StepContainer>
       )}
-      <Header>{header}</Header>
+      <Header>
+        {header}
+        {isStepCompleted && (
+          <StepItem>
+            <Image src={`/icons/icon_radio_checked.svg`} alt='' width={35} height={35} />
+          </StepItem>
+        )}
+      </Header>
       <Subheader>{subHeader}</Subheader>
-      {text && <p>{text}</p>}
+      {!isStepCompleted && text && <p>{text}</p>}
     </HeaderContainer>
   )
 }

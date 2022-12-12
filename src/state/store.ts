@@ -5,14 +5,16 @@ import userReducer from 'src/state/user/userSlice'
 import drawerReducer from 'src/state/drawer/drawerSlice'
 import friendsReducer from 'src/state/friends/friendsSlice'
 import toastReducer from 'src/state/toast/toastSlice'
-import switchingJourneyReducer from 'src/state/switchingJourney/switchingJourneySlice'
+import preSwitchJourneyReducer from 'src/state/preSwitchJourney/preSwitchJourneySlice'
+import switchJourneysReducer from 'src/state/switchJourney/switchJourneySlice'
 
 const rootReducer = combineReducers({
   user: userReducer,
   drawer: drawerReducer,
   friends: friendsReducer,
   toast: toastReducer,
-  switchingJourney: switchingJourneyReducer,
+  preSwitchJourney: preSwitchJourneyReducer,
+  switchJourneys: switchJourneysReducer,
 })
 
 export const store = configureStore({

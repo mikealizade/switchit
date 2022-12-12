@@ -63,9 +63,9 @@ export const Row = styled.div`
   display: flex;
   flex-direction: row;
   column-gap: 30px;
-  > section {
+  /* > section {
     flex: 1;
-  }
+  } */
 `
 
 export const Header = styled.h2`
@@ -88,13 +88,20 @@ export const StartJourneyContainer = styled.div`
   font-size: var(--fsMedium8);
 `
 
-export const StartJourney = styled.div`
+export const NewJourneyInput = styled.input`
+  padding: 5px 10px;
+  border: 1px solid var(--gallery);
+  border-radius: 8px;
+`
+
+export const StartJourney = styled.div<{ isActive: boolean }>`
   display: flex;
   flex-direction: column;
-  color: var(--pink);
+  color: ${({ isActive }) => (isActive ? 'var(--pink)' : 'var(--grey)')};
   place-items: center;
   row-gap: 40px;
-  cursor: pointer;
+  cursor: ${({ isActive }) => (isActive ? 'pointer' : 'not-allowed')};
+  pointer-events: ${({ isActive }) => (isActive ? 'all' : 'none')};
 `
 
 export const Container = styled.div`

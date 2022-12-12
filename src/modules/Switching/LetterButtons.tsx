@@ -10,6 +10,8 @@ type LetterButtonsProps = {
   onNext: () => void
   isLetterSent: boolean
   isLetterSaved: boolean
+  isStepComplete: boolean
+  step: number
 }
 
 export const LetterButtons: NextPage<LetterButtonsProps> = ({
@@ -19,27 +21,42 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   onNext,
   isLetterSent,
   isLetterSaved,
+  step,
+  isStepComplete,
 }) => {
   return (
     <S.Buttons>
-      <Button type='button' onClick={onToggleEditable} size='small'>
+      <Button
+        type='button'
+        onClick={onToggleEditable}
+        mode='secondary'
+        size='small'
+        disabled={isStepComplete}
+      >
         Edit
       </Button>
-      <Button type='button' size='small' onClick={onSave}>
+      <Button
+        type='button'
+        size='small'
+        mode='secondary'
+        onClick={onSave}
+        disabled={isStepComplete}
+      >
         Save
       </Button>
       {/* <Button type='button' size='small' onClick={onSend}>
         Send To BanK
       </Button> */}
-      <SaveStepButton type='button' size='small' step={2}>
-        Send To BanK
-      </SaveStepButton>
-      <Button
+      <SaveStepButton
         type='button'
         size='small'
-        onClick={onNext}
-        disabled={!(isLetterSent || isLetterSaved)}
+        step={step}
+        disabled={isStepComplete}
+        onSend={onSend}
       >
+        Send To BanK
+      </SaveStepButton>
+      <Button type='button' size='small' onClick={onNext}>
         Next
       </Button>
     </S.Buttons>

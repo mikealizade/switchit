@@ -29,7 +29,7 @@ const colourConfig = {
 
 const BankScore = (): JSX.Element => {
   const { push } = useRouter()
-  const selectedBank = useSelector((state: RootState) => state.switchingJourney.selectedBank)
+  const selectedBank = useSelector((state: RootState) => state.preSwitchJourney.selectedBank)
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
     score: 0,

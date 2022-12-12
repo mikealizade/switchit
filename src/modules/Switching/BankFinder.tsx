@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
-import { setSelectedBank, setJourneyType } from '@state/switchingJourney/switchingJourneySlice'
+import { setSelectedBank } from '@state/preSwitchJourney/preSwitchJourneySlice'
+import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { countries } from '@utils/countries'
 import { Select } from '@components/Select/Select'
 import { Modal } from '@components/Modal/Modal'
@@ -46,7 +47,7 @@ const BankFinder = (): JSX.Element => {
   }
 
   const onNoBankAccountSelect = () => {
-    dispatch(setJourneyType(journeyTypes.noBankAccount))
+    dispatch(setJourneyData({ journeyType: journeyTypes.noBankAccount }))
     push('/switching/selectaction')
   }
 

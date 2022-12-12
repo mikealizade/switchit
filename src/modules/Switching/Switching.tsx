@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import useSWR from 'swr'
+import { nanoid } from 'nanoid'
 import { useUser } from '@auth0/nextjs-auth0'
 import { User } from '@components/User/User'
-import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
@@ -17,13 +19,26 @@ import {
   Header,
   StartJourneyContainer,
   StartJourney,
+  NewJourneyInput,
 } from '@modules/Switching/Switching.style'
 import * as S from '@styles/common.style'
+import { setAddNewJourney } from '@state/switchJourney/switchJourneySlice'
 
 const Switching = (): JSX.Element => {
-  const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
+  const dispatch = useDispatch()
+  const { push } = useRouter()
+  const { switchJourneys = [] } = useSelector((state: RootState) => state.user)
 
+  console.log('user.switchJourneys', switchJourneys)
+
+  const [value, setValue] = useState('')
+  // const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
   // const { user: { sub = '' } = {}, isLoading = false } = useUser()
+  const addNewJourney = () => {
+    const id = nanoid()
+    dispatch(setAddNewJourney({ id, isActive: true, name: value }))
+    push('/switching/selectBank')
+  }
 
   return (
     <>
@@ -42,27 +57,40 @@ const Switching = (): JSX.Element => {
             <Row>
               <Card shadow>
                 <StartJourneyContainer>
-                  <Link href='/switching/selectBank'>
-                    <StartJourney>
-                      <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-                      Start a Switching Journey
-                    </StartJourney>
-                  </Link>
+                  <NewJourneyInput
+                    type='text'
+                    onChange={(e: any) => setValue(e.target.value)}
+                    value={value}
+                    placeholder='Enter your new journey name'
+                  />
+                  {/* <Link href='/switching/selectBank'> */}
+                  <StartJourney isActive={!!value} onClick={addNewJourney}>
+                    <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                    Start a Switching Journey
+                  </StartJourney>
+                  {/* </Link> */}
                   <p>
                     Have multiple bank accounts? No problem!
                     <br /> {`We'll switch one at a time.`}
                   </p>
                 </StartJourneyContainer>
               </Card>
-              {!!stepsCompleted?.length && <Card shadow>new component here</Card>}
+              {switchJourneys.map(({ id, name, completedSteps }) => {
+                return (
+                  <Card key={id} shadow>
+                    <p>{name}</p>
+                    <p>{completedSteps.length} / 5</p>
+                  </Card>
+                )
+              })}
             </Row>
           </SwitchingColumn>
-          <S.Column>
+          {/* <S.Column>
             <Card stretch column>
               Completed Journeys
               <p>{`You haven't completed any journeys`}</p>
             </Card>
-          </S.Column>
+          </S.Column> */}
         </SwitchingColumnContainer>
       </S.Content>
     </>
