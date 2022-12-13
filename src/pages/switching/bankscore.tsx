@@ -11,7 +11,7 @@ import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-pro
 import ProgressProvider from '@modules/Dashboard/components/SwitchingJourney/ProgressProvider'
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
-import { Column } from '@styles/common.style'
+import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 
@@ -105,7 +105,7 @@ const BankScore = (): JSX.Element => {
                   {info}
                 </S.BankData>
 
-                <S.ButtonContainer alignLeft={score === 5} column>
+                <ButtonContainer alignLeft={score === 5} column>
                   {score === 5 ? (
                     <>
                       <Button type='button' onClick={() => {}}>
@@ -128,7 +128,7 @@ const BankScore = (): JSX.Element => {
                       Next
                     </Button>
                   )}
-                </S.ButtonContainer>
+                </ButtonContainer>
               </S.BankRating>
               <ProgressBar step={2} />
             </Card>

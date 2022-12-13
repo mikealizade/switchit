@@ -23,7 +23,7 @@ export const ActionHeader: NextPage<ActionHeader> = ({
 
   return (
     <HeaderContainer>
-      {step && (
+      {/* {step && (
         <S.StepContainer>
           <div onClick={() => back()}>
             <Image src={'/icons/icon_chevron_left.svg'} alt='' width={25} height={25} />
@@ -31,9 +31,10 @@ export const ActionHeader: NextPage<ActionHeader> = ({
 
           <S.StepCounter>Step {step} of 7</S.StepCounter>
         </S.StepContainer>
-      )}
+      )} */}
       <Header>
-        {header}
+        {step && <span>Action {step} of 7:</span>}
+        <span>{header}</span>
         {isStepCompleted && (
           <StepItem>
             <Image src={`/icons/icon_radio_checked.svg`} alt='' width={35} height={35} />

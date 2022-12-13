@@ -40,7 +40,7 @@ export const Navigation = styled.ul`
 
       &.active,
       &:hover {
-        background-color: var(--pink);
+        background-color: var(--nileBlue);
         color: var(--white);
       }
     }

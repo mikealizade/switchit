@@ -10,10 +10,11 @@ import { Button } from '@components/Button/Button'
 import { actionsConfig, journeyTypes } from '@utils/constants'
 import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
-import * as S from '@modules/Switching/PreSwitching.style'
 import { setActionCard } from '@state/preSwitchJourney/preSwitchJourneySlice'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
+import * as S from '@modules/Switching/PreSwitching.style'
+import { ButtonContainer } from '@styles/common.style'
 
 type ActionsConfig = typeof actionsConfig[0]
 
@@ -82,7 +83,7 @@ const SelectAction = (): JSX.Element => {
               </S.Section>
 
               <S.Section>
-                <S.ButtonContainer>
+                <ButtonContainer>
                   <Button
                     type='button'
                     disabled={!currentAction}
@@ -92,7 +93,7 @@ const SelectAction = (): JSX.Element => {
                   >
                     Take This Step
                   </Button>
-                </S.ButtonContainer>
+                </ButtonContainer>
                 <ProgressBar step={4} />
               </S.Section>
             </Card>

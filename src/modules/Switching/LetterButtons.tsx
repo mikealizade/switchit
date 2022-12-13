@@ -8,8 +8,6 @@ type LetterButtonsProps = {
   onSave: () => void
   onSend: () => void
   onNext: () => void
-  isLetterSent: boolean
-  isLetterSaved: boolean
   isStepComplete: boolean
   step: number
 }
@@ -19,8 +17,6 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   onSave,
   onSend,
   onNext,
-  isLetterSent,
-  isLetterSaved,
   step,
   isStepComplete,
 }) => {

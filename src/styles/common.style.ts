@@ -89,3 +89,17 @@ export const Ellipsis = styled.div`
   cursor: pointer;
   font-size: var(--fsLarge);
 `
+
+export const ButtonContainer = styled.div<{ column?: boolean; alignLeft?: boolean }>`
+  display: flex;
+  justify-content: flex-end;
+  margin-left: ${({ alignLeft }) => (alignLeft ? '0' : 'auto')};
+  flex: 1;
+  column-gap: 30px;
+  flex-direction: ${({ column }) => (column ? 'column' : 'row')};
+  row-gap: 15px;
+
+  button {
+    align-self: ${({ alignLeft }) => (alignLeft ? 'flex-start' : 'flex-end')};
+  }
+`

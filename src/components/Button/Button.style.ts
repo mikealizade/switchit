@@ -76,7 +76,7 @@ export const TextButton = styled.button`
 
 export const TextLink = styled.a<{ size?: string }>`
   padding: ${({ size }) => (size === 'normal' ? '10px 30px' : '5px 20px')};
-  min-width: 118px;
+  /* min-width: 118px; */
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: ${({ size }) =>

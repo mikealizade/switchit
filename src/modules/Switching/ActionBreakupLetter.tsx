@@ -1,19 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useUser } from '@auth0/nextjs-auth0'
-import { useSelector } from 'react-redux'
-import { RootState } from '@state/store'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
-import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import { Letter } from './Letter'
 import { actionText } from '@utils/constants'
-import { fetcher } from '@utils/functions'
-import ContentEditable from 'react-contenteditable'
-import sanitizeHtml from 'sanitize-html'
-import { useToast } from '@hooks/useToast'
-import { LetterButtons } from './LetterButtons'
 import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 
@@ -60,167 +52,28 @@ const getDefaultLetterText = (bankName: string = '[bank name]', nickname: string
   `
 }
 
-const sanitizeConf = {
-  allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p', 'div', 'br'],
-  allowedAttributes: { a: ['href'] },
-}
-
 export const ActionBreakupLetter: NextPage = () => {
-  const { user: { sub = '' } = {} } = useUser()
   const { push } = useRouter()
-  const selectedBank = useSelector((state: RootState) => state.preSwitchJourney.selectedBank)
-  const stepsCompleted = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
-
-  console.log('stepsCompleted', stepsCompleted)
-
-  const user = useSelector((state: RootState) => state.user)
-  const { nickname, letters = [] } = user
-  const [currentLetter, setLetter] = useState('')
-  const [isEditable, setEdit] = useState(false)
-  const [isLetterSent, setIsLetterSent] = useState(false)
-  const [isLetterSaved, setIsLetterSaved] = useState(false)
-  const text = useRef('')
-  const toast = useToast()
-  const isStepCompleted = stepsCompleted?.includes(2)
-
-  const onSave = async () => {
-    setIsLetterSaved(true)
-    const letterText = sanitizeHtml(text.current, sanitizeConf)
-
-    console.log('text.current save fnc', text.current)
-
-    try {
-      const body = {
-        filter: { sub },
-        payload: {
-          $push: {
-            [`letters`]: {
-              type: 'breakup',
-              accountType: 'personal',
-              dateSent: new Date(),
-              letterText,
-            },
-          },
-        },
-        collection: 'users',
-        upsert: false,
-      }
-
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
-      // TODO success msg even when errors!
-      toast('Your letter was saved successfully', 'success')
-    } catch (error) {
-      toast('An error occurred saving your letter', 'error')
-    }
-  }
-
-  const onSend = async () => {
-    setIsLetterSaved(true)
-    const letterText = sanitizeHtml(text.current, sanitizeConf)
-
-    try {
-      const body2 = {
-        filter: {},
-        payload: {
-          $push: {
-            //TODO update hardcoded account type
-            [`breakup`]: { dateSent: new Date(), accountType: 'personal', letterText, userId: sub },
-          },
-        },
-        collection: 'userLetters',
-        upsert: false,
-      }
-
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body2),
-      })
-      toast('Your letter was sent successfully', 'success')
-    } catch (error) {
-      toast('An error occurred sending your letter', 'error')
-    }
-
-    setIsLetterSent(true)
-  }
 
   const onNext = () => {
     push('/switching/action-hello-letter')
   }
 
-  const onChange = ({ target: { value } }: { target: { value: string } }) => {
-    text.current = value
-  }
-
-  const onToggleEditable = () => {
-    setEdit(!isEditable)
-  }
-
-  useEffect(() => {
-    if (letters?.length) {
-      const [letter] = letters.filter(
-        ({ type, accountType }: Letter) => type === 'breakup' && accountType === 'personal',
-      )
-      text.current = letter?.letterText
-      setLetter(text.current)
-    } else {
-      if (nickname) {
-        text.current = getDefaultLetterText(selectedBank, nickname)
-        setLetter(text.current)
-      }
-    }
-  }, [letters, text, selectedBank, nickname])
-
-  // useEffect(() => {
-  //   if (currentLetter) {
-  //     text.current = currentLetter
-  //     setLetter(text.current)
-  //   }
-  // }, [currentLetter])
-
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column padded>
-            <ActionHeader
+          <S.Container>
+            <Letter
               header='Action: Write Your Breakup Letter'
               subHeader='Tell your old bank how you really feel'
-              text={actionText.breakupLetter}
-              step='2'
-              isStepCompleted={isStepCompleted}
+              headerText={actionText.breakupLetter}
+              getDefaultLetterText={getDefaultLetterText}
+              onNext={onNext}
+              letterType='breakup'
+              step={2}
             />
-
-            <S.Container>
-              <ContentEditable
-                className='editable'
-                tagName='div'
-                html={text.current}
-                disabled={!isEditable}
-                onChange={onChange}
-                onBlur={onToggleEditable}
-              />
-
-              <LetterButtons
-                onToggleEditable={onToggleEditable}
-                onSave={onSave}
-                onSend={onSend}
-                onNext={onNext}
-                isLetterSent={isLetterSent}
-                isLetterSaved={isLetterSaved}
-                isStepComplete={isStepCompleted}
-                step={2}
-              />
-            </S.Container>
-          </Card>
+          </S.Container>
         </Content>
       </ErrorBoundary>
     </>

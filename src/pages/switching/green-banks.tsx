@@ -9,9 +9,9 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { actionText } from '@utils/constants'
 import * as S from '@modules/Switching/Switching.style'
-import { Content, Column } from '@styles/common.style'
+import { Content } from '@styles/common.style'
 
-export const ActionChooseBank = (): JSX.Element => {
+const GreenBanks = (): JSX.Element => {
   const { push } = useRouter()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
@@ -22,8 +22,6 @@ export const ActionChooseBank = (): JSX.Element => {
   }
 
   useEffect(() => {
-    console.log('selectedAccountTypes', selectedAccountTypes)
-    console.log(', selectedFeatures', selectedFeatures)
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
       setBankData(bankConfig)
       return
@@ -90,3 +88,5 @@ export const ActionChooseBank = (): JSX.Element => {
     </>
   )
 }
+
+export default GreenBanks

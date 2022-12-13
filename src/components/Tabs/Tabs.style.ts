@@ -5,6 +5,7 @@ export const Tabs = styled.div<{ wide?: boolean }>`
   flex-direction: column;
   flex: initial;
   overflow-y: auto;
+  flex: 1;
 
   .MuiTabs-indicator {
     background-color: var(--pink);
@@ -18,7 +19,6 @@ export const Tabs = styled.div<{ wide?: boolean }>`
   }
 
   .profile-tabs {
-    margin-bottom: 60px;
     button {
       font-size: var(--fsBase);
       font-family: 'Konsolev Regular';

@@ -59,10 +59,8 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
   ]
 
   return (
-    <>
-      <StyledTabs wide>
-        <Tabs tabs={['Overview', 'History', 'How It Works']} panels={panels}></Tabs>
-      </StyledTabs>
-    </>
+    <StyledTabs wide>
+      <Tabs tabs={['Overview', 'History', 'How It Works']} panels={panels}></Tabs>
+    </StyledTabs>
   )
 }

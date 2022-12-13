@@ -7,7 +7,7 @@ import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionsConfig, startJourneyConfig, actionText } from '@utils/constants'
-import { Column } from '@styles/common.style'
+import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import { useState } from 'react'
@@ -62,7 +62,7 @@ const SelectAction = (): JSX.Element => {
               </S.Section>
 
               <S.Section>
-                <S.ButtonContainer>
+                <ButtonContainer>
                   <Button
                     type='button'
                     mode='secondary'
@@ -80,7 +80,7 @@ const SelectAction = (): JSX.Element => {
                   >
                     Start Journey
                   </Button>
-                </S.ButtonContainer>
+                </ButtonContainer>
                 <ProgressBar step={5} />
               </S.Section>
             </Card>

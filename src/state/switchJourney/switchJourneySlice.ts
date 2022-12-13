@@ -7,7 +7,7 @@ type BaseNewJourney = {
   name: string
 }
 
-type Journey = BaseNewJourney & {
+export type Journey = BaseNewJourney & {
   journeyType: string
   accountType: string
   completedSteps: number[]
@@ -36,7 +36,7 @@ export const switchJourneys = createSlice({
             {
               ...action.payload,
               journeyType: journeyTypes.readyToSwitch,
-              accountType: 'personal',
+              accountType: 'personal', //TODO reeplace hardcoded value
               completedSteps: [],
             },
           ],
@@ -64,9 +64,15 @@ export const switchJourneys = createSlice({
         journeys: updatedJourneys,
       }
     },
+    setCurrentJourney: (
+      _,
+      action: PayloadAction<{ currentJourneyId: string; journeys: Journey[] }>,
+    ) => {
+      return action.payload
+    },
   },
 })
 
-export const { setJourneyData, setAddNewJourney } = switchJourneys.actions
+export const { setJourneyData, setAddNewJourney, setCurrentJourney } = switchJourneys.actions
 
 export default switchJourneys.reducer

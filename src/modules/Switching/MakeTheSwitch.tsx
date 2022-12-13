@@ -1,9 +1,13 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
-import * as S from '@components/Button/Button.style'
-import { Content } from '@styles/common.style'
+import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import { Button } from '@components/Button/Button'
+import * as S from './Switching.style'
+import { TextLink } from '@components/Button/Button.style'
+import { Content, ButtonContainer } from '@styles/common.style'
 
 const linkConfig = {
   starling: {
@@ -25,20 +29,43 @@ const linkConfig = {
 }
 
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
+  const { push } = useRouter()
+  const name = linkConfig[bankName as keyof typeof linkConfig].name
+
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card>
-            {`You've`} selected {linkConfig[bankName as keyof typeof linkConfig].name}
-            <S.TextLink
-              className='primary'
-              href={linkConfig[bankName as keyof typeof linkConfig].link}
-              target='_blank'
-              rel='noreferrer'
-            >
-              Make The Switch
-            </S.TextLink>
+          <Card column>
+            <ActionHeader
+              header='Choose Your Bank'
+              subHeader={`You've selected ${name}`}
+              step='1'
+            />
+            <S.TextContent>
+              <S.Text>{`This will take you to ${name}'s`} website</S.Text>
+              <S.Text>
+                After switching make sure sure to come back and complete your switching journey
+              </S.Text>
+            </S.TextContent>
+            <ButtonContainer alignLeft>
+              <Button
+                type='button'
+                size='small'
+                mode='secondary'
+                onClick={() => push('/switching/green-banks')}
+              >
+                Back To Green Banks
+              </Button>
+              <TextLink
+                className='primary'
+                href={linkConfig[bankName as keyof typeof linkConfig].link}
+                target='_blank'
+                rel='noreferrer'
+              >
+                Make The Switch
+              </TextLink>
+            </ButtonContainer>
           </Card>
         </Content>
       </ErrorBoundary>

@@ -10,7 +10,7 @@ import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { journeyTypes } from '@utils/constants'
-import { Column } from '@styles/common.style'
+import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 
@@ -67,17 +67,17 @@ const ChooseJourney = (): JSX.Element => {
               </S.Section>
 
               <S.Section>
-                <S.ButtonContainer>
+                <ButtonContainer>
                   <Button
                     type='button'
                     onClick={() => {
                       dispatch(toggleDrawer(''))
-                      push('/switching/action-choose-bank')
+                      push('/switching/green-banks')
                     }}
                   >
                     Next
                   </Button>
-                </S.ButtonContainer>
+                </ButtonContainer>
                 <ProgressBar step={3} />
               </S.Section>
             </Card>
