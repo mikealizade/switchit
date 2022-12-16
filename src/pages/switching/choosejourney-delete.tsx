@@ -14,6 +14,8 @@ import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 
+// THIS PAGE IS NO LONGER NEEDED
+
 const ChooseJourney = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()

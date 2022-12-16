@@ -26,7 +26,7 @@ export const ActionPostToSocials: NextPage = () => {
               header='Action: Post To Socials'
               subHeader='Get the word out'
               text={actionText.postToSocials}
-              step='4'
+              // step='4'
             />
 
             <PostToSocials />

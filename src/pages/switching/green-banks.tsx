@@ -59,7 +59,7 @@ const GreenBanks = (): JSX.Element => {
                 header='Action Choose Your Bank'
                 subHeader={`We've found 4 switch-worthy banks for you`}
                 text={actionText.greenBanks}
-                step='1'
+                // step='1'
               />
 
               <S.Section>

@@ -3,13 +3,10 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
-import { Card } from '@components/Card/Card'
 import { Letter } from './Letter'
 import { actionText } from '@utils/constants'
 import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
-
-type Letter = { type: string; accountType: string }
 
 const getDefaultLetterText = (bankName: string = '[bank name]', nickname: string): string => {
   console.log('bankName', bankName, nickname)

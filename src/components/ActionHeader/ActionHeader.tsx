@@ -8,7 +8,7 @@ type ActionHeader = {
   header: string
   subHeader: string
   text?: string
-  step?: string
+  // step?: string
   isStepCompleted?: boolean
 }
 
@@ -16,7 +16,7 @@ export const ActionHeader: NextPage<ActionHeader> = ({
   header,
   subHeader,
   text,
-  step,
+  // step,
   isStepCompleted,
 }): JSX.Element => {
   const { back } = useRouter()
@@ -33,7 +33,7 @@ export const ActionHeader: NextPage<ActionHeader> = ({
         </S.StepContainer>
       )} */}
       <Header>
-        {step && <span>Action {step} of 7:</span>}
+        {/* {step && <span>Action {step} of 7:</span>} */}
         <span>{header}</span>
         {isStepCompleted && (
           <StepItem>

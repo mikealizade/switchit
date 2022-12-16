@@ -24,6 +24,11 @@ import '@styles/globals.css'
 // cypress tests
 // db backups
 
+// Tech Debt
+// remove useEffects if poss
+// upgrade to swr 2.0
+// upgrade to Next 13
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <UserProvider>

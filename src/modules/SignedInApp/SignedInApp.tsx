@@ -12,7 +12,8 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
   children,
 }): JSX.Element => {
   const { pathname } = useRouter()
-  const hasDrawer = pathname === '/profile' || pathname === '/switching/choosejourney'
+  // const hasDrawer = pathname === '/profile' || pathname === '/switching/choosejourney'
+  const hasDrawer = pathname === '/profile'
 
   return (
     <>

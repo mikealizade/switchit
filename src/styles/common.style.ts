@@ -48,15 +48,17 @@ export const Title = styled.h2`
   justify-content: space-between;
 `
 
-export const Form = styled.form`
+export const Form = styled.form<{ row?: boolean }>`
   display: flex;
   flex-direction: column;
   align-self: stretch;
+  flex: 1;
 
   fieldset {
     display: flex;
-    flex-direction: column;
+    flex-direction: ${({ row }) => (row ? 'row' : 'column')};
     row-gap: 35px;
+    justify-content: space-between;
   }
 
   label {
@@ -71,6 +73,13 @@ export const Form = styled.form`
     border: 1px solid var(--grey);
   }
 `
+
+// export const Fieldset = styled.fieldset<{ row?: boolean }>`
+//   display: flex;
+//   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+//   align-self: stretch;
+//   row-gap: 35px;
+// `
 
 export const ShareButton = styled(Button)<{ small?: boolean }>`
   background-color: var(--pink);

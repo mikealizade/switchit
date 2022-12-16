@@ -13,7 +13,7 @@ import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { LetterButtons } from './LetterButtons'
 import * as S from '@modules/Switching/Switching.style'
 
-type Letter = { type: string; accountType: string }
+type Letter = { type: string }
 
 type LetterProps = {
   header: string
@@ -47,12 +47,10 @@ export const Letter: NextPage<LetterProps> = ({
 }) => {
   const { user: { sub = '' } = {} } = useUser()
   const { currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
-  const selectedBank = useSelector((state: RootState) => state.preSwitchJourney.selectedBank)
+  const selectedBank = useSelector((state: RootState) => state.switchJourneys.currentSelectedBank)
   const user = useSelector((state: RootState) => state.user)
   const { nickname, letters = [] } = user
-  const [letter] = letters.filter(
-    ({ type, accountType }: Letter) => type === letterType && accountType === 'personal',
-  )
+  const [letter] = letters.filter(({ type }: Letter) => type === letterType)
   const [currentLetter, setLetter] = useState('')
   const [isEditable, setEdit] = useState(false)
   const text = useRef('')
@@ -69,7 +67,6 @@ export const Letter: NextPage<LetterProps> = ({
           $push: {
             [`letters`]: {
               type: letterType,
-              accountType: 'personal',
               dateSent: new Date(),
               letterText,
             },
@@ -101,10 +98,8 @@ export const Letter: NextPage<LetterProps> = ({
         filter: {},
         payload: {
           $push: {
-            //TODO update hardcoded account type
             [letterType]: {
               dateSent: new Date(),
-              accountType: 'personal',
               letterText,
               userId: sub,
             },
@@ -160,7 +155,6 @@ export const Letter: NextPage<LetterProps> = ({
         header={header}
         subHeader={subHeader}
         text={headerText}
-        step={String(step)}
         isStepCompleted={isStepCompleted}
       />
 

@@ -5,13 +5,14 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
-import { setSelectedBank } from '@state/preSwitchJourney/preSwitchJourneySlice'
-import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
+// import { setSelectedBank } from '@state/preSwitchJourney/preSwitchJourneySlice'
+import { setJourneyData, setSelectedBank } from '@state/switchJourney/switchJourneySlice'
 import { countries } from '@utils/countries'
 import { Select } from '@components/Select/Select'
 import { Modal } from '@components/Modal/Modal'
 import { useModal } from '@hooks/useModal'
 import { useToast } from '@hooks/useToast'
+import { useSaveStep } from '@hooks/useSaveStep'
 import { journeyTypes } from '@utils/constants'
 import { Input } from '@components/Input/Input.style'
 import * as S from '@modules/Switching/PreSwitching.style'
@@ -28,6 +29,7 @@ const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()
   const toast = useToast()
+  const saveStep = useSaveStep()
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [banks, setBanks] = useState([])
   const [isBankSelected, selectBank] = useState(false)
@@ -37,9 +39,10 @@ const BankFinder = (): JSX.Element => {
   const [isModalVisible, setToggleModal] = useModal()
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
 
-  const onSelectBank = (value: string) => {
+  const onSelectBank = (bank: string) => {
     selectBank(true)
-    dispatch(setSelectedBank(value))
+    dispatch(setSelectedBank(bank))
+    dispatch(setJourneyData({ badBank: bank }))
   }
 
   const onSelectCountry = (value: string) => {
@@ -86,6 +89,12 @@ const BankFinder = (): JSX.Element => {
     setToggleModal(false)
   }
 
+  const onNext = (): void => {
+    dispatch(setJourneyData({ completedSteps: [1] }))
+    saveStep(1)
+    push('/switching/bankscore')
+  }
+
   const resetForm = (): void => {
     setToggleModal(false)
     setConfirmation(false)
@@ -130,13 +139,7 @@ const BankFinder = (): JSX.Element => {
             >
               {`My bank isn't listed`}
             </Button>
-            <Button
-              type='button'
-              disabled={!isBankSelected}
-              onClick={() => {
-                push('/switching/bankscore')
-              }}
-            >
+            <Button type='button' disabled={!isBankSelected} onClick={onNext}>
               Next
             </Button>
           </S.Buttons>

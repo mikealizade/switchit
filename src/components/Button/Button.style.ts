@@ -8,17 +8,15 @@ export const Buttons = styled.div`
 `
 
 export const Button = styled.button<{ size?: string }>`
-  padding: ${({ size }) => (size === 'normal' ? '10px 30px' : '5px 20px')};
-  min-width: 118px;
+  padding: ${({ size }) => (size === 'normal' ? '7px 25px' : '5px 20px')};
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: ${({ size }) =>
     size === 'normal' ? '`Konsolev Regular`, sans-serif' : '`Konsolev SemiBold`, sans-serif'};
   font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsSmall4)')};
   line-height: 1.75;
-  border-radius: 10px;
+  border-radius: 25px;
   letter-spacing: 0.5px;
-  /* border: 0; */
   outline: none;
   cursor: pointer;
   justify-content: center;
@@ -75,7 +73,7 @@ export const TextButton = styled.button`
 `
 
 export const TextLink = styled.a<{ size?: string }>`
-  padding: ${({ size }) => (size === 'normal' ? '10px 30px' : '5px 20px')};
+  padding: ${({ size }) => (size === 'normal' ? '7px 25px' : '5px 20px')};
   /* min-width: 118px; */
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -83,7 +81,7 @@ export const TextLink = styled.a<{ size?: string }>`
     size === 'normal' ? '`Konsolev Regular`, sans-serif' : '`Konsolev SemiBold`, sans-serif'};
   font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsSmall4)')};
   line-height: 1.75;
-  border-radius: 10px;
+  border-radius: 25px;
   letter-spacing: 0.5px;
   /* border: 0; */
   outline: none;

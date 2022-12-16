@@ -91,7 +91,7 @@ export const StartJourneyContainer = styled.div`
   position: relative;
 `
 
-export const NewJourneyInput = styled.input`
+export const PlainInput = styled.input`
   padding: 5px 10px;
   border: 1px solid var(--gallery);
   border-radius: 8px;
@@ -190,6 +190,20 @@ export const Text = styled.p`
   font-size: var(--fsLarge2);
 `
 
+//confirm switch
+
+export const Signature = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const SignatureInput = styled(PlainInput)`
+  height: 100px;
+  padding: 30px;
+  font-size: var(--fsLarge2);
+`
+
 // switch landing page
 
 export const NoJourneysTextContainer = styled.div`
@@ -215,7 +229,14 @@ export const JourneyCard = styled(Card)`
   /* flex-basis: calc(33% - 20px); */
   flex: 1;
   flex-wrap: wrap;
-  max-width: 50%;
+  /* max-width: 50%; */
+
+  > div {
+    flex: 1;
+  }
+  > ul {
+    flex: 1;
+  }
 `
 
 export const Detail = styled.div`

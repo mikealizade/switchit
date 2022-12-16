@@ -1,39 +1,26 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@state/store'
+import { useDispatch } from 'react-redux'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
-import { actionsConfig, journeyTypes } from '@utils/constants'
+import { actionsConfig } from '@utils/constants'
 import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { setActionCard } from '@state/preSwitchJourney/preSwitchJourneySlice'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import { ButtonContainer } from '@styles/common.style'
+import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 
 type ActionsConfig = typeof actionsConfig[0]
 
 const SelectAction = (): JSX.Element => {
   const { push } = useRouter()
   const dispatch = useDispatch()
-  const { currentJourney, currentJourneyType } = useGetCurrentJourney()
-  const completedSteps = currentJourney?.completedSteps
-  // const completedSteps = useSelector((state: RootState) => state.user.switchingJourneys?.personal)
-  // const { currentJourneyId, journeys } = useSelector((state: RootState) => state.switchJourneys)
-  // const currentJourneyType = journeys.find(({ id }) => id === currentJourneyId)?.journeyType
   const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
   const [currentAction, setAction] = useState<ActionsConfig | null>(null)
-  const filterActionType = ({ type }: { type: string }) =>
-    currentJourneyType === journeyTypes.noBankAccount
-      ? type !== 'breakup' && type !== 'reviews'
-      : currentJourneyType === journeyTypes.notReadyToSwitch
-      ? type !== 'hello'
-      : true
 
   const selectAction = (index: number) => () => {
     setRoute(actionsConfig[index].route)
@@ -59,28 +46,7 @@ const SelectAction = (): JSX.Element => {
                 subHeader={`Select which of the following actions you'd like to take. The more actions completed, the bigger the impact.`}
               />
 
-              <S.Section>
-                <S.ActionSelector>
-                  {actionsConfig
-                    .filter(filterActionType)
-                    .map(({ text, icon, duration, pointsEarned, route }, i: number) => (
-                      <S.Item
-                        key={route}
-                        isActive={icon === currentAction?.icon}
-                        isCompleted={!!completedSteps?.includes(i)}
-                      >
-                        <S.LinkContainer onClick={selectAction(i)}>
-                          <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
-                          <h3>{text}</h3>
-                          <S.MetaData>
-                            <span>{duration}min</span>
-                            <span>{pointsEarned}pts</span>
-                          </S.MetaData>
-                        </S.LinkContainer>
-                      </S.Item>
-                    ))}
-                </S.ActionSelector>
-              </S.Section>
+              <ActionSelector currentAction={currentAction} selectAction={selectAction} isDefault />
 
               <S.Section>
                 <ButtonContainer>

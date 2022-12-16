@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { useToast } from '@hooks/useToast'
+import { useSaveStep } from '@hooks/useSaveStep'
 import { fetcher } from '@utils/functions'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import * as S from '@components/Button/Button.style'
@@ -27,50 +28,53 @@ export const SaveStepButton: NextPage<ButtonProps> = ({
 }): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
   const { currentJourneyId, currentJourney } = useGetCurrentJourney()
-
-  console.log('currentJourney', currentJourney)
-
-  const toast = useToast()
+  const saveStep = useSaveStep()
   const { push } = useRouter()
 
-  const onSave = (step: number) => async () => {
-    // save journey to db
-    try {
-      const body = {
-        filter: { sub },
-        payload: {
-          $push: {
-            [`switchJourneys`]: {
-              ...currentJourney,
-              completedSteps: [...currentJourney!.completedSteps, step],
-            },
-          },
-        },
-        collection: 'users',
-        upsert: false,
-      }
-
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
-
-      // save letter to db
-      onSend()
-    } catch (error) {
-      toast('An error occurred', 'error')
-    }
+  const onSaveStep = () => {
+    saveStep(step)
+    // save letter to db
+    onSend()
   }
 
-  if (!currentJourneyId || !currentJourney) {
-    push('/switching')
-  }
+  // const onSaveStep = (step: number) => async () => {
+  //   // save journey to db
+  //   try {
+  //     const body = {
+  //       filter: { sub },
+  //       payload: {
+  //         $push: {
+  //           [`switchJourneys`]: {
+  //             ...currentJourney,
+  //             completedSteps: [...currentJourney!.completedSteps, step],
+  //           },
+  //         },
+  //       },
+  //       collection: 'users',
+  //       upsert: false,
+  //     }
+
+  //     await fetcher(`/api/db/updateOne`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(body),
+  //     })
+
+  //     // save letter to db
+  //     onSend()
+  //   } catch (error) {
+  //     toast('An error occurred', 'error')
+  //   }
+  // }
+
+  // if (!currentJourneyId || !currentJourney) {
+  //   push('/switching')
+  // }
 
   return (
-    <S.Button type={type} onClick={onSave(step)} className={mode} disabled={disabled} size={size}>
+    <S.Button type={type} onClick={onSaveStep} className={mode} disabled={disabled} size={size}>
       {children}
     </S.Button>
   )

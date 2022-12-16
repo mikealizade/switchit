@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type PreSwitchJourney = {
-  selectedBank: string
+  // selectedBank: string
   actionCardIndex: number
 }
 
 export const initialPreSwitchJourneyState: PreSwitchJourney = {
-  selectedBank: '',
+  // selectedBank: '',
   actionCardIndex: 0,
 }
 
@@ -14,12 +14,12 @@ export const preSwitchJourney = createSlice({
   name: 'preSwitchJourney',
   initialState: initialPreSwitchJourneyState,
   reducers: {
-    setSelectedBank: (state, action: PayloadAction<any>) => {
-      return {
-        ...state,
-        selectedBank: action.payload,
-      }
-    },
+    // setSelectedBank: (state, action: PayloadAction<any>) => {
+    //   return {
+    //     ...state,
+    //     selectedBank: action.payload,
+    //   }
+    // },
     setActionCard: (state, action: PayloadAction<any>) => {
       return {
         ...state,
@@ -29,6 +29,6 @@ export const preSwitchJourney = createSlice({
   },
 })
 
-export const { setSelectedBank, setActionCard } = preSwitchJourney.actions
+export const { setActionCard } = preSwitchJourney.actions
 
 export default preSwitchJourney.reducer

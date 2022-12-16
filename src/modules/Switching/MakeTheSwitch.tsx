@@ -1,12 +1,15 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useDispatch } from 'react-redux'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useSaveStep } from '@hooks/useSaveStep'
+import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import * as S from './Switching.style'
-import { TextLink } from '@components/Button/Button.style'
 import { Content, ButtonContainer } from '@styles/common.style'
 
 const linkConfig = {
@@ -30,20 +33,30 @@ const linkConfig = {
 
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { push } = useRouter()
-  const name = linkConfig[bankName as keyof typeof linkConfig].name
+  const dispatch = useDispatch()
+  const { currentJourney } = useGetCurrentJourney()
+  const saveStep = useSaveStep()
+  const bank = linkConfig[bankName as keyof typeof linkConfig]
+
+  const onMakeTheSwitch = () => {
+    dispatch(
+      setJourneyData({
+        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 3])),
+      }),
+    )
+    saveStep(3) // await?
+    window.open(bank.link, '_blank')
+    // push('/switching/confirm-switch')
+  }
 
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
           <Card column>
-            <ActionHeader
-              header='Choose Your Bank'
-              subHeader={`You've selected ${name}`}
-              step='1'
-            />
+            <ActionHeader header='Choose Your Bank' subHeader={`You've selected ${bank.name}`} />
             <S.TextContent>
-              <S.Text>{`This will take you to ${name}'s`} website</S.Text>
+              <S.Text>{`This will take you to ${bank.name}'s`} website</S.Text>
               <S.Text>
                 After switching make sure sure to come back and complete your switching journey
               </S.Text>
@@ -57,14 +70,17 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               >
                 Back To Green Banks
               </Button>
-              <TextLink
-                className='primary'
-                href={linkConfig[bankName as keyof typeof linkConfig].link}
-                target='_blank'
-                rel='noreferrer'
-              >
+              <Button type='button' size='small' mode='primary' onClick={onMakeTheSwitch}>
                 Make The Switch
-              </TextLink>
+              </Button>
+              <Button
+                type='button'
+                size='small'
+                mode='primary'
+                onClick={() => push('/switching/confirm-switch')}
+              >
+                I Made The Switch, Take Me To Verify
+              </Button>
             </ButtonContainer>
           </Card>
         </Content>

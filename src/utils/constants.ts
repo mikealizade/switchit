@@ -274,34 +274,62 @@ export const actionsConfig = [
   },
 ]
 
+// export const startJourneyConfig = [
+//   {
+//     step: 'Step 1',
+//     text: 'Choose And Open A Green Bank Account',
+//   },
+//   {
+//     step: 'Step 2',
+//     text: `Write your 'Breakup' letter`,
+//   },
+//   {
+//     step: 'Step 3',
+//     text: `Write your 'Hello' letter`,
+//   },
+//   {
+//     step: 'Step 4',
+//     text: 'Post to Socials',
+//   },
+//   {
+//     step: 'Step 5',
+//     text: 'Tell Your Community',
+//   },
+//   {
+//     step: 'Step 6',
+//     text: 'Write Reviews',
+//   },
+//   {
+//     step: 'Step 7',
+//     text: 'Tell Us How It Went',
+//   },
+// ]
+
 export const startJourneyConfig = [
   {
     step: 'Step 1',
-    text: 'Choose And Open A Green Bank Account',
+    text: 'Check Your Bank Score',
+    route: '/switching/selectbank',
   },
   {
     step: 'Step 2',
-    text: `Write your 'Breakup' letter`,
+    text: `Choose Your Green Bank`,
+    route: '/switching/bankscore',
   },
   {
     step: 'Step 3',
-    text: `Write your 'Hello' letter`,
+    text: `Make The Switch`,
+    route: '/switching/green-banks',
   },
   {
     step: 'Step 4',
-    text: 'Post to Socials',
+    text: 'Confirm The Switch By Signing',
+    route: '/switching/confirm-switch',
   },
   {
     step: 'Step 5',
-    text: 'Tell Your Community',
-  },
-  {
-    step: 'Step 6',
-    text: 'Write Reviews',
-  },
-  {
-    step: 'Step 7',
-    text: 'Tell Us How It Went',
+    text: 'Maximise',
+    route: '', //enable cards
   },
 ]
 
@@ -406,6 +434,8 @@ export const actionText = {
     'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
   tellUs:
     'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
+  confirmSwitch:
+    'Part of what keeps our lights on is cash incentives from our recommended providers.',
 }
 
 export enum journeyTypes {

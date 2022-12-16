@@ -29,7 +29,7 @@ export const ActionTellUs: NextPage = () => {
                   header='Action: Tell Us How It Went'
                   subHeader='Get the word out'
                   text={actionText.tellUs}
-                  step='7'
+                  // step='7'
                 />
                 <TileLinks>
                   <Item>

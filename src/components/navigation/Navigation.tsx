@@ -19,7 +19,8 @@ export const Navigation: NextPage = (): JSX.Element => {
   } = useUser()
   const { pathname } = useRouter()
   const [current, setHover] = useState('')
-  const isActive = (route: string): boolean => pathname === `/${route}`
+  const isActive = (route: string): boolean =>
+    pathname === `/${route}` || pathname.includes(`/${route}`)
 
   return (
     <S.Nav>
