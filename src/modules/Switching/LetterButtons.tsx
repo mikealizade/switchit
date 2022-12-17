@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { Button } from '@components/Button/Button'
-import { SaveStepButton } from '@components/SaveStepButton/SaveStepButton'
 import * as S from '@modules/Switching/Switching.style'
 
 type LetterButtonsProps = {
@@ -9,7 +8,6 @@ type LetterButtonsProps = {
   onSend: () => void
   onNext: () => void
   isStepComplete: boolean
-  step: number
 }
 
 export const LetterButtons: NextPage<LetterButtonsProps> = ({
@@ -17,7 +15,6 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   onSave,
   onSend,
   onNext,
-  step,
   isStepComplete,
 }) => {
   return (
@@ -40,18 +37,9 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
       >
         Save
       </Button>
-      {/* <Button type='button' size='small' onClick={onSend}>
+      <Button type='button' size='small' onClick={onSend} disabled={isStepComplete}>
         Send To BanK
-      </Button> */}
-      <SaveStepButton
-        type='button'
-        size='small'
-        step={step}
-        disabled={isStepComplete}
-        onSend={onSend}
-      >
-        Send To BanK
-      </SaveStepButton>
+      </Button>
       <Button type='button' size='small' onClick={onNext}>
         Next
       </Button>

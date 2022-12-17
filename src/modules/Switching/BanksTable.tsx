@@ -1,11 +1,8 @@
 import { FC, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
-import { useSaveStep } from '@hooks/useSaveStep'
-import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useNextStep } from '@hooks/useNextStep'
+import { steps } from '@utils/constants'
 import * as S from './ActionChooseBank.style'
 import starling from '../../../public/icons/icon_starling.png'
 import monzo from '../../../public/icons/icon_monzo.png'
@@ -54,10 +51,7 @@ const logo = {
 }
 
 export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
-  const { push } = useRouter()
-  const dispatch = useDispatch()
-  const saveStep = useSaveStep()
-  const { currentJourney } = useGetCurrentJourney()
+  const nextStep = useNextStep()
   const [expandedRow, setExpandRow] = useState<number | null>(null)
 
   const expandRow = (index: number | null) => (): void => {
@@ -65,13 +59,7 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
   }
 
   const onNext = (route: string) => (): void => {
-    dispatch(
-      setJourneyData({
-        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 2])),
-      }),
-    )
-    saveStep(2)
-    push(`/switching/make-the-switch/${route}`)
+    nextStep(steps.chooseGreenBank, `/switching/make-the-switch/${route}`)
   }
 
   return (

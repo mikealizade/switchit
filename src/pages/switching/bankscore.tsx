@@ -11,6 +11,9 @@ import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-pro
 import ProgressProvider from '@modules/Dashboard/components/SwitchingJourney/ProgressProvider'
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
+import { steps } from '@utils/constants'
+import { useNextStep } from '@hooks/useNextStep'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
@@ -31,6 +34,8 @@ const BankScore = (): JSX.Element => {
   const { push } = useRouter()
   const selectedBank = useSelector((state: RootState) => state.switchJourneys.currentSelectedBank)
   const { data, error } = useSWR('/api/bankdata', fetcher)
+  const nextStep = useNextStep()
+  const { currentJourney } = useGetCurrentJourney()
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
     score: 0,
     scoreHeadline: '',
@@ -38,6 +43,10 @@ const BankScore = (): JSX.Element => {
     info: '',
   })
   const [valueEnd, setValueEnd] = useState(0)
+
+  const onNext = (): void => {
+    nextStep(steps.checkBankScore, '/switching/green-banks')
+  }
 
   useEffect(() => {
     if (data && selectedBank) {
@@ -119,18 +128,13 @@ const BankScore = (): JSX.Element => {
                       </Button>
                     </>
                   ) : (
-                    <Button
-                      type='button'
-                      onClick={() => {
-                        push('/switching/green-banks')
-                      }}
-                    >
+                    <Button type='button' onClick={onNext}>
                       Next
                     </Button>
                   )}
                 </ButtonContainer>
               </S.BankRating>
-              <ProgressBar step={2} />
+              <ProgressBar step={steps.chooseGreenBank} />
             </Card>
           </SwitchingColumn>
         </SwitchingColumnContainer>

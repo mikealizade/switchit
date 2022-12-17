@@ -1,21 +1,20 @@
 import type { NextPage } from 'next'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useRouter } from 'next/router'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import Image from 'next/image'
-import { actionText } from '@utils/constants'
-import { Content, Column } from '@styles/common.style'
+import { useNextStep } from '@hooks/useNextStep'
+import { actionText, steps } from '@utils/constants'
+import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 import { TileLinks, Item, Anchor } from '@modules/Switching/ActionLeaveReviews.style'
 
 export const ActionTellUs: NextPage = () => {
-  const { push } = useRouter()
+  const nextStep = useNextStep()
 
-  const onNext = () => {
-    push('/switching/action-tell-your-community')
+  const onNext = (): void => {
+    nextStep(steps.tellUs, '/switching')
   }
 
   return (
@@ -45,7 +44,7 @@ export const ActionTellUs: NextPage = () => {
                 </TileLinks>
                 <S.Buttons>
                   <Button type='button' size='small' onClick={onNext}>
-                    Next
+                    Next Impact Action
                   </Button>
                 </S.Buttons>
               </Card>

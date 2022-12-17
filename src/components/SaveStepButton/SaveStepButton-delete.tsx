@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
 import { useToast } from '@hooks/useToast'
 import { useSaveStep } from '@hooks/useSaveStep'
 import { fetcher } from '@utils/functions'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import * as S from '@components/Button/Button.style'
 
 type ButtonProps = {
@@ -26,13 +28,19 @@ export const SaveStepButton: NextPage<ButtonProps> = ({
   step = 0,
   onSend,
 }): JSX.Element => {
-  const { user: { sub = '' } = {} } = useUser()
-  const { currentJourneyId, currentJourney } = useGetCurrentJourney()
-  const saveStep = useSaveStep()
-  const { push } = useRouter()
+  // const { user: { sub = '' } = {} } = useUser()
+  // const dispatch = useDispatch()
+  // const { currentJourneyId, currentJourney } = useGetCurrentJourney()
+  // const saveStep = useSaveStep()
+  // const { push } = useRouter()
 
   const onSaveStep = () => {
-    saveStep(step)
+    // dispatch(
+    //   setJourneyData({
+    //     completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 5])),
+    //   }),
+    // )
+    // step && saveStep(5)
     // save letter to db
     onSend()
   }

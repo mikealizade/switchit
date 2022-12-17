@@ -8,7 +8,7 @@ const findFriends = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const result = await db
       .collection('users')
-      .find({ friends: { $in: [id] } }) // TODO this doesnt pertain to the logged in user, but the forst user
+      .find({ friends: { $in: [id] } }) // TODO add sub to another user and see if this user is returned
       .toArray() //find returns a cursor so cast to array
 
     res.status(200).json(result)

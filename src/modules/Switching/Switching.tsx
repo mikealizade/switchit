@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
+import useSWR, { SWRResponse } from 'swr'
 import { nanoid } from 'nanoid'
 import { useUser } from '@auth0/nextjs-auth0'
 import { RootState } from '@state/store'
@@ -18,22 +18,22 @@ import {
 } from '@state/switchJourney/switchJourneySlice'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Card } from '@components/Card/Card'
-import { actionsConfig } from '@utils/constants'
+import { ActionSelector } from '@components/ActionSelector/ActionSelector'
+import { actionsConfig, startJourneyConfig, steps } from '@utils/constants'
 import { Content } from '@styles/common.style'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import * as S from '@modules/Switching/Switching.style'
-import { startJourneyConfig } from '@utils/constants'
-
-import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 
 type JourneySteps = { step: string; text: string; route: string }
 
-const totalSteps = 5
+const totalSteps = Object.keys(steps).length / 2
+
+console.log('totalSteps', totalSteps)
 
 const getJourneys = (
   switchJourneys: Journey[],
   filter: ({ completedSteps }: { completedSteps: number[] }) => boolean,
-  resumeJourney: (id: string, route: string) => () => void,
+  resumeJourney: (route: string) => () => void,
   selectAction: (index: number) => () => void,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
@@ -77,7 +77,7 @@ const getJourneys = (
                         type='button'
                         size='small'
                         mode='primary'
-                        onClick={resumeJourney(id, route)}
+                        onClick={resumeJourney(route)}
                       >
                         Next
                       </Button>
@@ -89,22 +89,29 @@ const getJourneys = (
             },
           )}
         </S.Steps>
-        <ActionSelector selectAction={selectAction} />
+        <ActionSelector selectAction={selectAction} isSwitchLanding />
       </S.JourneyCard>
     )
   })
 }
 
 const Switching = (): JSX.Element => {
+  const { user: { sub = '' } = {} } = useUser()
+  const { data: [{ switchJourneys: journeys = [] } = {}] = [], isValidating } = useSWR(
+    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
+    fetcher,
+  ) as SWRResponse
+  console.log('data sdvsdfds', journeys)
+
   const dispatch = useDispatch()
   const { push } = useRouter()
-  const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
   const { switchJourneys = [] } = useSelector((state: RootState) => state.user)
   const [value, setValue] = useState('')
-  const journeyTabs = Array.from(Array(switchJourneys.length).keys()).map(
-    tab => `Switching Journey ${tab + 1}`,
-  )
-  const tabs = [...journeyTabs, 'Completed Journeys']
+  const journeyTabs = switchJourneys.map(({ id }: { id: string }, i: number) => ({
+    tab: `Switching Journey ${i + 1}`,
+    currentJourneyId: id,
+  }))
+  const [{ id: defaultJourneyId = '' } = {}] = switchJourneys
 
   const addNewJourney = () => {
     const id = nanoid()
@@ -112,9 +119,12 @@ const Switching = (): JSX.Element => {
     push('/switching/selectBank')
   }
 
-  const resumeJourney = (id: string, route: string) => () => {
+  const resumeJourney = (route: string) => () => {
+    push(route)
+  }
+
+  const onSelectTab = (id: string) => () => {
     dispatch(setCurrentJourneyId(id))
-    push(route) //TODO insert correct route for next step
   }
 
   const selectAction = (index: number) => () => {
@@ -135,20 +145,27 @@ const Switching = (): JSX.Element => {
     selectAction,
   )
 
+  const tabs = [
+    ...journeyTabs,
+    ...(completedJourneys.length ? [{ tab: `Completed Journeys`, currentJourneyId: '' }] : []),
+  ]
+
   useEffect(() => {
     if (switchJourneys.length) {
       dispatch(
         setCurrentJourney({
-          currentJourneyId: '',
+          currentJourneyId: defaultJourneyId,
           currentSelectedBank: '',
           journeys: switchJourneys,
         }),
       )
     }
-  }, [switchJourneys, dispatch])
+  }, [switchJourneys, defaultJourneyId, dispatch])
 
   const panels: React.ReactNode[] = [
-    ...(!switchJourneys.length
+    ...(isValidating
+      ? [<S.JourneyCard key='loading'>Loading...</S.JourneyCard>]
+      : !activeJourneys.length
       ? [
           <S.Row key='switchJourneys'>
             <S.NoJourneysTextContainer>
@@ -165,7 +182,7 @@ const Switching = (): JSX.Element => {
       : activeJourneys),
     <S.Row key='completedJourneys'>
       {!completedJourneys.length ? (
-        <p>{`You haven't completed any journeys`}</p>
+        <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
       ) : (
         <>{completedJourneys}</>
       )}
@@ -186,7 +203,7 @@ const Switching = (): JSX.Element => {
         <Card>
           <S.SwitchingColumnContainer>
             <StyledTabs wide>
-              <Tabs tabs={tabs} panels={panels}></Tabs>
+              <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
             </StyledTabs>
             <S.StartJourney onClick={addNewJourney}>
               <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />

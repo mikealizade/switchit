@@ -14,6 +14,7 @@ interface TabsProps {
   tabs: Array<string>
   panels: Array<React.ReactNode>
   centered?: boolean
+  onSelectTab: (id: string) => () => void
 }
 
 const Panel = ({ children, value, index, ...rest }: TabPanelProps) => {
@@ -42,10 +43,11 @@ export const Tabs: NextPage<TabsProps> = ({
   tabs = [],
   panels = [],
   centered = true,
+  onSelectTab,
 }): JSX.Element => {
   const [value, setValue] = useState(0)
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const onChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
 
@@ -53,13 +55,19 @@ export const Tabs: NextPage<TabsProps> = ({
     <S.Tabs>
       <TabsPanel
         value={value}
-        onChange={handleChange}
-        aria-label='basic tabs example'
+        onChange={onChange}
+        aria-label='Switching Journeys'
         centered={centered}
         className='profile-tabs'
       >
-        {tabs.map((tab: string, i: number) => (
-          <Tab disableRipple key={tab} label={tab} {...a11yProps(i)} />
+        {tabs.map((tab, i: number) => (
+          <Tab
+            disableRipple
+            key={tab.tab}
+            label={tab.tab}
+            {...a11yProps(i)}
+            onClick={onSelectTab(tab.currentJourneyId)}
+          />
         ))}
       </TabsPanel>
       <>

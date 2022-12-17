@@ -1,22 +1,24 @@
 import type { NextPage } from 'next'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import Image from 'next/image'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { actionText } from '@utils/constants'
+import { actionText, steps } from '@utils/constants'
+import { useNextStep } from '@hooks/useNextStep'
 import { Buttons } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/Switching.style'
-import { Content, Column } from '@styles/common.style'
+import { Content } from '@styles/common.style'
 import { TileLinks, Item, Anchor } from '@modules/Switching/ActionLeaveReviews.style'
 
 export const ActionLeaveReviews: NextPage = () => {
-  const { push } = useRouter()
+  const nextStep = useNextStep()
 
-  const onNext = () => {
-    push('/switching/action-tell-us')
+  const onNext = (): void => {
+    nextStep(steps.leaveReviews, '/switching/action-tell-us')
   }
 
   return (
@@ -30,7 +32,6 @@ export const ActionLeaveReviews: NextPage = () => {
                   header='Action: Leave Reviews'
                   subHeader='Get the word out'
                   text={actionText.leaveReviews}
-                  step='6'
                 />
 
                 <TileLinks>
@@ -47,7 +48,7 @@ export const ActionLeaveReviews: NextPage = () => {
                 </TileLinks>
                 <Buttons>
                   <Button type='button' size='small' onClick={onNext}>
-                    Next
+                    Next Impact Action
                   </Button>
                 </Buttons>
               </Card>

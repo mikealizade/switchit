@@ -5,15 +5,14 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
-// import { setSelectedBank } from '@state/preSwitchJourney/preSwitchJourneySlice'
 import { setJourneyData, setSelectedBank } from '@state/switchJourney/switchJourneySlice'
 import { countries } from '@utils/countries'
 import { Select } from '@components/Select/Select'
 import { Modal } from '@components/Modal/Modal'
 import { useModal } from '@hooks/useModal'
 import { useToast } from '@hooks/useToast'
-import { useSaveStep } from '@hooks/useSaveStep'
-import { journeyTypes } from '@utils/constants'
+import { useNextStep } from '@hooks/useNextStep'
+import { journeyTypes, steps } from '@utils/constants'
 import { Input } from '@components/Input/Input.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 import { Form } from '@styles/common.style'
@@ -29,7 +28,7 @@ const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()
   const toast = useToast()
-  const saveStep = useSaveStep()
+  const nextStep = useNextStep()
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const [banks, setBanks] = useState([])
   const [isBankSelected, selectBank] = useState(false)
@@ -90,9 +89,7 @@ const BankFinder = (): JSX.Element => {
   }
 
   const onNext = (): void => {
-    dispatch(setJourneyData({ completedSteps: [1] }))
-    saveStep(1)
-    push('/switching/bankscore')
+    nextStep(steps.selectBank, '/switching/bankscore')
   }
 
   const resetForm = (): void => {
@@ -153,7 +150,7 @@ const BankFinder = (): JSX.Element => {
             </a>
           </p>
         </S.ViewResearch>
-        <ProgressBar step={1} />
+        <ProgressBar step={steps.checkBankScore} />
       </S.BankFinder>
 
       {isModalVisible && (

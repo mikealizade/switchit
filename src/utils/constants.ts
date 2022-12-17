@@ -243,16 +243,6 @@ export const actionsConfig = [
     actionText: `Post directly from our web app to Twitter, Facebook and LinkedIn. We've got customisable, prewritten everything`,
   },
   {
-    text: 'Write Reviews',
-    icon: 'reviews',
-    type: 'reviews',
-    duration: '2',
-    pointsEarned: '50',
-    route: 'action-leave-reviews',
-    actionTitle: 'Writing Reviews',
-    actionText: `Lets defame! This is a great way to get the word out and maximise your impact. Post to Trustpilot and Google reviews`,
-  },
-  {
     text: 'Tell Your Community',
     icon: 'speechbubbles',
     type: 'action-tellcommunity',
@@ -261,6 +251,16 @@ export const actionsConfig = [
     route: 'action-tell-your-community',
     actionTitle: 'Telling Your Community',
     actionText: `Want to text your girlfriend? Email your grandpa? Print out and send a letter to your aunt? We've got you covered with custom sharing codes to track your impact and letters for everyone`,
+  },
+  {
+    text: 'Write Reviews',
+    icon: 'reviews',
+    type: 'reviews',
+    duration: '2',
+    pointsEarned: '50',
+    route: 'action-leave-reviews',
+    actionTitle: 'Writing Reviews',
+    actionText: `Lets defame! This is a great way to get the word out and maximise your impact. Post to Trustpilot and Google reviews`,
   },
   {
     text: 'Tell Us How It Went',
@@ -442,4 +442,18 @@ export enum journeyTypes {
   readyToSwitch = 'readyToSwitch',
   notReadyToSwitch = 'notReadyToSwitch',
   noBankAccount = 'noBankAccount',
+}
+
+export enum steps {
+  selectBank = 1,
+  checkBankScore = 2,
+  chooseGreenBank = 3,
+  makeSwitch = 4,
+  confirmSwitch = 5,
+  breakupLetter = 6,
+  helloLetter = 7,
+  postSocials = 8,
+  tellCommunity = 9,
+  leaveReviews = 10,
+  tellUs = 11,
 }

@@ -5,7 +5,7 @@ import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
-import { actionsConfig } from '@utils/constants'
+import { actionsConfig, steps } from '@utils/constants'
 import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { setActionCard } from '@state/preSwitchJourney/preSwitchJourneySlice'
@@ -60,7 +60,7 @@ const SelectAction = (): JSX.Element => {
                     Take This Step
                   </Button>
                 </ButtonContainer>
-                <ProgressBar step={4} />
+                <ProgressBar step={steps.breakupLetter} />
               </S.Section>
             </Card>
           </SwitchingColumn>

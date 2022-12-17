@@ -2,34 +2,23 @@ import { useState } from 'react'
 import type { NextPage } from 'next'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { useSaveStep } from '@hooks/useSaveStep'
+import { useNextStep } from '@hooks/useNextStep'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { actionText } from '@utils/constants'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
+import { actionText, steps } from '@utils/constants'
 import { Form, Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 
 export const ConfirmSwitch: NextPage = () => {
-  const { push, back } = useRouter()
-  const dispatch = useDispatch()
-  const { currentJourney } = useGetCurrentJourney()
+  const { back } = useRouter()
   const [value, setValue] = useState('')
-  const saveStep = useSaveStep()
+  const nextStep = useNextStep()
   const date = new Date() // TODO datepicker or select?
 
   const onSubmit = (): void => {
-    dispatch(
-      setJourneyData({
-        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 4])),
-      }),
-    )
-    saveStep(4)
-    push('/switching/selectaction')
+    nextStep(steps.confirmSwitch, '/switching/selectaction')
   }
 
   const onCancel = (): void => {

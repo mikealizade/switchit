@@ -229,13 +229,10 @@ export const JourneyCard = styled(Card)`
   /* flex-basis: calc(33% - 20px); */
   flex: 1;
   flex-wrap: wrap;
-  /* max-width: 50%; */
+  column-gap: 60px;
 
-  > div {
-    flex: 1;
-  }
-  > ul {
-    flex: 1;
+  ${() => mediaQuery.tablet} {
+    padding: 60px 30px;
   }
 `
 
@@ -243,6 +240,7 @@ export const Detail = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+  flex: 1.5;
 `
 
 export const DetailHeader = styled.h3`
@@ -259,6 +257,7 @@ export const Steps = styled(Detail)`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  flex: 2.5;
 `
 
 export const Step = styled.li<{ isIncomplete: boolean }>`
@@ -268,6 +267,7 @@ export const Step = styled.li<{ isIncomplete: boolean }>`
   align-items: center;
   padding: 15px;
   border-radius: 3px;
+  border-radius: 8px;
 
   > span {
     min-width: 25px;

@@ -24,7 +24,7 @@ export const useSaveStep = () => {
       }
 
       const push = {
-        filter: { 'switchJourneys.id': { $ne: currentJourneyId } },
+        filter: { sub, 'switchJourneys.id': { $ne: currentJourneyId } },
         update: {
           $push: {
             switchJourneys: {
@@ -34,6 +34,7 @@ export const useSaveStep = () => {
           },
         },
       }
+
       const body = {
         payload: [insert, push],
         collection: 'users',

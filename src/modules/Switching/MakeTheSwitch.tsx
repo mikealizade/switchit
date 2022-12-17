@@ -41,12 +41,11 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const onMakeTheSwitch = () => {
     dispatch(
       setJourneyData({
-        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 3])),
+        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 4])),
       }),
     )
-    saveStep(3) // await?
+    saveStep(4) // await?
     window.open(bank.link, '_blank')
-    // push('/switching/confirm-switch')
   }
 
   return (

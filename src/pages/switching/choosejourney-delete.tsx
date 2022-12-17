@@ -9,7 +9,7 @@ import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { journeyTypes } from '@utils/constants'
+import { journeyTypes, steps } from '@utils/constants'
 import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
@@ -80,7 +80,7 @@ const ChooseJourney = (): JSX.Element => {
                     Next
                   </Button>
                 </ButtonContainer>
-                <ProgressBar step={3} />
+                <ProgressBar step={steps.makeSwitch} />
               </S.Section>
             </Card>
           </SwitchingColumn>

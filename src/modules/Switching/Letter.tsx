@@ -174,7 +174,7 @@ export const Letter: NextPage<LetterProps> = ({
           onSend={onSend}
           onNext={onNext}
           isStepComplete={isStepCompleted}
-          step={step}
+          // step={step}
         />
       </S.Container>
     </Card>
