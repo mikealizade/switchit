@@ -28,8 +28,6 @@ type JourneySteps = { step: string; text: string; route: string }
 
 const totalSteps = Object.keys(steps).length / 2
 
-console.log('totalSteps', totalSteps)
-
 const getJourneys = (
   switchJourneys: Journey[],
   filter: ({ completedSteps }: { completedSteps: number[] }) => boolean,
@@ -97,21 +95,24 @@ const getJourneys = (
 
 const Switching = (): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
-  const { data: [{ switchJourneys: journeys = [] } = {}] = [], isValidating } = useSWR(
-    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
-    fetcher,
-  ) as SWRResponse
-  console.log('data sdvsdfds', journeys)
-
   const dispatch = useDispatch()
   const { push } = useRouter()
-  const { switchJourneys = [] } = useSelector((state: RootState) => state.user)
+  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
+    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
+    fetcher,
+    { revalidateOnFocus: false },
+  ) as SWRResponse
+  const filterActive = ({ completedSteps }: { completedSteps: number[] }) =>
+    completedSteps.length < totalSteps
+  const journeyTabs = switchJourneys
+    .filter(filterActive)
+    .map(({ id }: { id: string }, i: number) => ({
+      tab: `Switching Journey ${i + 1}`,
+      currentJourneyId: id,
+    }))
   const [value, setValue] = useState('')
-  const journeyTabs = switchJourneys.map(({ id }: { id: string }, i: number) => ({
-    tab: `Switching Journey ${i + 1}`,
-    currentJourneyId: id,
-  }))
-  const [{ id: defaultJourneyId = '' } = {}] = switchJourneys
+  const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
+  console.log('data db', switchJourneys)
 
   const addNewJourney = () => {
     const id = nanoid()
@@ -131,12 +132,7 @@ const Switching = (): JSX.Element => {
     push(`/switching/${actionsConfig[index].route}`)
   }
 
-  const activeJourneys = getJourneys(
-    switchJourneys,
-    ({ completedSteps }: { completedSteps: number[] }) => completedSteps.length < totalSteps,
-    resumeJourney,
-    selectAction,
-  )
+  const activeJourneys = getJourneys(switchJourneys, filterActive, resumeJourney, selectAction)
 
   const completedJourneys = getJourneys(
     switchJourneys,
@@ -147,7 +143,7 @@ const Switching = (): JSX.Element => {
 
   const tabs = [
     ...journeyTabs,
-    ...(completedJourneys.length ? [{ tab: `Completed Journeys`, currentJourneyId: '' }] : []),
+    ...(completedJourneys.length ? [{ tab: `Completed Journeys`, currentJourneyId: '' }] : []), //TODO how are completed journeys shown in ui / set currentJourneyId?
   ]
 
   useEffect(() => {
@@ -181,10 +177,10 @@ const Switching = (): JSX.Element => {
         ]
       : activeJourneys),
     <S.Row key='completedJourneys'>
-      {!completedJourneys.length ? (
-        <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
-      ) : (
+      {completedJourneys.length ? (
         <>{completedJourneys}</>
+      ) : (
+        <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
       )}
     </S.Row>,
   ]

@@ -60,7 +60,7 @@ const BankScore = (): JSX.Element => {
     }
   }, [data, score, selectedBank])
 
-  if (!selectedBank) push('/switching')
+  // if (!selectedBank) push('/switching')
 
   return (
     <>

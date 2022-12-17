@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { actionsConfig, journeyTypes } from '@utils/constants'
+import { actionsConfig, journeyTypes, steps } from '@utils/constants'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import * as S from '@components/ActionSelector/ActionSelector.style'
 
@@ -11,11 +11,8 @@ export const ActionSelector: NextPage<{
   isSwitchLanding?: boolean
 }> = ({ currentAction, selectAction, isDefault = false, isSwitchLanding = false }): JSX.Element => {
   const { currentJourney, currentJourneyType } = useGetCurrentJourney()
-
-  console.log('currentJourney', currentJourney)
-
   const completedSteps = currentJourney?.completedSteps
-  const maximiseText = !completedSteps?.includes(4) ? (
+  const maximiseText = completedSteps?.includes(steps.confirmSwitch) ? (
     <>
       Unlock maximising features by signing the
       <br />
