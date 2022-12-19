@@ -31,13 +31,12 @@ const colourConfig = {
 }
 
 export const BankScore = (): JSX.Element => {
-  const { push } = useRouter()
+  const { back } = useRouter()
   const selectedBank = useSelector((state: RootState) => state.switchJourneys.currentSelectedBank)
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const currentBank = selectedBank || badBank
-
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
     score: 0,
     scoreHeadline: '',
@@ -45,6 +44,7 @@ export const BankScore = (): JSX.Element => {
     info: '',
   })
   const [valueEnd, setValueEnd] = useState(0)
+  const isGoodBank = score === 5
 
   const onNext = (): void => {
     nextStep(steps.checkBankScore, '/switching/green-banks')
@@ -61,8 +61,6 @@ export const BankScore = (): JSX.Element => {
       setValueEnd((score / 5) * 100)
     }
   }, [data, score, currentBank])
-
-  // if (!selectedBank) push('/switching')
 
   return (
     <>
@@ -116,9 +114,9 @@ export const BankScore = (): JSX.Element => {
                   {info}
                 </S.BankData>
 
-                <ButtonContainer alignLeft={score === 5} column>
-                  {score === 5 ? (
-                    <>
+                <>
+                  {isGoodBank ? (
+                    <ButtonContainer column>
                       <Button type='button' onClick={() => {}}>
                         Check Another Bank
                       </Button>
@@ -128,13 +126,18 @@ export const BankScore = (): JSX.Element => {
                       <Button type='button' onClick={() => {}}>
                         What Else Can I Do To Act?
                       </Button>
-                    </>
+                    </ButtonContainer>
                   ) : (
-                    <Button type='button' onClick={onNext}>
-                      Next
-                    </Button>
+                    <ButtonContainer>
+                      <Button type='button' mode='secondary' onClick={() => back()}>
+                        Back
+                      </Button>
+                      <Button type='button' onClick={onNext}>
+                        Next
+                      </Button>
+                    </ButtonContainer>
                   )}
-                </ButtonContainer>
+                </>
               </S.BankRating>
               <ProgressBar step={steps.chooseGreenBank} />
             </Card>

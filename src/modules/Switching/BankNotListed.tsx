@@ -11,7 +11,7 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { fetcher } from '@utils/functions'
 import { useToast } from '@hooks/useToast'
-import { Form, Content } from '@styles/common.style'
+import { Form, Content, NarrowContent } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 
 type NotListedBank = {
@@ -29,6 +29,10 @@ export const BankNotListed: NextPage = () => {
   const [value, setValue] = useState('')
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
   const header = isConfirmation ? 'Thanks for letting us know!' : 'Help Us Help You!'
+  const subHeader = isConfirmation
+    ? ''
+    : `Looks like we haven't gotten to your bank yet but we're always digging into new providers.
+Submit your bank below and we'll reach out when we've got the data.`
 
   const onSelectCountry = (value: string) => {
     setCountry(value)
@@ -56,11 +60,8 @@ export const BankNotListed: NextPage = () => {
   }
 
   const onSubmit = (): void => {
-    // if (!isConfirmation) {
     setConfirmation(true)
     saveNotListedBank({ value, country })
-    // resetForm()
-    // }
   }
 
   const resetForm = (): void => {
@@ -68,8 +69,6 @@ export const BankNotListed: NextPage = () => {
     setValue('')
     setCountry('')
   }
-
-  console.log('isConfirmation', isConfirmation)
 
   return (
     <>
@@ -84,62 +83,59 @@ export const BankNotListed: NextPage = () => {
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
             <Card column padded>
-              <ActionHeader
-                header={header}
-                subHeader={`Looks like we haven't gotten to your bank yet but we're always digging into new providers.
-                Submit your bank below and we'll reach out when we've got the data.`}
-              />
-
-              {isConfirmation ? (
-                <>
-                  <p>
-                    Though we haven’t gotten to your bank yet, we still recommend switching. Here’s
-                    why: If we don’t have information on your bank yet, that probably means they
-                    don’t have any environmental policy. That means we automatically score your bank
-                    3/5.
-                  </p>
-                  <p>
-                    If they don’t have one at all. Why risk it when you know you could be doing
-                    good.
-                  </p>
-                  <Buttons>
-                    <Button type='button' onClick={() => push('/switching/green-banks')}>
-                      Show Me Green Banks
-                    </Button>
-                  </Buttons>
-                </>
-              ) : (
-                <Form>
-                  <fieldset>
-                    <label htmlFor='bankName'>
-                      Bank
-                      <Input
-                        id='bankName'
-                        name='bankName'
-                        value={value}
-                        onChange={e => setValue(e.target.value)}
-                      />
-                    </label>
-                    <label>
-                      Country
-                      <Select
-                        name='countries'
-                        defaultValue={{ value: '', label: 'Select country' }}
-                        options={countries.sort(sortSelect)}
-                        onChange={onSelectCountry}
-                      />
-                    </label>
-                  </fieldset>
-                  <Buttons>
-                    <Button type='button' mode='secondary' onClick={resetForm}>
-                      Cancel
-                    </Button>
-                    <Button type='button' disabled={!value || !country} onClick={onSubmit}>
-                      Submit
-                    </Button>
-                  </Buttons>
-                </Form>
-              )}
+              <ActionHeader header={header} subHeader={subHeader} />
+              <NarrowContent>
+                {isConfirmation ? (
+                  <>
+                    <p>
+                      {`Though we haven't gotten to your bank yet, we still recommend switching.
+                      Here's why: If we don't have information on your bank yet, that probably means
+                      they don't have any environmental policy. That means we automatically score
+                      your bank 3/5.`}
+                    </p>
+                    <p>
+                      If they {`don't`} have one at all. Why risk it when you know you could be
+                      doing good.
+                    </p>
+                    <Buttons>
+                      <Button type='button' onClick={() => push('/switching/green-banks')}>
+                        Show Me Green Banks
+                      </Button>
+                    </Buttons>
+                  </>
+                ) : (
+                  <Form>
+                    <fieldset>
+                      <label htmlFor='bankName'>
+                        Bank
+                        <Input
+                          id='bankName'
+                          name='bankName'
+                          value={value}
+                          onChange={e => setValue(e.target.value)}
+                        />
+                      </label>
+                      <label>
+                        Country
+                        <Select
+                          name='countries'
+                          defaultValue={{ value: '', label: 'Select country' }}
+                          options={countries.sort(sortSelect)}
+                          onChange={onSelectCountry}
+                        />
+                      </label>
+                    </fieldset>
+                    <Buttons>
+                      <Button type='button' mode='secondary' onClick={resetForm}>
+                        Cancel
+                      </Button>
+                      <Button type='button' disabled={!value || !country} onClick={onSubmit}>
+                        Submit
+                      </Button>
+                    </Buttons>
+                  </Form>
+                )}
+              </NarrowContent>
             </Card>
           </S.SwitchingColumn>
         </S.SwitchingColumnContainer>

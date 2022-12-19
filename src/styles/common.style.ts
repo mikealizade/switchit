@@ -11,6 +11,15 @@ export const Content = styled.main`
   row-gap: 25px;
 `
 
+export const NarrowContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 75%;
+  margin: 0 auto;
+  row-gap: 30px;
+`
+
 export const ColumnContainer = styled.section`
   display: flex;
   column-gap: 25px;
