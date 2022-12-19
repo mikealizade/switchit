@@ -28,6 +28,8 @@ import '@styles/globals.css'
 // remove useEffects if poss
 // upgrade to Next 13
 
+// refetch on all landing pages
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <UserProvider>

@@ -13,7 +13,7 @@ export const Button = styled.button<{ size?: string }>`
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: ${({ size }) =>
     size === 'normal' ? '`Konsolev Regular`, sans-serif' : '`Konsolev SemiBold`, sans-serif'};
-  font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsSmall4)')};
+  font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsSmall6)')};
   line-height: 1.75;
   border-radius: 25px;
   letter-spacing: 0.5px;
@@ -34,7 +34,7 @@ export const Button = styled.button<{ size?: string }>`
       ? 'var(--white)'
       : className === 'secondary'
       ? 'var(--pink)'
-      : 'lightgrey'};
+      : 'var(--white)'};
 
   &[type='reset'] {
     background-color: #e2dfda;

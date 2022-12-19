@@ -78,26 +78,24 @@ export const Form = styled.form<{ row?: boolean }>`
   }
 
   input {
-    /* margin-top: 10px; */
     border: 1px solid var(--grey);
   }
 `
 
-// export const Fieldset = styled.fieldset<{ row?: boolean }>`
-//   display: flex;
-//   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
-//   align-self: stretch;
-//   row-gap: 35px;
-// `
-
 export const ShareButton = styled(Button)<{ small?: boolean }>`
+  display: flex;
+  justify-content: space-between;
   background-color: var(--pink);
-  padding: ${({ small }) => (small ? '8px 20px' : '13px 30px')};
+  padding: ${({ small }) => (small ? '10px 20px' : '13px 30px')};
   align-self: center;
-  width: ${({ small }) => (small ? '150px' : '200px')};
+  align-items: center;
+  text-align: left;
+  width: ${({ small }) => (small ? '160px' : '200px')};
   border-radius: 20px;
-  font-size: 2.7rem;
+  font-size: var(--fsLarge0);
+  font-weight: bold;
   box-shadow: 1px 3px 5px var(--gallery);
+  color: var(--white);
 `
 
 export const Ellipsis = styled.div`

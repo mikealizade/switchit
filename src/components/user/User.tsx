@@ -36,21 +36,13 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
 
   return (
     <S.UserContainer>
-      {/* <S.UserWelcome></S.UserWelcome> */}
-
       {isValidating ? (
         <Loader />
-      ) : isNewUser ? (
-        <S.User>
-          <span>
-            Hi <S.UserName>{nickname}</S.UserName>, first time welcome message!
-          </span>
-        </S.User>
       ) : (
         <>
           <S.User>
             <S.WelcomeMsg>
-              Welcome back, <S.UserName>{nickname}</S.UserName>
+              <>{isNewUser ? 'Welcome' : 'Welcome back'}</>, <S.UserName>{nickname}</S.UserName>
             </S.WelcomeMsg>
           </S.User>
           <S.UserDetails>

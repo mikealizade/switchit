@@ -286,3 +286,35 @@ export const StepDetail = styled.div`
   row-gap: 4px;
   letter-spacing: 1px;
 `
+// tell community
+
+export const CommunityActions = styled.div`
+  display: flex;
+  column-gap: 50px;
+  font-size: var(--fsSmall5);
+`
+
+export const Actions = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  flex: 1;
+`
+
+export const Action = styled.li`
+  display: flex;
+  font-size: var(--fsMedium9);
+  row-gap: 20px;
+  column-gap: 20px;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+
+  &:hover span {
+    display: inline-block;
+  }
+`
+
+export const CopyIcon = styled.span`
+  display: none;
+`

@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { HeaderContainer, Header, Subheader, StepItem } from '@modules/Switching/PreSwitching.style'
-import * as S from '@components/ActionHeader/ActionHeader.style'
 
 type ActionHeader = {
   header: string
