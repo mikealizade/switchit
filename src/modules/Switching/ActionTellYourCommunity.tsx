@@ -12,6 +12,8 @@ import * as S from '@modules/Switching/Switching.style'
 import Image from 'next/image'
 import { ShareButton } from '@styles/common.style'
 
+type ActionsProps = { text: string; copy: string }[]
+
 const copyConfig = {
   letterColleagues: 'letterColleagues',
   letterFamily: 'letterFamily',
@@ -30,16 +32,31 @@ const letterActions = [
   { text: 'Friends', copy: 'this is copy4' },
 ]
 
+const onCopy = (str: string) => () => {
+  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(str)
+  }
+  return Promise.reject('The Clipboard API is not available.')
+}
+
+const Actions: NextPage<{ actions: ActionsProps; type: string }> = ({ actions, type }) => {
+  return (
+    <S.Actions>
+      {actions.map(({ text }: { text: string }) => (
+        <S.Action key={text}>
+          For Your {text}
+          <S.CopyIcon onClick={onCopy(copyConfig[`${type}${text}` as keyof typeof copyConfig])}>
+            <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
+          </S.CopyIcon>
+        </S.Action>
+      ))}
+    </S.Actions>
+  )
+}
+
 export const ActionTellYourCommunity: NextPage = () => {
   const nextStep = useNextStep()
   const shareCode = useShareCode()
-
-  const onCopy = (str: string) => () => {
-    if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(str)
-    }
-    return Promise.reject('The Clipboard API is not available.')
-  }
 
   const onNext = (): void => {
     nextStep(steps.tellCommunity, '/switching/action-leave-reviews')
@@ -56,36 +73,22 @@ export const ActionTellYourCommunity: NextPage = () => {
               text={actionText.tellCommunity}
             />
 
-            <S.CommunityActions>
-              <S.Actions>
-                {letterActions.map(({ text }) => (
-                  <S.Action key={text}>
-                    For Your {text}
-                    <S.CopyIcon
-                      onClick={onCopy(copyConfig[`letter${text}` as keyof typeof copyConfig])}
-                    >
-                      <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                    </S.CopyIcon>
-                  </S.Action>
-                ))}
-              </S.Actions>
-              <S.Actions>
-                {letterActions.map(({ text, copy }) => (
-                  <S.Action key={text}>
-                    For Your {text}
-                    <S.CopyIcon
-                      onClick={onCopy(copyConfig[`letter${text}` as keyof typeof copyConfig])}
-                    >
-                      <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                    </S.CopyIcon>
-                  </S.Action>
-                ))}
-              </S.Actions>
-            </S.CommunityActions>
+            <S.Community>
+              <S.CommunityActions>
+                <S.ActionsHeader>Letters</S.ActionsHeader>
+                <Actions actions={letterActions} type='letter' />
+              </S.CommunityActions>
+              <S.CommunityActions>
+                <S.ActionsHeader>Talking Points</S.ActionsHeader>
+                <Actions actions={letterActions} type='talkingPoints' />
+              </S.CommunityActions>
+            </S.Community>
+
             <ShareButton type='button' onClick={() => shareCode()} small>
               Share
               <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
             </ShareButton>
+
             <S.Buttons>
               <Button type='button' size='small' onClick={onNext}>
                 Next Impact Action

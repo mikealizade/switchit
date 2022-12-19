@@ -288,10 +288,17 @@ export const StepDetail = styled.div`
 `
 // tell community
 
-export const CommunityActions = styled.div`
+export const Community = styled.div`
   display: flex;
   column-gap: 50px;
-  font-size: var(--fsSmall5);
+  justify-content: space-evenly;
+`
+
+export const CommunityActions = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fsLarge1);
+  row-gap: 30px;
 `
 
 export const Actions = styled.ul`
@@ -303,7 +310,7 @@ export const Actions = styled.ul`
 
 export const Action = styled.li`
   display: flex;
-  font-size: var(--fsMedium9);
+  font-size: var(--fsLarge0);
   row-gap: 20px;
   column-gap: 20px;
   align-items: center;
@@ -313,6 +320,11 @@ export const Action = styled.li`
   &:hover span {
     display: inline-block;
   }
+`
+
+export const ActionsHeader = styled.h3`
+  font-style: italic;
+  font-family: 'Konsolev SemiBold';
 `
 
 export const CopyIcon = styled.span`
