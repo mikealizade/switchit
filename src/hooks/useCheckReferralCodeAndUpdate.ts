@@ -1,9 +1,9 @@
-import { useEffect, useCallback } from 'react'
+import { useCallback } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
-import { fetcher } from '@utils/functions'
-import { getPostBody } from '@utils/functions'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 
-const updateLoggedInUser = async (sub: string, friendId: string) => {
+const updateLoggedInUser = async (sub: string, friendId: string, request: any) => {
   try {
     const body = {
       filter: { sub },
@@ -15,13 +15,13 @@ const updateLoggedInUser = async (sub: string, friendId: string) => {
       },
     }
 
-    await fetcher(`/api/db/updateOne`, getPostBody(body))
+    request(body)
   } catch (error) {
     // error
   }
 }
 
-const updaterReferralFriend = async (sub: string, friendId: string) => {
+const updaterReferralFriend = async (sub: string, friendId: string, request: any) => {
   try {
     const body = {
       filter: { sub: friendId },
@@ -33,7 +33,7 @@ const updaterReferralFriend = async (sub: string, friendId: string) => {
       },
     }
 
-    await fetcher(`/api/db/updateOne`, getPostBody(body))
+    request(body)
   } catch (error) {
     // error
   }
@@ -41,16 +41,18 @@ const updaterReferralFriend = async (sub: string, friendId: string) => {
 
 export const useCheckReferralCodeAndUpdate = () => {
   const { user: { sub = '' } = {} } = useUser()
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
 
   const checkReferralCodeAndUpdate = useCallback(
     async (query: any) => {
       try {
         if (sub) {
-          const { result }: any = await fetcher(`/api/db/findOne${query}`)
+          const response = await fetch(`/api/db/findSharingCode${query}`)
+          const { result } = await response.json()
 
           if (result?.sub) {
-            updateLoggedInUser(sub, result?.sub)
-            updaterReferralFriend(sub, result?.sub)
+            updateLoggedInUser(sub, result?.sub, request)
+            updaterReferralFriend(sub, result?.sub, request)
           }
 
           return { success: true }
@@ -59,7 +61,7 @@ export const useCheckReferralCodeAndUpdate = () => {
         //error
       }
     },
-    [sub],
+    [sub, request],
   )
 
   return checkReferralCodeAndUpdate

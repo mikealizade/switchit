@@ -1,7 +1,10 @@
 import { useUser } from '@auth0/nextjs-auth0'
-import { fetcher } from '@utils/functions'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 
 export const useUpdateUser = () => {
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
+
   const {
     user: { sub = '' } = {},
     // error = {},
@@ -9,23 +12,15 @@ export const useUpdateUser = () => {
   } = useUser()
 
   const updateUser = async (payload: any) => {
-    const body = {
-      filter: { sub },
-      payload: { $set: payload },
-      collection: 'users',
-      upsert: false,
-    }
-
     try {
-      const response = await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      const body = {
+        filter: { sub },
+        payload: { $set: payload },
+        collection: 'users',
+        upsert: false,
+      }
 
-      console.log('response', response)
+      request(body)
 
       return { success: true }
     } catch {

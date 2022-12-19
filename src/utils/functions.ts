@@ -10,6 +10,16 @@ export const breakpoints: Record<string, number> = {
   xxxlaptop: 1920,
 }
 
+export const sendRequest = async (url: string, { arg }: { arg: any }) => {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(arg),
+  })
+}
+
 export const mediaQuery = Object.entries(breakpoints)
   .map(([key, value]) => [key, value] as [string, number])
   .reduce((acc, [key, breakpoint]) => {

@@ -38,12 +38,10 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
     await save(data)
-    // toggleDrawer('')()
   }
 
   const onCancel = (): void => {
     reset()
-    // toggleDrawer('')()
   }
 
   const save = async (data: FieldValues): Promise<void> => {

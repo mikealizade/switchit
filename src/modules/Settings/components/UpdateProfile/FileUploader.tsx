@@ -4,10 +4,12 @@ import { Button } from '@components/Button/Button'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { updateUser } from '@state/user/userSlice'
-import { fetcher } from '@utils/functions'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 
 export const FileUploader = () => {
   const { user: { sub } = {} } = useUser()
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const dispatch = useDispatch()
   const fileInput = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<any>(null)
@@ -19,7 +21,7 @@ export const FileUploader = () => {
   const uploadFile = useCallback(async () => {
     try {
       const { data: { url } = {} } = await axios.post('/api/s3/upload', {
-        //remove axios
+        // TODO remove axios
         name: `user_profile_images/${file.name}`,
         type: file.type,
       })
@@ -41,13 +43,8 @@ export const FileUploader = () => {
             upsert: false,
           }
 
-          await fetcher(`/api/db/updateOne`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(body),
-          })
+          request(body)
+
           dispatch(updateUser({ picture }))
         } catch (error) {
           //error
@@ -58,7 +55,7 @@ export const FileUploader = () => {
     }
 
     setFile(null)
-  }, [file, sub, dispatch])
+  }, [file, sub, dispatch, request])
 
   useEffect(() => {
     if (file) {

@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
-import { fetcher } from '@utils/functions'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 import * as S from '@components/EditableInput/EditableInput.style'
 
 export const EditableInput: NextPage<{ name: string; defaultValue: string }> = ({
   name = '',
   defaultValue = '',
 }): JSX.Element => {
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const [isEditing, setEdit] = useState(false)
   const [value, setValue] = useState(defaultValue)
-  const {
-    user: { sub = '' } = {},
-    // error = {},
-    isLoading = false,
-  } = useUser()
+  const { user: { sub = '' } = {} } = useUser()
 
   const edit = () => {
     setEdit(!isEditing)
@@ -28,21 +26,12 @@ export const EditableInput: NextPage<{ name: string; defaultValue: string }> = (
       upsert: false,
     }
 
+    request(body)
+
     setEdit(false)
-    await fetcher(`/api/db/updateOne`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    })
   }
 
-  const updateField = ({
-    target: { name, value },
-  }: {
-    target: { name: string; value: string }
-  }) => {
+  const updateField = ({ target: { value } }: { target: { value: string } }) => {
     setValue(() => value)
   }
 
@@ -61,13 +50,9 @@ export const EditableInput: NextPage<{ name: string; defaultValue: string }> = (
         onChange={updateField}
       />
       {isEditing ? (
-        <S.EditIcon onClick={save}>
-          {/* <FontAwesomeIcon size='sm' icon={faFloppyDisk} /> */}
-        </S.EditIcon>
+        <S.EditIcon onClick={save}></S.EditIcon>
       ) : (
-        <S.EditIcon onClick={edit}>
-          {/* <FontAwesomeIcon size='sm' icon={faPenToSquare} /> */}
-        </S.EditIcon>
+        <S.EditIcon onClick={edit}></S.EditIcon>
       )}
     </S.EditableInputContainer>
   )

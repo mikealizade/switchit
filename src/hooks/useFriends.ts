@@ -17,8 +17,6 @@ export const useFriends = () => {
   const dispatch = useDispatch()
   const { data: friends = [] } = useSWR(`/api/db/findFriends?id=${sub}`, fetcher) as SWRResponse
 
-  console.log('friends', friends)
-
   const friendsData = friends.map(({ sub, nickname, username, picture }: Friend) => ({
     userId: sub,
     nickname,

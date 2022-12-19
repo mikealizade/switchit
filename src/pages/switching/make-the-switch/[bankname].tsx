@@ -6,8 +6,6 @@ const MakeTheSwitchPage = (): JSX.Element => {
     query: { bankname = '' },
   } = useRouter()
 
-  console.log('bankname', bankname)
-
   return <MakeTheSwitch bankName={String(bankname)} />
 }
 

@@ -26,7 +26,6 @@ import '@styles/globals.css'
 
 // Tech Debt
 // remove useEffects if poss
-// upgrade to swr 2.0
 // upgrade to Next 13
 
 const App = ({ Component, pageProps }: AppProps) => {

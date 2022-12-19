@@ -22,8 +22,6 @@ export const ActionChooseBank = (): JSX.Element => {
   }
 
   useEffect(() => {
-    console.log('selectedAccountTypes', selectedAccountTypes)
-    console.log(', selectedFeatures', selectedFeatures)
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
       setBankData(bankConfig)
       return

@@ -24,6 +24,7 @@ export const SignUpFormStep2: NextPage<{
   const onSubmit = async (data: FieldValues): Promise<void> => {
     try {
       const userData = { ...user, ...defaultProfile, ...data, referralCode }
+
       window.localStorage.setItem('userData', JSON.stringify(userData))
       replace('/api/auth/signup')
     } catch (error) {

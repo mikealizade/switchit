@@ -9,7 +9,6 @@ import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 
 const getDefaultLetterText = (bankName: string = '[bank name]', nickname: string): string => {
-  console.log('bankName', bankName, nickname)
   return `
   <div>
     Dear ${bankName} - default hello letter

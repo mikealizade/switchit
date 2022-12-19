@@ -1,15 +1,16 @@
 import { useUser } from '@auth0/nextjs-auth0'
-import { fetcher } from '@utils/functions'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 import { useToast } from '@hooks/useToast'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 
 export const useSaveStep = () => {
   const { user: { sub = '' } = {} } = useUser()
+  const { trigger: request } = useSWRMutation('/api/db/upsertJourney', sendRequest)
   const { currentJourney, currentJourneyId } = useGetCurrentJourney()
   const toast = useToast()
 
   //if currentJourneyId does not exist in db push, else update
-
   const saveStep = async (step: number) => {
     try {
       const insert = {
@@ -40,13 +41,7 @@ export const useSaveStep = () => {
         collection: 'users',
       }
 
-      await fetcher(`/api/db/upsertJourney`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      request(body)
     } catch (error) {
       toast('An error occurred', 'error')
     }

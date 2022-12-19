@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import useSWR, { SWRResponse } from 'swr'
 import { nanoid } from 'nanoid'
 import { useUser } from '@auth0/nextjs-auth0'
-import { RootState } from '@state/store'
 import { Button } from '@components/Button/Button'
 import { Hero } from '@components/Hero/Hero'
 import { fetcher } from '@utils/functions'
@@ -112,7 +111,6 @@ const Switching = (): JSX.Element => {
     }))
   const [value, setValue] = useState('')
   const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
-  console.log('data db', switchJourneys)
 
   const addNewJourney = () => {
     const id = nanoid()

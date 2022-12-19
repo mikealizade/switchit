@@ -1,16 +1,9 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import useSWR from 'swr'
-import { useUser } from '@auth0/nextjs-auth0'
-import { User } from '@components/User/User'
 import { Card } from '@components/Card/Card'
 import { Hero } from '@components/Hero/Hero'
-import { fetcher } from '@utils/functions'
 import * as S from '@styles/common.style'
 
 const Community = (): JSX.Element => {
-  // const { user: { sub = '' } = {}, isLoading = false } = useUser()
-
   return (
     <>
       <Head>

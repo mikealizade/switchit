@@ -2,14 +2,14 @@ import { useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 import { Button } from '@components/Button/Button'
 import { Select } from '@components/Select/Select'
 import { Card } from '@components/Card/Card'
 import { Input } from '@components/Input/Input.style'
 import { countries } from '@utils/countries'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { Buttons } from '@modules/Switching/Switching.style'
-import { fetcher } from '@utils/functions'
 import { useToast } from '@hooks/useToast'
 import { Form, Content, NarrowContent } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
@@ -22,6 +22,7 @@ type NotListedBank = {
 type Sort = { label: string }
 
 export const BankNotListed: NextPage = () => {
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const { push } = useRouter()
   const toast = useToast()
   const [country, setCountry] = useState('')
@@ -47,13 +48,7 @@ Submit your bank below and we'll reach out when we've got the data.`
         upsert: false,
       }
 
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      request(body)
     } catch (error) {
       toast('An error occurred submitting your bank', 'error')
     }
@@ -97,11 +92,11 @@ Submit your bank below and we'll reach out when we've got the data.`
                       If they {`don't`} have one at all. Why risk it when you know you could be
                       doing good.
                     </p>
-                    <Buttons>
+                    <S.Buttons>
                       <Button type='button' onClick={() => push('/switching/green-banks')}>
                         Show Me Green Banks
                       </Button>
-                    </Buttons>
+                    </S.Buttons>
                   </>
                 ) : (
                   <Form>
@@ -125,14 +120,14 @@ Submit your bank below and we'll reach out when we've got the data.`
                         />
                       </label>
                     </fieldset>
-                    <Buttons>
+                    <S.Buttons>
                       <Button type='button' mode='secondary' onClick={resetForm}>
                         Cancel
                       </Button>
                       <Button type='button' disabled={!value || !country} onClick={onSubmit}>
                         Submit
                       </Button>
-                    </Buttons>
+                    </S.Buttons>
                   </Form>
                 )}
               </NarrowContent>

@@ -5,13 +5,14 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { Card } from '@components/Card/Card'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { fetcher } from '@utils/functions'
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from 'sanitize-html'
 import { useToast } from '@hooks/useToast'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { LetterButtons } from './LetterButtons'
 import * as S from '@modules/Switching/Switching.style'
+import useSWRMutation from 'swr/mutation'
+import { sendRequest } from '@utils/functions'
 
 type Letter = { type: string }
 
@@ -46,6 +47,7 @@ export const Letter: NextPage<LetterProps> = ({
   step,
 }) => {
   const { user: { sub = '' } = {} } = useUser()
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const { currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
   const selectedBank = useSelector((state: RootState) => state.switchJourneys.currentSelectedBank)
   const user = useSelector((state: RootState) => state.user)
@@ -61,7 +63,7 @@ export const Letter: NextPage<LetterProps> = ({
     const letterText = sanitizeHtml(text.current, sanitizeConf)
 
     try {
-      const body = {
+      const saveBody = {
         filter: { sub },
         payload: {
           $push: {
@@ -76,13 +78,8 @@ export const Letter: NextPage<LetterProps> = ({
         upsert: false,
       }
 
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      request(saveBody)
+
       // TODO success msg even when errors!
       toast('Your letter was saved successfully', 'success')
     } catch (error) {
@@ -94,7 +91,7 @@ export const Letter: NextPage<LetterProps> = ({
     const letterText = sanitizeHtml(text.current, sanitizeConf)
 
     try {
-      const body2 = {
+      const sendBody = {
         filter: {},
         payload: {
           $push: {
@@ -109,13 +106,8 @@ export const Letter: NextPage<LetterProps> = ({
         upsert: false,
       }
 
-      await fetcher(`/api/db/updateOne`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body2),
-      })
+      request(sendBody)
+
       toast('Your letter was sent successfully', 'success')
     } catch (error) {
       toast('An error occurred sending your letter', 'error')

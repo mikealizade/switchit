@@ -1,12 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { connectToDatabase } from '@helpers/mongodb'
 
-const findOne = async (req: NextApiRequest, res: NextApiResponse) => {
+const findSharingCode = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()
   const { query } = req
-  const value = Object.values(query)
-
-  console.log('>> query', value)
 
   try {
     const result = await db
@@ -19,4 +16,4 @@ const findOne = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default findOne
+export default findSharingCode

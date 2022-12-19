@@ -14,7 +14,7 @@ interface TabsProps {
   tabs: Array<string>
   panels: Array<React.ReactNode>
   centered?: boolean
-  onSelectTab: (id: string) => () => void
+  onSelectTab?: (id: string) => () => void
 }
 
 const Panel = ({ children, value, index, ...rest }: TabPanelProps) => {
@@ -60,15 +60,19 @@ export const Tabs: NextPage<TabsProps> = ({
         centered={centered}
         className='profile-tabs'
       >
-        {tabs.map((tab, i: number) => (
-          <Tab
-            disableRipple
-            key={tab.tab}
-            label={tab.tab}
-            {...a11yProps(i)}
-            onClick={onSelectTab(tab.currentJourneyId)}
-          />
-        ))}
+        {tabs.map((tab, i: number) => {
+          const tabItem = onSelectTab ? tab.tab : tab
+
+          return (
+            <Tab
+              disableRipple
+              key={tabItem}
+              label={tabItem}
+              {...a11yProps(i)}
+              {...(onSelectTab && { onClick: onSelectTab(tab.currentJourneyId) })}
+            />
+          )
+        })}
       </TabsPanel>
       <>
         {panels.map((panel: React.ReactNode, i: number) => {

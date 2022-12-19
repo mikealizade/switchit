@@ -5,7 +5,8 @@ import * as S from '@components/Layout/Layout.style'
 import useSWR, { SWRResponse } from 'swr'
 import { useUser } from '@auth0/nextjs-auth0'
 import { setUser } from '@state/user/userSlice'
-import { fetcher, getTotalPoints } from '@utils/functions'
+import { sendRequest, getTotalPoints, fetcher } from '@utils/functions'
+import useSWRMutation from 'swr/mutation'
 import { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
@@ -34,6 +35,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
     error,
     isValidating,
   } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const { user_metadata: { isNewUser = false } = {} } = user || {}
 
   const saveNewUserData = useCallback(
@@ -55,23 +57,18 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
           upsert: true,
         }
 
-        await fetcher(`/api/db/updateOne`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(body),
-        })
+        request(body)
 
         checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
 
         window.localStorage.removeItem('userData')
+
         dispatch(setUser(newUserData))
       } catch (error) {
         //error
       }
     },
-    [auth0user, user, sub, dispatch, checkReferralCodeAndUpdate],
+    [auth0user, user, sub, dispatch, checkReferralCodeAndUpdate, request],
   )
 
   const updateIsNewUser = useCallback(async () => {
