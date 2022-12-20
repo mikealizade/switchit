@@ -54,17 +54,13 @@ const ChooseJourney = (): JSX.Element => {
                   onClick={selectJourney(journeyTypes.readyToSwitch)}
                   isActive={type === journeyTypes.readyToSwitch}
                 >
-                  {/* <Link href='/switching/selectaction'> */}
                   {` Ready to switch or can't switch but still want to open a green bank account`}
-                  {/* </Link> */}
                 </S.ChooseJourneyLink>
                 <S.ChooseJourneyLink
                   onClick={selectJourney(journeyTypes.notReadyToSwitch)}
                   isActive={type === journeyTypes.notReadyToSwitch}
                 >
-                  {/* <Link href='/switching/selectaction'> */}
                   Not ready to switch but still want to use my voice to act
-                  {/* </Link> */}
                 </S.ChooseJourneyLink>
               </S.Section>
 
@@ -84,11 +80,6 @@ const ChooseJourney = (): JSX.Element => {
               </S.Section>
             </Card>
           </SwitchingColumn>
-          {/* <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-            </Card>
-          </Column> */}
         </SwitchingColumnContainer>
       </Content>
     </>

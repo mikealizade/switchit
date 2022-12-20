@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { accountTypes, accountFeatures } from '@utils/constants'
-import * as S from './ActionChooseBank.style'
+import * as S from './ChooseBank.style'
 
 type BankFilterProps = {
   selectedAccountTypes: string[]

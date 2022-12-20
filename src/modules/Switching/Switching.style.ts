@@ -292,6 +292,8 @@ export const Community = styled.div`
   display: flex;
   column-gap: 50px;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 50px;
 `
 
 export const CommunityActions = styled.div`

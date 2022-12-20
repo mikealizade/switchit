@@ -218,7 +218,7 @@ export const actionsConfig = [
     type: 'breakup',
     duration: '2',
     pointsEarned: '50',
-    route: 'action-breakup-letter',
+    route: 'breakup-letter',
     actionTitle: 'Writing Your Breakup Letter',
     actionText: `We've got an editable prewritten letter for your convienence. Tell your bank why you're leaving and we'll send it for you, along with others' letters, so we can max. the impact`,
   },
@@ -228,7 +228,7 @@ export const actionsConfig = [
     type: 'hello',
     duration: '2',
     pointsEarned: '50',
-    route: 'action-hello-letter',
+    route: 'hello-letter',
     actionTitle: 'Writing Your Hello Letter',
     actionText: `Want to tell your new green bank why you've switched over? Want to tell them that if they offer other services, you'll be switching over additional accounts as well? We've got a letter for that`,
   },
@@ -238,17 +238,17 @@ export const actionsConfig = [
     type: 'socials',
     duration: '4',
     pointsEarned: '25',
-    route: 'action-post-to-socials',
+    route: 'post-to-socials',
     actionTitle: 'Posting To Socials',
     actionText: `Post directly from our web app to Twitter, Facebook and LinkedIn. We've got customisable, prewritten everything`,
   },
   {
     text: 'Tell Your Community',
     icon: 'speechbubbles',
-    type: 'action-tellcommunity',
+    type: 'tellcommunity',
     duration: '3',
     pointsEarned: '100',
-    route: 'action-tell-your-community',
+    route: 'tell-your-community',
     actionTitle: 'Telling Your Community',
     actionText: `Want to text your girlfriend? Email your grandpa? Print out and send a letter to your aunt? We've got you covered with custom sharing codes to track your impact and letters for everyone`,
   },
@@ -258,7 +258,7 @@ export const actionsConfig = [
     type: 'reviews',
     duration: '2',
     pointsEarned: '50',
-    route: 'action-leave-reviews',
+    route: 'leave-reviews',
     actionTitle: 'Writing Reviews',
     actionText: `Lets defame! This is a great way to get the word out and maximise your impact. Post to Trustpilot and Google reviews`,
   },
@@ -268,53 +268,22 @@ export const actionsConfig = [
     type: 'tellUs',
     duration: '3',
     pointsEarned: '100',
-    route: 'action-tell-us',
+    route: 'tell-us',
     actionTitle: 'Telling Us How it Went',
     actionText: `We want to know how it went. We also want other people to know how it went, why you switched, and anything else. Send a video of you cutting up your card, or your switching manifesto to help us out or to post publically`,
   },
 ]
 
-// export const startJourneyConfig = [
-//   {
-//     step: 'Step 1',
-//     text: 'Choose And Open A Green Bank Account',
-//   },
-//   {
-//     step: 'Step 2',
-//     text: `Write your 'Breakup' letter`,
-//   },
-//   {
-//     step: 'Step 3',
-//     text: `Write your 'Hello' letter`,
-//   },
-//   {
-//     step: 'Step 4',
-//     text: 'Post to Socials',
-//   },
-//   {
-//     step: 'Step 5',
-//     text: 'Tell Your Community',
-//   },
-//   {
-//     step: 'Step 6',
-//     text: 'Write Reviews',
-//   },
-//   {
-//     step: 'Step 7',
-//     text: 'Tell Us How It Went',
-//   },
-// ]
-
 export const startJourneyConfig = [
   {
     step: 'Step 1',
     text: 'Check Your Bank Score',
-    route: '/switching/selectbank',
+    route: '/switching/select-bank',
   },
   {
     step: 'Step 2',
     text: `Choose Your Green Bank`,
-    route: '/switching/bankscore',
+    route: '/switching/bank-score',
   },
   {
     step: 'Step 3',
@@ -456,4 +425,110 @@ export enum steps {
   tellCommunity = 9,
   leaveReviews = 10,
   tellUs = 11,
+}
+
+export enum badBanks {
+  barclays = 'Barclays',
+  halifax = 'Halifax',
+  lloyds = 'Lloyds Bank',
+  hsbc = 'HSBC Bank',
+  santander = 'Santander',
+  natwest = 'Natwest',
+  bankOfScotland = 'Bank Of Scotland',
+  rbs = 'RBS',
+  coop = 'The Co-operative Bank',
+  virgin = 'Virgin Money',
+  allianceLeicester = 'Alliance & Leicester',
+  bankOfIreland = 'Bank Of Ireland',
+  tsb = 'TSB',
+  ulster = 'Ulster Bank',
+  danske = 'Danske',
+  firstDirect = 'First Direct',
+  marksSpencer = 'M&S Bank',
+  metro = 'Metro Bank',
+  revolut = 'Revolut',
+  kroo = 'Kroo',
+}
+
+export const badBanksConfig = {
+  [badBanks.barclays]: {
+    trustPilot: 'www.barclays.co.uk',
+    google: 'barclays',
+  },
+  [badBanks.halifax]: {
+    trustPilot: 'www.halifax.co.uk',
+    google: 'halifax',
+  },
+  [badBanks.lloyds]: {
+    trustPilot: 'lloydsbank.com',
+    google: 'lloyds+bank',
+  },
+  [badBanks.hsbc]: {
+    trustPilot: 'www.hsbc.co.uk',
+    google: 'hsbc',
+  },
+  [badBanks.santander]: {
+    trustPilot: 'www.santander.co.uk',
+    google: 'santander',
+  },
+  [badBanks.natwest]: {
+    trustPilot: 'www.natwest.com',
+    google: 'natwest',
+  },
+  [badBanks.bankOfScotland]: {
+    trustPilot: 'www.bankofscotland.co.uk',
+    google: 'bank+of+scotland',
+  },
+  [badBanks.rbs]: {
+    trustPilot: 'personal.rbs.co.uk',
+    google: 'rbs',
+  },
+  [badBanks.coop]: {
+    trustPilot: 'co-operativebank.co.uk',
+    google: 'coop+bank',
+  },
+  [badBanks.virgin]: {
+    trustPilot: 'uk.virginmoney.com',
+    google: 'virgin+money',
+  },
+  [badBanks.allianceLeicester]: {
+    trustPilot: '',
+    google: '',
+  },
+  [badBanks.bankOfIreland]: {
+    trustPilot: 'bankofirelanduk.com',
+    google: 'bank+of+ireland',
+  },
+  [badBanks.tsb]: {
+    trustPilot: 'tsb.co.uk',
+    google: 'tsb',
+  },
+  [badBanks.ulster]: {
+    trustPilot: 'www.ulsterbank.co.uk',
+    google: 'ulster+bank',
+  },
+  [badBanks.danske]: {
+    trustPilot: 'danskebank.co.uk',
+    google: 'danske+bank',
+  },
+  [badBanks.firstDirect]: {
+    trustPilot: 'www.firstdirect.com',
+    google: '',
+  },
+  [badBanks.marksSpencer]: {
+    trustPilot: 'bank.marksandspencer.com',
+    google: '',
+  },
+  [badBanks.metro]: {
+    trustPilot: 'www.metrobankonline.co.uk',
+    google: 'metro+bank',
+  },
+  [badBanks.revolut]: {
+    trustPilot: 'www.revolut.com',
+    google: '',
+  },
+  [badBanks.kroo]: {
+    trustPilot: 'kroo.com',
+    google: '',
+  },
 }

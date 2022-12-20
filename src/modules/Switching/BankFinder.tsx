@@ -30,11 +30,11 @@ export const BankFinder = (): JSX.Element => {
 
   const onNoBankAccountSelect = () => {
     dispatch(setJourneyData({ journeyType: journeyTypes.noBankAccount }))
-    push('/switching/selectaction')
+    push('/switching/select-action')
   }
 
   const onNext = (): void => {
-    nextStep(steps.selectBank, '/switching/bankscore')
+    nextStep(steps.selectBank, '/switching/bank-score')
   }
 
   useEffect(() => {

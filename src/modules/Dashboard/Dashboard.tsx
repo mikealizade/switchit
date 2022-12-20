@@ -9,6 +9,7 @@ import { DashboardHero } from '@components/Hero/DashboardHero'
 import { SwitchingJourney } from './components/SwitchingJourney/SwitchingJourney'
 import { Card } from '@components/Card/Card'
 import { Blog } from './components/Blog/Blog'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import * as S from '@styles/common.style'
 import { Posts, Post } from '@pages/dashboard'
 import { SharingCodes } from './components/SharingCodes/SharingCodes'
@@ -22,6 +23,7 @@ type PageProps = {
 
 const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
   const user = useSelector((state: RootState) => state.user)
+  const { currentJourney: { name = '', completedSteps = [] } = {} } = useGetCurrentJourney()
   const { profile: { sharingCodes = [] } = {} } = user
   const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
 
@@ -50,7 +52,7 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
             </S.Column>
             <S.Column>
               <Card>
-                <SwitchingJourney title='Bank Switching Journey' progress={2} />
+                <SwitchingJourney name={name} progress={completedSteps.length} />
               </Card>
             </S.Column>
           </S.ColumnContainer>

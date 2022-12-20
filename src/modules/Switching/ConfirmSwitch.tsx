@@ -18,7 +18,7 @@ export const ConfirmSwitch: NextPage = () => {
   const date = new Date() // TODO datepicker or select?
 
   const onSubmit = (): void => {
-    nextStep(steps.confirmSwitch, '/switching/selectaction')
+    nextStep(steps.confirmSwitch, '/switching/select-action')
   }
 
   const onCancel = (): void => {

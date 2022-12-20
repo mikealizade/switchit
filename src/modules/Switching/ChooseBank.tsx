@@ -11,14 +11,14 @@ import { actionText } from '@utils/constants'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, Column } from '@styles/common.style'
 
-export const ActionChooseBank = (): JSX.Element => {
+export const ChooseBank = (): JSX.Element => {
   const { push } = useRouter()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
 
   const onNext = () => {
-    push('/switching/selectaction')
+    push('/switching/select-action')
   }
 
   useEffect(() => {
@@ -77,11 +77,6 @@ export const ActionChooseBank = (): JSX.Element => {
               </Button>
             </S.Buttons>
           </S.SwitchingColumn>
-          {/* <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-            </Card>
-          </Column> */}
         </S.SwitchingColumnContainer>
       </Content>
     </>

@@ -5,12 +5,12 @@ import * as S from '@components/Layout/Layout.style'
 import { ImpactCalculator } from '@components/ImpactCalculator/ImpactCalculator'
 
 const asideConfig = {
-  '/switching/selectBank': (
+  '/switching/select-bank': (
     <>
       <ImpactCalculator />
     </>
   ),
-  '/switching/selectaction': <SelectActionCards />,
+  '/switching/select-action': <SelectActionCards />,
 }
 
 export const Aside = (): JSX.Element => {

@@ -5,6 +5,7 @@ import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionText, steps } from '@utils/constants'
+import { onCopy } from '@utils/functions'
 import { useNextStep } from '@hooks/useNextStep'
 import { useShareCode } from '@hooks/useShareCode'
 import { Content } from '@styles/common.style'
@@ -32,13 +33,6 @@ const letterActions = [
   { text: 'Friends', copy: 'this is copy4' },
 ]
 
-const onCopy = (str: string) => () => {
-  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-    return navigator.clipboard.writeText(str)
-  }
-  return Promise.reject('The Clipboard API is not available.')
-}
-
 const Actions: NextPage<{ actions: ActionsProps; type: string }> = ({ actions, type }) => {
   return (
     <S.Actions>
@@ -54,12 +48,12 @@ const Actions: NextPage<{ actions: ActionsProps; type: string }> = ({ actions, t
   )
 }
 
-export const ActionTellYourCommunity: NextPage = () => {
+export const TellYourCommunity: NextPage = () => {
   const nextStep = useNextStep()
   const shareCode = useShareCode()
 
   const onNext = (): void => {
-    nextStep(steps.tellCommunity, '/switching/action-leave-reviews')
+    nextStep(steps.tellCommunity, '/switching/leave-reviews')
   }
 
   return (

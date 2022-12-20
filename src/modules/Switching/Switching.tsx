@@ -115,7 +115,7 @@ const Switching = (): JSX.Element => {
   const addNewJourney = () => {
     const id = nanoid()
     dispatch(setAddNewJourney({ id, isVerified: false, name: value }))
-    push('/switching/selectBank')
+    push('/switching/select-bank')
   }
 
   const resumeJourney = (route: string) => () => {
@@ -140,7 +140,16 @@ const Switching = (): JSX.Element => {
   )
 
   const tabs = [
-    ...journeyTabs,
+    ...(activeJourneys.length
+      ? journeyTabs
+      : !activeJourneys.length && completedJourneys.length
+      ? [
+          {
+            tab: 'Switching Journey 1',
+            currentJourneyId: '',
+          },
+        ]
+      : []),
     ...(completedJourneys.length ? [{ tab: `Completed Journeys`, currentJourneyId: '' }] : []), //TODO how are completed journeys shown in ui / set currentJourneyId?
   ]
 

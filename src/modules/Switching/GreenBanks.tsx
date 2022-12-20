@@ -18,7 +18,7 @@ export const GreenBanks = (): JSX.Element => {
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
 
   const onNext = () => {
-    push('/switching/selectaction')
+    push('/switching/select-action')
   }
 
   useEffect(() => {
@@ -77,11 +77,6 @@ export const GreenBanks = (): JSX.Element => {
               </Button>
             </S.Buttons>
           </S.SwitchingColumn>
-          {/* <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-            </Card>
-          </Column> */}
         </S.SwitchingColumnContainer>
       </Content>
     </>

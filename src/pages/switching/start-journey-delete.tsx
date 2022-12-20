@@ -75,7 +75,7 @@ const SelectAction = (): JSX.Element => {
                   <Button
                     type='button'
                     onClick={() => {
-                      push('/switching/action-breakup-letter')
+                      push('/switching/breakup-letter')
                     }}
                   >
                     Start Journey
@@ -85,11 +85,6 @@ const SelectAction = (): JSX.Element => {
               </S.Section>
             </Card>
           </SwitchingColumn>
-          {/* <Column>
-            <Card stretch column>
-              <h2>Impact Card</h2>
-            </Card>
-          </Column> */}
         </SwitchingColumnContainer>
       </Content>
     </>

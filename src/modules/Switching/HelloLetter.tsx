@@ -11,7 +11,7 @@ import * as S from '@modules/Switching/Switching.style'
 const getDefaultLetterText = (bankName: string = '[bank name]', nickname: string): string => {
   return `
   <div>
-    Dear ${bankName} - default letter
+    Dear ${bankName} - default hello letter
     <div>
       <br />
     </div>
@@ -48,11 +48,11 @@ const getDefaultLetterText = (bankName: string = '[bank name]', nickname: string
   `
 }
 
-export const ActionBreakupLetter: NextPage = () => {
+export const HelloLetter: NextPage = () => {
   const nextStep = useNextStep()
 
   const onNext = (): void => {
-    nextStep(steps.breakupLetter, '/switching/action-hello-letter')
+    nextStep(steps.helloLetter, '/switching/post-to-socials')
   }
 
   return (
@@ -61,13 +61,13 @@ export const ActionBreakupLetter: NextPage = () => {
         <Content>
           <S.Container>
             <Letter
-              header='Action: Write Your Breakup Letter'
-              subHeader='Tell your old bank how you really feel'
-              headerText={actionText.breakupLetter}
+              header='Action: Write Your Hello Letter'
+              subHeader={`Tell your new bank why you've switched`}
+              headerText={actionText.helloLetter}
               getDefaultLetterText={getDefaultLetterText}
               onNext={onNext}
-              letterType='breakup'
-              step={steps.breakupLetter}
+              letterType='hello'
+              step={steps.helloLetter}
             />
           </S.Container>
         </Content>
