@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
-import { setJourneyData, setSelectedBank } from '@state/switchJourney/switchJourneySlice'
+import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { Select } from '@components/Select/Select'
 import { useNextStep } from '@hooks/useNextStep'
 import { journeyTypes, steps } from '@utils/constants'
@@ -24,7 +24,6 @@ export const BankFinder = (): JSX.Element => {
 
   const onSelectBank = (bank: string) => {
     selectBank(true)
-    dispatch(setSelectedBank(bank))
     dispatch(setJourneyData({ badBank: bank }))
   }
 

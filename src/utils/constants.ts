@@ -131,7 +131,6 @@ export const defaultProfile = {
       { type: 'Provider Switching Actions', points: 0 },
     ],
   },
-  letters: [],
   switchingJourneys: {
     personal: [],
     student: [],

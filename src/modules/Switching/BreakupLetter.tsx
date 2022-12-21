@@ -1,10 +1,10 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useRouter } from 'next/router'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Letter } from './Letter'
 import { actionText, steps } from '@utils/constants'
-import { useNextStep } from '@hooks/useNextStep'
 import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 
@@ -49,10 +49,10 @@ const getDefaultLetterText = (bankName: string = '[bank name]', nickname: string
 }
 
 export const BreakupLetter: NextPage = () => {
-  const nextStep = useNextStep()
+  const { push } = useRouter()
 
   const onNext = (): void => {
-    nextStep(steps.breakupLetter, '/switching/hello-letter')
+    push('/switching/hello-letter')
   }
 
   return (

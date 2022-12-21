@@ -12,17 +12,19 @@ export type Journey = BaseNewJourney & {
   completedSteps: number[]
   badBank: string
   goodBank: string
+  breakupLetter: string
+  helloLetter: string
+  testimonial: string
+  videoId: string
 }
 
 type InitialState = {
   currentJourneyId: string
-  currentSelectedBank: string
   journeys: Journey[]
 }
 
 const initialState: InitialState = {
   currentJourneyId: '',
-  currentSelectedBank: '',
   journeys: [],
 }
 
@@ -33,7 +35,6 @@ export const switchJourneys = createSlice({
     setAddNewJourney: (state, action: PayloadAction<BaseNewJourney>) => {
       return {
         currentJourneyId: action.payload.id,
-        currentSelectedBank: '',
         journeys: [
           ...state.journeys,
           ...[
@@ -43,12 +44,18 @@ export const switchJourneys = createSlice({
               completedSteps: [],
               badBank: '',
               goodBank: '',
+              breakupLetter: '',
+              helloLetter: '',
+              testimonial: '',
+              videoId: '',
             },
           ],
         ],
       }
     },
     setJourneyData: (state, action: PayloadAction<{ [key: string]: string | number[] }>) => {
+      console.log('action.payload', action.payload)
+
       const updatedJourneys = state.journeys.reduce((acc: Journey[], item: Journey) => {
         if (item.id === state.currentJourneyId) {
           return [
@@ -66,14 +73,12 @@ export const switchJourneys = createSlice({
 
       return {
         currentJourneyId: state.currentJourneyId,
-        currentSelectedBank: state.currentSelectedBank,
         journeys: updatedJourneys,
       }
     },
     setCurrentJourney: (
       _,
       action: PayloadAction<{
-        currentSelectedBank: string
         currentJourneyId: string
         journeys: Journey[]
       }>,
@@ -86,21 +91,10 @@ export const switchJourneys = createSlice({
         currentJourneyId: action.payload,
       }
     },
-    setSelectedBank: (state, action: PayloadAction<any>) => {
-      return {
-        ...state,
-        currentSelectedBank: action.payload,
-      }
-    },
   },
 })
 
-export const {
-  setJourneyData,
-  setAddNewJourney,
-  setCurrentJourney,
-  setCurrentJourneyId,
-  setSelectedBank,
-} = switchJourneys.actions
+export const { setJourneyData, setAddNewJourney, setCurrentJourney, setCurrentJourneyId } =
+  switchJourneys.actions
 
 export default switchJourneys.reducer

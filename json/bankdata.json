@@ -141,7 +141,7 @@
       "pertinentInformation": "Triodos have a 35 year history of funding projects that are environmentally beneficial. They are strongly committed to sustainability, and their entire business model is one based on having a positive climate impact. They have various statements about why they will never fund fossil fuels, instead prefering to invest in renewable energy. Triodos are committed to transparency, allowing the public to look through their investments and the companies they're financially supporting. In 2021, they topped a league table for most green energy deals for a bank after financing $433m in 2020.  "
     },
     {
-      "bank": "Monzo Bank Limited",
+      "bank": "Monzo",
       "parentCompany": "NA",
       "score": 4,
       "journeyThroughFlowChart": "No - unclear - bucket 4",
@@ -149,7 +149,7 @@
       "pertinentInformation": "Monzo consider themselves a socially responsible business, taking steps to avoid providing banking services to companies involved with modern slavery. They have also confirmed they do not invest in the fossil fuel industry. However, after a recent round of funding there is a rumour that they hope to provide services in the United States; it's not obvious that they will commit to their current fossil fuel policy going forward."
     },
     {
-      "bank": "Starling Bank Limited",
+      "bank": "Starling Bank",
       "parentCompany": "NA",
       "score": 2,
       "journeyThroughFlowChart": "Yes - >$100m - $500m - bucket 2",

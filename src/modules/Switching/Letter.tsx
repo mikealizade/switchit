@@ -1,26 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
 import { Card } from '@components/Card/Card'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from 'sanitize-html'
 import { useToast } from '@hooks/useToast'
+import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
+import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { LetterButtons } from './LetterButtons'
 import * as S from '@modules/Switching/Switching.style'
 import useSWRMutation from 'swr/mutation'
-import { sendRequest } from '@utils/functions'
+import { sendRequest, fetcher } from '@utils/functions'
 
-type Letter = { type: string }
+import useSWR, { SWRResponse } from 'swr'
+
+type Letter = { id: string }
 
 type LetterProps = {
   header: string
   subHeader: string
   headerText: string
-  getDefaultLetterText: (selectedBank: string, nickname: string) => string
+  getDefaultLetterText: (baddBank: string, nickname: string) => string
   onNext: () => void
   letterType: string
   step: number
@@ -32,9 +36,6 @@ const sanitizeConf = {
 }
 
 // TODO
-// letters and tell us are particular to a journey also, but attach them to the switch journey?
-// on new journey, save new letter to redux  or refetch letter from db whenever hitting letter page
-// //TODO update hardcoded account type ie 'personal'
 // when savinvg journey steps to db, currently not refetching on any of the action pages
 
 export const Letter: NextPage<LetterProps> = ({
@@ -47,32 +48,65 @@ export const Letter: NextPage<LetterProps> = ({
   step,
 }) => {
   const { user: { sub = '' } = {} } = useUser()
+  const nextStep = useNextStep()
+  const dispatch = useDispatch()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
-  const { currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
-  const selectedBank = useSelector((state: RootState) => state.switchJourneys.currentSelectedBank)
-  const user = useSelector((state: RootState) => state.user)
-  const { nickname, letters = [] } = user
-  const [letter] = letters.filter(({ type }: Letter) => type === letterType)
+  const {
+    currentJourneyId,
+    currentJourney: {
+      badBank = '',
+      completedSteps = [],
+      // breakupLetter: breakup = '',
+      // helloLetter: hello = '',
+    } = {},
+  } = useGetCurrentJourney()
+  const { nickname } = useSelector((state: RootState) => state.user)
+  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
+    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
+    fetcher,
+    { revalidateOnFocus: false },
+  ) as SWRResponse
+  // const { nickname } = user
+  const [{ breakupLetter = '', helloLetter = '' } = {}] = switchJourneys?.filter(
+    ({ id }: Letter) => id === currentJourneyId,
+  )
   const [currentLetter, setLetter] = useState('')
   const [isEditable, setEdit] = useState(false)
   const text = useRef('')
   const toast = useToast()
   const isStepCompleted = completedSteps.includes(step)
+  // const letter = letterType === 'breakup' ? breakupLetter || breakup : helloLetter || hello
+  const letter = letterType === 'breakup' ? breakupLetter : helloLetter
+
+  const processLetter = () => {
+    const letterText = sanitizeHtml(text.current, sanitizeConf)
+    // dispatch(setJourneyData({ [`${letterType}Letter`]: letterText }))
+
+    return letterText
+  }
+
+  console.log('letter', letter)
 
   const onSave = async () => {
-    const letterText = sanitizeHtml(text.current, sanitizeConf)
+    // const letterText = sanitizeHtml(text.current, sanitizeConf)
+    // dispatch(setJourneyData({ [`${letterType}Letter`]: letterText }))
+
+    console.log('processLetter()', processLetter())
 
     try {
       const saveBody = {
-        filter: { sub },
+        filter: { sub, 'switchJourneys.id': currentJourneyId },
         payload: {
-          $push: {
-            [`letters`]: {
-              type: letterType,
-              dateSent: new Date(),
-              letterText,
-            },
+          $set: {
+            [`switchJourneys.$.${letterType}Letter`]: processLetter(),
           },
+          // $push: {
+          //   [`letters`]: {
+          //     type: letterType,
+          //     dateSent: new Date(),
+          //     letterText,
+          //   },
+          // },
         },
         collection: 'users',
         upsert: false,
@@ -88,7 +122,8 @@ export const Letter: NextPage<LetterProps> = ({
   }
 
   const onSend = async () => {
-    const letterText = sanitizeHtml(text.current, sanitizeConf)
+    // const letterText = sanitizeHtml(text.current, sanitizeConf)
+    nextStep(step)
 
     try {
       const sendBody = {
@@ -97,7 +132,7 @@ export const Letter: NextPage<LetterProps> = ({
           $push: {
             [letterType]: {
               dateSent: new Date(),
-              letterText,
+              letterText: processLetter(),
               userId: sub,
             },
           },
@@ -124,15 +159,15 @@ export const Letter: NextPage<LetterProps> = ({
 
   useEffect(() => {
     if (letter) {
-      text.current = letter?.letterText
+      text.current = letter
       setLetter(text.current)
     } else {
       if (nickname) {
-        text.current = getDefaultLetterText(selectedBank, nickname)
+        text.current = getDefaultLetterText(badBank, nickname)
         setLetter(text.current)
       }
     }
-  }, [letter, text, selectedBank, nickname, letterType, getDefaultLetterText])
+  }, [letter, text, badBank, nickname, getDefaultLetterText])
 
   // useEffect(() => {
   //   if (currentLetter) {
@@ -154,7 +189,7 @@ export const Letter: NextPage<LetterProps> = ({
         <ContentEditable
           className='editable'
           tagName='div'
-          html={text.current}
+          html={isValidating ? 'Loading letter...' : text.current}
           disabled={!isEditable}
           onChange={onChange}
           onBlur={onToggleEditable}
@@ -166,7 +201,6 @@ export const Letter: NextPage<LetterProps> = ({
           onSend={onSend}
           onNext={onNext}
           isStepComplete={isStepCompleted}
-          // step={step}
         />
       </S.Container>
     </Card>

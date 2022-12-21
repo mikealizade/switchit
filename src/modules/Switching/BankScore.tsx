@@ -9,8 +9,6 @@ import { fetcher } from '@utils/functions'
 import { Content } from '@styles/common.style'
 import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import ProgressProvider from '@modules/Dashboard/components/SwitchingJourney/ProgressProvider'
-import { useSelector } from 'react-redux'
-import { RootState } from '@state/store'
 import { steps } from '@utils/constants'
 import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
@@ -32,11 +30,9 @@ const colourConfig = {
 
 export const BankScore = (): JSX.Element => {
   const { back } = useRouter()
-  const selectedBank = useSelector((state: RootState) => state.switchJourneys.currentSelectedBank)
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
-  const currentBank = selectedBank || badBank
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
     score: 0,
     scoreHeadline: '',
@@ -51,16 +47,16 @@ export const BankScore = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if (data && currentBank) {
+    if (data && badBank) {
       const { bankScore = [], bankData = [] } = JSON.parse(String(data))
       const { score: selectedScore, pertinentInformation: info } = bankData.find(
-        ({ bank }: { bank: string }) => bank === currentBank,
+        ({ bank }: { bank: string }) => bank === badBank,
       )
       const result = bankScore.find(({ score }: { score: number }) => score === selectedScore)
       setBankScore({ ...result, info })
       setValueEnd((score / 5) * 100)
     }
-  }, [data, score, currentBank])
+  }, [data, score, badBank])
 
   return (
     <>
@@ -76,7 +72,7 @@ export const BankScore = (): JSX.Element => {
           <SwitchingColumn>
             <Card column padded rowGap={40}>
               <S.Header>
-                The results are in for <strong>{currentBank}</strong> and your bank scored ...
+                The results are in for <strong>{badBank}</strong> and your bank scored ...
               </S.Header>
               <S.Rating>
                 <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
@@ -109,7 +105,7 @@ export const BankScore = (): JSX.Element => {
               <S.BankRating>
                 <S.BankData>
                   <S.BankDataHeader>
-                    Why did {selectedBank} score {score}/5
+                    Why did {badBank} score {score}/5
                   </S.BankDataHeader>
                   {info}
                 </S.BankData>

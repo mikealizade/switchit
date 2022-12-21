@@ -9,6 +9,7 @@ import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useSaveStep } from '@hooks/useSaveStep'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
+import { steps } from '@utils/constants'
 import * as S from './Switching.style'
 import { Content, ButtonContainer } from '@styles/common.style'
 
@@ -41,10 +42,11 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const onMakeTheSwitch = () => {
     dispatch(
       setJourneyData({
-        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, 4])),
+        goodBank: bank.name,
+        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, steps.makeSwitch])),
       }),
     )
-    saveStep(4) // await?
+    saveStep(steps.makeSwitch) // await?
     window.open(bank.link, '_blank')
   }
 

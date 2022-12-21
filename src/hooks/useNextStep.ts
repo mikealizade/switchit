@@ -17,7 +17,7 @@ export const useNextStep = () => {
       }),
     )
     saveStep(step)
-    push(route)
+    route && push(route)
   }
 
   return saveNextStep

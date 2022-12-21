@@ -54,7 +54,7 @@ const getJourneys = (
           {startJourneyConfig.map(
             ({ step, text, route }: JourneySteps, i: number): JSX.Element | null => {
               const isComplete = completedSteps.includes(i + 1)
-              const firstIncompleteStep = i + 1 === completedSteps.at(-1) + 1
+              const firstIncompleteStep = i + 1 === Number(completedSteps?.at(-1)) + 1
 
               if (isComplete || firstIncompleteStep) {
                 return (
@@ -158,7 +158,6 @@ const Switching = (): JSX.Element => {
       dispatch(
         setCurrentJourney({
           currentJourneyId: defaultJourneyId,
-          currentSelectedBank: '',
           journeys: switchJourneys,
         }),
       )
