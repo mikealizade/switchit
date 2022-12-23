@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
@@ -8,7 +8,7 @@ import { nanoid } from 'nanoid'
 import { useUser } from '@auth0/nextjs-auth0'
 import { Button } from '@components/Button/Button'
 import { Hero } from '@components/Hero/Hero'
-import { fetcher } from '@utils/functions'
+import { fetcher, filterActionType } from '@utils/functions'
 import {
   setAddNewJourney,
   setCurrentJourney,
@@ -18,20 +18,32 @@ import {
 import { Tabs } from '@components/Tabs/Tabs'
 import { Card } from '@components/Card/Card'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
-import { actionsConfig, startJourneyConfig, steps } from '@utils/constants'
+import {
+  actionsConfig,
+  startJourneyConfig,
+  startJourneyNoBankConfig,
+  journeyTypes,
+  steps,
+  noBankAccountSteps,
+} from '@utils/constants'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { Action } from '@utils/types'
 import { Content } from '@styles/common.style'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import * as S from '@modules/Switching/Switching.style'
+import { JourneyName } from './JourneyName'
 
 type JourneySteps = { step: string; text: string; route: string }
-
-const totalSteps = Object.keys(steps).length / 2
+type JourneyFilter = { journeyType: string; completedSteps: number[] }
 
 const getJourneys = (
   switchJourneys: Journey[],
-  filter: ({ completedSteps }: { completedSteps: number[] }) => boolean,
+  actions: Action[],
+  journeySteps: { step: string; text: string; route: string }[],
+  filter: ({ journeyType, completedSteps }: JourneyFilter) => boolean,
   resumeJourney: (route: string) => () => void,
   selectAction: (index: number) => () => void,
+  isJourneyComplete: boolean,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
     const { id, name, badBank, goodBank, completedSteps = [] } = journey
@@ -40,7 +52,7 @@ const getJourneys = (
       <S.JourneyCard key={id}>
         <S.Detail>
           <S.DetailHeader>Journey name</S.DetailHeader>
-          <S.DetailText>{name}</S.DetailText>
+          <S.DetailName>{name}</S.DetailName>
           <S.DetailHeader>Latest Green Project Funded</S.DetailHeader>
           <S.DetailText>Solar Farm</S.DetailText>
           <S.DetailHeader>The Switch</S.DetailHeader>
@@ -51,7 +63,7 @@ const getJourneys = (
           <S.DetailText>£1.51b switched</S.DetailText>
         </S.Detail>
         <S.Steps>
-          {startJourneyConfig.map(
+          {journeySteps.map(
             ({ step, text, route }: JourneySteps, i: number): JSX.Element | null => {
               const isComplete = completedSteps.includes(i + 1)
               const firstIncompleteStep = i + 1 === Number(completedSteps?.at(-1)) + 1
@@ -86,7 +98,12 @@ const getJourneys = (
             },
           )}
         </S.Steps>
-        <ActionSelector selectAction={selectAction} isSwitchLanding />
+        <ActionSelector
+          actions={actions}
+          selectAction={selectAction}
+          isSwitchLanding
+          isJourneyComplete={isJourneyComplete}
+        />
       </S.JourneyCard>
     )
   })
@@ -96,11 +113,19 @@ const Switching = (): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
   const dispatch = useDispatch()
   const { push } = useRouter()
+  const [value, setValue] = useState('')
+
+  console.log('value', value)
+
+  const [isAddName, setAddName] = useState(false)
+  const { currentJourney, currentJourneyType = '' } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
+  const currentSteps = journeyTypes.noBankAccount ? noBankAccountSteps : steps
+  const totalSteps = Object.keys(currentSteps).length / 2
   const filterActive = ({ completedSteps }: { completedSteps: number[] }) =>
     completedSteps.length < totalSteps
   const journeyTabs = switchJourneys
@@ -109,13 +134,27 @@ const Switching = (): JSX.Element => {
       tab: `Switching Journey ${i + 1}`,
       currentJourneyId: id,
     }))
-  const [value, setValue] = useState('')
   const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
+  const actions = actionsConfig.filter(filterActionType(currentJourneyType))
+
+  console.log('currentJourneyType', currentJourneyType)
+
+  const goodBank = currentJourney!?.goodBank
+  const journeySteps =
+    currentJourneyType === journeyTypes.noBankAccount
+      ? startJourneyNoBankConfig(goodBank)
+      : startJourneyConfig(goodBank)
+
+  console.log('switchJourneys', switchJourneys)
 
   const addNewJourney = () => {
     const id = nanoid()
     dispatch(setAddNewJourney({ id, isVerified: false, name: value }))
     push('/switching/select-bank')
+  }
+
+  const addJourneyName = () => {
+    setAddName(true)
   }
 
   const resumeJourney = (route: string) => () => {
@@ -127,16 +166,28 @@ const Switching = (): JSX.Element => {
   }
 
   const selectAction = (index: number) => () => {
-    push(`/switching/${actionsConfig[index].route}`)
+    push(`/switching/${actions[index].route}`)
   }
 
-  const activeJourneys = getJourneys(switchJourneys, filterActive, resumeJourney, selectAction)
+  const activeJourneys = getJourneys(
+    switchJourneys,
+    actions,
+    journeySteps,
+    filterActive,
+    resumeJourney,
+    selectAction,
+    false,
+  )
 
   const completedJourneys = getJourneys(
     switchJourneys,
-    ({ completedSteps }: { completedSteps: number[] }) => completedSteps.length === totalSteps,
+    actions,
+    journeySteps,
+    ({ journeyType, completedSteps }: JourneyFilter) =>
+      completedSteps.length === (journeyType === journeyTypes.noBankAccount ? 7 : 11),
     resumeJourney,
     selectAction,
+    true,
   )
 
   const tabs = [
@@ -171,20 +222,31 @@ const Switching = (): JSX.Element => {
       ? [
           <S.Row key='switchJourneys'>
             <S.NoJourneysTextContainer>
-              <S.NoJourneysText>
-                {`It's why you're here!`} Start your first switching journey by clicking on the pink
-                plus sign on the right
-              </S.NoJourneysText>
-              <S.NoJourneysText>
-                Have multiple bank accounts? No problem! {`We'll`} switch one at a time
-              </S.NoJourneysText>
+              {isAddName ? (
+                <JourneyName
+                  value={value}
+                  setValue={setValue}
+                  setAddName={setAddName}
+                  addNewJourney={addNewJourney}
+                />
+              ) : (
+                <>
+                  <S.NoJourneysText>
+                    {`It's why you're here!`} Start your first switching journey by clicking on the
+                    pink plus sign on the right
+                  </S.NoJourneysText>
+                  <S.NoJourneysText>
+                    Have multiple bank accounts? No problem! {`We'll`} switch one at a time
+                  </S.NoJourneysText>
+                </>
+              )}
             </S.NoJourneysTextContainer>
           </S.Row>,
         ]
       : activeJourneys),
     <S.Row key='completedJourneys'>
       {completedJourneys.length ? (
-        <>{completedJourneys}</>
+        <div style={{ overflow: 'auto' }}>{completedJourneys}</div>
       ) : (
         <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
       )}
@@ -207,15 +269,9 @@ const Switching = (): JSX.Element => {
             <StyledTabs wide>
               <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
             </StyledTabs>
-            <S.StartJourney onClick={addNewJourney}>
+            <S.StartJourney onClick={addJourneyName}>
               <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
             </S.StartJourney>
-            {/* <S.PlainInput
-              type='text'
-              onChange={(e: any) => setValue(e.target.value)}
-              value={value}
-              placeholder='Enter your new journey name'
-            /> */}
           </S.SwitchingColumnContainer>
         </Card>
       </Content>

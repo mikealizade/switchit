@@ -2,7 +2,10 @@ import { FC, useState } from 'react'
 import Image from 'next/image'
 import { Button, TextButton } from '@components/Button/Button'
 import { useNextStep } from '@hooks/useNextStep'
-import { steps } from '@utils/constants'
+// import { steps } from '@utils/constants'
+// import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+// import { getStepsByJourneyType } from '@utils/functions'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from './ChooseBank.style'
 import starling from '../../../public/icons/icon_starling.png'
 import monzo from '../../../public/icons/icon_monzo.png'
@@ -51,6 +54,8 @@ const logo = {
 }
 
 export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
   const nextStep = useNextStep()
   const [expandedRow, setExpandRow] = useState<number | null>(null)
 
@@ -59,7 +64,7 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
   }
 
   const onNext = (route: string) => (): void => {
-    nextStep(steps.chooseGreenBank, `/switching/make-the-switch/${route}`)
+    nextStep(steps.chooseGreenBank, `/switching/make-the-switch/${route}`, { goodBank: route })
   }
 
   return (

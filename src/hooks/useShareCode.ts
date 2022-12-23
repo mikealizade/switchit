@@ -34,7 +34,7 @@ export const useShareCode = () => {
       }),
     )
 
-    window.open(url, '_blank')
+    window.open(url, '_blank', 'noreferrer')
   }
 
   return onShareCode

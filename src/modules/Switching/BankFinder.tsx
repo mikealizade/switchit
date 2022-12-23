@@ -29,7 +29,7 @@ export const BankFinder = (): JSX.Element => {
 
   const onNoBankAccountSelect = () => {
     dispatch(setJourneyData({ journeyType: journeyTypes.noBankAccount }))
-    push('/switching/select-action')
+    push('/switching/green-banks')
   }
 
   const onNext = (): void => {

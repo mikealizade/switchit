@@ -119,3 +119,45 @@ export const ButtonContainer = styled.div<{ column?: boolean; alignLeft?: boolea
     align-self: ${({ alignLeft }) => (alignLeft ? 'flex-start' : 'flex-end')};
   }
 `
+
+export const Label = styled.label`
+  display: flex;
+  column-gap: 15px;
+  padding: 20px 0;
+`
+
+export const Checkbox = styled.span<{ isActive?: boolean }>`
+  display: inline-block;
+  border-radius: 4px;
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+  background-color: ${({ isActive }) => (isActive ? 'var(--nileBlue)' : 'var(--white)')};
+  border: 1px solid var(--nileBlue);
+`
+
+export const TileLinks = styled.ul`
+  display: flex;
+  column-gap: 50px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 50px;
+`
+
+export const Item = styled.li`
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  flex: 1;
+`
+
+export const Anchor = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 50px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  /* min-width: 366px; */
+  height: 123px;
+`

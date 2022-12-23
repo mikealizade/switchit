@@ -7,7 +7,8 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { actionText, steps } from '@utils/constants'
+import { actionText } from '@utils/constants'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Form, Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 
@@ -16,6 +17,8 @@ export const ConfirmSwitch: NextPage = () => {
   const [value, setValue] = useState('')
   const nextStep = useNextStep()
   const date = new Date() // TODO datepicker or select?
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
 
   const onSubmit = (): void => {
     nextStep(steps.confirmSwitch, '/switching/select-action')

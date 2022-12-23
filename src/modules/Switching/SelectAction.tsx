@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { Button } from '@components/Button/Button'
-import { actionsConfig, steps } from '@utils/constants'
+import { actionsConfig, steps, journeyTypes } from '@utils/constants'
 import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { setActionCard } from '@state/preSwitchJourney/preSwitchJourneySlice'
@@ -13,18 +14,25 @@ import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Sw
 import * as S from '@modules/Switching/PreSwitching.style'
 import { ButtonContainer } from '@styles/common.style'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
-
-type ActionsConfig = typeof actionsConfig[0]
+import { Action } from '@utils/types'
 
 export const SelectAction = (): JSX.Element => {
   const { push } = useRouter()
   const dispatch = useDispatch()
+  const { currentJourneyType } = useGetCurrentJourney()
   const [selectedRoute, setRoute] = useState(actionsConfig[0].route)
-  const [currentAction, setAction] = useState<ActionsConfig | null>(null)
+  const [currentAction, setAction] = useState<Action | null>(null)
+  const filterActionType = ({ type }: { type: string }) =>
+    currentJourneyType === journeyTypes.noBankAccount
+      ? type !== 'breakup' && type !== 'reviews'
+      : currentJourneyType === journeyTypes.notReadyToSwitch
+      ? type !== 'hello'
+      : true
+  const actions = actionsConfig.filter(filterActionType)
 
   const selectAction = (index: number) => () => {
-    setRoute(actionsConfig[index].route)
-    setAction(actionsConfig[index])
+    setRoute(actions[index].route)
+    setAction(actions[index])
     dispatch(setActionCard(index))
   }
 
@@ -46,7 +54,12 @@ export const SelectAction = (): JSX.Element => {
                 subHeader={`Select which of the following actions you'd like to take. The more actions completed, the bigger the impact.`}
               />
 
-              <ActionSelector currentAction={currentAction} selectAction={selectAction} isDefault />
+              <ActionSelector
+                currentAction={currentAction}
+                actions={actions}
+                selectAction={selectAction}
+                isDefault
+              />
 
               <S.Section>
                 <ButtonContainer>

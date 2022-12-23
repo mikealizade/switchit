@@ -9,15 +9,15 @@ export const useSaveStep = () => {
   const { trigger: request } = useSWRMutation('/api/db/upsertJourney', sendRequest)
   const { currentJourney, currentJourneyId } = useGetCurrentJourney()
   const toast = useToast()
-
+  // debugger
   //if currentJourneyId does not exist in db push, else update
-  const saveStep = async (step: number) => {
+  const saveStep = async (step: number, goodBank: string) => {
     try {
       const insert = {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
         update: {
           $set: {
-            'switchJourneys.$.goodBank': currentJourney!.goodBank,
+            'switchJourneys.$.goodBank': goodBank,
             'switchJourneys.$.completedSteps': Array.from(
               new Set([...currentJourney!.completedSteps, step]),
             ),
@@ -32,6 +32,7 @@ export const useSaveStep = () => {
             switchJourneys: {
               ...currentJourney,
               completedSteps: [1],
+              goodBank,
             },
           },
         },

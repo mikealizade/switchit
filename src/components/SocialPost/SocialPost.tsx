@@ -37,7 +37,7 @@ export const SocialPost: NextPage<SocialPostProps> = ({ post, type, index }): JS
       )}`,
     }
 
-    window.open(links[type as keyof typeof links])
+    window.open(links[type as keyof typeof links], '_blank', 'noreferrer')
   }
 
   return (

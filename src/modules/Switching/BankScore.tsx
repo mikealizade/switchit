@@ -13,7 +13,11 @@ import { steps } from '@utils/constants'
 import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { ButtonContainer } from '@styles/common.style'
-import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
+import {
+  SwitchingColumnContainer,
+  SwitchingColumn,
+  Buttons,
+} from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/PreSwitching.style'
 
 // TODO links to good bank buttons
@@ -124,14 +128,14 @@ export const BankScore = (): JSX.Element => {
                       </Button>
                     </ButtonContainer>
                   ) : (
-                    <ButtonContainer>
+                    <Buttons>
                       <Button type='button' mode='secondary' onClick={() => back()}>
                         Back
                       </Button>
                       <Button type='button' onClick={onNext}>
                         Next
                       </Button>
-                    </ButtonContainer>
+                    </Buttons>
                   )}
                 </>
               </S.BankRating>

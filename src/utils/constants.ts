@@ -273,33 +273,68 @@ export const actionsConfig = [
   },
 ]
 
-export const startJourneyConfig = [
+export const startJourneyConfig = (goodBank: string) => [
   {
     step: 'Step 1',
-    text: 'Check Your Bank Score',
+    text: 'Choose Your Current Bank',
     route: '/switching/select-bank',
   },
   {
     step: 'Step 2',
-    text: `Choose Your Green Bank`,
+    text: 'Check Your Bank Score',
     route: '/switching/bank-score',
   },
   {
     step: 'Step 3',
-    text: `Make The Switch`,
+    text: `Choose Your Green Bank`,
     route: '/switching/green-banks',
   },
   {
     step: 'Step 4',
+    text: `Make The Switch`,
+    route: `/switching/make-the-switch/${goodBank}`,
+  },
+  {
+    step: 'Step 5',
     text: 'Confirm The Switch By Signing',
     route: '/switching/confirm-switch',
   },
   {
-    step: 'Step 5',
+    step: 'Step 6',
     text: 'Maximise',
     route: '', //enable cards
   },
 ]
+
+export const startJourneyNoBankConfig = (goodBank: string) => [
+  {
+    step: 'Step 1',
+    text: `Choose Your Green Bank`,
+    route: '/switching/green-banks',
+  },
+  {
+    step: 'Step 2',
+    text: `Make The Switch`,
+    route: `/switching/make-the-switch/${goodBank}`,
+  },
+  {
+    step: 'Step 3',
+    text: 'Confirm The Switch By Signing',
+    route: '/switching/confirm-switch',
+  },
+  {
+    step: 'Step 4',
+    text: 'Maximise',
+    route: '', //enable cards
+  },
+]
+
+export const bankNameConfig = {
+  starling: 'Starling Bank',
+  monzo: 'Monzo',
+  triodos: 'Triodos Bank',
+  nationwide: 'Nationwide Building Society',
+}
 
 export const bankConfig = [
   {
@@ -426,6 +461,16 @@ export enum steps {
   tellUs = 11,
 }
 
+export enum noBankAccountSteps {
+  chooseGreenBank = 1,
+  makeSwitch = 2,
+  confirmSwitch = 3,
+  helloLetter = 4,
+  postSocials = 5,
+  tellCommunity = 6,
+  tellUs = 7,
+}
+
 export enum badBanks {
   barclays = 'Barclays',
   halifax = 'Halifax',
@@ -530,4 +575,9 @@ export const badBanksConfig = {
     trustPilot: 'kroo.com',
     google: '',
   },
+}
+
+export const sanitiseConfig = {
+  allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p', 'div', 'br'],
+  allowedAttributes: { a: ['href'] },
 }

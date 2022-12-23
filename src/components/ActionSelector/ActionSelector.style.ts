@@ -9,7 +9,12 @@ export const ActionSelector = styled.ul`
   align-self: flex-start;
 `
 
-export const Item = styled.li<{ isActive?: boolean; isCompleted: boolean; isDefault: boolean }>`
+export const Item = styled.li<{
+  isActive?: boolean
+  isCompleted: boolean
+  isDefault: boolean
+  hasConfirmed: boolean
+}>`
   border: 2px solid var(--nileBlue);
   color: ${({ isActive }) => (isActive ? 'var(--white)' : 'var(--nileBlue)')};
   background-color: ${({ isActive }) => (isActive ? 'var(--nileBlue)' : 'var(--white)')};
@@ -26,7 +31,10 @@ export const Item = styled.li<{ isActive?: boolean; isCompleted: boolean; isDefa
   transition: all 0.1s linear;
   display: flex;
   cursor: pointer;
-  pointer-events: ${({ isCompleted }) => (isCompleted ? 'none' : 'all')};
+  pointer-events: ${({ hasConfirmed, isCompleted }) =>
+    hasConfirmed && !isCompleted ? 'all' : 'none'};
+  opacity: ${({ hasConfirmed, isCompleted }) =>
+    (hasConfirmed && !isCompleted) || (hasConfirmed && isCompleted) ? 1 : 0.3};
   place-items: center;
 
   &:hover {

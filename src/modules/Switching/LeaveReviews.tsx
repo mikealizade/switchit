@@ -9,10 +9,16 @@ import { actionText, steps, badBanksConfig } from '@utils/constants'
 import { onCopy } from '@utils/functions'
 import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { Buttons } from '@modules/Switching/Switching.style'
-import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
-import { Content } from '@styles/common.style'
-import * as S from '@modules/Switching/LeaveReviews.style'
+import * as S from '@styles/common.style'
+import {
+  Buttons,
+  SwitchingColumnContainer,
+  SwitchingColumn,
+  CopyContainer,
+  CopyInfo,
+  Copy,
+  CopyIcon,
+} from '@modules/Switching/Switching.style'
 
 export const LeaveReviews: NextPage = () => {
   const nextStep = useNextStep()
@@ -28,7 +34,7 @@ export const LeaveReviews: NextPage = () => {
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
-        <Content>
+        <S.Content>
           <SwitchingColumnContainer>
             <SwitchingColumn>
               <Card column padded>
@@ -51,12 +57,12 @@ export const LeaveReviews: NextPage = () => {
                     >
                       <Image src={'/icons/icon_trustpilot.png'} alt='' width={203} height={50} />
                     </S.Anchor>
-                    <S.Copy>
+                    <Copy>
                       Trustpilot copy
-                      <S.CopyIcon onClick={onCopy(trustpilotCopy)}>
+                      <CopyIcon onClick={onCopy(trustpilotCopy)}>
                         <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                      </S.CopyIcon>
-                    </S.Copy>
+                      </CopyIcon>
+                    </Copy>
                   </S.Item>
                   <S.Item>
                     <S.Anchor
@@ -66,19 +72,19 @@ export const LeaveReviews: NextPage = () => {
                     >
                       <Image src={'/icons/icon_google.png'} alt='' width={100} height={100} />
                     </S.Anchor>
-                    <S.CopyContainer>
-                      <S.CopyInfo>
+                    <CopyContainer>
+                      <CopyInfo>
                         This will take you to google maps. We suggest leaving a review at your
                         nearest branch or your local branch. Note: in lieu of a bank branch, we have
                         gone with a local branch of a parent company
-                      </S.CopyInfo>
-                      <S.Copy>
-                        Trustpilot copy
-                        <S.CopyIcon onClick={onCopy(googleCopy)}>
+                      </CopyInfo>
+                      <Copy>
+                        Google copy
+                        <CopyIcon onClick={onCopy(googleCopy)}>
                           <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                        </S.CopyIcon>
-                      </S.Copy>
-                    </S.CopyContainer>
+                        </CopyIcon>
+                      </Copy>
+                    </CopyContainer>
                   </S.Item>
                 </S.TileLinks>
                 <Buttons>
@@ -89,7 +95,7 @@ export const LeaveReviews: NextPage = () => {
               </Card>
             </SwitchingColumn>
           </SwitchingColumnContainer>
-        </Content>
+        </S.Content>
       </ErrorBoundary>
     </>
   )

@@ -4,9 +4,11 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { actionText, steps } from '@utils/constants'
+import { actionText } from '@utils/constants'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { onCopy } from '@utils/functions'
 import { useNextStep } from '@hooks/useNextStep'
+import { useRoute } from '@hooks/useRoute'
 import { useShareCode } from '@hooks/useShareCode'
 import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
@@ -39,9 +41,11 @@ const Actions: NextPage<{ actions: ActionsProps; type: string }> = ({ actions, t
       {actions.map(({ text }: { text: string }) => (
         <S.Action key={text}>
           For Your {text}
-          <S.CopyIcon onClick={onCopy(copyConfig[`${type}${text}` as keyof typeof copyConfig])}>
+          <S.CopyIconHover
+            onClick={onCopy(copyConfig[`${type}${text}` as keyof typeof copyConfig])}
+          >
             <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-          </S.CopyIcon>
+          </S.CopyIconHover>
         </S.Action>
       ))}
     </S.Actions>
@@ -51,9 +55,14 @@ const Actions: NextPage<{ actions: ActionsProps; type: string }> = ({ actions, t
 export const TellYourCommunity: NextPage = () => {
   const nextStep = useNextStep()
   const shareCode = useShareCode()
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
+  const route = useRoute(steps.tellCommunity)
+
+  console.log('route', route)
 
   const onNext = (): void => {
-    nextStep(steps.tellCommunity, '/switching/leave-reviews')
+    nextStep(steps.tellCommunity, route)
   }
 
   return (

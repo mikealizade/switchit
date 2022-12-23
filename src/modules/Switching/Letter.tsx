@@ -1,24 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@state/store'
+import { useSelector } from 'react-redux'
+import useSWRMutation from 'swr/mutation'
+import useSWR, { SWRResponse } from 'swr'
+import sanitizeHtml from 'sanitize-html'
 import { Card } from '@components/Card/Card'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import ContentEditable from 'react-contenteditable'
-import sanitizeHtml from 'sanitize-html'
+import { RootState } from '@state/store'
 import { useToast } from '@hooks/useToast'
-import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { LetterButtons } from './LetterButtons'
 import * as S from '@modules/Switching/Switching.style'
-import useSWRMutation from 'swr/mutation'
 import { sendRequest, fetcher } from '@utils/functions'
+import { sanitiseConfig } from '@utils/constants'
 
-import useSWR, { SWRResponse } from 'swr'
-
-type Letter = { id: string }
+type JourneyId = { id: string }
 
 type LetterProps = {
   header: string
@@ -30,13 +29,7 @@ type LetterProps = {
   step: number
 }
 
-const sanitizeConf = {
-  allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p', 'div', 'br'],
-  allowedAttributes: { a: ['href'] },
-}
-
-// TODO
-// when savinvg journey steps to db, currently not refetching on any of the action pages
+// TODO  when savinvg journey steps to db, currently not refetching on any of the action pages
 
 export const Letter: NextPage<LetterProps> = ({
   header,
@@ -48,65 +41,34 @@ export const Letter: NextPage<LetterProps> = ({
   step,
 }) => {
   const { user: { sub = '' } = {} } = useUser()
-  const nextStep = useNextStep()
-  const dispatch = useDispatch()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
-  const {
-    currentJourneyId,
-    currentJourney: {
-      badBank = '',
-      completedSteps = [],
-      // breakupLetter: breakup = '',
-      // helloLetter: hello = '',
-    } = {},
-  } = useGetCurrentJourney()
+  const nextStep = useNextStep()
+  const text = useRef('')
+  const toast = useToast()
+  const { currentJourneyId, currentJourney: { badBank = '', completedSteps = [] } = {} } =
+    useGetCurrentJourney()
   const { nickname } = useSelector((state: RootState) => state.user)
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  // const { nickname } = user
   const [{ breakupLetter = '', helloLetter = '' } = {}] = switchJourneys?.filter(
-    ({ id }: Letter) => id === currentJourneyId,
+    ({ id }: JourneyId) => id === currentJourneyId,
   )
-  const [currentLetter, setLetter] = useState('')
+  const [, setLetter] = useState('')
   const [isEditable, setEdit] = useState(false)
-  const text = useRef('')
-  const toast = useToast()
   const isStepCompleted = completedSteps.includes(step)
-  // const letter = letterType === 'breakup' ? breakupLetter || breakup : helloLetter || hello
   const letter = letterType === 'breakup' ? breakupLetter : helloLetter
 
-  const processLetter = () => {
-    const letterText = sanitizeHtml(text.current, sanitizeConf)
-    // dispatch(setJourneyData({ [`${letterType}Letter`]: letterText }))
-
-    return letterText
-  }
-
-  console.log('letter', letter)
-
   const onSave = async () => {
-    // const letterText = sanitizeHtml(text.current, sanitizeConf)
-    // dispatch(setJourneyData({ [`${letterType}Letter`]: letterText }))
-
-    console.log('processLetter()', processLetter())
-
     try {
       const saveBody = {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
         payload: {
           $set: {
-            [`switchJourneys.$.${letterType}Letter`]: processLetter(),
+            [`switchJourneys.$.${letterType}Letter`]: sanitizeHtml(text.current, sanitiseConfig),
           },
-          // $push: {
-          //   [`letters`]: {
-          //     type: letterType,
-          //     dateSent: new Date(),
-          //     letterText,
-          //   },
-          // },
         },
         collection: 'users',
         upsert: false,
@@ -122,7 +84,6 @@ export const Letter: NextPage<LetterProps> = ({
   }
 
   const onSend = async () => {
-    // const letterText = sanitizeHtml(text.current, sanitizeConf)
     nextStep(step)
 
     try {
@@ -132,7 +93,7 @@ export const Letter: NextPage<LetterProps> = ({
           $push: {
             [letterType]: {
               dateSent: new Date(),
-              letterText: processLetter(),
+              letterText: sanitizeHtml(text.current, sanitiseConfig),
               userId: sub,
             },
           },
@@ -162,19 +123,10 @@ export const Letter: NextPage<LetterProps> = ({
       text.current = letter
       setLetter(text.current)
     } else {
-      if (nickname) {
-        text.current = getDefaultLetterText(badBank, nickname)
-        setLetter(text.current)
-      }
+      text.current = getDefaultLetterText(badBank, nickname || '[your name]')
+      setLetter(text.current)
     }
   }, [letter, text, badBank, nickname, getDefaultLetterText])
-
-  // useEffect(() => {
-  //   if (currentLetter) {
-  //     text.current = currentLetter
-  //     setLetter(text.current)
-  //   }
-  // }, [currentLetter])
 
   return (
     <Card column padded>
@@ -200,7 +152,7 @@ export const Letter: NextPage<LetterProps> = ({
           onSave={onSave}
           onSend={onSend}
           onNext={onNext}
-          isStepComplete={isStepCompleted}
+          isDisabled={!text.current || isStepCompleted}
         />
       </S.Container>
     </Card>
