@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { PostToSocials } from '@modules/Switching/PostToSocials'
+import { PostToSocials } from '@modules/Switching/components/PostToSocials/PostToSocials'
 
 const PostToSocialsPage: NextPage = () => {
   return <PostToSocials />

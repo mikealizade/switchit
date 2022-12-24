@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { Card } from '@components/Card/Card'
 import { Content } from '@styles/common.style'
-import { BankFinder } from '../../modules/Switching/BankFinder'
+import { BankFinder } from './BankFinder'
 import * as S from '@modules/Switching/Switching.style'
-import { Header } from '@modules/Switching/PreSwitching.style'
+import { Header } from '@modules/Switching/Switching.style'
 
 export const SelectBank = (): JSX.Element => {
   return (

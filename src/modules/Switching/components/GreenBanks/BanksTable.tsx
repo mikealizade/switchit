@@ -6,11 +6,11 @@ import { useNextStep } from '@hooks/useNextStep'
 // import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 // import { getStepsByJourneyType } from '@utils/functions'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import * as S from './ChooseBank.style'
-import starling from '../../../public/icons/icon_starling.png'
-import monzo from '../../../public/icons/icon_monzo.png'
-import triodos from '../../../public/icons/icon_triodos.png'
-import nationwide from '../../../public/icons/icon_nationwide.png'
+import * as S from './GreeenBanks.style'
+import starling from '../../../../../public/icons/icon_starling.png'
+import monzo from '../../../../../public/icons/icon_monzo.png'
+import triodos from '../../../../../public/icons/icon_triodos.png'
+import nationwide from '../../../../../public/icons/icon_nationwide.png'
 
 type BanksTableProps = {
   bankData: BankData[]

@@ -9,7 +9,8 @@ import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { Select } from '@components/Select/Select'
 import { useNextStep } from '@hooks/useNextStep'
 import { journeyTypes, steps } from '@utils/constants'
-import * as S from '@modules/Switching/PreSwitching.style'
+import { Buttons } from '@modules/Switching/Switching.style'
+import * as S from './BankFinder.style'
 
 type Sort = { label: string }
 
@@ -59,7 +60,7 @@ export const BankFinder = (): JSX.Element => {
             onChange={onSelectBank}
           />
         </S.BankList>
-        <S.Buttons>
+        <Buttons>
           <Button type='button' mode='secondary' onClick={onNoBankAccountSelect}>
             I {`don't`} have a bank account yet
           </Button>
@@ -69,7 +70,7 @@ export const BankFinder = (): JSX.Element => {
           <Button type='button' disabled={!isBankSelected} onClick={onNext}>
             Next
           </Button>
-        </S.Buttons>
+        </Buttons>
       </S.BankSelector>
       <S.ViewResearch>
         <p>

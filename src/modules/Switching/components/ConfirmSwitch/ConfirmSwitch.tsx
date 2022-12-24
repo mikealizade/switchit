@@ -9,8 +9,9 @@ import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionText } from '@utils/constants'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { Buttons } from '@modules/Switching/Switching.style'
 import { Form, Content } from '@styles/common.style'
-import * as S from '@modules/Switching/Switching.style'
+import * as S from './ConfirmSwitch.style'
 
 export const ConfirmSwitch: NextPage = () => {
   const { back } = useRouter()
@@ -62,7 +63,7 @@ export const ConfirmSwitch: NextPage = () => {
                     {date.getDay()} / {date.getMonth()} / {date.getFullYear()}
                   </div>
                 </fieldset>
-                <S.Buttons>
+                <Buttons>
                   <Button type='button' mode='secondary' onClick={() => back()}>
                     Back
                   </Button>
@@ -73,7 +74,7 @@ export const ConfirmSwitch: NextPage = () => {
                     {/* TODO handle isSubmitting */}
                     Submit
                   </Button>
-                </S.Buttons>
+                </Buttons>
               </Form>
             </S.Signature>
           </Card>

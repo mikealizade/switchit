@@ -3,16 +3,16 @@ import { Card } from '@components/Card/Card'
 import { bankConfig } from '@utils/constants'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { BankFilters } from '@modules/Switching/BankFilters'
-import { BanksTable } from '@modules/Switching/BanksTable'
+import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilters'
+import { BanksTable } from '@modules/Switching/components/GreenBanks/BanksTable'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { actionText } from '@utils/constants'
 import * as S from '@modules/Switching/Switching.style'
-import { Content, Column } from '@styles/common.style'
+import { Content } from '@styles/common.style'
 
-export const ChooseBank = (): JSX.Element => {
-  const { push } = useRouter()
+export const GreenBanks = (): JSX.Element => {
+  const { push, back } = useRouter()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
@@ -70,12 +70,15 @@ export const ChooseBank = (): JSX.Element => {
                 />
                 <BanksTable bankData={bankData} />
               </S.Section>
+              <S.Buttons>
+                <Button type='button' mode='secondary' onClick={() => back()}>
+                  Back
+                </Button>
+                <Button type='button' size='small' onClick={onNext}>
+                  Next
+                </Button>
+              </S.Buttons>
             </Card>
-            <S.Buttons>
-              <Button type='button' size='small' onClick={onNext}>
-                Next
-              </Button>
-            </S.Buttons>
           </S.SwitchingColumn>
         </S.SwitchingColumnContainer>
       </Content>

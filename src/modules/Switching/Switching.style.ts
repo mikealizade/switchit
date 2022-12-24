@@ -171,6 +171,20 @@ export const Buttons = styled.div`
   }
 `
 
+// export const Buttons = styled.div`
+//   padding: 20px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-end;
+//   /* column-gap: 40px; */
+//   flex-wrap: wrap;
+//   row-gap: 20px;
+
+//   ${() => mediaQuery.tablet} {
+//     column-gap: 40px;
+//   }
+// `
+
 //make the switch page
 
 export const TextContent = styled.div`
@@ -184,18 +198,6 @@ export const Text = styled.p`
 `
 
 //confirm switch
-
-export const Signature = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-export const SignatureInput = styled(PlainInput)`
-  height: 100px;
-  padding: 30px;
-  font-size: var(--fsLarge2);
-`
 
 // switch landing page
 
@@ -397,37 +399,32 @@ export const TestimonialImage = styled.div`
   padding: 20px;
 `
 
-export const JourneyNameContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 50%;
-  row-gap: 40px;
+export const Header2 = styled.h2`
+  font-size: var(--fsLarge9);
+
+  strong {
+    font-family: 'Konsolev SemiBold';
+  }
 `
 
-export const JourneyNameHeader = styled.header`
-  display: flex;
-  flex-direction: column;
+export const Subheader = styled.h3`
+  font-size: var(--fsLarge4);
+  font-family: 'Konsolev Regular';
+  font-weight: normal;
+`
+
+export const HeaderContainer = styled(Section)`
   row-gap: 20px;
 `
 
-export const JourneyNameTitle = styled.h2`
-  font-weight: bold;
-  font-size: var(--fsMedium9);
-`
-
-export const JourneyNameSubHeader = styled.p`
-  font-size: var(--fsMedium6);
-`
-
-export const Label = styled.label`
+export const StepItem = styled.li`
   display: flex;
-  column-gap: 20px;
-  font-weight: bold;
+  cursor: pointer;
   align-items: center;
-`
+  justify-content: flex-start;
+  column-gap: 30px;
 
-export const JourneyNameInput = styled(PlainInput)`
-  width: 300px;
+  > span {
+    min-width: 35px;
+  }
 `

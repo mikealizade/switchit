@@ -18,7 +18,8 @@ import {
   SwitchingColumn,
   Buttons,
 } from '@modules/Switching/Switching.style'
-import * as S from '@modules/Switching/PreSwitching.style'
+import { Header } from '@modules/Switching/Switching.style'
+import * as S from '../BankScore/BankScore.style'
 
 // TODO links to good bank buttons
 
@@ -75,9 +76,9 @@ export const BankScore = (): JSX.Element => {
         <SwitchingColumnContainer>
           <SwitchingColumn>
             <Card column padded rowGap={40}>
-              <S.Header>
+              <Header>
                 The results are in for <strong>{badBank}</strong> and your bank scored ...
-              </S.Header>
+              </Header>
               <S.Rating>
                 <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
                 <p>{scoreCopy}</p>

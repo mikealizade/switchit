@@ -10,7 +10,7 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useSaveStep } from '@hooks/useSaveStep'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
-import * as S from './Switching.style'
+import * as S from '../../Switching.style'
 import { Content, ButtonContainer } from '@styles/common.style'
 
 const linkConfig = {

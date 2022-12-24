@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { BreakupLetter } from '@modules/Switching/BreakupLetter'
+import { BreakupLetter } from '@modules/Switching/components/Letters/BreakupLetter'
 
 const BreakupLetterPage: NextPage = () => {
   return <BreakupLetter />

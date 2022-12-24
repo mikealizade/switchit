@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Button } from '@components/Button/Button'
-import * as S from '@modules/Switching/Switching.style'
+import { Buttons } from '@modules/Switching/Switching.style'
+import * as S from './JourneyName.style'
 
 export const JourneyName: FC<{
   value: string
@@ -30,16 +31,17 @@ export const JourneyName: FC<{
           onChange={({ target: { value } }) => setValue(value)}
           value={value}
           placeholder='Switching Journey #1'
+          maxLength={30}
         />
       </S.Label>
-      <S.Buttons>
+      <Buttons>
         <Button type='button' mode='secondary' onClick={onCancel}>
           Cancel
         </Button>
         <Button type='button' disabled={!value} onClick={() => addNewJourney()}>
           Start
         </Button>
-      </S.Buttons>
+      </Buttons>
     </S.JourneyNameContainer>
   )
 }

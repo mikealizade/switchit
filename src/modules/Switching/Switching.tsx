@@ -31,7 +31,7 @@ import { Action } from '@utils/types'
 import { Content } from '@styles/common.style'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import * as S from '@modules/Switching/Switching.style'
-import { JourneyName } from './JourneyName'
+import { JourneyName } from './components/JourneyName/JourneyName'
 
 type JourneySteps = { step: string; text: string; route: string }
 type JourneyFilter = { journeyType: string; completedSteps: number[] }
@@ -114,9 +114,6 @@ const Switching = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()
   const [value, setValue] = useState('')
-
-  console.log('value', value)
-
   const [isAddName, setAddName] = useState(false)
   const { currentJourney, currentJourneyType = '' } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
@@ -124,7 +121,8 @@ const Switching = (): JSX.Element => {
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  const currentSteps = journeyTypes.noBankAccount ? noBankAccountSteps : steps
+  const currentSteps =
+    currentJourneyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
   const totalSteps = Object.keys(currentSteps).length / 2
   const filterActive = ({ completedSteps }: { completedSteps: number[] }) =>
     completedSteps.length < totalSteps
@@ -136,9 +134,6 @@ const Switching = (): JSX.Element => {
     }))
   const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
   const actions = actionsConfig.filter(filterActionType(currentJourneyType))
-
-  console.log('currentJourneyType', currentJourneyType)
-
   const goodBank = currentJourney!?.goodBank
   const journeySteps =
     currentJourneyType === journeyTypes.noBankAccount
@@ -222,24 +217,13 @@ const Switching = (): JSX.Element => {
       ? [
           <S.Row key='switchJourneys'>
             <S.NoJourneysTextContainer>
-              {isAddName ? (
-                <JourneyName
-                  value={value}
-                  setValue={setValue}
-                  setAddName={setAddName}
-                  addNewJourney={addNewJourney}
-                />
-              ) : (
-                <>
-                  <S.NoJourneysText>
-                    {`It's why you're here!`} Start your first switching journey by clicking on the
-                    pink plus sign on the right
-                  </S.NoJourneysText>
-                  <S.NoJourneysText>
-                    Have multiple bank accounts? No problem! {`We'll`} switch one at a time
-                  </S.NoJourneysText>
-                </>
-              )}
+              <S.NoJourneysText>
+                {`It's why you're here!`} Start your first switching journey by clicking on the pink
+                plus sign on the right
+              </S.NoJourneysText>
+              <S.NoJourneysText>
+                Have multiple bank accounts? No problem! {`We'll`} switch one at a time
+              </S.NoJourneysText>
             </S.NoJourneysTextContainer>
           </S.Row>,
         ]
@@ -266,12 +250,25 @@ const Switching = (): JSX.Element => {
         <Hero type='switching' />
         <Card>
           <S.SwitchingColumnContainer>
-            <StyledTabs wide>
-              <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
-            </StyledTabs>
-            <S.StartJourney onClick={addJourneyName}>
-              <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-            </S.StartJourney>
+            {isAddName ? (
+              <S.NoJourneysTextContainer>
+                <JourneyName
+                  value={value}
+                  setValue={setValue}
+                  setAddName={setAddName}
+                  addNewJourney={addNewJourney}
+                />
+              </S.NoJourneysTextContainer>
+            ) : (
+              <>
+                <StyledTabs wide>
+                  <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
+                </StyledTabs>
+                <S.StartJourney onClick={addJourneyName}>
+                  <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                </S.StartJourney>
+              </>
+            )}
           </S.SwitchingColumnContainer>
         </Card>
       </Content>

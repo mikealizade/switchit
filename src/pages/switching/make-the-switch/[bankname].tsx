@@ -1,4 +1,4 @@
-import MakeTheSwitch from '@modules/Switching/MakeTheSwitch'
+import MakeTheSwitch from '@modules/Switching/components/MakeTheSwitch/MakeTheSwitch'
 import { useRouter } from 'next/router'
 
 const MakeTheSwitchPage = (): JSX.Element => {
