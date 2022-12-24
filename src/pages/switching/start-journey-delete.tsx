@@ -9,7 +9,6 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionsConfig, startJourneyConfig, actionText } from '@utils/constants'
 import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
-import * as S from '@modules/Switching/PreSwitching.style'
 import { useState } from 'react'
 
 const SelectAction = (): JSX.Element => {
@@ -40,7 +39,7 @@ const SelectAction = (): JSX.Element => {
                 subHeader='Congrats on creating this super cool custom switching journey. Click on the first action to get started'
               />
 
-              <S.Section>
+              {/* <S.Section>
                 <S.StepSelector>
                   {startJourneyConfig.map(({ step, text }, i: number) => (
                     <S.StepItem key={step} onClick={selectStep((i += 1))}>
@@ -82,7 +81,7 @@ const SelectAction = (): JSX.Element => {
                   </Button>
                 </ButtonContainer>
                 <ProgressBar step={5} />
-              </S.Section>
+              </S.Section> */}
             </Card>
           </SwitchingColumn>
         </SwitchingColumnContainer>
