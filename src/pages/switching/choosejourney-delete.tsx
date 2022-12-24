@@ -12,7 +12,6 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { journeyTypes, steps } from '@utils/constants'
 import { ButtonContainer } from '@styles/common.style'
 import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
-import * as S from '@modules/Switching/PreSwitching.style'
 
 // THIS PAGE IS NO LONGER NEEDED
 
@@ -49,7 +48,7 @@ const ChooseJourney = (): JSX.Element => {
                 subHeader={`Please select which of the following best describes what you'd like to do.`}
               />
 
-              <S.Section>
+              {/* <S.Section>
                 <S.ChooseJourneyLink
                   onClick={selectJourney(journeyTypes.readyToSwitch)}
                   isActive={type === journeyTypes.readyToSwitch}
@@ -77,7 +76,7 @@ const ChooseJourney = (): JSX.Element => {
                   </Button>
                 </ButtonContainer>
                 <ProgressBar step={steps.makeSwitch} />
-              </S.Section>
+              </S.Section> */}
             </Card>
           </SwitchingColumn>
         </SwitchingColumnContainer>
