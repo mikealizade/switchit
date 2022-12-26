@@ -15,7 +15,7 @@ export type Journey = BaseNewJourney & {
   breakupLetter: string
   helloLetter: string
   testimonial: string
-  videoId: string
+  videoUri: string
 }
 
 type InitialState = {
@@ -47,7 +47,7 @@ export const switchJourneys = createSlice({
               breakupLetter: '',
               helloLetter: '',
               testimonial: '',
-              videoId: '',
+              videoUri: '',
             },
           ],
         ],

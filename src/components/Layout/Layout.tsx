@@ -89,6 +89,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
               totalPoints: getTotalPoints(user?.profile?.switchItPoints),
             }),
           )
+          // window.sessionStorage.setItem('switchJourneys', JSON.stringify(user.switchJourneys))
         }
       } catch {
         throw new Error('user not updated!')

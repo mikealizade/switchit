@@ -6,6 +6,7 @@ import useSWRMutation from 'swr/mutation'
 import useSWR, { SWRResponse } from 'swr'
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from 'sanitize-html'
+import { VideoUploader } from './VideoUploader'
 import { useToast } from '@hooks/useToast'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
@@ -130,32 +131,11 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
         )}
       </S.Testimonial>
       <S.Buttons>
-        <Button
-          type='button'
-          onClick={onToggleEditable}
-          mode='secondary'
-          size='small'
-          disabled={true}
-        >
+        {/* <Button type='button' size='small' onClick={onSend} disabled={isStepCompleted}>
           Upload
-        </Button>
-        {/* <Button
-          type='button'
-          size='small'
-          mode='secondary'
-          onClick={onSave}
-          disabled={!text.current || isStepCompleted}
-        >
-          Save
         </Button> */}
-        <Button
-          type='button'
-          size='small'
-          onClick={onSend}
-          disabled={!text.current || isStepCompleted}
-        >
-          Send
-        </Button>
+
+        <VideoUploader />
 
         {!isStepCompleted && (
           <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>

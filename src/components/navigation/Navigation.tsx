@@ -53,7 +53,7 @@ export const Navigation: NextPage = (): JSX.Element => {
       <S.Navigation>
         {subNav.map(({ text, route }: Nav) => (
           <li key={route}>
-            <Link href={route}>
+            <Link href={`/${route}`}>
               <a className={cs(route, { ['active']: isActive(route) })}>{text}</a>
             </Link>
           </li>

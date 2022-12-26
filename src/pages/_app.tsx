@@ -8,27 +8,33 @@ import 'normalize.css'
 import '@styles/globals.css'
 
 // TODOs
-//// social media login
-//// edit email and pw in auth0
-// donate
-// email
-// pw page
-// all pages responsive
-// mongodb compass
+
+// per page
 // error handling
+// loading state ui
+// mobile
+// page reload
+
+// auth0
+// social media login
+// edit email and pw in auth0
+// pw page
+
+// for app
 // analytics
 // Sentry
-// linting and linting on commit
 // lighthouse
+// db backups
 // security
 // cypress tests
-// db backups
+// email
 
 // Tech Debt
+// linting and linting on commit
 // remove useEffects if poss
 // upgrade to Next 13
-
 // refetch on all landing pages
+// mongodb compass
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

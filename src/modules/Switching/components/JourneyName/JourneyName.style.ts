@@ -7,8 +7,12 @@ export const JourneyNameContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 40%;
+  width: auto;
   row-gap: 40px;
+
+  ${() => mediaQuery.tablet} {
+    width: 40%;
+  }
 `
 
 export const JourneyNameHeader = styled.header`
@@ -31,8 +35,14 @@ export const Label = styled.label`
   column-gap: 20px;
   font-weight: bold;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
 `
 
 export const JourneyNameInput = styled(PlainInput)`
-  width: 300px;
+  width: 100%;
+
+  ${() => mediaQuery.tablet} {
+    width: 300px;
+  }
 `

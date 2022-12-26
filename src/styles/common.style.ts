@@ -124,6 +124,7 @@ export const Label = styled.label`
   display: flex;
   column-gap: 15px;
   padding: 20px 0;
+  width: 100%;
 `
 
 export const Checkbox = styled.span<{ isActive?: boolean }>`
