@@ -9,8 +9,6 @@ export const useGetCurrentJourney = () => {
   //   journeys = JSON.parse(window.sessionStorage.getItem('switchJourneys'))
   // }
 
-  console.log('journeys', journeys)
-
   console.log('currentJourneyId', currentJourneyId)
 
   const currentJourney = journeys.find(({ id }) => id === currentJourneyId)

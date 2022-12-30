@@ -220,14 +220,13 @@ export const NoJourneysText = styled.p`
   }
 `
 
-export const JourneyCard = styled(Card)`
-  /* flex-basis: calc(33% - 20px); */
+export const JourneyCard = styled(Card)<{ isJourneyComplete?: boolean }>`
   flex: 1;
   flex-wrap: wrap;
-  column-gap: 60px;
+  column-gap: 25px;
 
   ${() => mediaQuery.tablet} {
-    padding: 60px 30px;
+    padding: ${({ isJourneyComplete }) => (isJourneyComplete ? '60px 0 0' : '60px 30px')};
   }
 `
 
@@ -235,7 +234,7 @@ export const Detail = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 15px;
-  flex: 1.5;
+  flex: 1.8;
 `
 
 export const DetailHeader = styled.h3`
@@ -248,8 +247,15 @@ export const DetailText = styled.p`
   padding-left: 10px;
 `
 
-export const DetailName = styled(DetailText)`
-  text-transform: capitalize;
+// export const DetailName = styled(DetailText)`
+//   text-transform: capitalize;
+// `
+
+export const NextStep = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  align-items: center;
 `
 
 export const Steps = styled(Detail)`
@@ -427,4 +433,26 @@ export const StepItem = styled.li`
   > span {
     min-width: 35px;
   }
+`
+
+export const JourneySection = styled.section`
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  border-radius: 15px;
+  background-color: var(--alabaster);
+  padding: 40px;
+  flex: 2;
+`
+
+export const JourneySectionHeader = styled.h2`
+  font-size: var(--fsLarge4);
+`
+
+export const JourneySectionContent = styled.div`
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 40px;
 `

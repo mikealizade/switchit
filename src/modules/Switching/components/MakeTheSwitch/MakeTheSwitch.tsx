@@ -10,27 +10,9 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useSaveStep } from '@hooks/useSaveStep'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
+import { goodBanksConfig } from '@utils/constants'
 import * as S from '../../Switching.style'
 import { Content, ButtonContainer } from '@styles/common.style'
-
-const linkConfig = {
-  starling: {
-    link: 'https://www.starlingbank.com',
-    name: 'starling',
-  },
-  monzo: {
-    link: 'https://monzo.com',
-    name: 'monzo',
-  },
-  triodos: {
-    link: 'https://www.triodos.co.uk',
-    name: 'triodos',
-  },
-  nationwide: {
-    link: 'https://www.nationwide.co.uk',
-    name: 'nationwide',
-  },
-}
 
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { push } = useRouter()
@@ -39,7 +21,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { currentJourney } = useGetCurrentJourney()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
-  const bank = linkConfig[bankName as keyof typeof linkConfig]
+  const bank = goodBanksConfig[bankName as keyof typeof goodBanksConfig]
 
   const onMakeTheSwitch = () => {
     dispatch(
@@ -57,9 +39,12 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
           <Card column>
-            <ActionHeader header='Choose Your Bank' subHeader={`You've selected ${bank?.name}`} />
+            <ActionHeader
+              header='Choose Your Bank'
+              subHeader={`You've selected ${bank?.fullName}`}
+            />
             <S.TextContent>
-              <S.Text>{`This will take you to ${bank.name}'s`} website</S.Text>
+              <S.Text>{`This will take you to ${bank.fullName}'s`} website</S.Text>
               <S.Text>
                 After switching make sure sure to come back and complete your switching journey
               </S.Text>

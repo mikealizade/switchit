@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 
-export const ActionSelector = styled.ul`
+export const ActionSelector = styled.ul<{
+  isDefault?: boolean
+}>`
   display: flex;
-  gap: 30px;
+  gap: ${({ isDefault }) => (isDefault ? '30px' : '10px')};
   flex-wrap: wrap;
   justify-content: flex-start;
-  flex: 2;
   align-self: flex-start;
 `
 
@@ -31,36 +32,34 @@ export const Item = styled.li<{
   transition: all 0.1s linear;
   display: flex;
   cursor: pointer;
-  pointer-events: ${({ hasConfirmed, isCompleted }) =>
-    hasConfirmed && !isCompleted ? 'all' : 'none'};
+  pointer-events: ${({ hasConfirmed, isCompleted }) => (!hasConfirmed ? 'none' : 'all')};
   opacity: ${({ hasConfirmed, isCompleted }) =>
     (hasConfirmed && !isCompleted) || (hasConfirmed && isCompleted) ? 1 : 0.3};
   place-items: center;
 
   &:hover {
-    transform: scale(1.15);
-    background-color: var(--nileBlue);
+    transform: ${({ isDefault }) => (isDefault ? 'scale(1.15)' : 'scale(1.05)')};
+    background-color: ${({ isCompleted }) => (isCompleted ? 'var(--white)' : 'var(--nileBlue)')};
 
     * {
-      color: var(--white);
-    }
-  }
-
-  .isCompleted {
-    h3,
-    span {
-      color: var(--sushi);
+      color: ${({ isCompleted }) => (isCompleted ? 'var(--sushi)' : 'var(--white)')};
     }
   }
 `
 
-export const ActionHeader = styled.h3`
+export const ActionHeader = styled.h3<{
+  isCompleted: boolean
+}>`
   text-align: center;
+  color: ${({ isCompleted }) => (isCompleted ? 'var(--sushi)' : 'initial')};
   font-size: var(--fsSmall4);
 `
 
-export const MetaData = styled.div`
+export const MetaData = styled.div<{
+  isCompleted: boolean
+}>`
   display: flex;
+  color: ${({ isCompleted }) => (isCompleted ? 'var(--sushi)' : 'initial')};
   justify-content: space-between;
   font-size: var(--fsSmall3);
   margin-top: auto;
@@ -82,6 +81,7 @@ export const Tick = styled.div`
   padding: 12px 0;
 `
 
-export const ActionSelectorHeader = styled.h3`
-  font-size: var(--fsLarge4);
+export const MaximiseText = styled.p`
+  font-size: var(--fsSmall4);
+  font-style: italic;
 `

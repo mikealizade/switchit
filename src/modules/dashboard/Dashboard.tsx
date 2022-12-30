@@ -14,6 +14,8 @@ import * as S from '@styles/common.style'
 import { Posts, Post } from '@pages/dashboard'
 import { SharingCodes } from './components/SharingCodes/SharingCodes'
 import { User } from '@modules/Profile/Profile'
+import { steps } from '@utils/constants'
+import { filterSteps } from '@utils/functions'
 
 type PageProps = {
   data: {
@@ -52,7 +54,10 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
             </S.Column>
             <S.Column>
               <Card>
-                <SwitchingJourney name={name} progress={completedSteps.length} />
+                <SwitchingJourney
+                  name={name}
+                  progress={completedSteps.filter(filterSteps).length}
+                />
               </Card>
             </S.Column>
           </S.ColumnContainer>

@@ -14,11 +14,13 @@ import '@styles/globals.css'
 // loading state ui
 // mobile
 // page reload
+// content
 
 // auth0
 // social media login
 // edit email and pw in auth0
 // pw page
+// mobile
 
 // for app
 // analytics
@@ -31,10 +33,11 @@ import '@styles/globals.css'
 
 // Tech Debt
 // linting and linting on commit
-// remove useEffects if poss
+// remove useEffects where poss
 // upgrade to Next 13
 // refetch on all landing pages
 // mongodb compass
+// split up config objects into separate files
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

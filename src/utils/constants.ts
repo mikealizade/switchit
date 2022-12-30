@@ -263,7 +263,7 @@ export const actionsConfig = [
   },
   {
     text: 'Tell Us How It Went',
-    icon: 'camera',
+    icon: 'tellus',
     type: 'tellUs',
     duration: '3',
     pointsEarned: '100',
@@ -299,11 +299,11 @@ export const startJourneyConfig = (goodBank: string) => [
     text: 'Confirm The Switch By Signing',
     route: '/switching/confirm-switch',
   },
-  {
-    step: 'Step 6',
-    text: 'Maximise',
-    route: '', //enable cards
-  },
+  // {
+  //   step: 'Step 6',
+  //   text: 'Maximise',
+  //   route: '', //enable cards
+  // },
 ]
 
 export const startJourneyNoBankConfig = (goodBank: string) => [
@@ -329,11 +329,31 @@ export const startJourneyNoBankConfig = (goodBank: string) => [
   },
 ]
 
-export const bankNameConfig = {
-  starling: 'Starling Bank',
-  monzo: 'Monzo',
-  triodos: 'Triodos Bank',
-  nationwide: 'Nationwide Building Society',
+export const goodBanksConfig = {
+  starling: {
+    link: 'https://www.starlingbank.com',
+    name: 'starling',
+    fullName: 'Starling Bank',
+    latestGreenProject: 'Starling Bank Project',
+  },
+  monzo: {
+    link: 'https://monzo.com',
+    name: 'monzo',
+    fullName: 'Monzo',
+    latestGreenProject: 'Monzo Project',
+  },
+  triodos: {
+    link: 'https://www.triodos.co.uk',
+    name: 'triodos',
+    fullName: 'Triodos Bank',
+    latestGreenProject: 'Triodos Bank Project',
+  },
+  nationwide: {
+    link: 'https://www.nationwide.co.uk',
+    name: 'nationwide',
+    fullName: 'Nationwide Building Society',
+    latestGreenProject: 'Nationwide Project',
+  },
 }
 
 export const bankConfig = [

@@ -50,12 +50,7 @@ export const filterActionType =
       ? type !== 'hello'
       : true
 
-// export const filterSteps =
-//   (currentJourneyType: string) =>
-//   ({ step }: { step: string }) =>
-//     currentJourneyType === journeyTypes.noBankAccount
-//       ? step !== 'Step 1' && step !== 'Step 2'
-//       : true
+export const filterSteps = (step: number) => step <= steps.confirmSwitch
 
 // export const getStepsByJourneyType = (currentJourneyType: string) => {
 //   return currentJourneyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
