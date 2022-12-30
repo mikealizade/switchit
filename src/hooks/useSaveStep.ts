@@ -17,7 +17,7 @@ export const useSaveStep = () => {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
         update: {
           $set: {
-            'switchJourneys.$.goodBank': goodBank,
+            ...(goodBank && { 'switchJourneys.$.goodBank': goodBank }),
             'switchJourneys.$.completedSteps': Array.from(
               new Set([...currentJourney!.completedSteps, step]),
             ),

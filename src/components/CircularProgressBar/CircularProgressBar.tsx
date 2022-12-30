@@ -1,10 +1,12 @@
 import { FC, useState } from 'react'
-import { steps } from '@utils/constants'
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import ProgressProvider from './ProgressProvider'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from './CircularProgressBar.style'
 
 export const CircularProgressBar: FC<{ progress: number }> = ({ progress }) => {
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
   const [valueEnd] = useState((progress / steps.confirmSwitch) * 100)
 
   return (

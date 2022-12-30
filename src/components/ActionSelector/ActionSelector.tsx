@@ -7,7 +7,7 @@ import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Action } from '@utils/types'
 import * as S from '@components/ActionSelector/ActionSelector.style'
-import { TextLink } from '@components/Button/Button'
+import { Button } from '@components/Button/Button'
 
 type ActionSelectorProps = {
   currentAction?: Action | null
@@ -48,6 +48,7 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
     setIcon(icon)
   }
 
+  const hasConfirmed = isJourneyComplete || !!completedSteps?.includes(journeySteps.confirmSwitch)
   return (
     <>
       <S.ActionSelector isDefault={isDefault}>
@@ -56,14 +57,16 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
             ? noBankAccountSteps.helloLetter
             : steps.breakupLetter
           const maximisingIndex = i + letter
-          const hasConfirmed =
-            isJourneyComplete || !!completedSteps?.includes(journeySteps.confirmSwitch)
           const isCompleted = isJourneyComplete || !!completedSteps?.includes(maximisingIndex)
+          const isActive = icon === currentAction?.icon
+          const src = `/icons/icon_${icon}${
+            isCompleted ? '_complete' : icon === currentIcon || isActive ? '_on' : ''
+          }.svg`
 
           return (
             <S.Item
               key={route}
-              isActive={icon === currentAction?.icon}
+              isActive={isActive}
               isCompleted={isCompleted}
               hasConfirmed={hasConfirmed}
               isDefault={isDefault}
@@ -76,19 +79,14 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
                     <Image src={`/icons/icon_radio_checked.svg`} alt='' width={48} height={48} />
                   </S.Tick>
                 ) : (
-                  <Image
-                    src={`/icons/icon_${icon}${
-                      isCompleted ? '_complete' : icon === currentIcon ? '_on' : ''
-                    }.svg`}
-                    alt=''
-                    width={70}
-                    height={70}
-                  />
+                  <Image src={src} alt={text} width={70} height={70} />
                 )}
                 {isDefault && (
                   <>
-                    <S.ActionHeader isCompleted={isCompleted}>{text}</S.ActionHeader>
-                    <S.MetaData isCompleted={isCompleted}>
+                    <S.ActionHeader isCompleted={isCompleted} isActive={isActive}>
+                      {text}
+                    </S.ActionHeader>
+                    <S.MetaData isCompleted={isCompleted} isActive={isActive}>
                       <span>{duration}min</span>
                       <span>{pointsEarned}pts</span>
                     </S.MetaData>
@@ -100,11 +98,11 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
         })}
       </S.ActionSelector>
       <>
-        {isSwitchLanding && !isJourneyComplete && (
+        {isSwitchLanding && (
           <>
-            <TextLink>
+            <Button disabled={!hasConfirmed}>
               <Link href='/switching/select-action'>Maximise Your Impact</Link>
-            </TextLink>
+            </Button>
             <S.MaximiseText>{maximiseText}</S.MaximiseText>
           </>
         )}

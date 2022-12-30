@@ -322,11 +322,11 @@ export const startJourneyNoBankConfig = (goodBank: string) => [
     text: 'Confirm The Switch By Signing',
     route: '/switching/confirm-switch',
   },
-  {
-    step: 'Step 4',
-    text: 'Maximise',
-    route: '', //enable cards
-  },
+  // {
+  //   step: 'Step 4',
+  //   text: 'Maximise',
+  //   route: '', //enable cards
+  // },
 ]
 
 export const goodBanksConfig = {

@@ -48,18 +48,22 @@ export const Item = styled.li<{
 `
 
 export const ActionHeader = styled.h3<{
+  isActive: boolean
   isCompleted: boolean
 }>`
   text-align: center;
-  color: ${({ isCompleted }) => (isCompleted ? 'var(--sushi)' : 'initial')};
+  color: ${({ isCompleted, isActive }) =>
+    isCompleted ? 'var(--sushi)' : isActive ? 'var(--white)' : 'initial'};
   font-size: var(--fsSmall4);
 `
 
 export const MetaData = styled.div<{
+  isActive: boolean
   isCompleted: boolean
 }>`
   display: flex;
-  color: ${({ isCompleted }) => (isCompleted ? 'var(--sushi)' : 'initial')};
+  color: ${({ isCompleted, isActive }) =>
+    isCompleted ? 'var(--sushi)' : isActive ? 'var(--white)' : 'initial'};
   justify-content: space-between;
   font-size: var(--fsSmall3);
   margin-top: auto;

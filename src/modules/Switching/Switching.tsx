@@ -72,14 +72,14 @@ const getJourneys = (
           <S.JourneySectionContent>
             <CircularProgressBar progress={progress} />
             <S.NextStep>
-              {journeySteps.map(({ text, route }: JourneySteps, i: number): JSX.Element | null => {
+              {journeySteps.map(({ text, route }: JourneySteps, i: number) => {
                 const isComplete = completedSteps.includes(i + 1)
-                const firstIncompleteStep = i + 1 === Number(completedSteps?.at(-1)) + 1
+                const isFirstIncompleteStep = i + 1 === Number(completedSteps?.at(-1)) + 1
 
-                if (firstIncompleteStep) {
+                if (isFirstIncompleteStep) {
                   return (
                     <>
-                      {!isComplete && firstIncompleteStep && route && (
+                      {!isComplete && isFirstIncompleteStep && route && (
                         <Button
                           type='button'
                           size='small'
