@@ -76,6 +76,9 @@ export const Select: FC<SelectProps> = ({
           onChange(selectedOption!.value)
         }}
         isDisabled={disabled}
+        escapeClearsValue
+        backspaceRemovesValue
+        menuPlacement='auto'
       />
       {hasError && <p role='alert'>This field is required</p>}
     </>

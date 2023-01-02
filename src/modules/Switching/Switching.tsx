@@ -149,27 +149,27 @@ const Switching = (): JSX.Element => {
 
   console.log('switchJourneys', switchJourneys)
 
-  const addNewJourney = () => {
+  const addNewJourney = (): void => {
     const id = nanoid()
     dispatch(setAddNewJourney({ id, isVerified: false, name: value }))
     // window.sessionStorage.setItem('currentJourneyId', id)
     push('/switching/select-bank')
   }
 
-  const addJourneyName = () => {
+  const addJourneyName = (): void => {
     setAddName(true)
   }
 
-  const resumeJourney = (route: string) => () => {
+  const resumeJourney = (route: string) => (): void => {
     push(route)
   }
 
-  const onSelectTab = (id: string) => () => {
+  const onSelectTab = (id: string) => (): void => {
     dispatch(setCurrentJourneyId(id))
     // window.sessionStorage.setItem('currentJourneyId', id)
   }
 
-  const selectAction = (index: number) => () => {
+  const selectAction = (index: number) => (): void => {
     push(`/switching/${actions[index].route}`)
   }
 

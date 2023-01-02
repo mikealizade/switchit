@@ -65,14 +65,11 @@ export const Row = styled.div`
   display: flex;
   flex-direction: row;
   column-gap: 30px;
-  /* > section {
-    flex: 1;
-  } */
 `
 
 export const Header = styled.h2`
   width: 100%;
-  font-size: inherit;
+  font-size: var(--fsLarge9);
 
   ${() => mediaQuery.laptop} {
     + section {
@@ -94,7 +91,7 @@ export const StartJourneyContainer = styled.div`
 export const PlainInput = styled.input`
   padding: 5px 10px;
   border: 1px solid var(--gallery);
-  border-radius: 8px;
+  border-radius: 10px;
 `
 
 export const StartJourney = styled.div`
@@ -170,20 +167,6 @@ export const Buttons = styled.div`
     margin-left: auto;
   }
 `
-
-// export const Buttons = styled.div`
-//   padding: 20px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
-//   /* column-gap: 40px; */
-//   flex-wrap: wrap;
-//   row-gap: 20px;
-
-//   ${() => mediaQuery.tablet} {
-//     column-gap: 40px;
-//   }
-// `
 
 //make the switch page
 

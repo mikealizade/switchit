@@ -7,6 +7,8 @@ import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilter
 import { BanksTable } from '@modules/Switching/components/GreenBanks/BanksTable'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
+import { ProgressBar } from '@components/ProgressBar/ProgressBar'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { actionText } from '@utils/constants'
 import * as S from '@modules/Switching/Switching.style'
 import { Content } from '@styles/common.style'
@@ -16,6 +18,8 @@ export const GreenBanks = (): JSX.Element => {
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
 
   const onNext = () => {
     push('/switching/select-action')
@@ -81,6 +85,7 @@ export const GreenBanks = (): JSX.Element => {
             </Card>
           </S.SwitchingColumn>
         </S.SwitchingColumnContainer>
+        <ProgressBar step={steps.chooseGreenBank} />
       </Content>
     </>
   )

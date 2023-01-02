@@ -140,10 +140,10 @@ export const BankScore = (): JSX.Element => {
                   )}
                 </>
               </S.BankRating>
-              <ProgressBar step={steps.chooseGreenBank} />
             </Card>
           </SwitchingColumn>
         </SwitchingColumnContainer>
+        <ProgressBar step={steps.checkBankScore} />
       </Content>
     </>
   )

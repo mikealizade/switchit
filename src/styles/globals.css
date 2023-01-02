@@ -223,3 +223,12 @@ fieldset {
   background-color: transparent;
   box-shadow: none;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

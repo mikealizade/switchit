@@ -6,6 +6,7 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
+import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useSaveStep } from '@hooks/useSaveStep'
@@ -38,7 +39,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column stretch>
             <ActionHeader
               header='Choose Your Bank'
               subHeader={`You've selected ${bank?.fullName}`}
@@ -71,6 +72,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               </Button>
             </ButtonContainer>
           </Card>
+          <ProgressBar step={steps.chooseGreenBank} />
         </Content>
       </ErrorBoundary>
     </>

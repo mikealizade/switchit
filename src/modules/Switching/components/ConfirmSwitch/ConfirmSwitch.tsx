@@ -6,6 +6,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
+import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { actionText } from '@utils/constants'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
@@ -78,6 +79,7 @@ export const ConfirmSwitch: NextPage = () => {
               </Form>
             </S.Signature>
           </Card>
+          <ProgressBar step={steps.confirmSwitch} />
         </Content>
       </ErrorBoundary>
     </>

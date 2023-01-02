@@ -40,4 +40,5 @@ export const AsideContent = styled.div`
   flex-direction: column;
   flex: 1;
   padding: 40px;
+  row-gap: 40px;
 `

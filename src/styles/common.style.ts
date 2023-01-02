@@ -162,3 +162,11 @@ export const Anchor = styled.a`
   /* min-width: 366px; */
   height: 123px;
 `
+
+export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '20px')};
+  flex: ${({ flex }) => flex ?? 'none'};
+  justify-content: flex-start;
+`

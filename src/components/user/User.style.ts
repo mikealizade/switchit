@@ -47,7 +47,7 @@ export const User = styled.div`
 
   img {
     border-radius: 50%;
-    border: 2px solid var(--white) !important;
+    border: 2px solid var(--white);
   }
 `
 
@@ -68,4 +68,11 @@ export const Score = styled.div`
 
 export const UserName = styled.span`
   text-transform: capitalize;
+`
+
+export const ToSwitchLanding = styled.span`
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
 `

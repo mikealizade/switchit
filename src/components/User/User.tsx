@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
@@ -26,6 +27,9 @@ type User = {
 
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
+
+  console.log('pathname', pathname)
+
   const {
     email = '',
     nickname = '',
@@ -41,9 +45,18 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
       ) : (
         <>
           <S.User>
-            <S.WelcomeMsg>
-              <>{isNewUser ? 'Welcome' : 'Welcome back'}</>, <S.UserName>{nickname}</S.UserName>
-            </S.WelcomeMsg>
+            {pathname.includes('/switching/') ? (
+              <Link href='/switching'>
+                <S.ToSwitchLanding>
+                  <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
+                  Back To My Journeys
+                </S.ToSwitchLanding>
+              </Link>
+            ) : (
+              <S.WelcomeMsg>
+                <>{isNewUser ? 'Welcome' : 'Welcome back'}</>, <S.UserName>{nickname}</S.UserName>
+              </S.WelcomeMsg>
+            )}
           </S.User>
           <S.UserDetails>
             {pathname !== '/profile' && (

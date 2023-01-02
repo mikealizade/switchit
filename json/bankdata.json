@@ -29,7 +29,7 @@
   "bankData": [
     {
       "bank": "Barclays",
-      "parentCompany": "Barclays ",
+      "parentCompany": "Barclays",
       "score": 1,
       "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
       "totalInvestedIn2021": "$19bn",

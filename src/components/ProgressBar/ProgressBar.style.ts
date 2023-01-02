@@ -7,11 +7,19 @@ export const ProgressBarContainer = styled.div`
   display: none;
   flex-direction: column;
   row-gap: 30px;
-  flex: 1;
+  /* flex: 1; */
 
   ${() => mediaQuery.laptop} {
     display: flex;
+    padding-top: 20px;
   }
+`
+
+export const Header = styled.h3`
+  font-size: var(--fsMedium6);
+  font-weight: normal;
+  justify-content: space-between;
+  display: flex;
 `
 
 export const Steps = styled.ul`
@@ -20,17 +28,9 @@ export const Steps = styled.ul`
 
 export const Item = styled.li<{ isActive: boolean }>`
   display: flex;
-  place-items: center;
+  justify-content: center;
   color: ${({ isActive }) => (isActive ? 'var(--sushi)' : 'var(--grey)')};
   width: 20%;
-  font-size: var(--fsSmall5);
+  font-size: var(--fsSmall4);
   font-family: 'Konsolev SemiBold';
-
-  &:nth-of-type(4) {
-    justify-content: center;
-  }
-
-  &:nth-of-type(5) {
-    justify-content: flex-end;
-  }
 `

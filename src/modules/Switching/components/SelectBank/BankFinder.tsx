@@ -3,7 +3,6 @@ import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
-import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { fetcher } from '@utils/functions'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { Select } from '@components/Select/Select'
@@ -11,6 +10,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { journeyTypes, steps } from '@utils/constants'
 import { Buttons } from '@modules/Switching/Switching.style'
 import * as S from './BankFinder.style'
+import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 
 type Sort = { label: string }
 
@@ -23,12 +23,12 @@ export const BankFinder = (): JSX.Element => {
   const [isBankSelected, selectBank] = useState(false)
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
 
-  const onSelectBank = (bank: string) => {
+  const onSelectBank = (bank: string): void => {
     selectBank(true)
     dispatch(setJourneyData({ badBank: bank }))
   }
 
-  const onNoBankAccountSelect = () => {
+  const onNoBankAccountSelect = (): void => {
     dispatch(setJourneyData({ journeyType: journeyTypes.noBankAccount }))
     push('/switching/green-banks')
   }
@@ -72,16 +72,7 @@ export const BankFinder = (): JSX.Element => {
           </Button>
         </Buttons>
       </S.BankSelector>
-      <S.ViewResearch>
-        <p>
-          Interested in our research? We have conducted a thorough analysis of the financial
-          services sector.{' '}
-          <a href='#' target='_blank'>
-            Find our resources and criteria for recommendation.
-          </a>
-        </p>
-      </S.ViewResearch>
-      <ProgressBar step={steps.checkBankScore} />
+      <ViewResearch />
     </S.BankFinder>
   )
 }

@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import { Card } from '@components/Card/Card'
-import { Content } from '@styles/common.style'
 import { BankFinder } from './BankFinder'
+import { ProgressBar } from '@components/ProgressBar/ProgressBar'
+import { steps } from '@utils/constants'
+import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 import { Header } from '@modules/Switching/Switching.style'
 
@@ -24,6 +26,7 @@ export const SelectBank = (): JSX.Element => {
             </Card>
           </S.SwitchingColumn>
         </S.SwitchingColumnContainer>
+        <ProgressBar step={steps.selectBank} />
       </Content>
     </>
   )

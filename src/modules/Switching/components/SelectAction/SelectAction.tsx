@@ -73,11 +73,11 @@ export const SelectAction = (): JSX.Element => {
                     Take This Step
                   </Button>
                 </ButtonContainer>
-                <ProgressBar step={steps.breakupLetter} />
               </S.Section>
             </Card>
           </SwitchingColumn>
         </SwitchingColumnContainer>
+        <ProgressBar step={steps.breakupLetter} />
       </Content>
     </>
   )
