@@ -6,6 +6,13 @@ import friendsReducer from 'src/state/friends/friendsSlice'
 import toastReducer from 'src/state/toast/toastSlice'
 import genericReducer from '@state/generic/genericSlice'
 import switchJourneysReducer from 'src/state/switchJourney/switchJourneySlice'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -16,8 +23,10 @@ const rootReducer = combineReducers({
   switchJourneys: switchJourneysReducer,
 })
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -31,6 +40,8 @@ export const store = configureStore({
     }),
   // .concat(...middleware),
 })
+
+export const persistor = persistStore(store)
 
 setupListeners(store.dispatch)
 

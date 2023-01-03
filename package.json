@@ -41,6 +41,7 @@
     "react-hook-form": "^7.36.1",
     "react-redux": "^8.0.4",
     "react-select": "^5.4.0",
+    "redux-persist": "^6.0.0",
     "sanitize-html": "^2.7.3",
     "sass": "^1.55.0",
     "slate": "^0.87.0",

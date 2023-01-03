@@ -13,9 +13,9 @@ export const Banks: NextPage = (): JSX.Element => {
   return (
     <Div>
       <S.Header>Current Bank</S.Header>
-      <S.Bank value={badBank} placeholder='Not yet selected' disabled />
+      <S.Bank defaultValue={badBank} placeholder='Not yet selected' disabled />
       <S.Header>New Bank</S.Header>
-      <S.Bank value={greenBank?.fullName} placeholder='Not yet selected' disabled />
+      <S.Bank defaultValue={greenBank?.fullName} placeholder='Not yet selected' disabled />
     </Div>
   )
 }

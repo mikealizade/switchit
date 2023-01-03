@@ -2,11 +2,13 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { Provider } from 'react-redux'
-import { store } from 'src/state/store'
+import { store, persistor } from 'src/state/store'
 import { Layout } from '@components/Layout/Layout'
 import 'normalize.css'
 import '@styles/globals.css'
 
+// import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
 // TODOs
 
 // per page
@@ -49,10 +51,11 @@ const App = ({ Component, pageProps }: AppProps) => {
           <link rel='icon' href='/favicon.ico' />
           <meta name='viewport' content='width=device-width, initial-scale=1' />
         </Head>
-
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <PersistGate loading={null} persistor={persistor}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </PersistGate>
       </Provider>
     </UserProvider>
   )

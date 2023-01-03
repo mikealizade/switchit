@@ -5,6 +5,10 @@ export const Signature = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  fieldset {
+    padding: 0 50px;
+  }
 `
 
 export const Agreement = styled.p`

@@ -65,7 +65,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
           Potential Climate Impact
           <Image src={`/icons/icon_moreinfo.svg`} alt='' width={20} height={20} />
         </S.Header>
-        <S.ImpactTotal value={impactTotal} placeholder='£1,510,000' />
+        <S.ImpactTotal defaultValue={impactTotal} placeholder='£1,510,000' />
         <S.MoneyDivested>Money divested from climate harming practises</S.MoneyDivested>
       </Div>
       {hasProgressBar && <ProgressBar step={getProgressStep()} type='impact' />}
@@ -81,9 +81,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
 
             <strong>or</strong>
           </S.Effect>
-          {/* <p>of an oil pipeline</p> */}
           <S.Effect>{impact2}</S.Effect>
-          {/* <p>wind turbines</p> */}
           <Button size='small' onClick={onShuffle}>
             Shuffle
           </Button>

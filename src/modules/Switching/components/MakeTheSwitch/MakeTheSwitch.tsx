@@ -35,6 +35,8 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
     window.open(bank.link, '_blank', 'noreferrer')
   }
 
+  console.log('bankName', bankName)
+
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
@@ -45,7 +47,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               subHeader={`You've selected ${bank?.fullName}`}
             />
             <S.TextContent>
-              <S.Text>{`This will take you to ${bank.fullName}'s`} website</S.Text>
+              <S.Text>{`This will take you to ${bank?.fullName}'s`} website</S.Text>
               <S.Text>
                 After switching make sure sure to come back and complete your switching journey
               </S.Text>

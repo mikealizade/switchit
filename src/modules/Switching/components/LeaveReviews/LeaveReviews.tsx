@@ -9,23 +9,17 @@ import { actionText, steps, badBanksConfig } from '@utils/constants'
 import { onCopy } from '@utils/functions'
 import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import * as S from '@styles/common.style'
+import { Content, TileLinks, Item, Anchor } from '@styles/common.style'
 import {
   Buttons,
   SwitchingColumnContainer,
   SwitchingColumn,
-  CopyContainer,
-  CopyInfo,
-  Copy,
-  CopyIcon,
 } from '@modules/Switching/Switching.style'
+import * as S from './LeaveReviews.style'
 
 export const LeaveReviews: NextPage = () => {
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
-
-  console.log('badBank', badBank)
-
   const bank = badBanksConfig[badBank as keyof typeof badBanksConfig]
   const trustpilotCopy = 'trustpilotCopy'
   const googleCopy = 'googleCopy'
@@ -37,7 +31,7 @@ export const LeaveReviews: NextPage = () => {
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
-        <S.Content>
+        <Content>
           <SwitchingColumnContainer>
             <SwitchingColumn>
               <Card column padded>
@@ -47,49 +41,45 @@ export const LeaveReviews: NextPage = () => {
                   text={actionText.leaveReviews}
                 />
 
-                <p>
-                  Leave a review for <strong>{badBank}</strong>
-                </p>
-
-                <S.TileLinks>
-                  <S.Item>
-                    <S.Anchor
+                <TileLinks>
+                  <Item>
+                    <Anchor
                       href={`https://uk.trustpilot.com/evaluate/${bank?.trustPilot}`}
                       target='_blank'
                       rel='noreferrer'
                     >
                       <Image src={'/icons/icon_trustpilot.png'} alt='' width={203} height={50} />
-                    </S.Anchor>
-                    <Copy>
+                    </Anchor>
+                    <S.Copy>
                       Trustpilot copy
-                      <CopyIcon onClick={onCopy(trustpilotCopy)}>
+                      <S.CopyIcon onClick={onCopy(trustpilotCopy)}>
                         <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                      </CopyIcon>
-                    </Copy>
-                  </S.Item>
-                  <S.Item>
-                    <S.Anchor
+                      </S.CopyIcon>
+                    </S.Copy>
+                  </Item>
+                  <Item>
+                    <Anchor
                       href={`https://www.google.com/search?q=${bank?.google}`}
                       target='_blank'
                       rel='noreferrer'
                     >
                       <Image src={'/icons/icon_google.png'} alt='' width={100} height={100} />
-                    </S.Anchor>
-                    <CopyContainer>
-                      <CopyInfo>
+                    </Anchor>
+                    <S.CopyContainer>
+                      <S.CopyInfo>
                         This will take you to google maps. We suggest leaving a review at your
                         nearest branch or your local branch. Note: in lieu of a bank branch, we have
                         gone with a local branch of a parent company
-                      </CopyInfo>
-                      <Copy>
+                      </S.CopyInfo>
+                      <S.Copy>
                         Google copy
-                        <CopyIcon onClick={onCopy(googleCopy)}>
+                        <S.CopyIcon onClick={onCopy(googleCopy)}>
                           <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                        </CopyIcon>
-                      </Copy>
-                    </CopyContainer>
-                  </S.Item>
-                </S.TileLinks>
+                        </S.CopyIcon>
+                      </S.Copy>
+                    </S.CopyContainer>
+                  </Item>
+                </TileLinks>
                 <Buttons>
                   <Button type='button' size='small' onClick={onNext}>
                     Next Impact Action
@@ -98,7 +88,7 @@ export const LeaveReviews: NextPage = () => {
               </Card>
             </SwitchingColumn>
           </SwitchingColumnContainer>
-        </S.Content>
+        </Content>
       </ErrorBoundary>
     </>
   )

@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type Generic = {
   actionCardIndex: number
+  signature: string
 }
 
 export const initialGenericState: Generic = {
   actionCardIndex: 0,
+  signature: '',
 }
 
 export const generic = createSlice({
@@ -18,9 +20,15 @@ export const generic = createSlice({
         actionCardIndex: action.payload,
       }
     },
+    setSignature: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        signature: action.payload,
+      }
+    },
   },
 })
 
-export const { setActionCard } = generic.actions
+export const { setActionCard, setSignature } = generic.actions
 
 export default generic.reducer

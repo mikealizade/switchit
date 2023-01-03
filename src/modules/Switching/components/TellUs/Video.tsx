@@ -13,7 +13,8 @@ import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { sendRequest, fetcher } from '@utils/functions'
 import { steps, sanitiseConfig } from '@utils/constants'
 import { Checkbox, Label } from '@styles/common.style'
-import * as S from '@modules/Switching/Switching.style'
+import { Buttons } from '@modules/Switching/Switching.style'
+import * as S from './TellUs.style'
 
 type JourneyId = { id: string }
 
@@ -130,20 +131,20 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
           />
         )}
       </S.Testimonial>
-      <S.Buttons>
+
+      {!isStepCompleted && (
+        <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>
+          <Checkbox id='canPostPublicly' isActive={canPostPublicly} />
+          Allow us to post publicly
+        </Label>
+      )}
+
+      <Buttons>
         {/* <Button type='button' size='small' onClick={onSend} disabled={isStepCompleted}>
           Upload
         </Button> */}
-
         <VideoUploader />
-
-        {!isStepCompleted && (
-          <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>
-            <Checkbox id='canPostPublicly' isActive={canPostPublicly} />
-            Allow us to post publicly
-          </Label>
-        )}
-      </S.Buttons>
+      </Buttons>
     </>
   )
 }

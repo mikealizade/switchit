@@ -13,13 +13,10 @@ import { actionText } from '@utils/constants'
 import * as S from '@styles/common.style'
 import {
   Buttons,
-  UserContent,
   SwitchingColumnContainer,
   SwitchingColumn,
-  VideoContainer,
-  CopyInfo,
-  CopyHeader,
 } from '@modules/Switching/Switching.style'
+import { UserContent, VideoContainer, CopyInfo, CopyHeader } from './TellUs.style'
 
 export const TellUs: NextPage = () => {
   const { push } = useRouter()
@@ -75,7 +72,7 @@ export const TellUs: NextPage = () => {
                     </UserContent>
                   </S.Item>
                 </S.TileLinks>
-                <Buttons>
+                <Buttons single>
                   <Button type='button' size='small' onClick={onCompleteJourney}>
                     Wrap Up Impact Actions
                   </Button>

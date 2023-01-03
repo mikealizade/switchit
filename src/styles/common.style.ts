@@ -61,6 +61,7 @@ export const Form = styled.form<{ row?: boolean }>`
   display: flex;
   flex-direction: column;
   align-self: stretch;
+  row-gap: 70px;
   flex: 1;
 
   fieldset {

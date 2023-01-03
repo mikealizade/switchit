@@ -148,7 +148,7 @@ export const Content = styled.div`
   }
 `
 
-export const Buttons = styled.div`
+export const Buttons = styled.div<{ single?: boolean }>`
   display: flex;
   flex-direction: column;
   column-gap: 20px;
@@ -158,18 +158,18 @@ export const Buttons = styled.div`
   /* flex: 1; */
 
   ${() => mediaQuery.tablet} {
-    justify-content: flex-start;
+    justify-content: ${({ single }) => (single ? 'flex-end' : 'flex-start')};
     flex-direction: row;
     /* padding: 20px 0; */
     padding: 0;
   }
 
-  /* button:last-of-type {
-    margin-left: auto;
-  } */
-
-  button:first-of-type {
+  button:first-of-type:not(:only-child) {
     margin-right: auto;
+  }
+
+  button:only-child {
+    margin-left: auto;
   }
 `
 
@@ -271,14 +271,14 @@ export const Step = styled.li<{ isIncomplete: boolean }>`
   }
 `
 
-export const StepDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-  column-gap: 10px;
-  font-size: var(--fsSmall5);
-  row-gap: 4px;
-  letter-spacing: 1px;
-`
+// export const StepDetail = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   column-gap: 10px;
+//   font-size: var(--fsSmall5);
+//   row-gap: 4px;
+//   letter-spacing: 1px;
+// `
 // tell community
 
 export const Community = styled.div`
@@ -328,70 +328,6 @@ export const CopyIconHover = styled.span`
 `
 
 //tell us
-
-export const UserContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 360px;
-  width: 360px;
-`
-
-export const CopyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 40px;
-`
-export const VideoContainer = styled(CopyContainer)`
-  row-gap: 20px;
-`
-
-export const CopyHeader = styled.h4`
-  font-size: var(--fsMedium8);
-`
-
-export const CopyInfo = styled.div`
-  display: flex;
-`
-
-export const Copy = styled.div`
-  font-size: var(--fsLarge0);
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-  cursor: pointer;
-`
-
-export const CopyIcon = styled.span`
-  display: block;
-`
-
-export const Testimonial = styled.div`
-  justify-content: center;
-
-  [contenteditable] {
-    min-height: 235px;
-    border: 1px solid var(--base);
-    border-radius: 10px;
-    padding: 20px;
-  }
-  [contenteditable='true'] {
-    border: 2px solid var(--sushi);
-    outline: 2px;
-    padding: 19px;
-  }
-`
-
-export const TestimonialImage = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 360px;
-  width: 360px;
-  min-height: 235px;
-  border: 1px solid var(--base);
-  border-radius: 10px;
-  padding: 20px;
-`
 
 export const Header2 = styled.h2`
   font-size: var(--fsLarge9);
