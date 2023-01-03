@@ -30,11 +30,11 @@ const colourConfig = {
   '2': '#FF7200',
   '3': '#FCB11B',
   '4': '#E9DE3A',
-  '5': '#7DBC42',
+  '5': '#59B800',
 }
 
 export const BankScore = (): JSX.Element => {
-  const { back } = useRouter()
+  const { back, push } = useRouter()
   const { data, error } = useSWR('/api/bankdata', fetcher)
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
@@ -117,17 +117,26 @@ export const BankScore = (): JSX.Element => {
 
                 <>
                   {isGoodBank ? (
-                    <ButtonContainer column>
-                      <Button type='button' onClick={() => {}}>
-                        Check Another Bank
+                    <Buttons>
+                      <Button
+                        type='button'
+                        size='small'
+                        mode='secondary'
+                        onClick={() => push('/switching/select-bank')}
+                      >
+                        Check Another Bank Score
                       </Button>
-                      <Button type='button' onClick={() => {}}>
-                        {`I'm Still Interested In Other Green Banks`}
-                      </Button>
-                      <Button type='button' onClick={() => {}}>
+                      <Button type='button' size='small' onClick={() => {}}>
                         What Else Can I Do To Act?
                       </Button>
-                    </ButtonContainer>
+                      <Button
+                        type='button'
+                        size='small'
+                        onClick={() => push('/switching/green-banks')}
+                      >
+                        Other Green Banks
+                      </Button>
+                    </Buttons>
                   ) : (
                     <Buttons>
                       <Button type='button' mode='secondary' onClick={() => back()}>

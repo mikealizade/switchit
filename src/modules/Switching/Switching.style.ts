@@ -155,16 +155,21 @@ export const Buttons = styled.div`
   row-gap: 10px;
   padding: 10px 0;
   flex-wrap: wrap;
-  flex: 1;
+  /* flex: 1; */
 
   ${() => mediaQuery.tablet} {
     justify-content: flex-start;
     flex-direction: row;
-    padding: 20px 0;
+    /* padding: 20px 0; */
+    padding: 0;
   }
 
-  button:last-of-type {
+  /* button:last-of-type {
     margin-left: auto;
+  } */
+
+  button:first-of-type {
+    margin-right: auto;
   }
 `
 

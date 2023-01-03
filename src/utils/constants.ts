@@ -498,7 +498,7 @@ export enum badBanks {
   hsbc = 'HSBC Bank',
   santander = 'Santander',
   natwest = 'Natwest',
-  bankOfScotland = 'Bank Of Scotland',
+  bankOfScotland = 'Bank of Scotland',
   rbs = 'RBS',
   coop = 'The Co-operative Bank',
   virgin = 'Virgin Money',

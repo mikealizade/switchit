@@ -23,6 +23,9 @@ import {
 export const LeaveReviews: NextPage = () => {
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
+
+  console.log('badBank', badBank)
+
   const bank = badBanksConfig[badBank as keyof typeof badBanksConfig]
   const trustpilotCopy = 'trustpilotCopy'
   const googleCopy = 'googleCopy'
@@ -51,7 +54,7 @@ export const LeaveReviews: NextPage = () => {
                 <S.TileLinks>
                   <S.Item>
                     <S.Anchor
-                      href={`https://uk.trustpilot.com/review/${bank?.trustPilot}`}
+                      href={`https://uk.trustpilot.com/evaluate/${bank?.trustPilot}`}
                       target='_blank'
                       rel='noreferrer'
                     >

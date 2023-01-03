@@ -9,8 +9,12 @@ import { Button } from '@components/Button/Button'
 import { actionsConfig, steps, journeyTypes } from '@utils/constants'
 import { useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { setActionCard } from '@state/preSwitchJourney/preSwitchJourneySlice'
-import { SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
+import { setActionCard } from '@state/generic/genericSlice'
+import {
+  SwitchingColumnContainer,
+  SwitchingColumn,
+  Buttons,
+} from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/Switching.style'
 import { ButtonContainer } from '@styles/common.style'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
@@ -62,7 +66,16 @@ export const SelectAction = (): JSX.Element => {
               />
 
               <S.Section>
-                <ButtonContainer>
+                <Buttons>
+                  <Button
+                    type='button'
+                    mode='secondary'
+                    onClick={() => {
+                      push('/switching')
+                    }}
+                  >
+                    Switching Journey Overview
+                  </Button>
                   <Button
                     type='button'
                     disabled={!currentAction}
@@ -72,7 +85,7 @@ export const SelectAction = (): JSX.Element => {
                   >
                     Take This Step
                   </Button>
-                </ButtonContainer>
+                </Buttons>
               </S.Section>
             </Card>
           </SwitchingColumn>

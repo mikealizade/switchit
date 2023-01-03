@@ -50,14 +50,14 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
                 After switching make sure sure to come back and complete your switching journey
               </S.Text>
             </S.TextContent>
-            <ButtonContainer alignLeft>
+            <S.Buttons>
               <Button
                 type='button'
                 size='small'
                 mode='secondary'
                 onClick={() => push('/switching/green-banks')}
               >
-                Back To Green Banks
+                Back
               </Button>
               <Button type='button' size='small' mode='primary' onClick={onMakeTheSwitch}>
                 Make The Switch
@@ -70,7 +70,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               >
                 I Made The Switch, Take Me To Verify
               </Button>
-            </ButtonContainer>
+            </S.Buttons>
           </Card>
           <ProgressBar step={steps.chooseGreenBank} />
         </Content>

@@ -158,9 +158,10 @@ export const Anchor = styled.a`
   align-items: center;
   border-radius: 10px;
   padding: 50px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); */
+  border: 2px solid var(--overcast);
   /* min-width: 366px; */
-  height: 123px;
+  height: 235px;
 `
 
 export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`

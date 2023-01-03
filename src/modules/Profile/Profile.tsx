@@ -77,7 +77,7 @@ const Profile = (): JSX.Element => {
         <S.Content>
           <S.ColumnContainer>
             <S.Column>
-              <Card column padded>
+              <Card column padded stretch>
                 <ProfileHead />
                 <ProfileSummary data={summary} />
               </Card>

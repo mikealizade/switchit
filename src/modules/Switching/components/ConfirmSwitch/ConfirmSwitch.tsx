@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { NextPage } from 'next'
+import Image from 'next/image'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useRouter } from 'next/router'
 import { useNextStep } from '@hooks/useNextStep'
@@ -13,6 +14,21 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { Form, Content } from '@styles/common.style'
 import * as S from './ConfirmSwitch.style'
+
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 
 export const ConfirmSwitch: NextPage = () => {
   const { back } = useRouter()
@@ -41,28 +57,31 @@ export const ConfirmSwitch: NextPage = () => {
               text={actionText.confirmSwitch}
             />
 
-            <p>
+            <S.Agreement>
               Labore nisi exercitation aute tempor in anim eu. Duis laboris ipsum mollit sit in et
               cupidatat. Sunt cupidatat proident Lorem tempor ad elit eu elit laborum exercitation
               aliquip occaecat excepteur. Ullamco consequat eiusmod veniam ad consequat esse esse.
               Nostrud consectetur mollit laborum eiusmod culpa ullamco non labore id adipisicing
               voluptate adipisicing. Occaecat officia nisi amet ex aliqua aliquip ad duis qui quis
               aute. Minim adipisicing id do cillum adipisicing in.
-            </p>
+            </S.Agreement>
             <S.Signature>
               <Form row>
                 <fieldset>
-                  <label htmlFor='bankName'>
+                  <S.Label htmlFor='bankName'>
                     <S.SignatureInput
                       name='signature'
                       onChange={(e: any) => setValue(e.target.value)}
                       value={value}
                     />
                     Signature
-                  </label>
-                  <div>
-                    {date.getDay()} / {date.getMonth()} / {date.getFullYear()}
-                  </div>
+                  </S.Label>
+                  <S.Date>
+                    <Image src={`/icons/icon_date.svg`} alt='' width={20} height={20} />
+                    <div>
+                      {date.getDay() + 1} {monthNames[date.getMonth()]} {date.getFullYear()}
+                    </div>
+                  </S.Date>
                 </fieldset>
                 <Buttons>
                   <Button type='button' mode='secondary' onClick={() => back()}>

@@ -1,11 +1,10 @@
-/* istanbul ignore file */
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import userReducer from 'src/state/user/userSlice'
 import drawerReducer from 'src/state/drawer/drawerSlice'
 import friendsReducer from 'src/state/friends/friendsSlice'
 import toastReducer from 'src/state/toast/toastSlice'
-import preSwitchJourneyReducer from 'src/state/preSwitchJourney/preSwitchJourneySlice'
+import genericReducer from '@state/generic/genericSlice'
 import switchJourneysReducer from 'src/state/switchJourney/switchJourneySlice'
 
 const rootReducer = combineReducers({
@@ -13,7 +12,7 @@ const rootReducer = combineReducers({
   drawer: drawerReducer,
   friends: friendsReducer,
   toast: toastReducer,
-  preSwitchJourney: preSwitchJourneyReducer,
+  generic: genericReducer,
   switchJourneys: switchJourneysReducer,
 })
 
@@ -27,7 +26,7 @@ export const store = configureStore({
           '@ReduxToastr/toastr/ADD',
           '@ReduxToastr/toastr/REMOVE',
         ],
-        // ignoredPaths: ['oidc.user'],
+        // ignoredPaths: [],
       },
     }),
   // .concat(...middleware),

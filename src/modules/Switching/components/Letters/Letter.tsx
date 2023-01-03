@@ -13,9 +13,10 @@ import { useToast } from '@hooks/useToast'
 import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { LetterButtons } from './LetterButtons'
-import * as S from '@modules/Switching/Switching.style'
 import { sendRequest, fetcher } from '@utils/functions'
 import { sanitiseConfig } from '@utils/constants'
+import { Container } from '@modules/Switching/Switching.style'
+import * as S from './Letter.style'
 
 type JourneyId = { id: string }
 
@@ -137,24 +138,26 @@ export const Letter: NextPage<LetterProps> = ({
         isStepCompleted={isStepCompleted}
       />
 
-      <S.Container>
-        <ContentEditable
-          className='editable'
-          tagName='div'
-          html={isValidating ? 'Loading letter...' : text.current}
-          disabled={!isEditable}
-          onChange={onChange}
-          onBlur={onToggleEditable}
-        />
+      <Container>
+        <S.LetterContainer>
+          <ContentEditable
+            className='editable'
+            tagName='div'
+            html={isValidating ? 'Loading letter...' : text.current}
+            disabled={!isEditable}
+            onChange={onChange}
+            onBlur={onToggleEditable}
+          />
 
-        <LetterButtons
-          onToggleEditable={onToggleEditable}
-          onSave={onSave}
-          onSend={onSend}
-          onNext={onNext}
-          isDisabled={!text.current || isStepCompleted}
-        />
-      </S.Container>
+          <LetterButtons
+            onToggleEditable={onToggleEditable}
+            onSave={onSave}
+            onSend={onSend}
+            onNext={onNext}
+            isDisabled={!text.current || isStepCompleted}
+          />
+        </S.LetterContainer>
+      </Container>
     </Card>
   )
 }

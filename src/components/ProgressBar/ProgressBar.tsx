@@ -19,7 +19,7 @@ const barConfig = {
     height: '18px',
     lineHeight: '24px',
     fontFamily: 'sans-serif',
-    steps: ['Current Bank', 'Bank Score', 'Green Banks', 'Switch', 'Confirm', 'Maximise'],
+    steps: ['Current Bank', 'Bank Score', 'Green Banks', 'Switch', 'Confirm'],
   },
   impact: {
     borderRadius: '25px',
@@ -52,22 +52,21 @@ const contentStyle = (bar: Bar) => {
 
 export const ProgressBar: FC<{ step: number; type?: string }> = ({ step, type = 'journey' }) => {
   const bar = barConfig[type as keyof typeof barConfig]
+  const stepPercentage = type === 'journey' ? 20 : 16.66
   const [style, setStyle] = useState<Record<string, string>>({
     ...contentStyle,
     width: `${(step - 1) * 20}%`,
   })
 
-  console.log('`${step * 20}%`', `${step * 20}%`)
-
   useEffect(() => {
     const delay = setTimeout(() => {
-      setStyle({ ...contentStyle(bar), width: `${step * 16.66}%`, transition: '1s' })
+      setStyle({ ...contentStyle(bar), width: `${step * stepPercentage}%`, transition: '1s' })
     }, 800)
 
     return () => {
       clearTimeout(delay)
     }
-  }, [step, type, bar])
+  }, [step, type, bar, stepPercentage])
 
   return (
     <S.ProgressBarContainer>
