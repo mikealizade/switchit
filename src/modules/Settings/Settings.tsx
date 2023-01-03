@@ -32,6 +32,8 @@ const panels: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNod
   <div key=''>Donations content</div>,
 ]
 
+const tabs: string[] = ['Account', 'Notifications', 'Security', 'Donate']
+
 const Settings: NextPage = () => {
   return (
     <>
@@ -47,10 +49,7 @@ const Settings: NextPage = () => {
           <SettingsCard>
             <h2>Settings</h2>
             <StyledTabs>
-              <Tabs
-                tabs={['Account', 'Notifications', 'Security', 'Donate']}
-                panels={panels}
-              ></Tabs>
+              <Tabs tabs={tabs} panels={panels}></Tabs>
             </StyledTabs>
           </SettingsCard>
         </S.Content>

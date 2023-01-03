@@ -39,10 +39,11 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
   const [{ testimonial = '' } = {}] = switchJourneys?.filter(
     ({ id }: JourneyId) => id === currentJourneyId,
   )
+  console.log('testimonial', testimonial)
   const [, setTestimonial] = useState('')
   const [isEditable, setEdit] = useState(false)
   const [canPostPublicly, setCanPostPublicly] = useState(false)
-  const isStepCompleted = completedSteps.includes(steps.tellUs)
+  const isStepCompleted = completedSteps.includes(steps.tellUs) && testimonial
 
   const onSave = async () => {
     try {
@@ -121,7 +122,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
           </S.TestimonialImage>
         ) : (
           <ContentEditable
-            className='editable'
+            className={`editable ${isStepCompleted ? 'disabled' : ''}`}
             tagName='div'
             html={isValidating ? 'Loading testimonial...' : text.current}
             disabled={!isEditable}

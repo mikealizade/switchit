@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
 import { useShareCode } from '@hooks/useShareCode'
 import { Loader } from '@components/Loader/Loader'
 import { Ellipsis } from '@components/Ellipsis/Ellipsis'
@@ -24,6 +25,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
           {total} x
           <ShareButton small type='button' onClick={() => shareCode()}>
             Share
+            <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
           </ShareButton>
         </S.TotalShared>
       )}

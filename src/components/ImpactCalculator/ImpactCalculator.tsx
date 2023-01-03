@@ -32,7 +32,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
     setImpact(`£${value}`)
   }
 
-  const getProgressStep = () => {
+  const getProgressStep = (): number => {
     const isReadyToSwitch = currentJourneyType === journeyTypes.readyToSwitch
 
     const stepConfig = {

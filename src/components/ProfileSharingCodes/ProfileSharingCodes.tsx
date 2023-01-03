@@ -1,5 +1,6 @@
 import React from 'react'
 import type { NextPage } from 'next'
+import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
@@ -21,6 +22,7 @@ export const ProfileSharingCodes: NextPage = (): JSX.Element => {
     <S.Share key='1'>
       <ShareButton type='button' onClick={() => shareCode()}>
         Share
+        <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
       </ShareButton>
 
       <S.SentCodes>

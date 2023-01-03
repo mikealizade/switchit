@@ -2,16 +2,12 @@ import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useUser } from '@auth0/nextjs-auth0'
-import useSWRMutation from 'swr/mutation'
 import useSWR, { SWRResponse } from 'swr'
 import ContentEditable from 'react-contenteditable'
-import sanitizeHtml from 'sanitize-html'
 import { VideoUploader } from './VideoUploader'
-import { useToast } from '@hooks/useToast'
-import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { sendRequest, fetcher } from '@utils/functions'
-import { steps, sanitiseConfig } from '@utils/constants'
+import { fetcher } from '@utils/functions'
+import { steps } from '@utils/constants'
 import { Checkbox, Label } from '@styles/common.style'
 import { Buttons } from '@modules/Switching/Switching.style'
 import * as S from './TellUs.style'
@@ -24,110 +20,47 @@ type TestimononialProps = {
 
 const getDefaultTestimonial = () => ''
 
-// TODO when savinvg journey steps to db, currently not refetching on any of the action pages
-
 export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
   const { user: { sub = '' } = {} } = useUser()
-  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const text = useRef('')
-  const toast = useToast()
   const { currentJourneyId, currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  const [{ testimonial = '' } = {}] = switchJourneys?.filter(
+  const [{ videoUri = '' } = {}] = switchJourneys?.filter(
     ({ id }: JourneyId) => id === currentJourneyId,
   )
   const [, setTestimonial] = useState('')
-  const [isEditable, setEdit] = useState(false)
   const [canPostPublicly, setCanPostPublicly] = useState(false)
-  const isStepCompleted = completedSteps.includes(steps.tellUs)
-
-  const onSave = async () => {
-    try {
-      const saveBody = {
-        filter: { sub, 'switchJourneys.id': currentJourneyId },
-        payload: {
-          $set: {
-            [`switchJourneys.$.testimonial`]: sanitizeHtml(text.current, sanitiseConfig),
-          },
-        },
-        collection: 'users',
-        upsert: false,
-      }
-
-      request(saveBody)
-
-      // TODO success msg even when errors!
-      toast('Your testimonial was saved successfully', 'success')
-    } catch (error) {
-      toast('An error occurred saving your testimonial', 'error')
-    }
-  }
-
-  const onSend = async () => {
-    onNext()
-
-    try {
-      const sendBody = {
-        filter: {},
-        payload: {
-          $push: {
-            testimonials: {
-              dateSent: new Date(),
-              testimonial: sanitizeHtml(text.current, sanitiseConfig),
-              userId: sub,
-              canPostPublicly,
-            },
-          },
-        },
-        collection: 'userTestimonials',
-        upsert: false,
-      }
-
-      request(sendBody)
-
-      toast('Your testimonial was sent successfully', 'success')
-    } catch (error) {
-      toast('An error occurred sending your testimonial', 'error')
-    }
-  }
-
-  const onChange = ({ target: { value } }: { target: { value: string } }) => {
-    text.current = value
-  }
-
-  const onToggleEditable = () => {
-    setEdit(!isEditable)
-  }
+  const [file, setFile] = useState<any>(null)
+  const isStepCompleted = !!(completedSteps.includes(steps.tellUs) && videoUri)
 
   useEffect(() => {
-    if (testimonial) {
-      text.current = testimonial
+    if (videoUri) {
+      text.current = 'You  have previously uploaded a video'
       setTestimonial(text.current)
     } else {
       text.current = getDefaultTestimonial()
       setTestimonial(text.current)
     }
-  }, [testimonial, text])
+  }, [videoUri, text])
 
   return (
     <>
       <S.Testimonial>
-        {!isEditable && !text.current ? (
+        {!file?.name ? (
           <S.TestimonialImage>
-            <Image src='/icons/icon_camera.svg' alt='' width={83} height={55} />
+            <Image src='/icons/icon_ellipsis.svg' alt='' width={83} height={55} />
           </S.TestimonialImage>
         ) : (
           <ContentEditable
-            className='editable'
+            className={`editable ${isStepCompleted ? 'disabled' : ''}`}
             tagName='div'
-            html={isValidating ? 'Loading testimonial...' : text.current}
-            disabled={true}
-            onChange={onChange}
-            onBlur={onToggleEditable}
+            html={isValidating ? 'Loading...' : `${file?.name} is ready to upload`}
+            disabled
+            onChange={() => undefined}
           />
         )}
       </S.Testimonial>
@@ -140,10 +73,7 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
       )}
 
       <Buttons>
-        {/* <Button type='button' size='small' onClick={onSend} disabled={isStepCompleted}>
-          Upload
-        </Button> */}
-        <VideoUploader />
+        <VideoUploader file={file} setFile={setFile} />
       </Buttons>
     </>
   )

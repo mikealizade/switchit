@@ -46,6 +46,11 @@ export const Testimonial = styled.div`
     border: 1px solid var(--base);
     border-radius: 10px;
     padding: 20px;
+
+    &.disabled {
+      border-color: var(--haze);
+      background-color: var(--alabaster);
+    }
   }
   [contenteditable='true'] {
     border: 2px solid var(--sushi);

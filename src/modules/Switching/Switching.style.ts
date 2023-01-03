@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 import { Card } from '@components/Card/Card.style'
+import { Div } from '@styles/common.style'
 
 export const ProfileContainer = styled.section`
   display: flex;
@@ -297,6 +298,15 @@ export const CommunityActions = styled.div`
   flex: 1;
 `
 
+export const TabsContainer = styled(Div)`
+  width: 55%;
+  align-self: center;
+`
+
+export const ShareCodeInfo = styled.p`
+  font-size: var(--fsMedium8);
+`
+
 export const Actions = styled.ul`
   display: flex;
   flex-direction: column;
@@ -306,15 +316,20 @@ export const Actions = styled.ul`
 
 export const Action = styled.li`
   display: flex;
-  font-size: var(--fsLarge0);
+  font-size: var(--fsMedium7);
   row-gap: 20px;
   column-gap: 20px;
   align-items: center;
   height: 32px;
   cursor: pointer;
+  text-decoration: underline;
 
-  &:hover span {
-    display: inline-block;
+  &:hover {
+    text-decoration: none;
+
+    span {
+      display: inline-block;
+    }
   }
 `
 

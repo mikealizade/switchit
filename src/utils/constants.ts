@@ -299,11 +299,6 @@ export const startJourneyConfig = (goodBank: string) => [
     text: 'Confirm The Switch By Signing',
     route: '/switching/confirm-switch',
   },
-  // {
-  //   step: 'Step 6',
-  //   text: 'Maximise',
-  //   route: '', //enable cards
-  // },
 ]
 
 export const startJourneyNoBankConfig = (goodBank: string) => [
@@ -322,11 +317,6 @@ export const startJourneyNoBankConfig = (goodBank: string) => [
     text: 'Confirm The Switch By Signing',
     route: '/switching/confirm-switch',
   },
-  // {
-  //   step: 'Step 4',
-  //   text: 'Maximise',
-  //   route: '', //enable cards
-  // },
 ]
 
 export const goodBanksConfig = {
@@ -334,25 +324,25 @@ export const goodBanksConfig = {
     link: 'https://www.starlingbank.com',
     name: 'starling',
     fullName: 'Starling Bank',
-    latestGreenProject: 'Starling Bank Project',
+    latestGreenProject: 'Carbon Removal',
   },
   monzo: {
     link: 'https://monzo.com',
     name: 'monzo',
     fullName: 'Monzo',
-    latestGreenProject: 'Monzo Project',
+    latestGreenProject: 'Watershed',
   },
   triodos: {
     link: 'https://www.triodos.co.uk',
     name: 'triodos',
     fullName: 'Triodos Bank',
-    latestGreenProject: 'Triodos Bank Project',
+    latestGreenProject: 'Sea Lanes',
   },
   nationwide: {
     link: 'https://www.nationwide.co.uk',
     name: 'nationwide',
     fullName: 'Nationwide Building Society',
-    latestGreenProject: 'Nationwide Project',
+    latestGreenProject: 'Sustainable Housing',
   },
 }
 

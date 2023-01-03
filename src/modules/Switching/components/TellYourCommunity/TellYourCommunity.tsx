@@ -6,6 +6,8 @@ import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Actions } from './Actions'
+import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { Tabs } from '@components/Tabs/Tabs'
 import { actionText } from '@utils/constants'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useNextStep } from '@hooks/useNextStep'
@@ -20,7 +22,10 @@ const letterActions = [
   { text: 'Family', copy: 'this is copy2' },
   { text: 'Parents', copy: 'this is copy3' },
   { text: 'Friends', copy: 'this is copy4' },
+  { text: 'School / Uni  Mates', copy: 'this is copy5' },
 ]
+
+const tabs: string[] = ['Letters', 'Talking Points', 'Sharing Code']
 
 export const TellYourCommunity: NextPage = () => {
   const nextStep = useNextStep()
@@ -28,6 +33,21 @@ export const TellYourCommunity: NextPage = () => {
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const route = useRoute(steps.tellCommunity)
+
+  const panels: [React.ReactNode, React.ReactNode, React.ReactNode] = [
+    <Actions key='letter' actions={letterActions} type='letter' />,
+    <Actions key='talkingPoints' actions={letterActions} type='talkingPoints' />,
+    <>
+      <ShareButton key='share' type='button' onClick={() => shareCode()} small>
+        Share
+        <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
+      </ShareButton>
+      <S.ShareCodeInfo>
+        Use this sharing code for fast sharing action. A unique sharing code just for you means
+        points every time you share, opportunites to connect with fellow switchers, etc
+      </S.ShareCodeInfo>
+    </>,
+  ]
 
   const onNext = (): void => {
     nextStep(steps.tellCommunity, route)
@@ -44,7 +64,13 @@ export const TellYourCommunity: NextPage = () => {
               text={actionText.tellCommunity}
             />
 
-            <S.Community>
+            <S.TabsContainer>
+              <StyledTabs>
+                <Tabs tabs={tabs} panels={panels}></Tabs>
+              </StyledTabs>
+            </S.TabsContainer>
+
+            {/* <S.Community>
               <S.CommunityActions>
                 <S.ActionsHeader>Letters</S.ActionsHeader>
                 <Actions actions={letterActions} type='letter' />
@@ -58,7 +84,7 @@ export const TellYourCommunity: NextPage = () => {
             <ShareButton type='button' onClick={() => shareCode()} small>
               Share
               <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
-            </ShareButton>
+            </ShareButton> */}
 
             <S.Buttons>
               <Button type='button' size='small' onClick={onNext}>

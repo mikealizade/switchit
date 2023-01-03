@@ -2,13 +2,13 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from 'src/state/store'
 import { Layout } from '@components/Layout/Layout'
 import 'normalize.css'
 import '@styles/globals.css'
 
 // import { persistor, store } from './redux/store';
-import { PersistGate } from 'redux-persist/integration/react'
 // TODOs
 
 // per page

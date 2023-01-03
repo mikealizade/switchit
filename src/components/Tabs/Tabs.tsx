@@ -58,7 +58,7 @@ export const Tabs: NextPage<TabsProps> = ({
         onChange={onChange}
         aria-label='Switching Journeys'
         centered={centered}
-        className='profile-tabs'
+        className='tabs-menu'
       >
         {tabs.map((tab, i: number) => {
           const tabItem = onSelectTab ? tab.tab : tab

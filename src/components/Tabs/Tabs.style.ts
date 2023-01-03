@@ -18,9 +18,11 @@ export const Tabs = styled.div<{ wide?: boolean }>`
     column-gap: ${({ wide }) => (wide ? '10px' : '30px')};
   }
 
-  .profile-tabs {
+  .tabs-menu {
+    margin-bottom: 50px;
+
     button {
-      font-size: var(--fsBase);
+      font-size: var(--fsMedium7);
       font-family: 'Konsolev Regular';
       text-transform: capitalize;
       letter-spacing: 0;
