@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { goodBanksConfig } from '@utils/constants'
+import { goodBanksConfig } from '@utils/data'
 import { Div } from '@styles/common.style'
 import * as S from '@components/ImpactCalculator/ImpactCalculator.style'
 

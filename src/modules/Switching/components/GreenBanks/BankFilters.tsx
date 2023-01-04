@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { accountTypes, accountFeatures } from '@utils/constants'
+import { accountTypes, accountFeatures } from './data'
 import * as S from './GreeenBanks.style'
 
 type BankFilterProps = {

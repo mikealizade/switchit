@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import { RootState } from '@state/store'
-import { actionsConfig } from '@utils/constants'
+import { actionsConfig } from '@utils/data'
 import * as S from '@components/SelectActionCard/SelectActionCard.style'
 
 export const SelectActionCards = () => {

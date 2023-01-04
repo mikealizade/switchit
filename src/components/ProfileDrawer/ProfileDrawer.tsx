@@ -68,7 +68,7 @@ const drawerConfig = {
   },
   readyToSwitch: {
     component: <ReadyToSwitch />,
-    backLink: 'Ready  To Switch',
+    backLink: 'Ready To Switch',
   },
   notReadyToSwitch: {
     component: <NotReadyToSwitch />,
@@ -79,16 +79,15 @@ const drawerConfig = {
 export const ProfileDrawer = (): JSX.Element | null => {
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
-
-  if (!section) return null
+  const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig]
 
   return (
     <S.ProfileDrawer isDrawerOpen={isDrawerOpen}>
-      <S.BackLink onClick={() => dispatch(toggleDrawer(''))}>
+      <S.BackLink onClick={() => dispatch(toggleDrawer(section))}>
         <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
-        {drawerConfig[section as keyof typeof drawerConfig]?.backLink}
+        {backLink}
       </S.BackLink>
-      {drawerConfig[section as keyof typeof drawerConfig]?.component}
+      {component}
     </S.ProfileDrawer>
   )
 }

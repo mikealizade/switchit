@@ -19,15 +19,9 @@ import { Tabs } from '@components/Tabs/Tabs'
 import { Card } from '@components/Card/Card'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
-import {
-  actionsConfig,
-  startJourneyConfig,
-  startJourneyNoBankConfig,
-  journeyTypes,
-  steps,
-  noBankAccountSteps,
-  goodBanksConfig,
-} from '@utils/constants'
+import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
+import { actionsConfig, goodBanksConfig } from '@utils/data'
+import { startJourneyConfig, startJourneyNoBankConfig } from './data'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { Action } from '@utils/types'
 import { JourneyName } from './components/JourneyName/JourneyName'

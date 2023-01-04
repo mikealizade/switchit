@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { heroConfig, HeroConfig } from '@utils/constants'
+import { heroConfig, HeroConfig } from './data'
 import * as S from '@components/Hero/Hero.style'
 
 export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => {

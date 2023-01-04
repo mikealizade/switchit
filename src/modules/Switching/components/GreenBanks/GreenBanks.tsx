@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Card } from '@components/Card/Card'
-import { bankConfig } from '@utils/constants'
+import { bankConfig } from './data'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilters'

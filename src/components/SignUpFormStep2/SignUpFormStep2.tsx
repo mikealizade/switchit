@@ -7,7 +7,7 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { updateUser } from '@state/user/userSlice'
 import { Input } from '@components/Input/Input'
 import { Button, TextButton } from '@components/Button/Button'
-import { defaultProfile } from '@utils/constants'
+import { defaultProfile } from './data'
 import { Form } from '@styles/common.style'
 
 export const SignUpFormStep2: NextPage<{

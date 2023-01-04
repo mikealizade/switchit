@@ -5,7 +5,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { SocialPost } from '@components/SocialPost/SocialPost'
 import { Hero } from '@components/Hero/Hero'
 import * as S from './Programs.style'
-import { socialPostsConfig, SocialPostConfig } from '@utils/constants'
+import { socialPostsConfig, SocialPostConfig } from './data'
 
 export const PostToSocials = () => {
   const school = 'lse' //from db?

@@ -14,7 +14,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { LetterButtons } from './LetterButtons'
 import { sendRequest, fetcher } from '@utils/functions'
-import { sanitiseConfig } from '@utils/constants'
+import { sanitiseConfig } from '@utils/data'
 import { Container } from '@modules/Switching/Switching.style'
 import * as S from './Letter.style'
 
