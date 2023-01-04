@@ -282,21 +282,21 @@ export const Step = styled.li<{ isIncomplete: boolean }>`
 // `
 // tell community
 
-export const Community = styled.div`
-  display: flex;
-  column-gap: 50px;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  row-gap: 50px;
-`
+// export const Community = styled.div`
+//   display: flex;
+//   column-gap: 50px;
+//   justify-content: space-evenly;
+//   flex-wrap: wrap;
+//   row-gap: 50px;
+// `
 
-export const CommunityActions = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: var(--fsLarge1);
-  row-gap: 30px;
-  flex: 1;
-`
+// export const CommunityActions = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   font-size: var(--fsLarge1);
+//   row-gap: 30px;
+//   flex: 1;
+// `
 
 export const TabsContainer = styled(Div)`
   width: 55%;
@@ -333,10 +333,10 @@ export const Action = styled.li`
   }
 `
 
-export const ActionsHeader = styled.h3`
-  font-style: italic;
-  font-family: 'Konsolev SemiBold';
-`
+// export const ActionsHeader = styled.h3`
+//   font-style: italic;
+//   font-family: 'Konsolev SemiBold';
+// `
 
 export const CopyIconHover = styled.span`
   display: none;

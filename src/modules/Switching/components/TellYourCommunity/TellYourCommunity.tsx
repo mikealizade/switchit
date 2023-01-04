@@ -70,22 +70,6 @@ export const TellYourCommunity: NextPage = () => {
               </StyledTabs>
             </S.TabsContainer>
 
-            {/* <S.Community>
-              <S.CommunityActions>
-                <S.ActionsHeader>Letters</S.ActionsHeader>
-                <Actions actions={letterActions} type='letter' />
-              </S.CommunityActions>
-              <S.CommunityActions>
-                <S.ActionsHeader>Talking Points</S.ActionsHeader>
-                <Actions actions={letterActions} type='talkingPoints' />
-              </S.CommunityActions>
-            </S.Community>
-
-            <ShareButton type='button' onClick={() => shareCode()} small>
-              Share
-              <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
-            </ShareButton> */}
-
             <S.Buttons>
               <Button type='button' size='small' onClick={onNext}>
                 Next Impact Action

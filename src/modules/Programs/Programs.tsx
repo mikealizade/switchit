@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import useSWR from 'swr'
-import { useUser } from '@auth0/nextjs-auth0'
 import { SocialPost } from '@components/SocialPost/SocialPost'
 import { Hero } from '@components/Hero/Hero'
 import * as S from './Programs.style'
@@ -37,8 +34,6 @@ export const PostToSocials = () => {
 }
 
 const Programs = (): JSX.Element => {
-  // const { user: { sub = '' } = {}, isLoading = false } = useUser()
-
   return (
     <>
       <Head>
