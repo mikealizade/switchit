@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { PlainInput } from '@modules/Switching/Switching.style'
 
 export const UserContent = styled.div`
   display: flex;

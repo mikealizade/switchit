@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { PlainInput } from '@modules/Switching/Switching.style'
+import { PlainInput } from '@styles/common.style'
 
 export const Signature = styled.div`
   display: flex;

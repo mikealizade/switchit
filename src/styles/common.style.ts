@@ -173,8 +173,60 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`
   justify-content: flex-start;
 `
 
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+`
+
 export const BoldLink = styled.a`
   font-weight: bold;
   color: var(--pink);
   cursor: pointer;
+`
+
+export const PlainInput = styled.input`
+  padding: 5px 10px;
+  border: 1px solid var(--gallery);
+  border-radius: 10px;
+`
+
+export const CopyIconHover = styled.span`
+  display: none;
+`
+
+export const TabsContainer = styled(Div)`
+  width: 55%;
+  align-self: center;
+`
+
+export const Subheader = styled.h3`
+  font-size: var(--fsLarge4);
+  font-family: 'Konsolev Regular';
+  font-weight: normal;
+`
+
+export const Buttons = styled.div<{ single?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+  row-gap: 10px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  /* flex: 1; */
+
+  ${() => mediaQuery.tablet} {
+    justify-content: ${({ single }) => (single ? 'flex-end' : 'flex-start')};
+    flex-direction: row;
+    /* padding: 20px 0; */
+    padding: 0;
+  }
+
+  button:first-of-type:not(:only-child) {
+    margin-right: auto;
+  }
+
+  button:only-child {
+    margin-left: auto;
+  }
 `

@@ -13,7 +13,7 @@ import { SocialPost } from '@components/SocialPost/SocialPost'
 import { socialPostsConfig } from '@modules/Programs/data'
 import { Program } from '@modules/Programs/Programs.style'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { Content } from '@styles/common.style'
+import { Content, TabsContainer } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 import { FollowUs } from './FollowUs'
 
@@ -60,11 +60,11 @@ export const PostToSocials: NextPage = () => {
               text={actionText.postToSocials}
             />
 
-            <S.TabsContainer>
+            <TabsContainer>
               <StyledTabs>
                 <Tabs tabs={tabs} panels={panels}></Tabs>
               </StyledTabs>
-            </S.TabsContainer>
+            </TabsContainer>
 
             {/* <Socials /> */}
             <S.Buttons>

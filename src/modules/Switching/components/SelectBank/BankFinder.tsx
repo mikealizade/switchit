@@ -6,11 +6,12 @@ import { Button } from '@components/Button/Button'
 import { fetcher } from '@utils/functions'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
 import { Select } from '@components/Select/Select'
+import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 import { useNextStep } from '@hooks/useNextStep'
 import { journeyTypes, steps } from '@utils/constants'
+import { Subheader } from '@styles/common.style'
 import { Buttons } from '@modules/Switching/Switching.style'
 import * as S from './BankFinder.style'
-import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 
 type Sort = { label: string }
 
@@ -52,7 +53,7 @@ export const BankFinder = (): JSX.Element => {
     <S.BankFinder>
       <S.BankSelector>
         <S.BankList>
-          <S.Subheader>{`I'm currently banking with...`}</S.Subheader>
+          <Subheader>{`I'm currently banking with...`}</Subheader>
           <Select
             name='bankfinder'
             defaultValue={{ value: '', label: 'Select your bank...' }}

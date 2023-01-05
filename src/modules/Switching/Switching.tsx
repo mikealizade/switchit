@@ -25,7 +25,7 @@ import { startJourneyConfig, startJourneyNoBankConfig } from './data'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { Action } from '@utils/types'
 import { JourneyName } from './components/JourneyName/JourneyName'
-import { Content } from '@styles/common.style'
+import { Content, Row } from '@styles/common.style'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import * as S from '@modules/Switching/Switching.style'
 
@@ -216,7 +216,7 @@ const Switching = (): JSX.Element => {
       ? [<S.JourneyCard key='loading'>Loading...</S.JourneyCard>]
       : !activeJourneys.length
       ? [
-          <S.Row key='switchJourneys'>
+          <Row key='switchJourneys'>
             <S.NoJourneysTextContainer>
               <S.NoJourneysText>
                 {`It's why you're here!`} Start your first switching journey by clicking on the pink
@@ -226,16 +226,16 @@ const Switching = (): JSX.Element => {
                 Have multiple bank accounts? No problem! {`We'll`} switch one at a time
               </S.NoJourneysText>
             </S.NoJourneysTextContainer>
-          </S.Row>,
+          </Row>,
         ]
       : activeJourneys),
-    <S.Row key='completedJourneys'>
+    <Row key='completedJourneys'>
       {completedJourneys.length ? (
-        <S.Row>{completedJourneys}</S.Row>
+        <Row>{completedJourneys}</Row>
       ) : (
         <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
       )}
-    </S.Row>,
+    </Row>,
   ]
 
   return (

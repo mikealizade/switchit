@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
-import { PlainInput } from '../../Switching.style'
+import { PlainInput } from '@styles/common.style'
 
 export const JourneyNameContainer = styled.div`
   display: flex;

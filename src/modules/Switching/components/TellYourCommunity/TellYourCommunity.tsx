@@ -13,9 +13,9 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useNextStep } from '@hooks/useNextStep'
 import { useRoute } from '@hooks/useRoute'
 import { useShareCode } from '@hooks/useShareCode'
-import { Content } from '@styles/common.style'
+import { Content, ShareButton, TabsContainer } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
-import { ShareButton } from '@styles/common.style'
+import { ShareCodeInfo } from './TellYourCommunity.style'
 
 const letterActions = [
   { text: 'Colleagues', copy: 'this is copy' },
@@ -42,10 +42,10 @@ export const TellYourCommunity: NextPage = () => {
         Share
         <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
       </ShareButton>
-      <S.ShareCodeInfo>
+      <ShareCodeInfo>
         Use this sharing code for fast sharing action. A unique sharing code just for you means
         points every time you share, opportunites to connect with fellow switchers, etc
-      </S.ShareCodeInfo>
+      </ShareCodeInfo>
     </>,
   ]
 
@@ -64,11 +64,11 @@ export const TellYourCommunity: NextPage = () => {
               text={actionText.tellCommunity}
             />
 
-            <S.TabsContainer>
+            <TabsContainer>
               <StyledTabs>
                 <Tabs tabs={tabs} panels={panels}></Tabs>
               </StyledTabs>
-            </S.TabsContainer>
+            </TabsContainer>
 
             <S.Buttons>
               <Button type='button' size='small' onClick={onNext}>

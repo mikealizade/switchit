@@ -7,12 +7,6 @@ export const BankFinder = styled.div`
   row-gap: 50px;
 `
 
-export const Subheader = styled.h3`
-  font-size: var(--fsLarge4);
-  font-family: 'Konsolev Regular';
-  font-weight: normal;
-`
-
 export const BankSelector = styled.div`
   display: flex;
   place-items: center;

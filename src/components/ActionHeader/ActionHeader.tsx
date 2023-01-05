@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { HeaderContainer, Header, Subheader } from '@modules/Switching/Switching.style'
+import { Header } from '@modules/Switching/Switching.style'
+import { Subheader } from '@styles/common.style'
+import { HeaderContainer } from './ActionHeader.style'
 
 type ActionHeader = {
   header: string

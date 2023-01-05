@@ -13,3 +13,8 @@ export const StepCounter = styled.span`
   font-style: italic;
   color: var(--base);
 `
+export const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+`

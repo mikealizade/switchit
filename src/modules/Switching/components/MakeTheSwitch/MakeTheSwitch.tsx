@@ -12,8 +12,8 @@ import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { useNextStep } from '@hooks/useNextStep'
 import { goodBanksConfig } from '@utils/data'
-import * as S from '../../Switching.style'
-import { Content, BoldLink } from '@styles/common.style'
+import * as S from './MakeTheSwitch.style'
+import { Content, BoldLink, Buttons } from '@styles/common.style'
 
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { push } = useRouter()
@@ -46,7 +46,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               </S.Text>
             </S.TextContent>
             <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
-            <S.Buttons>
+            <Buttons>
               <Button
                 type='button'
                 size='small'
@@ -67,7 +67,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               >
                 I Made The Switch, Take Me To Verify
               </Button>
-            </S.Buttons>
+            </Buttons>
           </Card>
           <ProgressBar step={steps.chooseGreenBank} />
         </Content>
