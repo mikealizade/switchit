@@ -9,33 +9,26 @@ import { Button } from '@components/Button/Button'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { useSaveStep } from '@hooks/useSaveStep'
-import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { useNextStep } from '@hooks/useNextStep'
 import { goodBanksConfig } from '@utils/data'
 import * as S from '../../Switching.style'
-import { Content, ButtonContainer } from '@styles/common.style'
+import { Content, BoldLink } from '@styles/common.style'
 
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { push } = useRouter()
   const dispatch = useDispatch()
-  const saveStep = useSaveStep()
+  const nextStep = useNextStep()
   const { currentJourney } = useGetCurrentJourney()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const bank = goodBanksConfig[bankName as keyof typeof goodBanksConfig]
+  const hasMadeSwitch = currentJourney!.completedSteps.includes(steps.makeSwitch)
 
   const onMakeTheSwitch = () => {
-    dispatch(
-      setJourneyData({
-        goodBank: bank.name,
-        completedSteps: Array.from(new Set([...currentJourney!.completedSteps, steps.makeSwitch])),
-      }),
-    )
-    saveStep(steps.makeSwitch, bank.name)
+    nextStep(steps.makeSwitch, null, { goodBank: bank.name, isVerified: true })
     window.open(bank.link, '_blank', 'noreferrer')
   }
-
-  console.log('bankName', bankName)
 
   return (
     <>
@@ -52,6 +45,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
                 After switching make sure sure to come back and complete your switching journey
               </S.Text>
             </S.TextContent>
+            <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
             <S.Buttons>
               <Button
                 type='button'
@@ -68,6 +62,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
                 type='button'
                 size='small'
                 mode='primary'
+                disabled={!hasMadeSwitch}
                 onClick={() => push('/switching/confirm-switch')}
               >
                 I Made The Switch, Take Me To Verify

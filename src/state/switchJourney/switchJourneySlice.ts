@@ -53,7 +53,10 @@ export const switchJourneys = createSlice({
         ],
       }
     },
-    setJourneyData: (state, action: PayloadAction<{ [key: string]: string | number[] }>) => {
+    setJourneyData: (
+      state,
+      action: PayloadAction<{ [key: string]: string | number[] | boolean }>,
+    ) => {
       console.log('action.payload', action.payload)
 
       const updatedJourneys = state.journeys.reduce((acc: Journey[], item: Journey) => {

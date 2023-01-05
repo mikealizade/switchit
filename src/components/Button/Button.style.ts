@@ -42,11 +42,12 @@ export const Button = styled.button<{ size?: string }>`
   }
 
   &:disabled {
-    background-color: #e2dfda;
-    color: #222;
+    /* background-color: #e2dfda;
+    color: #222; */
+    opacity: 0.3;
     cursor: default;
     pointer-events: none;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
   }
 `
 

@@ -21,7 +21,6 @@ const apiRoutes = {}
 
 export const actionText = {
   greenBanks: `Banks can't buy spaces on our site. We recommend banks based on our strict internal standards for reducing the investment in fossil fuels. Find out more here`,
-  // chooseBank: `Choose Your Bank`,
   breakupLetter: `We've set you up for success with a prewritten letter below. Feel free to update, change, edit any of the text. We'll send it on the 1st of the month along with everyone else`,
   helloLetter: 'We all love a bit of positive reinforcement.',
   postToSocials:

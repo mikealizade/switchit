@@ -25,7 +25,7 @@ type PageProps = {
 
 const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
   const user = useSelector((state: RootState) => state.user)
-  const { currentJourney: { name = '', completedSteps = [] } = {} } = useGetCurrentJourney()
+  const { currentJourney: { name = '', completedSteps = [] } = {} } = useGetCurrentJourney() // TODO which journey show on dashboard
   const { profile: { sharingCodes = [] } = {} } = user
   const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
 

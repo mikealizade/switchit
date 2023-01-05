@@ -9,7 +9,8 @@ import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileShar
 import { ProfileFriends } from '@components/ProfileFriends/ProfileFriends'
 import { ProfilePoints } from '@components/ProfilePoints/ProfilePoints'
 import { ProfileAwardsBadges } from '@components/ProfileAwardsBadges/ProfileAwardsBadges'
-import * as S from '@components/ProfileDrawer/ProfileDrawer.style'
+import * as S from '@components/Drawer/Drawer.style'
+import { NextPage } from 'next'
 
 const Header = styled.h2`
   font-size: var(--fsMedium6);
@@ -74,20 +75,40 @@ const drawerConfig = {
     component: <NotReadyToSwitch />,
     backLink: 'Not Ready To Switch',
   },
+  scoreBanks: {
+    component: <div>How we score banks</div>,
+    backLink: 'Impact Card View',
+  },
+  calculateImpact: {
+    component: <div>How we calculate your potential climate impact</div>,
+    backLink: 'Impact Card View',
+  },
+  calculateAgeImpact: {
+    component: <div>How we use age to calculate climate impact</div>,
+    backLink: 'Impact Card View',
+  },
+  donations: {
+    component: <div>Donations</div>,
+    backLink: 'Impact Card View',
+  },
+  disclaimer: {
+    component: <div>Disclaimer</div>,
+    backLink: 'Impact Card View',
+  },
 }
 
-export const ProfileDrawer = (): JSX.Element | null => {
+export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
-  const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig]
+  const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
 
   return (
-    <S.ProfileDrawer isDrawerOpen={isDrawerOpen}>
+    <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
       <S.BackLink onClick={() => dispatch(toggleDrawer(section))}>
         <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
         {backLink}
       </S.BackLink>
       {component}
-    </S.ProfileDrawer>
+    </S.Drawer>
   )
 }

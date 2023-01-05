@@ -61,7 +61,7 @@ export const GreenBanks = (): JSX.Element => {
             <Card column padded>
               <ActionHeader
                 header='Action Choose Your Bank'
-                subHeader={`We've found 4 switch-worthy banks for you`}
+                subHeader={`We've found 4 green banks for you`}
                 text={actionText.greenBanks}
               />
 

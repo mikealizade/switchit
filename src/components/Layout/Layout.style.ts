@@ -31,6 +31,8 @@ export const Aside = styled.aside`
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
+  overflow: hidden;
 `
 
 export const AsideContent = styled.div`

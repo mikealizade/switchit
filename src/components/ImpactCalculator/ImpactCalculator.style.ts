@@ -84,3 +84,7 @@ export const Effect = styled.div`
     margin-top: 22px;
   }
 `
+
+export const MoreInfo = styled.span`
+  cursor: pointer;
+`

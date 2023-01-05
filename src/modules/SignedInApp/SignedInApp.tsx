@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { Aside as AsideContent } from '@components/Aside/Aside'
-import { ProfileDrawer } from '@components/ProfileDrawer/ProfileDrawer'
+import { Drawer } from '@components/Drawer/Drawer'
 import { User } from '@components/User/User'
 import * as S from '@components/Layout/Layout.style'
 
@@ -12,7 +12,7 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
   children,
 }): JSX.Element => {
   const { pathname } = useRouter()
-  // const hasDrawer = pathname === '/profile' || pathname === '/switching/choosejourney'
+  const hasSwitchDrawer = pathname.includes('/switching')
   const hasDrawer = pathname === '/profile'
 
   return (
@@ -20,11 +20,12 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
       <S.AppContent>
         {showUser && <User isValidating={isValidating} />}
         {children}
-        {hasDrawer && <ProfileDrawer />}
+        {hasDrawer && <Drawer />}
       </S.AppContent>
       {pathname.includes('/switching/') && (
         <S.Aside>
           <AsideContent />
+          {hasSwitchDrawer && <Drawer narrow />}
         </S.Aside>
       )}
     </>

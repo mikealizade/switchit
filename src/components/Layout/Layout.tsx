@@ -21,8 +21,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const isHome = pathname === '/'
   const isSignedOut = pathname === '/signedout'
   const isSigningUp = pathname === '/signup'
-  const isProfile = pathname === '/profile'
-  const isDashboard = pathname === '/dashboard'
   const showUser = pathname !== '/settings'
   const { user: auth0user = {} } = useUser()
   const { sub } = auth0user
@@ -89,7 +87,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
               totalPoints: getTotalPoints(user?.profile?.switchItPoints),
             }),
           )
-          // window.sessionStorage.setItem('switchJourneys', JSON.stringify(user.switchJourneys))
         }
       } catch {
         throw new Error('user not updated!')

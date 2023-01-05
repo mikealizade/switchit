@@ -39,7 +39,7 @@ import '@styles/globals.css'
 // upgrade to Next 13
 // refetch on all landing pages
 // mongodb compass
-// split up config objects into separate files
+// split up switching styles
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

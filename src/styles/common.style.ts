@@ -172,3 +172,9 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`
   flex: ${({ flex }) => flex ?? 'none'};
   justify-content: flex-start;
 `
+
+export const BoldLink = styled.a`
+  font-weight: bold;
+  color: var(--pink);
+  cursor: pointer;
+`

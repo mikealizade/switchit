@@ -47,6 +47,8 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
     }
   }, [videoUri, text])
 
+  // TODO error toast when file is too big for upload
+
   return (
     <>
       <S.Testimonial>
@@ -55,7 +57,7 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
             <Image src='/icons/icon_ellipsis.svg' alt='' width={83} height={55} />
           </S.TestimonialImage>
         ) : (
-          <ContentEditable
+          <ContentEditable // no need for content editable
             className={`editable ${isStepCompleted ? 'disabled' : ''}`}
             tagName='div'
             html={isValidating ? 'Loading...' : `${file?.name} is ready to upload`}

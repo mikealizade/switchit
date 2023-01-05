@@ -11,7 +11,7 @@ export const useGetCurrentJourney = () => {
 
   console.log('currentJourneyId', currentJourneyId)
 
-  const currentJourney = journeys.find(({ id }) => id === currentJourneyId)
+  const currentJourney = journeys.find(({ id }: { id: string }) => id === currentJourneyId)
   const currentJourneyType = currentJourney!?.journeyType
 
   return { currentJourneyId, currentJourney, currentJourneyType }

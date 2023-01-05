@@ -6,7 +6,7 @@ export const ViewResearch: NextPage = (): JSX.Element => {
     <S.ViewResearch>
       <p>
         Interested in our research? We have conducted a thorough analysis of the financial services
-        sector.
+        sector.{' '}
         <a href='#' target='_blank'>
           Find our resources and criteria for recommendation.
         </a>

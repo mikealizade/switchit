@@ -3,7 +3,6 @@ import type { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { useDrawer } from '@hooks/useDrawer'
 import { Input } from '@components/Input/Input'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
@@ -17,7 +16,6 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 }): JSX.Element => {
   const methods = useForm()
   const dispatch = useDispatch()
-  const { toggleDrawer } = useDrawer()
   const updateUser = useUpdateUser()
   const { handleSubmit, reset } = methods
   const { user: { sub } = {}, isLoading = false } = useUser()
@@ -51,7 +49,7 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   useEffect(() => {
     reset && reset(data)
-  }, [data, reset, toggleDrawer])
+  }, [data, reset])
 
   return (
     <>

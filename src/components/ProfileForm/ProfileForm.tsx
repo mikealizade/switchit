@@ -3,13 +3,11 @@ import type { NextPage } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { useDrawer } from '@hooks/useDrawer'
 import { Input } from '@components/Input/Input'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
 import { setUser } from '@state/user/userSlice'
-import { showToast } from '@state/toast/toastSlice'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import { useToast } from '@hooks/useToast'
 import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
@@ -21,7 +19,6 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 }): JSX.Element => {
   const methods = useForm()
   const dispatch = useDispatch()
-  const { toggleDrawer } = useDrawer()
   const updateUser = useUpdateUser()
   const toast = useToast()
   const { handleSubmit, reset } = methods
@@ -73,7 +70,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   useEffect(() => {
     reset && reset(data)
-  }, [data, reset, toggleDrawer])
+  }, [data, reset])
 
   return (
     <>

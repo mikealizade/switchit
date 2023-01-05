@@ -9,15 +9,21 @@ export const useSaveStep = () => {
   const { trigger: request } = useSWRMutation('/api/db/upsertJourney', sendRequest)
   const { currentJourney, currentJourneyId } = useGetCurrentJourney()
   const toast = useToast()
-  // debugger
-  //if currentJourneyId does not exist in db push, else update
-  const saveStep = async (step: number, goodBank: string) => {
+
+  //TODO save other data to user, not just step and good bank
+
+  // if currentJourneyId does not exist in db push, else update
+  const saveStep = async (
+    step: number,
+    { goodBank, isVerified }: { goodBank: string; isVerified?: boolean },
+  ) => {
     try {
       const insert = {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
         update: {
           $set: {
             ...(goodBank && { 'switchJourneys.$.goodBank': goodBank }),
+            ...(isVerified && { 'switchJourneys.$.isVerified': isVerified }),
             'switchJourneys.$.completedSteps': Array.from(
               new Set([...currentJourney!.completedSteps, step]),
             ),

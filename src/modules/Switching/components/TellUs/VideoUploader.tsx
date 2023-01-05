@@ -15,12 +15,23 @@ export const VideoUploader: NextPage<{
   const { user: { sub } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const toast = useToast()
-  const { currentJourneyId } = useGetCurrentJourney()
+  const { currentJourneyId, currentJourney: { videoUri } = {} } = useGetCurrentJourney()
+
+  console.log('videoUri', videoUri)
+
   const fileInput = useRef<HTMLInputElement>(null)
   const [isUploading, setIsUploading] = useState(false)
+  const [isUploaded, setIsUploaded] = useState(false)
 
   const handleClick = () => {
     fileInput.current!.click()
+  }
+
+  const validateFileSize = () => {
+    const maxfilesize = 1024 * 1024 // TODO how big should the max file size be?
+    const filesize = file?.size
+
+    return filesize > maxfilesize
   }
 
   const uploadFile = useCallback(async () => {
@@ -57,6 +68,7 @@ export const VideoUploader: NextPage<{
           toast('An error occurred uploading your video', 'error')
         }
       }
+      setIsUploaded(true)
       toast('Uploaded your video successfully', 'success')
     } catch (error) {
       toast('An error occurred uploading your video', 'error')
@@ -66,6 +78,11 @@ export const VideoUploader: NextPage<{
   }, [file, sub, toast, currentJourneyId, request, setFile])
 
   const onUpload = () => {
+    if (validateFileSize()) {
+      toast('The maximum file size is 1MB', 'error')
+      return
+    }
+
     const uploadedFileDetail = async () => await uploadFile()
     uploadedFileDetail()
   }
@@ -77,7 +94,7 @@ export const VideoUploader: NextPage<{
         size='small'
         mode='secondary'
         onClick={handleClick}
-        // disabled={isDisabled}
+        disabled={!!videoUri || isUploading || isUploaded}
       >
         Attach
       </Button>
@@ -86,9 +103,13 @@ export const VideoUploader: NextPage<{
         ref={fileInput}
         onChange={(e: any) => setFile(e.target.files[0])}
         style={{ display: 'none' }}
-        // disabled={isDisabled}
       />
-      <Button type='button' size='small' onClick={onUpload} disabled={isUploading}>
+      <Button
+        type='button'
+        size='small'
+        onClick={onUpload}
+        disabled={!file?.name || !!videoUri || isUploading || isUploaded}
+      >
         {isUploading ? 'Uploading...' : 'Upload'}
       </Button>
     </>

@@ -7,11 +7,13 @@ import toastReducer from 'src/state/toast/toastSlice'
 import genericReducer from '@state/generic/genericSlice'
 import switchJourneysReducer from 'src/state/switchJourney/switchJourneySlice'
 import { persistReducer, persistStore } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+// import storage from 'redux-persist/lib/storage'
+import storage from 'redux-persist/lib/storage/session'
 
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['drawer', 'toast'],
 }
 
 const rootReducer = combineReducers({
@@ -30,11 +32,7 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [
-          'persist/PERSIST',
-          '@ReduxToastr/toastr/ADD',
-          '@ReduxToastr/toastr/REMOVE',
-        ],
+        ignoredActions: ['persist/PERSIST'],
         // ignoredPaths: [],
       },
     }),

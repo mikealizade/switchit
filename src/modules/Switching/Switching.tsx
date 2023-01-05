@@ -146,7 +146,6 @@ const Switching = (): JSX.Element => {
   const addNewJourney = (): void => {
     const id = nanoid()
     dispatch(setAddNewJourney({ id, isVerified: false, name: value }))
-    // window.sessionStorage.setItem('currentJourneyId', id)
     push('/switching/select-bank')
   }
 
@@ -160,7 +159,6 @@ const Switching = (): JSX.Element => {
 
   const onSelectTab = (id: string) => (): void => {
     dispatch(setCurrentJourneyId(id))
-    // window.sessionStorage.setItem('currentJourneyId', id)
   }
 
   const selectAction = (index: number) => (): void => {
@@ -210,7 +208,6 @@ const Switching = (): JSX.Element => {
           journeys: switchJourneys,
         }),
       )
-      // window.sessionStorage.setItem('currentJourneyId', defaultJourneyId)
     }
   }, [switchJourneys, defaultJourneyId, dispatch])
 

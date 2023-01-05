@@ -12,18 +12,16 @@ export const useNextStep = () => {
 
   const saveNextStep = (
     step: number = 0,
-    route: string = '',
+    route: string | null = '',
     extraData: any = {}, //{ [key: string]: unknown }
   ) => {
-    const { goodBank = '' } = extraData
-
     dispatch(
       setJourneyData({
         completedSteps: Array.from(new Set([...completedSteps, step])),
         ...(extraData && extraData),
       }),
     )
-    saveStep(step, goodBank)
+    saveStep(step, extraData)
     route && push(route)
   }
 

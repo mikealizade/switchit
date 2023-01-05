@@ -2,15 +2,17 @@ import { useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
 import { Select } from '@components/Select/Select'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { impactCalculator } from './importCalculatorData'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { getRandomInt } from '@utils/functions'
 import { journeyTypes } from '@utils/constants'
+import { Button } from '@components/Button/Button'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { Div } from '@styles/common.style'
 import * as S from '@components/ImpactCalculator/ImpactCalculator.style'
-import { Button } from '@components/Button/Button'
 
 const impacts = [
   { impact1: 'Removing 1 mile of an oil pipeline', impact2: 'Building 1.3 new wind turbines' },
@@ -22,6 +24,7 @@ const impacts = [
 export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
   hasProgressBar,
 }): JSX.Element => {
+  const dispatch = useDispatch()
   const { currentJourneyType = '' } = useGetCurrentJourney()
   const { pathname, push } = useRouter()
   const [impactTotal, setImpact] = useState('')
@@ -63,7 +66,9 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
       <Div>
         <S.Header>
           Potential Climate Impact
-          <Image src={`/icons/icon_moreinfo.svg`} alt='' width={20} height={20} />
+          <S.MoreInfo onClick={() => dispatch(toggleDrawer('calculateImpact'))}>
+            <Image src={`/icons/icon_moreinfo.svg`} alt='' width={20} height={20} />
+          </S.MoreInfo>
         </S.Header>
         <S.ImpactTotal defaultValue={impactTotal} placeholder='£1,510,000' />
         <S.MoneyDivested>Money divested from climate harming practises</S.MoneyDivested>

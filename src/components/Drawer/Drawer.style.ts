@@ -1,19 +1,22 @@
 import styled from '@emotion/styled'
 
-export const ProfileDrawer = styled.aside<{ isDrawerOpen: boolean }>`
+const drawerWidth = ({ narrow }: { narrow?: boolean }) => (narrow ? '398px' : '466px')
+
+export const Drawer = styled.aside<{ isDrawerOpen: boolean; narrow?: boolean }>`
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   gap: 40px;
-  border-radius: 16px;
-  width: 466px;
-  max-width: 466px;
-  min-width: 466px;
+  border-radius: 10px;
+  width: ${drawerWidth};
+  max-width: ${drawerWidth};
+  min-width: ${drawerWidth};
   position: absolute;
   right: 0;
   top: 0;
   height: 100%;
-  transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateX(0)' : 'translateX(470px)')};
+  transform: ${({ isDrawerOpen, narrow }) =>
+    isDrawerOpen ? 'translateX(0)' : `translateX(${narrow ? 420 : 470}px)`};
   transition: all 0.2s ease-in-out;
   padding: 35px 40px;
   z-index: 1;
