@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { accountTypes, accountFeatures } from './data'
-import * as S from './GreeenBanks.style'
+import * as S from './GreenBanks.style'
 
 type BankFilterProps = {
   selectedAccountTypes: string[]

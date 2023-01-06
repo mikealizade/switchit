@@ -230,3 +230,7 @@ export const Buttons = styled.div<{ single?: boolean }>`
     margin-left: auto;
   }
 `
+
+export const TextLink = styled.a`
+  text-decoration: underline;
+`

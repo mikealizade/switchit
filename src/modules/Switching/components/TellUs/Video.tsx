@@ -18,8 +18,6 @@ type TestimononialProps = {
   onNext: () => void
 }
 
-const getDefaultTestimonial = () => ''
-
 export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
   const { user: { sub = '' } = {} } = useUser()
   const text = useRef('')
@@ -35,36 +33,31 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
   const [, setTestimonial] = useState('')
   const [canPostPublicly, setCanPostPublicly] = useState(false)
   const [file, setFile] = useState<any>(null)
+  const [isUploaded, setIsUploaded] = useState(false)
+
   const isStepCompleted = !!(completedSteps.includes(steps.tellUs) && videoUri)
 
   useEffect(() => {
     if (videoUri) {
-      text.current = 'You  have previously uploaded a video'
-      setTestimonial(text.current)
-    } else {
-      text.current = getDefaultTestimonial()
+      text.current = 'You have previously uploaded a video'
       setTestimonial(text.current)
     }
   }, [videoUri, text])
 
-  // TODO error toast when file is too big for upload
+  console.log('videoUri', videoUri)
 
   return (
     <>
       <S.Testimonial>
-        {!file?.name ? (
-          <S.TestimonialImage>
-            <Image src='/icons/icon_ellipsis.svg' alt='' width={83} height={55} />
-          </S.TestimonialImage>
-        ) : (
-          <ContentEditable // no need for content editable
-            className={`editable ${isStepCompleted ? 'disabled' : ''}`}
-            tagName='div'
-            html={isValidating ? 'Loading...' : `${file?.name} is ready to upload`}
-            disabled
-            onChange={() => undefined}
-          />
-        )}
+        <S.TestimonialImage>
+          {isUploaded || videoUri ? (
+            <Image src='/icons/icon_radio_checked.svg' alt='' width={83} height={55} />
+          ) : !file?.name ? (
+            <Image src='/icons/icon_ellipsis.svg' alt='' width={88} height={88} />
+          ) : (
+            <div>{isValidating ? 'Loading...' : `${file?.name} is ready to upload`}</div>
+          )}
+        </S.TestimonialImage>
       </S.Testimonial>
 
       {!isStepCompleted && (
@@ -75,7 +68,14 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
       )}
 
       <Buttons>
-        <VideoUploader file={file} setFile={setFile} />
+        <VideoUploader
+          file={file}
+          isUploaded={isUploaded}
+          isStepCompleted={isStepCompleted}
+          canPostPublicly={canPostPublicly}
+          setFile={setFile}
+          setIsUploaded={setIsUploaded}
+        />
       </Buttons>
     </>
   )

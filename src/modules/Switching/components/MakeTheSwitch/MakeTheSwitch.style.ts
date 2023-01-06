@@ -7,5 +7,5 @@ export const TextContent = styled.div`
 `
 
 export const Text = styled.p`
-  font-size: var(--fsLarge2);
+  font-size: var(--fsMedium8);
 `

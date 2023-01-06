@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { Button, TextButton } from '@components/Button/Button'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import * as S from './GreeenBanks.style'
+import { TextLink } from '@styles/common.style'
+import * as S from './GreenBanks.style'
 import starling from '../../../../../public/icons/icon_starling.png'
 import monzo from '../../../../../public/icons/icon_monzo.png'
 import triodos from '../../../../../public/icons/icon_triodos.png'
@@ -21,10 +22,9 @@ type BankData = {
   score: string
   fee: string
   project: string
-  meta: {
-    personal: string[]
-    student: string[]
-  }
+  projectLink: string
+  donation: string
+  meta: string[]
 }
 
 const logo = {
@@ -68,18 +68,21 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
     <S.BanksTable>
       <thead>
         <tr>
-          <th scope='col'>Bank</th>
-          <th scope='col'>Details</th>
-          <th scope='col'>Switch It Score</th>
+          <th scope='col'></th>
+          <th scope='col'></th>
           <th scope='col'>Monthly Fee</th>
           <th scope='col'>Latest Green Project</th>
-          <th scope='col'></th>
+          <th scope='col'>Bank Donation</th>
+          <th scope='col'>Bank Details</th>
           <th scope='col'></th>
         </tr>
       </thead>
       <tbody>
         {bankData.map(
-          ({ route, icon, bank, details, score, fee, project, meta }: BankData, i: number) => (
+          (
+            { route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData,
+            i: number,
+          ) => (
             <>
               <tr key={bank}>
                 <td scope='row'>
@@ -91,21 +94,19 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                   />
                 </td>
                 <td>{details}</td>
-                <td>{score}</td>
                 <td>{fee}</td>
-                <td>{project}</td>
                 <td>
-                  <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
-                    Make The Switch
-                  </Button>
+                  <TextLink href={projectLink} target='_blank' rel='noreferrer'>
+                    {project}
+                  </TextLink>
                 </td>
+                <td>{donation}</td>
                 <td>
                   <TextButton
                     type='button'
                     mode='primary'
                     onClick={expandRow(expandedRow === i ? null : i)}
                   >
-                    Details{' '}
                     <Image
                       src={`/icons/icon_chevron_${expandedRow === i ? 'down' : 'right'}.svg`}
                       alt=''
@@ -114,11 +115,16 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                     />
                   </TextButton>
                 </td>
+                <td>
+                  <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
+                    Switch
+                  </Button>
+                </td>
               </tr>
               <S.ExpandableRow isExpanded={expandedRow === i}>
                 <td colSpan={7}>
                   <S.BankMeta>
-                    {meta.personal.map((item: string) => (
+                    {meta.map((item: string) => (
                       <li key={item}>{item}</li>
                     ))}
                   </S.BankMeta>

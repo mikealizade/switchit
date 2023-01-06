@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useDispatch } from 'react-redux'
 import { Fallback } from '@components/Fallback/Fallback'
@@ -15,6 +16,34 @@ import { goodBanksConfig } from '@utils/data'
 import * as S from './MakeTheSwitch.style'
 import { Content, BoldLink, Buttons } from '@styles/common.style'
 
+import starling from '../../../../../public/images/logo_starling.svg'
+import monzo from '../../../../../public/icons/icon_monzo.png'
+import triodos from '../../../../../public/icons/icon_triodos.png'
+import nationwide from '../../../../../public/icons/icon_nationwide.png'
+
+const logoConfig = {
+  starling: {
+    img: starling,
+    width: 149,
+    height: 88,
+  },
+  monzo: {
+    img: monzo,
+    width: 60,
+    height: 58,
+  },
+  triodos: {
+    img: triodos,
+    width: 119,
+    height: 15,
+  },
+  nationwide: {
+    img: nationwide,
+    width: 121,
+    height: 27,
+  },
+}
+
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { push } = useRouter()
   const dispatch = useDispatch()
@@ -23,6 +52,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const bank = goodBanksConfig[bankName as keyof typeof goodBanksConfig]
+  const logo = logoConfig[bankName as keyof typeof logoConfig]
   const hasMadeSwitch = currentJourney!.completedSteps.includes(steps.makeSwitch)
 
   const onMakeTheSwitch = () => {
@@ -38,6 +68,12 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
             <ActionHeader
               header='Choose Your Bank'
               subHeader={`You've selected ${bank?.fullName}`}
+            />
+            <Image
+              src={logo.img.src}
+              alt={bank?.fullName}
+              width={logo.width}
+              height={logo.height}
             />
             <S.TextContent>
               <S.Text>{`This will take you to ${bank?.fullName}'s`} website</S.Text>

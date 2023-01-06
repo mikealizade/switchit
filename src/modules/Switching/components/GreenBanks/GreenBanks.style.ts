@@ -65,10 +65,23 @@ export const BanksTable = styled.table`
     padding: 25px 10px;
     text-align: left;
     border-top: 1px solid var(--gallery);
+    font-size: var(--fsSmall5);
   }
 
   th {
     border: 0;
+    width: 10%;
+
+    &:first-of-type,
+    &:last-of-type {
+      width: 15%;
+    }
+  }
+
+  td {
+    &:nth-of-type(2) {
+      font-style: italic;
+    }
   }
 `
 

@@ -10,18 +10,18 @@ import { sendRequest } from '@utils/functions'
 
 export const VideoUploader: NextPage<{
   file: any
+  isStepCompleted: boolean
+  isUploaded: boolean
+  canPostPublicly: boolean
   setFile: (file: any) => void
-}> = ({ file, setFile }) => {
+  setIsUploaded: (file: any) => void
+}> = ({ file, isStepCompleted, isUploaded, canPostPublicly = false, setFile, setIsUploaded }) => {
   const { user: { sub } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const toast = useToast()
   const { currentJourneyId, currentJourney: { videoUri } = {} } = useGetCurrentJourney()
-
-  console.log('videoUri', videoUri)
-
   const fileInput = useRef<HTMLInputElement>(null)
   const [isUploading, setIsUploading] = useState(false)
-  const [isUploaded, setIsUploaded] = useState(false)
 
   const handleClick = () => {
     fileInput.current!.click()
@@ -34,7 +34,52 @@ export const VideoUploader: NextPage<{
     return filesize > maxfilesize
   }
 
-  const uploadFile = useCallback(async () => {
+  const onSave = async (videoUri: string) => {
+    try {
+      const body = {
+        filter: { sub, 'switchJourneys.id': currentJourneyId },
+        payload: {
+          $set: {
+            'switchJourneys.$.videoUri': videoUri,
+          },
+        },
+        collection: 'users',
+        upsert: false,
+      }
+
+      request(body)
+    } catch (error) {
+      toast('An error occurred uploading your video', 'error')
+    }
+  }
+
+  const onSend = async (videoUri: string) => {
+    try {
+      const sendBody = {
+        filter: {},
+        payload: {
+          $push: {
+            testimonials: {
+              dateSent: new Date(),
+              video: videoUri,
+              userId: sub,
+              canPostPublicly,
+            },
+          },
+        },
+        collection: 'userTestimonials',
+        upsert: false,
+      }
+
+      request(sendBody)
+
+      toast('Your testimonial was sent successfully', 'success')
+    } catch (error) {
+      toast('An error occurred sending your testimonial', 'error')
+    }
+  }
+
+  const uploadFile = async () => {
     try {
       setIsUploading(true)
       const { data: { url } = {} } = await axios.post('/api/s3/upload', {
@@ -51,37 +96,25 @@ export const VideoUploader: NextPage<{
       })
 
       if (response.status === 200) {
-        try {
-          const body = {
-            filter: { sub, 'switchJourneys.id': currentJourneyId },
-            payload: {
-              $set: {
-                'switchJourneys.$.videoUri': videoUri,
-              },
-            },
-            collection: 'users',
-            upsert: false,
-          }
-
-          request(body)
-        } catch (error) {
-          toast('An error occurred uploading your video', 'error')
-        }
+        onSave(videoUri)
+        onSend(videoUri)
       }
+
       setIsUploaded(true)
       toast('Uploaded your video successfully', 'success')
     } catch (error) {
       toast('An error occurred uploading your video', 'error')
     }
+
     setIsUploading(false)
     setFile(null)
-  }, [file, sub, toast, currentJourneyId, request, setFile])
+  }
 
   const onUpload = () => {
-    if (validateFileSize()) {
-      toast('The maximum file size is 1MB', 'error')
-      return
-    }
+    // if (validateFileSize()) {
+    //   toast('The maximum file size is 1MB', 'error')
+    //   return
+    // }
 
     const uploadedFileDetail = async () => await uploadFile()
     uploadedFileDetail()
@@ -94,7 +127,7 @@ export const VideoUploader: NextPage<{
         size='small'
         mode='secondary'
         onClick={handleClick}
-        disabled={!!videoUri || isUploading || isUploaded}
+        disabled={isStepCompleted || !!videoUri || isUploading || isUploaded}
       >
         Attach
       </Button>
