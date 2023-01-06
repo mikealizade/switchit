@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleNav } from '@state/menu/menuSlice'
 import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
@@ -27,6 +28,7 @@ type User = {
 
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
+  const dispatch = useDispatch()
 
   console.log('pathname', pathname)
 
@@ -40,6 +42,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
 
   return (
     <S.UserContainer>
+      <S.Burger onClick={() => dispatch(toggleNav(true))}>|||</S.Burger>
       {isValidating ? (
         <Loader />
       ) : (

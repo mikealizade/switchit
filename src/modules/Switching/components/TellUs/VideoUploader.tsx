@@ -34,7 +34,7 @@ export const VideoUploader: NextPage<{
     return filesize > maxfilesize
   }
 
-  const onSave = async (videoUri: string) => {
+  const save = async (videoUri: string) => {
     try {
       const body = {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
@@ -53,9 +53,9 @@ export const VideoUploader: NextPage<{
     }
   }
 
-  const onSend = async (videoUri: string) => {
+  const send = async (videoUri: string) => {
     try {
-      const sendBody = {
+      const body = {
         filter: {},
         payload: {
           $push: {
@@ -71,11 +71,9 @@ export const VideoUploader: NextPage<{
         upsert: false,
       }
 
-      request(sendBody)
-
-      toast('Your testimonial was sent successfully', 'success')
+      request(body)
     } catch (error) {
-      toast('An error occurred sending your testimonial', 'error')
+      toast('An error occurred uploading your video', 'error')
     }
   }
 
@@ -96,8 +94,8 @@ export const VideoUploader: NextPage<{
       })
 
       if (response.status === 200) {
-        onSave(videoUri)
-        onSend(videoUri)
+        save(videoUri)
+        send(videoUri)
       }
 
       setIsUploaded(true)

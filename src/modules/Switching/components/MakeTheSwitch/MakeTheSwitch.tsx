@@ -53,7 +53,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const steps = getSteps()
   const bank = goodBanksConfig[bankName as keyof typeof goodBanksConfig]
   const logo = logoConfig[bankName as keyof typeof logoConfig]
-  const hasMadeSwitch = currentJourney!.completedSteps.includes(steps.makeSwitch)
+  const hasMadeSwitch = currentJourney!?.completedSteps.includes(steps.makeSwitch)
 
   const onMakeTheSwitch = () => {
     nextStep(steps.makeSwitch, null, { goodBank: bank.name, isVerified: true })
@@ -70,10 +70,10 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               subHeader={`You've selected ${bank?.fullName}`}
             />
             <Image
-              src={logo.img.src}
+              src={logo?.img.src}
               alt={bank?.fullName}
-              width={logo.width}
-              height={logo.height}
+              width={logo?.width}
+              height={logo?.height}
             />
             <S.TextContent>
               <S.Text>{`This will take you to ${bank?.fullName}'s`} website</S.Text>

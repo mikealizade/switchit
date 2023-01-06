@@ -48,7 +48,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
 
   const onSave = async () => {
     try {
-      const saveBody = {
+      const body = {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
         payload: {
           $set: {
@@ -59,7 +59,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
         upsert: false,
       }
 
-      request(saveBody)
+      request(body)
 
       // TODO success msg even when errors!
       toast('Your testimonial was saved successfully', 'success')
@@ -72,7 +72,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
     onNext()
 
     try {
-      const sendBody = {
+      const body = {
         filter: {},
         payload: {
           $push: {
@@ -88,7 +88,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
         upsert: false,
       }
 
-      request(sendBody)
+      request(body)
 
       toast('Your testimonial was sent successfully', 'success')
     } catch (error) {

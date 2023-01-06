@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const UserContainer = styled.section`
   display: flex;
@@ -6,6 +7,7 @@ export const UserContainer = styled.section`
   align-items: center;
   padding: 40px 40px 5px;
   background-color: var(--pampas);
+  position: relative;
 `
 
 export const UserDetails = styled.div`
@@ -75,4 +77,24 @@ export const ToSwitchLanding = styled.span`
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
+`
+
+export const Burger = styled.div`
+  position: absolute;
+  background-color: var(--white);
+  border-radius: 0 0 8px 0;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  transform: rotate(90deg);
+  padding-top: 5px;
+
+  ${() => mediaQuery.laptop} {
+    display: none;
+  }
 `

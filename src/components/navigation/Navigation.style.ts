@@ -1,19 +1,28 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const Nav = styled.nav`
+export const Nav = styled.nav<{ isNavOpen: boolean }>`
   min-width: 230px;
   background-color: var(--white);
   border-radius: 16px 0 0 16px;
   padding: 20px;
   row-gap: 100px;
   display: flex;
-  position: absolute;
-  left: -231px;
+  position: fixed;
+  transform: ${({ isNavOpen }) => (isNavOpen ? 'translateX(0)' : `translateX(-242px)`)};
+  transition: all 0.2s ease-in-out;
   flex-direction: column;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: ${({ isNavOpen }) => (isNavOpen ? '2px 0px 8px var(--pampas)' : 'none')};
 
   ${() => mediaQuery.laptop} {
     position: static;
+    box-shadow: none;
+    transform: translateX(0);
+    box-shadow: none;
   }
 `
 
@@ -59,4 +68,17 @@ export const Logo = styled.a`
   column-gap: 15px;
   align-items: center;
   font-size: var(--fsMedium8);
+`
+
+export const CloseMenu = styled.div`
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  ${() => mediaQuery.laptop} {
+    display: none;
+  }
 `

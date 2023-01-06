@@ -14,15 +14,16 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
   const { pathname } = useRouter()
   const hasSwitchDrawer = pathname.includes('/switching')
   const hasDrawer = pathname === '/profile'
+  const hasAside = pathname.includes('/switching/')
 
   return (
     <>
-      <S.AppContent>
+      <S.AppContent hasAside={hasAside}>
         {showUser && <User isValidating={isValidating} />}
         {children}
         {hasDrawer && <Drawer />}
       </S.AppContent>
-      {pathname.includes('/switching/') && (
+      {hasAside && (
         <S.Aside>
           <AsideContent />
           {hasSwitchDrawer && <Drawer narrow />}

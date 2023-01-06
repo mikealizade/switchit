@@ -92,7 +92,35 @@ const drawerConfig = {
     backLink: 'Impact Card View',
   },
   disclaimer: {
-    component: <div>Disclaimer</div>,
+    component: (
+      <div>
+        Disclaimer
+        <p>
+          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
+          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
+          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
+          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
+        </p>
+        <p>
+          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
+          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
+          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
+          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
+        </p>
+        <p>
+          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
+          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
+          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
+          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
+        </p>
+        <p>
+          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
+          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
+          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
+          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
+        </p>
+      </div>
+    ),
     backLink: 'Impact Card View',
   },
 }
@@ -100,15 +128,21 @@ const drawerConfig = {
 export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
+
+  console.log('isDrawerOpen', isDrawerOpen)
+
   const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
 
   return (
-    <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
-      <S.BackLink onClick={() => dispatch(toggleDrawer(section))}>
-        <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
-        {backLink}
-      </S.BackLink>
-      {component}
-    </S.Drawer>
+    <>
+      <S.MobileBackdrop isDrawerOpen={isDrawerOpen}></S.MobileBackdrop>
+      <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
+        <S.BackLink onClick={() => dispatch(toggleDrawer(section))}>
+          <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
+          {backLink}
+        </S.BackLink>
+        {component}
+      </S.Drawer>
+    </>
   )
 }

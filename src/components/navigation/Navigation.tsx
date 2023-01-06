@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '@state/store'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
+import { toggleNav } from '@state/menu/menuSlice'
 import { useUser } from '@auth0/nextjs-auth0'
 import { navigation, subNav } from './data'
 import logo from '../../../public/switchit_logo.png'
@@ -18,15 +21,19 @@ export const Navigation: NextPage = (): JSX.Element => {
     isLoading = false,
   } = useUser()
   const { pathname } = useRouter()
+  const dispatch = useDispatch()
+  const { isNavOpen } = useSelector((state: RootState) => state.menu)
+
   const [current, setHover] = useState('')
   const isActive = (route: string): boolean =>
     pathname === `/${route}` || pathname.includes(`/${route}`)
 
   return (
-    <S.Nav>
-      <S.Logo href='/dashboard'>
+    <S.Nav isNavOpen={isNavOpen}>
+      <S.Logo>
         <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
         <span>Switch It</span>
+        <S.CloseMenu onClick={() => dispatch(toggleNav(false))}>X</S.CloseMenu>
       </S.Logo>
 
       <S.Navigation>
