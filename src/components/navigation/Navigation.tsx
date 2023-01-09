@@ -22,7 +22,7 @@ export const Navigation: NextPage = (): JSX.Element => {
   } = useUser()
   const { pathname } = useRouter()
   const dispatch = useDispatch()
-  const { isNavOpen } = useSelector((state: RootState) => state.menu)
+  const { isNavOpen } = useSelector((state: RootState) => state.nav)
 
   const [current, setHover] = useState('')
   const isActive = (route: string): boolean =>
