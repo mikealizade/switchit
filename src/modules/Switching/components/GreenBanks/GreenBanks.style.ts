@@ -16,9 +16,32 @@ export const BankFilter = styled.div`
 export const AccountList = styled.ul`
   display: flex;
   column-gap: 18px;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  row-gap: 10px;
+  row-gap: 15px;
+
+  &:not(:first-of-type) {
+    flex-direction: column;
+
+    ${() => mediaQuery.tablet} {
+      flex-direction: row;
+    }
+  }
+
+  ${() => mediaQuery.tablet} {
+    row-gap: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  li:first-of-type {
+    width: 100%;
+
+    ${() => mediaQuery.tablet} {
+      width: auto;
+    }
+  }
 
   h3 {
     font-size: var(--fsSmall9);

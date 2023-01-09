@@ -15,7 +15,12 @@ export const BankSelector = styled.div`
   margin-bottom: 100px;
 
   .react-select {
-    min-width: 240px;
+    width: 100%;
+
+    ${() => mediaQuery.xmobile} {
+      width: auto;
+      min-width: 240px;
+    }
 
     ${() => mediaQuery.tablet} {
       min-width: 300px;

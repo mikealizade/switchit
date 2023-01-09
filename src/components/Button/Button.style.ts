@@ -45,8 +45,8 @@ export const Button = styled.button<{ size?: string }>`
     /* background-color: #e2dfda;
     color: #222; */
     opacity: 0.3;
-    cursor: default;
-    pointer-events: none;
+    /* pointer-events: none; */
+    cursor: not-allowed;
     /* border: 1px solid transparent; */
   }
 `
@@ -68,8 +68,7 @@ export const TextButton = styled.button`
   &:disabled {
     background-color: #fff;
     color: inherit;
-    cursor: default;
-    pointer-events: none;
+    cursor: not-allowed;
   }
 `
 

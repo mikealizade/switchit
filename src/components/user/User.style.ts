@@ -4,10 +4,17 @@ import { mediaQuery } from '@utils/functions'
 export const UserContainer = styled.section`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 40px 40px 5px;
+  padding: 30px;
+  row-gap: 20px;
   background-color: var(--pampas);
   position: relative;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+    padding: 40px 40px 5px;
+  }
 `
 
 export const UserDetails = styled.div`
@@ -29,6 +36,7 @@ export const SignedInUser = styled.div`
 
   img {
     border-radius: 50%;
+    min-width: 30px;
   }
 `
 

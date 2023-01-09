@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import userReducer from 'src/state/user/userSlice'
 import drawerReducer from 'src/state/drawer/drawerSlice'
-import menuReducer from 'src/state/menu/menuSlice'
+import navReducer from '@state/nav/navSlice'
 import friendsReducer from 'src/state/friends/friendsSlice'
 import toastReducer from 'src/state/toast/toastSlice'
 import genericReducer from '@state/generic/genericSlice'
@@ -20,7 +20,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   drawer: drawerReducer,
-  menu: menuReducer,
+  nav: navReducer,
   friends: friendsReducer,
   toast: toastReducer,
   generic: genericReducer,

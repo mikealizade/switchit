@@ -25,6 +25,7 @@ export const JourneyCard = styled(Card)<{ isJourneyComplete?: boolean }>`
   flex: 1;
   flex-wrap: wrap;
   column-gap: 25px;
+  flex-direction: column;
 
   ${() => mediaQuery.tablet} {
     padding: ${({ isJourneyComplete }) => (isJourneyComplete ? '60px 0 0' : '60px 30px')};
@@ -123,7 +124,11 @@ export const Section = styled.div`
 
 export const Header = styled.h2`
   width: 100%;
-  font-size: var(--fsLarge9);
+  font-size: var(--fsLarge1);
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsLarge9);
+  }
 
   ${() => mediaQuery.laptop} {
     + section {
@@ -136,7 +141,7 @@ export const Container = styled.div`
   display: flex;
   row-gap: 20px;
   flex-direction: column;
-  padding: 10px;
+  padding: 0;
   border-radius: 30px;
   flex: 1;
 

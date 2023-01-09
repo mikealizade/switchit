@@ -2,10 +2,9 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleNav } from '@state/menu/menuSlice'
+import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
-import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/User/User.style'
 
@@ -29,8 +28,6 @@ type User = {
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
   const dispatch = useDispatch()
-
-  console.log('pathname', pathname)
 
   const {
     email = '',
@@ -74,9 +71,9 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
                   <Image src={picture} alt={nickname} width={30} height={30} unoptimized />
                   <p>{email}</p>
                 </S.SignedInUser>
-                <S.Notifications>
+                {/* <S.Notifications>
                   <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />
-                </S.Notifications>
+                </S.Notifications> */}
               </>
             )}
           </S.UserDetails>

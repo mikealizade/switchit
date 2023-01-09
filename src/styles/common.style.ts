@@ -7,8 +7,12 @@ export const Content = styled.main`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 40px;
+  padding: 0;
   row-gap: 25px;
+
+  ${() => mediaQuery.tablet} {
+    padding: 40px;
+  }
 `
 
 export const NarrowContent = styled.div`
@@ -201,9 +205,14 @@ export const TabsContainer = styled(Div)`
 `
 
 export const Subheader = styled.h3`
-  font-size: var(--fsLarge4);
+  font-size: var(--fsMedium7);
   font-family: 'Konsolev Regular';
-  font-weight: normal;
+  font-weight: bold;
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsLarge4);
+    font-weight: normal;
+  }
 `
 
 export const Buttons = styled.div<{ single?: boolean }>`
