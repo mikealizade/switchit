@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useMediaQuery } from 'react-responsive'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
 import { Button } from '@components/Button/Button'
@@ -19,11 +20,13 @@ import {
 import * as S from './LeaveReviews.style'
 
 export const LeaveReviews: NextPage = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const bank = badBanksConfig[badBank as keyof typeof badBanksConfig]
   const trustpilotCopy = 'trustpilotCopy'
   const googleCopy = 'googleCopy'
+  const googleSize = isMobile ? 62 : 100
 
   const onNext = (): void => {
     nextStep(steps.leaveReviews, '/switching/tell-us')
@@ -64,7 +67,12 @@ export const LeaveReviews: NextPage = () => {
                       target='_blank'
                       rel='noreferrer'
                     >
-                      <Image src={'/icons/icon_google.png'} alt='' width={100} height={100} />
+                      <Image
+                        src={'/icons/icon_google.png'}
+                        alt=''
+                        width={googleSize}
+                        height={googleSize}
+                      />
                     </Anchor>
                     <S.CopyContainer>
                       <S.CopyInfo>
@@ -81,7 +89,7 @@ export const LeaveReviews: NextPage = () => {
                     </S.CopyContainer>
                   </Item>
                 </TileLinks>
-                <Buttons>
+                <Buttons align='right'>
                   <Button type='button' size='small' onClick={onNext}>
                     Next Impact Action
                   </Button>

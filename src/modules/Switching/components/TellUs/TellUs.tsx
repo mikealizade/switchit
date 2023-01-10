@@ -72,7 +72,7 @@ export const TellUs: NextPage = () => {
                     </UserContent>
                   </S.Item>
                 </S.TileLinks>
-                <Buttons single>
+                <Buttons align='right'>
                   <Button type='button' size='small' onClick={onCompleteJourney}>
                     Wrap Up Impact Actions
                   </Button>

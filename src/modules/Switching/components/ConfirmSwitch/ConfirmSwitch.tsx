@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@state/store'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useRouter } from 'next/router'
+import { useMediaQuery } from 'react-responsive'
 import { useNextStep } from '@hooks/useNextStep'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Card } from '@components/Card/Card'
@@ -43,9 +44,10 @@ export const ConfirmSwitch: NextPage = () => {
   const date = new Date() // TODO datepicker or select?
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   const onSubmit = (): void => {
-    nextStep(steps.confirmSwitch, '/switching/select-action')
+    nextStep(steps.confirmSwitch, '/switching/select-action', { isVerified: new Date() })
   }
 
   const onSign = ({ target: { value } }: EventType): void => {
@@ -53,9 +55,9 @@ export const ConfirmSwitch: NextPage = () => {
     dispatch(setSignature(value))
   }
 
-  const onCancel = (): void => {
-    setValue('')
-  }
+  // const onCancel = (): void => {
+  //   setValue('')
+  // }
 
   return (
     <>
@@ -78,10 +80,16 @@ export const ConfirmSwitch: NextPage = () => {
             </S.Agreement>
             <S.Signature>
               <Form row>
-                <fieldset>
+                <S.SignatureFieldset>
                   <S.Label htmlFor='bankName'>
                     <S.SignatureInput name='signature' onChange={onSign} value={value} />
-                    Signature
+
+                    <span>
+                      <span>Signature</span>
+                      <span>
+                        {date.getDay() + 1} {monthNames[date.getMonth()]} {date.getFullYear()}
+                      </span>
+                    </span>
                   </S.Label>
                   <S.Date>
                     <Image src={`/icons/icon_date.svg`} alt='' width={20} height={20} />
@@ -89,14 +97,14 @@ export const ConfirmSwitch: NextPage = () => {
                       {date.getDay() + 1} {monthNames[date.getMonth()]} {date.getFullYear()}
                     </div>
                   </S.Date>
-                </fieldset>
+                </S.SignatureFieldset>
                 <Buttons>
                   <Button type='button' mode='secondary' onClick={() => back()}>
                     Back
                   </Button>
-                  <Button type='button' mode='secondary' onClick={onCancel}>
+                  {/* <Button type='button' mode='secondary' onClick={onCancel}>
                     Cancel
-                  </Button>
+                  </Button> */}
                   <Button type='button' disabled={!value} onClick={onSubmit}>
                     {/* TODO handle isSubmitting */}
                     Submit

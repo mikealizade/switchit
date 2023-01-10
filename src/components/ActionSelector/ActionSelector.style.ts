@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const ActionSelector = styled.ul<{
   isDefault?: boolean
@@ -6,8 +7,12 @@ export const ActionSelector = styled.ul<{
   display: flex;
   gap: ${({ isDefault }) => (isDefault ? '30px' : '10px')};
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-self: flex-start;
+
+  ${() => mediaQuery.tablet} {
+    justify-content: flex-start;
+  }
 `
 
 export const Item = styled.li<{

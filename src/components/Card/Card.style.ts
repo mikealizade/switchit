@@ -9,7 +9,7 @@ export const Card = styled.section<{
   rowGap?: number
 }>`
   display: flex;
-  flex-direction: ${({ column }) => (column ? 'column' : 'flex')};
+  flex-direction: column;
   box-shadow: ${({ shadow }) => (shadow ? '1px 3px 3px rgba(0, 0, 0, 0.2)' : 'none')};
   column-gap: 40px;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '80px')};
@@ -19,6 +19,7 @@ export const Card = styled.section<{
   flex: ${({ stretch }) => (stretch ? '1' : 'none')};
 
   ${() => mediaQuery.tablet} {
+    flex-direction: ${({ column }) => (column ? 'column' : 'flex')};
     padding: ${({ padded }) => (padded ? '60px' : '30px')};
     border-radius: 10px;
   }

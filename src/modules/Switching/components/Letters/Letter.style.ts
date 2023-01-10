@@ -11,7 +11,11 @@ export const LetterContainer = styled.div`
     border: 1px solid var(--haze);
     background-color: var(--concrete);
     border-radius: 10px;
-    padding: 50px;
+    padding: 20px;
+
+    ${() => mediaQuery.tablet} {
+      padding: 50px;
+    }
   }
 
   [contenteditable='true'] {

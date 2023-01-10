@@ -70,9 +70,13 @@ export const Form = styled.form<{ row?: boolean }>`
 
   fieldset {
     display: flex;
-    flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+    flex-direction: column;
     row-gap: 35px;
     justify-content: space-between;
+
+    ${() => mediaQuery.tablet} {
+      flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+    }
   }
 
   label {
@@ -144,10 +148,15 @@ export const Checkbox = styled.span<{ isActive?: boolean }>`
 
 export const TileLinks = styled.ul`
   display: flex;
+  flex-direction: column;
   column-gap: 50px;
   justify-content: space-evenly;
   flex-wrap: wrap;
   row-gap: 50px;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+  }
 `
 
 export const Item = styled.li`
@@ -166,7 +175,11 @@ export const Anchor = styled.a`
   /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); */
   border: 2px solid var(--overcast);
   /* min-width: 366px; */
-  height: 235px;
+  height: 85px;
+
+  ${() => mediaQuery.tablet} {
+    height: 235px;
+  }
 `
 
 export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`
@@ -200,8 +213,13 @@ export const CopyIconHover = styled.span`
 `
 
 export const TabsContainer = styled(Div)`
-  width: 55%;
+  width: 100%;
   align-self: center;
+  /* justify-content: center; */
+
+  ${() => mediaQuery.laptop} {
+    width: 55%;
+  }
 `
 
 export const Subheader = styled.h3`
@@ -215,7 +233,7 @@ export const Subheader = styled.h3`
   }
 `
 
-export const Buttons = styled.div<{ single?: boolean }>`
+export const Buttons = styled.div<{ align?: string }>`
   display: flex;
   flex-direction: column;
   column-gap: 20px;
@@ -225,19 +243,20 @@ export const Buttons = styled.div<{ single?: boolean }>`
   /* flex: 1; */
 
   ${() => mediaQuery.tablet} {
-    justify-content: ${({ single }) => (single ? 'flex-end' : 'flex-start')};
+    justify-content: ${({ align }) =>
+      align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between'};
     flex-direction: row;
     /* padding: 20px 0; */
     padding: 0;
   }
 
-  button:first-of-type:not(:only-child) {
+  /* button:first-of-type:not(:only-child) {
     margin-right: auto;
   }
 
   button:only-child {
     margin-left: auto;
-  }
+  } */
 `
 
 export const TextLink = styled.a`

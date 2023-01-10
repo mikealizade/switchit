@@ -15,7 +15,7 @@ export const useSaveStep = () => {
   // if currentJourneyId does not exist in db push, else update
   const saveStep = async (
     step: number,
-    { goodBank, isVerified }: { goodBank: string; isVerified?: boolean },
+    { goodBank, isVerified }: { goodBank: string; isVerified?: Date },
   ) => {
     try {
       const insert = {

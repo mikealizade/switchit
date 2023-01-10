@@ -56,7 +56,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const hasMadeSwitch = currentJourney!?.completedSteps.includes(steps.makeSwitch)
 
   const onMakeTheSwitch = () => {
-    nextStep(steps.makeSwitch, null, { goodBank: bank.name, isVerified: true })
+    nextStep(steps.makeSwitch, null, { goodBank: bank.name })
     window.open(bank.link, '_blank', 'noreferrer')
   }
 

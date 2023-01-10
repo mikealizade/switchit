@@ -74,14 +74,14 @@ export const GreenBanks = (): JSX.Element => {
                 />
                 <BanksTable bankData={bankData} />
               </S.Section>
-              {/* <S.Buttons>
+              <S.Buttons align='left'>
                 <Button type='button' mode='secondary' onClick={() => back()}>
                   Back
                 </Button>
-                <Button type='button' size='small' onClick={onNext}>
+                {/* <Button type='button' size='small' onClick={onNext}>
                   Next
-                </Button>
-              </S.Buttons> */}
+                </Button> */}
+              </S.Buttons>
             </Card>
           </S.SwitchingColumn>
         </S.SwitchingColumnContainer>

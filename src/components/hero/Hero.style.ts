@@ -7,7 +7,7 @@ export const Hero = styled.div`
   flex-direction: column;
   column-gap: 50px;
   row-gap: 50px;
-  border-radius: 10px;
+  border-radius: 0;
   background-color: var(--white);
   padding: 20px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
@@ -16,6 +16,7 @@ export const Hero = styled.div`
     flex-direction: row;
     padding: 50px 100px 50px 30px;
     row-gap: initial;
+    border-radius: 10px;
   }
 
   > span {

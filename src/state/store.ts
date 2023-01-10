@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage/session'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['drawer', 'toast'],
+  blacklist: ['drawer', 'nav', 'toast'],
 }
 
 const rootReducer = combineReducers({

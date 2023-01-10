@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
+import { Div } from '@styles/common.style'
 
 export const BankFilter = styled.div`
   display: flex;
@@ -79,6 +80,7 @@ export const ClearFiltersButton = styled(AccountTypeButton)`
   align-self: flex-start;
   background-color: #bed3d9;
   border: 0;
+  align-self: flex-end;
 `
 
 export const BanksTable = styled.table`
@@ -117,16 +119,70 @@ export const ExpandableRow = styled.tr<{ isExpanded?: boolean }>`
 `
 
 export const BankMeta = styled.ul`
-  /* border: 1px solid var(--gallery); */
   padding: 0 15px;
-  background-color: var(--sand);
 
   li {
-    border-bottom: 1px solid var(--gallery);
-    padding: 8px 0;
+    padding: 10px 0;
 
     &:last-child {
       border: 0;
     }
   }
+`
+
+export const BanksList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+`
+
+export const BanksListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  background-color: var(--white);
+  padding: 15px 0;
+
+  button {
+    align-self: center;
+  }
+`
+
+export const BankItemHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 12px;
+  border-bottom: 1px solid var(--haze);
+  padding: 0 15px 15px;
+  font-size: var(--fsSmall4);
+`
+
+export const BankItemName = styled.h3`
+  font-weight: bold;
+`
+
+export const BankItemHeaderDetails = styled.p`
+  font-style: italic;
+`
+
+export const BankItemDetails = styled.ul`
+  display: flex;
+  column-gap: 10px;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--pampas);
+  padding: 0 15px 15px;
+`
+
+export const BankDetailsItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: center;
+  font-size: var(--fsSmall5);
+`
+
+export const DetailHeader = styled.div`
+  font-weight: bold;
 `

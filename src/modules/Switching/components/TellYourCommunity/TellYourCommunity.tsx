@@ -70,7 +70,7 @@ export const TellYourCommunity: NextPage = () => {
               </StyledTabs>
             </TabsContainer>
 
-            <S.Buttons>
+            <S.Buttons align='right'>
               <Button type='button' size='small' onClick={onNext}>
                 Next Impact Action
               </Button>

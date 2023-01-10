@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 import { PlainInput } from '@styles/common.style'
 
 export const Signature = styled.div`
@@ -7,6 +8,17 @@ export const Signature = styled.div`
   align-items: center;
 
   fieldset {
+    padding: 0;
+
+    ${() => mediaQuery.tablet} {
+      padding: 0 50px;
+    }
+  }
+`
+export const SignatureFieldset = styled.fieldset`
+  padding: 0;
+
+  ${() => mediaQuery.tablet} {
     padding: 0 50px;
   }
 `
@@ -14,27 +26,55 @@ export const Signature = styled.div`
 export const Agreement = styled.p`
   font-size: var(--fsMedium9);
   line-height: 23px;
-  padding: 0 50px;
-`
+  padding: 0;
+  font-size: initial;
 
-export const SignatureInput = styled(PlainInput)`
-  height: 100px;
-  padding: 30px;
-  font-size: var(--fsLarge2);
-  background-color: var(--concrete);
+  ${() => mediaQuery.tablet} {
+    padding: 0 50px;
+  }
 `
 
 export const Label = styled.label`
   font-size: var(--fsSmall3);
   color: var(--slate);
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ${() => mediaQuery.tablet} {
+    span {
+      display: none;
+    }
+  }
+`
+
+export const SignatureInput = styled(PlainInput)`
+  height: 50px;
+  padding: 10px 20px;
+  font-size: var(--fsLarge2);
+  background-color: var(--concrete);
+
+  ${() => mediaQuery.tablet} {
+    padding: 30px;
+    height: 100px;
+  }
 `
 
 export const Date = styled.div`
-  display: flex;
-  justify-content: space-between;
-  column-gap: 20px;
-  padding: 10px 35px 10px 15px;
-  border: 1px solid var(--gallery);
-  border-radius: 10px;
-  align-self: flex-start;
+  display: none;
+
+  ${() => mediaQuery.tablet} {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid var(--gallery);
+    border-radius: 10px;
+    align-self: flex-start;
+    font-size: initial;
+  }
 `

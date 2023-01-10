@@ -35,7 +35,7 @@ export const bankConfig = [
     bank: 'Triodos Bank',
     details: 'Best current account',
     score: '',
-    fee: '£0',
+    fee: '£3',
     project: 'Sea Lanes',
     projectLink: 'https://www.triodos.co.uk/articles/2022/brighton-sea-swimming-pool-new-lending',
     donation: 'Yes',

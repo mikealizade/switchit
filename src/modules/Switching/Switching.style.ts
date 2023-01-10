@@ -26,9 +26,13 @@ export const JourneyCard = styled(Card)<{ isJourneyComplete?: boolean }>`
   flex-wrap: wrap;
   column-gap: 25px;
   flex-direction: column;
+  row-gap: 30px;
 
   ${() => mediaQuery.tablet} {
+    flex-direction: row;
     padding: ${({ isJourneyComplete }) => (isJourneyComplete ? '60px 0 0' : '60px 30px')};
+    row-gap: initial;
+    padding: 60px 30px 30px;
   }
 `
 
@@ -171,7 +175,7 @@ export const Content = styled.div`
   }
 `
 
-export const Buttons = styled.div<{ single?: boolean }>`
+export const Buttons = styled.div<{ align?: string }>`
   display: flex;
   flex-direction: column;
   column-gap: 20px;
@@ -181,17 +185,22 @@ export const Buttons = styled.div<{ single?: boolean }>`
   /* flex: 1; */
 
   ${() => mediaQuery.tablet} {
-    justify-content: ${({ single }) => (single ? 'flex-end' : 'flex-start')};
+    justify-content: ${({ align }) =>
+      align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between'};
     flex-direction: row;
     /* padding: 20px 0; */
     padding: 0;
   }
 
-  button:first-of-type:not(:only-child) {
+  /* button:first-of-type:not(:only-child) {
     margin-right: auto;
   }
 
   button:only-child {
     margin-left: auto;
-  }
+  } */
+`
+export const ButtonsAlign = styled.div`
+  display: flex;
+  column-gap: 20px;
 `
