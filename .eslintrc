@@ -57,8 +57,7 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      "typescript": {},
-      "caseSensitive": false
+      "typescript": {}
     }
   }
 }
