@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import type { NextPage } from 'next'
+import { useState } from 'react'
 import * as S from '@components/PointsChart/PointsChart.style'
 
 export const PointsChart: NextPage<{ total: number; data: any }> = ({

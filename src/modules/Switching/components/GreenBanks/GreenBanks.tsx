@@ -1,17 +1,17 @@
 import Head from 'next/head'
-import { Card } from '@components/Card/Card'
-import { bankConfig } from './data'
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilters'
-import { BanksTable } from '@modules/Switching/components/GreenBanks/BanksTable'
+import { useEffect, useState } from 'react'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
+import { Card } from '@components/Card/Card'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import { actionText } from '@utils/constants'
 import * as S from '@modules/Switching/Switching.style'
+import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilters'
+import { BanksTable } from '@modules/Switching/components/GreenBanks/BanksTable'
 import { Content } from '@styles/common.style'
+import { actionText } from '@utils/constants'
+import { bankConfig } from './data'
 
 export const GreenBanks = (): JSX.Element => {
   const { push, back } = useRouter()

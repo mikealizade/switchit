@@ -244,8 +244,8 @@ export const countries = [
     label: 'Costa Rica',
   },
   {
-    value: "Cote D'Ivoire",
-    label: "Cote D'Ivoire",
+    value: `Cote D'Ivoire`,
+    label: `Cote D'Ivoire`,
   },
   {
     value: 'Croatia',
@@ -536,8 +536,8 @@ export const countries = [
     label: 'Kyrgyzstan',
   },
   {
-    value: "Lao People'S Dem Republic",
-    label: "Lao People'S Dem Republic",
+    value: `Lao People'S Dem Republic`,
+    label: `Lao People'S Dem Republic`,
   },
   {
     value: 'Latvia',

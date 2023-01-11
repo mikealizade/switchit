@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useFriends } from '@hooks/useFriends'
 import { Ellipsis } from '@components/Ellipsis/Ellipsis'
+import { useFriends } from '@hooks/useFriends'
 import * as S from '@modules/Profile/components/SwitchingFriends/SwitchingFriends.style'
 import { Title } from '@styles/common.style'
 

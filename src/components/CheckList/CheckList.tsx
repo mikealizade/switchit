@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import * as S from '@components/CheckList/CheckList.style'
-import Heart from '../../../public/icons/icon_brokenheart.svg'
 import { Title } from '@styles/common.style'
+import Heart from '../../../public/icons/icon_brokenheart.svg'
 
 export const CheckList: NextPage = (): JSX.Element => {
   return (

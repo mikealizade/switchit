@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
+import { ResourcesType } from '@modules/Resources/Resources'
 import Settings from '@modules/Settings/Settings'
 import { baseUrl } from '@utils/constants'
-import { ResourcesType } from '@modules/Resources/Resources'
 
 export async function getServerSideProps() {
   const res = await fetch(`${baseUrl}/api/db/findResources?type=pdf`)

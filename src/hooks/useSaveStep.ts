@@ -1,8 +1,8 @@
 import { useUser } from '@auth0/nextjs-auth0'
 import useSWRMutation from 'swr/mutation'
-import { sendRequest } from '@utils/functions'
-import { useToast } from '@hooks/useToast'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useToast } from '@hooks/useToast'
+import { sendRequest } from '@utils/functions'
 
 export const useSaveStep = () => {
   const { user: { sub = '' } = {} } = useUser()

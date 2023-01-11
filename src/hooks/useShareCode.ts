@@ -1,10 +1,10 @@
 import { nanoid } from 'nanoid'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@state/store'
 import useSWRMutation from 'swr/mutation'
-import { sendRequest } from '@utils/functions'
+import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 import { whatsAppUrl } from '@utils/constants'
+import { sendRequest } from '@utils/functions'
 
 export const useShareCode = () => {
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import * as S from '@modules/Profile/components/ProfileSummary/ProfileSummary.style'
 import { EditableInput } from '@components/EditableInput/EditableInput'
+import * as S from '@modules/Profile/components/ProfileSummary/ProfileSummary.style'
 
 export type ProfileSummaryProps = {
   proudActions: string

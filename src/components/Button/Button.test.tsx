@@ -1,7 +1,7 @@
 // import { BrowserRouter as Router } from 'react-router-dom'
 import { render, screen, waitFor } from '@testing-library/react'
-import { Button } from '@components/Button/Button'
 import userEvent from '@testing-library/user-event'
+import { Button } from '@components/Button/Button'
 
 describe('Button component', () => {
   const onClick = jest.fn()

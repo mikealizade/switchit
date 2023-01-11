@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import { Card } from '@components/Card/Card'
-import { BankFinder } from './BankFinder'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
-import { steps } from '@utils/constants'
-import { Content } from '@styles/common.style'
 import * as S from '@modules/Switching/Switching.style'
 import { Header } from '@modules/Switching/Switching.style'
+import { Content } from '@styles/common.style'
+import { steps } from '@utils/constants'
+import { BankFinder } from './BankFinder'
 
 export const SelectBank = (): JSX.Element => {
   return (

@@ -1,33 +1,33 @@
-import { FC, useEffect, useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
+import { nanoid } from 'nanoid'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
-import { nanoid } from 'nanoid'
-import { useUser } from '@auth0/nextjs-auth0'
+import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Button } from '@components/Button/Button'
+import { Card } from '@components/Card/Card'
+import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
 import { Hero } from '@components/Hero/Hero'
-import { fetcher, filterActionType, filterSteps } from '@utils/functions'
+import { Tabs } from '@components/Tabs/Tabs'
+import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import * as S from '@modules/Switching/Switching.style'
 import {
   setAddNewJourney,
   setCurrentJourney,
   setCurrentJourneyId,
   Journey,
 } from '@state/switchJourney/switchJourneySlice'
-import { Tabs } from '@components/Tabs/Tabs'
-import { Card } from '@components/Card/Card'
-import { ActionSelector } from '@components/ActionSelector/ActionSelector'
-import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
+import { Content, Row } from '@styles/common.style'
 import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
 import { actionsConfig, goodBanksConfig } from '@utils/data'
-import { startJourneyConfig, startJourneyNoBankConfig } from './data'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { fetcher, filterActionType, filterSteps } from '@utils/functions'
 import { Action } from '@utils/types'
 import { JourneyName } from './components/JourneyName/JourneyName'
-import { Content, Row } from '@styles/common.style'
-import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import * as S from '@modules/Switching/Switching.style'
+import { startJourneyConfig, startJourneyNoBankConfig } from './data'
 
 type JourneySteps = { step: string; text: string; route: string }
 type JourneyFilter = { journeyType: string; completedSteps: number[] }
@@ -135,11 +135,11 @@ const Switching = (): JSX.Element => {
     }))
   const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
   const actions = actionsConfig.filter(filterActionType(currentJourneyType))
-  const goodBank = currentJourney!?.goodBank
+  const goodBank = currentJourney?.goodBank
   const journeySteps =
     currentJourneyType === journeyTypes.noBankAccount
-      ? startJourneyNoBankConfig(goodBank)
-      : startJourneyConfig(goodBank)
+      ? startJourneyNoBankConfig(String(goodBank))
+      : startJourneyConfig(String(goodBank))
 
   console.log('switchJourneys', switchJourneys)
 
@@ -197,7 +197,7 @@ const Switching = (): JSX.Element => {
           },
         ]
       : []),
-    ...(completedJourneys.length ? [{ tab: `Completed Journeys`, currentJourneyId: '' }] : []), //TODO how are completed journeys shown in ui / set currentJourneyId?
+    ...(completedJourneys.length ? [{ tab: 'Completed Journeys', currentJourneyId: '' }] : []), //TODO how are completed journeys shown in ui / set currentJourneyId?
   ]
 
   useEffect(() => {

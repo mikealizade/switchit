@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
-import ProgressProvider from './ProgressProvider'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from './CircularProgressBar.style'
+import ProgressProvider from './ProgressProvider'
 
 export const CircularProgressBar: FC<{ progress: number }> = ({ progress }) => {
   const getSteps = useStepsByJourneyType()

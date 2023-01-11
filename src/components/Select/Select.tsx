@@ -1,5 +1,5 @@
+import cs from 'classnames'
 import { FC } from 'react'
-import ReactSelect from 'react-select'
 import {
   useForm,
   useController,
@@ -7,7 +7,7 @@ import {
   RegisterOptions,
   UseFormRegisterReturn,
 } from 'react-hook-form'
-import cs from 'classnames'
+import ReactSelect from 'react-select'
 
 type SelectProps = {
   name: string

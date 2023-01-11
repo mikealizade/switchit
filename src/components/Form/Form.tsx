@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
 import type { NextPage } from 'next'
+import { useEffect } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { Input } from '@components/Input/Input'
 import { FormButtons } from '@components/FormButtons/FormButtons'
+import { Input } from '@components/Input/Input'
 
 export const Form: NextPage<{ data?: any; disabled?: boolean }> = ({
   data,

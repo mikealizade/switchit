@@ -42,12 +42,8 @@ export const Button = styled.button<{ size?: string }>`
   }
 
   &:disabled {
-    /* background-color: #e2dfda;
-    color: #222; */
     opacity: 0.3;
-    /* pointer-events: none; */
     cursor: not-allowed;
-    /* border: 1px solid transparent; */
   }
 `
 

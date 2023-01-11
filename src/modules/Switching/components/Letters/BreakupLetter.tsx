@@ -1,13 +1,13 @@
-import React from 'react'
 import type { NextPage } from 'next'
-import { ErrorBoundary } from 'react-error-boundary'
 import { useRouter } from 'next/router'
+import React from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
-import { Letter } from './Letter'
+import * as S from '@modules/Switching/Switching.style'
+import { Content } from '@styles/common.style'
 import { actionText, steps } from '@utils/constants'
 import { getDefaultLetterText } from '@utils/functions'
-import { Content } from '@styles/common.style'
-import * as S from '@modules/Switching/Switching.style'
+import { Letter } from './Letter'
 
 export const BreakupLetter: NextPage = () => {
   const { push } = useRouter()

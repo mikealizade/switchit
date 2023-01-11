@@ -1,13 +1,13 @@
-import React from 'react'
 import type { NextPage } from 'next'
-import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { RootState } from '@state/store'
-import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { Tabs } from '@components/Tabs/Tabs'
-import * as S from '@components/ProfileAwardsBadges/ProfileAwardsBadges.style'
 import Link from 'next/link'
-import { Accordion } from '@components/Accordion/Accordion'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Accordion } from '@components/Accordion/ProfileAccordion'
+import * as S from '@components/ProfileAwardsBadges/ProfileAwardsBadges.style'
+import { Tabs } from '@components/Tabs/Tabs'
+import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { RootState } from '@state/store'
 
 export const ProfileAwardsBadges: NextPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)

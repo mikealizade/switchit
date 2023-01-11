@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '@components/Button/Button'
-import Draw from '../../../public/icons/icon_draw.svg'
-import { Post } from '@pages/dashboard'
 import { useRouter } from 'next/router'
+import { Button } from '@components/Button/Button'
 import * as S from '@components/Hero/Hero.style'
+import { Post } from '@pages/dashboard'
+import Draw from '../../../public/icons/icon_draw.svg'
 
 export const DashboardHero: NextPage<{ post: Post }> = ({
   post: { id = '', title = '', summary = '' } = {},

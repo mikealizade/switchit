@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
-import { steps, journeyTypes, noBankAccountSteps } from '@utils/constants'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import { Action } from '@utils/types'
+import Link from 'next/link'
+import { useState } from 'react'
 import * as S from '@components/ActionSelector/ActionSelector.style'
 import { Button } from '@components/Button/Button'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { steps, journeyTypes, noBankAccountSteps } from '@utils/constants'
+import { Action } from '@utils/types'
 
 type ActionSelectorProps = {
   currentAction?: Action | null

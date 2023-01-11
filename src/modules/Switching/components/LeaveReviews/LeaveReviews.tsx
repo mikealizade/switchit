@@ -1,23 +1,23 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useMediaQuery } from 'react-responsive'
-import { Fallback } from '@components/Fallback/Fallback'
-import { Card } from '@components/Card/Card'
-import { Button } from '@components/Button/Button'
-import Image from 'next/image'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { actionText, steps } from '@utils/constants'
-import { badBanksConfig } from './data'
-import { onCopy } from '@utils/functions'
-import { useNextStep } from '@hooks/useNextStep'
+import { Button } from '@components/Button/Button'
+import { Card } from '@components/Card/Card'
+import { Fallback } from '@components/Fallback/Fallback'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { Content, TileLinks, Item, Anchor } from '@styles/common.style'
+import { useNextStep } from '@hooks/useNextStep'
 import {
   Buttons,
   SwitchingColumnContainer,
   SwitchingColumn,
 } from '@modules/Switching/Switching.style'
+import { Content, TileLinks, Item, Anchor } from '@styles/common.style'
+import { actionText, steps } from '@utils/constants'
+import { onCopy } from '@utils/functions'
 import * as S from './LeaveReviews.style'
+import { badBanksConfig } from './data'
 
 export const LeaveReviews: NextPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })

@@ -1,5 +1,5 @@
-import { useCallback } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
+import { useCallback } from 'react'
 import useSWRMutation from 'swr/mutation'
 import { sendRequest } from '@utils/functions'
 

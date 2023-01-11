@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import * as S from '@components/SelectActionCard/SelectActionCard.style'
 import { RootState } from '@state/store'
 import { actionsConfig } from '@utils/data'
-import * as S from '@components/SelectActionCard/SelectActionCard.style'
 
 export const SelectActionCards = () => {
   const actionCardIndex = useSelector((state: RootState) => state.generic.actionCardIndex)

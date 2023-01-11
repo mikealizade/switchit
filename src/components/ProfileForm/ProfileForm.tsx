@@ -1,17 +1,17 @@
-import { useEffect } from 'react'
 import type { NextPage } from 'next'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@state/store'
-import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { Input } from '@components/Input/Input'
-import { FormButtons } from '@components/FormButtons/FormButtons'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
-import { setUser } from '@state/user/userSlice'
-import { useUpdateUser } from '@hooks/useUpdateUser'
+import { useEffect } from 'react'
+import { FormProvider, useForm, FieldValues } from 'react-hook-form'
+import { useSelector, useDispatch } from 'react-redux'
+import { FormButtons } from '@components/FormButtons/FormButtons'
+import { Input } from '@components/Input/Input'
 import { useToast } from '@hooks/useToast'
-import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
+import { useUpdateUser } from '@hooks/useUpdateUser'
 import * as St from '@modules/Profile/Profile.style'
+import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
+import { RootState } from '@state/store'
+import { setUser } from '@state/user/userSlice'
 
 export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   data,
@@ -75,11 +75,11 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   return (
     <>
       <S.ProfileHead isProfile>
-        <div className='picture'>
+        <S.Picture isProfile>
           {picture && nickname && (
             <Image src={picture} alt={nickname} width={132} height={132} unoptimized />
           )}
-        </div>
+        </S.Picture>
         <S.ProfileNames>
           <S.ProfileName>{nickname}</S.ProfileName>
           <S.Username>{username}</S.Username>

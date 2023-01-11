@@ -1,24 +1,23 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
-import { Card } from '@components/Card/Card'
-import { ProgressBar } from '@components/ProgressBar/ProgressBar'
-import { Button } from '@components/Button/Button'
-import { fetcher } from '@utils/functions'
-import { Content } from '@styles/common.style'
+import { useEffect, useState } from 'react'
 import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar'
+import useSWR from 'swr'
+import { Button } from '@components/Button/Button'
+import { Card } from '@components/Card/Card'
 import ProgressProvider from '@components/CircularProgressBar/ProgressProvider'
-import { steps } from '@utils/constants'
-import { useNextStep } from '@hooks/useNextStep'
+import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { ButtonContainer } from '@styles/common.style'
+import { useNextStep } from '@hooks/useNextStep'
 import {
   SwitchingColumnContainer,
   SwitchingColumn,
   Buttons,
+  Header,
 } from '@modules/Switching/Switching.style'
-import { Header } from '@modules/Switching/Switching.style'
+import { Content } from '@styles/common.style'
+import { steps } from '@utils/constants'
+import { fetcher } from '@utils/functions'
 import * as S from '../BankScore/BankScore.style'
 
 // TODO links to good bank buttons
@@ -126,7 +125,7 @@ export const BankScore = (): JSX.Element => {
                       >
                         Check Another Bank Score
                       </Button>
-                      <Button type='button' size='small' onClick={() => {}}>
+                      <Button type='button' size='small' onClick={() => undefined}>
                         What Else Can I Do To Act?
                       </Button>
                       <Button

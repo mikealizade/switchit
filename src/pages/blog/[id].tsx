@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import Blog from '@modules/Blog/Blog'
 import { useRouter } from 'next/router'
-import { baseUrl } from '@utils/constants'
+import Blog from '@modules/Blog/Blog'
 import { Posts, Post } from '@pages/dashboard'
+import { baseUrl } from '@utils/constants'
 
 export async function getServerSideProps() {
   const res = await fetch(`${baseUrl}/api/db/findBlogPosts`)

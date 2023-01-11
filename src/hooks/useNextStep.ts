@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useSaveStep } from '@hooks/useSaveStep'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 
 export const useNextStep = () => {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ export const useNextStep = () => {
   const { currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
 
   const saveNextStep = (
-    step: number = 0,
+    step = 0,
     route: string | null = '',
     extraData: any = {}, //{ [key: string]: unknown }
   ) => {

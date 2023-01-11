@@ -1,8 +1,8 @@
+import cs from 'classnames'
 import { FC } from 'react'
 import { FieldErrors, FieldError, RegisterOptions, UseFormRegisterReturn } from 'react-hook-form'
-import cs from 'classnames'
-import { regexConfig, emailRegex } from '@utils/constants'
 import * as S from '@components/Input/Input.style'
+import { regexConfig, emailRegex } from '@utils/constants'
 
 type InputProps = {
   name: string

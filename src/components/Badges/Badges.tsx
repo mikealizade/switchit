@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import { Ellipsis } from '@components/Ellipsis/Ellipsis'
 import * as S from '@components/Badges/Badges.style'
+import { Ellipsis } from '@components/Ellipsis/Ellipsis'
 import { Title } from '@styles/common.style'
 
 export type Badge = {

@@ -1,6 +1,6 @@
 import { Fetcher } from 'swr'
 // import { journeyTypes } from '@utils/constants'
-import { journeyTypes, noBankAccountSteps, steps } from '@utils/constants'
+import { journeyTypes, steps } from '@utils/constants'
 
 export const breakpoints: Record<string, number> = {
   mobile: 480,
@@ -56,10 +56,7 @@ export const filterSteps = (step: number) => step <= steps.confirmSwitch
 //   return currentJourneyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
 // }
 
-export const getDefaultLetterText = (
-  bankName: string = '[bank name]',
-  nickname: string,
-): string => {
+export const getDefaultLetterText = (bankName = '[bank name]', nickname: string): string => {
   return `
   <div>
     Dear ${bankName} - default hello letter

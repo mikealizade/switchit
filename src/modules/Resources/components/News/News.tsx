@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import * as S from '@modules/Resources/components/News/News.style'
 import { ResourcesType } from '@modules/Resources/Resources'
+import * as S from '@modules/Resources/components/News/News.style'
 import { awsS3Uri } from '@utils/constants'
 
 export const News: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {

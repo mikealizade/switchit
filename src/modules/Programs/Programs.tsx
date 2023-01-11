@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { SocialPost } from '@components/SocialPost/SocialPost'
 import { Hero } from '@components/Hero/Hero'
+import { SocialPost } from '@components/SocialPost/SocialPost'
 import * as S from './Programs.style'
 import { socialPostsConfig, SocialPostConfig } from './data'
 

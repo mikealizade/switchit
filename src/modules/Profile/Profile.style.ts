@@ -1,13 +1,18 @@
 import styled from '@emotion/styled'
-import { Form } from '@styles/common.style'
-import { Ellipsis } from '@styles/common.style'
+import { Form, Ellipsis } from '@styles/common.style'
+import { mediaQuery } from '@utils/functions'
 
 export const ProfileEllipsis = styled(Ellipsis)`
   position: absolute;
-  top: 68px;
   cursor: pointer;
   font-size: var(--fsLarge);
-  right: -5px;
+  top: 60px;
+  right: 0;
+
+  ${() => mediaQuery.tablet} {
+    top: 90px;
+    right: 20px;
+  }
 `
 
 export const ProfileForm = styled(Form)`

@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useShareCode } from '@hooks/useShareCode'
-import { Loader } from '@components/Loader/Loader'
 import { Ellipsis } from '@components/Ellipsis/Ellipsis'
+import { Loader } from '@components/Loader/Loader'
+import { useShareCode } from '@hooks/useShareCode'
 import * as S from '@modules/Dashboard/components/SharingCodes/SharingCodes.style'
-import { Title } from '@styles/common.style'
-import { ShareButton } from '@styles/common.style'
+import { Title , ShareButton } from '@styles/common.style'
 
 type SharingCodesProps = { total: number }
 

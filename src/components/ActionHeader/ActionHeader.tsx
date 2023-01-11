@@ -1,12 +1,11 @@
 import type { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import { Header } from '@modules/Switching/Switching.style'
 import { Subheader } from '@styles/common.style'
 import { HeaderContainer } from './ActionHeader.style'
 
 type ActionHeader = {
   header: string
-  subHeader: string
+  subHeader?: string
   text?: string
   isStepCompleted?: boolean
 }
@@ -17,8 +16,6 @@ export const ActionHeader: NextPage<ActionHeader> = ({
   text,
   isStepCompleted,
 }): JSX.Element => {
-  const { back } = useRouter()
-
   return (
     <HeaderContainer>
       <Header>

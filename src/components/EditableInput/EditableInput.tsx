@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
+import { useEffect, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
-import { sendRequest } from '@utils/functions'
 import * as S from '@components/EditableInput/EditableInput.style'
+import { sendRequest } from '@utils/functions'
 
 export const EditableInput: NextPage<{ name: string; defaultValue: string }> = ({
   name = '',

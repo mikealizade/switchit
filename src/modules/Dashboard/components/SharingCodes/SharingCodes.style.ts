@@ -4,7 +4,7 @@ export const SharingCodes = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-self: flex-start;
+  /* align-self: flex-start; */
   row-gap: 20px;
   flex: 1;
 

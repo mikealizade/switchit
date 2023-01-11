@@ -1,7 +1,7 @@
-import { useState } from 'react'
 import type { NextPage } from 'next'
-import TabsPanel from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import TabsPanel from '@mui/material/Tabs'
+import { useState } from 'react'
 import * as S from '@components/Tabs/Tabs.style'
 
 interface TabPanelProps {

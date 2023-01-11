@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@state/store'
+import { useEffect, useState } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { updateUser } from '@state/user/userSlice'
-import { Input } from '@components/Input/Input'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
-import { defaultProfile } from './data'
+import { Input } from '@components/Input/Input'
+import { RootState } from '@state/store'
+import { updateUser } from '@state/user/userSlice'
 import { Form } from '@styles/common.style'
+import { defaultProfile } from './data'
 
 export const SignUpFormStep2: NextPage<{
   data?: any

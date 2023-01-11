@@ -7,16 +7,17 @@ import Image from 'next/image'
 import { useState } from 'react'
 import * as S from './Accordion.style'
 
-type FAQ = {
-  question: string
-  answer: string
+type Award = {
+  count: number
+  type: string
+  icon: string
 }
 
 const AccordionItem = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   '&:not(:last-child)': {
-    borderBottom: '1px solid #ada9a3',
+    borderBottom: 0,
   },
   '&:before': {
     display: 'none',
@@ -36,7 +37,6 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 
 const AccordionDetails = styled(MuiAccordionDetails)(() => ({
   fontSize: '2rem',
-  padding: '8px 0 20px',
 }))
 
 export const Accordion = ({ data }: { data: any }) => {
@@ -48,7 +48,7 @@ export const Accordion = ({ data }: { data: any }) => {
 
   return (
     <S.AccordionContainer>
-      {data.map(({ question, answer }: FAQ, i: number) => (
+      {data.map(({ count, type, icon }: Award, i: number) => (
         <AccordionItem
           key={`type${i}`}
           expanded={expanded === `panel${i}`}
@@ -56,13 +56,15 @@ export const Accordion = ({ data }: { data: any }) => {
         >
           <AccordionSummary aria-controls='panel1d-content' id='panel1d-header' sx={{ padding: 0 }}>
             <Typography
-              sx={{ fontSize: '1.8rem', display: 'flex', alignItems: 'center', columnGap: '20px' }}
+              sx={{ fontSize: '1.6rem', display: 'flex', alignItems: 'center', columnGap: '20px' }}
             >
-              {question}
+              {count} x
+              <Image src={`/icons/icon_${icon}.svg`} alt='' width={60} height={60} />
+              {type}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography sx={{ fontSize: '1.5rem' }}>{answer}</Typography>
+            <Typography sx={{ fontSize: '1.5rem' }}>10/05/2023 - LSE University</Typography>
           </AccordionDetails>
         </AccordionItem>
       ))}

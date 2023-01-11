@@ -1,5 +1,5 @@
-import { connectToDatabase } from '@helpers/mongodb'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { connectToDatabase } from '@helpers/mongodb'
 
 const fetchOne = async (req: NextApiRequest, res: NextApiResponse) => {
   const { db } = await connectToDatabase()

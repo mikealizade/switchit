@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useDispatch, useSelector } from 'react-redux'
-import { toggleNav } from '@state/nav/navSlice'
-import { RootState } from '@state/store'
 import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
 import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/User/User.style'
+import { toggleNav } from '@state/nav/navSlice'
+import { RootState } from '@state/store'
 
 type User = {
   _id: string

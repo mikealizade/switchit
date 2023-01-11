@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import * as S from '@components/Layout/Layout.style'
 import { ImpactCard } from '@components/ImpactCard/ImpactCard'
+import * as S from '@components/Layout/Layout.style'
 
 export const Aside = (): JSX.Element => {
   const { pathname } = useRouter()

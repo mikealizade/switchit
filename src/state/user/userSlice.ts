@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserProfile } from '@auth0/nextjs-auth0'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: any = {}
 

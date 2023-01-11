@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 import { PlainInput } from '@styles/common.style'
+import { mediaQuery } from '@utils/functions'
 
 export const Signature = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { onCopy } from '@utils/functions'
 import { CopyIconHover } from '@styles/common.style'
+import { onCopy } from '@utils/functions'
 import * as S from './TellYourCommunity.style'
 
 type ActionsProps = { text: string; copy: string }[]

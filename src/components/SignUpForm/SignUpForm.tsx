@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
 import type { NextPage } from 'next'
-import { useDispatch } from 'react-redux'
-import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useUser } from '@auth0/nextjs-auth0'
-import { setUser } from '@state/user/userSlice'
-import { Input } from '@components/Input/Input'
+import { useEffect } from 'react'
+import { FormProvider, useForm, FieldValues } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
+import { Input } from '@components/Input/Input'
+import { setUser } from '@state/user/userSlice'
 import { Form } from '@styles/common.style'
 
 export const SignUpForm: NextPage<{

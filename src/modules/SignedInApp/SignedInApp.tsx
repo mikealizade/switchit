@@ -3,8 +3,8 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { Aside as AsideContent } from '@components/Aside/Aside'
 import { Drawer } from '@components/Drawer/Drawer'
-import { User } from '@components/User/User'
 import * as S from '@components/Layout/Layout.style'
+import { User } from '@components/User/User'
 
 const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children: any }> = ({
   showUser,

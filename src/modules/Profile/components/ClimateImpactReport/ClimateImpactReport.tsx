@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import { Title } from '@styles/common.style'
 import * as S from '@modules/Profile/components/ClimateImpactReport/ClimateImpactReport.style'
+import { Title } from '@styles/common.style'
 
 export type ClimateImpactReportProps = {
   carbonRemoved: number

@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
 import type { NextPage } from 'next'
-import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { RootState } from '@state/store'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Button } from '@components/Button/Button'
-import { FileUploader } from './FileUploader'
 import * as S from '@modules/Settings/Settings.style'
+import { RootState } from '@state/store'
+import { FileUploader } from './FileUploader'
 
 export const UpdateProfile: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()

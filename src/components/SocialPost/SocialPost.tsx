@@ -1,8 +1,8 @@
-import { useState, useRef } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import * as S from '@components/SocialPost/SocialPost.style'
+import { useState, useRef } from 'react'
 import { Button } from '@components/Button/Button'
+import * as S from '@components/SocialPost/SocialPost.style'
 
 export type SocialPostProps = {
   type: string

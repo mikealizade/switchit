@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 import { Card } from '@components/Card/Card.style'
+import { mediaQuery } from '@utils/functions'
 
 export const SettingsCard = styled(Card)`
   row-gap: 30px;

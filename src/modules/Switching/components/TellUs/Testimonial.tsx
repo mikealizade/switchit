@@ -1,19 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import { useUser } from '@auth0/nextjs-auth0'
-import useSWRMutation from 'swr/mutation'
-import useSWR, { SWRResponse } from 'swr'
+import Image from 'next/image'
+import React, { useState, useRef, useEffect } from 'react'
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from 'sanitize-html'
-import { useToast } from '@hooks/useToast'
+import useSWR, { SWRResponse } from 'swr'
+import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { sendRequest, fetcher } from '@utils/functions'
+import { useToast } from '@hooks/useToast'
+import { Buttons } from '@modules/Switching/Switching.style'
+import { Checkbox, Label } from '@styles/common.style'
 import { steps } from '@utils/constants'
 import { sanitiseConfig } from '@utils/data'
-import { Checkbox, Label } from '@styles/common.style'
-import { Buttons } from '@modules/Switching/Switching.style'
+import { sendRequest, fetcher } from '@utils/functions'
 import * as S from './TellUs.style'
 
 type JourneyId = { id: string }
@@ -37,7 +37,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  const [{ testimonial = '' } = {}] = switchJourneys?.filter(
+  const [{ testimonial = '' } = {}] = switchJourneys.filter(
     ({ id }: JourneyId) => id === currentJourneyId,
   )
   console.log('testimonial', testimonial)

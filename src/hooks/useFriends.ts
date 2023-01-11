@@ -1,9 +1,9 @@
 import { useUser } from '@auth0/nextjs-auth0'
-import { fetcher } from '@utils/functions'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
 import { setFriends } from '@state/friends/friendsSlice'
+import { fetcher } from '@utils/functions'
 
 interface Friend {
   sub: string

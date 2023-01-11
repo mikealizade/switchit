@@ -1,10 +1,10 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
-import { Button } from '@components/Button/Button'
 import axios from 'axios'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import { updateUser } from '@state/user/userSlice'
 import useSWRMutation from 'swr/mutation'
+import { Button } from '@components/Button/Button'
+import { updateUser } from '@state/user/userSlice'
 import { sendRequest } from '@utils/functions'
 
 export const FileUploader = () => {

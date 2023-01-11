@@ -1,9 +1,9 @@
+import cs from 'classnames'
 import { FC } from 'react'
 import { FieldError } from 'react-hook-form'
-import cs from 'classnames'
 // import { CheckboxProps } from 'components/types'
-import * as S from './Checkbox.style'
 import { RadioGroupProps } from '@components/RadioGroup/RadioGroup'
+import * as S from './Checkbox.style'
 
 type CheckboxProps = Omit<RadioGroupProps, 'labels'>
 

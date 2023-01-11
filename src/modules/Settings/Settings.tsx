@@ -2,12 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
-import { AccountForm } from './components/AccountForm/AccountForm'
-import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { Tabs } from '@components/Tabs/Tabs'
-import { UpdateProfile } from './components/UpdateProfile/UpdateProfile'
-import * as S from '@styles/common.style'
+import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { SettingsCard } from '@modules/Settings/Settings.style'
+import * as S from '@styles/common.style'
+import { AccountForm } from './components/AccountForm/AccountForm'
+import { UpdateProfile } from './components/UpdateProfile/UpdateProfile'
 
 // export type Resource = {
 //   id: string

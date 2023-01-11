@@ -1,7 +1,7 @@
+import Snackbar from '@mui/material/Snackbar'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@state/store'
-import Snackbar from '@mui/material/Snackbar'
 import { showToast } from '@state/toast/toastSlice'
 
 export const Toast = () => {

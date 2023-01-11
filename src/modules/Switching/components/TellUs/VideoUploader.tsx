@@ -1,11 +1,11 @@
-import { useRef, useCallback, useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
-import { NextPage } from 'next'
-import { Button } from '@components/Button/Button'
 import axios from 'axios'
+import { NextPage } from 'next'
+import { useRef, useCallback, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
-import { useToast } from '@hooks/useToast'
+import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useToast } from '@hooks/useToast'
 import { sendRequest } from '@utils/functions'
 
 export const VideoUploader: NextPage<{

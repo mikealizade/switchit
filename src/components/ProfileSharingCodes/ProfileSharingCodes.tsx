@@ -1,12 +1,12 @@
-import React from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '@state/store'
+import * as S from '@components/ProfileSharingCodes/ProfileSharingCodes.style'
+import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useShareCode } from '@hooks/useShareCode'
-import { Tabs } from '@components/Tabs/Tabs'
-import * as S from '@components/ProfileSharingCodes/ProfileSharingCodes.style'
+import { RootState } from '@state/store'
 import { ShareButton } from '@styles/common.style'
 
 //<a href='sms:+18664504185?&body=Hi%2520there%252C%2520I%2527d%2520like%2520to%2520place%2520an%2520order%2520for...'> text msg

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { connectToDatabase } from '@helpers/mongodb'
 
-var options = {
+const options = {
   method: 'PATCH',
   url: 'https://switchit-weld.vercel.app/api/v2/users/%7BuserId%7D',
   headers: {

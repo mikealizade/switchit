@@ -1,15 +1,15 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { SelectActionCards } from '@components/SelectActionCard/SelectActionCard'
-import { ImpactCalculator } from '@components/ImpactCalculator/ImpactCalculator'
-import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Banks } from '@components/ImpactCalculator/Banks'
+import { ImpactCalculator } from '@components/ImpactCalculator/ImpactCalculator'
+import { ImpactCardHeader } from '@components/ImpactCalculator/ImpactCalculator.style'
+import { SelectActionCards } from '@components/SelectActionCard/SelectActionCard'
+import { ViewResearch } from '@components/ViewResearch/ViewResearch'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { Div } from '@styles/common.style'
 import { actionsConfig } from '@utils/data'
 import { filterActionType } from '@utils/functions'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { ImpactCardHeader } from '@components/ImpactCalculator/ImpactCalculator.style'
-import { Div } from '@styles/common.style'
 
 const bankPages = [
   'select-bank',

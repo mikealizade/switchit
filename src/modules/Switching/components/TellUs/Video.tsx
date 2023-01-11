@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import { useUser } from '@auth0/nextjs-auth0'
-import useSWR, { SWRResponse } from 'swr'
+import Image from 'next/image'
+import React, { useState, useRef, useEffect } from 'react'
 import ContentEditable from 'react-contenteditable'
-import { VideoUploader } from './VideoUploader'
+import useSWR, { SWRResponse } from 'swr'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { fetcher } from '@utils/functions'
-import { steps } from '@utils/constants'
-import { Checkbox, Label } from '@styles/common.style'
 import { Buttons } from '@modules/Switching/Switching.style'
+import { Checkbox, Label } from '@styles/common.style'
+import { steps } from '@utils/constants'
+import { fetcher } from '@utils/functions'
 import * as S from './TellUs.style'
+import { VideoUploader } from './VideoUploader'
 
 type JourneyId = { id: string }
 
@@ -27,7 +27,7 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  const [{ videoUri = '' } = {}] = switchJourneys?.filter(
+  const [{ videoUri = '' } = {}] = switchJourneys.filter(
     ({ id }: JourneyId) => id === currentJourneyId,
   )
   const [, setTestimonial] = useState('')

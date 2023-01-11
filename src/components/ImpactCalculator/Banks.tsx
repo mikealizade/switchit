@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { goodBanksConfig } from '@utils/data'
-import { Div } from '@styles/common.style'
 import * as S from '@components/ImpactCalculator/ImpactCalculator.style'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { Div } from '@styles/common.style'
+import { goodBanksConfig } from '@utils/data'
 
 export const Banks: NextPage = (): JSX.Element => {
   const { currentJourney: { badBank, goodBank } = {} } = useGetCurrentJourney()

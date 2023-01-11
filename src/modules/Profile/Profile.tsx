@@ -1,24 +1,23 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { RootState } from '@state/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { Badge , Badges } from '@components/Badges/Badges'
+import { Card } from '@components/Card/Card'
+import { CheckList } from '@components/CheckList/CheckList'
 import { Fallback } from '@components/Fallback/Fallback'
 import { User } from '@components/User/User'
-import { Badge } from '@components/Badges/Badges'
-import { Card } from '@components/Card/Card'
-import { ProfileHead } from './components/ProfileHead/ProfileHead'
-import { ProfileSummary, ProfileSummaryProps } from './components/ProfileSummary/ProfileSummary'
 import { SharingCodes } from '@modules/Dashboard/components/SharingCodes/SharingCodes'
-import { SwitchingFriends } from './components/SwitchingFriends/SwitchingFriends'
+import { RootState } from '@state/store'
+import * as S from '@styles/common.style'
 import {
   ClimateImpactReport,
   ClimateImpactReportProps,
 } from './components/ClimateImpactReport/ClimateImpactReport'
-import { Badges } from '@components/Badges/Badges'
 import { PointsTotal, PointsTotalProps } from './components/PointsTotal/PointsTotal'
-import { CheckList } from '@components/CheckList/CheckList'
-import * as S from '@styles/common.style'
+import { ProfileHead } from './components/ProfileHead/ProfileHead'
+import { ProfileSummary, ProfileSummaryProps } from './components/ProfileSummary/ProfileSummary'
+import { SwitchingFriends } from './components/SwitchingFriends/SwitchingFriends'
 
 export type User = {
   _id: string
@@ -77,7 +76,7 @@ const Profile = (): JSX.Element => {
         <S.Content>
           <S.ColumnContainer>
             <S.Column>
-              <Card column padded stretch>
+              <Card column stretch>
                 <ProfileHead />
                 <ProfileSummary data={summary} />
               </Card>

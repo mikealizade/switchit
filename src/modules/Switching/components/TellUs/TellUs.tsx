@@ -1,22 +1,22 @@
 import type { NextPage } from 'next'
-import { ErrorBoundary } from 'react-error-boundary'
 import { useRouter } from 'next/router'
-import { Fallback } from '@components/Fallback/Fallback'
-import { Card } from '@components/Card/Card'
-import { Button } from '@components/Button/Button'
+import { ErrorBoundary } from 'react-error-boundary'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { Testimonial } from './Testimonial'
-import { Video } from './Video'
+import { Button } from '@components/Button/Button'
+import { Card } from '@components/Card/Card'
+import { Fallback } from '@components/Fallback/Fallback'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import { actionText } from '@utils/constants'
-import * as S from '@styles/common.style'
 import {
   Buttons,
   SwitchingColumnContainer,
   SwitchingColumn,
 } from '@modules/Switching/Switching.style'
+import * as S from '@styles/common.style'
+import { actionText } from '@utils/constants'
 import { UserContent, VideoContainer, CopyInfo, CopyHeader } from './TellUs.style'
+import { Testimonial } from './Testimonial'
+import { Video } from './Video'
 
 export const TellUs: NextPage = () => {
   const { push } = useRouter()

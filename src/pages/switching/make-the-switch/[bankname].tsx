@@ -1,5 +1,5 @@
-import MakeTheSwitch from '@modules/Switching/components/MakeTheSwitch/MakeTheSwitch'
 import { useRouter } from 'next/router'
+import MakeTheSwitch from '@modules/Switching/components/MakeTheSwitch/MakeTheSwitch'
 
 const MakeTheSwitchPage = (): JSX.Element => {
   const {

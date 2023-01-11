@@ -4,5 +4,5 @@ export const AccordionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  row-gap: 30px;
+  row-gap: 10px;
 `

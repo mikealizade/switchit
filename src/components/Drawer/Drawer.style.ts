@@ -10,10 +10,10 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
   gap: 40px;
   border-radius: 20px 20px 0 0;
   width: 100vw;
-  height: 80vh;
+  height: 90vh;
   position: fixed;
   bottom: 0;
-  transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateY(0)' : `translateY(80vh)`)};
+  transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateY(0)' : `translateY(90vh)`)};
   transition: all 0.2s ease-in-out;
   padding: 35px 40px;
   z-index: 1;
@@ -40,6 +40,24 @@ export const BackLink = styled.h2`
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 10px);
+    top: -12px;
+    width: 32px;
+    height: 4px;
+    background-color: var(--gallery);
+    border-radius: 8px;
+  }
+
+  ${() => mediaQuery.tablet} {
+    &:after {
+      content: none;
+    }
+  }
 `
 
 export const MobileBackdrop = styled.div<{ isDrawerOpen: boolean }>`

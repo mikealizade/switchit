@@ -1,22 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
-import { useSelector } from 'react-redux'
-import useSWRMutation from 'swr/mutation'
-import useSWR, { SWRResponse } from 'swr'
-import sanitizeHtml from 'sanitize-html'
-import { Card } from '@components/Card/Card'
-import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import React, { useState, useRef, useEffect } from 'react'
 import ContentEditable from 'react-contenteditable'
-import { RootState } from '@state/store'
-import { useToast } from '@hooks/useToast'
-import { useNextStep } from '@hooks/useNextStep'
+import { useSelector } from 'react-redux'
+import sanitizeHtml from 'sanitize-html'
+import useSWR, { SWRResponse } from 'swr'
+import useSWRMutation from 'swr/mutation'
+import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import { Card } from '@components/Card/Card'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { LetterButtons } from './LetterButtons'
-import { sendRequest, fetcher } from '@utils/functions'
-import { sanitiseConfig } from '@utils/data'
+import { useNextStep } from '@hooks/useNextStep'
+import { useToast } from '@hooks/useToast'
 import { Container } from '@modules/Switching/Switching.style'
+import { RootState } from '@state/store'
+import { sanitiseConfig } from '@utils/data'
+import { sendRequest, fetcher } from '@utils/functions'
 import * as S from './Letter.style'
+import { LetterButtons } from './LetterButtons'
 
 type JourneyId = { id: string }
 
@@ -54,7 +54,7 @@ export const Letter: NextPage<LetterProps> = ({
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  const [{ breakupLetter = '', helloLetter = '' } = {}] = switchJourneys?.filter(
+  const [{ breakupLetter = '', helloLetter = '' } = {}] = switchJourneys.filter(
     ({ id }: JourneyId) => id === currentJourneyId,
   )
   const [, setLetter] = useState('')

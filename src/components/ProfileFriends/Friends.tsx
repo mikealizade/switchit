@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '@state/store'
 import * as S from '@components/ProfileFriends/ProfileFriends.style'
+import { RootState } from '@state/store'
 
 type Friend = {
   userId: string

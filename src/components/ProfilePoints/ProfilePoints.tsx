@@ -1,14 +1,14 @@
-import React from 'react'
 import type { NextPage } from 'next'
-import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { RootState } from '@state/store'
-import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { useShareCode } from '@hooks/useShareCode'
-import { Tabs } from '@components/Tabs/Tabs'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@components/ProfilePoints/ProfilePoints.style'
+import { Tabs } from '@components/Tabs/Tabs'
+import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { useShareCode } from '@hooks/useShareCode'
 import { PointsTotal } from '@modules/Profile/components/PointsTotal/PointsTotal'
+import { RootState } from '@state/store'
 
 export const ProfilePoints: NextPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)

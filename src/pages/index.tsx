@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0'
+import { useRouter } from 'next/router'
 
 const Index = () => {
   const { push } = useRouter()

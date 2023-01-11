@@ -1,15 +1,15 @@
-import { FC, useState } from 'react'
 import Image from 'next/image'
+import { FC, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Button, TextButton } from '@components/Button/Button'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { TextLink } from '@styles/common.style'
 import * as S from './GreenBanks.style'
-import starling from '../../../../../public/icons/icon_starling.png'
 import monzo from '../../../../../public/icons/icon_monzo.png'
-import triodos from '../../../../../public/icons/icon_triodos.png'
 import nationwide from '../../../../../public/icons/icon_nationwide.png'
+import starling from '../../../../../public/icons/icon_starling.png'
+import triodos from '../../../../../public/icons/icon_triodos.png'
 
 type BanksTableProps = {
   bankData: BankData[]

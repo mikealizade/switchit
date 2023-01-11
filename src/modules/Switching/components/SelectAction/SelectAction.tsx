@@ -1,23 +1,23 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { ActionHeader } from '@components/ActionHeader/ActionHeader'
+import { ActionSelector } from '@components/ActionSelector/ActionSelector'
+import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
-import { Content } from '@styles/common.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { Button } from '@components/Button/Button'
-import { steps, journeyTypes } from '@utils/constants'
-import { actionsConfig } from '@utils/data'
-import { useState } from 'react'
-import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { setActionCard } from '@state/generic/genericSlice'
 import {
   SwitchingColumnContainer,
   SwitchingColumn,
   Buttons,
 } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/Switching.style'
-import { ActionSelector } from '@components/ActionSelector/ActionSelector'
+import { setActionCard } from '@state/generic/genericSlice'
+import { Content } from '@styles/common.style'
+import { steps, journeyTypes } from '@utils/constants'
+import { actionsConfig } from '@utils/data'
 import { Action } from '@utils/types'
 
 export const SelectAction = (): JSX.Element => {

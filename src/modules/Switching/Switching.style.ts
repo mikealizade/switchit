@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 import { Card } from '@components/Card/Card.style'
+import { mediaQuery } from '@utils/functions'
 
 export const NoJourneysTextContainer = styled.div`
   display: flex;
@@ -31,7 +31,6 @@ export const JourneyCard = styled(Card)<{ isJourneyComplete?: boolean }>`
   ${() => mediaQuery.tablet} {
     flex-direction: row;
     padding: ${({ isJourneyComplete }) => (isJourneyComplete ? '60px 0 0' : '60px 30px')};
-    row-gap: initial;
     padding: 60px 30px 30px;
   }
 `
@@ -182,23 +181,13 @@ export const Buttons = styled.div<{ align?: string }>`
   row-gap: 10px;
   padding: 10px 0;
   flex-wrap: wrap;
-  /* flex: 1; */
 
   ${() => mediaQuery.tablet} {
     justify-content: ${({ align }) =>
       align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between'};
     flex-direction: row;
-    /* padding: 20px 0; */
     padding: 0;
   }
-
-  /* button:first-of-type:not(:only-child) {
-    margin-right: auto;
-  }
-
-  button:only-child {
-    margin-left: auto;
-  } */
 `
 export const ButtonsAlign = styled.div`
   display: flex;

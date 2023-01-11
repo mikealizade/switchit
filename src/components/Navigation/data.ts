@@ -51,6 +51,10 @@ export const subNav = [
     route: 'settings',
   },
   {
+    text: 'FAQs',
+    route: 'faqs',
+  },
+  {
     text: 'Help',
     route: 'help',
   },

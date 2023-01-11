@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { Title } from '@styles/common.style'
-import * as S from '@modules/Dashboard/components/Blog/Blog.style'
 import { useRouter } from 'next/router'
+import * as S from '@modules/Dashboard/components/Blog/Blog.style'
+import { Title } from '@styles/common.style'
 
 export type Blog = {
   id: string

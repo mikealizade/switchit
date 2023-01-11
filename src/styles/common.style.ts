@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 import { Button } from '@components/Button/Button.style'
+import { mediaQuery } from '@utils/functions'
 
 export const Content = styled.main`
   background-color: #f2f0ed;
@@ -217,7 +217,11 @@ export const TabsContainer = styled(Div)`
   align-self: center;
   /* justify-content: center; */
 
-  ${() => mediaQuery.laptop} {
+  ${() => mediaQuery.xlaptop} {
+    width: 80%;
+  }
+
+  ${() => mediaQuery.xxlaptop} {
     width: 55%;
   }
 `
@@ -240,23 +244,13 @@ export const Buttons = styled.div<{ align?: string }>`
   row-gap: 10px;
   padding: 10px 0;
   flex-wrap: wrap;
-  /* flex: 1; */
 
   ${() => mediaQuery.tablet} {
     justify-content: ${({ align }) =>
       align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between'};
     flex-direction: row;
-    /* padding: 20px 0; */
     padding: 0;
   }
-
-  /* button:first-of-type:not(:only-child) {
-    margin-right: auto;
-  }
-
-  button:only-child {
-    margin-left: auto;
-  } */
 `
 
 export const TextLink = styled.a`

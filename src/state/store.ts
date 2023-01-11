@@ -1,15 +1,15 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import userReducer from 'src/state/user/userSlice'
-import drawerReducer from 'src/state/drawer/drawerSlice'
-import navReducer from '@state/nav/navSlice'
-import friendsReducer from 'src/state/friends/friendsSlice'
-import toastReducer from 'src/state/toast/toastSlice'
-import genericReducer from '@state/generic/genericSlice'
-import switchJourneysReducer from 'src/state/switchJourney/switchJourneySlice'
 import { persistReducer, persistStore } from 'redux-persist'
-// import storage from 'redux-persist/lib/storage'
 import storage from 'redux-persist/lib/storage/session'
+import genericReducer from '@state/generic/genericSlice'
+import navReducer from '@state/nav/navSlice'
+import drawerReducer from 'src/state/drawer/drawerSlice'
+import friendsReducer from 'src/state/friends/friendsSlice'
+import switchJourneysReducer from 'src/state/switchJourney/switchJourneySlice'
+import toastReducer from 'src/state/toast/toastSlice'
+// import storage from 'redux-persist/lib/storage'
+import userReducer from 'src/state/user/userSlice'
 
 const persistConfig = {
   key: 'root',

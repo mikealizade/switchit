@@ -1,16 +1,16 @@
 import styled from '@emotion/styled'
+import { NextPage } from 'next'
 import Image from 'next/image'
-import { usePrevious } from '@hooks/usePrevious'
-import { useSelector, useDispatch } from 'react-redux'
-import { toggleDrawer } from '@state/drawer/drawerSlice'
-import { RootState } from '@state/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { useMediaQuery } from 'react-responsive'
+import * as S from '@components/Drawer/Drawer.style'
+import { ProfileAwardsBadges } from '@components/ProfileAwardsBadges/ProfileAwardsBadges'
 import { ProfileForm } from '@components/ProfileForm/ProfileForm'
-import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
 import { ProfileFriends } from '@components/ProfileFriends/ProfileFriends'
 import { ProfilePoints } from '@components/ProfilePoints/ProfilePoints'
-import { ProfileAwardsBadges } from '@components/ProfileAwardsBadges/ProfileAwardsBadges'
-import * as S from '@components/Drawer/Drawer.style'
-import { NextPage } from 'next'
+import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { RootState } from '@state/store'
 
 const Header = styled.h2`
   font-size: var(--fsMedium6);
@@ -126,6 +126,7 @@ const drawerConfig = {
 }
 
 export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
 
@@ -138,8 +139,12 @@ export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element 
       <S.MobileBackdrop isDrawerOpen={isDrawerOpen}></S.MobileBackdrop>
       <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
         <S.BackLink onClick={() => dispatch(toggleDrawer(section))}>
-          <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
-          {backLink}
+          {!isMobile && (
+            <>
+              <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
+              {backLink}
+            </>
+          )}
         </S.BackLink>
         {component}
       </S.Drawer>

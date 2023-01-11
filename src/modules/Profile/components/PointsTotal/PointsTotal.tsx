@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { PointsChart } from '@components/PointsChart/PointsChart'
 import { useSelector } from 'react-redux'
-import { RootState } from '@state/store'
 import { Ellipsis } from '@components/Ellipsis/Ellipsis'
-
+import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@modules/Profile/components/PointsTotal/PointsTotal.style'
+import { RootState } from '@state/store'
 import { Title } from '@styles/common.style'
 
 export type PointsTotalProps = Array<{

@@ -1,6 +1,6 @@
+import cs from 'classnames'
 import { FC } from 'react'
 import { FieldErrors, FieldError, RegisterOptions, UseFormRegisterReturn } from 'react-hook-form'
-import cs from 'classnames'
 import * as S from './RadioGroup.style'
 
 export type RadioGroupProps = {
