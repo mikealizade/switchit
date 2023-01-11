@@ -2,14 +2,13 @@ import { Fetcher } from 'swr'
 // import { journeyTypes } from '@utils/constants'
 import { journeyTypes, steps } from '@utils/constants'
 
-export const breakpoints: Record<string, number> = {
+const breakpoints: Record<string, number> = {
   mobile: 480,
   xmobile: 640,
   tablet: 768,
   laptop: 1024,
   xlaptop: 1300,
   xxlaptop: 1440,
-  xxxlaptop: 1920,
 }
 
 export const sendRequest = async (url: string, { arg }: { arg: any }) => {
