@@ -30,7 +30,6 @@
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react-hooks/exhaustive-deps": "off",
-    "import/no-unresolved": "error",
     "import/order": [
       "error",
       {
