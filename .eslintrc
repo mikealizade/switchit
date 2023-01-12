@@ -9,8 +9,7 @@
     "prettier",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "next/core-web-vitals",
-    "next"
+    "next/core-web-vitals"
   ],
   "env": {
     "jest": true,
@@ -58,7 +57,10 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      "typescript": {}
+      "typescript": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }
