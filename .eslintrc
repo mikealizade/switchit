@@ -36,8 +36,7 @@
       {
         "newlines-between": "never",
         "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": false
+          "order": "asc"
         },
         "groups": [
           "builtin",
