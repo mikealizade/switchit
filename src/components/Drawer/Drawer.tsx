@@ -11,6 +11,7 @@ import { ProfilePoints } from '@components/ProfilePoints/ProfilePoints'
 import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { RootState } from '@state/store'
+import { ResearchCopy, PotentialClimateImpactCopy } from './DrawerCopy'
 
 const Header = styled.h2`
   font-size: var(--fsMedium6);
@@ -80,7 +81,7 @@ const drawerConfig = {
     backLink: 'Impact Card View',
   },
   calculateImpact: {
-    component: <div>How we calculate your potential climate impact</div>,
+    component: <PotentialClimateImpactCopy />,
     backLink: 'Impact Card View',
   },
   calculateAgeImpact: {
@@ -91,28 +92,14 @@ const drawerConfig = {
     component: <div>Donations</div>,
     backLink: 'Impact Card View',
   },
+  research: {
+    component: <ResearchCopy />,
+    backLink: 'Select Your Current Bank',
+  },
   disclaimer: {
     component: (
       <div>
         Disclaimer
-        <p>
-          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
-          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
-          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
-          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
-        </p>
-        <p>
-          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
-          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
-          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
-          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
-        </p>
-        <p>
-          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
-          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
-          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
-          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
-        </p>
         <p>
           Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
           Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
@@ -146,7 +133,7 @@ export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element 
             </>
           )}
         </S.BackLink>
-        {component}
+        <S.DrawerContent>{component}</S.DrawerContent>
       </S.Drawer>
     </>
   )

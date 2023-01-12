@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Button, TextButton } from '@components/Button/Button'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import { TextLink } from '@styles/common.style'
+import { AnchorLink } from '@styles/common.style'
 import * as S from './GreenBanks.style'
 import monzo from '../../../../../public/icons/icon_monzo.png'
 import nationwide from '../../../../../public/icons/icon_nationwide.png'
@@ -140,9 +140,9 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                     <td>{details}</td>
                     <td>{fee}</td>
                     <td>
-                      <TextLink href={projectLink} target='_blank' rel='noreferrer'>
+                      <AnchorLink href={projectLink} target='_blank' rel='noreferrer'>
                         {project}
-                      </TextLink>
+                      </AnchorLink>
                     </td>
                     <td>{donation}</td>
                     <td>

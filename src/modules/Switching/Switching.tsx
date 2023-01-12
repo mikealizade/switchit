@@ -10,7 +10,7 @@ import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
-import { Hero } from '@components/Hero/Hero'
+import { SwitchingHero } from '@components/Hero/SwitchingHero'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
@@ -248,7 +248,7 @@ const Switching = (): JSX.Element => {
       </Head>
 
       <Content>
-        <Hero type='switching' />
+        <SwitchingHero type='switching' hasLoaded={!!switchJourneys?.length} />
         <Card stretch={isAddName}>
           <S.SwitchingColumnContainer>
             {isAddName ? (

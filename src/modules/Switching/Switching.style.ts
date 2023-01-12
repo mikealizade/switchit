@@ -27,6 +27,7 @@ export const JourneyCard = styled(Card)<{ isJourneyComplete?: boolean }>`
   column-gap: 25px;
   flex-direction: column;
   row-gap: 30px;
+  padding: 0;
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;

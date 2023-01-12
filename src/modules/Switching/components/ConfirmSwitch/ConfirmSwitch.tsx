@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useDispatch, useSelector } from 'react-redux'
-import { useMediaQuery } from 'react-responsive'
+// import { useMediaQuery } from 'react-responsive'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
@@ -20,7 +20,7 @@ import { actionText } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
 
-const monthNames = [
+const months = [
   'January',
   'February',
   'March',
@@ -44,7 +44,7 @@ export const ConfirmSwitch: NextPage = () => {
   const date = new Date() // TODO datepicker or select?
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+  // const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   const onSubmit = (): void => {
     nextStep(steps.confirmSwitch, '/switching/select-action', { isVerified: new Date() })
@@ -87,14 +87,14 @@ export const ConfirmSwitch: NextPage = () => {
                     <span>
                       <span>Signature</span>
                       <span>
-                        {date.getDay() + 1} {monthNames[date.getMonth()]} {date.getFullYear()}
+                        {date.getDay() + 1} {months[date.getMonth()]} {date.getFullYear()}
                       </span>
                     </span>
                   </S.Label>
                   <S.Date>
                     <Image src={`/icons/icon_date.svg`} alt='' width={20} height={20} />
                     <div>
-                      {date.getDay() + 1} {monthNames[date.getMonth()]} {date.getFullYear()}
+                      {date.getDay() + 1} {months[date.getMonth()]} {date.getFullYear()}
                     </div>
                   </S.Date>
                 </S.SignatureFieldset>

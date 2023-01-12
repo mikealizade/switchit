@@ -16,6 +16,12 @@
     url(../../public/fonts/Konsolev-LightItalic.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Bambang';
+  src: url(../../public/fonts/Bambang.woff2) format('woff2'),
+    url(../../public/fonts/Bambang.woff) format('woff');
+}
+
 :root {
   --white: #fff;
   --black: #000;

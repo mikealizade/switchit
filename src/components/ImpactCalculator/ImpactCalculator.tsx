@@ -26,7 +26,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
 }): JSX.Element => {
   const dispatch = useDispatch()
   const { currentJourneyType = '' } = useGetCurrentJourney()
-  const { pathname, push } = useRouter()
+  const { pathname } = useRouter()
   const [impactTotal, setImpact] = useState('')
   const [impactIndex, setImpactIndex] = useState(0)
   const { impact1, impact2 } = impacts[impactIndex]

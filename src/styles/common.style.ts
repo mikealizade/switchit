@@ -253,6 +253,18 @@ export const Buttons = styled.div<{ align?: string }>`
   }
 `
 
-export const TextLink = styled.a`
+export const TextLink = styled.span`
   text-decoration: underline;
+  cursor: pointer;
+`
+
+export const AnchorLink = styled.a`
+  text-decoration: underline;
+`
+
+export const BulletList = styled.ul`
+  list-style-type: circle;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 `

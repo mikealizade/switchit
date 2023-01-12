@@ -18,7 +18,6 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
   padding: 35px 40px;
   z-index: 1;
   box-shadow: 1px 1px 5px var(--slate);
-  overflow-y: auto;
 
   ${() => mediaQuery.laptop} {
     border-radius: 10px;
@@ -32,6 +31,10 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
     transform: ${({ isDrawerOpen, narrow }) =>
       isDrawerOpen ? 'translateX(0)' : `translateX(${narrow ? 420 : 470}px)`};
   }
+`
+
+export const DrawerContent = styled.div`
+  overflow-y: auto;
 `
 
 export const BackLink = styled.h2`
