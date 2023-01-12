@@ -9,7 +9,8 @@
     "prettier",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "next"
   ],
   "env": {
     "jest": true,
@@ -36,7 +37,8 @@
       {
         "newlines-between": "never",
         "alphabetize": {
-          "order": "asc"
+          "order": "asc",
+          "caseInsensitive": false
         },
         "groups": [
           "builtin",
