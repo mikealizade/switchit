@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const Buttons = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const Button = styled.button<{ size?: string }>`
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: ${({ size }) =>
     size === 'normal' ? '`Konsolev Regular`, sans-serif' : '`Konsolev SemiBold`, sans-serif'};
-  font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsBase)')};
+  font-size: var(--fsSmall4);
   line-height: 1.75;
   border-radius: 25px;
   letter-spacing: 0.5px;
@@ -21,20 +22,32 @@ export const Button = styled.button<{ size?: string }>`
   cursor: pointer;
   justify-content: center;
   background-color: ${({ className }) =>
-    className === 'primary'
+    className === 'primary blue'
+      ? 'var(--nileBlue)'
+      : className === 'primary'
       ? 'var(--pink)'
-      : className === 'secondary'
+      : className === 'secondary' || className === 'secondary blue'
       ? 'var(--white)'
       : 'lightgrey'};
   border: 1px solid
     ${({ className }) =>
-      className === 'primary' || className === 'secondary' ? 'var(--pink)' : 'lightgrey'};
+      className === 'primary blue' || className === 'secondary blue'
+        ? 'var(--nileBlue)'
+        : className === 'primary' || className === 'secondary'
+        ? 'var(--pink)'
+        : 'lightgrey'};
   color: ${({ className }) =>
-    className === 'primary'
+    className?.includes('primary')
       ? 'var(--white)'
+      : className === 'secondary blue'
+      ? 'var(--nileBlue)'
       : className === 'secondary'
       ? 'var(--pink)'
       : 'var(--white)'};
+
+  ${() => mediaQuery.tablet} {
+    font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsBase)')};
+  }
 
   &[type='reset'] {
     background-color: #e2dfda;
@@ -70,7 +83,6 @@ export const TextButton = styled.button`
 
 export const TextLink = styled.div<{ size?: string }>`
   padding: ${({ size }) => (size === 'normal' ? '7px 25px' : '5px 20px')};
-  /* min-width: 118px; */
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: ${({ size }) =>
@@ -80,25 +92,32 @@ export const TextLink = styled.div<{ size?: string }>`
   border-radius: 25px;
   letter-spacing: 0.5px;
   text-align: center;
-  /* border: 0; */
   outline: none;
   cursor: pointer;
   justify-content: center;
   background-color: ${({ className }) =>
-    className === 'primary'
+    className === 'primary blue'
+      ? 'var(--nileBlue)'
+      : className === 'primary'
       ? 'var(--pink)'
-      : className === 'secondary'
+      : className === 'secondary' || className === 'secondary blue'
       ? 'var(--white)'
       : 'lightgrey'};
   border: 1px solid
     ${({ className }) =>
-      className === 'primary' || className === 'secondary' ? 'var(--pink)' : 'lightgrey'};
+      className === 'primary blue' || className === 'secondary blue'
+        ? 'var(--nileBlue)'
+        : className === 'primary' || className === 'secondary'
+        ? 'var(--pink)'
+        : 'lightgrey'};
   color: ${({ className }) =>
-    className === 'primary'
+    className?.includes('primary')
       ? 'var(--white)'
+      : className === 'secondary blue'
+      ? 'var(--nileBlue)'
       : className === 'secondary'
       ? 'var(--pink)'
-      : 'lightgrey'};
+      : 'var(--white)'};
 
   &:disabled {
     background-color: #e2dfda;

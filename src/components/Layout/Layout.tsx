@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import * as S from '@components/Layout/Layout.style'
+import { MobileNavigation } from '@components/Navigation/MobileNavigation'
 import { Navigation } from '@components/Navigation/Navigation'
 import { Toast } from '@components/Toast/Toast'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
 import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
@@ -17,24 +19,25 @@ import { setUser } from '@state/user/userSlice'
 import { sendRequest, getTotalPoints, fetcher } from '@utils/functions'
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
-  const { pathname } = useRouter()
-  const isHome = pathname === '/'
-  const isSignedOut = pathname === '/signedout'
-  const isSigningUp = pathname === '/signup'
-  const showUser = pathname !== '/settings'
   const { user: auth0user = {} } = useUser()
   const { sub } = auth0user
   const { sub: userId = '' } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
-  const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
-  const updateUser = useUpdateUser()
+  const { pathname } = useRouter()
   const {
     data: { user = {} } = {},
     error,
     isValidating,
   } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
+  const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
+  const updateUser = useUpdateUser()
+  const { isMobile } = useMediaQuery()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
+  const isHome = pathname === '/'
+  const isSignedOut = pathname === '/signedout'
+  const isSigningUp = pathname === '/signup'
+  const showUser = pathname !== '/settings'
 
   const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {
@@ -105,7 +108,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
         <SignedOutLanding />
       ) : (
         <>
-          <Navigation />
+          {isMobile ? <MobileNavigation /> : <Navigation />}
           <SignedInApp showUser={showUser} isValidating={isValidating}>
             {children}
           </SignedInApp>

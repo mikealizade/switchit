@@ -49,15 +49,15 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
   return (
     <>
       <S.Testimonial>
-        <S.TestimonialImage>
+        <S.VideoImage>
           {isUploaded || videoUri ? (
             <Image src='/icons/icon_radio_checked.svg' alt='' width={83} height={55} />
           ) : !file?.name ? (
-            <Image src='/icons/icon_ellipsis.svg' alt='' width={88} height={88} />
+            <Image src='/icons/icon_upload.svg' alt='' width={50} height={37} />
           ) : (
             <div>{isValidating ? 'Loading...' : `${file?.name} is ready to upload`}</div>
           )}
-        </S.TestimonialImage>
+        </S.VideoImage>
       </S.Testimonial>
 
       {!isStepCompleted && (

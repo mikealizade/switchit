@@ -177,8 +177,8 @@ export const Content = styled.div`
 
 export const Buttons = styled.div<{ align?: string }>`
   display: flex;
-  flex-direction: column;
   column-gap: 20px;
+  justify-content: space-between;
   row-gap: 10px;
   padding: 10px 0;
   flex-wrap: wrap;

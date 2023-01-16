@@ -10,11 +10,13 @@ import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Program } from '@modules/Programs/Programs.style'
-import { socialPostsConfig } from '@modules/Programs/data'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, TabsContainer } from '@styles/common.style'
 import { actionText } from '@utils/constants'
 import { FollowUs } from './FollowUs'
+import { Post } from './Post'
+import { PostsContainer } from './PostToSocials.style'
+import { socialPostsConfig } from './data'
 
 const tabs: string[] = ['Twitter', 'Instagram Stories', 'Instagram Posts']
 
@@ -22,26 +24,23 @@ export const PostToSocials: NextPage = () => {
   const nextStep = useNextStep()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
-  const school = 'lse' //from db?
-  const type = 'twitter' //from db?
-  const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
 
   const panels: [React.ReactNode, React.ReactNode, React.ReactNode] = [
-    <Program key='twitter'>
-      {socialTwitter.map((postsArray, i) => {
-        return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
+    <PostsContainer key='twitter'>
+      {socialPostsConfig.twitter.map((postsArray, i) => {
+        return <Post key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
       })}
-    </Program>,
-    <Program key='facebook'>
-      {socialTwitter.map((postsArray, i) => {
-        return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
+    </PostsContainer>,
+    <PostsContainer key='facebook'>
+      {socialPostsConfig.instagramStories.map((postsArray, i) => {
+        return <Post key={i} post={postsArray.join('\n\n')} type='instagramStories' index={i} />
       })}
-    </Program>,
-    <Program key='instagram'>
-      {socialTwitter.map((postsArray, i) => {
-        return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
+    </PostsContainer>,
+    <PostsContainer key='instagram'>
+      {socialPostsConfig.instagramPosts.map((postsArray, i) => {
+        return <Post key={i} post={postsArray.join('\n\n')} type='instagramPosts' index={i} />
       })}
-    </Program>,
+    </PostsContainer>,
   ]
 
   const onNext = (): void => {
@@ -65,7 +64,6 @@ export const PostToSocials: NextPage = () => {
               </StyledTabs>
             </TabsContainer>
 
-            {/* <Socials /> */}
             <S.Buttons>
               <FollowUs />
               <Button type='button' size='small' onClick={onNext}>

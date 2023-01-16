@@ -157,7 +157,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
           onClick={onSave}
           disabled={!text.current || isStepCompleted}
         >
-          Save
+          Save Draft
         </Button>
         <Button
           type='button'

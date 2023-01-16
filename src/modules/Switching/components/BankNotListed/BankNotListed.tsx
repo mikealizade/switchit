@@ -11,6 +11,7 @@ import { Select } from '@components/Select/Select'
 import { useToast } from '@hooks/useToast'
 import * as S from '@modules/Switching/Switching.style'
 import { Form, Content, NarrowContent } from '@styles/common.style'
+import { actionText } from '@utils/constants'
 import { countries } from '@utils/countries'
 import { sendRequest } from '@utils/functions'
 
@@ -30,10 +31,7 @@ export const BankNotListed: NextPage = () => {
   const [value, setValue] = useState('')
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
   const header = isConfirmation ? 'Thanks for letting us know!' : 'Help Us Help You!'
-  const subHeader = isConfirmation
-    ? ''
-    : `Looks like we haven't gotten to your bank yet but we're always digging into new providers.
-Submit your bank below and we'll reach out when we've got the data.`
+  const subHeader = isConfirmation ? '' : actionText.bankNotListed
 
   const onSelectCountry = (value: string) => {
     setCountry(value)
@@ -78,7 +76,7 @@ Submit your bank below and we'll reach out when we've got the data.`
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
             <Card column padded>
-              <ActionHeader header={header} subHeader={subHeader} />
+              <ActionHeader header={header} text={subHeader} />
               <NarrowContent>
                 {isConfirmation ? (
                   <>

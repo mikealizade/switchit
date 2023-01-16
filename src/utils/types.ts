@@ -10,3 +10,5 @@ export type Action = {
   actionTitle: string
   actionText: string
 }
+
+export type Nav = { text: string; route: string; icon: string; width?: number; height?: number }

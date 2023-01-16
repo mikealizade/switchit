@@ -3,8 +3,6 @@ import styled from '@emotion/styled'
 export const UserContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 360px;
-  width: 360px;
   row-gap: 20px;
 `
 
@@ -62,10 +60,12 @@ export const TestimonialImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 360px;
-  width: 360px;
   min-height: 235px;
   border: 1px solid var(--base);
   border-radius: 10px;
   padding: 20px;
+`
+
+export const VideoImage = styled(TestimonialImage)`
+  min-height: 50px;
 `

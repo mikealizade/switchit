@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Div } from '@styles/common.style'
 import { mediaQuery } from '@utils/functions'
 
 export const Nav = styled.nav<{ isNavOpen: boolean }>`
@@ -34,8 +35,10 @@ export const Navigation = styled.ul`
   flex-direction: column;
   row-gap: 16px;
 
-  &:last-of-type {
-    margin-top: auto;
+  ${() => mediaQuery.laptop} {
+    &:last-of-type {
+      margin-top: auto;
+    }
   }
 
   li {
@@ -47,7 +50,7 @@ export const Navigation = styled.ul`
       border-radius: 8px;
       background-color: var(--white);
       font-size: var(--fsMedium8);
-      background: transparent 14px center no-repeat;
+      background: transparent 8px center no-repeat;
 
       &.active,
       &:hover {
@@ -63,6 +66,54 @@ export const Navigation = styled.ul`
       padding-left: 20px;
     }
   }
+`
+
+export const MobileNav = styled.nav`
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  background-color: var(--white);
+  z-index: 1;
+  padding: 20px;
+  box-shadow: 1px -4px 7px var(--pampas);
+`
+
+export const MobileSubNav = styled(Nav)`
+  row-gap: 50px;
+`
+
+export const MobileNavigation = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+`
+
+export const MobileNavUser = styled.div`
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  margin-bottom: 80px;
+
+  img {
+    border-radius: 50%;
+  }
+`
+
+export const MobileNavUserNames = styled(Div)`
+  row-gap: 10px;
+`
+
+export const UserName = styled.strong`
+  font-weight: bold;
+`
+
+export const UserPoints = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  color: var(--grey);
 `
 
 export const Logo = styled.a`

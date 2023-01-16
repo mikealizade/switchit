@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="27px" viewBox="0 0 31 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 14</title>
+    <g id="bank-switching-jounrey---mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-246" transform="translate(-111.000000, -18.000000)">
+            <g id="Group-14" transform="translate(112.000000, 19.000000)">
+                <path d="M22.018869,20.4439162 L8.62445855,20.4439162 L4.43268261,24.8388644 C4.09541328,25.1845345 3.56541862,24.9376273 3.56541862,24.4438129 L3.56541862,20.4439162 C1.58998398,20.4439162 0,18.8143287 0,16.7896897 L0,3.65422657 C0,1.62958753 1.58998398,0 3.56541862,0 L22.018869,0 C23.9943037,0 25.5842877,1.62958753 25.5842877,3.65422657 L25.5842877,16.7896897 C25.5842877,18.8143287 23.9943037,20.4439162 22.018869,20.4439162 Z" id="Path" stroke="#163F45" stroke-width="0.5" fill="#163F45" fill-rule="nonzero"></path>
+                <line x1="4.38450128" y1="5.08628834" x2="17.4898238" y2="5.08628834" id="Path" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="4.38450128" y1="10.5676282" x2="12.9607785" y2="10.5676282" id="Path" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="4.52904527" y1="15.9502052" x2="11.4671572" y2="15.9502052" id="Path" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M24.7170237,2.81474209 L15.8998398,10.5182468 C15.1771198,12.4441229 14.2134931,15.3576279 14.2134931,15.3576279 C14.2134931,15.3576279 16.3334718,15.0119578 19.2243517,14.5181434 L28.089717,6.81463874 C29.1978876,5.87639138 29.2942503,4.19742241 28.378805,3.06164929 L28.378805,3.06164929 C27.4633596,2.02463905 25.8251943,1.87649473 24.7170237,2.81474209 Z" id="Path" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <line x1="15.8998398" y1="10.5676282" x2="19.2243517" y2="14.5675248" id="Path" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="27.1260903" y1="7.70350467" x2="23.8015784" y2="3.65422657" id="Path" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M25.1948115,9.25414786 L28.089717,6.91340162 C29.1978876,5.97515426 29.2942503,4.29618529 28.378805,3.16041217 C27.7042663,2.32092769 26.5479143,2.02463905 25.4397437,2.37030913" id="Path" stroke="#163F45" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <line x1="27.1260903" y1="7.70350467" x2="25.2951997" y2="5.5307213" id="Path" stroke="#163F45" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
+                <polygon id="Path" fill="#FFFFFF" fill-rule="nonzero" points="25.8251943 7.79930078 25.8251943 9.78424188 24.9945077 10.4890049 24.2816013 9.13393233"></polygon>
+                <polygon id="Path" fill="#FFFFFF" fill-rule="nonzero" points="25.8251943 7.33809385 25.8251943 4.93159743 25.343381 4.63354391 23.6989003 4.70210504"></polygon>
+                <path d="M25.7926407,3.04794049 C25.7444594,2.70227041 25.4317249,1.92934135 25.2871809,1.63305271 C25.2871809,1.63305271 24.9601286,1.74509459 24.9119473,1.79447603 C24.8155846,1.84385747 24.5433397,2.06716084 24.5433397,2.06716084 L24.765205,2.86412353 L24.765205,3.21261215 L24.9670238,3.31086016 L25.7926407,3.04794049 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -14,16 +14,16 @@ import { actionText } from '@utils/constants'
 import { bankConfig } from './data'
 
 export const GreenBanks = (): JSX.Element => {
-  const { push, back } = useRouter()
+  const { back } = useRouter()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
 
-  const onNext = () => {
-    push('/switching/select-action')
-  }
+  // const onNext = () => {
+  //   push('/switching/select-action')
+  // }
 
   useEffect(() => {
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
@@ -63,6 +63,7 @@ export const GreenBanks = (): JSX.Element => {
                 header='Action Choose Your Bank'
                 subHeader={`We've found 4 green banks for you`}
                 text={actionText.greenBanks}
+                isHTML
               />
 
               <S.Section>

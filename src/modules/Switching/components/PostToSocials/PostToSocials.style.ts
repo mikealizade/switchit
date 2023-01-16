@@ -1,6 +1,13 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
+export const PostsContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+`
+
 export const FollowUs = styled.ul`
   display: flex;
   align-items: center;

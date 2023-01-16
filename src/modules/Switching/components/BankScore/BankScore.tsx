@@ -15,7 +15,7 @@ import {
   Buttons,
   Header,
 } from '@modules/Switching/Switching.style'
-import { Content } from '@styles/common.style'
+import { Content, ParagraphCopy } from '@styles/common.style'
 import { steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from '../BankScore/BankScore.style'
@@ -111,7 +111,7 @@ export const BankScore = (): JSX.Element => {
                   <S.BankDataHeader>
                     Why did {badBank} score {score}/5
                   </S.BankDataHeader>
-                  {info}
+                  <ParagraphCopy dangerouslySetInnerHTML={{ __html: info }} />
                 </S.BankData>
 
                 <>

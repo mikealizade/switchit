@@ -217,13 +217,13 @@ export const TabsContainer = styled(Div)`
   align-self: center;
   /* justify-content: center; */
 
-  ${() => mediaQuery.xlaptop} {
+  /* ${() => mediaQuery.xlaptop} {
     width: 80%;
   }
 
   ${() => mediaQuery.xxlaptop} {
     width: 55%;
-  }
+  } */
 `
 
 export const Subheader = styled.h3`
@@ -239,11 +239,11 @@ export const Subheader = styled.h3`
 
 export const Buttons = styled.div<{ align?: string }>`
   display: flex;
-  flex-direction: column;
   column-gap: 20px;
   row-gap: 10px;
   padding: 10px 0;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   ${() => mediaQuery.tablet} {
     justify-content: ${({ align }) =>
@@ -262,9 +262,9 @@ export const AnchorLink = styled.a`
   text-decoration: underline;
 `
 
-export const BulletList = styled.ul`
+export const ParagraphCopy = styled.div`
   list-style-type: circle;
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
+  row-gap: 12px;
 `

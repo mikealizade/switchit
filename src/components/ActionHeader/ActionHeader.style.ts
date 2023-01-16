@@ -18,3 +18,6 @@ export const HeaderContainer = styled.div`
   flex-direction: column;
   row-gap: 20px;
 `
+export const Para = styled.p`
+  margin-bottom: 10px;
+`

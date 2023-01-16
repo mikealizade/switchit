@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="27px" viewBox="0 0 22 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="bank-switching-jounrey---mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Group-244" transform="translate(-337.000000, -17.000000)" stroke="#153F45" stroke-width="1.5">
+            <g id="Group-2" transform="translate(338.000000, 18.000000)">
+                <ellipse id="Oval" cx="9.95253058" cy="5.68833652" rx="5.64886043" ry="5.68833652"></ellipse>
+                <path d="M17.1678817,24.9521989 C20.4432714,24.7609943 20.3483326,19.6462715 19.4938831,16.9216061 C18.6394336,14.1491396 16.2659628,12.3804971 14.6994721,13.0497132 C12.4209402,14.5793499 11.8987766,14.9617591 10,14.9617591 L10,14.9617591 C8.10122338,14.9617591 7.57905981,14.5793499 5.30052787,13.0975143 C3.68656775,12.4282983 1.36056639,14.1969407 0.506116917,16.9694073 C-0.348332561,19.7418738 -0.443271391,24.8565966 2.83211827,25 C4.58848664,24.9521989 15.3640439,24.9521989 17.1678817,24.9521989 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

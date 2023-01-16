@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="19px" viewBox="0 0 34 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>switch_teal_filled in</title>
+    <g id="bank-switching-jounrey---mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Group-244" transform="translate(-258.000000, -21.000000)" fill-rule="nonzero" stroke-width="0.95625">
+            <g id="switch_teal_filled-in" transform="translate(259.000000, 22.000000)">
+                <path d="M23.6292975,17 L8.37070254,17 C3.77877429,17 0,13.1628571 0,8.5 L0,8.5 C0,3.83714286 3.77877429,0 8.37070254,0 L23.6292975,0 C28.2212257,0 32,3.83714286 32,8.5 L32,8.5 C31.9521674,13.1628571 28.2212257,17 23.6292975,17 Z" id="Path" stroke="#153F45" fill="#163F45"></path>
+                <ellipse id="Oval" stroke="#FFFFFF" fill="#FFFFFF" cx="23.4379671" cy="8.5" rx="5.4529148" ry="5.53714286"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

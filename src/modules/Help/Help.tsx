@@ -49,7 +49,7 @@ const Faqs = (): JSX.Element => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <Card column padded>
-            <ActionHeader header='FAQs' />
+            <ActionHeader header='Help' />
 
             <S.TabsContainer>
               <StyledTabs>
@@ -61,9 +61,6 @@ const Faqs = (): JSX.Element => {
               <Button type='button' mode='secondary' onClick={() => back()}>
                 Back
               </Button>
-              {/* <Button type='button' size='small' onClick={onNext}>
-                  Next
-                </Button> */}
             </S.Buttons>
           </Card>
         </S.Content>

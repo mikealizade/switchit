@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="27px" viewBox="0 0 22 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>profile_teal_filled in</title>
+    <g id="bank-switching-jounrey---mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Group-248" transform="translate(-337.000000, -17.000000)" fill="#163F45" fill-rule="nonzero" stroke="#153F45" stroke-width="0.95625">
+            <g id="profile_teal_filled-in" transform="translate(338.000000, 18.000000)">
+                <ellipse id="Oval" cx="9.95253058" cy="5.67307692" rx="5.60139102" ry="5.67307692"></ellipse>
+                <path d="M17.1678817,25 C20.4432714,24.8076923 20.3483326,19.7115385 19.4938831,16.9230769 C18.6394336,14.1346154 16.2659628,12.3557692 14.6994721,13.0288462 C12.4209402,14.5673077 11.8987766,14.9038462 10,14.9038462 L10,14.9038462 C8.10122338,14.9038462 7.57905981,14.5192308 5.30052787,13.0288462 C3.73403717,12.3557692 1.36056639,14.1346154 0.506116917,16.9230769 C-0.348332561,19.7115385 -0.443271391,24.8076923 2.83211827,25 C4.58848664,25 15.3165745,25 17.1678817,25 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
