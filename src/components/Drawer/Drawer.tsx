@@ -11,7 +11,13 @@ import { ProfilePoints } from '@components/ProfilePoints/ProfilePoints'
 import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { RootState } from '@state/store'
-import { ResearchCopy, PotentialClimateImpactCopy } from './DrawerCopy'
+import {
+  ResearchCopy,
+  PotentialClimateImpactCopy,
+  DisclaimerCopy,
+  DontWasteYourSwitchCopy,
+  TellUsPromptsCopy,
+} from './DrawerCopy'
 
 const Header = styled.h2`
   font-size: var(--fsMedium6);
@@ -97,17 +103,15 @@ const drawerConfig = {
     backLink: 'Select Your Current Bank',
   },
   disclaimer: {
-    component: (
-      <div>
-        Disclaimer
-        <p>
-          Reprehenderit proident consequat cillum nostrud velit occaecat veniam tempor deserunt.
-          Eiusmod non sunt quis exercitation nostrud nisi enim Lorem occaecat eiusmod deserunt
-          cillum. In labore non et ex duis laboris sint culpa aliqua officia nulla veniam. Labore
-          aliquip excepteur sunt quis esse laboris ipsum exercitation sit proident tempor.
-        </p>
-      </div>
-    ),
+    component: <DisclaimerCopy />,
+    backLink: 'Impact Card View',
+  },
+  dontWasteYourSwitch: {
+    component: <DontWasteYourSwitchCopy />,
+    backLink: 'Impact Card View',
+  },
+  tellUsPrompts: {
+    component: <TellUsPromptsCopy />,
     backLink: 'Impact Card View',
   },
 }

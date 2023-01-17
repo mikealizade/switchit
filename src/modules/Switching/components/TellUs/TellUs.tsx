@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useDispatch } from 'react-redux'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
@@ -12,14 +13,16 @@ import {
   SwitchingColumnContainer,
   SwitchingColumn,
 } from '@modules/Switching/Switching.style'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
 import * as S from '@styles/common.style'
 import { actionText } from '@utils/constants'
-import { UserContent, VideoContainer, CopyInfo, CopyHeader } from './TellUs.style'
+import { UserContent, VideoContainer, CopyHeader } from './TellUs.style'
 import { Testimonial } from './Testimonial'
 import { Video } from './Video'
 
 export const TellUs: NextPage = () => {
   const { push } = useRouter()
+  const dispatch = useDispatch()
   const nextStep = useNextStep()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
@@ -44,15 +47,20 @@ export const TellUs: NextPage = () => {
                   subHeader='Get the word out'
                   text={actionText.tellUs}
                 />
+                <S.TextLink>
+                  <strong onClick={() => dispatch(toggleDrawer('tellUsPrompts'))}>
+                    Please use your own words but feel free to use these prompts.
+                  </strong>
+                </S.TextLink>
                 <S.TileLinks>
                   <S.Item>
                     <VideoContainer>
                       <CopyHeader>Video Submission</CopyHeader>
-                      <CopyInfo>
+                      {/* <CopyInfo>
                         Want to tell us what it felt like to finally divest? To know that {`you've`}{' '}
                         made an impact? You can submit a video cutting up your card, speaking from
                         the heart, etc. {`We'd`} love your permission to post it to socials or...
-                      </CopyInfo>
+                      </CopyInfo> */}
                     </VideoContainer>
                     <UserContent>
                       <Video onNext={onNext} />
@@ -60,12 +68,12 @@ export const TellUs: NextPage = () => {
                   </S.Item>
                   <S.Item>
                     <VideoContainer>
-                      <CopyHeader>Testimonial or anything else</CopyHeader>
-                      <CopyInfo>
+                      <CopyHeader>Text Submission</CopyHeader>
+                      {/* <CopyInfo>
                         Want to tell us what it felt like to finally divest? To know that {`you've`}{' '}
                         made an impact? You can submit a video cutting up your card, speaking from
                         the heart, etc. {`We'd`} love your permission to post it to socials or...
-                      </CopyInfo>
+                      </CopyInfo> */}
                     </VideoContainer>
                     <UserContent>
                       <Testimonial onNext={onNext} />

@@ -36,7 +36,7 @@ export const actionsConfig = [
     pointsEarned: '50',
     route: 'breakup-letter',
     actionTitle: 'Writing Your Breakup Letter',
-    actionText: `We've got an editable prewritten letter for your convienence. Tell your bank why you're leaving and we'll send it for you, along with others' letters, so we can max. the impact`,
+    actionText: `Banks don’t want to lose customers. By sending thousands of letters to banks explaining why their customers are leaving, we can force them to improve their investment policies. We have drafted a breakup letter for you to edit and sign, which will be sent in batches with others’ for maximum impact.`,
   },
   {
     text: `Write your 'hello' letter`,
@@ -46,7 +46,7 @@ export const actionsConfig = [
     pointsEarned: '50',
     route: 'hello-letter',
     actionTitle: 'Writing Your Hello Letter',
-    actionText: `Want to tell your new green bank why you've switched over? Want to tell them that if they offer other services, you'll be switching over additional accounts as well? We've got a letter for that`,
+    actionText: `We love green banks and want everyone to be banking with them. Tell them why you joined and help them incentivise more people to make the switch.`,
   },
   {
     text: 'Post To Socials',
@@ -56,7 +56,7 @@ export const actionsConfig = [
     pointsEarned: '25',
     route: 'post-to-socials',
     actionTitle: 'Posting To Socials',
-    actionText: `Post directly from our web app to Twitter, Facebook and LinkedIn. We've got customisable, prewritten everything`,
+    actionText: `Time to multiply your impact. For every 10 friends switched over £10 million is taken out of fossil fuel support. We’ve drafted social posts for you to edit and share directly from our site, with unique sharing codes to accurately track your impact.`,
   },
   {
     text: 'Tell Your Community',
@@ -66,7 +66,7 @@ export const actionsConfig = [
     pointsEarned: '100',
     route: 'tell-your-community',
     actionTitle: 'Telling Your Community',
-    actionText: `Want to text your girlfriend? Email your grandpa? Print out and send a letter to your aunt? We've got you covered with custom sharing codes to track your impact and letters for everyone`,
+    actionText: `Imagine the impact if your whole class, team, or group chat made the switch. We’ve got drafted messages to help you spread the word and unique sharing codes to accurately track your impact as you get more people on board.`,
   },
   {
     text: 'Write Reviews',
@@ -76,7 +76,7 @@ export const actionsConfig = [
     pointsEarned: '50',
     route: 'leave-reviews',
     actionTitle: 'Writing Reviews',
-    actionText: `Lets defame! This is a great way to get the word out and maximise your impact. Post to Trustpilot and Google reviews`,
+    actionText: `Educate, warn, defame. Banks want to protect their image. And we want to deter people from unknowingly supporting the fossil fuel industry. Leaving public Trustpilot and Google reviews is a powerful way to support the campaign.`,
   },
   {
     text: 'Tell Us How It Went',
@@ -86,7 +86,7 @@ export const actionsConfig = [
     pointsEarned: '100',
     route: 'tell-us',
     actionTitle: 'Telling Us How it Went',
-    actionText: `We want to know how it went. We also want other people to know how it went, why you switched, and anything else. Send a video of you cutting up your card, or your switching manifesto to help us out or to post publically`,
+    actionText: `Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people on the importance of green banking. Tell us your switching story, or simply record yourself cutting up your old card. `,
   },
 ]
 

@@ -5,16 +5,18 @@ import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import Image from 'next/image'
 import { useState } from 'react'
+import { ParagraphCopy, CopyIcon } from '@styles/common.style'
+import { onCopy } from '@utils/functions'
 import * as S from './Accordion.style'
 
 type FAQ = {
-  question: string
-  answer: string
+  text: string
+  copy: string | string[]
 }
 
 const AccordionItem = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
   '&:not(:last-child)': {
     borderBottom: '1px solid #ada9a3',
   },
@@ -37,9 +39,12 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const AccordionDetails = styled(MuiAccordionDetails)(() => ({
   fontSize: '2rem',
   padding: '8px 0 20px',
+  rowGap: '25px',
+  display: 'flex',
+  flexDirection: 'column',
 }))
 
-export const Accordion = ({ data }: { data: any }) => {
+export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIcon?: boolean }) => {
   const [expanded, setExpanded] = useState<string | false>('')
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -48,24 +53,50 @@ export const Accordion = ({ data }: { data: any }) => {
 
   return (
     <S.AccordionContainer>
-      {data.map(({ question, answer }: FAQ, i: number) => (
-        <AccordionItem
-          key={`type${i}`}
-          expanded={expanded === `panel${i}`}
-          onChange={handleChange(`panel${i}`)}
-        >
-          <AccordionSummary aria-controls='panel1d-content' id='panel1d-header' sx={{ padding: 0 }}>
-            <Typography
-              sx={{ fontSize: '1.8rem', display: 'flex', alignItems: 'center', columnGap: '20px' }}
+      {data.map(({ text, copy }: FAQ, i: number) => {
+        const content = Array.isArray(copy) ? copy.join('\n\n') : copy
+        return (
+          <AccordionItem
+            key={`type${i}`}
+            expanded={expanded === `panel${i}`}
+            onChange={handleChange(`panel${i}`)}
+          >
+            <AccordionSummary
+              aria-controls='panel1d-content'
+              id='panel1d-header'
+              sx={{ padding: 0 }}
             >
-              {question}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography sx={{ fontSize: '1.5rem' }}>{answer}</Typography>
-          </AccordionDetails>
-        </AccordionItem>
-      ))}
+              <Typography
+                sx={{
+                  fontSize: '1.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  columnGap: '20px',
+                }}
+              >
+                {text}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {hasCopyIcon && (
+                <CopyIcon onClick={onCopy(content)}>
+                  <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
+                </CopyIcon>
+              )}
+
+              {Array.isArray(copy) ? (
+                <ParagraphCopy>
+                  {copy.map((item: string, i: number) => (
+                    <S.Para key={`para-${i}`}>{item}</S.Para>
+                  ))}
+                </ParagraphCopy>
+              ) : (
+                <Typography sx={{ fontSize: '1.5rem' }}>{copy}</Typography>
+              )}
+            </AccordionDetails>
+          </AccordionItem>
+        )
+      })}
     </S.AccordionContainer>
   )
 }

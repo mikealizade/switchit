@@ -6,3 +6,7 @@ export const AccordionContainer = styled.div`
   justify-content: space-between;
   row-gap: 10px;
 `
+
+export const Para = styled.p`
+  font-size: var(--fsBase);
+`

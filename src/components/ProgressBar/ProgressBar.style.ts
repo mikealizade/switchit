@@ -28,7 +28,7 @@ export const Steps = styled.ul`
 
 export const Item = styled.li<{ isActive: boolean }>`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   color: ${({ isActive }) => (isActive ? 'var(--sushi)' : 'var(--grey)')};
   width: 20%;
   font-size: var(--fsSmall4);

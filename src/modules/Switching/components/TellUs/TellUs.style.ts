@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const UserContent = styled.div`
   display: flex;
@@ -68,4 +69,8 @@ export const TestimonialImage = styled.div`
 
 export const VideoImage = styled(TestimonialImage)`
   min-height: 50px;
+
+  ${() => mediaQuery.tablet} {
+    min-height: 235px;
+  }
 `

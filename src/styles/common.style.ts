@@ -132,7 +132,6 @@ export const ButtonContainer = styled.div<{ column?: boolean; alignLeft?: boolea
 export const Label = styled.label`
   display: flex;
   column-gap: 15px;
-  padding: 20px 0;
   width: 100%;
 `
 
@@ -153,6 +152,7 @@ export const TileLinks = styled.ul`
   justify-content: space-evenly;
   flex-wrap: wrap;
   row-gap: 50px;
+  /* margin-top: 50px; */
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;
@@ -206,6 +206,11 @@ export const PlainInput = styled.input`
   padding: 5px 10px;
   border: 1px solid var(--gallery);
   border-radius: 10px;
+`
+
+export const CopyIcon = styled.span`
+  display: block;
+  cursor: pointer;
 `
 
 export const CopyIconHover = styled.span`
@@ -262,9 +267,17 @@ export const AnchorLink = styled.a`
   text-decoration: underline;
 `
 
-export const ParagraphCopy = styled.div`
-  list-style-type: circle;
+export const BulletList = styled.ul`
+  list-style-type: disc;
+  list-style-position: outside;
   display: flex;
   flex-direction: column;
   row-gap: 12px;
+  padding-left: 20px;
+`
+
+export const ParagraphCopy = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 `

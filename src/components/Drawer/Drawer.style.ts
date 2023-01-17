@@ -37,6 +37,10 @@ export const DrawerContent = styled.div`
   overflow-y: auto;
 `
 
+export const DrawerHeader = styled.h3`
+  font-size: var(--fsBase);
+`
+
 export const BackLink = styled.h2`
   font-size: var(--fsLarge);
   display: flex;

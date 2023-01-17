@@ -75,12 +75,22 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               height={logo?.height}
             />
             <S.TextContent>
+              <S.Text>{`Let's`} do this.</S.Text>
               <S.Text>{`This will take you to ${bank?.fullName}'s`} website</S.Text>
               <S.Text>
-                After switching make sure sure to come back and complete your switching journey
+                Now {`you've`} selected your bank, you just need to fill out a few details on their
+                website to open your new account and the Current Account Switch Service will handle
+                the rest.
               </S.Text>
+              <S.Text>
+                {`You're`} nearly done now - this will only take a few minutes! Then, {`you'll`}{' '}
+                just need to come back to this page to verify your switch.
+              </S.Text>
+              <BoldLink onClick={() => dispatch(toggleDrawer('dontWasteYourSwitch'))}>
+                {`Don't`} Waste Your Switch
+              </BoldLink>
+              <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
             </S.TextContent>
-            <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
             <Buttons>
               <Button
                 type='button'

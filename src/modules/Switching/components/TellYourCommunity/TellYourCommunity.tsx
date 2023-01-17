@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { ErrorBoundary } from 'react-error-boundary'
+import { Accordion } from '@components/Accordion/Accordion'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
@@ -14,18 +15,10 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, ShareButton, TabsContainer } from '@styles/common.style'
 import { actionText } from '@utils/constants'
-import { Actions } from './Actions'
 import { ShareCodeInfo } from './TellYourCommunity.style'
+import { data } from './data'
 
-const letterActions = [
-  { text: 'Colleagues', copy: 'this is copy' },
-  { text: 'Family', copy: 'this is copy2' },
-  { text: 'Parents', copy: 'this is copy3' },
-  { text: 'Friends', copy: 'this is copy4' },
-  { text: 'School / Uni  Mates', copy: 'this is copy5' },
-]
-
-const tabs: string[] = ['Letters', 'Talking Points', 'Sharing Code']
+const tabs: string[] = ['Letters', 'Sharing Code']
 
 export const TellYourCommunity: NextPage = () => {
   const nextStep = useNextStep()
@@ -34,9 +27,10 @@ export const TellYourCommunity: NextPage = () => {
   const steps = getSteps()
   const route = useRoute(steps.tellCommunity)
 
-  const panels: [React.ReactNode, React.ReactNode, React.ReactNode] = [
-    <Actions key='letter' actions={letterActions} type='letter' />,
-    <Actions key='talkingPoints' actions={letterActions} type='talkingPoints' />,
+  const panels: [React.ReactNode, React.ReactNode] = [
+    // <Actions key='letter' actions={letterActions} type='letter' />,
+    <Accordion key='accordion' data={data} hasCopyIcon />,
+    // <Actions key='talkingPoints' actions={letterActions} type='talkingPoints' />,
     <>
       <ShareButton key='share' type='button' onClick={() => shareCode()} small>
         Share

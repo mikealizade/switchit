@@ -12,16 +12,16 @@ import * as S from '@styles/common.style'
 
 const data = [
   {
-    question: 'What is CASS',
-    answer: 'Current Account Switching Service',
+    text: 'What is CASS',
+    copy: 'Current Account Switching Service',
   },
   {
-    question: 'What is CASS',
-    answer: 'Current Account Switching Service',
+    text: 'What is CASS',
+    copy: 'Current Account Switching Service',
   },
   {
-    question: 'What is CASS',
-    answer: 'Current Account Switching Service',
+    text: 'What is CASS',
+    copy: 'Current Account Switching Service',
   },
 ]
 

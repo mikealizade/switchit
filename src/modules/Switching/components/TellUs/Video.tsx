@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react'
-import ContentEditable from 'react-contenteditable'
 import useSWR, { SWRResponse } from 'swr'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { Buttons } from '@modules/Switching/Switching.style'
@@ -34,7 +33,6 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
   const [canPostPublicly, setCanPostPublicly] = useState(false)
   const [file, setFile] = useState<any>(null)
   const [isUploaded, setIsUploaded] = useState(false)
-
   const isStepCompleted = !!(completedSteps.includes(steps.tellUs) && videoUri)
 
   useEffect(() => {
@@ -43,8 +41,6 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
       setTestimonial(text.current)
     }
   }, [videoUri, text])
-
-  console.log('videoUri', videoUri)
 
   return (
     <>

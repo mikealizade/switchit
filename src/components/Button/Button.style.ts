@@ -46,7 +46,8 @@ export const Button = styled.button<{ size?: string }>`
       : 'var(--white)'};
 
   ${() => mediaQuery.tablet} {
-    font-size: ${({ size }) => (size === 'normal' ? 'inherit' : 'var(--fsBase)')};
+    font-size: ${({ size }) =>
+      size === 'small' ? 'var(--fsSmall4)' : size === 'normal' ? 'inherit' : 'var(--fsBase)'};
   }
 
   &[type='reset'] {

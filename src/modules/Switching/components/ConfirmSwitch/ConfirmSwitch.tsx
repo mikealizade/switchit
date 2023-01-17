@@ -10,13 +10,14 @@ import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { setSignature } from '@state/generic/genericSlice'
 import { RootState } from '@state/store'
-import { Form, Content } from '@styles/common.style'
-import { actionText } from '@utils/constants'
+import { Form, Content, ParagraphCopy } from '@styles/common.style'
+import { actionText, journeyTypes } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
 
@@ -43,10 +44,15 @@ export const ConfirmSwitch: NextPage = () => {
   const nextStep = useNextStep()
   const date = new Date() // TODO datepicker or select?
   const getSteps = useStepsByJourneyType()
+  const { currentJourney: { goodBank } = {}, currentJourneyType } = useGetCurrentJourney()
+
+  console.log('goodBank', goodBank)
+
+  const [hasConfirmed, setConfirmed] = useState(false)
   const steps = getSteps()
   // const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
-  const onSubmit = (): void => {
+  const onNext = (): void => {
     nextStep(steps.confirmSwitch, '/switching/select-action', { isVerified: new Date() })
   }
 
@@ -70,14 +76,35 @@ export const ConfirmSwitch: NextPage = () => {
               text={actionText.confirmSwitch}
             />
 
-            <S.Agreement>
-              Labore nisi exercitation aute tempor in anim eu. Duis laboris ipsum mollit sit in et
-              cupidatat. Sunt cupidatat proident Lorem tempor ad elit eu elit laborum exercitation
-              aliquip occaecat excepteur. Ullamco consequat eiusmod veniam ad consequat esse esse.
-              Nostrud consectetur mollit laborum eiusmod culpa ullamco non labore id adipisicing
-              voluptate adipisicing. Occaecat officia nisi amet ex aliqua aliquip ad duis qui quis
-              aute. Minim adipisicing id do cillum adipisicing in.
-            </S.Agreement>
+            <>
+              {hasConfirmed ? (
+                <ParagraphCopy>
+                  <p>Congrats on your new green bank account.</p>
+                  <p>Thank you. Verifying your switch supports our work.</p>
+                  {goodBank === 'starling' && (
+                    <p>
+                      A donation will be made to our charity partner once we have confirmed your
+                      switch with your new provider.
+                    </p>
+                  )}
+                </ParagraphCopy>
+              ) : (
+                <S.Agreement>
+                  I confirm that I have signed up for an account with my chosen provider on their
+                  website by providing all the necessary details.
+                  {currentJourneyType === journeyTypes.noBankAccount ? (
+                    <>I intend to use this account as my sole, or primary, account.</>
+                  ) : (
+                    <>
+                      I have selected to switch my account and have chosen a switch day on which my
+                      old account will close. I do not intend to cancel my switch before the switch
+                      day I have selected.
+                    </>
+                  )}
+                </S.Agreement>
+              )}
+            </>
+
             <S.Signature>
               <Form row>
                 <S.SignatureFieldset>
@@ -105,10 +132,16 @@ export const ConfirmSwitch: NextPage = () => {
                   {/* <Button type='button' mode='secondary' onClick={onCancel}>
                     Cancel
                   </Button> */}
-                  <Button type='button' disabled={!value} onClick={onSubmit}>
-                    {/* TODO handle isSubmitting */}
-                    Submit
-                  </Button>
+                  {hasConfirmed ? (
+                    <Button type='button' disabled={!value} onClick={onNext}>
+                      Maximise Your Impact
+                    </Button>
+                  ) : (
+                    <Button type='button' disabled={!value} onClick={() => setConfirmed(true)}>
+                      Submit
+                    </Button>
+                  )}
+                  {/* TODO handle isSubmitting */}
                 </Buttons>
               </Form>
             </S.Signature>
