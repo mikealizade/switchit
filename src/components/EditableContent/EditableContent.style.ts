@@ -1,14 +1,15 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 
-export const Post = styled.div`
+export const EditableContent = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
   flex: 1;
   background-color: var(--white);
   min-width: 255px;
+  max-width: 365px;
   align-self: stretch;
+  flex: 1;
 `
 
 export const Container = styled.div`
@@ -21,19 +22,23 @@ export const Container = styled.div`
   flex: 1;
 `
 
+export const InnerWrapper = styled.div`
+  padding: 10px 0;
+  max-height: 400px;
+  overflow-y: auto;
+`
+
 export const Content = styled.div`
   background-color: var(--white);
   display: flex;
   row-gap: 20px;
   flex-direction: column;
-  padding: 30px;
+  padding: 20px;
   border-radius: 20px;
   border: 0;
   white-space: pre-wrap;
   flex: 1;
-  &[contenteditable='true'] {
-    border: 2px solid var(--sushi);
-  }
+  font-size: var(--fsSmall5);
 
   img {
     width: 100% !important;

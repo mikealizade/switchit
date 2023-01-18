@@ -34,7 +34,7 @@ const colourConfig = {
 
 export const BankScore = (): JSX.Element => {
   const { back, push } = useRouter()
-  const { data, error } = useSWR('/api/bankdata', fetcher)
+  const { data } = useSWR('/api/json/bankdata', fetcher)
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({

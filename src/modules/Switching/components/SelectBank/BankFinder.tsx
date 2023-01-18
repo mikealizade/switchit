@@ -19,7 +19,7 @@ export const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
   const { push } = useRouter()
   const nextStep = useNextStep()
-  const { data, error } = useSWR('/api/bankdata', fetcher)
+  const { data } = useSWR('/api/json/bankdata', fetcher)
   const [banks, setBanks] = useState([])
   const [isBankSelected, selectBank] = useState(false)
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)

@@ -22,7 +22,7 @@ export const BreakupLetter: NextPage = () => {
         <Content>
           <S.Container>
             <Letter
-              header='Action: Write Your Breakup Letter'
+              header='Write Your Breakup Letter'
               subHeader='Tell your old bank how you really feel'
               headerText={actionText.breakupLetter}
               getDefaultLetterText={getDefaultLetterText}

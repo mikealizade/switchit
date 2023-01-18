@@ -46,8 +46,10 @@ export const Letter: NextPage<LetterProps> = ({
   const nextStep = useNextStep()
   const text = useRef('')
   const toast = useToast()
-  const { currentJourneyId, currentJourney: { badBank = '', completedSteps = [] } = {} } =
-    useGetCurrentJourney()
+  const {
+    currentJourneyId,
+    currentJourney: { badBank = '', goodBank = '', completedSteps = [] } = {},
+  } = useGetCurrentJourney()
   const { nickname } = useSelector((state: RootState) => state.user)
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
@@ -124,13 +126,13 @@ export const Letter: NextPage<LetterProps> = ({
       text.current = letter
       setLetter(text.current)
     } else {
-      text.current = getDefaultLetterText(badBank, nickname || '[your name]')
+      text.current = getDefaultLetterText(letterType === 'breakup' ? badBank : goodBank, nickname)
       setLetter(text.current)
     }
-  }, [letter, text, badBank, nickname, getDefaultLetterText])
+  }, [letter, text, badBank, goodBank, nickname, getDefaultLetterText])
 
   return (
-    <Card column padded>
+    <Card column padded rowGap={30}>
       <ActionHeader
         header={header}
         subHeader={subHeader}

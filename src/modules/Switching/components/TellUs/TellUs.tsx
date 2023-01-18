@@ -43,7 +43,7 @@ export const TellUs: NextPage = () => {
             <SwitchingColumn>
               <Card column padded>
                 <ActionHeader
-                  header='Action: Tell Us How It Went'
+                  header='Tell Us How It Went'
                   subHeader='Get the word out'
                   text={actionText.tellUs}
                 />

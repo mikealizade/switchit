@@ -121,16 +121,11 @@ fieldset {
   outline: 2px;
   padding: 20px;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: black;x
-    background: #E2DFDA;
-  }
-} */
+[contenteditable] div {
+  display: flex;
+  /* row-gap: 20px; */
+  flex-direction: column;
+}
 
 .swiper {
   width: 100%;

@@ -5,44 +5,38 @@ export type SocialPostConfig = {
 export const socialPostsConfig: SocialPostConfig = {
   twitter: [
     [
-      'twitter Exercitation Lorem in esse magna. Pariatur commodo eu non id est cupidatat occaecat etpariatur deserunt deserunt nulla laborum.',
-      'Elit consectetur id esse deserunt eiusmod in cupidatat duis reprehenderit occaecat ipsum velit. Aliquip mollit duis officia laboris. Do ut nisi elit culpa ex nulla eiusmod qui mollit.',
+      'I just switched £1.5 million out of fossil fuel support 🌍',
+      'Find out how much money you are worth to your bank 🤑 ⬇️',
+      'https://www.switchit.green',
+      '#SwitchIt #ClimateAction #GreenBank #FossilFree',
+      '',
     ],
     [
-      'xxxExercitation Lorem in esse magna. Pariatur commodo eu non id est cupidatat occaecat etpariatur deserunt deserunt nulla laborum.',
-      'xxxElit consectetur id esse deserunt eiusmod in cupidatat duis reprehenderit occaecat ipsum velit. Aliquip mollit duis officia laboris. Do ut nisi elit culpa ex nulla eiusmod qui mollit.',
+      'Did you know [insert bank] invested [insert amount] in fossil fuels last year? 🤯',
+      'Join me by switching to a #GreenBank in 3 simple steps here ⬇️',
+      'https://www.switchit.green',
+      '#ClimateAction #FossilFree',
     ],
     [
-      'xxxExercitation Lorem in esse magna. Pariatur commodo eu non id est cupidatat occaecat etpariatur deserunt deserunt nulla laborum.',
-      'xxxElit consectetur id esse deserunt eiusmod in cupidatat duis reprehenderit occaecat ipsum velit. Aliquip mollit duis officia laboris. Do ut nisi elit culpa ex nulla eiusmod qui mollit.',
+      'The amount of money destined for NEW oil and gas by 2030 is more than the amount needed for a 1.5 degree green energy transition.',
+      'Together, we can move over £7 billion out of fossil fuel support in 2023. Maximise the impact of switching to a #GreenBank ⬇️',
+      'https://www.switchit.green',
     ],
   ],
-  instagramStories: [
-    [
-      'Exercitation Lorem in esse magna. Pariatur commodo eu non id est cupidatat occaecat etpariatur deserunt deserunt nulla laborum.',
-      'Ea eu aliqua culpa commodo nostrud. Consequat tempor ullamco ipsum minim cillum cupidatat irure proident. Aliqua consequat tempor esse labore velit irure culpa eiusmod elit in.',
-    ],
-    [
-      'yyyExercitation Lorem in esse magna. Pariatur commodo eu non id est cupidatat occaecat etpariatur deserunt deserunt nulla laborum.',
-      'yyyEa eu aliqua culpa commodo nostrud. Consequat tempor ullamco ipsum minim cillum cupidatat irure proident. Aliqua consequat tempor esse labore velit irure culpa eiusmod elit in.',
-    ],
-    [
-      'yyyExercitation Lorem in esse magna. Pariatur commodo eu non id est cupidatat occaecat etpariatur deserunt deserunt nulla laborum.',
-      'yyyEa eu aliqua culpa commodo nostrud. Consequat tempor ullamco ipsum minim cillum cupidatat irure proident. Aliqua consequat tempor esse labore velit irure culpa eiusmod elit in.',
-    ],
-  ],
+  // instagramStories: [],
   instagramPosts: [
     [
-      'Elit consectetur id esse deserunt eiusmod in cupidatat duis reprehenderit occaecat ipsum velit. Aliquip mollit duis officia laboris. Do ut nisi elit culpa ex nulla eiusmod qui mollit.',
-      'Ea eu aliqua culpa commodo nostrud. Consequat tempor ullamco ipsum minim cillum cupidatat irure proident. Aliqua consequat tempor esse labore velit irure culpa eiusmod elit in.',
+      'Did you know that [insert bank] invested [insert amount] in fossil fuels last year',
+      'Banks can use their customer base as leverage to secure loans and assets, allowing them to fund destructive and unjust projects.',
+      'I decided to move my money out of fossil fuel supporting by switching from [insert bank] to [insert bank], who are totally fossil free.',
+      'I used @switchit.green to find the right #GreenBank for me and followed their simple switching journey to maximise my impact.',
+      'Together, in 2023, we can move over £7 billion out of fossil fuel support by switching to green banks 🌍 🥳',
     ],
     [
-      'Elit consectetur id esse deserunt eiusmod in cupidatat duis reprehenderit occaecat ipsum velit. Aliquip mollit duis officia laboris. Do ut nisi elit culpa ex nulla eiusmod qui mollit.',
-      'Ea eu aliqua culpa commodo nostrud. Consequat tempor ullamco ipsum minim cillum cupidatat irure proident. Aliqua consequat tempor esse labore velit irure culpa eiusmod elit in.',
-    ],
-    [
-      'zzzElit consectetur id esse deserunt eiusmod in cupidatat duis reprehenderit occaecat ipsum velit. Aliquip mollit duis officia laboris. Do ut nisi elit culpa ex nulla eiusmod qui mollit.',
-      'zzzEa eu aliqua culpa commodo nostrud. Consequat tempor ullamco ipsum minim cillum cupidatat irure proident. Aliqua consequat tempor esse labore velit irure culpa eiusmod elit in.',
+      'The amount of money destined for NEW oil and gas by 2030 is more than the amount needed for a 1.5 degree green energy transition.',
+      'Together, in 2023, we can move over £7 billion out of fossil fuel support by switching to greener banks.',
+      'Check out @switchit.green to see if your bank invests in fossil fuels & to maximise the impact of switching to a #GreenBank.',
+      'Every 10 people switched means over £10 million of lifetime investments taken out of fossil fuel support 👯‍♀️👯',
     ],
   ],
 }

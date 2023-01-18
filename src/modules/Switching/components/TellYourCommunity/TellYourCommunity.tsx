@@ -53,7 +53,7 @@ export const TellYourCommunity: NextPage = () => {
         <Content>
           <Card column padded>
             <ActionHeader
-              header='Action: Tell Your Community'
+              header='Tell Your Community'
               subHeader='Aunts and uncles not on Instagram?'
               text={actionText.tellCommunity}
             />

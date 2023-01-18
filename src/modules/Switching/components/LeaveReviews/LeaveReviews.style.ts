@@ -1,6 +1,13 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
+export const Container = styled.div`
+  display: flex;
+  gap: 40px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`
+
 export const CopyContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,6 +23,13 @@ export const CopyHeader = styled.h4`
 
 export const CopyInfo = styled.div`
   display: flex;
+`
+export const GoogleCopy = styled.div`
+  font-size: var(--fsSmall3);
+  font-style: italic;
+  position: absolute;
+  bottom: 15px;
+  width: 80%;
 `
 
 export const Copy = styled.div`

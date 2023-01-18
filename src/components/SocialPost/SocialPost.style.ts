@@ -31,9 +31,6 @@ export const Content = styled.div`
   border-radius: 20px;
   border: 0;
   white-space: pre-wrap;
-  &[contenteditable='true'] {
-    border: 2px solid var(--sushi);
-  }
 
   img {
     width: 100% !important;

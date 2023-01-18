@@ -6,9 +6,8 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { Content } from '@styles/common.style'
-import { actionText } from '@utils/constants'
-import { getDefaultLetterText } from '@utils/functions'
 import { Letter } from './Letter'
+import { getDefaultHelloLetterText } from './data'
 
 export const HelloLetter: NextPage = () => {
   const { push } = useRouter()
@@ -25,10 +24,10 @@ export const HelloLetter: NextPage = () => {
         <Content>
           <S.Container>
             <Letter
-              header='Action: Write Your Hello Letter'
-              subHeader={`Tell your new bank why you've switched`}
-              headerText={actionText.helloLetter}
-              getDefaultLetterText={getDefaultLetterText}
+              header='Write Your Hello Letter'
+              subHeader={`We all love a bit of positive reinforcement. Tell your new bank why you've switched. We've set you up for success with a prewritten letter below. Feel free to update, change, edit any of the text. We'll send it on the 1st of the month along with everyone else`}
+              headerText=''
+              getDefaultLetterText={getDefaultHelloLetterText}
               onNext={onNext}
               letterType='hello'
               step={steps.helloLetter}

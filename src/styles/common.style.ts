@@ -145,18 +145,15 @@ export const Checkbox = styled.span<{ isActive?: boolean }>`
   border: 1px solid var(--nileBlue);
 `
 
-export const TileLinks = styled.ul`
+export const TileLinks = styled.ul<{ isColumn?: boolean }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ isColumn }) => (isColumn ? 'column' : 'flex')};
   column-gap: 50px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  row-gap: 50px;
-  /* margin-top: 50px; */
-
-  ${() => mediaQuery.tablet} {
-    flex-direction: row;
-  }
+  row-gap: 46px;
+  flex: 1;
+  min-width: 365px;
 `
 
 export const Item = styled.li`
@@ -167,14 +164,14 @@ export const Item = styled.li`
 `
 
 export const Anchor = styled.a`
+  position: relative;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   border-radius: 10px;
   padding: 50px;
-  /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); */
-  border: 2px solid var(--overcast);
-  /* min-width: 366px; */
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   height: 85px;
 
   ${() => mediaQuery.tablet} {
@@ -220,24 +217,16 @@ export const CopyIconHover = styled.span`
 export const TabsContainer = styled(Div)`
   width: 100%;
   align-self: center;
-  /* justify-content: center; */
-
-  /* ${() => mediaQuery.xlaptop} {
-    width: 80%;
-  }
-
-  ${() => mediaQuery.xxlaptop} {
-    width: 55%;
-  } */
 `
 
 export const Subheader = styled.h3`
   font-size: var(--fsMedium7);
   font-family: 'Konsolev Regular';
   font-weight: bold;
+  line-height: 1.2;
 
   ${() => mediaQuery.tablet} {
-    font-size: var(--fsLarge4);
+    font-size: var(--fsLarge1);
     font-weight: normal;
   }
 `
