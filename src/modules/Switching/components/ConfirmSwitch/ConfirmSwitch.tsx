@@ -42,15 +42,11 @@ export const ConfirmSwitch: NextPage = () => {
   const signature = useSelector((state: RootState) => state.generic.signature)
   const [value, setValue] = useState(signature)
   const nextStep = useNextStep()
-  const date = new Date() // TODO datepicker or select?
+  const date = new Date()
   const getSteps = useStepsByJourneyType()
   const { currentJourney: { goodBank } = {}, currentJourneyType } = useGetCurrentJourney()
-
-  console.log('goodBank', goodBank)
-
   const [hasConfirmed, setConfirmed] = useState(false)
   const steps = getSteps()
-  // const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   const onNext = (): void => {
     nextStep(steps.confirmSwitch, '/switching/select-action', { isVerified: new Date() })

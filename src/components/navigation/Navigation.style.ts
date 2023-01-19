@@ -13,7 +13,7 @@ export const Nav = styled.nav<{ isNavOpen: boolean }>`
   transform: ${({ isNavOpen }) => (isNavOpen ? 'translateX(0)' : `translateX(-242px)`)};
   transition: all 0.2s ease-in-out;
   flex-direction: column;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   bottom: 0;
   left: 0;
@@ -74,7 +74,7 @@ export const MobileNav = styled.nav`
   height: 80px;
   width: 100%;
   background-color: var(--white);
-  z-index: 1;
+  z-index: 10;
   padding: 20px;
   box-shadow: 1px -4px 7px var(--pampas);
 `

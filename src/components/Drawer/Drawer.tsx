@@ -2,13 +2,13 @@ import styled from '@emotion/styled'
 import { NextPage } from 'next'
 import Image from 'next/image'
 import { useDispatch, useSelector } from 'react-redux'
-import { useMediaQuery } from 'react-responsive'
 import * as S from '@components/Drawer/Drawer.style'
 import { ProfileAwardsBadges } from '@components/ProfileAwardsBadges/ProfileAwardsBadges'
 import { ProfileForm } from '@components/ProfileForm/ProfileForm'
 import { ProfileFriends } from '@components/ProfileFriends/ProfileFriends'
 import { ProfilePoints } from '@components/ProfilePoints/ProfilePoints'
 import { ProfileSharingCodes } from '@components/ProfileSharingCodes/ProfileSharingCodes'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { RootState } from '@state/store'
 import {
@@ -17,6 +17,10 @@ import {
   DisclaimerCopy,
   DontWasteYourSwitchCopy,
   TellUsPromptsCopy,
+  MonzoProjectCopy,
+  NationwideProjectCopy,
+  StarlingProjectCopy,
+  TriodosProjectCopy,
 } from './DrawerCopy'
 
 const Header = styled.h2`
@@ -114,15 +118,28 @@ const drawerConfig = {
     component: <TellUsPromptsCopy />,
     backLink: 'Impact Card View',
   },
+  monzoProject: {
+    component: <MonzoProjectCopy />,
+    backLink: 'Impact Card View',
+  },
+  nationwideProject: {
+    component: <NationwideProjectCopy />,
+    backLink: 'Impact Card View',
+  },
+  starlingProject: {
+    component: <StarlingProjectCopy />,
+    backLink: 'Impact Card View',
+  },
+  triodosProject: {
+    component: <TriodosProjectCopy />,
+    backLink: 'Impact Card View',
+  },
 }
 
 export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+  const { isMobile } = useMediaQuery()
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
-
-  console.log('isDrawerOpen', isDrawerOpen)
-
   const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
 
   return (

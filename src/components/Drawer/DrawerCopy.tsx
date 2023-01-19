@@ -1,6 +1,6 @@
 import { DrawerHeader } from '@components/Drawer/Drawer.style'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { BulletList, Div } from '@styles/common.style'
+import { BulletList, Div, AnchorLink } from '@styles/common.style'
 
 export const ResearchCopy = () => (
   <Div>
@@ -94,7 +94,6 @@ export const DontWasteYourSwitchCopy = () => {
   return (
     <Div>
       <DrawerHeader>Dont Waste Your Switch</DrawerHeader>
-      <p>{`Don't`} waste your switch</p>
       <p>Completing your switch through our site is the best way to ensure it has an impact.</p>
       <p>
         Switching alongside thousands of others unleashes the power of switching en masse. Together,
@@ -125,5 +124,108 @@ export const TellUsPromptsCopy = () => (
         school/university?
       </li>
     </BulletList>
+  </Div>
+)
+
+export const MonzoProjectCopy = () => (
+  <Div>
+    <DrawerHeader>Watershed</DrawerHeader>
+    <p>
+      Monzo do not invest in fossil fuels (or arms or tobacco) and have taken a pro-active approach
+      to tackling gambling addiction. They are a branchless bank and this signficantly reduces their
+      CO2 emissions, however they are not satisfied to stop there - Monzo acknowledges that they
+      still have a negative environmental impact - they have partnered with Watershed, a software
+      company that powers environmental programmes for businesses.
+    </p>
+    <p>
+      <strong>Watershed</strong> uses industry-leading GHG protocols to accurately measure
+      {`Monzo's`} carbon footprint and help them identify opportunities to mitigate their harmful
+      output.
+    </p>
+    <p>
+      You can find out more about
+      <AnchorLink
+        href='https://monzo.com/i/protecting-the-environment'
+        target='_blank'
+        rel='noreferrer'
+      >
+        {`Monzo's`} partnership with Watershed here.
+      </AnchorLink>
+    </p>
+  </Div>
+)
+
+export const NationwideProjectCopy = () => (
+  <Div>
+    <DrawerHeader>Sustainable Housing</DrawerHeader>
+    <p>
+      Being a building society, it comes as no surprise that {`Nationwide's`} green investments have
+      focused on housing. They funded a sustainable housing development in Swindon and built 239
+      eco-friendly, off-gas houses. These houses have an EPC A rating and they use air source heat
+      pumps instead of traditional gas boilers. 71 homes (30%) will be available as Affordable Rent
+      and Shared Ownership through {`Nationwide's`} housing association partner GreenSquareAccord.
+    </p>
+    <p>
+      <AnchorLink
+        href='https://www.nationwide.co.uk/about-us/building-a-better-society/oakfield/'
+        target='_blank'
+        rel='noreferrer'
+      >
+        More information can be found here.
+      </AnchorLink>
+    </p>
+  </Div>
+)
+
+export const StarlingProjectCopy = () => (
+  <Div>
+    <DrawerHeader>Carbon Removal</DrawerHeader>
+    <p>
+      Starling invest in eight projects dedicated to atmospheric carbon removal. Many of these
+      projects work with indigenous communities around the world and focus forest conservation, tree
+      planting and protecting biodiversity. Starling have provided significant financial support to{' '}
+      {`Nicaragua's`} biggest reforestation programme, Communitree. This project is organised by
+      C-Level and aims to empower local communities to make environmentally sustainable decisions in
+      land management.
+    </p>
+    <p>
+      <AnchorLink
+        href='https://www.starlingbank.com/blog/green-projects-we-support-to-reduce-climate-change/'
+        target='_blank'
+        rel='noreferrer'
+      >
+        You can read more about these projects here.
+      </AnchorLink>
+    </p>
+  </Div>
+)
+
+export const TriodosProjectCopy = () => (
+  <Div>
+    <DrawerHeader>Sea Lanes</DrawerHeader>
+    <p>
+      Triodos gave <strong>Sea Lanes</strong> a £2.5m loan this year. Sea Lanes is a well-being
+      project organised on environmentally sustainable principles. As well as an open water swimming
+      centre, there will also be 23 carbon neutral spaces to let for businesses in the area who
+      share the same ethos.
+    </p>
+    <p>
+      <AnchorLink
+        href='https://www.triodos.co.uk/articles/2022/brighton-sea-swimming-pool-new-lending'
+        target='_blank'
+        rel='noreferrer'
+      >
+        More information can be found here.
+      </AnchorLink>
+    </p>
+    <p>
+      <AnchorLink
+        href='https://www.triodos.co.uk/articles/2022/end-of-year-message-2022'
+        target='_blank'
+        rel='noreferrer'
+      >
+        You can read their end of year round up here.
+      </AnchorLink>
+    </p>
   </Div>
 )

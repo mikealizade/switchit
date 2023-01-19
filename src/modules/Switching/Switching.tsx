@@ -56,7 +56,7 @@ const getJourneys = (
               {/* {badBank || '[not yet selected]'} to {goodBank || '[not yet selected]'} */}
             </S.DetailText>
             <S.DetailHeader>Latest Green Project Funded</S.DetailHeader>
-            <S.DetailText>{greenBank?.latestGreenProject}</S.DetailText>
+            <S.DetailText>{greenBank?.latestGreenProject || '[not yet selected]'}</S.DetailText>
             <S.DetailHeader>Impact</S.DetailHeader>
             <S.DetailText>£1.51b switched</S.DetailText>
           </S.Detail>

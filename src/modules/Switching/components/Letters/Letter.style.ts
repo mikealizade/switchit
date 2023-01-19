@@ -13,6 +13,11 @@ export const LetterContainer = styled.div`
     border-radius: 10px;
     padding: 20px;
 
+    ul {
+      list-style: disc;
+      list-style-position: inside;
+    }
+
     ${() => mediaQuery.tablet} {
       padding: 50px;
     }

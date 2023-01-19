@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import { FC, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useMediaQuery } from 'react-responsive'
 import { Button, TextButton } from '@components/Button/Button'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import { AnchorLink } from '@styles/common.style'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { AnchorLink, TextLink } from '@styles/common.style'
 import * as S from './GreenBanks.style'
 import monzo from '../../../../../public/icons/icon_monzo.png'
 import nationwide from '../../../../../public/icons/icon_nationwide.png'
@@ -52,6 +54,8 @@ const logo = {
 }
 
 export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
+  const dispatch = useDispatch()
+
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const nextStep = useNextStep()
@@ -140,9 +144,9 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                     <td>{details}</td>
                     <td>{fee}</td>
                     <td>
-                      <AnchorLink href={projectLink} target='_blank' rel='noreferrer'>
+                      <TextLink onClick={() => dispatch(toggleDrawer(projectLink))}>
                         {project}
-                      </AnchorLink>
+                      </TextLink>
                     </td>
                     <td>{donation}</td>
                     <td>

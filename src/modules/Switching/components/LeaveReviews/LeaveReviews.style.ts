@@ -1,6 +1,4 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
-
 export const Container = styled.div`
   display: flex;
   gap: 40px;

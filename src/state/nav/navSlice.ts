@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 type Nav = {
   isNavOpen: boolean
@@ -12,10 +12,9 @@ export const nav = createSlice({
   name: 'nav',
   initialState: initialNavState,
   reducers: {
-    toggleNav: (state, action: PayloadAction<any>) => {
+    toggleNav: state => {
       return {
         isNavOpen: !state.isNavOpen,
-        section: action.payload,
       }
     },
   },

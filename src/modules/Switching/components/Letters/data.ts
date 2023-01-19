@@ -24,7 +24,7 @@ const goodBankLetterConfig = {
     body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you [insert suggestion here e.g. had a more competitive student account offering; added more features to your app; increased your investments in green community projects] to incentivise more switchers.</div>`,
   },
 }
-const demands = `<div><ul><li>Stopping directly financing fossil fuel expansion activity.</li><li>Delivering notice to clients that they must stop expansion activity or face the financing consequences.</li><li>Ending relationships with those clients do not stop fossil fuel expansion</li></ul></div>`
+const demands = `<ul><li>Stopping directly financing fossil fuel expansion activity.</li><li>Delivering notice to clients that they must stop expansion activity or face the financing consequences.</li><li>Ending relationships with those clients do not stop fossil fuel expansion</li></ul>`
 
 const badBankLetterConfig = {
   Barclays: {

@@ -8,8 +8,7 @@ export const bankConfig = [
     score: '5',
     fee: '£0',
     project: 'Carbon Removal',
-    projectLink:
-      'https://www.starlingbank.com/blog/green-projects-we-support-to-reduce-climate-change/',
+    projectLink: 'starlingProject',
     donation: 'No',
     features: ['app', 'savings', 'deposits'],
     meta: [
@@ -33,7 +32,7 @@ export const bankConfig = [
     score: '',
     fee: '£0',
     project: 'Watershed',
-    projectLink: 'https://monzo.com/i/protecting-the-environment',
+    projectLink: 'monzoProject',
     donation: 'No',
     features: ['app', 'savings', 'deposits'],
     meta: [
@@ -57,7 +56,7 @@ export const bankConfig = [
     score: '',
     fee: '£3',
     project: 'Sea Lanes',
-    projectLink: 'https://www.triodos.co.uk/articles/2022/brighton-sea-swimming-pool-new-lending',
+    projectLink: 'triodosProject',
     donation: 'Yes',
     features: ['app', 'savings', 'deposits'],
     meta: [
@@ -81,7 +80,7 @@ export const bankConfig = [
     score: '',
     fee: '£0',
     project: 'Sustainable Housing',
-    projectLink: 'https://www.nationwide.co.uk/about-us/building-a-better-society/oakfield/',
+    projectLink: 'nationwideProject',
     donation: 'No',
     features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
     meta: [

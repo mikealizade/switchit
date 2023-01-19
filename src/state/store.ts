@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage/session'
 import genericReducer from '@state/generic/genericSlice'
+import impactCardReducer from '@state/impactCard/impactCardSlice'
 import navReducer from '@state/nav/navSlice'
 import drawerReducer from 'src/state/drawer/drawerSlice'
 import friendsReducer from 'src/state/friends/friendsSlice'
@@ -14,13 +15,14 @@ import userReducer from 'src/state/user/userSlice'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['drawer', 'nav', 'toast'],
+  blacklist: ['drawer', 'nav', 'toast', 'impactCard'],
 }
 
 const rootReducer = combineReducers({
   user: userReducer,
   drawer: drawerReducer,
   nav: navReducer,
+  impactCard: impactCardReducer,
   friends: friendsReducer,
   toast: toastReducer,
   generic: genericReducer,
