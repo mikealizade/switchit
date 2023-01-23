@@ -2,13 +2,15 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@components/Button/Button'
 import * as S from '@components/ImpactCalculator/ImpactCalculator.style'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { Select } from '@components/Select/Select'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { setUserAge } from '@state/generic/genericSlice'
+import { RootState } from '@state/store'
 import { Div } from '@styles/common.style'
 import { journeyTypes } from '@utils/constants'
 import { getRandomInt } from '@utils/functions'
@@ -25,14 +27,21 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
   hasProgressBar,
 }): JSX.Element => {
   const dispatch = useDispatch()
+  const userAge = useSelector((state: RootState) => state.generic.userAge)
+  const usersValue = impactCalculator
+    .find(({ value }) => value.split(':')[1] === userAge)
+    ?.value.split(':')[0]
   const { currentJourneyType = '' } = useGetCurrentJourney()
   const { pathname } = useRouter()
-  const [impactTotal, setImpact] = useState('')
+  const [impactTotal, setImpact] = useState(usersValue ? `£${usersValue}` : '')
   const [impactIndex, setImpactIndex] = useState(0)
   const { impact1, impact2 } = impacts[impactIndex]
 
   const onSelect = (value: string) => {
-    setImpact(`£${value}`)
+    const [userValue, userAge] = value.split(':')
+
+    setImpact(`£${userValue}`)
+    dispatch(setUserAge(userAge))
   }
 
   const getProgressStep = (): number => {

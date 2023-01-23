@@ -16,6 +16,7 @@ const persistConfig = {
   key: 'root',
   storage,
   blacklist: ['drawer', 'nav', 'toast', 'impactCard'],
+  whiteList: ['generic.userAge'],
 }
 
 const rootReducer = combineReducers({

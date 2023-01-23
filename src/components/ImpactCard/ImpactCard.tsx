@@ -8,6 +8,7 @@ import { Banks } from '@components/ImpactCalculator/Banks'
 import { ImpactCalculator } from '@components/ImpactCalculator/ImpactCalculator'
 import { ImpactCardHeader } from '@components/ImpactCalculator/ImpactCalculator.style'
 import { SelectActionCards } from '@components/SelectActionCard/SelectActionCard'
+import { SwitchingFaqs } from '@components/SwitchingFaqs/SwitchingFaqs'
 import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useMediaQuery } from '@hooks/useMediaQuery'
@@ -71,7 +72,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
         />
       )}
       <ImpactCalculator hasProgressBar={hasProgressBar} />
-      {hasFAQ && <div>FAQs</div>}
+      {hasFAQ && <SwitchingFaqs />}
       {hasViewResearch && <ViewResearch />}
       {hasActionCards && <SelectActionCards />}
     </Div>
