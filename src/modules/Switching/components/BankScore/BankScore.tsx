@@ -22,7 +22,13 @@ import * as S from '../BankScore/BankScore.style'
 
 // TODO links to good bank buttons
 
-type BankResult = { score: number; scoreHeadline: string; scoreCopy: string; info: string }
+type BankResult = {
+  score: number
+  scoreHeadline: string
+  scoreCopy: string
+  info: string
+  summary: string
+}
 
 const colourConfig = {
   '1': '#DE2E2E',
@@ -37,11 +43,12 @@ export const BankScore = (): JSX.Element => {
   const { data } = useSWR('/api/json/bankdata', fetcher)
   const nextStep = useNextStep()
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
-  const [{ score, scoreHeadline, scoreCopy, info }, setBankScore] = useState<BankResult>({
+  const [{ score, scoreHeadline, scoreCopy, info, summary }, setBankScore] = useState<BankResult>({
     score: 0,
     scoreHeadline: '',
     scoreCopy: '',
     info: '',
+    summary: '',
   })
   const [valueEnd, setValueEnd] = useState(0)
   const isGoodBank = score === 5
@@ -53,11 +60,13 @@ export const BankScore = (): JSX.Element => {
   useEffect(() => {
     if (data && badBank) {
       const { bankScore = [], bankData = [] } = JSON.parse(String(data))
-      const { score: selectedScore, pertinentInformation: info } = bankData.find(
-        ({ bank }: { bank: string }) => bank === badBank,
-      )
+      const {
+        score: selectedScore,
+        pertinentInformation: info,
+        summary,
+      } = bankData.find(({ bank }: { bank: string }) => bank === badBank)
       const result = bankScore.find(({ score }: { score: number }) => score === selectedScore)
-      setBankScore({ ...result, info })
+      setBankScore({ ...result, info, summary })
       setValueEnd((score / 5) * 100)
     }
   }, [data, score, badBank])
@@ -104,6 +113,7 @@ export const BankScore = (): JSX.Element => {
                     )}
                   </ProgressProvider>
                 </S.BankScoreContainer>
+                <ParagraphCopy dangerouslySetInnerHTML={{ __html: summary }} bold />
               </S.BankInfo>
 
               <S.BankRating>

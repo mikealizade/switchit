@@ -16,7 +16,7 @@ export const drawer = createSlice({
   reducers: {
     toggleDrawer: (state, action: PayloadAction<any>) => {
       return {
-        isDrawerOpen: !state.isDrawerOpen,
+        isDrawerOpen: action.payload !== state.section || !state.isDrawerOpen,
         section: action.payload,
       }
     },

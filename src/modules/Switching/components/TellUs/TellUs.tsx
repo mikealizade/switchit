@@ -47,11 +47,14 @@ export const TellUs: NextPage = () => {
                   subHeader='Get the word out'
                   text={actionText.tellUs}
                 />
-                <S.TextLink>
-                  <strong onClick={() => dispatch(toggleDrawer('tellUsPrompts'))}>
-                    Please use your own words but feel free to use these prompts.
-                  </strong>
-                </S.TextLink>
+                <S.Div>
+                  <S.TextLink>
+                    <strong onClick={() => dispatch(toggleDrawer('tellUsPrompts'))}>
+                      Need some inspiration? Check out our prompts.
+                    </strong>
+                  </S.TextLink>
+                </S.Div>
+
                 <S.TileLinks>
                   <S.Item>
                     <VideoContainer>
@@ -80,9 +83,12 @@ export const TellUs: NextPage = () => {
                     </UserContent>
                   </S.Item>
                 </S.TileLinks>
-                <Buttons align='right'>
+                <Buttons>
+                  <S.TextLink isGrey onClick={() => dispatch(toggleDrawer('postingPublicly'))}>
+                    What happens if I give you permission to post publicly?
+                  </S.TextLink>
                   <Button type='button' size='small' onClick={onCompleteJourney}>
-                    Wrap Up Impact Actions
+                    Complete Impact Actions
                   </Button>
                 </Buttons>
               </Card>

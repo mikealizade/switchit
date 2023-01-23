@@ -11,9 +11,9 @@ export const ViewResearch: NextPage = (): JSX.Element => {
     <S.ViewResearch>
       <p>
         Interested in our research? We have conducted a thorough analysis of the financial services
-        sector.{' '}
+        sector.
         <TextLink onClick={() => dispatch(toggleDrawer('research'))}>
-          Find our resources and criteria for recommendation.
+          Learn about our criteria for recommendation here.
         </TextLink>
       </p>
     </S.ViewResearch>

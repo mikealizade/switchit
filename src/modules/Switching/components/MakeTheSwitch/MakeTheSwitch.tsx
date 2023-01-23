@@ -15,31 +15,31 @@ import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { Content, BoldLink, Buttons } from '@styles/common.style'
 import { goodBanksConfig } from '@utils/data'
 import * as S from './MakeTheSwitch.style'
-import monzo from '../../../../../public/icons/icon_monzo.png'
-import nationwide from '../../../../../public/icons/icon_nationwide.png'
-import triodos from '../../../../../public/icons/icon_triodos.png'
+import monzo from '../../../../../public/images/logo_monzo.svg'
+import nationwide from '../../../../../public/images/logo_nationwide.svg'
 import starling from '../../../../../public/images/logo_starling.svg'
+import triodos from '../../../../../public/images/logo_triodos.svg'
 
 const logoConfig = {
   starling: {
     img: starling,
-    width: 149,
+    width: 270,
     height: 88,
   },
   monzo: {
     img: monzo,
-    width: 60,
-    height: 58,
+    width: 212,
+    height: 208,
   },
   triodos: {
     img: triodos,
-    width: 119,
-    height: 15,
+    width: 357,
+    height: 45,
   },
   nationwide: {
     img: nationwide,
-    width: 121,
-    height: 27,
+    width: 482,
+    height: 108,
   },
 }
 
@@ -63,17 +63,20 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column stretch>
+          <Card column stretch rowGap={50}>
             <ActionHeader
               header='Choose Your Bank'
               subHeader={`You've selected ${bank?.fullName}`}
             />
-            <Image
-              src={logo?.img.src}
-              alt={bank?.fullName}
-              width={logo?.width}
-              height={logo?.height}
-            />
+            <div style={{ alignSelf: 'center' }}>
+              <Image
+                src={logo?.img.src}
+                alt={bank?.fullName}
+                width={logo?.width}
+                height={logo?.height}
+              />
+            </div>
+
             <S.TextContent>
               <S.Text>{`Let's`} do this.</S.Text>
               <S.Text>{`This will take you to ${bank?.fullName}'s`} website</S.Text>
@@ -101,7 +104,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
                 Back
               </Button>
               <Button type='button' size='small' mode='primary' onClick={onMakeTheSwitch}>
-                Make The Switch
+                Take Me To {bank?.fullName}
               </Button>
               <Button
                 type='button'

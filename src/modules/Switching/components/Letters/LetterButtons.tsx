@@ -3,6 +3,7 @@ import { Button } from '@components/Button/Button'
 import * as S from '@modules/Switching/Switching.style'
 
 type LetterButtonsProps = {
+  bankName: string
   onToggleEditable: () => void
   onSave: () => void
   onSend: () => void
@@ -11,6 +12,7 @@ type LetterButtonsProps = {
 }
 
 export const LetterButtons: NextPage<LetterButtonsProps> = ({
+  bankName,
   onToggleEditable,
   onSave,
   onSend,
@@ -35,7 +37,7 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
       </S.ButtonsAlign>
       <S.ButtonsAlign>
         <Button type='button' size='small' onClick={onSend} disabled={isDisabled}>
-          Send To Bank
+          Send To {bankName}
         </Button>
         <Button type='button' size='small' onClick={onNext}>
           Next

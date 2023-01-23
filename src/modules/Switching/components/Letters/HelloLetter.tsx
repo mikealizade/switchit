@@ -25,7 +25,7 @@ export const HelloLetter: NextPage = () => {
           <S.Container>
             <Letter
               header='Write Your Hello Letter'
-              subHeader={`We all love a bit of positive reinforcement. Tell your new bank why you've switched. We've set you up for success with a prewritten letter below. Feel free to update, change, edit any of the text. We'll send it on the 1st of the month along with everyone else`}
+              subHeader={`We love green banks and want everyone to be banking with them. Tell them why you joined and help them incentivise more people to make the switch.`}
               headerText=''
               getDefaultLetterText={getDefaultHelloLetterText}
               onNext={onNext}

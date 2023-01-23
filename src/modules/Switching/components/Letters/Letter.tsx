@@ -13,7 +13,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { useToast } from '@hooks/useToast'
 import { Container } from '@modules/Switching/Switching.style'
 import { RootState } from '@state/store'
-import { sanitiseConfig } from '@utils/data'
+import { goodBanksConfig, sanitiseConfig } from '@utils/data'
 import { sendRequest, fetcher } from '@utils/functions'
 import * as S from './Letter.style'
 import { LetterButtons } from './LetterButtons'
@@ -62,7 +62,11 @@ export const Letter: NextPage<LetterProps> = ({
   const [, setLetter] = useState('')
   const [isEditable, setEdit] = useState(false)
   const isStepCompleted = completedSteps.includes(step)
-  const letter = letterType === 'breakup' ? breakupLetter : helloLetter
+  const isBadBank = letterType === 'breakup'
+  const letter = isBadBank ? breakupLetter : helloLetter
+  const bankName = isBadBank
+    ? badBank
+    : goodBanksConfig[goodBank as keyof typeof goodBanksConfig]?.fullName
 
   const onSave = async () => {
     try {
@@ -126,7 +130,7 @@ export const Letter: NextPage<LetterProps> = ({
       text.current = letter
       setLetter(text.current)
     } else {
-      text.current = getDefaultLetterText(letterType === 'breakup' ? badBank : goodBank, nickname)
+      text.current = getDefaultLetterText(isBadBank ? badBank : goodBank, nickname)
       setLetter(text.current)
     }
   }, [letter, text, badBank, goodBank, nickname, getDefaultLetterText])
@@ -152,6 +156,7 @@ export const Letter: NextPage<LetterProps> = ({
           />
 
           <LetterButtons
+            bankName={bankName}
             onToggleEditable={onToggleEditable}
             onSave={onSave}
             onSend={onSend}

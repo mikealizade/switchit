@@ -229,3 +229,25 @@ export const TriodosProjectCopy = () => (
     </p>
   </Div>
 )
+
+export const PostingPublicly = () => (
+  <Div>
+    <DrawerHeader>What happens if I give you permission to post publicly?</DrawerHeader>
+    <p>
+      Ticking the box below your video and/or written submission will allow us to publicly post your
+      switching story. This means we can share the content you provide on our public channels -
+      including our website and social media pages - alongside your first name.
+    </p>
+    <p>
+      Giving us permission to share your submission in this way is a great way to support the
+      campaign against fossil fuel financing. More people switching to green banks means more money
+      out of fossil fuel support.
+    </p>
+    <p>
+      If you do not give us permission to use your submission in this way, simply leave the box
+      unticked. We will not publicly post your switching story without your permission and if we do
+      use it for other purposes (e.g., a quote to support a pitch or presentation), we will not
+      include your name.
+    </p>
+  </Div>
+)

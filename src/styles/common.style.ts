@@ -247,9 +247,10 @@ export const Buttons = styled.div<{ align?: string }>`
   }
 `
 
-export const TextLink = styled.span`
+export const TextLink = styled.span<{ isGrey?: boolean }>`
   text-decoration: underline;
   cursor: pointer;
+  color: ${({ isGrey }) => (isGrey ? 'var(--grey)' : 'initial')};
 `
 
 export const AnchorLink = styled.a`
@@ -265,8 +266,9 @@ export const BulletList = styled.ul`
   padding-left: 20px;
 `
 
-export const ParagraphCopy = styled.div`
+export const ParagraphCopy = styled.div<{ bold?: boolean }>`
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
 `

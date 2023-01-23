@@ -182,6 +182,7 @@ export const Buttons = styled.div<{ align?: string }>`
   row-gap: 10px;
   padding: 10px 0;
   flex-wrap: wrap;
+  align-items: center;
 
   ${() => mediaQuery.tablet} {
     justify-content: ${({ align }) =>

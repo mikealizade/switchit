@@ -60,7 +60,7 @@ export const GreenBanks = (): JSX.Element => {
           <S.SwitchingColumn>
             <Card column padded>
               <ActionHeader
-                header='Action Choose Your Bank'
+                header='Choose Your Green Bank'
                 subHeader={`We've found 4 green banks for you`}
                 text={actionText.greenBanks}
                 isHTML

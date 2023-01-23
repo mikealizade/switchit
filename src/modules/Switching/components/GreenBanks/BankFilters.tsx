@@ -41,7 +41,7 @@ export const BankFilters: FC<BankFilterProps> = ({
                   })
                 }
               >
-                {accountType}
+                {accountType === 'personal' ? 'Current' : 'Student'} Accounts
               </S.AccountTypeButton>
             </li>
           )

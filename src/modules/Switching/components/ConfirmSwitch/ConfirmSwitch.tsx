@@ -57,10 +57,6 @@ export const ConfirmSwitch: NextPage = () => {
     dispatch(setSignature(value))
   }
 
-  // const onCancel = (): void => {
-  //   setValue('')
-  // }
-
   return (
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
@@ -68,7 +64,7 @@ export const ConfirmSwitch: NextPage = () => {
           <Card column padded>
             <ActionHeader
               header='Sign The Agreement'
-              subHeader={`Let's get you verified`}
+              subHeader={`We are harnessing the power of switching en masse. Signing this agreement helps us accurately track our progress as we head towards our goal of moving £7 billion worth of lifetime investments out of fossil fuel support this year. `}
               text={actionText.confirmSwitch}
             />
 

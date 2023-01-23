@@ -21,15 +21,7 @@ export const SwitchingHero: NextPage<{ type: string; hasLoaded?: boolean }> = ({
 
   return (
     <S.Hero>
-      <Image
-        src={`/icons/${hero.icon}`}
-        alt=''
-        width={60}
-        height={60}
-        // sizes='(max-width: 60em) 190px,
-        //             (min-width: 28em) 45vw,
-        //             100vw'
-      />
+      <Image src={`/icons/${hero.icon}`} alt='' width={60} height={60} />
       <S.Content>
         {isTipsLoaded.current === 'true' ? (
           <>

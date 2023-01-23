@@ -13,7 +13,7 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
 }): JSX.Element => {
   const { pathname } = useRouter()
   const hasSwitchDrawer = pathname.includes('/switching')
-  const hasDrawer = pathname === '/profile'
+  const hasDrawer = pathname === '/profile' || pathname === '/dashboard'
   const hasAside = pathname.includes('/switching/')
 
   return (

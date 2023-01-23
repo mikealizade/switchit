@@ -9,7 +9,7 @@ export type HeroConfig = {
 export const heroConfig: HeroConfig = {
   switching: {
     title: `What We're Switching`,
-    text: `With your help, in 2023, we will move over £7 billion out of fossil fuel support by switching to greener banks.  We are kicking off with current accounts; pretty much everyone has one, so it's a good place to start. Keep your eyes peeled for information coming soon on business banking, credit cards, pensions, and more. We are also expanding beyond the UK this year - next stop: the US. For now, let's get you switched.`,
+    text: `Find out if your bank funds fossil fuels, choose your new green bank, and maximise the power of your switch with our ready-to-go lobbying features. `,
     icon: 'icon_switching_earth.svg',
   },
   impact: {
@@ -37,7 +37,11 @@ export const heroConfig: HeroConfig = {
 export const heroTips = [
   {
     number: 'Switching Tip #13: Close Unused Accounts',
-    tip: 'Even if you have £0 in your account, you are still worth a hefty sum to your bank, who leverage their customer base to secure loans and assets, allowing them to continue pumping money into fossil fuel companies. Make sure to close old and unused accounts when you switch your main current account to your new green provider. ',
+    tip: 'Even if you have £0 in your account, you are still worth a hefty sum to your bank, who leverage their customer base to secure loans and assets, allowing them to continue pumping money into fossil fuel companies. Make sure to close old and unused accounts when you switch your main current account to your new green provider.',
+  },
+  {
+    number: `Switching Tip #4: What We're Switching`,
+    tip: 'We are kicking off with current accounts; pretty much everyone has one, so it’s a good place to start. Keep your eyes peeled for information coming soon on business banking, credit cards, pensions, and more. We are also expanding beyond the UK this year - next stop: the US.',
   },
   {
     number: 'Switching Tip #47: Multiply Your Impact',
@@ -52,7 +56,7 @@ export const heroTips = [
     tip: `Don't let others be fooled by dirty banks' greenwashing attempts. Add 'Leave Reviews' to your switching journey to help spread the message to future unsuspecting customers - we've put some templates together to help you out. `,
   },
   {
-    number: 'Switching Tip #: Tell Your Boss',
+    number: 'Switching Tip #6: Tell Your Boss',
     tip: `The Current Account Switch Service will handle the switching process for you. All your direct debits, payee details, balance, and incoming payments will be smoothly transferred over on the switch day you agree with your new bank. While future incoming payments (including your salary) will be transferred across either way, you might want to let your employer know about your updated payment details - and while you're there, why not tell them why you've switched?`,
   },
   {
@@ -73,7 +77,7 @@ export const heroTips = [
   },
   {
     number: 'Switching Tip #26 - The Switch Guarantee',
-    tip: 'In the unlikely event that anything goes wrong with your switch, your new bank will refund any interest and charges you incur. This is part of the Current Account Switch guarantee. Get in touch with your new bank to sort out any unexpected hiccups. ',
+    tip: 'In the unlikely event that anything goes wrong with your switch, your new bank will refund any interest and charges you incur. This is part of the Current Account Switch guarantee. Get in touch with your new bank to sort out any unexpected hiccups.',
   },
   {
     number: 'Switching Tip #1 - The Essentials',

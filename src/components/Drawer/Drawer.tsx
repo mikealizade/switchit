@@ -21,6 +21,7 @@ import {
   NationwideProjectCopy,
   StarlingProjectCopy,
   TriodosProjectCopy,
+  PostingPublicly,
 } from './DrawerCopy'
 
 const Header = styled.h2`
@@ -132,6 +133,10 @@ const drawerConfig = {
   },
   triodosProject: {
     component: <TriodosProjectCopy />,
+    backLink: 'Impact Card View',
+  },
+  postingPublicly: {
+    component: <PostingPublicly />,
     backLink: 'Impact Card View',
   },
 }

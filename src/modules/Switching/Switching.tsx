@@ -248,7 +248,7 @@ const Switching = (): JSX.Element => {
       </Head>
 
       <Content>
-        <SwitchingHero type='switching' hasLoaded={!!switchJourneys?.length} />
+        <SwitchingHero type='switching' hasLoaded={!!sub} />
         <Card stretch={isAddName}>
           <S.SwitchingColumnContainer>
             {isAddName ? (

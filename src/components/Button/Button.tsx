@@ -55,5 +55,5 @@ export const TextButton: NextPage<ButtonProps> = ({
 export const TextLink: NextPage<LinkProps> = ({
   children,
   mode = 'primary',
-  disabled = false,
+  // disabled = false,
 }): JSX.Element => <S.TextLink className={mode}>{children}</S.TextLink>

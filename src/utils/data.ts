@@ -79,7 +79,7 @@ export const actionsConfig = [
     actionText: `Educate, warn, defame. Banks want to protect their image. And we want to deter people from unknowingly supporting the fossil fuel industry. Leaving public Trustpilot and Google reviews is a powerful way to support the campaign.`,
   },
   {
-    text: 'Tell Us How It Went',
+    text: 'Share Your Switching Story',
     icon: 'tellus',
     type: 'tellUs',
     duration: '3',

@@ -31,8 +31,7 @@ export const actionText = {
     'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
   tellUs:
     'Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people on the importance of green banking. Write or record your switching story, or simply film yourself cutting up your old card.',
-  confirmSwitch:
-    'Part of what keeps our lights on is cash incentives from our recommended providers.',
+  confirmSwitch: '',
   bankNotListed: `We'll get our research team digging into your current bank ASAP but you don't need to wait for them to make the switch! If we don't have the research on your bank yet, it usually means one of two things: either they don't have an environmental policy at all (meaning they would automatically score a 2/5 or below); or, they are not a registered bank (they can offer banking services but will store your money somewhere else - most likely a with bank who is investing in fossil fuels). Switching to your new bank will work just the same, so you can continue your switching journey now. Next step: choose a new provider.`,
 }
 

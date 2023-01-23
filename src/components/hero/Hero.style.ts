@@ -22,10 +22,6 @@ export const Hero = styled.div`
   > span {
     flex: 1;
     min-height: 150px;
-
-    ${() => mediaQuery.tablet} {
-      min-height: auto;
-    }
   }
 
   > button {
