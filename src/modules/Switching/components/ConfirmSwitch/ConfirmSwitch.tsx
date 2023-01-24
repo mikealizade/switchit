@@ -47,6 +47,7 @@ export const ConfirmSwitch: NextPage = () => {
   const { currentJourney: { goodBank } = {}, currentJourneyType } = useGetCurrentJourney()
   const [hasConfirmed, setConfirmed] = useState(false)
   const steps = getSteps()
+  const confirmDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
 
   const onNext = (): void => {
     nextStep(steps.confirmSwitch, '/switching/select-action', { isVerified: new Date() })
@@ -105,16 +106,12 @@ export const ConfirmSwitch: NextPage = () => {
 
                     <span>
                       <span>Signature</span>
-                      <span>
-                        {date.getDay() + 1} {months[date.getMonth()]} {date.getFullYear()}
-                      </span>
+                      <span>{confirmDate}</span>
                     </span>
                   </S.Label>
                   <S.Date>
                     <Image src={`/icons/icon_date.svg`} alt='' width={20} height={20} />
-                    <div>
-                      {date.getDay() + 1} {months[date.getMonth()]} {date.getFullYear()}
-                    </div>
+                    <div>{confirmDate}</div>
                   </S.Date>
                 </S.SignatureFieldset>
                 <Buttons>

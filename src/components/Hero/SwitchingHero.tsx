@@ -10,7 +10,7 @@ export const SwitchingHero: NextPage<{ type: string; hasLoaded?: boolean }> = ({
   hasLoaded = false,
 }): JSX.Element => {
   const isTipsLoaded = useRef(window.localStorage.getItem('isTipsLoaded'))
-  const randomIndex = getRandomInt(0, heroTips.length - 1)
+  const randomIndex = useRef(getRandomInt(0, heroTips.length - 1))
   const hero = heroConfig[type as keyof HeroConfig]
 
   useEffect(() => {
@@ -27,8 +27,8 @@ export const SwitchingHero: NextPage<{ type: string; hasLoaded?: boolean }> = ({
           <>
             {hasLoaded ? (
               <>
-                <S.Title>{heroTips[randomIndex].number}</S.Title>
-                <S.Text>{heroTips[randomIndex].tip}</S.Text>
+                <S.Title>{heroTips[randomIndex.current].number}</S.Title>
+                <S.Text>{heroTips[randomIndex.current].tip}</S.Text>
               </>
             ) : (
               'Loading...'

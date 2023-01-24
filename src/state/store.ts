@@ -15,8 +15,8 @@ import userReducer from 'src/state/user/userSlice'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['drawer', 'nav', 'toast', 'impactCard'],
-  whiteList: ['generic.userAge'],
+  blacklist: ['drawer', 'nav', 'toast', 'impactCard', 'generic.actionCardIndex'],
+  whiteList: [],
 }
 
 const rootReducer = combineReducers({

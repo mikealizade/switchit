@@ -132,7 +132,7 @@ export const ButtonContainer = styled.div<{ column?: boolean; alignLeft?: boolea
 export const Label = styled.label`
   display: flex;
   column-gap: 15px;
-  width: 100%;
+  width: max-content;
 `
 
 export const Checkbox = styled.span<{ isActive?: boolean }>`

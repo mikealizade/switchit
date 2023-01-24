@@ -28,11 +28,11 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
 }): JSX.Element => {
   const dispatch = useDispatch()
   const userAge = useSelector((state: RootState) => state.generic.userAge)
+  const { currentJourneyType = '' } = useGetCurrentJourney()
+  const { pathname } = useRouter()
   const usersValue = impactCalculator
     .find(({ value }) => value.split(':')[1] === userAge)
     ?.value.split(':')[0]
-  const { currentJourneyType = '' } = useGetCurrentJourney()
-  const { pathname } = useRouter()
   const [impactTotal, setImpact] = useState(usersValue ? `£${usersValue}` : '')
   const [impactIndex, setImpactIndex] = useState(0)
   const { impact1, impact2 } = impacts[impactIndex]
