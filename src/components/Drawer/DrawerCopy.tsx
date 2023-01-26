@@ -48,6 +48,27 @@ export const ResearchCopy = () => (
   </Div>
 )
 
+export const CalculateAgeImpact = () => (
+  <Div>
+    <DrawerHeader>Why we need your age to calculate your impact</DrawerHeader>
+    <p>
+      Banks use their customer base as leverage to secure loans and assets; often the same loans and
+      assets that allow them to invest in fossil fuel projects and companies. {`Banks'`} customer
+      numbers are frequently used as evidence that they are a secure product in whom the market can
+      trust. The market is mostly indifferent to how much money an individual customer has in their
+      account, what {`they're`} interested in is the customer themselves as an asset.**
+    </p>
+    <p>
+      We have researched how banks value their customers as stable assets which support their
+      investments. This is partly based on the {`customer's`} expected lifetime deposits. The
+      younger you are, the more lifetime deposits you have ahead of you. We, therefore, need to
+      factor your age into our calculations to produce an accurate estimate of your worth to a bank
+      - and how much money you are pulling out of fossil fuel support, over your lifetime, by
+      switching to a green bank.
+    </p>
+  </Div>
+)
+
 export const PotentialClimateImpactCopy = () => (
   <Div>
     <p>

@@ -11,7 +11,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, TabsContainer } from '@styles/common.style'
-import { actionText } from '@utils/constants'
+import { actionHeaderSubText } from '@utils/constants'
 import { FollowUs } from './FollowUs'
 import { PostsContainer } from './PostToSocials.style'
 import { socialPostsConfig } from './data'
@@ -61,11 +61,7 @@ export const PostToSocials: NextPage = () => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
           <Card column>
-            <ActionHeader
-              header='Post To Socials'
-              subHeader='Get the word out'
-              text={actionText.postToSocials}
-            />
+            <ActionHeader header='Post To Socials' subHeader={actionHeaderSubText.postToSocials} />
 
             <TabsContainer>
               <StyledTabs>

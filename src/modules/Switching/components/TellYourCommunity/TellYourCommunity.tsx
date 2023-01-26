@@ -14,7 +14,7 @@ import { useShareCode } from '@hooks/useShareCode'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, ShareButton, TabsContainer } from '@styles/common.style'
-import { actionText } from '@utils/constants'
+import { actionHeaderSubText } from '@utils/constants'
 import { ShareCodeInfo } from './TellYourCommunity.style'
 import { data } from './data'
 
@@ -54,8 +54,7 @@ export const TellYourCommunity: NextPage = () => {
           <Card column padded>
             <ActionHeader
               header='Tell Your Community'
-              subHeader='Aunts and uncles not on Instagram?'
-              text={actionText.tellCommunity}
+              subHeader={actionHeaderSubText.tellCommunity}
             />
 
             <TabsContainer>

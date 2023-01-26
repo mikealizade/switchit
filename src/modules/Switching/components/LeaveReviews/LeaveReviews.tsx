@@ -17,7 +17,7 @@ import {
   SwitchingColumn,
 } from '@modules/Switching/Switching.style'
 import { Content, TileLinks, Item, Anchor } from '@styles/common.style'
-import { actionText, steps } from '@utils/constants'
+import { actionHeaderSubText, steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from './LeaveReviews.style'
 import { badBanksConfig } from './data'
@@ -51,11 +51,7 @@ export const LeaveReviews: NextPage = () => {
           <SwitchingColumnContainer>
             <SwitchingColumn>
               <Card column padded>
-                <ActionHeader
-                  header='Leave Reviews'
-                  subHeader='Get the word out'
-                  text={actionText.leaveReviews}
-                />
+                <ActionHeader header='Leave Reviews' subHeader={actionHeaderSubText.leaveReviews} />
 
                 <S.Container>
                   <EditableContent btnText='Copy' data={copy} type='copy' />

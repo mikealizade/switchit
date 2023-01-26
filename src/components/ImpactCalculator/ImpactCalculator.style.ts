@@ -47,6 +47,12 @@ export const Header = styled.h3`
   display: flex;
 `
 
+export const CalcFooter = styled.p`
+  font-size: var(--fsSmall5);
+  font-style: italic;
+  cursor: pointer;
+`
+
 export const Bank = styled(PlainInput)`
   background-color: var(--pampas);
   font-weight: bold;

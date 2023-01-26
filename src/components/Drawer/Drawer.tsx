@@ -22,6 +22,7 @@ import {
   StarlingProjectCopy,
   TriodosProjectCopy,
   PostingPublicly,
+  CalculateAgeImpact,
 } from './DrawerCopy'
 
 const Header = styled.h2`
@@ -96,7 +97,7 @@ const drawerConfig = {
     backLink: 'Impact Card View',
   },
   calculateAgeImpact: {
-    component: <div>How we use age to calculate climate impact</div>,
+    component: <CalculateAgeImpact />,
     backLink: 'Impact Card View',
   },
   donations: {

@@ -6,6 +6,7 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { Content } from '@styles/common.style'
+import { actionHeaderSubText } from '@utils/constants'
 import { Letter } from './Letter'
 import { getDefaultHelloLetterText } from './data'
 
@@ -25,7 +26,7 @@ export const HelloLetter: NextPage = () => {
           <S.Container>
             <Letter
               header='Write Your Hello Letter'
-              subHeader={`We love green banks and want everyone to be banking with them. Tell them why you joined and help them incentivise more people to make the switch.`}
+              subHeader={actionHeaderSubText.helloLetter}
               headerText=''
               getDefaultLetterText={getDefaultHelloLetterText}
               onNext={onNext}

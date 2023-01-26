@@ -30,219 +30,148 @@
   "bankData": [
     {
       "bank": "Barclays",
-      "parentCompany": "Barclays",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$19bn",
       "pertinentInformation": "<p>The deets:</p><p>Barclays are the biggest fossil fuel investors in Europe.</p><p>Banking on a Low Carbon Future (2020) have established that Barclays are taking negligible steps towards meeting their own, Paris-aligned, environmental policies.</p><p>Their commitment to divestment appears weak at best.</p><p>In 2022, the 4 other largest banks in the UK all made at least *some* level of commitment against providing funding for new oil and gas projects. Barclays is yet to follow suit.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £15.5 billion</p><p>Barclays are Europe's #1 financiers of the fossil fuel industry.</p><p>Barclays are a big investor in Exxon Mobil - one of the largest fossil fuel companies, with a history of Indigenous Rights violations.</p>",
-      "overallInvestmentTrendFossilFuels": "negative: Barclays has reduced fossil fuel investment by just under $10bn between 2020/2021, and have reduced their investment by $12bn when compared to 2016. Every year since 2016 has seen a reduction in fossil fuel investment EXCEPT from 18/19 which saw an increase of ~$4bn."
+      "summary": "<p>Fossil Fuel Investments 2021: £15.5 billion</p><p>Barclays are Europe's #1 financiers of the fossil fuel industry.</p><p>Barclays are a big investor in Exxon Mobil - one of the largest fossil fuel companies, with a history of Indigenous Rights violations.</p>"
     },
     {
       "bank": "Halifax",
-      "parentCompany": "The Lloyds Banking Group",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$1.3bn",
       "pertinentInformation": "<p>The deets:</p><p>Halifax is owned by The Lloyds Banking Group - one of the biggest investors of fossil fuels in the world. Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p><p>However, according to Banking on a Low Carbon Future (2020) the group overall are around 61% of the way towards meeting their internal, Paris-aligned, climate strategy.</p><p>In 2022, Lloyds committed to rule out future investments in *new* oil, gas, and coal projects going forward. While this was a step in the right direction, project financing represents only a fraction of Lloyds' extensive fossil fuel investments, and the commitment does nothing to address their current investment portfolio. The bank remains an enormous investor in fossil fuel exploration, extraction, expansion, and infrastructure.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £1.1 billion (Lloyds)</p><p>Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p>",
-      "overallInvestmentTrendFossilFuels": "negative: Lloyds has an overall negative trend in fossil fuel investment - halving their investment from $2.6bn in 2016 to $1.3bn in 2021. Each year between has seen a gradual reduction, EXCEPT 2020 which saw an $800m INCREASE in fossil fuel investment."
+      "summary": "<p>Fossil Fuel Investments 2021: £1.1 billion (Lloyds)</p><p>Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p>"
     },
     {
       "bank": "Lloyds Bank",
-      "parentCompany": "The Lloyds Banking Group",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$100m - bucket 1",
-      "totalInvestedIn2021": "$1.3bn",
       "pertinentInformation": "<p>The deets:</p><p>The Lloyds Banking Group is one of the biggest investors of fossil fuels in the world. Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p><p>However, according to Banking on a Low Carbon Future (2020) the group overall are around 61% of the way towards meeting their internal, Paris-aligned, climate strategy.</p><p>In 2022, Lloyds committed to rule out future investments in *new* oil, gas, and coal projects going forward. While this was a step in the right direction, project financing represents only a fraction of Lloyds' extensive fossil fuel investments, and the commitment does nothing to address their current investment portfolio. The bank remains an enormous investor in fossil fuel exploration, extraction, expansion, and infrastructure.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £1.1 billion</p><p>Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p>",
-      "overallInvestmentTrendFossilFuels": "negative: Lloyds has an overall negative trend in fossil fuel investment - halving their investment from $2.6bn in 2016 to $1.3bn in 2021. Each year between has seen a gradual reduction, EXCEPT 2020 which saw an $800m INCREASE in fossil fuel investment."
+      "summary": "<p>Fossil Fuel Investments 2021: £1.1 billion</p><p>Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p>"
     },
 
     {
       "bank": "HSBC Bank",
-      "parentCompany": "HSBC",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$17.9bn",
       "pertinentInformation": "<p>The deets:</p><p>HSBC are the third largest investors of fossil fuels in Europe; and second largest in the UK.</p><p>They are taking some, very slow, steps towards meeting their Paris-aligned climate-related policies.</p><p>In December 2022, HSBC committed to rule out future financing of ****new**** oil and gas fields. While this was a step in the right direction, oil and gas project financing represents only a fraction of HSBC's extensive fossil fuel investments, and the commitment does nothing to address their current investment portfolio. The bank remains an enormous investor in fossil fuel exploration, extraction, and infrastructure; including having ownership stakes in companies which have fossil fuel expansion plans.</p><p>Recently, even HSBC's so-called 'sustainable investments' were found to be funding destructive activities; including oil rigs, deforestation, and pipelines.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £14.6 billion</p><p>HSBC are Europe's #1 financiers of fossil fuel expansion.</p><p>HSBC fund the Adani Group, whose fossil fuel projects are renowned for violating Indigenous Rights.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: HSBC invested ~$18bn in 1016 and ~$18bn in 2021. They frequently exceeded $20bn in the intervening years. The lack of pattern suggests either climate-sensitive goals are not set, or not taken seriously."
+      "summary": "<p>Fossil Fuel Investments 2021: £14.6 billion</p><p>HSBC are Europe's #1 financiers of fossil fuel expansion.</p><p>HSBC fund the Adani Group, whose fossil fuel projects are renowned for violating Indigenous Rights.</p>"
     },
     {
       "bank": "Santander",
-      "parentCompany": "Santander",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$7.9bn",
       "pertinentInformation": "<p>The deets:</p><p>Santander are amongst the biggest fossil fuel investors in the world.</p>They have taken negligible steps towards meeting their own Paris-aligned climate strategy, suggesting they don't take environmental concerns seriously. Santander have made no commitment to phase **out** fossil fuel financing from their investment portfolio. While other big UK banks made commitments against future financing for *new* fossil fuel projects from 2022, Santander has fallen behind, having only made such a commitment for new oil project financing. Santander's current plans to be 'Net Zero' by 2050 include pumping money into fossil fuel companies in 2050 and beyond.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £6.4 billion</p><p>Santander invests in Petrobras - a Brazilian oil company operating in the Amazon, which threatens Indigenous Peoples.</p><p>Santander have ****increased**** their investments in Arctic oil & gas, fracking, and LNG since the Paris Agreement.</p>",
-      "overallInvestmentTrendFossilFuels": "increase: Santander increased their investment in fossil fuel companies every year since 2016 with the single exception of 2021 (which saw an decrease compared to 2020 ($10.1bn), but still an increase when compared to 2016 ($6.5bn)). "
+      "summary": "<p>Fossil Fuel Investments 2021: £6.4 billion</p><p>Santander invests in Petrobras - a Brazilian oil company operating in the Amazon, which threatens Indigenous Peoples.</p><p>Santander have ****increased**** their investments in Arctic oil & gas, fracking, and LNG since the Paris Agreement.</p>"
     },
     {
       "bank": "NatWest",
-      "parentCompany": "The NatWest Banking Group",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$1.8bn",
       "pertinentInformation": "<p>The deets:</p><p>NatWest are a major financer to the fossil fuel industry. While they invest less than some of the other big banks, they remain one of the biggest investors of fossil fuels in the world.</p><p>Don't be fooled by NatWest's role as 'principle partner of COP26. Despite partnering with an individual carbon footprint calculator to track their customers' emissions,  the banks ***own*** climate impact is nothing to boast about. The bank has no commitment to phase **out** their fossil fuel investment; their goal to halve their financed emissions by 2030 is both too weak and and too delayed. Even if this target is met, NatWest will remain an enormous investor in fossil fuel exploration, extraction, expansion, and infrastructure; investments which are not compatible with a 1.5 degree pathway.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £1.5 billion</p><p>NatWest have *********increased********* their investments in offshore oil & gas, and LNG since the Paris Agreement.</p><p>NatWest invest in tar sands oil - one of the most harmful fossil fuels for the planet.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: While The NatWest Banking Group have reduced their overall investment from $3.5bn (2016) to $1.8bn (2021), there has been negligible change in total investments over the past three years ($1.47bn (2019), $1.98bn (2020), $1.83bn (2021)). Despite initial momentum in 2016, this seems to have stagnated."
+      "summary": "<p>Fossil Fuel Investments 2021: £1.5 billion</p><p>NatWest have *********increased********* their investments in offshore oil & gas, and LNG since the Paris Agreement.</p><p>NatWest invest in tar sands oil - one of the most harmful fossil fuels for the planet.</p>"
     },
     {
       "bank": "Nationwide",
-      "parentCompany": "Nationwide Building Society",
       "score": 5,
-      "journeyThroughFlowChart": "No - No - bucket 5",
-      "totalInvestedIn2021": 0,
       "pertinentInformation": "<p>The deets:</p><p>Nationwide do not invest money in the fossil fuel industry and have a stated commitment to not do so in the future. They also offer various environmentally friendly financial incentives for customers and businesses.</p><p>Nationwide are a leader in the banking sector with a good reputation amongst climate conscious, ethical, organisations.</p>",
       "summary": "<p>Fossil Fuel Investments: £0</p>"
     },
     {
       "bank": "Bank of Scotland",
-      "parentCompany": "The Lloyds Banking Group",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$1.3bn",
       "pertinentInformation": "<p>The deets:</p><p>The Bank of Scotland Halifax is part of The Lloyds Banking Group - one of the worst banks for investing in fossil fuels. Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p><p>However, according to Banking on a Low Carbon Future (2020) the group overall are around 61% of the way towards meeting their internal, Paris-aligned, climate strategy.</p><p>In 2022, Lloyds committed to rule out future investments in *new* oil, gas, and coal projects going forward. While this was a step in the right direction, project financing represents only a fraction of Lloyds' extensive fossil fuel investments, and the commitment does nothing to address their current investment portfolio. The bank remains an enormous investor in fossil fuel exploration, extraction, expansion, and infrastructure.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £1.1 billion (Lloyds)</p><p>Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p>",
-      "overallInvestmentTrendFossilFuels": "negative: Lloyds has an overall negative trend in fossil fuel investment - halving their investment from $2.6bn in 2016 to $1.3bn in 2021. Each year between has seen a gradual reduction, EXCEPT 2020 which saw an $800m INCREASE in fossil fuel investment."
+      "summary": "<p>Fossil Fuel Investments 2021: £1.1 billion (Lloyds)</p><p>Many of Lloyd's subsidiaries have no commitment to divestment from fossil fuels.</p>"
     },
     {
       "bank": "RBS",
-      "parentCompany": "The NatWest Banking Group",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$1.8bn",
       "pertinentInformation": "<p>The deets:</p><p>RBS are a subsidiary of NatWest - a major financer to the fossil fuel industry.</p><p>They have taken no meaningful steps towards meeting their own climate strategy and the report 'Banking on a Low Carbon Future' (2020) gives RBS a rating of 'business as usual' in their attitude towards their own climate policies.</p><p>Don't be fooled by NatWest's role as 'principle partner of COP26. Despite partnering with an individual carbon footprint calculator to track their customers' emissions,  the banks ***own*** climate impact is nothing to boast about. The bank has no commitment to phase **out** their fossil fuel investment; their goal to halve their financed emissions by 2030 is both too weak and and too delayed. Even if this target is met, NatWest will remain an enormous investor in fossil fuel exploration, extraction, expansion, and infrastructure; investments which are not compatible with a 1.5 degree pathway.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £1.5 billion</p><p>NatWest have *********increased********* their investments in offshore oil & gas, and LNG since the Paris Agreement.</p><p>NatWest invest in tar sands oil - one of the most harmful fossil fuels for the planet.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: While The NatWest Banking Group have reduced their overall investment from $3.5bn (2016) to $1.8bn (2021), there has been negligible change in total investments over the past three years ($1.47bn (2019), $1.98bn (2020), $1.83bn (2021)). Despite initial momentum in 2016, this seems to have stagnated."
+      "summary": "<p>Fossil Fuel Investments 2021: £1.5 billion</p><p>NatWest have *********increased********* their investments in offshore oil & gas, and LNG since the Paris Agreement.</p><p>NatWest invest in tar sands oil - one of the most harmful fossil fuels for the planet.</p>"
     },
     {
       "bank": "The Co-operative Bank",
-      "parentCompany": "Various",
       "score": 3,
-      "journeyThroughFlowChart": "Unknown",
-      "totalInvestedIn2021": "Unknown",
       "pertinentInformation": "<p>The deets:</p><p>It's debunking time.</p><p>While the Co-operative Bank do not invest money in the fossil fuel industry, and frequently use ethical language when marketing their business, they do not qualify as one of our recommended providers.</p><p>The bank itself meets our criteria for investment/divestment commitments, however, these commitments can be considered a form of greenwashing as the fossil fuel industry is continually profiting from the bank's success.</p><p>The Co-operative Group no-longer own the Co-operative Bank. Since 2020, The Co-operative Bank has been owned by various asset management companies, including hedge funds with strong links to fossil fuels. More success for the bank means more profits for the fossil fuel industry. The bank needs to identify and remove all links to the fossil fuel industry in order to regain their status as an ethical bank.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £0</p>",
-      "overallInvestmentTrendFossilFuels": "Unknown"
+      "summary": "<p>Fossil Fuel Investments 2021: £0</p>"
     },
     {
       "bank": "Virgin Money",
       "score": 2,
-      "journeyThroughFlowChart": "Yes - unknown - yes - no - no",
-      "totalInvestedIn2021": "Unknown",
       "pertinentInformation": "<p>The deets:</p><p>Virgin Money offer a range of financial products, some of which invest in fossil fuels.</p><p>Virgin Money claim to take climate change seriously, but there is little by way of detail or commitment around divestment. This suggests they don't take environmental concerns seriously, and any statements to the contrary are little more than corporate sweet-talk.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>Virgin Money have not committed to phasing out their fossil fuel investments.</p><p>Virgin Money have no transparency regarding their investments.</p>",
-      "overallInvestmentTrendFossilFuels": "Unknown"
+      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>Virgin Money have not committed to phasing out their fossil fuel investments.</p><p>Virgin Money have no transparency regarding their investments.</p>"
     },
     {
       "bank": "Alliance & Leicester",
-      "parentCompany": "Santander",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$7.9bn",
       "pertinentInformation": "<p>The deets:</p><p>Alliance and Leicester are now fully incorporated into Santander -  one of the world's biggest investors in the fossil fuel industry.</p><p>They have taken negligible steps towards meeting their own Paris-aligned climate strategy, suggesting they don't take environmental concerns seriously. Santander have made no commitment to phase **out** fossil fuel financing from their investment portfolio. While other big UK banks made commitments against future financing for *new* fossil fuel projects from 2022, Santander has fallen behind, having only made such a commitment for new oil project financing. Santander's current plans to be 'Net Zero' by 2050 include pumping money into fossil fuel companies in 2050 and beyond.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £6.4 billion (Santander)</p><p>Santander invests in Petrobras - a Brazilian oil company operating in the Amazon, which threatens Indigenous Peoples.</p><p>Santander have ****increased**** their investments in Arctic oil & gas, fracking, and LNG since the Paris Agreement.</p>",
-      "overallInvestmentTrendFossilFuels": "increase: Santander, Alliance and Leicester's parent company, increased their investment in fossil fuel companies every year since 2016 with the single exception of 2021 (which saw an decrease compared to 2020 ($10.1bn), but still an increase when compared to 2016 ($6.5bn)). "
+      "summary": "<p>Fossil Fuel Investments 2021: £6.4 billion (Santander)</p><p>Santander invests in Petrobras - a Brazilian oil company operating in the Amazon, which threatens Indigenous Peoples.</p><p>Santander have ****increased**** their investments in Arctic oil & gas, fracking, and LNG since the Paris Agreement.</p>"
     },
     {
       "bank": "Triodos Bank",
       "score": 5,
-      "journeyThroughFlowChart": "No - No - bucket 5",
-      "totalInvestedIn2021": "$0",
       "pertinentInformation": "<p>The deets:</p><p>Triodos Bank are strongly committed to environmentally friendly banking and have a focus on sustainability. In fact, their entire business model is based on having a positive climate impact.</p><p>Triodos are consistently winning awards for their services, including being voted 'Best Ethical Financial Provider' at the British Bank Awards in 2022.</p>",
       "summary": "<p>Fossil Fuel Investments: £0</p>"
     },
     {
       "bank": "Monzo",
-      "parentCompany": "NA",
       "score": 4,
-      "journeyThroughFlowChart": "No - unclear - bucket 4",
-      "totalInvestedIn2021": "$0",
       "pertinentInformation": "<p>The deets:</p><p>Monzo have been very vocal on modern slavery and have refused to provide banking services to companies associated with this practise.</p><p>Monzo do not invest in fossil fuels and advertise this on their website.</p><p>However, Monzo have currently not committed to *****never***** invest in fossil fuels; which is a deciding factor for our 5/5 rating.</p><p>We are hoping to work closely with Monzo to take their investment policy up a notch, and your support will help us achieve this.</p>",
       "summary": "<p>Fossil Fuel Investments: £0</p>"
     },
     {
       "bank": "Starling Bank",
-      "parentCompany": "NA",
       "score": 5,
-      "journeyThroughFlowChart": "Yes - >$100m - $500m - bucket 2",
-      "totalInvestedIn2021": "Exact amount unknown - possibly as much as $279m",
       "pertinentInformation": "<p>The deets:</p><p>Starling Bank are co-founders of an industry initiative  called TechZero - designed to measure and help reduce tech companies' impact on the climate. They have also stated that they will not invest in, or take money from, the fossil fuel (or fossil fuel-related) industry.</p><p>After some controversy (both internal and external) regarding the bank accepting funds from the Qatari Investment Authority (connected to the country's oil reserves), Starling committed to finding and phasing-out all environmentally harmful investments.</p><p>This project has since been completed, demonstrating that Starling take their climate commitments seriously.</p><p>After a thorough assessment of Starling's commitments and investments we are confident in Starling's environmental credentials.</p>",
-      "summary": "<p>Fossil Fuel Investments: £0</p>",
-      "overallInvestmentTrendFossilFuels": "Unclear given their quickness to accept Qatari oil money, despite claiming to do the exact opposite."
+      "summary": "<p>Fossil Fuel Investments: £0</p>"
     },
     {
       "bank": "Bank Of Ireland",
-      "parentCompany": "Bank of Ireland/ECB",
       "score": 2,
-      "journeyThroughFlowChart": "Yes - unknown - yes - no - no",
-      "totalInvestedIn2021": "unknown",
       "pertinentInformation": "<p>The deets:</p><p>According to our research, the Bank of Ireland are a major investor in fossil fuels.</p><p>The bank have a stated aim to divest from fossil fuels by 2050 - a significantly later target than many others in the banking industry, with only a vague plan to reduce investment.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>Bank of Ireland have no transparency regarding their investments.</p><p>Bank of Ireland's divestment commitments are among the weakest of the UK banks.</p>",
-      "overallInvestmentTrendFossilFuels": "unknown"
+      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>Bank of Ireland have no transparency regarding their investments.</p><p>Bank of Ireland's divestment commitments are among the weakest of the UK banks.</p>"
     },
     {
       "bank": "TSB",
-      "parentCompany": "Banco Sabadell",
       "score": 2,
-      "journeyThroughFlowChart": "Yes - unknown - yes - no - no",
-      "totalInvestedIn2021": "unknown",
       "pertinentInformation": "<p>The deets:</p><p>TSB have a stated aim of becoming 'net zero' by 2030, with no clear information on how they plan to do this.</p><p>Their parent company, Banco Sabadell, do not publish information on investments in an accessible or transparent way.</p><p>Without a commitment to phase ***out*** fossil fuel financing - 'net zero' 2030 or not - the bank will continue to contribute to climate breakdown.</p><p>Both TSB and Banco Sabadell focus their sustainability policies on encouraging consumer behaviours to achieve 'net zero', rather than on their own investment strategies.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>TSB's parent company - Banco Sabadell - invest a significant amount in the fossil fuel industry.</p><p>TSB have no transparency regarding their investments.</p>",
-      "overallInvestmentTrendFossilFuels": "NA"
+      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>TSB's parent company - Banco Sabadell - invest a significant amount in the fossil fuel industry.</p><p>TSB have no transparency regarding their investments.</p>"
     },
     {
       "bank": "Ulster Bank",
-      "parentCompany": "NatWest Banking Group",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$1.8bn",
       "pertinentInformation": "<p>The deets:</p><p>Ulster Bank are a subsidiary of NatWest - a major financer to the fossil fuel industry.</p><p>Don't be fooled by NatWest's role as 'principle partner of COP26. Despite partnering with an individual carbon footprint calculator to track their customers' emissions,  the banks ***own*** climate impact is nothing to boast about. The bank has no commitment to phase **out** their fossil fuel investment; their goal to halve their financed emissions by 2030 is both too weak and and too delayed. Even if this target is met, NatWest will remain an enormous investor in fossil fuel exploration, extraction, expansion, and infrastructure; investments which are not compatible with a 1.5 degree pathway.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £1.5 billion (NatWest)</p><p>NatWest have *********increased********* their investments in offshore oil & gas, and LNG since the Paris Agreement.</p><p>NatWest invest in tar sands oil - one of the most harmful fossil fuels for the planet.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: While The NatWest Banking Group have reduced their overall investment from $3.5bn (2016) to $1.8bn (2021), there has been negligible change in total investments over the past three years ($1.47bn (2019), $1.98bn (2020), $1.83bn (2021)). Despite initial momentum in 2016, this seems to have stagnated."
+      "summary": "<p>Fossil Fuel Investments 2021: £1.5 billion (NatWest)</p><p>NatWest have *********increased********* their investments in offshore oil & gas, and LNG since the Paris Agreement.</p><p>NatWest invest in tar sands oil - one of the most harmful fossil fuels for the planet.</p>"
     },
     {
       "bank": "Danske",
-      "parentCompany": "Danske Bank",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$500m - bucket 1",
-      "totalInvestedIn2021": "$1.1bn",
       "pertinentInformation": "<p>The deets:</p><p>Danske bank are one of the biggest fossil fuel financiers in the world.</p><p>Our research has found that Danske Bank are also amongst the worst banks for taking steps to meet their Paris-aligned climate obligations; perhaps explaining why the bank refused to participate in Banking on a Low Carbon Future's most recent report.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £0.9 billion</p><p>Danske are failing to take steps towards their own climate targets.</p><p>Danske significantly **********increased********** their investments in fossil fuel expansion between 2020 and 2021.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: Danske Bank have maintained a steady rate of investment in fossil fuels over the past five years. As such, they seem to be indifferent to divestment from fossil fuels."
+      "summary": "<p>Fossil Fuel Investments 2021: £0.9 billion</p><p>Danske are failing to take steps towards their own climate targets.</p><p>Danske significantly **********increased********** their investments in fossil fuel expansion between 2020 and 2021.</p>"
     },
     {
       "bank": "First Direct",
-      "parentCompany": "HSBC",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$100m - bucket 1",
-      "totalInvestedIn2021": "$17.9bn",
       "pertinentInformation": "<p>The deets:</p><p>First Direct are a subsidiary of HSBC - the third largest investors of fossil fuels in Europe; and second largest in the UK.</p><p>They are taking some, very slow, steps towards meeting their Paris-aligned climate-related policies.</p><p>In December 2022, HSBC committed to rule out future financing of ****new**** oil and gas fields. While this was a step in the right direction, oil and gas project financing represents only a fraction of HSBC's extensive fossil fuel investments, and the commitment does nothing to address their current investment portfolio. The bank remains an enormous investor in fossil fuel exploration, extraction, and infrastructure; including having ownership stakes in companies which have fossil fuel expansion plans.</p><p>Recently, even HSBC's so-called 'sustainable investments' were found to be funding destructive activities; including oil rigs, deforestation, and pipelines.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £14.6 billion (HSBC)</p><p>HSBC are Europe's #1 financiers of fossil fuel expansion.</p><p>HSBC fund the Adani Group, whose fossil fuel projects are renowned for violating Indigenous Rights.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: HSBC invested ~$18bn in 1016 and ~$18bn in 2021. They frequently exceeded $20bn in the intervening years. The lack of pattern suggests either climate-sensitive goals are not set, or not taken seriously."
+      "summary": "<p>Fossil Fuel Investments 2021: £14.6 billion (HSBC)</p><p>HSBC are Europe's #1 financiers of fossil fuel expansion.</p><p>HSBC fund the Adani Group, whose fossil fuel projects are renowned for violating Indigenous Rights.</p>"
     },
     {
       "bank": "M&S Bank",
-      "parentCompany": "HSBC",
       "score": 1,
-      "journeyThroughFlowChart": "Yes - >$100m - bucket 1",
-      "totalInvestedIn2021": "$17.9bn",
       "pertinentInformation": "<p>The deets:</p><p>M&S Bank are a subsidiary of HSBC - the third largest investors of fossil fuels in Europe; and second largest in the UK.</p><p>They are taking some, very slow, steps towards meeting their Paris-aligned climate-related policies.</p><p>In December 2022, HSBC committed to rule out future financing of ****new**** oil and gas fields. While this was a step in the right direction, oil and gas project financing represents only a fraction of HSBC's extensive fossil fuel investments, and the commitment does nothing to address their current investment portfolio. The bank remains an enormous investor in fossil fuel exploration, extraction, and infrastructure; including having ownership stakes in companies which have fossil fuel expansion plans.</p><p>Recently, even HSBC's so-called 'sustainable investments' were found to be funding destructive activities; including oil rigs, deforestation, and pipelines.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: £14.6 billion (HSBC)</p><p>HSBC are Europe's #1 financiers of fossil fuel expansion.</p><p>HSBC fund the Adani Group, whose fossil fuel projects are renowned for violating Indigenous Rights.</p>",
-      "overallInvestmentTrendFossilFuels": "neutral: HSBC invested ~$18bn in 1016 and ~$18bn in 2021. They frequently exceeded $20bn in the intervening years. The lack of pattern suggests either climate-sensitive goals are not set, or not taken seriously."
+      "summary": "<p>Fossil Fuel Investments 2021: £14.6 billion (HSBC)</p><p>HSBC are Europe's #1 financiers of fossil fuel expansion.</p><p>HSBC fund the Adani Group, whose fossil fuel projects are renowned for violating Indigenous Rights.</p>"
     },
     {
       "bank": "Metro Bank",
-      "parentCompany": "Metro Bank",
       "score": 2,
-      "journeyThroughFlowChart": "Yes - unknown - no",
-      "totalInvestedIn2021": "NA",
       "pertinentInformation": "<p>The deets:</p><p>Metro Bank perform badly on environmental reporting, and submit inaccessible information about their investment strategies.</p><p>Metro Bank's own ESG report states that environmental concerns are 'not a priority' and of 'low relevance' within their broader business strategy.</p>",
-      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>Metro Bank have no transparency regarding their investments.</p><p>Metro publicly states that the environment is 'not a priority' for the bank</p>",
-      "overallInvestmentTrendFossilFuels": "Unknown"
+      "summary": "<p>Fossil Fuel Investments 2021: unknown</p><p>Metro Bank have no transparency regarding their investments.</p><p>Metro publicly states that the environment is 'not a priority' for the bank</p>"
+    },
+    {
+      "bank": "Revolut",
+      "score": 1,
+      "pertinentInformation": "<p>The deets:</p><p>Revolut is an example of a neobank - a totally digital banking service. Some neobanks are registered banks, while others simply provide banking services.</p><p>Revolut have not started trading yet as they are technically not a bank, but they have applied for a banking licence in the UK and this application is expected to be successful. This will enable Revolut to participate in the broader financial community and begin investing. At this time, the bank have made no commitments pertaining to fossil fuel investments. </p><p>Until Revolut becomes a registered bank, they themselves do not store your money; instead using other banks' services - namely Barclays and Lloyds - for this task. **Barclays and Lloyds are two of the world's largest financiers of the fossil fuel industry**, and customers who bank with Revolut are (unknowingly) supporting their actions.</p>",
+      "summary": "<p>Fossil Fuel Investments 2021: £0</p><p>Revolut stores their customers' money in external accounts with Barclays & Lloyds - two of the world's biggest fossil fuel investors.</p><pRevolut has made no commitment against fossil fuel investments.</p>"
+    },
+    {
+      "bank": "Chase",
+      "score": 1,
+      "pertinentInformation": "<p>The deets:</p><p>Chase might be a new bank to the UK, but JPMorgan Chase has been topping the league tables for years as the world's #1 bank for investing in fossil fuels (and fossil fuel expansion). In 2021 alone, JPMorgan Chase invested over £50 billion in fossil fuels - more than every other UK bank on our list combined. Between 2016 and 2021, Chase invested over £300 billion in the fossil fuel industry - more than double the amount invested by Barclays, the second largest fossil fuel investor on our list of UK current account providers. The bank's investments demonstrate a complete disregard for environmental issues.</p>",
+      "summary": "<p>Fossil Fuel Investments 2021: £50.3 billion</p><p>JPMorgan Chase are the biggest investors in fossil fuels in the world - with a lead of over 33% </p><p>JPMorgan Chase fund the Adani Group - one of the most controversial fossil fuel companies in the world.</p>"
     }
   ],
   "goodBanks": [

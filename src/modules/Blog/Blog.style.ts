@@ -14,7 +14,7 @@ export const BlogCard = styled(Card)`
   row-gap: 40px;
 `
 
-export const PostTitle = styled.h2`
+export const PostTitle = styled.h1`
   font-size: var(--fsVLarge3);
 `
 

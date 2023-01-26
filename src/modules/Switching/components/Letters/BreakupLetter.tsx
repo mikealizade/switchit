@@ -5,7 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
 import * as S from '@modules/Switching/Switching.style'
 import { Content } from '@styles/common.style'
-import { actionText, steps } from '@utils/constants'
+import { actionHeaderSubText, steps } from '@utils/constants'
 import { Letter } from './Letter'
 import { getDefaultBreakupLetterText } from './data'
 
@@ -23,7 +23,7 @@ export const BreakupLetter: NextPage = () => {
           <S.Container>
             <Letter
               header='Write Your Breakup Letter'
-              subHeader={`Banks don't want to lose customers. By sending thousands of letters to banks explaining why their customers are leaving, we can force them to improve their investment policies. We have drafted a breakup letter for you to edit and sign, which will be sent in batches with others' for maximum impact.`}
+              subHeader={actionHeaderSubText.breakupLetter}
               headerText=''
               getDefaultLetterText={getDefaultBreakupLetterText}
               onNext={onNext}

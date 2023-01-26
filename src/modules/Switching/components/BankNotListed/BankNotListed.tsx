@@ -30,7 +30,7 @@ export const BankNotListed: NextPage = () => {
   const [isConfirmation, setConfirmation] = useState(false)
   const [value, setValue] = useState('')
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
-  const header = isConfirmation ? 'Thanks for letting us know!' : 'Help Us Help You!'
+  const header = isConfirmation ? 'Thanks for letting us know!' : 'Add Your Bank To Our Database'
   const subHeader = isConfirmation ? '' : actionText.bankNotListed
 
   const onSelectCountry = (value: string) => {
@@ -76,7 +76,7 @@ export const BankNotListed: NextPage = () => {
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
             <Card column padded>
-              <ActionHeader header={header} text={subHeader} />
+              <ActionHeader header={header} subHeader={subHeader} />
               <NarrowContent>
                 {isConfirmation ? (
                   <>

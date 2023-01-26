@@ -13,6 +13,7 @@ export const bankConfig = [
     features: ['app', 'savings', 'deposits'],
     meta: [
       `Starling Bank are co-founders of an industry initiative  called TechZero - designed to measure and help reduce tech companies' impact on the climate. They have also stated that they will not invest in, or take money from, the fossil fuel (or fossil fuel-related) industry.`,
+      'Switch It Score - 5/5',
       'High-Street Branches - No',
       'Desktop Banking - No',
       'Apple/Google Pay - Yes',
@@ -37,6 +38,7 @@ export const bankConfig = [
     features: ['app', 'savings', 'deposits'],
     meta: [
       `Monzo do not invest in fossil fuels and advertise this on their website. However, Monzo have currently not committed to *****never***** invest in fossil fuels; which is a deciding factor for our 5/5 rating. We are hoping to work closely with Monzo to take their investment policy up a notch, and your support will help us achieve this.`,
+      'Switch It Score - 4/5',
       'High-Street Branches - No',
       'Desktop Banking - No',
       'Apple/Google Pay - Yes',
@@ -61,6 +63,7 @@ export const bankConfig = [
     features: ['app', 'savings', 'deposits'],
     meta: [
       'Triodos Bank are strongly committed to environmentally friendly banking and have a clear focus on sustainability. In fact, their entire business model is based on having a positive climate impact. They are a certified B-Corp and have totally transparent information on all the positive impact projects they currently invest in on their website. ',
+      'Switch It Score - 5/5',
       'High-Street Branches - No',
       'Desktop Banking - Yes',
       'Apple/Google Pay - No',
@@ -85,6 +88,7 @@ export const bankConfig = [
     features: ['branches', 'app', 'savings', 'deposits', 'mortgages'],
     meta: [
       'Nationwide do not invest money in the fossil fuel industry and have a stated commitment to not do so in the future. ',
+      'Switch It Score - 5/5',
       'High-Street Branches - Yes',
       'Desktop Banking - Yes',
       'Apple/Google Pay - Yes',

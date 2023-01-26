@@ -17,7 +17,7 @@ import { Buttons } from '@modules/Switching/Switching.style'
 import { setSignature } from '@state/generic/genericSlice'
 import { RootState } from '@state/store'
 import { Form, Content, ParagraphCopy } from '@styles/common.style'
-import { actionText, journeyTypes } from '@utils/constants'
+import { actionHeaderSubText, journeyTypes } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
 
@@ -65,8 +65,7 @@ export const ConfirmSwitch: NextPage = () => {
           <Card column padded>
             <ActionHeader
               header='Sign The Agreement'
-              subHeader={`We are harnessing the power of switching en masse. Signing this agreement helps us accurately track our progress as we head towards our goal of moving £7 billion worth of lifetime investments out of fossil fuel support this year. `}
-              text={actionText.confirmSwitch}
+              subHeader={actionHeaderSubText.confirmSwitch}
             />
 
             <>

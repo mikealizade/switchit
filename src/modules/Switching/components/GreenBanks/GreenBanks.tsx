@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
@@ -9,12 +10,14 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilters'
 import { BanksTable } from '@modules/Switching/components/GreenBanks/BanksTable'
-import { Content } from '@styles/common.style'
+import { toggleDrawer } from '@state/drawer/drawerSlice'
+import { Content, TextLink } from '@styles/common.style'
 import { actionText } from '@utils/constants'
 import { bankConfig } from './data'
 
 export const GreenBanks = (): JSX.Element => {
   const { back } = useRouter()
+  const dispatch = useDispatch()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
@@ -58,12 +61,16 @@ export const GreenBanks = (): JSX.Element => {
       <Content>
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
-            <Card column padded>
+            <Card column padded rowGap={60}>
               <ActionHeader
                 header='Choose Your Green Bank'
                 subHeader={`We've found 4 green banks for you`}
                 text={actionText.greenBanks}
-                isHTML
+                component={
+                  <TextLink onClick={() => dispatch(toggleDrawer('research'))}>
+                    Find out more about our criteria for recommendation
+                  </TextLink>
+                }
               />
 
               <S.Section>

@@ -9,6 +9,7 @@ type ActionHeader = {
   text?: string
   isStepCompleted?: boolean
   isHTML?: boolean
+  component?: React.ReactNode
 }
 
 export const ActionHeader: NextPage<ActionHeader> = ({
@@ -17,11 +18,15 @@ export const ActionHeader: NextPage<ActionHeader> = ({
   text = '',
   isStepCompleted,
   isHTML = false,
+  component,
 }): JSX.Element => {
   const content = isHTML ? (
     <ParagraphCopy dangerouslySetInnerHTML={{ __html: text }} />
   ) : (
-    <p>{text}</p>
+    <p>
+      {text}
+      {component ?? ''}
+    </p>
   )
   return (
     <HeaderContainer>

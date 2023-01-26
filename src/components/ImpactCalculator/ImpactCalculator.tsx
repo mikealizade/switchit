@@ -110,6 +110,9 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({
               options={impactCalculator}
               onChange={onSelect}
             />
+            <S.CalcFooter onClick={() => dispatch(toggleDrawer('calculateAgeImpact'))}>
+              Why do we need your age to calculate your impact?
+            </S.CalcFooter>
           </S.Calculator>
         </S.ImpactCalculator>
       )}

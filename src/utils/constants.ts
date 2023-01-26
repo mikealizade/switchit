@@ -19,20 +19,31 @@ export const emailRegex =
 
 const apiRoutes = {}
 
-export const actionText = {
-  greenBanks: `<p>Banks can't buy space on our site. We have researched all UK current account offerings and only recommend those banks which score 4/5 or above against our stringent investment policy criteria. Our recommended banks are displayed in alphabetical order, alongside all the information you need to make an informed decision on which is the best green bank for you. </p><p>We work with our recommended providers to keep up to date on their work and to pass on feedback on their services from our switchers (like you).</p><p>Some of our recommended providers pay us a small commission for each customer we send their way. This support helps ramp up our work and allows us to educate more people on the power of their money.</p><p>For each commission we receive, we donate 2% of the money to environmental justice projects. So, if you select a bank which is part of our donation scheme, you know your switch is having even more of a positive environmental impact.</p>`,
-  breakupLetter: `We've set you up for success with a prewritten letter below. Feel free to update, change, edit any of the text. We'll send it on the 1st of the month along with everyone else`,
-  helloLetter: 'We all love a bit of positive reinforcement.',
-  postToSocials:
-    'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
-  tellCommunity:
-    'Use these prewritten letters to send to your community via email - or even snail mail! Your custom sharing code (which can also be found in your profile) will allow you to text friends on Whatsapp',
+export const actionHeaderSubText = {
+  greenBanks: ``,
+  breakupLetter: `Banks don't want to lose customers. By sending thousands of letters to banks explaining why their customers are leaving, we can force them to improve their investment policies. We have drafted a breakup letter for you to edit and sign, which will be sent in batches with others' for maximum impact.`,
+  helloLetter:
+    'We love green banks and want everyone to be banking with them. Tell them why you joined and help them incentivise more people to make the switch.',
+  postToSocials: `Time to multiply your impact. For every 10 friends switched over £10 million is taken out of fossil fuel support. We've drafted social posts for you to edit and share directly from our site, with unique sharing codes to accurately track your impact.`,
+  tellCommunity: `Imagine the impact if your whole class, team, or group chat made the switch. We've got drafted messages to help you spread the word and unique sharing codes to accurately track your impact as you get more people on board.`,
   leaveReviews:
-    'One of the most impactful things you can do is to spread the word about the power of your money. We want banking with a green institution to be a no brainer, much like bringing your reusable bag to the grocery store',
+    'Educate, warn, defame. Banks want to protect their image. And we want to deter people from unknowingly supporting the fossil fuel industry. Leaving public Trustpilot and Google reviews is a powerful way to support the campaign.',
+  tellUs: '',
+  confirmSwitch: `We are harnessing the power of switching en masse. Signing this agreement helps us accurately track our progress as we head towards our goal of moving £7 billion worth of lifetime investments out of fossil fuel support this year.`,
+  bankNotListed: ``,
+}
+
+export const actionText = {
+  greenBanks: `Banks can't pay us to recommend them. We only recommend banks that meet our stringent criteria against fossil fuel investments. `,
+  breakupLetter: '',
+  helloLetter: '',
+  postToSocials: '',
+  tellCommunity: '',
+  leaveReviews: '',
   tellUs:
     'Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people on the importance of green banking. Write or record your switching story, or simply film yourself cutting up your old card.',
   confirmSwitch: '',
-  bankNotListed: `We'll get our research team digging into your current bank ASAP but you don't need to wait for them to make the switch! If we don't have the research on your bank yet, it usually means one of two things: either they don't have an environmental policy at all (meaning they would automatically score a 2/5 or below); or, they are not a registered bank (they can offer banking services but will store your money somewhere else - most likely a with bank who is investing in fossil fuels). Switching to your new bank will work just the same, so you can continue your switching journey now. Next step: choose a new provider.`,
+  bankNotListed: `It looks like we haven't got all the data on your bank yet. Adding it to our database tells our research team to keep searching for more information.`,
 }
 
 export enum journeyTypes {

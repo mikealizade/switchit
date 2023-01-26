@@ -74,3 +74,23 @@ export const VideoImage = styled(TestimonialImage)`
     min-height: 235px;
   }
 `
+
+export const WoohooContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  row-gap: 50px;
+`
+
+export const WoohooHeader = styled.h2`
+  font-size: var(--fsVLarge3);
+`
+
+export const WoohooText = styled.p`
+  font-size: var(--fsMedium7);
+  max-width: 380px;
+  text-align: center;
+  font-size: var(--fsLarge1);
+`
