@@ -2,8 +2,15 @@ import type { NextPage } from 'next'
 import Resources, { ResourcesType } from '@modules/Resources/Resources'
 import { baseUrl } from '@utils/constants'
 
+// export async function getServerSideProps() {
+//   const res = await fetch(`${baseUrl}/api/db/findResources?type=pdf`)
+//   const resources = await res.json()
+
+//   return { props: { resources } }
+// }
+
 export async function getServerSideProps() {
-  const res = await fetch(`${baseUrl}/api/db/findResources?type=pdf`)
+  const res = await fetch(`${baseUrl}/api/db/findBlogPosts`)
   const resources = await res.json()
 
   return { props: { resources } }

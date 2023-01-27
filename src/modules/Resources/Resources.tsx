@@ -1,14 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useDispatch, useSelector } from 'react-redux'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
-import { News } from '@modules/Resources/components/News/News'
-import { RootState } from '@state/store'
 import * as S from '@styles/common.style'
+import { Articles } from './components/Articles/Articles'
 
 export type Resource = {
   id: string
@@ -16,14 +13,15 @@ export type Resource = {
   title: string
   summary: string
   resource: string
+  mins: string
+  points: string
   isFeatured: boolean
 }
 
 export type ResourcesType = Resource[]
 
 const Resources: NextPage<{ resources: ResourcesType }> = ({ resources }) => {
-  const user = useSelector((state: RootState) => state.user)
-  // const { profile: { sharingCodes = [] } = {} } = user
+  console.log('resources', resources)
 
   return (
     <>
@@ -40,14 +38,8 @@ const Resources: NextPage<{ resources: ResourcesType }> = ({ resources }) => {
           <S.ColumnContainer>
             <S.Column>
               <Card>
-                <News resources={resources} />
+                <Articles resources={resources} />
               </Card>
-            </S.Column>
-            <S.Column>
-              <Card>content</Card>
-            </S.Column>
-            <S.Column>
-              <Card>content</Card>
             </S.Column>
           </S.ColumnContainer>
         </S.Content>

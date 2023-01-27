@@ -9,7 +9,7 @@ export const News: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX
     <S.News>
       <S.ResourcesTitle>
         <Image src={'/icons/icon_newspaper.svg'} alt='' width={45} height={45} />
-        News
+        Articles
       </S.ResourcesTitle>
 
       <S.NewsList>

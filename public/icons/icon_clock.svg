@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>clock</title>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.75" stroke-linecap="round" stroke-linejoin="round">
+        <g id="PROFILE---ACTIVE-USER-Copy-21" transform="translate(-840.000000, -632.000000)" stroke="#153F45" stroke-width="1.155">
+            <g id="Group-16" transform="translate(840.744065, 632.824650)">
+                <g id="clock" transform="translate(0.000000, 0.700718)">
+                    <ellipse id="Oval" cx="7.53338949" cy="7.23731592" rx="7.53338949" ry="7.23731592"></ellipse>
+                    <polyline id="Path" points="7.53338949 3.02957411 7.53338949 7.23731592 10.5993038 9.5094965"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -114,7 +114,9 @@ export const DontWasteYourSwitchCopy = () => {
 
   return (
     <Div>
-      <DrawerHeader>Dont Waste Your Switch</DrawerHeader>
+      <DrawerHeader>
+        Open your new account now to make sure you {`don't`} Waste Your Switch
+      </DrawerHeader>
       <p>Completing your switch through our site is the best way to ensure it has an impact.</p>
       <p>
         Switching alongside thousands of others unleashes the power of switching en masse. Together,

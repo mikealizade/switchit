@@ -13,6 +13,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { Content, BoldLink, Buttons } from '@styles/common.style'
+import { journeyTypes } from '@utils/constants'
 import { goodBanksConfig } from '@utils/data'
 import * as S from './MakeTheSwitch.style'
 import monzo from '../../../../../public/images/logo_monzo.svg'
@@ -47,12 +48,14 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const { push } = useRouter()
   const dispatch = useDispatch()
   const nextStep = useNextStep()
-  const { currentJourney } = useGetCurrentJourney()
+  const { currentJourney, currentJourneyType } = useGetCurrentJourney()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const bank = goodBanksConfig[bankName as keyof typeof goodBanksConfig]
   const logo = logoConfig[bankName as keyof typeof logoConfig]
   const hasMadeSwitch = currentJourney?.completedSteps.includes(steps.makeSwitch)
+  const btnText =
+    currentJourneyType === journeyTypes.noBankAccount ? 'I Opened An Account' : 'I Made The Switch'
 
   const onMakeTheSwitch = () => {
     nextStep(steps.makeSwitch, null, { goodBank: bank.name })
@@ -113,7 +116,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
                 disabled={!hasMadeSwitch}
                 onClick={() => push('/switching/confirm-switch')}
               >
-                I Made The Switch, Take Me To Verify
+                {btnText}, Take Me To Verify
               </Button>
             </Buttons>
           </Card>

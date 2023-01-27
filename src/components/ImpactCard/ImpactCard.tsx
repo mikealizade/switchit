@@ -73,7 +73,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
       )}
       <ImpactCalculator hasProgressBar={hasProgressBar} />
       {hasFAQ && <SwitchingFaqs />}
-      {hasViewResearch && <ViewResearch />}
+      {hasViewResearch && <ViewResearch compact />}
       {hasActionCards && <SelectActionCards />}
     </Div>
   )

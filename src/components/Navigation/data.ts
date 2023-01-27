@@ -42,13 +42,13 @@ export const navigation = [
     width: 29,
     height: 24,
   },
-  {
-    text: 'Community',
-    route: 'community',
-    icon: '/icons/icon_community',
-    width: 35,
-    height: 21,
-  },
+  // {
+  //   text: 'Community',
+  //   route: 'community',
+  //   icon: '/icons/icon_community',
+  //   width: 35,
+  //   height: 21,
+  // },
 ]
 
 export const mobileNav = [

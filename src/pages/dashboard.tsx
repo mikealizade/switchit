@@ -42,6 +42,8 @@ export type Post = {
   authorId: string
   tags: Array<string>
   expiry: string
+  points: string
+  mins: string
   imageUrl: string
   isFeatured: boolean
 }

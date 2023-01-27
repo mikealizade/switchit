@@ -8,23 +8,21 @@ import { store, persistor } from 'src/state/store'
 import 'normalize.css'
 import '@styles/globals.css'
 
-// import { persistor, store } from './redux/store';
-// TODOs
-
-// per page
+// PER PAGE
+// desktop
+// mobile
 // error handling
 // loading state ui
-// mobile
 // page reload
 // content
 
-// auth0
+// AUTH0
 // social media login
 // edit email and pw in auth0
 // pw page
 // mobile
 
-// for app
+// FOR APP
 // analytics
 // Sentry
 // lighthouse
@@ -33,7 +31,7 @@ import '@styles/globals.css'
 // cypress tests
 // email
 
-// Tech Debt
+// TECH DEBT
 // linting and linting on commit
 // remove useEffects where poss
 // upgrade to Next 13
