@@ -2,22 +2,23 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge , Badges } from '@components/Badges/Badges'
+import { Badge, Badges } from '@components/Badges/Badges'
 import { Card } from '@components/Card/Card'
-import { CheckList } from '@components/CheckList/CheckList'
 import { Fallback } from '@components/Fallback/Fallback'
 import { User } from '@components/User/User'
 import { SharingCodes } from '@modules/Dashboard/components/SharingCodes/SharingCodes'
 import { RootState } from '@state/store'
 import * as S from '@styles/common.style'
-import {
-  ClimateImpactReport,
-  ClimateImpactReportProps,
-} from './components/ClimateImpactReport/ClimateImpactReport'
+import { ClimateImpactReport } from './components/ClimateImpactReport/ClimateImpactReport'
 import { PointsTotal, PointsTotalProps } from './components/PointsTotal/PointsTotal'
 import { ProfileHead } from './components/ProfileHead/ProfileHead'
 import { ProfileSummary, ProfileSummaryProps } from './components/ProfileSummary/ProfileSummary'
 import { SwitchingFriends } from './components/SwitchingFriends/SwitchingFriends'
+
+export type ClimateImpactReportProps = {
+  carbonRemoved: number
+  trashRemoved: number
+}
 
 export type User = {
   _id: string
@@ -50,8 +51,7 @@ const Profile = (): JSX.Element => {
     profile: {
       badges = [],
       sharingCodes = [],
-
-      climateImpactReport = {},
+      // climateImpactReport = {},
       switchItPoints = [],
       summary = {},
     } = {},
@@ -93,14 +93,11 @@ const Profile = (): JSX.Element => {
               </Card>
             </S.Column>
             <S.Column>
-              <Card>
+              <Card stretch>
                 <SwitchingFriends />
               </Card>
               <Card>
-                <ClimateImpactReport data={climateImpactReport} />
-              </Card>
-              <Card>
-                <CheckList />
+                <ClimateImpactReport />
               </Card>
             </S.Column>
           </S.ColumnContainer>

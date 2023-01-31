@@ -5,7 +5,7 @@ import * as S from './RadioGroup.style'
 
 export type RadioGroupProps = {
   name: string
-  label: string
+  label?: string
   labels: Array<string>
   errors?: FieldError
   defaultValue?: string | number | boolean | undefined
@@ -51,9 +51,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
               {...(defaultValue && { defaultChecked: defaultValue === label })}
               {...(!disabled && register && register(name, { required }))}
               disabled={disabled}
-              aria-describedby='required'
-              aria-required={required}
-              aria-invalid={!!errors?.[name]}
+              // aria-describedby='required'
             />
             <span className='checkmark'></span>
             {label}

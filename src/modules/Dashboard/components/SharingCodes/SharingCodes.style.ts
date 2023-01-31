@@ -5,8 +5,9 @@ export const SharingCodes = styled.div`
   flex-direction: column;
   justify-content: space-between;
   /* align-self: flex-start; */
-  row-gap: 20px;
+  row-gap: 30px;
   flex: 1;
+  text-align: center;
 
   svg {
     width: 20px;

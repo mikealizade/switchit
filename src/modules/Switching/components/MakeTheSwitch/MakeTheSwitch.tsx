@@ -17,7 +17,7 @@ import { journeyTypes } from '@utils/constants'
 import { goodBanksConfig } from '@utils/data'
 import * as S from './MakeTheSwitch.style'
 import monzo from '../../../../../public/images/logo_monzo.svg'
-import nationwide from '../../../../../public/images/logo_nationwide.svg'
+import nationwide from '../../../../../public/images/logo_nationwide.png'
 import starling from '../../../../../public/images/logo_starling.svg'
 import triodos from '../../../../../public/images/logo_triodos.svg'
 
@@ -40,7 +40,7 @@ const logoConfig = {
   nationwide: {
     img: nationwide,
     width: 482,
-    height: 108,
+    height: 248,
   },
 }
 
@@ -58,8 +58,8 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
     currentJourneyType === journeyTypes.noBankAccount ? 'I Opened An Account' : 'I Made The Switch'
 
   const onMakeTheSwitch = () => {
-    nextStep(steps.makeSwitch, null, { goodBank: bank.name })
-    window.open(bank.link, '_blank', 'noreferrer')
+    nextStep(steps.makeSwitch, null, { goodBank: bank?.name })
+    window.open(bank?.link, '_blank', 'noreferrer')
   }
 
   return (

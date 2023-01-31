@@ -65,12 +65,6 @@ export const LeaveReviews: NextPage = () => {
                       >
                         <Image src={'/icons/icon_trustpilot.png'} alt='' width={203} height={50} />
                       </Anchor>
-                      {/* <S.Copy>
-                        Trustpilot copy
-                        <S.CopyIcon onClick={onCopy(trustpilotCopy)}>
-                          <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
-                        </S.CopyIcon>
-                      </S.Copy> */}
                     </Item>
                     <Item>
                       <Anchor

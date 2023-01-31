@@ -1,3 +1,9 @@
+export type StartJourneyConfig = {
+  step: string
+  text: string
+  route: string
+}
+
 export const startJourneyConfig = (goodBank: string) => [
   {
     step: 'Step 1',

@@ -18,3 +18,10 @@ export const Friend = styled.li`
     border-radius: 50%;
   }
 `
+
+export const Total = styled.span`
+  color: initial;
+  margin-right: auto;
+  padding-left: 15px;
+  display: inline-flex;
+`

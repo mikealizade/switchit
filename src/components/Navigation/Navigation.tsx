@@ -3,7 +3,7 @@ import cs from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as S from '@components/Navigation/Navigation.style'
 import { toggleNav } from '@state/nav/navSlice'
@@ -15,20 +15,31 @@ import logo from '../../../public/switchit_logo.png'
 type MobileNav = Pick<Nav, 'text' | 'route' | 'icon'>
 
 export const Navigation: NextPage = (): JSX.Element => {
-  const { pathname } = useRouter()
+  const { pathname, push } = useRouter()
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
-
   const [current, setHover] = useState('')
   const isActive = (route: string): boolean =>
     pathname === `/${route}` || pathname.includes(`/${route}`)
+
+  // const logOut = () => {
+  //   window.sessionStorage.clear()
+  //   push('/api/auth/logout')
+  // }
+
+  // useEffect(() => {
+  //   return () => {
+  //     debugger
+  //     window.sessionStorage.clear()
+  //   }
+  // }, [])
 
   return (
     <S.Nav isNavOpen={isNavOpen}>
       <S.Logo>
         <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
         <span>Switch It</span>
-        <S.CloseMenu onClick={() => dispatch(toggleNav(false))}>
+        <S.CloseMenu onClick={() => dispatch(toggleNav())}>
           <Image src='/icons/icon_close.svg' alt='Close' width={18} height={18} />
         </S.CloseMenu>
       </S.Logo>

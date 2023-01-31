@@ -20,19 +20,17 @@ import { UpdateProfile } from './components/UpdateProfile/UpdateProfile'
 
 // export type ResourcesType = Resource[]
 
-const panels: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode] = [
+const panels: [React.ReactNode, React.ReactNode] = [
   <>
     <UpdateProfile />
     <AccountForm />
     <h3>Close your account</h3>
     <p>To close your account, please click here</p>
   </>,
-  <div key=''>Notifications content</div>,
   <div key=''>Security content</div>,
-  <div key=''>Donations content</div>,
 ]
 
-const tabs: string[] = ['Account', 'Notifications', 'Security', 'Donate']
+const tabs: string[] = ['Account', 'Security']
 
 const Settings: NextPage = () => {
   return (

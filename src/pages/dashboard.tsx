@@ -44,7 +44,7 @@ export type Post = {
   expiry: string
   points: string
   mins: string
-  imageUrl: string
+  imageName: string
   isFeatured: boolean
 }
 

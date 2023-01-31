@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
 import * as S from '@modules/Resources/components/Articles/Articles.style'
-import { awsS3Uri } from '@utils/constants'
+import { getArticleImageUrl } from '@utils/functions'
 
 export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {
   return (
@@ -11,20 +11,12 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
       <S.ResourcesTitle>Articles</S.ResourcesTitle>
 
       <S.ArticlesList>
-        {resources.map(({ id, title, summary, resource, mins, points }) => {
-          const resourceUri = `${awsS3Uri}/resources/pdfs/${resource}`
-
+        {resources.map(({ id, title, summary, mins, points, imageName }) => {
           return (
             <S.Item key={id}>
               <Link href={`/resources/article/${id}`}>
                 <S.ArticleLink>
-                  <Image
-                    src={`${resourceUri}.png`}
-                    alt=''
-                    width='100%'
-                    height='100%'
-                    objectFit='contain'
-                  />
+                  <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={195} />
                   <S.Title>{title}</S.Title>
                   <S.Intro>{summary}</S.Intro>
                 </S.ArticleLink>

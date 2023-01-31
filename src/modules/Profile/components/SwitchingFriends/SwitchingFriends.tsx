@@ -12,22 +12,30 @@ export const SwitchingFriends: NextPage = (): JSX.Element => {
     <S.SwitchingFriends>
       <Title>
         Switching Friends
+        <S.Total>+ {friends.length}</S.Total>
         <Ellipsis section='friends' />
       </Title>
 
       <S.Friends>
-        {friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (
-          <S.Friend key={nickname}>
-            <Image
-              src={picture}
-              alt={nickname}
-              width={72}
-              height={72}
-              unoptimized
-              title={nickname}
-            />
-          </S.Friend>
-        ))}
+        {!friends.length ? (
+          <p>
+            Invite friends to boost your impact and help us reach our goal of £7 billion divested in
+            2023.
+          </p>
+        ) : (
+          friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (
+            <S.Friend key={nickname}>
+              <Image
+                src={picture}
+                alt={nickname}
+                width={72}
+                height={72}
+                unoptimized
+                title={nickname}
+              />
+            </S.Friend>
+          ))
+        )}
       </S.Friends>
     </S.SwitchingFriends>
   )

@@ -400,3 +400,105 @@ export const impactCalculatorOptions = [
     value: '8000:100',
   },
 ]
+
+// < means divide badCalc / divestment number
+// > means divestment number / badCalc
+
+export const impacts = [
+  {
+    impact1: 'Financing $ miles of an oil pipeline',
+    impact2: 'Building $ new wind turbines',
+    badUnitCost: 4_900_000,
+    goodUnitCost: 2_700_000,
+    badOp: '<',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Buying $ litres of toxic pesticides',
+    impact2: 'Insulating $ homes',
+    badUnitCost: 120,
+    goodUnitCost: 1300,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Building $ oil rigs',
+    impact2: 'Cleaning up $ barrels of oil spills',
+    badUnitCost: 16_800_000,
+    goodUnitCost: 619,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Opening $ coal mines',
+    impact2: 'Installing $ residential solar panels',
+    badUnitCost: 2775, // wrong??
+    goodUnitCost: 6000,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Taking $ private jets from London to New York',
+    impact2: 'Funding $ workshop on environmental justice',
+    badUnitCost: 255_000,
+    goodUnitCost: 510,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Taking $ private Ubers from HSBC City of London to The Ritz',
+    impact2: 'Reskilling $ oil industry employees in renewables',
+    badUnitCost: 22.18,
+    goodUnitCost: 30, //really??
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Funding $ new airport terminals',
+    impact2: 'Building $ miles of flood barriers to low lying areas',
+    badUnitCost: 3_000_000_000, // number too small for calculator
+    goodUnitCost: 2_800_000,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Buying $ oil CEOs lunches at The Savoy, London',
+    impact2: 'Funding $ school meals',
+    badUnitCost: 267.95,
+    goodUnitCost: 2.8,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Taking $ private jets from London to New York',
+    impact2: 'Purchasing $ annual bus pass',
+    badUnitCost: 255_000,
+    goodUnitCost: 932,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Funding $ trophy hunting excursions',
+    impact2: 'Protecting $ turtles from bycatch for three years',
+    badUnitCost: 21_992,
+    goodUnitCost: 28,
+    badOp: '>',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Funding $ Shell CEO salaries',
+    impact2: 'Funding $ NHS nurses salaries',
+    badUnitCost: 6_100_000,
+    goodUnitCost: 33_000,
+    badOp: '<',
+    goodOp: '<',
+  },
+  {
+    impact1: 'Buying $ pairs of jeans from a fast fashion retailer',
+    impact2: 'Buying $ kilograms of vintage clothes (£20 per kilogram)',
+    badUnitCost: 10,
+    goodUnitCost: 11,
+    badOp: '>',
+    goodOp: '<',
+  },
+]

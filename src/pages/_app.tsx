@@ -15,6 +15,8 @@ import '@styles/globals.css'
 // loading state ui
 // page reload
 // content
+//
+// referral journey
 
 // AUTH0
 // social media login
@@ -28,8 +30,8 @@ import '@styles/globals.css'
 // lighthouse
 // db backups
 // security
-// cypress tests
 // email
+// accessibility
 
 // TECH DEBT
 // linting and linting on commit
@@ -38,6 +40,11 @@ import '@styles/globals.css'
 // refetch on all landing pages
 // mongodb compass
 // split up switching styles
+// dynamic import for drawer
+// integrate suspense
+
+//NTH
+// cypress tests
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

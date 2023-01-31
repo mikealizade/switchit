@@ -8,27 +8,26 @@ import * as S from '@components/User/User.style'
 import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
 
-type User = {
-  _id: string
-  nickname: string
-  name: string
-  picture: string
-  updated_at: string
-  email: string
-  email_verified: string
-  sub: string
-  sid: string
-  age: number
-  location: string
-  programCode: string
-  referralCode: string
-  points: number
-}
+// type User = {
+//   _id: string
+//   nickname: string
+//   name: string
+//   picture: string
+//   updated_at: string
+//   email: string
+//   email_verified: string
+//   sub: string
+//   sid: string
+//   age: number
+//   location: string
+//   programCode: string
+//   referralCode: string
+//   points: number
+// }
 
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
   const dispatch = useDispatch()
-
   const {
     email = '',
     nickname = '',
@@ -39,7 +38,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
 
   return (
     <S.UserContainer>
-      <S.Burger onClick={() => dispatch(toggleNav(true))}>|||</S.Burger>
+      <S.Burger onClick={() => dispatch(toggleNav())}>|||</S.Burger>
       {isValidating ? (
         <Loader />
       ) : (

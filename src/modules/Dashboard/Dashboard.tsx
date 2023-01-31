@@ -10,6 +10,7 @@ import { RootState } from '@state/store'
 import * as S from '@styles/common.style'
 import { filterSteps } from '@utils/functions'
 import { Blog } from './components/Blog/Blog'
+import { Programs } from './components/Programs/Programs'
 import { SharingCodes } from './components/SharingCodes/SharingCodes'
 import { SwitchingJourney } from './components/SwitchingJourney/SwitchingJourney'
 
@@ -23,7 +24,6 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
   const user = useSelector((state: RootState) => state.user)
   const { switchJourneys = [], profile: { sharingCodes = [] } = {} } = user
   const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
-  const { name, completedSteps } = switchJourneys.at(-1) ?? {}
 
   return (
     <>
@@ -42,6 +42,9 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
               <Card>
                 <Blog data={posts} />
               </Card>
+              <Card>
+                <Programs />
+              </Card>
             </S.Column>
             <S.Column>
               <Card>
@@ -49,11 +52,8 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
               </Card>
             </S.Column>
             <S.Column>
-              <Card>
-                <SwitchingJourney
-                  name={name}
-                  progress={completedSteps?.filter(filterSteps).length}
-                />
+              <Card stretch>
+                <SwitchingJourney switchJourneys={switchJourneys} />
               </Card>
             </S.Column>
           </S.ColumnContainer>

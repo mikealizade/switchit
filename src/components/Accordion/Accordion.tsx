@@ -46,9 +46,20 @@ const AccordionDetails = styled(MuiAccordionDetails)(() => ({
 
 export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIcon?: boolean }) => {
   const [expanded, setExpanded] = useState<string | false>('')
+  const [hasCopied, setHasCopied] = useState(false)
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false)
+  }
+
+  const onCopyText = (content: string) => {
+    onCopy(content)()
+    setHasCopied(true)
+
+    const delay = setTimeout(() => {
+      setHasCopied(false)
+      clearTimeout(delay)
+    }, 1000)
   }
 
   return (
@@ -79,8 +90,13 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
             </AccordionSummary>
             <AccordionDetails>
               {hasCopyIcon && (
-                <CopyIcon onClick={onCopy(content)}>
-                  <Image src={`/icons/icon_copy.svg`} alt='' width={25} height={32} />
+                <CopyIcon onClick={() => onCopyText(content)}>
+                  <Image
+                    src={`/icons/icon_copy${hasCopied ? '_on' : ''}.svg`}
+                    alt=''
+                    width={25}
+                    height={32}
+                  />
                 </CopyIcon>
               )}
 

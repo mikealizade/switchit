@@ -8,13 +8,14 @@ export const Buttons = styled.div`
   row-gap: 40px;
 `
 
-export const Button = styled.button<{ size?: string }>`
+export const Button = styled.button<{ size?: string; bold?: boolean }>`
   padding: ${({ size }) => (size === 'normal' ? '7px 25px' : '5px 20px')};
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: ${({ size }) =>
     size === 'normal' ? '`Konsolev Regular`, sans-serif' : '`Konsolev SemiBold`, sans-serif'};
   font-size: var(--fsSmall4);
+  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
   line-height: 1.75;
   border-radius: 25px;
   letter-spacing: 0.5px;
@@ -48,11 +49,6 @@ export const Button = styled.button<{ size?: string }>`
   ${() => mediaQuery.tablet} {
     font-size: ${({ size }) =>
       size === 'small' ? 'var(--fsSmall4)' : size === 'normal' ? 'inherit' : 'var(--fsBase)'};
-  }
-
-  &[type='reset'] {
-    background-color: #e2dfda;
-    color: initial;
   }
 
   &:disabled {

@@ -1,6 +1,7 @@
 import { Fetcher } from 'swr'
 // import { journeyTypes } from '@utils/constants'
-import { journeyTypes, steps } from '@utils/constants'
+import { impactCalculatorOptions, impacts } from '@components/ImpactCalculator/importCalculatorData'
+import { journeyTypes, steps, awsS3Uri } from '@utils/constants'
 
 const breakpoints: Record<string, number> = {
   mobile: 480,
@@ -51,9 +52,31 @@ export const filterActionType =
 
 export const filterSteps = (step: number) => step <= steps.confirmSwitch
 
-// export const getStepsByJourneyType = (currentJourneyType: string) => {
-//   return currentJourneyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
-// }
-
 export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1) + min)
+
+export const getUsersValue = (userAge: string) => {
+  const userValue =
+    impactCalculatorOptions
+      .find(({ value }) => value.split(':')[1] === userAge)
+      ?.value.split(':')[0] || 0
+
+  return userValue
+}
+
+export const formatNumber = (number: number): string =>
+  new Intl.NumberFormat('en-GB', { maximumSignificantDigits: 3 }).format(number)
+
+export const calculateImpact = (impactTotal: number, index: number): string[] => {
+  const { impact1, impact2, badUnitCost, goodUnitCost, badOp, goodOp } = impacts[index]
+  const badCalc = badOp === '<' ? badUnitCost / impactTotal : impactTotal / badUnitCost
+  const goodCalc = goodOp === '>' ? goodUnitCost / impactTotal : impactTotal / goodUnitCost
+
+  return [
+    impact1.replace('$', formatNumber(+badCalc.toFixed(2))),
+    impact2.replace('$', formatNumber(+goodCalc.toFixed(2))),
+  ]
+}
+
+export const getArticleImageUrl = (imageName: string, isDashboard?: boolean): string =>
+  `${awsS3Uri}/assets/blog/${isDashboard ? `dashboard_${imageName}` : `img_${imageName}`}`

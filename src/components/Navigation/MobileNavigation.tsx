@@ -15,7 +15,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
   const { pathname } = useRouter()
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
-  const [current, setHover] = useState('')
+  const [current] = useState('')
   const isActive = (route: string): boolean =>
     pathname === `/${route}` || pathname.includes(`/${route}`)
 
@@ -42,7 +42,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
 
       <S.MobileSubNav isNavOpen={isNavOpen}>
         <S.Logo>
-          <S.CloseMenu onClick={() => dispatch(toggleNav(false))}>
+          <S.CloseMenu onClick={() => dispatch(toggleNav())}>
             <Image src='/icons/icon_close.svg' alt='Close' width={18} height={18} />
           </S.CloseMenu>
         </S.Logo>

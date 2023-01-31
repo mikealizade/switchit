@@ -14,18 +14,21 @@ export const ArticlesList = styled.ul`
   flex-wrap: wrap;
 `
 
-export const ArticleData = styled.ul`
+export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`
   width: 100%;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   margin-top: auto;
+  justify-content: ${({ align }) => (align === 'right' ? 'flex-end' : 'flex-start')};
+  font-size: ${({ small }) => (small ? 'var(--fsSmall3)' : 'initial')};
 `
 
 export const Data = styled.li`
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  font-size: inherit;
 `
 
 export const Item = styled.li`
@@ -70,4 +73,9 @@ export const ResourcesTitle = styled.h2`
   column-gap: 20px;
   align-items: center;
   color: inherit;
+`
+
+export const ShareArticle = styled.div`
+  cursor: pointer;
+  height: 18px;
 `

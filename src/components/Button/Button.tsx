@@ -9,6 +9,7 @@ type ButtonProps = {
   mode?: string
   colour?: string
   size?: string
+  bold?: boolean
   disabled?: boolean
 }
 
@@ -27,14 +28,15 @@ export const Button: NextPage<ButtonProps> = ({
   colour = '',
   disabled = false,
   size = 'normal',
+  bold = false,
 }): JSX.Element => (
   <S.Button
     type={type}
     onClick={onClick}
-    // className={`${mode}${colour ? }`}
     className={cs(mode, { [colour]: !!colour })}
     disabled={disabled}
     size={size}
+    bold={bold}
   >
     {children}
   </S.Button>

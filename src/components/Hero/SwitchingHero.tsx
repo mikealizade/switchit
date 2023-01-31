@@ -31,7 +31,7 @@ export const SwitchingHero: NextPage<{ type: string; hasLoaded?: boolean }> = ({
                 <S.Text>{heroTips[randomIndex.current].tip}</S.Text>
               </>
             ) : (
-              'Loading...'
+              <Image src={'/images/loader.svg'} alt='' width={170} height={60} />
             )}
           </>
         ) : (

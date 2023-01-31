@@ -13,7 +13,6 @@ export const AccountForm = styled.form`
 
   fieldset {
     display: flex;
-    flex-direction: row;
     gap: 30px;
     flex-wrap: wrap;
 
@@ -24,5 +23,8 @@ export const AccountForm = styled.form`
 
   label {
     flex: 0 0 calc(50% - 15px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 `

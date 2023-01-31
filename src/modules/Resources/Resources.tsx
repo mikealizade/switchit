@@ -15,6 +15,7 @@ export type Resource = {
   resource: string
   mins: string
   points: string
+  imageName: string
   isFeatured: boolean
 }
 

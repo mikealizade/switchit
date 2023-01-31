@@ -11,6 +11,7 @@ import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
 import { SwitchingHero } from '@components/Hero/SwitchingHero'
+import { Loader } from '@components/Loader/Loader'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
@@ -29,7 +30,7 @@ import { Action } from '@utils/types'
 import { JourneyName } from './components/JourneyName/JourneyName'
 import { startJourneyConfig, startJourneyNoBankConfig } from './data'
 
-type JourneySteps = { step: string; text: string; route: string }
+export type JourneySteps = { step: string; text: string; route: string }
 type JourneyFilter = { journeyType: string; completedSteps: number[] }
 
 const getJourneys = (
@@ -213,7 +214,7 @@ const Switching = (): JSX.Element => {
 
   const panels: React.ReactNode[] = [
     ...(isValidating
-      ? [<S.JourneyCard key='loading'>Loading...</S.JourneyCard>]
+      ? [<Loader key='loader' />]
       : !activeJourneys.length
       ? [
           <Row key='switchJourneys'>

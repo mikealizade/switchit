@@ -61,6 +61,10 @@ export const Title = styled.h2`
   justify-content: space-between;
 `
 
+export const TitleLink = styled(Title)`
+  cursor: pointer;
+`
+
 export const Form = styled.form<{ row?: boolean }>`
   display: flex;
   flex-direction: column;
@@ -103,8 +107,9 @@ export const ShareButton = styled(Button)<{ small?: boolean }>`
   border-radius: 20px;
   font-size: var(--fsLarge0);
   font-weight: bold;
-  box-shadow: 1px 3px 5px var(--gallery);
+  /* box-shadow: 1px 3px 5px var(--gallery); */
   color: var(--white);
+  border: 0;
 `
 
 export const Ellipsis = styled.div`
@@ -206,8 +211,13 @@ export const PlainInput = styled.input`
 `
 
 export const CopyIcon = styled.span`
-  display: block;
+  display: inline-block;
   cursor: pointer;
+  width: 30px;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 export const CopyIconHover = styled.span`
@@ -217,6 +227,11 @@ export const CopyIconHover = styled.span`
 export const TabsContainer = styled(Div)`
   width: 100%;
   align-self: center;
+`
+
+export const Header = styled.h3`
+  font-size: var(--fsMedium8);
+  line-height: 1.4;
 `
 
 export const Subheader = styled.h3`
@@ -271,4 +286,15 @@ export const ParagraphCopy = styled.div<{ bold?: boolean }>`
   flex-direction: column;
   row-gap: 15px;
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
+`
+
+export const Text = styled.p`
+  font-size: var(--fsBase);
+`
+
+export const LoaderContainer = styled.div<{ height?: number }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: ${({ height }) => `${height}px` || 'auto'};
 `
