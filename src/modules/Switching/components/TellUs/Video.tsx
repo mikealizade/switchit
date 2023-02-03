@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react'
 import useSWR, { SWRResponse } from 'swr'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+// import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { Checkbox, Label } from '@styles/common.style'
 import { fetcher } from '@utils/functions'
@@ -13,15 +13,11 @@ import { VideoUploader } from './VideoUploader'
 
 type JourneyId = { id: string }
 
-type TestimononialProps = {
-  onNext: () => void
-}
-
-export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
+export const Video: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const text = useRef('')
-  const getSteps = useStepsByJourneyType()
-  const steps = getSteps()
+  // const getSteps = useStepsByJourneyType()
+  // const steps = getSteps()
   const { currentJourneyId, currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
@@ -35,7 +31,7 @@ export const Video: NextPage<TestimononialProps> = ({ onNext }) => {
   const [canPostPublicly, setCanPostPublicly] = useState(false)
   const [file, setFile] = useState<any>(null)
   const [isUploaded, setIsUploaded] = useState(false)
-  const isStepCompleted = completedSteps.includes(steps.tellUs) && videoUri
+  const isStepCompleted = !!videoUri
 
   useEffect(() => {
     if (videoUri) {

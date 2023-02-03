@@ -36,11 +36,11 @@ export const ColumnContainer = styled.section`
   }
 `
 
-export const Column = styled.div`
+export const Column = styled.div<{ flex?: number }>`
   display: flex;
   flex-direction: column;
   row-gap: 25px;
-  flex: 3;
+  flex: ${({ flex }) => (flex ? flex : '3')};
   min-width: 400px;
 
   + section {
@@ -192,16 +192,22 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`
   justify-content: flex-start;
 `
 
-export const Row = styled.div`
+export const Row = styled.div<{ wrap?: boolean }>`
   display: flex;
   flex-direction: row;
-  column-gap: 30px;
+  gap: 30px;
+  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'initial')}; ;
 `
 
 export const BoldLink = styled.a`
   font-weight: bold;
   color: var(--pink);
   cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
 `
 
 export const PlainInput = styled.input`

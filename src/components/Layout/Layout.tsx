@@ -13,7 +13,7 @@ import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpd
 import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
-import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
+// import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 import { sendRequest, getTotalPoints, fetcher } from '@utils/functions'
@@ -50,6 +50,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
           isNewUser,
         }
         //mongo errors if trying to overwrite _id
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { _id, ...newUserData } = userData
         const body = {
           filter: { sub },
@@ -104,16 +105,16 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   return (
     <S.AppContainer isHome={isHome}>
       <Toast />
-      {isSignedOut ? (
+      {/* {isSignedOut ? (
         <SignedOutLanding />
-      ) : (
-        <>
-          {isMobile ? <MobileNavigation /> : <Navigation />}
-          <SignedInApp showUser={showUser} isValidating={isValidating}>
-            {children}
-          </SignedInApp>
-        </>
-      )}
+      ) : ( */}
+      <>
+        {isMobile ? <MobileNavigation /> : <Navigation />}
+        <SignedInApp showUser={showUser} isValidating={isValidating}>
+          {children}
+        </SignedInApp>
+      </>
+      {/* )} */}
     </S.AppContainer>
   )
 }

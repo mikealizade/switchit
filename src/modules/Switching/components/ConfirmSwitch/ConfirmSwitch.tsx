@@ -37,7 +37,7 @@ const months = [
 ]
 
 export const ConfirmSwitch: NextPage = () => {
-  const { back } = useRouter()
+  const { back, push } = useRouter()
   const dispatch = useDispatch()
   const signature = useSelector((state: RootState) => state.generic.signature)
   const [value, setValue] = useState(signature)
@@ -50,7 +50,12 @@ export const ConfirmSwitch: NextPage = () => {
   const confirmDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
 
   const onNext = (): void => {
-    nextStep(steps.confirmSwitch, '/switching/select-action', { isVerified: new Date() })
+    push('/switching/select-action')
+  }
+
+  const onConfirm = (): void => {
+    nextStep(steps.confirmSwitch, null, { isVerified: new Date() })
+    setConfirmed(true)
   }
 
   const onSign = ({ target: { value } }: EventType): void => {
@@ -125,7 +130,7 @@ export const ConfirmSwitch: NextPage = () => {
                       Maximise Your Impact
                     </Button>
                   ) : (
-                    <Button type='button' disabled={!value} onClick={() => setConfirmed(true)}>
+                    <Button type='button' disabled={!value} onClick={onConfirm}>
                       Submit
                     </Button>
                   )}

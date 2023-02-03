@@ -1,31 +1,64 @@
 import styled from '@emotion/styled'
 
-export const Hero = styled.div`
+export const Nav = styled.nav`
+  background-color: var(--white);
   display: flex;
   justify-content: space-between;
-  column-gap: 20px;
-  border-radius: 10px;
-  background-color: var(--white);
-  padding: 30px;
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.2);
+  padding: 20px 170px;
+  border-bottom: 1px solid var(--gallery);
+`
 
-  > span {
-    flex: 2;
-  }
+export const Navigation = styled.ul`
+  display: flex;
+  column-gap: 25px;
+  align-items: center;
+`
 
-  > button {
-    flex: 1;
-    align-self: flex-end;
+export const NavItem = styled.li`
+  a {
+    font-size: var(--fsBase);
   }
 `
 
 export const Content = styled.div`
-  flex: 4;
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   row-gap: 30px;
 `
 
-export const Text = styled.p`
-  font-size: var(--fsBase);
+export const BlockButton = styled.div`
+  position: relative;
+  align-self: flex-start;
+
+  a {
+    display: inline-flex;
+    background-color: var(--white);
+    justify-content: center;
+    align-items: center;
+    color: var(--pink);
+    border: 3px solid var(--pink);
+    padding: 15px 20px;
+    border-radius: px;
+    font-size: var(--fsMedium7);
+    z-index: 2;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Konsolev SemiBold';
+    z-index: 2;
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    background-color: var(--pink);
+    border-radius: 3px;
+    z-index: 1;
+  }
 `

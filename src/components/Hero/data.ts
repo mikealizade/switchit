@@ -18,8 +18,8 @@ export const heroConfig: HeroConfig = {
     icon: 'icon_mortar.svg',
   },
   programs: {
-    title: 'Social Posts',
-    text: `We've created custom social posts for LSE students. Come back to see the post of the week and share to keep your fellow students engaged and to spread the word to your community and beyond.`,
+    title: 'Programs',
+    text: `Programs hero content`,
     icon: 'icon_socialposts.svg',
   },
   resources: {

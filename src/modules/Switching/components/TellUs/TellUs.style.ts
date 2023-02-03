@@ -48,6 +48,7 @@ export const Testimonial = styled.div`
     &.disabled {
       border-color: var(--haze);
       background-color: var(--alabaster);
+      color: var(--grey);
     }
   }
   [contenteditable='true'] {

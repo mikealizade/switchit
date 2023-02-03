@@ -24,6 +24,7 @@ export const Tabs = styled.div<{ wide?: boolean }>`
     button {
       font-size: var(--fsMedium7);
       font-family: 'Konsolev Regular';
+      font-weight: bold;
       text-transform: capitalize;
       letter-spacing: 0;
       padding: 2px 6px;

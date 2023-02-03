@@ -7,7 +7,7 @@ export const SwitchingJourney = styled.div`
   justify-content: flex-start;
   column-gap: 40px;
   flex: 1;
-  row-gap: 30px;
+  /* row-gap: 30px; */
 
   h3 {
     font-size: var(--fsBase);
@@ -19,7 +19,7 @@ export const SwitchingJourneyContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  row-gap: 100px;
+  row-gap: 50px;
   flex: 1;
 `
 

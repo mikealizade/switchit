@@ -1,37 +1,39 @@
 import Head from 'next/head'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Card } from '@components/Card/Card'
+import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
-import { SocialPost } from '@components/SocialPost/SocialPost'
-import * as S from './Programs.style'
-import { socialPostsConfig, SocialPostConfig } from './data'
+import { Programs as RegisterInterest } from '@modules/Dashboard/components/Programs/Programs'
+import * as S from '@styles/common.style'
 
-export const PostToSocials = () => {
-  const school = 'lse' //from db?
-  const type = 'twitter' //from db?
-  const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
+// export const PostToSocials = () => {
+//   const school = 'lse' //from db?
+//   const type = 'twitter' //from db?
+//   const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
 
-  return (
-    <S.ProgramContainer>
-      <S.Program>
-        {socialTwitter.map((postsArray, i) => {
-          console.log('postsArray', postsArray)
-          return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
-        })}
-      </S.Program>
-      <S.Program>
-        {socialTwitter.map((postsArray, i) => {
-          console.log('postsArray', postsArray)
-          return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
-        })}
-      </S.Program>
-      <S.Program>
-        {socialTwitter.map((postsArray, i) => {
-          console.log('postsArray', postsArray)
-          return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
-        })}
-      </S.Program>
-    </S.ProgramContainer>
-  )
-}
+//   return (
+//     <S.ProgramContainer>
+//       <S.Program>
+//         {socialTwitter.map((postsArray, i) => {
+//           console.log('postsArray', postsArray)
+//           return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
+//         })}
+//       </S.Program>
+//       <S.Program>
+//         {socialTwitter.map((postsArray, i) => {
+//           console.log('postsArray', postsArray)
+//           return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
+//         })}
+//       </S.Program>
+//       <S.Program>
+//         {socialTwitter.map((postsArray, i) => {
+//           console.log('postsArray', postsArray)
+//           return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
+//         })}
+//       </S.Program>
+//     </S.ProgramContainer>
+//   )
+// }
 
 const Programs = (): JSX.Element => {
   return (
@@ -42,11 +44,23 @@ const Programs = (): JSX.Element => {
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-
-      <S.Content>
-        <Hero type='programs' />
-        <PostToSocials />
-      </S.Content>
+      <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
+        <S.Content>
+          <Hero type='programs' />
+          <S.ColumnContainer>
+            <S.Column flex={2}>
+              <Card stretch>
+                <S.Title>About Our Programs</S.Title>
+              </Card>
+            </S.Column>
+            <S.Column flex={1}>
+              <Card>
+                <RegisterInterest />
+              </Card>
+            </S.Column>
+          </S.ColumnContainer>
+        </S.Content>
+      </ErrorBoundary>
     </>
   )
 }

@@ -6,10 +6,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
-import { ActionSelector } from '@components/ActionSelector/ActionSelector'
-import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
-import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
 import { SwitchingHero } from '@components/Hero/SwitchingHero'
 import { Loader } from '@components/Loader/Loader'
 import { Tabs } from '@components/Tabs/Tabs'
@@ -27,86 +24,51 @@ import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
 import { actionsConfig, goodBanksConfig } from '@utils/data'
 import { fetcher, filterActionType, filterSteps } from '@utils/functions'
 import { Action } from '@utils/types'
+import { CompletedJourneyCard } from './components/CompletedJourneyCard/CompletedJourneyCard'
+import { JourneyCard } from './components/JourneyCard/JourneyCard'
 import { JourneyName } from './components/JourneyName/JourneyName'
 import { startJourneyConfig, startJourneyNoBankConfig } from './data'
 
-export type JourneySteps = { step: string; text: string; route: string }
+export type JourneyStep = { step: string; text: string; route: string }
 type JourneyFilter = { journeyType: string; completedSteps: number[] }
 
 const getJourneys = (
   switchJourneys: Journey[],
   actions: Action[],
-  journeySteps: { step: string; text: string; route: string }[],
+  journeySteps: JourneyStep[],
   filter: ({ journeyType, completedSteps }: JourneyFilter) => boolean,
   resumeJourney: (route: string) => () => void,
   selectAction: (index: number) => () => void,
   isJourneyComplete: boolean,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
-    const { id, goodBank, completedSteps = [] } = journey
+    const { id, name, goodBank, completedSteps = [] } = journey
     const progress = completedSteps.filter(filterSteps).length
     const greenBank = goodBanksConfig[goodBank as keyof typeof goodBanksConfig]
 
     return (
-      <S.JourneyCard key={id} isJourneyComplete={isJourneyComplete}>
-        {!isJourneyComplete && (
-          <S.Detail>
-            <S.DetailHeader>Green Account</S.DetailHeader>
-            <S.DetailText>
-              {greenBank?.fullName || '[not yet selected]'}
-              {/* {badBank || '[not yet selected]'} to {goodBank || '[not yet selected]'} */}
-            </S.DetailText>
-            <S.DetailHeader>Latest Green Project Funded</S.DetailHeader>
-            <S.DetailText>{greenBank?.latestGreenProject || '[not yet selected]'}</S.DetailText>
-            <S.DetailHeader>Impact</S.DetailHeader>
-            <S.DetailText>£1.51b switched</S.DetailText>
-          </S.Detail>
+      <>
+        {isJourneyComplete ? (
+          <CompletedJourneyCard
+            key={id}
+            name={name}
+            greenBank={greenBank}
+            switchingStepsCompleted={journeySteps.length}
+          />
+        ) : (
+          <JourneyCard
+            key={id}
+            progress={progress}
+            greenBank={greenBank}
+            journeySteps={journeySteps}
+            actions={actions}
+            completedSteps={completedSteps}
+            isJourneyComplete={isJourneyComplete}
+            selectAction={selectAction}
+            resumeJourney={resumeJourney}
+          />
         )}
-        <S.JourneySection>
-          <S.JourneySectionHeader>Progress</S.JourneySectionHeader>
-          <S.JourneySectionContent>
-            <CircularProgressBar progress={progress} />
-            <S.NextStep>
-              {journeySteps.map(({ text, route }: JourneySteps, i: number) => {
-                const isComplete = completedSteps.includes(i + 1)
-                const isFirstIncompleteStep = i + 1 === Number(completedSteps?.at(-1)) + 1
-
-                if (isFirstIncompleteStep) {
-                  return (
-                    <>
-                      {!isComplete && isFirstIncompleteStep && route && (
-                        <Button
-                          type='button'
-                          size='small'
-                          mode='primary'
-                          onClick={resumeJourney(route)}
-                        >
-                          Next Step
-                        </Button>
-                      )}
-                      <span>{text}</span>
-                    </>
-                  )
-                }
-                return null
-              })}
-            </S.NextStep>
-          </S.JourneySectionContent>
-        </S.JourneySection>
-        {!isJourneyComplete && (
-          <S.JourneySection>
-            <S.JourneySectionHeader>Maximise</S.JourneySectionHeader>
-            <S.JourneySectionContent>
-              <ActionSelector
-                actions={actions}
-                selectAction={selectAction}
-                isSwitchLanding
-                isJourneyComplete={isJourneyComplete}
-              />
-            </S.JourneySectionContent>
-          </S.JourneySection>
-        )}
-      </S.JourneyCard>
+      </>
     )
   })
 }
@@ -232,7 +194,7 @@ const Switching = (): JSX.Element => {
       : activeJourneys),
     <Row key='completedJourneys'>
       {completedJourneys.length ? (
-        <Row>{completedJourneys}</Row>
+        <Row wrap>{completedJourneys}</Row>
       ) : (
         <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
       )}

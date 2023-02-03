@@ -29,9 +29,9 @@ export const BankData = styled.div`
   font-size: var(--fsBase);
 `
 
-export const BankDataHeader = styled.h2`
-  font-size: var(--fsMedium6);
-`
+// export const BankDataHeader = styled.h2`
+//   font-size: var(--fsMedium6);
+// `
 
 export const BankRating = styled.div`
   font-size: var(--fsMedium9);

@@ -7,8 +7,6 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
-import { useNextStep } from '@hooks/useNextStep'
-import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import {
   Buttons,
   SwitchingColumnContainer,
@@ -45,14 +43,7 @@ const WooHoo = () => {
 
 export const TellUs: NextPage = () => {
   const dispatch = useDispatch()
-  const nextStep = useNextStep()
-  const getSteps = useStepsByJourneyType()
-  const steps = getSteps()
   const [isMaximised, setMaximised] = useState(false)
-
-  const onNext = (): void => {
-    nextStep(steps.tellUs)
-  }
 
   const onCompleteJourney = (): void => {
     setMaximised(true)
@@ -88,7 +79,7 @@ export const TellUs: NextPage = () => {
                           <CopyHeader>Video Submission</CopyHeader>
                         </VideoContainer>
                         <UserContent>
-                          <Video onNext={onNext} />
+                          <Video />
                         </UserContent>
                       </S.Item>
                       <S.Item>
@@ -96,7 +87,7 @@ export const TellUs: NextPage = () => {
                           <CopyHeader>Text Submission</CopyHeader>
                         </VideoContainer>
                         <UserContent>
-                          <Testimonial onNext={onNext} />
+                          <Testimonial />
                         </UserContent>
                       </S.Item>
                     </S.TileLinks>

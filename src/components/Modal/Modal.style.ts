@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   inset: 0;
   background-color: var(--black);
   opacity: 0.5;
-  z-index: 1;
+  z-index: 10;
 `
 export const ButtonsContainer = styled.div`
   display: flex;
@@ -34,6 +34,7 @@ export const ModalContent = styled.section`
   border-radius: 15px;
   padding: 60px;
   row-gap: 30px;
+  z-index: 10;
 
   ${() => mediaQuery.laptop} {
     left: 20%;

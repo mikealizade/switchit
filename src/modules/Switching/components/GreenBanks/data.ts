@@ -37,7 +37,7 @@ export const bankConfig = [
     donation: 'No',
     features: ['app', 'savings', 'deposits'],
     meta: [
-      `Monzo do not invest in fossil fuels and advertise this on their website. However, Monzo have currently not committed to *****never***** invest in fossil fuels; which is a deciding factor for our 5/5 rating. We are hoping to work closely with Monzo to take their investment policy up a notch, and your support will help us achieve this.`,
+      `Monzo do not invest in fossil fuels and advertise this on their website. However, Monzo have currently not committed to never invest in fossil fuels; which is a deciding factor for our 5/5 rating. We are hoping to work closely with Monzo to take their investment policy up a notch, and your support will help us achieve this.`,
       'Switch It Score - 4/5',
       'High-Street Branches - No',
       'Desktop Banking - No',

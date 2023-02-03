@@ -18,6 +18,8 @@ import '@styles/globals.css'
 //
 // referral journey
 
+// Onboarding process
+
 // AUTH0
 // social media login
 // edit email and pw in auth0

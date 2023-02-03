@@ -6,8 +6,10 @@ import useSWR from 'swr'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import ProgressProvider from '@components/CircularProgressBar/ProgressProvider'
+import { Modal } from '@components/Modal/Modal'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useModal } from '@hooks/useModal'
 import { useNextStep } from '@hooks/useNextStep'
 import {
   SwitchingColumnContainer,
@@ -15,7 +17,7 @@ import {
   Buttons,
   Header,
 } from '@modules/Switching/Switching.style'
-import { Content, ParagraphCopy } from '@styles/common.style'
+import { Content, ParagraphCopy, BoldLink } from '@styles/common.style'
 import { steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from '../BankScore/BankScore.style'
@@ -42,6 +44,8 @@ export const BankScore = (): JSX.Element => {
   const { back, push } = useRouter()
   const { data } = useSWR('/api/json/bankdata', fetcher)
   const nextStep = useNextStep()
+  const [isModalVisible, setToggleModal] = useModal()
+
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const [{ score, scoreHeadline, scoreCopy, info, summary }, setBankScore] = useState<BankResult>({
     score: 0,
@@ -55,6 +59,10 @@ export const BankScore = (): JSX.Element => {
 
   const onNext = (): void => {
     nextStep(steps.checkBankScore, '/switching/green-banks')
+  }
+
+  const onToggleModal = (isVisible: boolean) => (): void => {
+    setToggleModal(isVisible!)
   }
 
   useEffect(() => {
@@ -113,17 +121,15 @@ export const BankScore = (): JSX.Element => {
                     )}
                   </ProgressProvider>
                 </S.BankScoreContainer>
-                <ParagraphCopy dangerouslySetInnerHTML={{ __html: summary }} bold />
+                <S.BankData>
+                  <ParagraphCopy dangerouslySetInnerHTML={{ __html: summary }} bold />
+                  <BoldLink onClick={onToggleModal(true)}>
+                    Why did {badBank} score {score}/5?
+                  </BoldLink>
+                </S.BankData>
               </S.BankInfo>
 
               <S.BankRating>
-                <S.BankData>
-                  <S.BankDataHeader>
-                    Why did {badBank} score {score}/5
-                  </S.BankDataHeader>
-                  <ParagraphCopy dangerouslySetInnerHTML={{ __html: info }} />
-                </S.BankData>
-
                 <>
                   {isGoodBank ? (
                     <Buttons>
@@ -163,6 +169,17 @@ export const BankScore = (): JSX.Element => {
         </SwitchingColumnContainer>
         <ProgressBar step={steps.checkBankScore} />
       </Content>
+      {isModalVisible && (
+        <Modal
+          title={`Why did ${badBank} score ${score}/5?`}
+          confirmText='OK'
+          showCancel={false}
+          onConfirm={onToggleModal(false)}
+          onClose={onToggleModal(false)}
+        >
+          <ParagraphCopy dangerouslySetInnerHTML={{ __html: info }} />
+        </Modal>
+      )}
     </>
   )
 }

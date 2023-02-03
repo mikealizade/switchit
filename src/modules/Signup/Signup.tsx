@@ -96,7 +96,7 @@ const Signup: NextPage = () => {
                   type='button'
                   mode='text'
                   onClick={() => {
-                    console.log('sign in')
+                    console.log('sign in') // ?
                   }}
                 >
                   Sign in

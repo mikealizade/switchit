@@ -19,6 +19,10 @@ const persistConfig = {
   whiteList: [],
 }
 
+// saving all the redux data to store as i go through the journey?
+// on some steps I grab the data from db when i reload page
+// forget persist and use redux for normal journey (not reloaded), and retrieve data on page reload from db for eaxch page?
+
 const rootReducer = combineReducers({
   user: userReducer,
   drawer: drawerReducer,

@@ -82,9 +82,14 @@ export const Detail = styled.div`
   flex: 1.8;
 `
 
+export const DetailName = styled.h3`
+  font-size: var(--fsMedium9);
+  color: var(--grey);
+`
+
 export const DetailHeader = styled.h3`
   font-size: var(--fsSmall5);
-  color: var(--grey);
+  color: initial;
 `
 
 export const DetailText = styled.p`

@@ -8,6 +8,7 @@ import useSWR, { SWRResponse } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useToast } from '@hooks/useToast'
 import { Buttons } from '@modules/Switching/Switching.style'
@@ -18,21 +19,16 @@ import * as S from './TellUs.style'
 
 type JourneyId = { id: string }
 
-type TestimononialProps = {
-  onNext: () => void
-}
-
-// const getDefaultTestimonial = () => 'Write your testimonial here.'
-
 // TODO when savinvg journey steps to db, currently not refetching on any of the action pages
 
-export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
+export const Testimonial: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const text = useRef('')
   const toast = useToast()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
+  const nextStep = useNextStep()
   const { currentJourneyId, currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
@@ -45,11 +41,9 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
   const [, setTestimonial] = useState('')
   const [isEditable, setEdit] = useState(false)
   const [hasTestimonial, setHasTestimonial] = useState(false)
+  const [hasSentTestimonial, setHasSentTestimonial] = useState(false)
   const [canPostPublicly, setCanPostPublicly] = useState(false)
-  const isStepCompleted = completedSteps.includes(steps.tellUs) && testimonial
-
-  console.log('isStepCompleted', testimonial)
-  console.log('switchJourneys', switchJourneys)
+  const isStepCompleted = completedSteps.includes(steps.tellUs) && !!testimonial
 
   const onSave = async () => {
     try {
@@ -74,8 +68,6 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
   }
 
   const onSend = async () => {
-    onNext()
-
     try {
       const body = {
         filter: {},
@@ -94,7 +86,8 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
       }
 
       request(body)
-
+      // nextStep(steps.tellUs)
+      setHasSentTestimonial(true)
       toast('Your testimonial was sent successfully', 'success')
     } catch (error) {
       toast('An error occurred sending your testimonial', 'error')
@@ -119,8 +112,6 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
       setTestimonial(text.current)
     }
   }, [testimonial, text])
-
-  console.log('completedSteps', completedSteps)
 
   return (
     <>
@@ -154,7 +145,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
           onClick={onToggleEditable}
           mode='secondary'
           size='small'
-          disabled={isStepCompleted}
+          disabled={isStepCompleted || hasSentTestimonial}
         >
           Edit
         </Button>
@@ -163,7 +154,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
           size='small'
           mode='secondary'
           onClick={onSave}
-          disabled={!hasTestimonial || isStepCompleted}
+          disabled={isStepCompleted || hasSentTestimonial}
         >
           Save Draft
         </Button>
@@ -171,7 +162,7 @@ export const Testimonial: NextPage<TestimononialProps> = ({ onNext }) => {
           type='button'
           size='small'
           onClick={onSend}
-          disabled={!hasTestimonial || isStepCompleted}
+          disabled={isStepCompleted || hasSentTestimonial}
         >
           Send
         </Button>

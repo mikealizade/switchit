@@ -1,17 +1,17 @@
 import type { NextPage } from 'next'
-import Tooltip from '@mui/material/Tooltip'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Resources/components/Article/Article.style'
 import { Post } from '@pages/dashboard'
-import { getArticleImageUrl } from '@utils/functions'
-import { ArticleData, Data, ShareArticle } from '../Articles/Articles.style'
+import { getArticleImageUrl, toDateString } from '@utils/functions'
+import { ArticleData, Data } from '../Articles/Articles.style'
 
 const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const {
@@ -23,6 +23,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
     title = '',
     text = '',
     created = '',
+
     mins,
     points,
     imageName,
@@ -30,16 +31,23 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
     Post,
     'title' | 'text' | 'created' | 'mins' | 'points' | 'imageName'
   >
-  const whatsAppUrl =
-    'https://wa.me/?text=Hey%20there!%20Read%20this%20article%20fron%20SwitchIt%20'
-  const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/resources/article/${id}`
+  // const whatsAppUrl =
+  //   'https://wa.me/?text=Hey%20there!%20Read%20this%20article%20fron%20SwitchIt%20'
+  // const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/resources/article/${id}`
 
+  console.log('created', created)
   console.log('posts', posts)
 
-  const onShareArticle = () => {
-    addPoints(25)
-    window.open(url, '_blank', 'noreferrer')
-  }
+  useEffect(() => {
+    const articlesRead = JSON.parse(window.localStorage.getItem('readArticles')!) ?? []
+
+    console.log('articlesRead', articlesRead)
+
+    if (!articlesRead.includes(id)) {
+      addPoints(25)
+      window.localStorage.setItem('readArticles', JSON.stringify([...articlesRead, id]))
+    }
+  }, [])
 
   return (
     <>
@@ -66,21 +74,13 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                     {points}
                     pts
                   </Data>
-                  <Data>
-                    <Tooltip title='Share Article' placement='top' arrow>
-                      <ShareArticle onClick={onShareArticle}>
-                        <Image
-                          src={'/icons/icon_airplane_pink.svg'}
-                          alt=''
-                          width={19}
-                          height={16}
-                        />
-                      </ShareArticle>
-                    </Tooltip>
-                  </Data>
+                  {/* <Data>
+                    <ShareArticle onClick={onShareArticle}>
+                      <Image src={'/icons/icon_airplane_pink.svg'} alt='' width={19} height={16} />
+                    </ShareArticle>
+                  </Data> */}
                 </ArticleData>
                 <S.PostTitle>{title}</S.PostTitle>
-                {/* <S.PostDate>{created.substring(0, 15)}</S.PostDate> */}
                 <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
               </S.Article>
               <S.MoreArticles>
@@ -90,7 +90,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                     return (
                       <S.MoreItem key={id}>
                         <S.ImageContainer>
-                          <Link href={`/article/${id}`}>
+                          <Link href={`/resources/article/${id}`}>
                             <Image
                               src={getArticleImageUrl(imageName)}
                               alt={title}
@@ -102,7 +102,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                         <Link href={`/resources/article/${id}`}>
                           <S.Details>
                             <S.ArticleTitle>{title}</S.ArticleTitle>
-                            <S.Date>{created.substring(0, 15)}</S.Date>
+                            <S.Date>{toDateString(created)}</S.Date>
                           </S.Details>
                         </Link>
                       </S.MoreItem>

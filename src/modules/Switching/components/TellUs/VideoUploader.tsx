@@ -1,7 +1,7 @@
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
 import { NextPage } from 'next'
-import { useRef, useCallback, useState } from 'react'
+import { useRef, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
@@ -28,7 +28,7 @@ export const VideoUploader: NextPage<{
   }
 
   const validateFileSize = () => {
-    const maxfilesize = 1024 * 1024 // TODO how big should the max file size be?
+    const maxfilesize = 1024 * 1024 * 60 // 1024 * 1024 = 1MB, so 60MB // about 30 secs to upload
     const filesize = file?.size
 
     return filesize > maxfilesize
@@ -72,6 +72,7 @@ export const VideoUploader: NextPage<{
       }
 
       request(body)
+      // nextStep(steps.tellUs)
     } catch (error) {
       toast('An error occurred uploading your video', 'error')
     }
@@ -109,10 +110,10 @@ export const VideoUploader: NextPage<{
   }
 
   const onUpload = () => {
-    // if (validateFileSize()) {
-    //   toast('The maximum file size is 1MB', 'error')
-    //   return
-    // }
+    if (validateFileSize()) {
+      toast('The maximum file size is 1MB', 'error')
+      return
+    }
 
     const uploadedFileDetail = async () => await uploadFile()
     uploadedFileDetail()

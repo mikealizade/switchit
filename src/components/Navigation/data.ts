@@ -25,11 +25,11 @@ export const navigation = [
   //   route: 'impact',
   //   icon: '/icons/icon_impact',
   // },
-  // {
-  //   text: 'Programs',
-  //   route: 'programs',
-  //   icon: '/icons/icon_programs',
-  // },
+  {
+    text: 'Programs',
+    route: 'programs',
+    icon: '/icons/icon_programs',
+  },
   // {
   //   text: 'News & Blog',
   //   route: 'news',

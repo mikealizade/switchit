@@ -71,7 +71,7 @@ export const ImpactTotal = styled(PlainInput)`
   padding: 0;
 
   &::placeholder {
-    color: var(--haze);
+    color: var(--gallery);
   }
 `
 

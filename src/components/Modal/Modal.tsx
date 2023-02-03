@@ -17,16 +17,13 @@ type ModalProps = {
 }
 
 export const Modal: FC<ModalProps> = ({
-  mode = '',
   children,
   title = '',
   confirmText = 'Confirm',
-  loadingText = 'Confirming',
   cancelText,
   onConfirm,
   onClose,
   showCancel = true,
-  isLoading = false,
   isDisabled = false,
 }): JSX.Element => {
   return (

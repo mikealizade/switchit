@@ -9,7 +9,7 @@ import * as S from '@modules/Dashboard/components/SwitchingJourney/SwitchingJour
 import { startJourneyConfig, startJourneyNoBankConfig } from '@modules/Switching/data'
 import { Journey } from '@state/switchJourney/switchJourneySlice'
 import { TitleLink } from '@styles/common.style'
-import { journeyTypes } from '@utils/constants'
+import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
 import { filterSteps } from '@utils/functions'
 import { LastestJourney } from './LatestJourney'
 
@@ -25,10 +25,15 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
   const goodBank = currentJourney?.goodBank
   const { name = '', completedSteps = [] } = switchJourneys.at(-1) ?? {}
   const progress = completedSteps?.filter(filterSteps).length
-  const journeySteps =
-    currentJourneyType === journeyTypes.noBankAccount
-      ? startJourneyNoBankConfig(String(goodBank))
-      : startJourneyConfig(String(goodBank))
+  const isNoBankAccountJourney = currentJourneyType === journeyTypes.noBankAccount
+  const journeySteps = isNoBankAccountJourney
+    ? startJourneyNoBankConfig(String(goodBank))
+    : startJourneyConfig(String(goodBank))
+  const currentSteps = isNoBankAccountJourney ? noBankAccountSteps : steps
+  const totalSteps = Object.keys(currentSteps).length / 2
+  const hasSwitched = isNoBankAccountJourney
+    ? noBankAccountSteps.confirmSwitch
+    : steps.confirmSwitch
 
   return (
     <S.SwitchingJourney>
@@ -45,6 +50,7 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
             progress={progress}
             journeySteps={journeySteps}
             completedSteps={completedSteps}
+            canMaximise={completedSteps.includes(hasSwitched)}
           />
         ) : (
           <S.FirstJourney rowGap={60}>
