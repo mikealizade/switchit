@@ -18,6 +18,18 @@ import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 import { sendRequest, getTotalPoints, fetcher } from '@utils/functions'
 
+const signedOutPages = [
+  '/',
+  '/why-switch-it',
+  '/about',
+  '/students',
+  '/donate',
+  '/disclaimer',
+  '/privacy-policy',
+  '/terms',
+  '/signup',
+]
+
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const { user: auth0user = {} } = useUser()
   const { sub } = auth0user
@@ -35,7 +47,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { isMobile } = useMediaQuery()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
-  const isSignedOut = pathname === '/signedout'
+  const isSignedOutPage = signedOutPages.includes(pathname)
   const isSigningUp = pathname === '/signup'
   const showUser = pathname !== '/settings'
 
@@ -98,23 +110,25 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
     }
   }, [isNewUser, user, updateIsNewUser, saveNewUserData, dispatch])
 
-  if (isHome || isSigningUp) {
-    return <>{children}</>
-  }
+  // if (isSigningUp) {
+  //   return <>{children}</>
+  // }
 
   return (
-    <S.AppContainer isHome={isHome}>
-      <Toast />
-      {/* {isSignedOut ? (
-        <SignedOutLanding />
-      ) : ( */}
-      <>
-        {isMobile ? <MobileNavigation /> : <Navigation />}
-        <SignedInApp showUser={showUser} isValidating={isValidating}>
-          {children}
-        </SignedInApp>
-      </>
-      {/* )} */}
-    </S.AppContainer>
+    <>
+      {isSignedOutPage ? (
+        <>{children}</>
+      ) : (
+        <S.AppContainer isHome={isHome}>
+          <Toast />
+          <>
+            {isMobile ? <MobileNavigation /> : <Navigation />}
+            <SignedInApp showUser={showUser} isValidating={isValidating}>
+              {children}
+            </SignedInApp>
+          </>
+        </S.AppContainer>
+      )}
+    </>
   )
 }

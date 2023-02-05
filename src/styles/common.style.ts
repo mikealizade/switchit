@@ -184,19 +184,20 @@ export const Anchor = styled.a`
   }
 `
 
-export const Div = styled.div<{ rowGap?: number; flex?: string | number }>`
+export const Div = styled.div<{ rowGap?: number; flex?: string | number; width?: string }>`
   display: flex;
   flex-direction: column;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '20px')};
   flex: ${({ flex }) => flex ?? 'none'};
   justify-content: flex-start;
+  width: ${({ width }) => (width ? width : 'auto')};
 `
 
 export const Row = styled.div<{ wrap?: boolean }>`
   display: flex;
   flex-direction: row;
   gap: 30px;
-  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'initial')}; ;
+  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'initial')};
 `
 
 export const BoldLink = styled.a`

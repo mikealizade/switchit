@@ -7,6 +7,8 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
+import { useNextStep } from '@hooks/useNextStep'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import {
   Buttons,
   SwitchingColumnContainer,
@@ -32,8 +34,8 @@ const WooHoo = () => {
   return (
     <WoohooContainer>
       <WoohooHeader>Woohoo!</WoohooHeader>
-      <WoohooText>You have reached your full switching potential. </WoohooText>
-      <WoohooText>Keep an eye out on our socials for more ways to get involved. </WoohooText>
+      <WoohooText>You have reached your full switching potential.</WoohooText>
+      <WoohooText>Keep an eye out on our socials for more ways to get involved.</WoohooText>
       <Button type='button' onClick={() => push('/switching')}>
         Back to My Journeys
       </Button>
@@ -43,10 +45,14 @@ const WooHoo = () => {
 
 export const TellUs: NextPage = () => {
   const dispatch = useDispatch()
+  const nextStep = useNextStep()
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
   const [isMaximised, setMaximised] = useState(false)
 
   const onCompleteJourney = (): void => {
     setMaximised(true)
+    nextStep(steps.tellUs)
   }
 
   return (

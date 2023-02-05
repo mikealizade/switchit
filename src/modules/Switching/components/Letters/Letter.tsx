@@ -32,6 +32,9 @@ type LetterProps = {
 
 // TODO  when savinvg journey steps to db, currently not refetching on any of the action pages
 
+// NOTE: letters are not stored in redux as local state is maintained between pages through text.current useRef
+// and on page reload the letters are retrieved from the db
+
 export const Letter: NextPage<LetterProps> = ({
   header,
   subHeader,

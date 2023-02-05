@@ -8,8 +8,8 @@ import useSWR, { SWRResponse } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import { useNextStep } from '@hooks/useNextStep'
-import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+// import { useNextStep } from '@hooks/useNextStep'
+// import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useToast } from '@hooks/useToast'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { Checkbox, Label } from '@styles/common.style'
@@ -26,10 +26,10 @@ export const Testimonial: NextPage = () => {
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const text = useRef('')
   const toast = useToast()
-  const getSteps = useStepsByJourneyType()
-  const steps = getSteps()
-  const nextStep = useNextStep()
-  const { currentJourneyId, currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
+  // const getSteps = useStepsByJourneyType()
+  // const steps = getSteps()
+  // const nextStep = useNextStep()
+  const { currentJourneyId = {} } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
     fetcher,
@@ -43,7 +43,7 @@ export const Testimonial: NextPage = () => {
   const [hasTestimonial, setHasTestimonial] = useState(false)
   const [hasSentTestimonial, setHasSentTestimonial] = useState(false)
   const [canPostPublicly, setCanPostPublicly] = useState(false)
-  const isStepCompleted = completedSteps.includes(steps.tellUs) && !!testimonial
+  const isStepCompleted = !!testimonial
 
   const onSave = async () => {
     try {

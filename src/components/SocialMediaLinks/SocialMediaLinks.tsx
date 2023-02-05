@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import * as S from './PostToSocials.style'
+import * as S from './SocialMediaLinks.style'
 
-export const FollowUs = () => {
+export const SocialMediaLinks = () => {
   return (
-    <S.FollowUs>
+    <S.Links>
       <S.Item>Follow Us Here</S.Item>
       <li>
         <a href='https://www.facebook.com/switchit.green' target='_blank' rel='noreferrer'>
@@ -25,6 +25,6 @@ export const FollowUs = () => {
           <Image src={'/icons/icon_follow_linkedin.svg'} alt='' width={26} height={25} />
         </a>
       </li>
-    </S.FollowUs>
+    </S.Links>
   )
 }

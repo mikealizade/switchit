@@ -121,6 +121,7 @@ export const Logo = styled.a`
   column-gap: 15px;
   align-items: center;
   font-size: var(--fsMedium8);
+  cursor: pointer;
 `
 
 export const CloseMenu = styled.div`

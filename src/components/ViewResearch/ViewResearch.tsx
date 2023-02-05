@@ -4,7 +4,7 @@ import * as S from '@components/ViewResearch/ViewResearch.style'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { TextLink } from '@styles/common.style'
 
-export const ViewResearch: NextPage<{ compact: boolean }> = ({ compact }): JSX.Element => {
+export const ViewResearch: NextPage<{ compact?: boolean }> = ({ compact = false }): JSX.Element => {
   const dispatch = useDispatch()
 
   return (

@@ -5,6 +5,7 @@ import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { EditableContent } from '@components/EditableContent/EditableContent'
 import { Fallback } from '@components/Fallback/Fallback'
+import { SocialMediaLinks } from '@components/SocialMediaLinks/SocialMediaLinks'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useNextStep } from '@hooks/useNextStep'
@@ -12,7 +13,6 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, TabsContainer } from '@styles/common.style'
 import { actionHeaderSubText } from '@utils/constants'
-import { FollowUs } from './FollowUs'
 import { PostsContainer } from './PostToSocials.style'
 import { socialPostsConfig } from './data'
 
@@ -70,7 +70,7 @@ export const PostToSocials: NextPage = () => {
             </TabsContainer>
 
             <S.Buttons>
-              <FollowUs />
+              <SocialMediaLinks />
               <Button type='button' size='small' onClick={onNext}>
                 Next Impact Action
               </Button>

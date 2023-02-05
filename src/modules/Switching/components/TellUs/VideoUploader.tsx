@@ -19,7 +19,7 @@ export const VideoUploader: NextPage<{
   const { user: { sub } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const toast = useToast()
-  const { currentJourneyId, currentJourney: { videoUri } = {} } = useGetCurrentJourney()
+  const { currentJourneyId } = useGetCurrentJourney()
   const fileInput = useRef<HTMLInputElement>(null)
   const [isUploading, setIsUploading] = useState(false)
 
@@ -126,7 +126,7 @@ export const VideoUploader: NextPage<{
         size='small'
         mode='secondary'
         onClick={handleClick}
-        disabled={isStepCompleted || !!videoUri || isUploading || isUploaded}
+        disabled={isStepCompleted || isUploading || isUploaded}
       >
         Attach
       </Button>
@@ -140,7 +140,7 @@ export const VideoUploader: NextPage<{
         type='button'
         size='small'
         onClick={onUpload}
-        disabled={!file?.name || !!videoUri || isUploading || isUploaded}
+        disabled={!file?.name || isUploading || isUploaded}
       >
         {isUploading ? 'Uploading...' : 'Upload'}
       </Button>

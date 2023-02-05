@@ -4,7 +4,6 @@ import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react'
 import useSWR, { SWRResponse } from 'swr'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-// import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { Checkbox, Label } from '@styles/common.style'
 import { fetcher } from '@utils/functions'
@@ -16,9 +15,7 @@ type JourneyId = { id: string }
 export const Video: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const text = useRef('')
-  // const getSteps = useStepsByJourneyType()
-  // const steps = getSteps()
-  const { currentJourneyId, currentJourney: { completedSteps = [] } = {} } = useGetCurrentJourney()
+  const { currentJourneyId } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
     fetcher,

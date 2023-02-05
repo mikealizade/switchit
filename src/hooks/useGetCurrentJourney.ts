@@ -3,11 +3,6 @@ import { RootState } from '@state/store'
 
 export const useGetCurrentJourney = () => {
   const { currentJourneyId, journeys } = useSelector((state: RootState) => state.switchJourneys)
-  // if (!currentJourneyId && !journeys.length) {
-  //   console.log('LS')
-  //   currentJourneyId = window.sessionStorage.getItem('currentJourneyId')
-  //   journeys = JSON.parse(window.sessionStorage.getItem('switchJourneys'))
-  // }
 
   console.log('currentJourneyId', currentJourneyId)
 

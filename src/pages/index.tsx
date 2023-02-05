@@ -2,6 +2,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
+import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { RootState } from '@state/store'
 
 const Index = () => {
@@ -13,7 +14,11 @@ const Index = () => {
     push(isNewUser || isNewUser === undefined ? '/switching' : '/dashboard')
   } else {
     if (!isLoading) {
-      return <SignedOutLanding />
+      return (
+        <SignedOutLayout>
+          <SignedOutLanding />
+        </SignedOutLayout>
+      )
     }
   }
 

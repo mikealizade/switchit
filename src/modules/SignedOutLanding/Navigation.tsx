@@ -37,27 +37,22 @@ export const navigation = [
 ]
 
 export const Navigation: NextPage = (): JSX.Element => {
-  // const { pathname, push } = useRouter()
-  // const dispatch = useDispatch()
-  // const { isNavOpen } = useSelector((state: RootState) => state.nav)
-  // const [current, setHover] = useState('')
-  // const isActive = (route: string): boolean =>
-  //   pathname === `/${route}` || pathname.includes(`/${route}`)
-  const { replace } = useRouter()
+  const { push } = useRouter()
 
   const onSignUp = () => {
     const params = new URLSearchParams(window.location.search)
     const code = params.get('referralCode')
     const route = code ? `/signup?referralCode=${code}` : '/signup'
 
-    replace(route)
+    push(route)
   }
 
   return (
     <S.Nav>
       <Logo>
-        <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
-        {/* <span>Switch It</span> */}
+        <Link href='/'>
+          <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
+        </Link>
       </Logo>
 
       <S.Navigation>
@@ -66,7 +61,9 @@ export const Navigation: NextPage = (): JSX.Element => {
             <Link href={route}>{text}</Link>
           </li>
         ))}
-        <li onClick={onSignUp}>Sign Up</li>
+        <S.SignUp>
+          <Link href='/signup'>Get Started</Link>
+        </S.SignUp>
       </S.Navigation>
     </S.Nav>
   )

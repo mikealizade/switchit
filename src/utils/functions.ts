@@ -50,8 +50,6 @@ export const filterActionType =
       ? type !== 'hello'
       : true
 
-export const filterSteps = (step: number) => step <= steps.confirmSwitch
-
 export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1) + min)
 

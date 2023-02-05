@@ -10,7 +10,6 @@ import { startJourneyConfig, startJourneyNoBankConfig } from '@modules/Switching
 import { Journey } from '@state/switchJourney/switchJourneySlice'
 import { TitleLink } from '@styles/common.style'
 import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
-import { filterSteps } from '@utils/functions'
 import { LastestJourney } from './LatestJourney'
 
 type SwitchingJourneyProps = {
@@ -24,13 +23,14 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
   const { currentJourney, currentJourneyType = '' } = useGetCurrentJourney()
   const goodBank = currentJourney?.goodBank
   const { name = '', completedSteps = [] } = switchJourneys.at(-1) ?? {}
-  const progress = completedSteps?.filter(filterSteps).length
   const isNoBankAccountJourney = currentJourneyType === journeyTypes.noBankAccount
   const journeySteps = isNoBankAccountJourney
     ? startJourneyNoBankConfig(String(goodBank))
     : startJourneyConfig(String(goodBank))
   const currentSteps = isNoBankAccountJourney ? noBankAccountSteps : steps
-  const totalSteps = Object.keys(currentSteps).length / 2
+  const getConfirmSwitchStep = (step: number) => step <= currentSteps.confirmSwitch
+  const progress = completedSteps?.filter(getConfirmSwitchStep).length
+
   const hasSwitched = isNoBankAccountJourney
     ? noBankAccountSteps.confirmSwitch
     : steps.confirmSwitch

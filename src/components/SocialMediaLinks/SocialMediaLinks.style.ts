@@ -1,17 +1,10 @@
 import styled from '@emotion/styled'
 
-export const PostsContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  flex-wrap: wrap;
-`
-
-export const FollowUs = styled.ul`
+export const Links = styled.ul`
   display: flex;
   align-items: center;
   column-gap: 15px;
-  margin-right: auto;
+  /* margin-right: auto; */
 
   + button:first-of-type:not(:only-child) {
     margin: 0;
