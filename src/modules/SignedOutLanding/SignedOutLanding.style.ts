@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const BlockButton = styled.div<{ margin?: string }>`
   position: relative;
@@ -310,4 +311,45 @@ export const PaypalContainer = styled.div`
   margin-top: 70px;
   display: flex;
   justify-content: flex-start;
+`
+
+export const ArticlesList = styled.ul`
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+`
+
+export const Item = styled.li`
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+  border-radius: 8px;
+  width: 100%;
+
+  ${() => mediaQuery.laptop} {
+    width: 440px;
+  }
+`
+
+export const ArticleLink = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  cursor: pointer;
+`
+
+export const Intro = styled.h2`
+  font-size: var(--fsLarge3);
+  line-height: 1.4;
+  font-family: 'Konsolev SemiBold';
+  padding-top: 16px;
+  margin-top: 10px;
+  border-top: 1px solid var(--haze);
+`
+
+export const Title = styled.h3`
+  font-size: var(--fsLarge1);
+  font-weight: normal;
 `

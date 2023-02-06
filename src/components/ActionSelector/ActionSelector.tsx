@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import * as S from '@components/ActionSelector/ActionSelector.style'
 import { Button } from '@components/Button/Button'
@@ -12,7 +13,7 @@ import { Action } from '@utils/types'
 type ActionSelectorProps = {
   currentAction?: Action | null
   actions: Action[]
-  selectAction: (index: number) => () => void
+  selectAction?: (index: number) => () => void
   isDefault?: boolean
   isSwitchLanding?: boolean
   isJourneyComplete?: boolean
@@ -26,15 +27,13 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
   isSwitchLanding = false,
   isJourneyComplete,
 }): JSX.Element => {
-  const { currentJourney, currentJourneyType } = useGetCurrentJourney()
+  const { push } = useRouter()
+  const { currentJourney, currentJourneyType } = useGetCurrentJourney() //should this be used?
   const completedSteps = currentJourney?.completedSteps
   const getSteps = useStepsByJourneyType()
   const journeySteps = getSteps()
   const isNoBankAccountJourney = currentJourneyType === journeyTypes.noBankAccount
   const [currentIcon, setIcon] = useState('')
-  // completed steps tab doesnt ever have a currentJourneyId, so it defaults to readyToSwitch so all steps are included even if the journey is a noBankAccountJourney
-  // need to know how the completed steps ui is going to look / behave before fixing this bug
-  console.log('currentJourneyType', currentJourneyType)
 
   const maximiseText = isJourneyComplete ? (
     ''
@@ -46,6 +45,10 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
 
   const onHover = (icon: string) => () => {
     setIcon(icon)
+  }
+
+  const selectRoute = (index: number) => (): void => {
+    push(`/switching/${actions[index].route}`)
   }
 
   const hasConfirmed = isJourneyComplete || !!completedSteps?.includes(journeySteps.confirmSwitch)
@@ -73,7 +76,7 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
               onMouseEnter={onHover(icon)}
               onMouseLeave={onHover('')}
             >
-              <S.LinkContainer onClick={selectAction(i)}>
+              <S.LinkContainer onClick={selectAction ? selectAction(i) : selectRoute(i)}>
                 {isCompleted && isDefault ? (
                   <S.Tick>
                     <Image src={`/icons/icon_radio_checked.svg`} alt='' width={48} height={48} />

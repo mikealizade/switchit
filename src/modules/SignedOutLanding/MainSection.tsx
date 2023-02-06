@@ -4,7 +4,7 @@ import * as S from './SignedOutLanding.style'
 
 export const MainSection: NextPage = (): JSX.Element => {
   return (
-    <S.MainSection border>
+    <S.MainSection>
       <S.HomePageHeader>Feel powerless when it comes to climate breakdown?</S.HomePageHeader>
       <S.Text>We did too</S.Text>
       <S.Text>

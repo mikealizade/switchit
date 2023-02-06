@@ -11,7 +11,6 @@ import { SwitchingHero } from '@components/Hero/SwitchingHero'
 import { Loader } from '@components/Loader/Loader'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import * as S from '@modules/Switching/Switching.style'
 import {
   setAddNewJourney,
@@ -23,7 +22,6 @@ import { Content, Row } from '@styles/common.style'
 import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
 import { actionsConfig, goodBanksConfig } from '@utils/data'
 import { fetcher, filterActionType } from '@utils/functions'
-import { Action } from '@utils/types'
 import { CompletedJourneyCard } from './components/CompletedJourneyCard/CompletedJourneyCard'
 import { JourneyCard } from './components/JourneyCard/JourneyCard'
 import { JourneyName } from './components/JourneyName/JourneyName'
@@ -34,27 +32,33 @@ type JourneyFilter = { journeyType: string; completedSteps: number[] }
 
 const getJourneys = (
   switchJourneys: Journey[],
-  actions: Action[],
-  journeySteps: JourneyStep[],
   filter: ({ journeyType, completedSteps }: JourneyFilter) => boolean,
-  getConfirmSwitchStep: (step: number) => boolean,
   resumeJourney: (route: string) => () => void,
-  selectAction: (index: number) => () => void,
   isJourneyComplete: boolean,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
-    const { id, name, goodBank, completedSteps = [] } = journey
-    const progress = completedSteps.filter(getConfirmSwitchStep).length
+    const { id, name, journeyType, goodBank, completedSteps = [] } = journey
+    const currentJourneySteps =
+      journeyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
+    const progress = completedSteps.filter(
+      (step: number) => step <= currentJourneySteps.confirmSwitch,
+    ).length
     const greenBank = goodBanksConfig[goodBank as keyof typeof goodBanksConfig]
+    const actions = actionsConfig.filter(filterActionType(journeyType))
+
+    const journeySteps =
+      journeyType === journeyTypes.noBankAccount
+        ? startJourneyNoBankConfig(String(goodBank))
+        : startJourneyConfig(String(goodBank))
 
     return (
       <>
         {isJourneyComplete ? (
           <CompletedJourneyCard
             key={id}
+            journeyType={journeyType}
             name={name}
             greenBank={greenBank}
-            switchingStepsCompleted={journeySteps.length}
           />
         ) : (
           <JourneyCard
@@ -65,7 +69,6 @@ const getJourneys = (
             actions={actions}
             completedSteps={completedSteps}
             isJourneyComplete={isJourneyComplete}
-            selectAction={selectAction}
             resumeJourney={resumeJourney}
           />
         )}
@@ -80,31 +83,26 @@ const Switching = (): JSX.Element => {
   const { push } = useRouter()
   const [value, setValue] = useState('')
   const [isAddName, setAddName] = useState(false)
-  const { currentJourney, currentJourneyType = '' } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
     sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
     fetcher,
     { revalidateOnFocus: false },
   ) as SWRResponse
-  const currentSteps =
-    currentJourneyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
-  const totalSteps = Object.keys(currentSteps).length / 2
-  const filterActive = ({ completedSteps }: { completedSteps: number[] }) =>
-    completedSteps.length < totalSteps
-  const getConfirmSwitchStep = (step: number) => step <= currentSteps.confirmSwitch
+  const activeJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
+    (journeyType === 'noBankAccount' && completedSteps.length < 7) ||
+    (journeyType === 'readyToSwitch' && completedSteps.length < 11)
+  const completedJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
+    completedSteps.length === (journeyType === journeyTypes.noBankAccount ? 7 : 11)
+  console.log('switchJourneys', switchJourneys)
+  const [firstActiveJourney] = switchJourneys.filter(activeJourneysFilter)
+  const { id: defaultJourneyId = '' } = firstActiveJourney ?? {}
+
   const journeyTabs = switchJourneys
-    .filter(filterActive)
+    .filter(activeJourneysFilter)
     .map(({ id, name }: { id: string; name: string }) => ({
       tab: name,
       currentJourneyId: id,
     }))
-  // const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
-  const actions = actionsConfig.filter(filterActionType(currentJourneyType))
-  const goodBank = currentJourney?.goodBank
-  const journeySteps =
-    currentJourneyType === journeyTypes.noBankAccount
-      ? startJourneyNoBankConfig(String(goodBank))
-      : startJourneyConfig(String(goodBank))
 
   console.log('switchJourneys', switchJourneys)
 
@@ -126,32 +124,12 @@ const Switching = (): JSX.Element => {
     dispatch(setCurrentJourneyId(id))
   }
 
-  const selectAction = (index: number) => (): void => {
-    push(`/switching/${actions[index].route}`)
-  }
-
-  const activeJourneys = getJourneys(
-    switchJourneys,
-    actions,
-    journeySteps,
-    filterActive,
-    getConfirmSwitchStep,
-    resumeJourney,
-    selectAction,
-    false,
-  )
-
-  console.log('activeJourneys', activeJourneys)
+  const activeJourneys = getJourneys(switchJourneys, activeJourneysFilter, resumeJourney, false)
 
   const completedJourneys = getJourneys(
     switchJourneys,
-    actions,
-    journeySteps,
-    ({ journeyType, completedSteps }: JourneyFilter) =>
-      completedSteps.length === (journeyType === journeyTypes.noBankAccount ? 7 : 11),
-    getConfirmSwitchStep,
+    completedJourneysFilter,
     resumeJourney,
-    selectAction,
     true,
   )
 
@@ -171,8 +149,6 @@ const Switching = (): JSX.Element => {
 
   useEffect(() => {
     if (switchJourneys.length) {
-      const [{ id: defaultJourneyId = '' } = {}] = switchJourneys.filter(filterActive)
-
       dispatch(
         setCurrentJourney({
           currentJourneyId: defaultJourneyId,
@@ -180,7 +156,7 @@ const Switching = (): JSX.Element => {
         }),
       )
     }
-  }, [switchJourneys, dispatch])
+  }, [switchJourneys, defaultJourneyId, dispatch])
 
   const panels: React.ReactNode[] = [
     ...(isValidating

@@ -4,7 +4,6 @@ import React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
-import * as S from '@modules/Switching/Switching.style'
 import { Content } from '@styles/common.style'
 import { actionHeaderSubText } from '@utils/constants'
 import { Letter } from './Letter'
@@ -23,17 +22,15 @@ export const HelloLetter: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <S.Container>
-            <Letter
-              header='Write Your Hello Letter'
-              subHeader={actionHeaderSubText.helloLetter}
-              headerText=''
-              getDefaultLetterText={getDefaultHelloLetterText}
-              onNext={onNext}
-              letterType='hello'
-              step={steps.helloLetter}
-            />
-          </S.Container>
+          <Letter
+            header='Write Your Hello Letter'
+            subHeader={actionHeaderSubText.helloLetter}
+            headerText=''
+            getDefaultLetterText={getDefaultHelloLetterText}
+            onNext={onNext}
+            letterType='hello'
+            step={steps.helloLetter}
+          />
         </Content>
       </ErrorBoundary>
     </>

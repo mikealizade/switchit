@@ -35,7 +35,7 @@ const maximisePages = [
 ]
 
 export const ImpactCard: NextPage = (): JSX.Element => {
-  const { pathname, push } = useRouter()
+  const { pathname } = useRouter()
   const { currentJourneyType = '' } = useGetCurrentJourney()
   const hasBank = bankPages.some((page: string) => pathname.includes(page))
   const hasProgressBar = maximisePages.some((page: string) => pathname.includes(page))
@@ -45,10 +45,6 @@ export const ImpactCard: NextPage = (): JSX.Element => {
   const actions = actionsConfig.filter(filterActionType(currentJourneyType))
   const { isXXLaptop } = useMediaQuery()
   // const dispatch = useDispatch()
-
-  const selectAction = (index: number) => (): void => {
-    push(`/switching/${actions[index].route}`)
-  }
 
   return (
     <Div rowGap={50} flex={1}>
@@ -65,12 +61,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
       </ImpactCardHeader>
       {hasBank && <Banks />}
       {hasProgressBar && (
-        <ActionSelector
-          actions={actions}
-          selectAction={selectAction}
-          isSwitchLanding={false}
-          isJourneyComplete={false}
-        />
+        <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />
       )}
       <ImpactCalculator hasProgressBar={hasProgressBar} />
       {hasFAQ && <SwitchingFaqs />}

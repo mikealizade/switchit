@@ -16,7 +16,6 @@ type JourneyCard = {
   actions: any
   completedSteps: number[]
   isJourneyComplete: boolean
-  selectAction: (index: number) => () => void
   resumeJourney: (route: string) => () => void
 }
 
@@ -27,7 +26,6 @@ export const JourneyCard: NextPage<JourneyCard> = ({
   actions,
   completedSteps,
   isJourneyComplete,
-  selectAction,
   resumeJourney,
 }) => {
   const { formattedTotalSum } = useShuffleImpact()
@@ -78,12 +76,7 @@ export const JourneyCard: NextPage<JourneyCard> = ({
       <S.JourneySection>
         <S.JourneySectionHeader>Maximise</S.JourneySectionHeader>
         <S.JourneySectionContent>
-          <ActionSelector
-            actions={actions}
-            selectAction={selectAction}
-            isSwitchLanding
-            isJourneyComplete={isJourneyComplete}
-          />
+          <ActionSelector actions={actions} isSwitchLanding isJourneyComplete={isJourneyComplete} />
         </S.JourneySectionContent>
       </S.JourneySection>
     </S.JourneyCard>
