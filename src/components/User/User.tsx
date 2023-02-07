@@ -5,18 +5,19 @@ import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { Loader } from '@components/Loader/Loader'
 import * as S from '@components/User/User.style'
+import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
 
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
   const dispatch = useDispatch()
+  const totalPoints = useGetTotalPoints()
   const {
     email = '',
     nickname = '',
     picture = '',
     isNewUser,
-    totalPoints = 0,
   } = useSelector((state: RootState) => state.user)
 
   return (

@@ -1,6 +1,5 @@
 export const defaultProfile = {
   isProfilePublic: true,
-  totalPoints: 0,
   friends: [],
   profile: {
     summary: {

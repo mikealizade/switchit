@@ -2,20 +2,12 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Accordion } from '@components/Accordion/ProfileAccordion'
 import * as S from '@components/ProfileAwardsBadges/ProfileAwardsBadges.style'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { RootState } from '@state/store'
 
 export const ProfileAwardsBadges: NextPage = (): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user)
-  // const {
-  //   profile: { switchItPoints = [] },
-  //   totalPoints,
-  // } = user
-
   const data = [
     {
       count: 3,

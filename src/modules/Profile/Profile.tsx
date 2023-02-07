@@ -33,7 +33,6 @@ export type User = {
   age: number
   programCode: string
   referralCode: string
-  totalPoints: number
   profile: {
     badges: Badge[]
     climateImpactReport: ClimateImpactReportProps

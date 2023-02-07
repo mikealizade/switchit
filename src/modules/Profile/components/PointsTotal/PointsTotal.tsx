@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useSelector } from 'react-redux'
 import { Ellipsis } from '@components/Ellipsis/Ellipsis'
 import { PointsChart } from '@components/PointsChart/PointsChart'
+import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import * as S from '@modules/Profile/components/PointsTotal/PointsTotal.style'
-import { RootState } from '@state/store'
 import { Title } from '@styles/common.style'
 
 export type PointsTotalProps = Array<{
@@ -13,7 +12,7 @@ export type PointsTotalProps = Array<{
 }>
 
 export const PointsTotal: NextPage<{ data: PointsTotalProps }> = ({ data = [] }): JSX.Element => {
-  const { totalPoints = 0 } = useSelector((state: RootState) => state.user)
+  const totalPoints = useGetTotalPoints()
 
   return (
     <S.PointsTotal>

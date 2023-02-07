@@ -13,10 +13,9 @@ import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpd
 import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
-// import { SignedOutLanding } from '@modules/SignedOutLanding/SignedOutLanding'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
-import { sendRequest, getTotalPoints, fetcher } from '@utils/functions'
+import { sendRequest, setTotalPoints, fetcher } from '@utils/functions'
 
 const signedOutPages = [
   '/',
@@ -48,7 +47,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname)
-  const isSigningUp = pathname === '/signup'
   const showUser = pathname !== '/settings'
 
   const saveNewUserData = useCallback(
@@ -100,7 +98,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
             setUser({
               ...user,
               ...(isNewUser && { isNewUser: false }),
-              totalPoints: getTotalPoints(user?.profile?.switchItPoints),
+              totalPoints: setTotalPoints(user?.profile?.switchItPoints),
             }),
           )
         }
@@ -109,10 +107,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
       }
     }
   }, [isNewUser, user, updateIsNewUser, saveNewUserData, dispatch])
-
-  // if (isSigningUp) {
-  //   return <>{children}</>
-  // }
 
   return (
     <>

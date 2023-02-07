@@ -31,7 +31,7 @@ export const mediaQuery = Object.entries(breakpoints)
 
 export const fetcher: Fetcher = (...args: any) => fetch.apply(null, args).then(res => res.json())
 
-export const getTotalPoints = (switchItPoints = []) =>
+export const setTotalPoints = (switchItPoints = []) =>
   switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
 
 export const onCopy = (str: string) => () => {

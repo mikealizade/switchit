@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as S from '@components/Navigation/Navigation.style'
+import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
 import { Nav } from '@utils/types'
@@ -18,8 +19,8 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
   const [current] = useState('')
   const isActive = (route: string): boolean =>
     pathname === `/${route}` || pathname.includes(`/${route}`)
-
-  const { nickname = '', picture = '', totalPoints } = useSelector((state: RootState) => state.user)
+  const totalPoints = useGetTotalPoints()
+  const { nickname = '', picture = '' } = useSelector((state: RootState) => state.user)
 
   return (
     <>

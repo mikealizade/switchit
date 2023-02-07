@@ -1,25 +1,22 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { PointsChart } from '@components/PointsChart/PointsChart'
 import * as S from '@components/ProfilePoints/ProfilePoints.style'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { useShareCode } from '@hooks/useShareCode'
-import { PointsTotal } from '@modules/Profile/components/PointsTotal/PointsTotal'
+import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import { RootState } from '@state/store'
 
 export const ProfilePoints: NextPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
-  const shareCode = useShareCode()
+  const totalPoints = useGetTotalPoints()
   const {
     profile: { switchItPoints = [] },
-    totalPoints,
   } = user
 
   const panels: [React.ReactNode, React.ReactNode, React.ReactNode] = [
-    // <PointsTotal key='overview' data={switchItPoints} />,
     <>
       <PointsChart data={switchItPoints} total={totalPoints} />
       <S.TotalPoints>
