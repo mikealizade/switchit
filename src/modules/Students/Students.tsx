@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Div, BulletList, AnchorLink } from '@styles/common.style'
+import { RegisterInterestForm } from './RegisterInterestForm'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const Students = (): JSX.Element => {
@@ -100,12 +101,16 @@ const Students = (): JSX.Element => {
         </Div>
         <Div>
           <S.BoldText>
-            Register your interest in bringing a Switch It Green Student Program to your university.{' '}
+            Register your interest in bringing a Switch It Green Student Program to your university.
           </S.BoldText>
+          <S.BlockButton margin='30px 0 0'>
+            <Link href='/signup'>Register your interest</Link>
+          </S.BlockButton>
           <S.BlockButton margin='30px 0 0'>
             <Link href='/signup'>Check out our Bank Switching Platform </Link>
           </S.BlockButton>
         </Div>
+        <RegisterInterestForm />
       </S.PageSection>
     </SignedOutLayout>
   )

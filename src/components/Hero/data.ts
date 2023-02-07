@@ -1,15 +1,26 @@
 export type HeroConfig = {
   [key: string]: {
-    title: string
-    text: string
+    title?: string
+    newUserTitle?: string
+    activeUserTitle?: string
+    text?: string
+    newUserText?: string
+    activeUserText?: string
     icon: string
   }
 }
 
 export const heroConfig: HeroConfig = {
   switching: {
-    title: `What We're Switching`,
-    text: `Find out if your bank funds fossil fuels, choose your new green bank, and maximise the power of your switch with our ready-to-go lobbying features. `,
+    title: 'Welcome to Switch It Green',
+    text: `Find out if your bank funds fossil fuels, choose your new green bank, and maximise the power of your switch with our ready-to-go lobbying features.`,
+    icon: 'icon_switching_earth.svg',
+  },
+  dashboard: {
+    newUserTitle: 'Welcome to Your Dashboard',
+    activeUserTitle: 'Welcome to Your Dashboard',
+    newUserText: `Here you have speedy access to our latest resources, your unique sharing code, and your ongoing switching journeys. Time to explore.`,
+    activeUserText: `In February 2023 we launched this platform to make taking part in climate action as simple and impactful as possible. There's more to come. Thanks for joining our campaign for a more liveable future.`,
     icon: 'icon_switching_earth.svg',
   },
   impact: {
@@ -24,12 +35,17 @@ export const heroConfig: HeroConfig = {
   },
   resources: {
     title: 'Resources',
-    text: 'Mollit ipsum quis sunt culpa irure laborit.',
+    text: 'The first step to taking impactful climate action is being informed. We are here to educate people on all things green finance and help you understand your power to contribute to positive change. Get clued up by checking out our resources.',
     icon: 'icon_mortar.svg',
   },
   community: {
     title: 'Community',
     text: 'Mollit ipsum quis sunt culpa irure laboris.',
+    icon: 'icon_mortar.svg',
+  },
+  help: {
+    title: 'Help',
+    text: `Got some burning questions? Want a deep dive into our research? Unsure about the switching process? We've got you covered. Check out our FAQs and if you're still itching to know more you'll be referred to one of our team.`,
     icon: 'icon_mortar.svg',
   },
 }

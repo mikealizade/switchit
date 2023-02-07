@@ -28,17 +28,16 @@ export const TellYourCommunity: NextPage = () => {
   const route = useRoute(steps.tellCommunity)
 
   const panels: [React.ReactNode, React.ReactNode] = [
-    // <Actions key='letter' actions={letterActions} type='letter' />,
     <Accordion key='accordion' data={data} hasCopyIcon />,
-    // <Actions key='talkingPoints' actions={letterActions} type='talkingPoints' />,
     <>
-      <ShareButton key='share' type='button' onClick={() => shareCode()} small>
+      <ShareButton key='share' type='button' onClick={() => shareCode()} bold>
         Share
         <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
       </ShareButton>
       <ShareCodeInfo>
-        Use this sharing code for fast sharing action. A unique sharing code just for you means
-        points every time you share, opportunites to connect with fellow switchers, etc
+        Effective climate action just entered the chat. Use this code for fast sharing action. A
+        unique code just for you means you can watch your impact multiply as more friends make the
+        switch.
       </ShareCodeInfo>
     </>,
   ]

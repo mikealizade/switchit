@@ -4,8 +4,8 @@ import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/Accord
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import Image from 'next/image'
-import { useState } from 'react'
-import { ParagraphCopy, CopyIcon } from '@styles/common.style'
+import { useState, isValidElement } from 'react'
+import { ParagraphCopy, CopyIcon, Div } from '@styles/common.style'
 import { onCopy } from '@utils/functions'
 import * as S from './Accordion.style'
 
@@ -33,6 +33,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 ))(() => ({
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
+    fontFamily: 'Konsolev Regular',
   },
 }))
 
@@ -101,11 +102,13 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
               )}
 
               {Array.isArray(copy) ? (
-                <ParagraphCopy>
+                <Div>
                   {copy.map((item: string, i: number) => (
                     <S.Para key={`para-${i}`}>{item}</S.Para>
                   ))}
-                </ParagraphCopy>
+                </Div>
+              ) : isValidElement(copy) ? (
+                copy
               ) : (
                 <Typography sx={{ fontSize: '1.5rem' }}>{copy}</Typography>
               )}

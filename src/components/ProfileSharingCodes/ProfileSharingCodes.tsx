@@ -32,12 +32,12 @@ export const ProfileSharingCodes: NextPage = (): JSX.Element => {
     </S.Share>,
     <>
       <p>
-        Get the word out and earn points - a win win. Share your unique referral link with a friend,
-        collegue, or family member and track your impact.
+        Get the word out and earn points. {`It's`} a win-win. Share your unique referral link with
+        your friends, classmates, or colleagues and watch your impact multiply.
       </p>
       <p>
-        Earn points if your friends join, earn more points if they switch, and if your friends
-        friends switch? You guessed it. More points.
+        Earn points if your friends join; earn more points if they make the switch; and if your{' '}
+        {`friends'`} friends switch? You guessed it - more points.
       </p>
     </>,
   ]

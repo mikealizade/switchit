@@ -28,7 +28,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
               <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
             </ShareButton>
           </S.TotalShared>
-          <Text>Share Switch It to collect points and boost your impact.</Text>
+          <Text>Share your unique code to collect points & multiply your impact</Text>
         </>
       )}
     </S.SharingCodes>

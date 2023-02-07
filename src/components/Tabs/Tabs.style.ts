@@ -1,5 +1,17 @@
 import styled from '@emotion/styled'
 
+export const HelpContainer = styled.div`
+  [class*='MuiTypography'] {
+    font-family: 'Konsolev SemiBold';
+  }
+
+  [class*='MuiAccordionDetails'],
+  [class*='MuiAccordionDetails'] h3,
+  [class*='MuiAccordionDetails'] li {
+    font-size: var(--fsBase);
+  }
+`
+
 export const Tabs = styled.div<{ wide?: boolean }>`
   display: flex;
   flex-direction: column;

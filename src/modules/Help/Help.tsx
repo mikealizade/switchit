@@ -6,30 +6,17 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
+import { Hero } from '@components/Hero/Hero'
 import { Tabs } from '@components/Tabs/Tabs'
-import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { Tabs as StyledTabs, HelpContainer } from '@components/Tabs/Tabs.style'
 import * as S from '@styles/common.style'
-
-const data = [
-  {
-    text: 'What is CASS',
-    copy: 'Current Account Switching Service',
-  },
-  {
-    text: 'What is CASS',
-    copy: 'Current Account Switching Service',
-  },
-  {
-    text: 'What is CASS',
-    copy: 'Current Account Switching Service',
-  },
-]
+import { research, general, programs, switching } from './data'
 
 const panels: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode] = [
-  <Accordion key='accordion' data={data} />,
-  <Accordion key='accordion' data={data} />,
-  <Accordion key='accordion' data={data} />,
-  <Accordion key='accordion' data={data} />,
+  <Accordion key='accordion' data={research} />,
+  <Accordion key='accordion' data={programs} />,
+  <Accordion key='accordion' data={switching} />,
+  <Accordion key='accordion' data={general} />,
 ]
 
 const tabs: string[] = ['Our Research', 'Programs', 'Switching', 'General']
@@ -48,14 +35,16 @@ const Faqs = (): JSX.Element => {
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
+          <Hero type='help' />
           <Card column padded>
-            <ActionHeader header='Help' />
-
-            <S.TabsContainer>
-              <StyledTabs>
-                <Tabs tabs={tabs} panels={panels}></Tabs>
-              </StyledTabs>
-            </S.TabsContainer>
+            <ActionHeader header='FAQs' />
+            <HelpContainer>
+              <S.TabsContainer>
+                <StyledTabs>
+                  <Tabs tabs={tabs} panels={panels}></Tabs>
+                </StyledTabs>
+              </S.TabsContainer>
+            </HelpContainer>
 
             <S.Buttons align='left'>
               <Button type='button' mode='secondary' onClick={() => back()}>

@@ -36,24 +36,29 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
         ))}
       </S.PointTypes>
     </>,
-    <div key='history'>10/5/23 - Banks switched</div>,
+    <div key='history'>Not done</div>,
     <>
       <S.Header>About Points</S.Header>
       <p>
-        Track your impact by earning points, and use those points to give back. Every year we
-        partner with a new nonprofit to expand our reach. We believe tackling climate change is
-        wholistic. Points can be spent in our coin store and are earned through a variety of
-        different actions across the Switch It web app.
+        Track your impact by earning points. You earn points for taking actions which support the
+        campaign goals - moving money out of fossil fuel support and pressuring banks to change
+        their investment policies. Check back soon for exciting updates on how you can use your
+        points for good.
       </p>
       <S.Header>Scoring Breakdown</S.Header>
       <S.Scoring>
-        <li>1 x Send a code</li>
-        <li>5 x Post a Google Review</li>
-        <li>10 x An invited friend creates a profile</li>
-        <li>15 x Post to socials</li>
-        <li>50 x Writee your breakup letter</li>
-        <li>100 x Write a hello letter</li>
-        <li>500 x Start a program</li>
+        <li>5 x Send a code</li>
+        <li>25 x An Invited Friend Creates A Profile</li>
+        <li>250 x An Invited Friend Makes The Switch</li>
+        <li>25 x Read An Article</li>
+        <li>50 x Post A Review To Trustpilot or Google</li>
+        <li>50 x Write A Hello Letter</li>
+        <li>75 x Share Your Switching Story</li>
+        <li>100 x Post to Socials</li>
+        <li>100 x Tell Your Community</li>
+        <li>150 x Write Your Breakup Letter</li>
+        <li>1000 x Switch Your Provider</li>
+        <li>10000 x Start a Program at Your school, University or business</li>
       </S.Scoring>
     </>,
   ]

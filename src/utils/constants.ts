@@ -12,7 +12,7 @@ export const baseUrl = dev ? 'http://localhost:3000' : 'https://switchit-weld.ve
 export const awsS3Uri = 'https://switchit-green.s3.eu-west-2.amazonaws.com'
 
 export const whatsAppUrl =
-  'https://wa.me/?text=Hey%20there!%20Use%20this%20referral%20code%20to%20switch%20banks%20'
+  'https://wa.me/?text=Want%20to%20move%20£1.5%20million%20out%20of%20fossil%20fuel%20support%20for%20free?%20Join%20me%20and%20thousands%20of%20others%20in%20switching%20to%20a%20green%20bank%20to%20help%20end%20fossil%20fuel%20financing%20'
 
 export const emailRegex =
   /^(([^<>()[\].,;:\s@£"]+(\.[^<>()[\].,;:\s@£"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([^\-<>()[\].,;:\s@"]([^<>()[\].,;:\s@"]*[^\-<>()[\].,;:\s@"])?)(\.[^\-<>()[\].,;:\s@"]([^<>()[\].,;:\s@"]*[^\-<>()[\].,;:\s@"])?)*(\.[^\-<>()[\].,;:\s@"]([^<>()[\].,;:\s@"]*[^\-<>()[\].,;:\s@"]))))$/

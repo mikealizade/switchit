@@ -33,7 +33,7 @@ export const ActionHeader: NextPage<ActionHeader> = ({
       <Header>
         <span>{header}</span>
       </Header>
-      <Subheader>{subHeader}</Subheader>
+      {subHeader && <Subheader>{subHeader}</Subheader>}
       {!isStepCompleted && text && <>{content}</>}
     </HeaderContainer>
   )

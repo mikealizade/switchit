@@ -300,11 +300,34 @@ export const TeamImages = styled.ul`
 
 export const Image = styled.li`
   gap: 30px;
-  background-color: grey;
+  display: flex;
   width: 450px;
-  max-width: 450px;
+  min-width: 450px;
   height: 450px;
-  flex: 1;
+  position: relative;
+`
+
+export const Profile = styled.div`
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  z-index: 1;
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+`
+
+export const Name = styled.p`
+  margin-top: auto;
+  color: var(--white);
+  font-weight: bold;
+  font-size: var(--fsMedium8);
+`
+
+export const Role = styled.p`
+  color: var(--white);
+  font-style: italic;
+  font-size: var(--fsMedium8);
 `
 
 export const PaypalContainer = styled.div`

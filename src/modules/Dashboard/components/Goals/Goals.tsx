@@ -26,7 +26,7 @@ export const Goals: NextPage = (): JSX.Element => {
         <S.Item>
           <Image src={`/icons/icon_programs.svg`} alt='' width={44} height={44} />
           <S.Goal>
-            <h3>30,000</h3>
+            <h3>15,000</h3>
             <Text>Climate Actions Taken</Text>
           </S.Goal>
         </S.Item>

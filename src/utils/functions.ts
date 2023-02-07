@@ -76,8 +76,14 @@ export const calculateImpact = (impactTotal: number, index: number): string[] =>
   ]
 }
 
-export const getArticleImageUrl = (imageName: string, isDashboard?: boolean): string =>
-  `${awsS3Uri}/assets/blog/${isDashboard ? `dashboard_${imageName}` : `img_${imageName}`}`
+export const getArticleImageUrl = (
+  imageName: string,
+  isDashboard = false,
+  isThumbnail = false,
+): string =>
+  `${awsS3Uri}/assets/blog/${
+    isThumbnail ? `thumb_${imageName}` : isDashboard ? `dashboard_${imageName}` : `img_${imageName}`
+  }`
 
 export const toDateString = (date: string) => {
   const options = { year: 'numeric', month: 'short', day: 'numeric' } as const

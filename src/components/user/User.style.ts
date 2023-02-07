@@ -66,7 +66,8 @@ export const WelcomeMsg = styled.div`
 `
 
 export const Score = styled.div`
-  color: var(--pink);
+  color: var(--sushi);
+  font-weight: bold;
   display: flex;
   align-items: center;
   column-gap: 10px;

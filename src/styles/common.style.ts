@@ -277,19 +277,25 @@ export const TextLink = styled.span<{ isGrey?: boolean }>`
 
 export const AnchorLink = styled.a`
   text-decoration: underline;
+  display: inline;
 `
 
-export const BulletList = styled.ul`
+export const BulletList = styled.ul<{ fontsize?: number }>`
   list-style-type: disc;
   list-style-position: outside;
   display: flex;
   flex-direction: column;
   row-gap: 12px;
   padding-left: 20px;
+  font-size: ${({ fontsize }) => (fontsize ? `${fontsize}px` : 'initial')};
 `
 
-export const ParagraphCopy = styled.div<{ bold?: boolean }>`
-  display: flex;
+export const OrderedList = styled(BulletList)`
+  list-style-type: decimal;
+`
+
+export const ParagraphCopy = styled.p<{ bold?: boolean; display?: string }>`
+  display: ${({ display }) => display ?? 'inline'};
   flex-direction: column;
   row-gap: 15px;
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};

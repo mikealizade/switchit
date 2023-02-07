@@ -1,7 +1,41 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Div } from '@styles/common.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
+
+const profiles = [
+  {
+    name: 'Anna Chirico',
+    role: 'Co-founder | Creative Director ',
+    image: 'img_anna_chirico.jpg',
+  },
+  {
+    name: 'Sohphie Cowen',
+    role: 'Co-founder | Campaign Director ',
+    image: 'img_sophie_cowen.jpg',
+  },
+  {
+    name: 'Amber Hayward',
+    role: 'Programs Manager',
+    image: 'img_anber_hayward.jpg',
+  },
+  {
+    name: 'Will Sharkey',
+    role: 'Lead Researcher',
+    image: 'img_will_sharkey.jpg',
+  },
+  {
+    name: 'Mike Alizade',
+    role: 'Lead Web Developer',
+    image: 'img_mike_alizade.jpg',
+  },
+  {
+    name: 'Tom Rickey',
+    role: 'Advisor',
+    image: 'img_tom_rickey.jpg',
+  },
+]
 
 const About = (): JSX.Element => {
   return (
@@ -69,8 +103,15 @@ const About = (): JSX.Element => {
       <S.PageSection rowGap={30}>
         <S.PageHeader>Who We Are</S.PageHeader>
         <S.TeamImages>
-          <S.Image>d</S.Image>
-          <S.Image>d</S.Image>
+          {profiles.map(({ name, role, image }) => (
+            <S.Image key={name}>
+              <S.Profile>
+                <S.Name>{name}</S.Name>
+                <S.Role>{role}</S.Role>
+              </S.Profile>
+              <Image src={`/images/${image}`} alt={`Picture of ${name}`} width={450} height={450} />
+            </S.Image>
+          ))}
         </S.TeamImages>
       </S.PageSection>
     </SignedOutLayout>

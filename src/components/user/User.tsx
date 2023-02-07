@@ -8,23 +8,6 @@ import * as S from '@components/User/User.style'
 import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
 
-// type User = {
-//   _id: string
-//   nickname: string
-//   name: string
-//   picture: string
-//   updated_at: string
-//   email: string
-//   email_verified: string
-//   sub: string
-//   sid: string
-//   age: number
-//   location: string
-//   programCode: string
-//   referralCode: string
-//   points: number
-// }
-
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
   const dispatch = useDispatch()
@@ -61,7 +44,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
             {pathname !== '/profile' && (
               <S.Score>
                 {totalPoints}
-                <Image src={'/icons/icon_star.svg'} alt='' width={45} height={45} />
+                <Image src={'/icons/icon_star_green.svg'} alt='' width={45} height={45} />
               </S.Score>
             )}
             {picture && (

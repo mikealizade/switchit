@@ -44,9 +44,8 @@ export const ProfileAwardsBadges: NextPage = (): JSX.Element => {
     <>
       <S.Header>Providers Switched</S.Header>
       <p>
-        Switching providers couldn’t be easier. We’ll walk you through the steps to choosing a
-        greener bank, pension or energy provider. Once you’ve made the switch, we’ll award you a
-        badge. Switching providers is also a great way to earn Switch It points.
+        {`It's`} why {`you're`} here! Earn your first badge by switching your current account to a
+        green bank. {`We've`} got more switching journeys for your other providers coming soon.
       </p>
       <S.StartLink>
         <Link href={''}>Start a Switching Journey</Link>
@@ -55,36 +54,33 @@ export const ProfileAwardsBadges: NextPage = (): JSX.Element => {
 
       <S.Header>Programs Completed</S.Header>
       <p>
-        In 2023, Switch It is focusing on peer to peer support for switching in sixth forms and
-        universities. Write to us if you’d like Switch It to come to your school. Collect badges for
-        completing programs in school. Or start your own program. Additional information can be
-        found on our Program page
+        We are harnessing the power of switching en masse. Get your whole school, business, or
+        university to Switch It Green with one of our programs. Collect badges for each completed
+        program. Find out more on our programs page.
       </p>
       <S.StartLink>
-        <Link href={''}>Start a Program</Link>
+        <Link href='/programs'>Start a Program</Link>
         <Image src={'/icons/icon_chevron_right.svg'} alt='' width={10} height={10} />
       </S.StartLink>
 
       <S.Header>Articles Read</S.Header>
       <p>
-        Reading up on what’s new in green finance and other climate related news is a great way to
-        grow your knowledge and empower impactful choices. Dive into interviews, news articles, and
-        blog posts. Want to know the best way to talk to your community about the importance of
-        switching green? We’ve got you covered.
+        The first step to taking impactful climate action is being informed. Get clued up on all
+        things green finance and understand the power you have to contribute to positive change.
+        Check out our resources and earn badges for each one you read.
       </p>
       <S.StartLink>
-        <Link href={''}>Visit the blog</Link>
+        <Link href='/resources'>Visit the blog</Link>
         <Image src={'/icons/icon_chevron_right.svg'} alt='' width={10} height={10} />
       </S.StartLink>
 
       <S.Header>Friends Switched</S.Header>
       <p>
-        Getting the word out is one of the most impactful ways to move the needle. Switching is
-        important, but switching together is when real change happens. Get your mom, collegues,
-        enimies and frenemies on board
+        Want to double, quadruple, or decuple your impact? Of course you do. Every 10 friends
+        switched means over £10 million moved out of fossil fuel support.
       </p>
       <S.StartLink>
-        <Link href={''}>Invite Friends</Link>
+        <Link href='/'>Invite Friends</Link>
         <Image src={'/icons/icon_chevron_right.svg'} alt='' width={10} height={10} />
       </S.StartLink>
     </>,

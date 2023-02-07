@@ -15,7 +15,6 @@ import { ArticleData, Data } from '../Articles/Articles.style'
 
 const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const {
-    // pathname,
     query: { id },
   } = useRouter()
   const { addPoints } = useUpdatePoints()
@@ -34,9 +33,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
   // const whatsAppUrl =
   //   'https://wa.me/?text=Hey%20there!%20Read%20this%20article%20fron%20SwitchIt%20'
   // const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/resources/article/${id}`
-
-  console.log('created', created)
-  console.log('posts', posts)
+  // console.log('posts', posts)
 
   useEffect(() => {
     const articlesRead = JSON.parse(window.localStorage.getItem('readArticles')!) ?? []
@@ -86,28 +83,34 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
               <S.MoreArticles>
                 <S.MoreArticlesHeader>More in Resources</S.MoreArticlesHeader>
                 <S.ArticlesList>
-                  {posts.map(({ id, title, imageName }) => {
-                    return (
-                      <S.MoreItem key={id}>
-                        <S.ImageContainer>
+                  {posts
+                    .filter(({ id: resourceId }) => resourceId !== id)
+                    .map(({ id, title, imageName }) => {
+                      console.log(
+                        'getArticleImageUrl(imageName, false, true)',
+                        getArticleImageUrl(imageName, false, true),
+                      )
+                      return (
+                        <S.MoreItem key={id}>
+                          <S.ImageContainer>
+                            <Link href={`/resources/article/${id}`}>
+                              <Image
+                                src={getArticleImageUrl(imageName, false, true)}
+                                alt={title}
+                                width={82}
+                                height={82}
+                              />
+                            </Link>
+                          </S.ImageContainer>
                           <Link href={`/resources/article/${id}`}>
-                            <Image
-                              src={getArticleImageUrl(imageName)}
-                              alt={title}
-                              width={82}
-                              height={82}
-                            />
+                            <S.Details>
+                              <S.ArticleTitle>{title}</S.ArticleTitle>
+                              <S.Date>{toDateString(created)}</S.Date>
+                            </S.Details>
                           </Link>
-                        </S.ImageContainer>
-                        <Link href={`/resources/article/${id}`}>
-                          <S.Details>
-                            <S.ArticleTitle>{title}</S.ArticleTitle>
-                            <S.Date>{toDateString(created)}</S.Date>
-                          </S.Details>
-                        </Link>
-                      </S.MoreItem>
-                    )
-                  })}
+                        </S.MoreItem>
+                      )
+                    })}
                 </S.ArticlesList>
               </S.MoreArticles>
             </S.ArticleContent>
