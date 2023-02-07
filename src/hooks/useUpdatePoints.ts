@@ -1,10 +1,12 @@
-import { useUser } from '@auth0/nextjs-auth0'
+import { useSelector } from 'react-redux'
 import useSWRMutation from 'swr/mutation'
 import { useToast } from '@hooks/useToast'
+import { RootState } from '@state/store'
 import { sendRequest } from '@utils/functions'
 
 export const useUpdatePoints = () => {
-  const { user: { sub = '' } = {} } = useUser()
+  const user = useSelector((state: RootState) => state.user)
+  const { sub } = user
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const toast = useToast()
 

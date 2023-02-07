@@ -11,7 +11,9 @@ export const useShareCode = () => {
   const id = nanoid()
   const user = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
-  const { sub, profile, profile: { sharingCodes = [] } = {} } = user
+  const { sub, profile, profile: { sharingCodes = [], switchItPoints = [] } = {} } = user
+  const [codes, ...rest] = switchItPoints
+
   const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/signup?referralCode=${id}`
 
   const onShareCode = async () => {
@@ -30,6 +32,15 @@ export const useShareCode = () => {
         profile: {
           ...profile,
           sharingCodes: [...sharingCodes, id],
+          switchItPoints: [
+            ...[
+              {
+                ...codes,
+                points: codes.points + 5,
+              },
+            ],
+            ...rest,
+          ],
         },
       }),
     )

@@ -36,14 +36,15 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
   // console.log('posts', posts)
 
   useEffect(() => {
-    const articlesRead = JSON.parse(window.localStorage.getItem('readArticles')!) ?? []
+    addPoints(25)
+    // const articlesRead = JSON.parse(window.localStorage.getItem('readArticles')!) ?? []
 
-    console.log('articlesRead', articlesRead)
+    // console.log('articlesRead', articlesRead)
 
-    if (!articlesRead.includes(id)) {
-      addPoints(25)
-      window.localStorage.setItem('readArticles', JSON.stringify([...articlesRead, id]))
-    }
+    // if (!articlesRead.includes(id)) {
+    //   addPoints(25)
+    //   window.localStorage.setItem('readArticles', JSON.stringify([...articlesRead, id]))
+    // }
   }, [])
 
   return (
