@@ -11,7 +11,7 @@ import { RootState } from '@state/store'
 import { Nav } from '@utils/types'
 // import { navigation, subNav } from './data'
 import * as S from './SignedOutLanding.style'
-import logo from '../../../public/logo_switchit_teal.svg'
+import logo from '../../../public/images/logo_switchit_teal.svg'
 
 export const navigation = [
   {
