@@ -10,6 +10,7 @@ import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, TabsContainer } from '@styles/common.style'
 import { actionHeaderSubText } from '@utils/constants'
@@ -22,6 +23,7 @@ export const PostToSocials: NextPage = () => {
   const nextStep = useNextStep()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
+  const { addPoints } = useUpdatePoints('actions')
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <PostsContainer key='twitter'>
@@ -54,6 +56,7 @@ export const PostToSocials: NextPage = () => {
 
   const onNext = (): void => {
     nextStep(steps.postSocials, '/switching/tell-your-community')
+    addPoints(100, true)
   }
 
   return (

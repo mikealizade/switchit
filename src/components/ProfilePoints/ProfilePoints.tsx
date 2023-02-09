@@ -16,7 +16,7 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
     profile: { switchItPoints = [] },
   } = user
 
-  const panels: [React.ReactNode, React.ReactNode, React.ReactNode] = [
+  const panels: [React.ReactNode, React.ReactNode] = [
     <>
       <PointsChart data={switchItPoints} total={totalPoints} />
       <S.TotalPoints>
@@ -33,7 +33,7 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
         ))}
       </S.PointTypes>
     </>,
-    <div key='history'>Not done</div>,
+    // <div key='history'>Not done</div>,
     <>
       <S.Header>About Points</S.Header>
       <p>
@@ -62,7 +62,7 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
 
   return (
     <StyledTabs wide>
-      <Tabs tabs={['Overview', 'History', 'How It Works']} panels={panels}></Tabs>
+      <Tabs tabs={['Overview', 'How It Works']} panels={panels}></Tabs>
     </StyledTabs>
   )
 }

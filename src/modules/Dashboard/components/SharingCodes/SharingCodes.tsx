@@ -11,10 +11,10 @@ type SharingCodesProps = { total: number }
 
 export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Element => {
   const shareCode = useShareCode()
-  const { addPoints } = useUpdatePoints()
+  const { addPoints } = useUpdatePoints('sharingCodes')
 
   const onShareCode = () => {
-    shareCode()
+    shareCode(5, 'add')
     addPoints(5)
   }
 

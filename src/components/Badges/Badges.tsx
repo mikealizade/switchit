@@ -14,7 +14,7 @@ export const Badges: NextPage<{ data: Badge[] }> = ({ data = [] }): JSX.Element 
   return (
     <S.Badges>
       <Title>
-        Awards Badges
+        Awards
         <Ellipsis section='awardsbadges' />
       </Title>
 

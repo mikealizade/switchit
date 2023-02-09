@@ -12,6 +12,7 @@ import { useNextStep } from '@hooks/useNextStep'
 import { useRoute } from '@hooks/useRoute'
 import { useShareCode } from '@hooks/useShareCode'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Switching/Switching.style'
 import { Content, ShareButton, TabsContainer } from '@styles/common.style'
 import { actionHeaderSubText } from '@utils/constants'
@@ -24,13 +25,14 @@ export const TellYourCommunity: NextPage = () => {
   const nextStep = useNextStep()
   const shareCode = useShareCode()
   const getSteps = useStepsByJourneyType()
+  const { addPoints } = useUpdatePoints('actions')
   const steps = getSteps()
   const route = useRoute(steps.tellCommunity)
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <Accordion key='accordion' data={data} hasCopyIcon />,
     <>
-      <ShareButton key='share' type='button' onClick={() => shareCode()} bold>
+      <ShareButton key='share' type='button' onClick={() => shareCode(5, 'add')} bold>
         Share
         <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
       </ShareButton>
@@ -44,6 +46,7 @@ export const TellYourCommunity: NextPage = () => {
 
   const onNext = (): void => {
     nextStep(steps.tellCommunity, route)
+    addPoints(100, true)
   }
 
   return (

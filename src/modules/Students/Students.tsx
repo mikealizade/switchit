@@ -2,12 +2,18 @@ import Link from 'next/link'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Div, BulletList, AnchorLink } from '@styles/common.style'
 import { RegisterInterestForm } from './RegisterInterestForm'
+import {
+  RegisterInterestContainer,
+  RegisterInterestIntro,
+  RegisterInterestHeader,
+  RegisterInterestHint,
+} from './RegisterInterestForm.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const Students = (): JSX.Element => {
   return (
     <SignedOutLayout>
-      <S.PageSection>
+      <S.PageSection grey>
         <S.PageHeader>Our Program Offerings</S.PageHeader>
         <S.Text>
           <em>
@@ -32,7 +38,7 @@ const Students = (): JSX.Element => {
           </strong>
         </S.Text>
       </S.PageSection>
-      <S.PageSection rowGap={70} position='right 170px bottom'>
+      <S.PageSection grey rowGap={70} position='right 170px bottom'>
         <S.PageHeader>Why run a Switch It Green Program at your university?</S.PageHeader>
         <Div>
           <S.BoldText>
@@ -101,16 +107,29 @@ const Students = (): JSX.Element => {
         </Div>
         <Div>
           <S.BoldText>
-            Register your interest in bringing a Switch It Green Student Program to your university.
+            Register your interest in bringing a Switch It Green Student Program to your university
+            by completing the form below.
           </S.BoldText>
-          <S.BlockButton margin='30px 0 0'>
+          {/* <S.BlockButton margin='30px 0 0'>
             <Link href='/signup'>Register your interest</Link>
-          </S.BlockButton>
+          </S.BlockButton> */}
           <S.BlockButton margin='30px 0 0'>
             <Link href='/signup'>Check out our Bank Switching Platform </Link>
           </S.BlockButton>
         </Div>
-        <RegisterInterestForm />
+        <RegisterInterestContainer>
+          <RegisterInterestIntro>
+            <RegisterInterestHeader>
+              {`Let's`} Talk
+              <br />
+              Programs!
+            </RegisterInterestHeader>
+            <RegisterInterestHint>
+              Fill out the form to the right and we’ll be in touch
+            </RegisterInterestHint>
+          </RegisterInterestIntro>
+          <RegisterInterestForm />
+        </RegisterInterestContainer>
       </S.PageSection>
     </SignedOutLayout>
   )

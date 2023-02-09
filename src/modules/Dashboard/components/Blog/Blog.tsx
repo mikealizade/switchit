@@ -18,8 +18,7 @@ export type Blog = {
 export const Blog: NextPage<{ data: Blog[] }> = ({ data = [] }): JSX.Element => {
   const [{ id = '', title = '', summary = '', mins = '', points = '', imageName = '' } = {}] = data
 
-  console.log('data', data)
-  console.log('getArticleImageUrl(imageName, true)', getArticleImageUrl(imageName, true))
+  // console.log('data', data)
 
   return (
     <S.BlogContainer>

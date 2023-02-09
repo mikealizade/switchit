@@ -11,6 +11,7 @@ import { Card } from '@components/Card/Card'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useToast } from '@hooks/useToast'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Container } from '@modules/Switching/Switching.style'
 import { RootState } from '@state/store'
 import { goodBanksConfig, sanitiseConfig } from '@utils/data'
@@ -30,8 +31,6 @@ type LetterProps = {
   step: number
 }
 
-// TODO  when savinvg journey steps to db, currently not refetching on any of the action pages
-
 // NOTE: letters are not stored in redux as local state is maintained between pages through text.current useRef
 // and on page reload the letters are retrieved from the db
 
@@ -46,6 +45,7 @@ export const Letter: NextPage<LetterProps> = ({
 }) => {
   const { user: { sub = '' } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
+  const { addPoints } = useUpdatePoints('actions')
   const nextStep = useNextStep()
   const text = useRef('')
   const toast = useToast()
@@ -94,8 +94,6 @@ export const Letter: NextPage<LetterProps> = ({
   }
 
   const onSend = async () => {
-    nextStep(step)
-
     try {
       const sendBody = {
         filter: {},
@@ -113,6 +111,8 @@ export const Letter: NextPage<LetterProps> = ({
       }
 
       request(sendBody)
+      nextStep(step)
+      addPoints(isBadBank ? 150 : 50, true)
 
       toast('Your letter was sent successfully', 'success')
     } catch (error) {

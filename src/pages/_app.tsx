@@ -32,14 +32,13 @@ import '@styles/globals.css'
 // lighthouse
 // db backups
 // security
+
+// TECH DEBT / AFTER GO LIVE
 // email
 // accessibility
-
-// TECH DEBT
 // linting and linting on commit
 // remove useEffects where poss
 // upgrade to Next 13
-// refetch on all landing pages
 // mongodb compass
 // split up switching styles
 // dynamic import for drawer

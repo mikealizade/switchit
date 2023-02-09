@@ -5,6 +5,7 @@ import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 import { whatsAppUrl } from '@utils/constants'
 import { sendRequest } from '@utils/functions'
+import { Point } from '@utils/types'
 
 export const useShareCode = () => {
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
@@ -12,11 +13,12 @@ export const useShareCode = () => {
   const user = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
   const { sub, profile, profile: { sharingCodes = [], switchItPoints = [] } = {} } = user
-  const [codes, ...rest] = switchItPoints
 
   const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/signup?referralCode=${id}`
 
-  const onShareCode = async () => {
+  const onShareCode = async (points: number, operation: string) => {
+    const updatedPoints = operation === 'add' ? points : -points
+
     const body = {
       filter: { sub },
       payload: { $push: { [`profile.sharingCodes`]: id } },
@@ -32,15 +34,9 @@ export const useShareCode = () => {
         profile: {
           ...profile,
           sharingCodes: [...sharingCodes, id],
-          switchItPoints: [
-            ...[
-              {
-                ...codes,
-                points: codes.points + 5,
-              },
-            ],
-            ...rest,
-          ],
+          switchItPoints: switchItPoints.map((item: Point) =>
+            item.id === 'sharingCodes' ? { ...item, points: item.points + updatedPoints } : item,
+          ),
         },
       }),
     )

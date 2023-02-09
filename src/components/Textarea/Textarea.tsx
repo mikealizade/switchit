@@ -1,8 +1,7 @@
 import cs from 'classnames'
 import { FC } from 'react'
 import { FieldErrors, FieldError, RegisterOptions, UseFormRegisterReturn } from 'react-hook-form'
-import * as S from '@components/Input/Input.style'
-import { regexConfig, emailRegex } from '@utils/constants'
+import * as S from '@components/Textarea/Textarea.style'
 
 type InputProps = {
   name: string
@@ -24,21 +23,18 @@ type InputProps = {
   placeholder?: string
 }
 
-export const Input: FC<InputProps> = ({
+export const Textarea: FC<InputProps> = ({
   name = '',
   label = '',
-  type = 'text',
-  pattern,
   defaultValue = '',
   register,
   formState: { errors } = {},
-  required,
-  disabled,
+  required = false,
+  disabled = false,
   minLength,
   maxLength,
   message = '',
   validate,
-  placeholder = '',
 }): JSX.Element => {
   const hasError = errors?.[name as keyof FieldError]
   const errorMessage = errors?.[name]?.message as string
@@ -51,27 +47,19 @@ export const Input: FC<InputProps> = ({
           *
         </span>
       )}
-      <S.Input
-        id={name}
-        type={type}
+      <S.Textarea
+        name={name}
         {...(register &&
           register(name, {
             required,
             ...(minLength && { minLength: { value: minLength, message } }),
             ...(maxLength && { maxLength: { value: maxLength, message } }),
-            ...(pattern && {
-              pattern: {
-                value: new RegExp(pattern === 'email' ? emailRegex : regexConfig[pattern], 'g'),
-                message,
-              },
-            }),
             ...(validate && {
               validate,
             }),
           }))}
         {...(defaultValue && { defaultValue })}
         disabled={disabled}
-        placeholder={placeholder}
         aria-describedby='required'
         aria-required={required}
         aria-invalid={!!errors?.[name]}

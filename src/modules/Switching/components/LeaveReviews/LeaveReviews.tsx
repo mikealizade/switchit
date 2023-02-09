@@ -11,6 +11,7 @@ import { EditableContent } from '@components/EditableContent/EditableContent'
 import { Fallback } from '@components/Fallback/Fallback'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import {
   Buttons,
   SwitchingColumnContainer,
@@ -26,6 +27,7 @@ export const LeaveReviews: NextPage = () => {
   const { data } = useSWR('/api/json/leavereviews', fetcher)
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
   const nextStep = useNextStep()
+  const { addPoints } = useUpdatePoints('actions')
   const [copy, setCopy] = useState('')
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const bank = badBanksConfig[badBank as keyof typeof badBanksConfig]
@@ -33,6 +35,7 @@ export const LeaveReviews: NextPage = () => {
 
   const onNext = (): void => {
     nextStep(steps.leaveReviews, '/switching/tell-us')
+    addPoints(50, true)
   }
 
   useEffect(() => {

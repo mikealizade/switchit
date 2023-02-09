@@ -30,10 +30,10 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
   const currentSteps = isNoBankAccountJourney ? noBankAccountSteps : steps
   const getConfirmSwitchStep = (step: number) => step <= currentSteps.confirmSwitch
   const progress = completedSteps?.filter(getConfirmSwitchStep).length
-
   const hasSwitched = isNoBankAccountJourney
     ? noBankAccountSteps.confirmSwitch
     : steps.confirmSwitch
+  // const hasAnActiveJourney
 
   return (
     <S.SwitchingJourney>

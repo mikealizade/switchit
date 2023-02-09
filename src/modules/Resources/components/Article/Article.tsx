@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
+import { useUpdateAwards } from '@hooks/useUpdateAwards'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Resources/components/Article/Article.style'
 import { Post } from '@pages/dashboard'
@@ -17,12 +18,12 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const {
     query: { id },
   } = useRouter()
-  const { addPoints } = useUpdatePoints()
+  const { addPoints } = useUpdatePoints('resources')
+  const updateAwards = useUpdateAwards('resources', 'resources')
   const {
     title = '',
     text = '',
     created = '',
-
     mins,
     points,
     imageName,
@@ -30,21 +31,15 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
     Post,
     'title' | 'text' | 'created' | 'mins' | 'points' | 'imageName'
   >
-  // const whatsAppUrl =
-  //   'https://wa.me/?text=Hey%20there!%20Read%20this%20article%20fron%20SwitchIt%20'
-  // const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/resources/article/${id}`
-  // console.log('posts', posts)
 
   useEffect(() => {
-    addPoints(25)
-    // const articlesRead = JSON.parse(window.localStorage.getItem('readArticles')!) ?? []
+    const articlesRead = JSON.parse(window.localStorage.getItem('readArticles')!) ?? []
 
-    // console.log('articlesRead', articlesRead)
-
-    // if (!articlesRead.includes(id)) {
-    //   addPoints(25)
-    //   window.localStorage.setItem('readArticles', JSON.stringify([...articlesRead, id]))
-    // }
+    if (!articlesRead.includes(id)) {
+      updateAwards(25, 'add')
+      addPoints(25)
+      window.localStorage.setItem('readArticles', JSON.stringify([...articlesRead, id]))
+    }
   }, [])
 
   return (

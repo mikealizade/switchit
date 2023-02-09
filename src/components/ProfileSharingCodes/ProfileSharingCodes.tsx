@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import * as S from '@components/ProfileSharingCodes/ProfileSharingCodes.style'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
@@ -14,13 +14,14 @@ import { ShareButton } from '@styles/common.style'
 export const ProfileSharingCodes: NextPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
   const shareCode = useShareCode()
+
   const {
     profile: { sharingCodes = [] },
   } = user
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <S.Share key='1'>
-      <ShareButton type='button' onClick={() => shareCode()}>
+      <ShareButton type='button' onClick={() => shareCode(5, 'add')}>
         Share
         <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
       </ShareButton>

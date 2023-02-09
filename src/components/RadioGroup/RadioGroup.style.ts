@@ -1,12 +1,5 @@
 import styled from '@emotion/styled'
 
-export const RadioGroupLabel = styled.h4`
-  span {
-    display: inline-block;
-    color: var(--darkRed);
-    margin-left: 5px;
-  }
-`
 export const Label = styled.label`
   display: flex;
   align-items: center;
@@ -18,8 +11,8 @@ export const Label = styled.label`
 export const RadioGroup = styled.div`
   cursor: default;
   display: flex;
-  flex-direction: column;
   row-gap: 15px;
+  flex-direction: column;
 
   input {
     position: absolute;

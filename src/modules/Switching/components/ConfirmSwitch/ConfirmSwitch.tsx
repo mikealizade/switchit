@@ -13,6 +13,8 @@ import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { useUpdateAwards } from '@hooks/useUpdateAwards'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { setSignature } from '@state/generic/genericSlice'
 import { RootState } from '@state/store'
@@ -42,6 +44,8 @@ export const ConfirmSwitch: NextPage = () => {
   const signature = useSelector((state: RootState) => state.generic.signature)
   const [value, setValue] = useState(signature)
   const nextStep = useNextStep()
+  const updateAwards = useUpdateAwards('providers', 'actions')
+  const { addPoints } = useUpdatePoints('actions')
   const date = new Date()
   const getSteps = useStepsByJourneyType()
   const { currentJourney: { goodBank } = {}, currentJourneyType } = useGetCurrentJourney()
@@ -55,6 +59,8 @@ export const ConfirmSwitch: NextPage = () => {
 
   const onConfirm = (): void => {
     nextStep(steps.confirmSwitch, null, { isVerified: new Date() })
+    updateAwards(1_000, 'add')
+    addPoints(1_000)
     setConfirmed(true)
   }
 

@@ -1,6 +1,7 @@
 import cs from 'classnames'
 import { FC } from 'react'
 import { FieldErrors, FieldError, RegisterOptions, UseFormRegisterReturn } from 'react-hook-form'
+import { Label } from '@styles/common.style'
 import * as S from './RadioGroup.style'
 
 export type RadioGroupProps = {
@@ -25,21 +26,21 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   defaultValue,
   register,
   disabled,
-  required,
+  required = false,
 }): JSX.Element => {
   const hasError = errors && errors[name as keyof FieldError]
 
   return (
     <S.RadioGroup className={cs('radios', { ['error']: hasError })}>
       {label && (
-        <S.RadioGroupLabel>
+        <Label>
           {label}{' '}
-          {errors && (
+          {required && (
             <span className='required' aria-hidden='true'>
               *
             </span>
           )}
-        </S.RadioGroupLabel>
+        </Label>
       )}
       {labels.map((label: string) => {
         return (

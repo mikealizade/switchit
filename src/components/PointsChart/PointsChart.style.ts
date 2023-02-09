@@ -9,6 +9,7 @@ export const PointsChart = styled.ul`
 export const Item = styled.li`
   &:first-of-type {
     border-radius: 20px 0 0 20px;
+    min-width: 8px;
   }
 
   &:last-of-type {
@@ -23,7 +24,7 @@ export const Item = styled.li`
     background-color: var(--dodgerBlue);
   }
 
-  &.mediaposted {
+  &.resourcesread {
     background-color: var(--aurora);
   }
 
@@ -31,7 +32,7 @@ export const Item = styled.li`
     background-color: var(--mustard);
   }
 
-  &.providerswitchingactions {
+  &.switchingactions {
     background-color: var(--vermilion);
   }
 `

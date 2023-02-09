@@ -9,6 +9,7 @@ import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import {
   Buttons,
   SwitchingColumnContainer,
@@ -48,11 +49,13 @@ export const TellUs: NextPage = () => {
   const nextStep = useNextStep()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
+  const { addPoints } = useUpdatePoints('actions')
   const [isMaximised, setMaximised] = useState(false)
 
   const onCompleteJourney = (): void => {
     setMaximised(true)
     nextStep(steps.tellUs)
+    addPoints(75, true)
   }
 
   return (

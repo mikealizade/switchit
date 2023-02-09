@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
-import { useUser } from '@auth0/nextjs-auth0'
 import { useEffect } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { useSelector, useDispatch } from 'react-redux'
+import useSWRMutation from 'swr/mutation'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { Input } from '@components/Input/Input'
-import { useUpdateUser } from '@hooks/useUpdateUser'
-import { RootState } from '@state/store'
-import { setUser } from '@state/user/userSlice'
+import { RadioGroup } from '@components/RadioGroup/RadioGroup'
+import { Textarea } from '@components/Textarea/Textarea'
+import { useToast } from '@hooks/useToast'
+import { sendRequest } from '@utils/functions'
 import * as S from './RegisterInterestForm.style'
 
 export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> = ({
@@ -15,36 +15,33 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
   disabled,
 }): JSX.Element => {
   const methods = useForm()
-  const dispatch = useDispatch()
-  const updateUser = useUpdateUser()
-  const { handleSubmit, reset } = methods
-  const { user: { sub } = {}, isLoading = false } = useUser()
-  const user = useSelector((state: RootState) => state.user)
-  const { nickname = '', username = '', location = '' } = user
+  const toast = useToast()
+  const { handleSubmit, reset, watch } = methods
+  const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
+  const [nickname, email] = watch(['nickname', 'email'])
+
+  const save = async (data: FieldValues): Promise<void> => {
+    console.log('data', data)
+    try {
+      const body = {
+        filter: {},
+        payload: {
+          $push: {
+            interestedUsers: data,
+          },
+        },
+        collection: 'usersInterestInSwitchIt',
+        upsert: false,
+      }
+
+      request(body)
+    } catch {
+      toast('An error has occurred registering your interest.', 'error')
+    }
+  }
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
     await save(data)
-  }
-
-  const onCancel = (): void => {
-    reset()
-  }
-
-  const save = async (data: FieldValues): Promise<void> => {
-    const { nickname, username, location } = data
-
-    updateUser({
-      [`nickname`]: nickname,
-      [`username`]: username,
-      [`location`]: location,
-    })
-
-    dispatch(
-      setUser({
-        ...user,
-        ...{ nickname, username, location },
-      }),
-    )
   }
 
   useEffect(() => {
@@ -52,52 +49,56 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
   }, [data, reset])
 
   return (
-    <>
-      <h3>Profile</h3>
-      <p>View and update your account details, profile and more.</p>
+    <S.RegisterInterestForm>
       <FormProvider {...methods}>
         <S.RegisterInterest onSubmit={handleSubmit(onSubmit)} className='form'>
           <fieldset>
             <Input
               name='nickname'
               label='Name'
-              {...(nickname && { defaultValue: nickname })}
               {...methods}
               minLength={1}
               maxLength={50}
               pattern='alpha'
               message='Please enter a valid name'
               disabled={disabled}
-              required={false}
+              required={true}
+              placeholder='Jane Doe'
             />
             <Input
-              name='username'
-              label='Username'
-              {...(username && { defaultValue: username })}
+              name='email'
+              label='Email'
               {...methods}
               minLength={1}
               maxLength={50}
               pattern='alphanumeric'
-              message='Please enter a valid username'
+              message='Please enter a valid email'
               disabled={disabled}
-              required={false}
+              required={true}
+              placeholder='you@email.com'
             />
             <Input
-              name='location'
-              label='Where do you live?'
-              {...(location && { defaultValue: location })}
+              name='institution'
+              label='Institution'
               {...methods}
               minLength={1}
               maxLength={50}
-              pattern='alpha'
-              message='Please enter a valid name'
-              disabled={disabled}
+              disabled={false}
               required={false}
+              placeholder='School or University'
             />
+            <RadioGroup
+              label='I am'
+              name='staffOrStudent'
+              labels={['University Staff', 'A student']}
+              {...methods}
+              disabled={false}
+            />
+            <Textarea name='message' label='Message' />
           </fieldset>
-          <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} text='Update' />
+          <FormButtons disabled={!nickname || !email} isSubmitting={false} text='Submit' />
         </S.RegisterInterest>
       </FormProvider>
-    </>
+    </S.RegisterInterestForm>
   )
 }
