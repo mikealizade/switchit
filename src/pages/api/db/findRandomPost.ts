@@ -7,7 +7,7 @@ const findRandomPost = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const result = await db
       .collection('blog')
-      .aggregate([{ $match: { isFeatured: false } }, { $sample: { size: 1 } }])
+      .aggregate([{ $match: { isFeatured: false, id: { $ne: '5' } } }, { $sample: { size: 1 } }]) //don't show blog 5
       .toArray()
 
     res.status(200).json(result)

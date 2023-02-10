@@ -90,3 +90,10 @@ export const toDateString = (date: string) => {
 
   return new Date(date).toLocaleDateString('en-GB', options)
 }
+
+export const formatDate = (date: Date) => {
+  const dateString = date.toString()
+  const options = { year: 'numeric', month: 'short', day: 'numeric' } as const
+
+  return new Date(dateString).toLocaleDateString('en-GB', options)
+}

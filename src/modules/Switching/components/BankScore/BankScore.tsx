@@ -141,7 +141,11 @@ export const BankScore = (): JSX.Element => {
                       >
                         Check Another Bank Score
                       </Button>
-                      <Button type='button' size='small' onClick={() => undefined}>
+                      <Button
+                        type='button'
+                        size='small'
+                        onClick={() => push('/resources/article/5')}
+                      >
                         What Else Can I Do To Act?
                       </Button>
                       <Button

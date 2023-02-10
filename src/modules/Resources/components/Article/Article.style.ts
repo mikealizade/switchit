@@ -43,15 +43,14 @@ export const Article = styled.article`
     padding: 30px;
     border-radius: 10px;
     background-color: var(--alabaster);
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
   }
 
   figure {
     padding: 0;
     margin: 0;
-
-    ${() => mediaQuery.laptop} {
-      padding: 50px;
-    }
   }
 `
 

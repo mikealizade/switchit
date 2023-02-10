@@ -94,7 +94,7 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
               {...methods}
               disabled={false}
             />
-            <Textarea name='message' label='Message' />
+            <Textarea name='message' {...methods} label='Message' height={200} />
           </fieldset>
           <FormButtons disabled={!nickname || !email} isSubmitting={false} text='Submit' />
         </S.RegisterInterest>

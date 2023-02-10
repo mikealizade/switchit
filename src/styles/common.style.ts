@@ -61,6 +61,11 @@ export const Title = styled.h2`
   justify-content: space-between;
 `
 
+export const LargeTitle = styled.h2`
+  font-size: var(--fsLarge4);
+  color: initial;
+`
+
 export const TitleLink = styled(Title)`
   cursor: pointer;
 `

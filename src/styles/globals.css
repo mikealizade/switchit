@@ -46,6 +46,7 @@
   --concrete: #f9f9f9;
   --pampas: #f2f0ed;
   --porcelain: #e5eaea;
+  --atol: #fbfafa;
   --fsSmall0: 1rem;
   --fsSmall1: 1.1rem;
   --fsSmall2: 1.2rem;
@@ -204,6 +205,19 @@ fieldset {
 .grey-card {
   border-radius: 10px;
   background-color: var(--haze);
+}
+
+.orderedbloglist,
+.bloglist {
+  list-style-type: disc;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+}
+
+.orderedbloglist {
+  list-style-type: decimal;
 }
 
 [class*='MuiSnackbarContent'] {

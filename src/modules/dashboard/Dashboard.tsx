@@ -22,6 +22,9 @@ type PageProps = {
 
 const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
   const user = useSelector((state: RootState) => state.user)
+
+  console.log('user', user)
+
   const { switchJourneys = [], profile: { sharingCodes = [] } = {} } = user
   const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
 

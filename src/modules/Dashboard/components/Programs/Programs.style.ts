@@ -1,11 +1,5 @@
 import styled from '@emotion/styled'
 
-export const Programs = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-`
-
 export const ProgramsContainer = styled.div`
   display: flex;
   flex-direction: column;

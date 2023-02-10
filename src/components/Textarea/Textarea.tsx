@@ -5,7 +5,7 @@ import * as S from '@components/Textarea/Textarea.style'
 
 type InputProps = {
   name: string
-  label: string
+  label?: string
   type?: string
   errors?: FieldError
   defaultValue?: string | number
@@ -21,6 +21,7 @@ type InputProps = {
   }
   validate?: (arg: Record<string, string>) => any
   placeholder?: string
+  height?: number
 }
 
 export const Textarea: FC<InputProps> = ({
@@ -32,16 +33,17 @@ export const Textarea: FC<InputProps> = ({
   required = false,
   disabled = false,
   minLength,
-  maxLength,
+  maxLength = 1000,
   message = '',
   validate,
+  height,
 }): JSX.Element => {
   const hasError = errors?.[name as keyof FieldError]
   const errorMessage = errors?.[name]?.message as string
 
   return (
     <S.Label htmlFor={name} className={cs({ ['error']: hasError })}>
-      {label}
+      {label && label}
       {required && (
         <span className='required' aria-hidden='true'>
           *
@@ -63,6 +65,8 @@ export const Textarea: FC<InputProps> = ({
         aria-describedby='required'
         aria-required={required}
         aria-invalid={!!errors?.[name]}
+        height={height}
+        maxLength={maxLength}
       />
       {hasError && (
         <p role='alert' id='required'>

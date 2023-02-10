@@ -62,7 +62,7 @@ export const Programs: NextPage = (): JSX.Element => {
   }
 
   return (
-    <S.Programs>
+    <Div rowGap={30}>
       <Title>Programs</Title>
       <S.ProgramsContainer>
         {hasSubmitted ? (
@@ -114,6 +114,6 @@ export const Programs: NextPage = (): JSX.Element => {
           </Div>
         )}
       </S.ProgramsContainer>
-    </S.Programs>
+    </Div>
   )
 }

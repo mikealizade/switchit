@@ -5,8 +5,6 @@ export const PointsChart: NextPage<{ total: number; data: any }> = ({
   total,
   data = [],
 }): JSX.Element => {
-  console.log('data', data)
-
   return (
     <S.PointsChart>
       {data?.length ? (

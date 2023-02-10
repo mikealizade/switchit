@@ -10,6 +10,7 @@ import { Hero } from '@components/Hero/Hero'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs, HelpContainer } from '@components/Tabs/Tabs.style'
 import * as S from '@styles/common.style'
+import { HelpForm } from './HelpForm'
 import { research, general, programs, switching } from './data'
 
 const panels: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode] = [
@@ -36,22 +37,30 @@ const Faqs = (): JSX.Element => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <Hero type='help' />
-          <Card column padded>
-            <ActionHeader header='FAQs' />
-            <HelpContainer>
-              <S.TabsContainer>
-                <StyledTabs>
-                  <Tabs tabs={tabs} panels={panels}></Tabs>
-                </StyledTabs>
-              </S.TabsContainer>
-            </HelpContainer>
-
-            <S.Buttons align='left'>
-              <Button type='button' mode='secondary' onClick={() => back()}>
-                Back
-              </Button>
-            </S.Buttons>
-          </Card>
+          <S.ColumnContainer>
+            <S.Column flex={3}>
+              <Card column padded>
+                <ActionHeader header='FAQs' />
+                <HelpContainer>
+                  <S.TabsContainer>
+                    <StyledTabs>
+                      <Tabs tabs={tabs} panels={panels}></Tabs>
+                    </StyledTabs>
+                  </S.TabsContainer>
+                </HelpContainer>
+                <S.Buttons align='left'>
+                  <Button type='button' mode='secondary' onClick={() => back()}>
+                    Back
+                  </Button>
+                </S.Buttons>
+              </Card>
+            </S.Column>
+            <S.Column flex={1}>
+              <Card stretch rowGap={30}>
+                <HelpForm />
+              </Card>
+            </S.Column>
+          </S.ColumnContainer>
         </S.Content>
       </ErrorBoundary>
     </>
