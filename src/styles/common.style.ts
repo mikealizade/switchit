@@ -316,3 +316,14 @@ export const LoaderContainer = styled.div<{ height?: number }>`
   align-items: center;
   height: ${({ height }) => `${height}px` || 'auto'};
 `
+
+export const GreenPill = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 10px 15px;
+  background-color: var(--seaSick);
+  border-radius: 10px;
+  color: var(--nileBlue);
+`

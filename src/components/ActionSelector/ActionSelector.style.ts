@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 
 export const ActionSelector = styled.ul<{
   isDefault?: boolean
@@ -9,10 +8,8 @@ export const ActionSelector = styled.ul<{
   flex-wrap: wrap;
   justify-content: center;
   align-self: flex-start;
-
-  ${() => mediaQuery.tablet} {
-    justify-content: flex-start;
-  }
+  max-width: 462px;
+  align-self: center;
 `
 
 export const Item = styled.li<{
@@ -37,7 +34,7 @@ export const Item = styled.li<{
   transition: all 0.1s linear;
   display: flex;
   cursor: pointer;
-  pointer-events: ${({ hasConfirmed, isCompleted }) => (!hasConfirmed ? 'none' : 'all')};
+  pointer-events: ${({ hasConfirmed }) => (!hasConfirmed ? 'none' : 'all')};
   opacity: ${({ hasConfirmed, isCompleted }) =>
     (hasConfirmed && !isCompleted) || (hasConfirmed && isCompleted) ? 1 : 0.3};
   place-items: center;

@@ -37,6 +37,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { pathname } = useRouter()
   const {
     data: { user = {} } = {},
+
     error,
     isValidating,
   } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
@@ -48,6 +49,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname)
   const showUser = pathname !== '/settings'
+  console.log('user', user)
 
   const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {

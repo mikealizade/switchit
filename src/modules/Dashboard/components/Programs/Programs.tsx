@@ -55,7 +55,7 @@ export const Programs: NextPage = (): JSX.Element => {
       registeredInterestDate: new Date(),
       ...data,
     }
-    console.log('data', data)
+
     await save(interestedUserData)
     setHasSubmitted(true)
     reset()

@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Button } from '@components/Button/Button'
-import * as S from '@components/Button/Button.style'
 import { Buttons } from '@styles/common.style'
 
 type FormButtonProps = {

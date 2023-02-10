@@ -33,7 +33,7 @@ export const Textarea: FC<InputProps> = ({
   required = false,
   disabled = false,
   minLength,
-  maxLength = 1000,
+  maxLength = 500,
   message = '',
   validate,
   height,

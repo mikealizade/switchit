@@ -21,7 +21,6 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
   const [nickname, email] = watch(['nickname', 'email'])
 
   const save = async (data: FieldValues): Promise<void> => {
-    console.log('data', data)
     try {
       const body = {
         filter: {},

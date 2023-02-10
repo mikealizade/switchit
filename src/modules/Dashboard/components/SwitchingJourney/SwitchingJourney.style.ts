@@ -7,18 +7,18 @@ export const SwitchingJourney = styled.div`
   justify-content: flex-start;
   column-gap: 40px;
   flex: 1;
-  /* row-gap: 30px; */
 
   h3 {
     font-size: var(--fsBase);
   }
 `
 
-export const SwitchingJourneyContent = styled.div`
+export const SwitchingJourneyContent = styled.div<{ isComplete: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ isComplete }) => (isComplete ? 'space-between' : 'center')};
+  padding: ${({ isComplete }) => (isComplete ? '80px 0' : '0')};
   row-gap: 50px;
   flex: 1;
 `

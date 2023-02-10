@@ -1,13 +1,15 @@
 import type { NextPage } from 'next'
+import { useUser } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useSelector } from 'react-redux'
+import useSWR, { SWRResponse } from 'swr'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { DashboardHero } from '@components/Hero/DashboardHero'
+import { Loader } from '@components/Loader/Loader'
 import { Posts, Post } from '@pages/dashboard'
-import { RootState } from '@state/store'
 import * as S from '@styles/common.style'
+import { fetcher } from '@utils/functions'
 import { Blog } from './components/Blog/Blog'
 import { Goals } from './components/Goals/Goals'
 import { Programs } from './components/Programs/Programs'
@@ -21,11 +23,12 @@ type PageProps = {
 }
 
 const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
-  const user = useSelector((state: RootState) => state.user)
-
-  console.log('user', user)
-
-  const { switchJourneys = [], profile: { sharingCodes = [] } = {} } = user
+  const { user: { sub = '' } = {} } = useUser()
+  const {
+    data: { user: { switchJourneys = [], profile: { sharingCodes = [] } = {} } = {} } = {},
+    // error,
+    isValidating,
+  } = useSWR(`/api/db/user/${sub}`, fetcher, { revalidateOnFocus: false }) as SWRResponse
   const featuredPost = posts.find(({ isFeatured }: { isFeatured: boolean }) => isFeatured) as Post
 
   return (
@@ -51,7 +54,11 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
             </S.Column>
             <S.Column>
               <Card>
-                <SharingCodes total={sharingCodes.length} />
+                {isValidating ? (
+                  <Loader height={164} />
+                ) : (
+                  <SharingCodes total={sharingCodes.length} />
+                )}
               </Card>
               <Card stretch>
                 <Goals />
@@ -59,7 +66,7 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
             </S.Column>
             <S.Column>
               <Card stretch>
-                <SwitchingJourney switchJourneys={switchJourneys} />
+                {isValidating ? <Loader /> : <SwitchingJourney switchJourneys={switchJourneys} />}
               </Card>
             </S.Column>
           </S.ColumnContainer>
