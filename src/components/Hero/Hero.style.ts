@@ -5,18 +5,21 @@ export const Hero = styled.div<{ type?: string }>`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  column-gap: 50px;
+  column-gap: 20px;
   row-gap: 50px;
   border-radius: 0;
-  background-color: ${({ type }) => (type === 'programs' ? 'var(--babyBlue)' : 'var(--white)')};
-  padding: 20px;
+  background-color: var(--babyBlue);
+  padding: 0;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;
-    padding: ${({ type }) => (type === 'programs' ? '50px 100px 50px 0' : '50px 100px 50px 30px')};
+    padding: 0;
     row-gap: initial;
     border-radius: 10px;
+    height: 224px;
+    padding-right: 40px;
   }
 
   > span {
@@ -40,6 +43,7 @@ export const Content = styled.div`
   flex-direction: column;
   row-gap: 30px;
   flex: 5;
+  justify-content: center;
 `
 
 export const Title = styled.h2`

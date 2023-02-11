@@ -4,17 +4,29 @@ import * as S from '@components/Hero/Hero.style'
 import { heroConfig, HeroConfig } from './data'
 
 export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => {
-  const objectFit = type === 'programs' ? 'cover' : 'contain'
+  // const objectFit = 'cover' : 'contain'
+  const hero = heroConfig[type as keyof HeroConfig]
 
   return (
-    <S.Hero type={type}>
-      <Image
-        src={`/icons/${heroConfig[type as keyof HeroConfig].icon}`}
-        alt=''
-        width={60}
-        height={60}
-        objectFit={objectFit}
-      />
+    <S.Hero>
+      <div
+        style={{
+          position: 'relative',
+          display: 'flex',
+          alignSelf: `${hero.dimensions.alignSelf}`,
+          width: `${hero.dimensions.width}px`,
+          height: `${hero.dimensions.height}px`,
+          backgroundPositionY: `${hero.dimensions.backgroundPositionY}px`,
+        }}
+      >
+        <Image
+          src={`/images/${heroConfig[type as keyof HeroConfig].icon}`}
+          alt=''
+          width={hero.dimensions.width}
+          height={hero.dimensions.height}
+          objectFit='contain'
+        />
+      </div>
       <S.Content>
         <S.Title>{heroConfig[type as keyof HeroConfig].title}</S.Title>
         <S.Text>{heroConfig[type as keyof HeroConfig].text}</S.Text>

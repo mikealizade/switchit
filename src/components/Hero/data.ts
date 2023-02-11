@@ -7,51 +7,86 @@ export type HeroConfig = {
     newUserText?: string
     activeUserText?: string
     icon: string
+    dimensions: any
   }
 }
+
+// dimensions: {
+//   width: ,
+//   height: ,
+//   backgroundPositionY:
+// }
 
 export const heroConfig: HeroConfig = {
   switching: {
     title: 'Welcome to Switch It Green',
     text: `Find out if your bank funds fossil fuels, choose your new green bank, and maximise the power of your switch with our ready-to-go lobbying features.`,
-    icon: 'icon_switching_earth.svg',
+    icon: 'img_hero_switching.png',
+    dimensions: {
+      width: 304,
+      height: 234,
+      alignSelf: 'flex-end',
+    },
   },
   dashboard: {
     newUserTitle: 'Welcome to Your Dashboard',
     activeUserTitle: 'Welcome to Your Dashboard',
     newUserText: `Here you have speedy access to our latest resources, your unique sharing code, and your ongoing switching journeys. Time to explore.`,
     activeUserText: `In February 2023 we launched this platform to make taking part in climate action as simple and impactful as possible. There's more to come. Thanks for joining our campaign for a more liveable future.`,
-    icon: 'icon_switching_earth.svg',
-  },
-  impact: {
-    title: 'Impact',
-    text: 'Mollit ipsum quis sunt culpa irure laboris.',
-    icon: 'icon_mortar.svg',
+    icon: 'img_hero_dashboard.png',
+    dimensions: {
+      width: 205,
+      height: 224,
+      alignSelf: 'center',
+    },
   },
   programs: {
     title: 'Programs',
     text: `We are partnering with educational institutions and businesses to harness the power of switching en masse. Get access to bespoke resources, high-profile guest speaker events, exclusive workshops, tailored data reporting & impact tracking, and more.`,
-    icon: 'icon_students.svg',
+    icon: 'img_hero_programs.png',
+    dimensions: {
+      width: 286,
+      height: 192,
+    },
   },
   resources: {
     title: 'Resources',
     text: 'The first step to taking impactful climate action is being informed. We are here to educate people on all things green finance and help you understand your power to contribute to positive change. Get clued up by checking out our resources.',
-    icon: 'icon_mortar.svg',
+    icon: 'img_hero_resources.png',
+    dimensions: {
+      width: 286,
+      height: 192,
+      alignSelf: 'flex-end',
+    },
   },
   community: {
     title: 'Community',
     text: 'Mollit ipsum quis sunt culpa irure laboris.',
     icon: 'icon_mortar.svg',
+    dimensions: {
+      width: 286,
+      height: 192,
+    },
   },
   help: {
     title: 'Help',
     text: `Got some burning questions? Want a deep dive into our research? Unsure about the switching process? We've got you covered. Check out our FAQs and if you're still itching to know more you'll be referred to one of our team.`,
-    icon: 'icon_mortar.svg',
+    icon: 'img_hero_help.png',
+    dimensions: {
+      width: 241,
+      height: 181,
+      alignSelf: 'center',
+    },
   },
   donate: {
     title: 'Donate',
     text: `The vast majority of our work is funded by small grants and donations. We've got big plans to expand our work beyond the UK and into other financial providers. Help us end fossil fuel financing and encourage more people to Switch It Green.`,
-    icon: 'icon_mortar.svg',
+    icon: 'img_hero_donate.png',
+    dimensions: {
+      width: 274,
+      height: 213,
+      alignSelf: 'flex-end',
+    },
   },
 }
 
