@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Tab from '@mui/material/Tab'
 import TabsPanel from '@mui/material/Tabs'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import * as S from '@components/Tabs/Tabs.style'
 
@@ -39,13 +40,21 @@ const a11yProps = (index: number) => {
   }
 }
 
+const isStringArray = (array: string[]): array is string[] => typeof array[0] === 'string'
+
 export const Tabs: NextPage<TabsProps> = ({
   tabs = [],
   panels = [],
   centered = true,
   onSelectTab,
 }): JSX.Element => {
-  const [value, setValue] = useState(0)
+  const {
+    query: { tab },
+  } = useRouter()
+  const tabIndex = isStringArray(tabs)
+    ? tabs.findIndex(item => item.toLowerCase().replace(/\s/, '') === tab)
+    : 0
+  const [value, setValue] = useState(tabIndex >= 0 ? tabIndex : 0)
 
   const onChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)

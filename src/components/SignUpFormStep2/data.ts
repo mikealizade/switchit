@@ -30,10 +30,6 @@ export const defaultProfile = {
         total: 0,
       },
     ],
-    climateImpactReport: {
-      carbonRemoved: 0,
-      trashRemoved: 0,
-    },
     switchItPoints: [
       { type: 'Sharing Codes', points: 0 },
       { type: 'Resources Read', points: 0 },

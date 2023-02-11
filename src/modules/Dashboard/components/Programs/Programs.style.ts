@@ -14,6 +14,15 @@ export const ProgramsForm = styled.form`
 
   fieldset {
     display: flex;
-    row-gap: 20px;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  label:has(input[type='text']) {
+    flex-direction: column;
+
+    input {
+      background-color: var(--atol);
+    }
   }
 `

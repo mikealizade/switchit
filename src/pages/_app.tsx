@@ -28,7 +28,6 @@ import '@styles/globals.css'
 
 // FOR APP
 // analytics
-// Sentry
 // lighthouse
 // db backups
 // security

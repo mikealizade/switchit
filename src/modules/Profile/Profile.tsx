@@ -15,11 +15,6 @@ import { ProfileHead } from './components/ProfileHead/ProfileHead'
 import { ProfileSummary, ProfileSummaryProps } from './components/ProfileSummary/ProfileSummary'
 import { SwitchingFriends } from './components/SwitchingFriends/SwitchingFriends'
 
-export type ClimateImpactReportProps = {
-  carbonRemoved: number
-  trashRemoved: number
-}
-
 export type User = {
   _id: string
   nickname: string
@@ -35,7 +30,6 @@ export type User = {
   referralCode: string
   profile: {
     badges: Badge[]
-    climateImpactReport: ClimateImpactReportProps
     summary: ProfileSummaryProps
     sharingCodes: Array<string>
     switchItPoints: PointsTotalProps
@@ -46,15 +40,8 @@ const Profile = (): JSX.Element => {
   const dispatch = useDispatch()
   const user = useSelector((state: RootState) => state.user)
   const [userData, setUserData] = useState<User>(user)
-  const {
-    profile: {
-      badges = [],
-      sharingCodes = [],
-      // climateImpactReport = {},
-      switchItPoints = [],
-      summary = {},
-    } = {},
-  } = userData
+  const { profile: { badges = [], sharingCodes = [], switchItPoints = [], summary = {} } = {} } =
+    userData
 
   useEffect(() => {
     if (user) {

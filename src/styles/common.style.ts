@@ -327,3 +327,9 @@ export const GreenPill = styled.div`
   border-radius: 10px;
   color: var(--nileBlue);
 `
+
+export const PaypalContainer = styled.div`
+  margin-top: 70px;
+  display: flex;
+  justify-content: flex-start;
+`

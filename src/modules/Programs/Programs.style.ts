@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { BulletList as List } from '@styles/common.style'
 import { mediaQuery } from '@utils/functions'
 
 export const Content = styled.main`
@@ -53,10 +54,30 @@ export const ProgramContainer = styled.section`
   }
 `
 
-export const Program = styled.div`
+export const ProgramContent = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
+  row-gap: 40px;
   flex: 1;
-  max-width: 400px;
+  width: 80%;
+  align-self: center;
+`
+
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+`
+
+export const Intro = styled.div`
+  font-weight: bold;
+  font-size: var(--fsLarge0);
+`
+
+export const BulletList = styled(List)`
+  font-size: var(--fsLarge0);
+`
+
+export const ListHeader = styled.h2`
+  font-size: var(--fsLarge0);
 `

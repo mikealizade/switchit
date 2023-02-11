@@ -21,7 +21,7 @@ export const ProfileHead: NextPage = (): JSX.Element => {
         {!picture ? (
           <Loader />
         ) : (
-          <Image src={picture} alt={nickname} width={132} height={132} unoptimized priority />
+          <Image src={picture} alt={nickname} width={132} height={132} priority />
         )}
       </S.Picture>
       <S.UserDetails>

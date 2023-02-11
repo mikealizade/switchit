@@ -4,23 +4,16 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
+import { Input } from '@components/Input/Input'
 import { RadioGroup } from '@components/RadioGroup/RadioGroup'
 import { useToast } from '@hooks/useToast'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { RootState } from '@state/store'
 import { Title, Div, Text, Header } from '@styles/common.style'
-import { sendRequest } from '@utils/functions'
+import { sendRequest, formatDate } from '@utils/functions'
 import * as S from './Programs.style'
 
-type InterestedUserData = {
-  userId: string
-  name: string
-  email: string
-  registeredInterestDate: Date
-  // interestedUserData: FieldValues
-}
-
-export const Programs: NextPage = (): JSX.Element => {
+export const ProgramsForm: NextPage = (): JSX.Element => {
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const { sub, nickname, email } = useSelector((state: RootState) => state.user)
   const methods = useForm()
@@ -28,7 +21,7 @@ export const Programs: NextPage = (): JSX.Element => {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const { handleSubmit, reset } = methods
 
-  const save = async (interestedUserData: InterestedUserData) => {
+  const save = async (interestedUserData: FieldValues) => {
     try {
       const body = {
         filter: {},
@@ -52,7 +45,7 @@ export const Programs: NextPage = (): JSX.Element => {
       userId: sub,
       name: nickname,
       email,
-      registeredInterestDate: new Date(),
+      registeredInterestDate: formatDate(new Date()),
       ...data,
     }
 
@@ -62,11 +55,11 @@ export const Programs: NextPage = (): JSX.Element => {
   }
 
   return (
-    <Div rowGap={30}>
+    <Div rowGap={30} flex={1}>
       <Title>Programs</Title>
       <S.ProgramsContainer>
         {hasSubmitted ? (
-          <Div flex={1} rowGap={40}>
+          <Div rowGap={40}>
             <Header>Thanks for submitting!</Header>
 
             <Text>
@@ -86,22 +79,36 @@ export const Programs: NextPage = (): JSX.Element => {
           </Div>
         ) : (
           <Div flex={1}>
-            <Header>Interested in bringing Switch It to your business or university?</Header>
-            <Text>Let us know which best describes you, and {`we'll`} reach out</Text>
+            <Header>
+              Interested in bringing a Switch It Green program to your school, university or
+              business?
+            </Header>
+            <Text>
+              Register your interest by filling out the details below and we will get in touch with
+              more information.
+            </Text>
+            <Text>Which best descibes you?</Text>
             <FormProvider {...methods}>
               <S.ProgramsForm onSubmit={handleSubmit(onSubmit)} className='form'>
                 <fieldset>
                   <RadioGroup
                     name='interestedUserData'
                     labels={[
-                      'Student at school',
-                      'Faculty at school',
+                      'Student at a school or university',
+                      'Faculty at a school or university',
                       'Employee at a business',
                       'Business owner',
                     ]}
                     {...methods}
                     disabled={false}
                     required={false}
+                  />
+                  <Input
+                    name='institution'
+                    label='What is the name of your institution or business?'
+                    {...methods}
+                    minLength={1}
+                    maxLength={50}
                   />
                 </fieldset>
                 <Buttons align='right'>

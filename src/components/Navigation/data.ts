@@ -92,7 +92,7 @@ export const mobileNav = [
 export const subNav = [
   {
     text: 'Donate',
-    route: 'donate',
+    route: 'donate-page',
     icon: '/icons/icon_donate',
   },
   {

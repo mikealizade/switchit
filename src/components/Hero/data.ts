@@ -30,8 +30,8 @@ export const heroConfig: HeroConfig = {
   },
   programs: {
     title: 'Programs',
-    text: `Programs hero content`,
-    icon: 'icon_socialposts.svg',
+    text: `We are partnering with educational institutions and businesses to harness the power of switching en masse. Get access to bespoke resources, high-profile guest speaker events, exclusive workshops, tailored data reporting & impact tracking, and more.`,
+    icon: 'icon_students.svg',
   },
   resources: {
     title: 'Resources',
@@ -46,6 +46,11 @@ export const heroConfig: HeroConfig = {
   help: {
     title: 'Help',
     text: `Got some burning questions? Want a deep dive into our research? Unsure about the switching process? We've got you covered. Check out our FAQs and if you're still itching to know more you'll be referred to one of our team.`,
+    icon: 'icon_mortar.svg',
+  },
+  donate: {
+    title: 'Donate',
+    text: `The vast majority of our work is funded by small grants and donations. We've got big plans to expand our work beyond the UK and into other financial providers. Help us end fossil fuel financing and encourage more people to Switch It Green.`,
     icon: 'icon_mortar.svg',
   },
 }

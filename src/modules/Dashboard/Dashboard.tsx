@@ -12,7 +12,7 @@ import * as S from '@styles/common.style'
 import { fetcher } from '@utils/functions'
 import { Blog } from './components/Blog/Blog'
 import { Goals } from './components/Goals/Goals'
-import { Programs } from './components/Programs/Programs'
+import { ProgramsForm } from './components/Programs/ProgramsForm'
 import { SharingCodes } from './components/SharingCodes/SharingCodes'
 import { SwitchingJourney } from './components/SwitchingJourney/SwitchingJourney'
 
@@ -48,8 +48,8 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
               <Card>
                 <Blog data={posts} />
               </Card>
-              <Card>
-                <Programs />
+              <Card stretch>
+                <ProgramsForm />
               </Card>
             </S.Column>
             <S.Column>

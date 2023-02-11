@@ -8,7 +8,7 @@ import { FormButtons } from '@components/FormButtons/FormButtons'
 import { Textarea } from '@components/Textarea/Textarea'
 import { useToast } from '@hooks/useToast'
 import { RootState } from '@state/store'
-import { Text, Title, Div, Buttons, LargeTitle } from '@styles/common.style'
+import { Text, Div, Buttons, LargeTitle } from '@styles/common.style'
 import { sendRequest, formatDate } from '@utils/functions'
 
 export const HelpForm: NextPage<{ data?: any; disabled?: boolean }> = (): JSX.Element => {
