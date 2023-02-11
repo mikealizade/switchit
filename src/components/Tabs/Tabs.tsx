@@ -69,7 +69,7 @@ export const Tabs: NextPage<TabsProps> = ({
         centered={centered}
         className='tabs-menu'
       >
-        {tabs.map((tab, i: number) => {
+        {tabs.map((tab: any, i: number) => {
           const tabItem = onSelectTab ? tab.tab : tab
 
           return (

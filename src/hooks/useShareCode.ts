@@ -9,11 +9,10 @@ import { Point } from '@utils/types'
 
 export const useShareCode = () => {
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
+  const dispatch = useDispatch()
   const id = nanoid()
   const user = useSelector((state: RootState) => state.user)
-  const dispatch = useDispatch()
   const { sub, profile, profile: { sharingCodes = [], switchItPoints = [] } = {} } = user
-
   const url = `${whatsAppUrl}${process.env.NEXT_PUBLIC_BASE_URL}/signup?referralCode=${id}`
 
   const onShareCode = async (points: number, operation: string) => {

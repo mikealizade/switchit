@@ -6,7 +6,7 @@ import * as S from './Goals.style'
 export const Goals: NextPage = (): JSX.Element => {
   return (
     <S.Goals>
-      <Title>2023 Switching Goals & Goals</Title>
+      <Title>Switch It {`Green's`} 2023 Goals</Title>
 
       <S.GoalsList>
         <S.DivestedItem>

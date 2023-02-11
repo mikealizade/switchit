@@ -31,14 +31,11 @@ export const defaultProfile = {
       },
     ],
     switchItPoints: [
-      { type: 'Sharing Codes', points: 0 },
-      { type: 'Resources Read', points: 0 },
-      { type: 'Switching Campaigns', points: 0 },
-      { type: 'Switching Actions', points: 0 },
+      { id: 'sharingCodes', type: 'Sharing Codes', points: 0 },
+      { id: 'resources', type: 'Resources Read', points: 0 },
+      { id: 'campaigns', type: 'Switching Campaigns', points: 0 },
+      { id: 'actions', type: 'Switching Actions', points: 0 },
     ],
   },
-  switchingJourneys: {
-    personal: [],
-    student: [],
-  },
+  switchJourneys: [],
 }

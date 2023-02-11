@@ -14,8 +14,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'switchit-green.s3.eu-west-2.amazonaws.com',
-        // port: '',
-        // pathname: '/account123/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 's.gravatar.com',
       },
     ],
   },

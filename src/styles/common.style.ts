@@ -300,7 +300,7 @@ export const OrderedList = styled(BulletList)`
 `
 
 export const ParagraphCopy = styled.p<{ bold?: boolean; display?: string }>`
-  display: ${({ display }) => display ?? 'inline'};
+  display: ${({ display }) => display ?? 'flex'};
   flex-direction: column;
   row-gap: 15px;
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
