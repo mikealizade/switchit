@@ -12,6 +12,7 @@ import { Toast } from '@components/Toast/Toast'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
 import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useUpdateUser } from '@hooks/useUpdateUser'
+import PageNotFound from '@modules/PageNotFound/PageNotFound'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
@@ -48,6 +49,10 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname)
+  const is404 = pathname === '/404'
+
+  console.log('pathname', pathname)
+
   const showUser = pathname !== '/settings'
   console.log('user', user)
 
@@ -112,7 +117,9 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
 
   return (
     <>
-      {isSignedOutPage ? (
+      {is404 ? (
+        <PageNotFound />
+      ) : isSignedOutPage ? (
         <>{children}</>
       ) : (
         <S.AppContainer isHome={isHome}>

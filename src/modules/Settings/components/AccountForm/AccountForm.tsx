@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import { useUser } from '@auth0/nextjs-auth0'
 import { useEffect } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
@@ -19,11 +18,8 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   const dispatch = useDispatch()
   const updateUser = useUpdateUser()
   const { handleSubmit, reset } = methods
-  const { user: { sub } = {}, isLoading = false } = useUser()
   const user = useSelector((state: RootState) => state.user)
   const { nickname = '', username = '', location = '', isProfilePublic } = user
-
-  console.log('isProfilePublic', isProfilePublic)
 
   const onCancel = (): void => {
     reset()

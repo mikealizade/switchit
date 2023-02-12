@@ -14,9 +14,9 @@ export const BlockButton = styled.div<{ margin?: string }>`
     align-items: center;
     color: var(--pink);
     border: 3px solid var(--pink);
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-radius: 3px;
-    font-size: var(--fsMedium7);
+    font-size: var(--fsSmall3);
     z-index: 2;
     align-self: flex-start;
     text-transform: uppercase;
@@ -24,6 +24,11 @@ export const BlockButton = styled.div<{ margin?: string }>`
     font-family: 'Konsolev SemiBold';
     z-index: 2;
     position: relative;
+
+    ${() => mediaQuery.tablet} {
+      padding: 15px 20px;
+      font-size: var(--fsMedium7);
+    }
   }
 
   &::after {
