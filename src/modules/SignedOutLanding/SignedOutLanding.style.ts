@@ -330,8 +330,7 @@ export const Role = styled.p`
   font-size: var(--fsMedium8);
 `
 
-export const PaypalContainer = styled.div`
-  margin-top: 70px;
+export const Donorbox = styled.div`
   display: flex;
   justify-content: flex-start;
 `

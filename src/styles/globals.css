@@ -139,15 +139,16 @@ fieldset {
 .swiper-slide {
   font-size: var(--fsMedium8);
   background: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  padding: 50px;
+  padding: 70px 50px;
   row-gap: 20px;
+}
+
+.swiper-slide fieldset {
+  flex: 1;
 }
 
 .swiper-slide img {
@@ -157,20 +158,20 @@ fieldset {
   object-fit: cover;
 }
 
-.swiper-pagination-bullet {
-  width: 20px;
-  height: 20px;
+.swiper-pagination .swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
   text-align: center;
-  line-height: 20px;
+  line-height: 15px;
   font-size: var(--fsSmall2);
-  color: var(--black);
   opacity: 1;
-  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--beige);
+  background: var(--white);
 }
 
-.swiper-pagination-bullet-active {
-  color: var(--white);
-  background: #007aff;
+.swiper-pagination .swiper-pagination-bullet-active {
+  color: var(--beige);
+  background: var(--beige);
 }
 
 .react-select [class$='control'] {

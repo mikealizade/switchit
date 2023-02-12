@@ -12,12 +12,12 @@ export const PostSignupFlowContainer = styled.main`
   justify-content: flex-start;
   min-width: 100vw;
   min-height: 100vh;
-  background: #f2f0ed url(https://www.exact-events.co.uk/assets/img/switchit_login_bg) no-repeat
-    right center;
+  background: #f2f0ed url('/images/img_onboarding.png') no-repeat right center;
   background-size: 50%;
 
   button[class^='primary'] {
     align-self: normal;
+    margin-top: auto;
   }
 `
 
@@ -26,7 +26,7 @@ export const Content = styled.div`
   border-radius: 8px;
   border: 1px solid #e9e9e9;
   width: 100%;
-  padding: 70px 120px 120px;
+  padding: 70px 120px 20px;
   justify-content: flex-start;
   margin: 0;
   opacity: 0.9;
@@ -39,7 +39,7 @@ export const Content = styled.div`
 `
 
 export const SwiperHeader = styled.h1`
-  margin: 0 0 30px;
+  margin: 0;
   font-family: 'Konsolev SemiBold';
   font-size: 50px;
 
@@ -48,4 +48,10 @@ export const SwiperHeader = styled.h1`
       margin-top: 50px;
     }
   }
+`
+
+export const InfoLink = styled.p`
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: var(--fsSmall5);
 `

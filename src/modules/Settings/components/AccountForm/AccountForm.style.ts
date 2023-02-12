@@ -17,7 +17,8 @@ export const AccountForm = styled.form`
     flex-wrap: wrap;
 
     ~ div:last-child {
-      justify-content: flex-end;
+      justify-content: flex-start;
+      margin: 20px 0;
     }
   }
 

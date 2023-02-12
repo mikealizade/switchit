@@ -4,7 +4,6 @@ import * as S from '@components/Hero/Hero.style'
 import { heroConfig, HeroConfig } from './data'
 
 export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => {
-  // const objectFit = 'cover' : 'contain'
   const hero = heroConfig[type as keyof HeroConfig]
 
   return (
@@ -16,7 +15,6 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
           alignSelf: `${hero.dimensions.alignSelf}`,
           width: `${hero.dimensions.width}px`,
           height: `${hero.dimensions.height}px`,
-          backgroundPositionY: `${hero.dimensions.backgroundPositionY}px`,
         }}
       >
         <Image

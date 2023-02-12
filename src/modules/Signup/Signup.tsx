@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import type { Swiper as SwiperType } from 'swiper'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -29,6 +30,7 @@ const pagination = {
 }
 
 const Signup: NextPage = () => {
+  const { push } = useRouter()
   const [swiper, setSwiper] = useState<SwiperType>()
   const [isModalVisible, setToggleModal] = useModal()
 
@@ -92,13 +94,7 @@ const Signup: NextPage = () => {
               </Button>
               <p>
                 Already have an account?
-                <TextButton
-                  type='button'
-                  mode='text'
-                  onClick={() => {
-                    console.log('sign in') // ?
-                  }}
-                >
+                <TextButton type='button' mode='text' onClick={() => push('/api/auth/login')}>
                   Sign in
                 </TextButton>
               </p>
@@ -135,6 +131,7 @@ const Signup: NextPage = () => {
           <Modal
             title='Why do we want to know this information?'
             confirmText='OK'
+            showCancel={false}
             cancelText='Cancel'
             onConfirm={onToggleModal(false)}
             onClose={onToggleModal(false)}

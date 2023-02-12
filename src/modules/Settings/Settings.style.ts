@@ -11,7 +11,7 @@ export const UpdateProfile = styled.header`
   display: flex;
   gap: 30px;
   border-bottom: 1px solid var(--haze);
-  padding-bottom: 40px;
+  padding: 40px 0;
   align-items: center;
 
   img,

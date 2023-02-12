@@ -8,11 +8,26 @@ export const Label = styled.label`
   user-select: none;
   text-transform: capitalize;
 `
-export const RadioGroup = styled.div`
+export const RadioGroup = styled.div<{ row?: boolean }>`
   cursor: default;
   display: flex;
   row-gap: 15px;
-  flex-direction: column;
+  flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+  flex: 1;
+
+  div {
+    display: flex;
+    column-gap: 15px;
+    height: 30px;
+
+    label {
+      gap: initial;
+      justify-content: right;
+      display: flex;
+      align-items: flex-start;
+      max-width: 100px;
+    }
+  }
 
   input {
     position: absolute;
@@ -57,4 +72,8 @@ export const RadioGroup = styled.div`
       border: 1px solid #ab0033;
     }
   }
+`
+
+export const ChecboxContainer = styled.div`
+  width: 100%;
 `

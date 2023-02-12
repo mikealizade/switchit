@@ -30,6 +30,7 @@ export const ColumnContainer = styled.section`
   flex-wrap: wrap;
   row-gap: 25px;
   position: relative;
+  flex: 1;
 
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;

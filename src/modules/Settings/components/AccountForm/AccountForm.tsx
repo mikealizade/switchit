@@ -5,6 +5,7 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { Input } from '@components/Input/Input'
+import { RadioGroup } from '@components/RadioGroup/RadioGroup'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
@@ -20,31 +21,34 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   const { handleSubmit, reset } = methods
   const { user: { sub } = {}, isLoading = false } = useUser()
   const user = useSelector((state: RootState) => state.user)
-  const { nickname = '', username = '', location = '' } = user
+  const { nickname = '', username = '', location = '', isProfilePublic } = user
 
-  const onSubmit = async (data: FieldValues): Promise<void> => {
-    await save(data)
-  }
+  console.log('isProfilePublic', isProfilePublic)
 
   const onCancel = (): void => {
     reset()
   }
 
   const save = async (data: FieldValues): Promise<void> => {
-    const { nickname, username, location } = data
+    const { nickname, username, location, profileStatus } = data
 
     updateUser({
       [`nickname`]: nickname,
       [`username`]: username,
       [`location`]: location,
+      [`isProfilePublic`]: profileStatus === 'Public',
     })
 
     dispatch(
       setUser({
         ...user,
-        ...{ nickname, username, location },
+        ...{ nickname, username, location, isProfilePublic: profileStatus === 'Public' },
       }),
     )
+  }
+
+  const onSubmit = async (data: FieldValues): Promise<void> => {
+    await save(data)
   }
 
   useEffect(() => {
@@ -93,6 +97,14 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               message='Please enter a valid name'
               disabled={disabled}
               required={false}
+            />
+            <RadioGroup
+              label='Set profile to'
+              name='profileStatus'
+              labels={['Private', 'Public']}
+              {...methods}
+              disabled={false}
+              defaultValue={isProfilePublic ? 'Public' : 'Private'}
             />
           </fieldset>
           <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} text='Update' />

@@ -42,23 +42,25 @@ export const RadioGroup: FC<RadioGroupProps> = ({
           )}
         </Label>
       )}
-      {labels.map((label: string) => {
-        return (
-          <S.Label htmlFor={label} key={label}>
-            <input
-              id={label}
-              type='radio'
-              defaultValue={label}
-              {...(defaultValue && { defaultChecked: defaultValue === label })}
-              {...(!disabled && register && register(name, { required }))}
-              disabled={disabled}
-              // aria-describedby='required'
-            />
-            <span className='checkmark'></span>
-            {label}
-          </S.Label>
-        )
-      })}
+      <S.ChecboxContainer>
+        {labels.map((label: string) => {
+          return (
+            <S.Label htmlFor={label} key={label}>
+              <input
+                id={label}
+                type='radio'
+                defaultValue={label}
+                {...(defaultValue && { defaultChecked: defaultValue === label })}
+                {...(!disabled && register && register(name, { required }))}
+                disabled={disabled}
+                // aria-describedby='required'
+              />
+              <span className='checkmark'></span>
+              {label}
+            </S.Label>
+          )
+        })}
+      </S.ChecboxContainer>
       {hasError && (
         <p className='error' role='alert' id='required'>
           This field is required

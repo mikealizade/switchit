@@ -5,6 +5,7 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
 import { Input } from '@components/Input/Input'
+import { InfoLink } from '@modules/Signup/Signup.style'
 import { setUser } from '@state/user/userSlice'
 import { Form } from '@styles/common.style'
 
@@ -62,7 +63,7 @@ export const SignUpForm: NextPage<{
               // disabled={disabled}
               required={false}
             />
-            <p onClick={onToggleModal}>Why do we want to know this information?</p>
+            <InfoLink onClick={onToggleModal}>Why do we want to know this information?</InfoLink>
             <Button type='submit' disabled={false}>
               {'Next'}
             </Button>

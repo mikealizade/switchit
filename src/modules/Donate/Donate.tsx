@@ -23,17 +23,17 @@ const Donate = (): JSX.Element => {
           are unable to claim UK Gift Aid.
         </S.Text>
         <S.Text>Thank you! </S.Text>
-        <S.PaypalContainer>
-          <AnchorLink href='https://www.paypal.com/' target='_blank' rel='noreferrer'>
+        <S.Donorbox>
+          <AnchorLink href='https://donorbox.org/switch-it-green' target='_blank' rel='noreferrer'>
             <Image
-              src='/images/img_paypal.png'
-              alt='Paypal logo'
-              width={269}
-              height={241}
+              src='/images/img_donorbox.png'
+              alt='Donorbox logo'
+              width={385}
+              height={130}
               objectFit='contain'
             />
           </AnchorLink>
-        </S.PaypalContainer>
+        </S.Donorbox>
       </S.PageSection>
     </SignedOutLayout>
   )

@@ -2,35 +2,24 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
-import { Tabs } from '@components/Tabs/Tabs'
-import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+// import { Tabs } from '@components/Tabs/Tabs'
+// import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { SettingsCard } from '@modules/Settings/Settings.style'
 import * as S from '@styles/common.style'
 import { AccountForm } from './components/AccountForm/AccountForm'
 import { UpdateProfile } from './components/UpdateProfile/UpdateProfile'
 
-// export type Resource = {
-//   id: string
-//   type: string
-//   title: string
-//   summary: string
-//   resource: string
-//   isFeatured: boolean
-// }
+// const panels: [React.ReactNode] = [
+//   <>
+//     <UpdateProfile />
+//     <AccountForm />
+//     <h3>Close your account</h3>
+//     <p>To close your account, please click here</p>
+//   </>,
+//   <div key=''>Security content</div>,
+// ]
 
-// export type ResourcesType = Resource[]
-
-const panels: [React.ReactNode, React.ReactNode] = [
-  <>
-    <UpdateProfile />
-    <AccountForm />
-    <h3>Close your account</h3>
-    <p>To close your account, please click here</p>
-  </>,
-  <div key=''>Security content</div>,
-]
-
-const tabs: string[] = ['Account', 'Security']
+// const tabs: string[] = ['Account', 'Security']
 
 const Settings: NextPage = () => {
   return (
@@ -46,9 +35,13 @@ const Settings: NextPage = () => {
         <S.Content>
           <SettingsCard>
             <h2>Settings</h2>
-            <StyledTabs>
+            {/* <StyledTabs>
               <Tabs tabs={tabs} panels={panels}></Tabs>
-            </StyledTabs>
+            </StyledTabs> */}
+            <UpdateProfile />
+            <AccountForm />
+            {/* <h3>Close your account</h3>
+            <p>To close your account, please click here</p> */}
           </SettingsCard>
         </S.Content>
       </ErrorBoundary>
