@@ -16,6 +16,7 @@ export type RadioGroupProps = {
   formState?: {
     errors: FieldErrors
   }
+  row?: boolean
 }
 
 export const RadioGroup: FC<RadioGroupProps> = ({
@@ -27,11 +28,12 @@ export const RadioGroup: FC<RadioGroupProps> = ({
   register,
   disabled,
   required = false,
+  row = false,
 }): JSX.Element => {
   const hasError = errors && errors[name as keyof FieldError]
 
   return (
-    <S.RadioGroup className={cs('radios', { ['error']: hasError })}>
+    <S.RadioGroup className={cs('radios', { ['error']: hasError })} row={row}>
       {label && (
         <Label>
           {label}{' '}

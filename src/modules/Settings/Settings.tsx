@@ -39,7 +39,7 @@ const Settings: NextPage = () => {
               <Tabs tabs={tabs} panels={panels}></Tabs>
             </StyledTabs> */}
             <UpdateProfile />
-            <AccountForm />
+            <AccountForm row />
             {/* <h3>Close your account</h3>
             <p>To close your account, please click here</p> */}
           </SettingsCard>

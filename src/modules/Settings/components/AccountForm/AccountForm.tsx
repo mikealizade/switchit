@@ -10,9 +10,10 @@ import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 import * as S from './AccountForm.style'
 
-export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
+export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boolean }> = ({
   data,
   disabled,
+  row = false,
 }): JSX.Element => {
   const methods = useForm()
   const dispatch = useDispatch()
@@ -101,6 +102,7 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
               disabled={false}
               defaultValue={isProfilePublic ? 'Public' : 'Private'}
+              row={row}
             />
           </fieldset>
           <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} text='Update' />

@@ -12,20 +12,23 @@ export const RadioGroup = styled.div<{ row?: boolean }>`
   cursor: default;
   display: flex;
   row-gap: 15px;
-  flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+  flex-direction: column;
   flex: 1;
 
   div {
     display: flex;
     column-gap: 15px;
-    height: 30px;
+    /* height: 30px; */
+    flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+    row-gap: 10px;
 
     label {
       gap: initial;
-      justify-content: right;
+      /* justify-content: right; */
+      justify-content: ${({ row }) => (row ? 'flex-end' : 'flex-start')};
       display: flex;
       align-items: flex-start;
-      max-width: 100px;
+      max-width: ${({ row }) => (row ? '100px' : 'none')};
     }
   }
 
