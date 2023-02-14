@@ -5,23 +5,29 @@ export const PointsChart: NextPage<{ total: number; data: any }> = ({
   total,
   data = [],
 }): JSX.Element => {
-  return (
-    <S.PointsChart>
-      {data?.length ? (
-        data.map(({ type, points }: { type: string; points: number }) => {
-          const percentage = (points / total) * 100
+  const hasPoints = data.some(({ points }: { points: number }) => points > 0)
 
-          return (
-            <S.Item
-              className={type.replace(/\s/g, '').toLowerCase()}
-              key={type}
-              style={{ width: `${percentage}%` }}
-            ></S.Item>
-          )
-        })
+  return (
+    <>
+      {hasPoints ? (
+        <S.PointsChart>
+          {data?.length &&
+            data.map(({ type, points }: { type: string; points: number }) => {
+              const percentage = (points / total) * 100
+              if (percentage < 1) return null
+
+              return (
+                <S.Item
+                  className={type.replace(/\s/g, '').toLowerCase()}
+                  key={type}
+                  style={{ width: `${percentage}%` }}
+                ></S.Item>
+              )
+            })}
+        </S.PointsChart>
       ) : (
-        <S.ItemEmpty style={{ width: '100%' }}></S.ItemEmpty>
+        <S.ItemEmpty></S.ItemEmpty>
       )}
-    </S.PointsChart>
+    </>
   )
 }

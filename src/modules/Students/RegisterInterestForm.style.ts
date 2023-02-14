@@ -11,10 +11,8 @@ export const RegisterInterestContainer = styled.section`
   padding: 40px;
   border-radius: 10px;
   column-gap: 80px;
-  border: 1px solid var(--pink);
-  width: 940px;
-  max-width: 940px;
   align-self: center;
+  background-color: var(--white);
 `
 
 export const RegisterInterest = styled.form`
@@ -63,7 +61,6 @@ export const RegisterInterestForm = styled.div`
 
     span {
       display: contents;
-      color: var(--vermilion);
     }
   }
 
@@ -83,5 +80,5 @@ export const RegisterInterestHeader = styled.h2`
 `
 
 export const RegisterInterestHint = styled.p`
-  font-size: var(--fsMedium9);
+  /* font-size: var(--fsMedium9); */
 `

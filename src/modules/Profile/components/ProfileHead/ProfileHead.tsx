@@ -18,11 +18,13 @@ export const ProfileHead: NextPage = (): JSX.Element => {
   return (
     <S.ProfileHead>
       <S.Picture>
-        {!picture ? (
-          <Loader />
-        ) : (
-          <Image src={picture} alt={nickname} width={132} height={132} priority />
-        )}
+        <Image
+          src={picture || '/icons/icon_noprofile.svg'}
+          alt={nickname}
+          width={132}
+          height={132}
+          priority
+        />
       </S.Picture>
       <S.UserDetails>
         <S.Name>{nickname}</S.Name>

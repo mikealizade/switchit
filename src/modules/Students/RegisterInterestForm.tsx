@@ -61,7 +61,7 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
               pattern='alpha'
               message='Please enter a valid name'
               disabled={disabled}
-              required={true}
+              required
               placeholder='Jane Doe'
             />
             <Input
@@ -73,7 +73,7 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
               pattern='alphanumeric'
               message='Please enter a valid email'
               disabled={disabled}
-              required={true}
+              required
               placeholder='you@email.com'
             />
             <Input
@@ -89,9 +89,10 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
             <RadioGroup
               label='I am'
               name='staffOrStudent'
-              labels={['University Staff', 'A student']}
+              labels={['University Staff', 'A student', 'Other']}
               {...methods}
               disabled={false}
+              row
             />
             <Textarea name='message' {...methods} label='Message' height={200} />
           </fieldset>

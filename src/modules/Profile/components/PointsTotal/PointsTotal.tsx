@@ -33,6 +33,7 @@ export const PointsTotal: NextPage<{ data: PointsTotalProps }> = ({ data = [] })
           </S.Item>
         ))}
       </S.PointTypes>
+      <S.ComingSoon>Coming soon: spend your points on planet positive prizes.</S.ComingSoon>
     </S.PointsTotal>
   )
 }

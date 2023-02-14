@@ -8,31 +8,37 @@ const profiles = [
   {
     name: 'Anna Chirico',
     role: 'Co-founder | Creative Director ',
+    text: 'With an extensive background in design, Anna leads on all things creative; providing creative direction across all of our operations. As our resident UX/UI whizz kid, she designed & developed the entire Switching Platform, ensuring the switching journey is as simple as possible for our users. She also manages the Web Dev and Research teams.',
     image: 'img_anna_chirico.jpg',
   },
   {
     name: 'Sohphie Cowen',
     role: 'Co-founder | Campaign Director ',
+    text: 'Sophie leads campaign strategy and partnership management. With experience in advertising, climate campaigning, and movement building, she is responsible for the development and growth of the organisation. Sophie coordinates our work with other organisations & businesses and oversees the development of our programs.',
     image: 'img_sophie_cowen.jpg',
   },
   {
     name: 'Amber Hayward',
     role: 'Programs Manager',
-    image: 'img_anber_hayward.jpg',
+    text: 'As Co-founder of the Ecosia on Campus campaign movement, Amber is well-versed in mobilising students on climate issues. She develops & coordinates our work with schools, colleges, and universities; designing and implementing our student programs and managing our education partnerships. Amber has an MA in Environmental Humanities, which she puts to use as our content writer. ',
+    image: 'img_amber_hayward.jpg',
   },
   {
     name: 'Will Sharkey',
     role: 'Lead Researcher',
+    text: 'Economic researcher and esteemed ethicist Dr. Sharkey leads all of our independent research. Will developed our normative criteria for rating banks and conducts in-depth research on every provider to check if their investment policies meet our high standards.  ',
     image: 'img_will_sharkey.jpg',
   },
   {
     name: 'Mike Alizade',
     role: 'Lead Web Developer',
+    text: '',
     image: 'img_mike_alizade.jpg',
   },
   {
     name: 'Tom Rickey',
     role: 'Advisor',
+    text: '',
     image: 'img_tom_rickey.jpg',
   },
 ]
@@ -103,11 +109,12 @@ const About = (): JSX.Element => {
       <S.PageSection rowGap={30}>
         <S.PageHeader>Who We Are</S.PageHeader>
         <S.TeamImages>
-          {profiles.map(({ name, role, image }) => (
+          {profiles.map(({ name, role, text, image }) => (
             <S.Image key={name}>
               <S.Profile>
                 <S.Name>{name}</S.Name>
                 <S.Role>{role}</S.Role>
+                <S.Bio>{text}</S.Bio>
               </S.Profile>
               <Image src={`/images/${image}`} alt={`Picture of ${name}`} width={450} height={450} />
             </S.Image>

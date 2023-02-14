@@ -37,7 +37,9 @@ export const Item = styled.li`
   }
 `
 
-export const ItemEmpty = styled.li`
+export const ItemEmpty = styled.div`
   background-color: var(--haze);
   border-radius: 20px;
+  height: 20px;
+  width: 100%;
 `

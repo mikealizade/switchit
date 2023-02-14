@@ -6,11 +6,10 @@ import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { getArticleImageUrl } from '@utils/functions'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
-const titles = ['The Problem', 'The Solution', 'The Impact', 'Get Involved']
-
 const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] }): JSX.Element => {
-  const [one, two, three, four] = resources.filter(({ id }) => id !== '3' && id !== '4')
-  const whySwitchItResources = [two, one, four, three]
+  const articles = resources.filter(({ type }) => type === 'whyswitchit')
+
+  console.log('articles', articles)
 
   return (
     <SignedOutLayout>
@@ -22,14 +21,14 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
           problem, the solution, the impact, and how to get involved.
         </S.Text>
         <S.ArticlesList>
-          {whySwitchItResources.map(({ id, title, imageName }, i: number) => {
+          {articles.map(({ id, title, summary, imageName }) => {
             return (
               <S.Item key={id}>
-                <Link href={`/resources/article/${id}`}>
+                <Link href={`/why-switch-it/article/${id}`}>
                   <S.ArticleLink>
                     <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={262} />
-                    <S.Intro>{titles[i]}</S.Intro>
-                    <S.Title>{title}</S.Title>
+                    <S.Intro>{title}</S.Intro>
+                    <S.Title>{summary}</S.Title>
                   </S.ArticleLink>
                 </Link>
               </S.Item>

@@ -24,6 +24,7 @@ export const BlockButton = styled.div<{ margin?: string }>`
     font-family: 'Konsolev SemiBold';
     z-index: 2;
     position: relative;
+    text-decoration: none;
 
     ${() => mediaQuery.tablet} {
       padding: 15px 20px;
@@ -92,10 +93,18 @@ export const PageSection = styled.section<{
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
   font-size: var(--fsLarge1);
   padding: ${({ padding }) => (padding ? padding : '80px 170px')};
+
+  a {
+    text-decoration: underline;
+  }
 `
 
 export const MainSection = styled(PageSection)`
   padding: 60px 830px 80px 170px;
+`
+
+export const PageSectionContent = styled.div`
+  padding-left: 75px;
 `
 
 export const SubscribeForm = styled.div`
@@ -171,9 +180,6 @@ export const HomePageHeader = styled.h1`
 
 export const PageHeader = styled.h1`
   font-size: 5rem;
-  font-weight: normal;
-
-  /* font-family: 'Konsolev SemiBold'; */
 `
 
 export const PageSubHeader = styled.h2`
@@ -182,7 +188,6 @@ export const PageSubHeader = styled.h2`
 `
 
 export const Text = styled.p`
-  font-size: inherit;
   font-weight: normal;
 `
 
@@ -208,7 +213,7 @@ export const Footer = styled.footer`
   row-gap: 20px;
   padding-bottom: 20px;
   align-items: center;
-  padding: 40px;
+  padding: 70px 170px 80px;
   justify-content: space-between;
   flex-direction: column;
 `
@@ -256,9 +261,10 @@ export const FooterNav = styled.ul`
 `
 
 export const InstagramFeed = styled.div`
+  display: flex;
   width: 480px;
   height: 160px;
-  background-color: var(--pink); ;
+  column-gap: 8px;
 `
 
 export const FooterSubnav = styled.section`
@@ -310,20 +316,31 @@ export const Image = styled.li`
   min-width: 450px;
   height: 450px;
   position: relative;
+
+  > div {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 `
 
 export const Profile = styled.div`
   position: absolute;
-  left: 40px;
-  bottom: 40px;
+  inset: 0;
   z-index: 1;
   display: flex;
   row-gap: 10px;
   flex-direction: column;
+  background-color: var(--nileBlue);
+  /* opacity: 0.8; */
+  border-radius: 30px;
+  padding: 40px;
 `
 
 export const Name = styled.p`
-  margin-top: auto;
   color: var(--white);
   font-weight: bold;
   font-size: var(--fsMedium8);
@@ -333,6 +350,11 @@ export const Role = styled.p`
   color: var(--white);
   font-style: italic;
   font-size: var(--fsMedium8);
+`
+
+export const Bio = styled(Role)`
+  font-style: normal;
+  font-size: var(--fsMedium9);
 `
 
 export const Donorbox = styled.div`

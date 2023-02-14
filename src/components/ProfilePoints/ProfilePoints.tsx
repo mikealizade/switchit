@@ -45,8 +45,8 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
       <S.Header>Scoring Breakdown</S.Header>
       <S.Scoring>
         <li>5 x Send a code</li>
-        <li>25 x An Invited Friend Creates A Profile</li>
-        <li>250 x An Invited Friend Makes The Switch</li>
+        {/* <li>25 x An Invited Friend Creates A Profile</li>
+        <li>250 x An Invited Friend Makes The Switch</li> */}
         <li>25 x Read An Article</li>
         <li>50 x Post A Review To Trustpilot or Google</li>
         <li>50 x Write A Hello Letter</li>
@@ -55,7 +55,7 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
         <li>100 x Tell Your Community</li>
         <li>150 x Write Your Breakup Letter</li>
         <li>1000 x Switch Your Provider</li>
-        <li>10000 x Start a Program at Your school, University or business</li>
+        {/* <li>10000 x Start a Program at Your school, University or business</li> */}
       </S.Scoring>
     </>,
   ]

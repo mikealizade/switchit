@@ -1,24 +1,26 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { SocialMediaLinks } from '@components/SocialMediaLinks/SocialMediaLinks'
+import { AnchorLink } from '@styles/common.style'
 import * as S from './SignedOutLanding.style'
 
 export const footerNav = [
   {
     text: 'Programs',
-    route: 'programs',
+    route: '/students',
   },
   {
     text: 'The Company',
-    route: 'the-company',
+    route: '/about',
   },
   {
     text: 'Why Switch',
-    route: 'why-switch',
+    route: '/why-switch-it',
   },
   {
     text: 'Contact Us',
-    route: 'contact-us',
+    route: '/contact-us',
   },
 ]
 export const footerSubNav = [
@@ -53,7 +55,29 @@ export const Footer: NextPage = (): JSX.Element => {
           </S.FooterNav>
         </S.FooterNavContainer>
         <S.Social>
-          <S.InstagramFeed></S.InstagramFeed>
+          <S.InstagramFeed>
+            <AnchorLink
+              href='https://www.instagram.com/switchit.green'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <Image src={'/images/img_igfeed1.jpeg'} alt='' width={160} height={160} />
+            </AnchorLink>
+            <AnchorLink
+              href='https://www.instagram.com/switchit.green'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <Image src={'/images/img_igfeed2.jpeg'} alt='' width={160} height={160} />
+            </AnchorLink>
+            <AnchorLink
+              href='https://www.instagram.com/switchit.green'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <Image src={'/images/img_igfeed3.jpeg'} alt='' width={160} height={160} />
+            </AnchorLink>
+          </S.InstagramFeed>
           <SocialMediaLinks />
         </S.Social>
       </S.FooterMain>

@@ -76,3 +76,9 @@ export const Points = styled.em`
   margin-left: auto;
   font-style: normal;
 `
+
+export const ComingSoon = styled.p`
+  font-size: var(--fsSmall4);
+  font-style: italic;
+  color: var(--slate);
+`

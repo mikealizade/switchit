@@ -18,17 +18,15 @@ export const RadioGroup = styled.div<{ row?: boolean }>`
   div {
     display: flex;
     column-gap: 15px;
-    /* height: 30px; */
     flex-direction: ${({ row }) => (row ? 'row' : 'column')};
     row-gap: 10px;
 
     label {
       gap: initial;
-      /* justify-content: right; */
       justify-content: ${({ row }) => (row ? 'flex-end' : 'flex-start')};
       display: flex;
       align-items: flex-start;
-      max-width: ${({ row }) => (row ? '100px' : 'none')};
+      width: ${({ row }) => (row ? 'auto' : 'none')};
     }
   }
 

@@ -8,13 +8,13 @@ export const Content = styled.main`
   display: flex;
   flex-direction: column;
   row-gap: 25px;
-  background: #abbabd url('/images/img_404.jpg') no-repeat right 20% bottom 10%;
+  background: #abbabc url('/images/img_404.jpg') no-repeat right 20% bottom 10%;
   background-size: 65%;
 
   ${() => mediaQuery.laptop} {
     padding: 200px 20%;
     row-gap: 40px;
-    background: #abbabd url('/images/img_404.jpg') no-repeat right 20% center;
+    background-position: right 20% center;
     background-size: 35%;
   }
 

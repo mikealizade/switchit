@@ -1,14 +1,11 @@
 import type { NextPage } from 'next'
-import cs from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Logo } from '@components/Navigation/Navigation.style'
-import { toggleNav } from '@state/nav/navSlice'
-import { RootState } from '@state/store'
-import { Nav } from '@utils/types'
+// import { toggleNav } from '@state/nav/navSlice'
+// import { RootState } from '@state/store'
+// import { Nav } from '@utils/types'
 // import { navigation, subNav } from './data'
 import * as S from './SignedOutLanding.style'
 import logo from '../../../public/images/logo_switchit_teal.svg'
@@ -16,19 +13,19 @@ import logo from '../../../public/images/logo_switchit_teal.svg'
 export const navigation = [
   {
     text: 'Why Switch It?',
-    route: 'why-switch-it',
+    route: '/why-switch-it',
   },
   {
     text: 'About',
-    route: 'about',
+    route: '/about',
   },
   {
     text: 'Students',
-    route: 'students',
+    route: '/students',
   },
   {
     text: 'Donate',
-    route: 'donate',
+    route: '/donate',
   },
   {
     text: 'Sign In',

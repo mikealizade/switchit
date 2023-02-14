@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="154px" height="154px" viewBox="0 0 154 154" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 92</title>
+    <defs>
+        <circle id="path-1" cx="77" cy="77" r="77"></circle>
+    </defs>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PROFILE---ACTIVE-USER-Copy-15" transform="translate(-353.000000, -372.000000)">
+            <g id="Group-92" transform="translate(353.000000, 372.000000)">
+                <circle id="Oval" fill="#E5E5E5" cx="77" cy="77" r="77"></circle>
+                <g id="Group-91">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask"></g>
+                    <g mask="url(#mask-2)" fill="#C8C8C8">
+                        <g transform="translate(24.000000, 22.500000)">
+                            <ellipse id="Oval" cx="53.2460386" cy="33" rx="33.0912952" ry="33"></ellipse>
+                            <path d="M91.8481672,131.246739 C109.371502,130.233696 108.863579,103.134799 104.292274,88.6989381 C99.7209698,74.0098163 87.0229012,64.6391696 78.6421759,68.1848197 C66.45203,76.2891628 63.6584549,78.3152486 53.5,78.3152486 L53.5,78.3152486 C43.3415451,78.3152486 40.54797,76.2891628 28.3578241,68.4380804 C19.7231375,64.8924303 7.27903021,74.263077 2.70772551,88.9521989 C-1.8635792,103.641321 -2.37150194,130.740218 15.1518328,131.5 C24.5484035,131.246739 82.1976351,131.246739 91.8481672,131.246739 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

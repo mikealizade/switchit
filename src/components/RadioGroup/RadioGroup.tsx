@@ -55,7 +55,6 @@ export const RadioGroup: FC<RadioGroupProps> = ({
                 {...(defaultValue && { defaultChecked: defaultValue === label })}
                 {...(!disabled && register && register(name, { required }))}
                 disabled={disabled}
-                // aria-describedby='required'
               />
               <span className='checkmark'></span>
               {label}

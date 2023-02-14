@@ -70,6 +70,7 @@
   --fsVLarge3: 3rem;
   --fsVLarge6: 3.6rem;
   --fsHuge0: 4rem;
+  --fsHuge8: 4.8rem;
 }
 
 html {
@@ -227,21 +228,32 @@ fieldset {
   font-size: var(--fsBase);
 }
 
-.success [class*='MuiSnackbarContent'] {
-  background-color: var(--sushi);
+.success > div > [class*='MuiSnackbarContent'] {
+  background: #d8ebc6 url('/icons/icon_toast_success.svg') no-repeat 15px center;
+  color: #71aa3c;
+  box-shadow: none;
+  border-radius: 10px;
+  border: 2px solid #71aa3c;
+  padding-left: 60px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 14px;
 }
 
-.error [class*='MuiSnackbarContent'] {
-  background-color: var(--vermilion);
-}
-
-.info [class*='MuiSnackbarContent'] {
-  background-color: var(--dodgerBlue);
+.error > div > [class*='MuiSnackbarContent'] {
+  background: #f5bdbd url('/icons/icon_toast_error.svg') no-repeat 15px center;
+  color: #c61f1f;
+  box-shadow: none;
+  border-radius: 10px;
+  border: 2px solid #c61f1f;
+  padding-left: 60px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 14px;
 }
 
 .transparent [class*='MuiSnackbarContent'] {
   background-color: transparent;
-  box-shadow: none;
 }
 
 @keyframes fadeIn {

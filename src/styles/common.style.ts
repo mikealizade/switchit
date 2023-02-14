@@ -289,15 +289,30 @@ export const AnchorLink = styled.a`
 export const BulletList = styled.ul<{ fontsize?: number }>`
   list-style-type: disc;
   list-style-position: outside;
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
   padding-left: 20px;
-  font-size: ${({ fontsize }) => (fontsize ? `${fontsize}px` : 'initial')};
+  font-size: ${({ fontsize }) => (fontsize ? `${fontsize}px` : 'inherit')};
 `
 
-export const OrderedList = styled(BulletList)`
-  list-style-type: decimal;
+export const OrderedList = styled.ol`
+  counter-reset: item;
+  list-style-position: inside;
+
+  li {
+    margin-top: 15px;
+    font-size: var(--fsMedium8);
+
+    p {
+      padding: 10px 0 0 0;
+    }
+  }
+
+  li:before {
+    content: counters(item, '.') ' ';
+    counter-increment: item;
+    width: 75px;
+    display: inline-block;
+    margin-left: -7.5rem;
+  }
 `
 
 export const ParagraphCopy = styled.p<{ bold?: boolean; display?: string }>`

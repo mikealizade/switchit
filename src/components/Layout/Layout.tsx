@@ -28,6 +28,7 @@ const signedOutPages = [
   '/privacy-policy',
   '/terms',
   '/signup',
+  '/contact-us',
 ]
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
@@ -47,7 +48,8 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { isMobile } = useMediaQuery()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
-  const isSignedOutPage = signedOutPages.includes(pathname)
+  // const isSignedOutPage = signedOutPages.includes(pathname)
+  const isSignedOutPage = signedOutPages.some(page => pathname.includes(page))
   const is404 = pathname === '/404'
   const showUser = pathname !== '/settings'
 
@@ -60,6 +62,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
           ...user,
           ...storedUser,
           isNewUser,
+          picture: '',
         }
         //mongo errors if trying to overwrite _id
         // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -110,20 +110,13 @@ const Students = (): JSX.Element => {
             Register your interest in bringing a Switch It Green Student Program to your university
             by completing the form below.
           </S.BoldText>
-          {/* <S.BlockButton margin='30px 0 0'>
-            <Link href='/signup'>Register your interest</Link>
-          </S.BlockButton> */}
           <S.BlockButton margin='30px 0 0'>
             <Link href='/signup'>Check out our Bank Switching Platform </Link>
           </S.BlockButton>
         </Div>
         <RegisterInterestContainer>
           <RegisterInterestIntro>
-            <RegisterInterestHeader>
-              {`Let's`} Talk
-              <br />
-              Programs!
-            </RegisterInterestHeader>
+            <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
             <RegisterInterestHint>
               Fill out the form to the right and we’ll be in touch
             </RegisterInterestHint>
