@@ -16,7 +16,7 @@ export const FormButtons: FC<FormButtonProps> = ({
   isSubmitting = false,
   onCancel,
   text = 'Save',
-  size = '',
+  size,
 }): JSX.Element => (
   <Buttons align='right'>
     {onCancel && (

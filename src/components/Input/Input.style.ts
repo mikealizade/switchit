@@ -11,4 +11,14 @@ export const Label = styled.label`
   display: flex;
   flex-direction: row;
   row-gap: 12px;
+
+  &.error {
+    input {
+      border-color: var(--thunderbird);
+    }
+
+    p {
+      color: var(--thunderbird);
+    }
+  }
 `

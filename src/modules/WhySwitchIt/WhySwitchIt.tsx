@@ -7,14 +7,14 @@ import { getArticleImageUrl } from '@utils/functions'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] }): JSX.Element => {
-  const articles = resources.filter(({ type }) => type === 'whyswitchit')
+  const articles = resources.filter(({ type }) => type === 'website')
 
   console.log('articles', articles)
 
   return (
     <SignedOutLayout>
       <S.PageSection rowGap={50}>
-        <S.PageHeader>Why Switch It Green</S.PageHeader>
+        <S.PageHeader>Why Switch It Green?</S.PageHeader>
         <S.Text>
           Switching to green finance {`isn't`} the sexiest thing you can do for the planet but it is
           one of the most impactful climate actions you can take. Let us walk you through the

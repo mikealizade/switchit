@@ -24,7 +24,7 @@ export const BlockButton = styled.div<{ margin?: string }>`
     font-family: 'Konsolev SemiBold';
     z-index: 2;
     position: relative;
-    text-decoration: none;
+    text-decoration: none !important;
 
     ${() => mediaQuery.tablet} {
       padding: 15px 20px;

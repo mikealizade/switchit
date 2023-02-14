@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 import { Button } from '@components/Button/Button.style'
 import { mediaQuery } from '@utils/functions'
 
@@ -348,4 +349,18 @@ export const PaypalContainer = styled.div`
   margin-top: 70px;
   display: flex;
   justify-content: flex-start;
+`
+
+export const BasicTable = styled.table`
+  border-left: 1px solid;
+  border-top: 1px solid;
+  margin: 30px 0;
+
+  th,
+  td {
+    width: 33%;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    padding: 5px 10px;
+  }
 `

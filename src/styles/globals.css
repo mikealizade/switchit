@@ -39,6 +39,7 @@
   --seaSick: #bcdd9e;
   --mustard: #f6b900;
   --vermilion: #f64000;
+  --thunderbird: #c61f1f;
   --grey: #999;
   --slate: #858997;
   --gallery: #bfbfba;
@@ -242,10 +243,10 @@ fieldset {
 
 .error > div > [class*='MuiSnackbarContent'] {
   background: #f5bdbd url('/icons/icon_toast_error.svg') no-repeat 15px center;
-  color: #c61f1f;
+  color: var(--thunderbird);
   box-shadow: none;
   border-radius: 10px;
-  border: 2px solid #c61f1f;
+  border: 2px solid var(--thunderbird);
   padding-left: 60px;
   font-weight: bold;
   letter-spacing: 0.5px;
