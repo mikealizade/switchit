@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
@@ -9,40 +10,50 @@ import * as S from '../SignedOutLanding/SignedOutLanding.style'
 const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] }): JSX.Element => {
   const articles = resources.filter(({ type }) => type === 'website')
 
-  console.log('articles', articles)
-
   return (
-    <SignedOutLayout>
-      <S.PageSection rowGap={50}>
-        <S.PageHeader>Why Switch It Green?</S.PageHeader>
-        <S.Text>
-          Switching to green finance {`isn't`} the sexiest thing you can do for the planet but it is
-          one of the most impactful climate actions you can take. Let us walk you through the
-          problem, the solution, the impact, and how to get involved.
-        </S.Text>
-        <S.ArticlesList>
-          {articles.map(({ id, title, summary, imageName }) => {
-            return (
-              <S.Item key={id}>
-                <Link href={`/why-switch-it/article/${id}`}>
-                  <S.ArticleLink>
-                    <Image
-                      src={getArticleImageUrl(imageName)}
-                      alt=''
-                      width={350}
-                      height={262}
-                      objectFit='contain'
-                    />
-                    <S.Intro>{title}</S.Intro>
-                    <S.Title>{summary}</S.Title>
-                  </S.ArticleLink>
-                </Link>
-              </S.Item>
-            )
-          })}
-        </S.ArticlesList>
-      </S.PageSection>
-    </SignedOutLayout>
+    <>
+      <Head>
+        <title>Switch It Green | Why Switch to a Green Bank?</title>
+        <meta
+          name='description'
+          content='Switching to a green bank is one of the most impactful climate actions you can take. Find out why we exist and how to get involved. Your questions answered.'
+        />
+        <link rel='icon' href='/favicon.ico' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+
+      <SignedOutLayout>
+        <S.PageSection rowGap={50}>
+          <S.PageHeader>Why Switch It Green?</S.PageHeader>
+          <S.Text>
+            Switching to green finance {`isn't`} the sexiest thing you can do for the planet but it
+            is one of the most impactful climate actions you can take. Let us walk you through the
+            problem, the solution, the impact, and how to get involved.
+          </S.Text>
+          <S.ArticlesList>
+            {articles.map(({ id, title, summary, imageName }) => {
+              return (
+                <S.Item key={id}>
+                  <Link href={`/why-switch-it/article/${id}`}>
+                    <S.ArticleLink>
+                      <Image
+                        src={getArticleImageUrl(imageName)}
+                        alt=''
+                        width={350}
+                        height={262}
+                        objectFit='contain'
+                      />
+                      <S.Intro>{title}</S.Intro>
+                      <S.Title>{summary}</S.Title>
+                    </S.ArticleLink>
+                  </Link>
+                </S.Item>
+              )
+            })}
+          </S.ArticlesList>
+        </S.PageSection>
+      </SignedOutLayout>
+    </>
   )
 }
 
