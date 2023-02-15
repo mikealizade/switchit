@@ -11,10 +11,15 @@ export const ImageContainer = styled.div`
 export const ImageTitle = styled.div`
   font-size: var(--fsVLarge6);
   font-family: 'Konsolev SemiBold';
-  margin: auto 0 50px 160px;
+  margin: auto 0 50px 40px;
   color: var(--white);
 
+  ${() => mediaQuery.xmobile} {
+    margin: auto 0 50px 12%;
+  }
+
   ${() => mediaQuery.tablet} {
+    margin: auto 0 50px 18%;
     font-size: var(--fsHuge8);
   }
 `

@@ -407,6 +407,7 @@ export const FooterNavContainer = styled.nav`
   flex-direction: column;
   row-gap: 40px;
   width: 100%;
+  min-width: 150px;
   align-items: center;
 
   ${() => mediaQuery.tablet} {
