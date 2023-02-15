@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import { EditableInput } from '@components/EditableInput/EditableInput'
 import * as S from '@modules/Profile/components/ProfileSummary/ProfileSummary.style'
 
 export type ProfileSummaryProps = {
@@ -22,7 +21,7 @@ export const ProfileSummary: NextPage<{ data: Partial<ProfileSummaryProps> }> = 
         <p>{campaigns}</p>
       </S.SummaryItem>
       <S.SummaryItem>
-        <h2>Climate action I’m proud of</h2>
+        <h2>Climate action {`I'm`} proud of</h2>
         <p>{proudActions}</p>
       </S.SummaryItem>
     </S.ProfileSummary>

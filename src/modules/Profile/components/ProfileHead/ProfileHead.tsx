@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
-import { Loader } from '@components/Loader/Loader'
 import { ProfileEllipsis } from '@modules/Profile/Profile.style'
 import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
 import { toggleDrawer } from '@state/drawer/drawerSlice'

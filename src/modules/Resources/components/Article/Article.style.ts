@@ -52,6 +52,10 @@ export const Article = styled.article`
     padding: 0;
     margin: 0;
   }
+
+  a {
+    text-decoration: underline;
+  }
 `
 
 export const MoreArticles = styled.aside`

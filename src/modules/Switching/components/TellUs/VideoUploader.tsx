@@ -72,7 +72,6 @@ export const VideoUploader: NextPage<{
       }
 
       request(body)
-      // nextStep(steps.tellUs)
     } catch (error) {
       toast('An error occurred uploading your video', 'error')
     }

@@ -24,10 +24,6 @@ export const GreenBanks = (): JSX.Element => {
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
 
-  // const onNext = () => {
-  //   push('/switching/select-action')
-  // }
-
   useEffect(() => {
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
       setBankData(bankConfig)
@@ -86,9 +82,6 @@ export const GreenBanks = (): JSX.Element => {
                 <Button type='button' mode='secondary' onClick={() => back()}>
                   Back
                 </Button>
-                {/* <Button type='button' size='small' onClick={onNext}>
-                  Next
-                </Button> */}
               </S.Buttons>
             </Card>
           </S.SwitchingColumn>

@@ -11,7 +11,6 @@ export async function getServerSideProps() {
 }
 
 const Page: NextPage<{ posts: Posts }> = ({ posts }): JSX.Element => {
-  console.log('posts', posts)
   return <Article posts={posts} />
 }
 

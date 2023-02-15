@@ -8,8 +8,6 @@ export const Banks: NextPage = (): JSX.Element => {
   const { currentJourney: { badBank, goodBank } = {} } = useGetCurrentJourney()
   const greenBank = goodBanksConfig[goodBank as keyof typeof goodBanksConfig]
 
-  console.log('greenBank', greenBank)
-
   return (
     <Div>
       <S.Header>Current Bank</S.Header>

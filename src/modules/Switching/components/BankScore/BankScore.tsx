@@ -22,8 +22,6 @@ import { steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from '../BankScore/BankScore.style'
 
-// TODO links to good bank buttons
-
 type BankResult = {
   score: number
   scoreHeadline: string

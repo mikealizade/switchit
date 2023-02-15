@@ -17,7 +17,6 @@ type User = {
   location?: string
   programCode?: string
   referralCode?: string
-  // isProfilePublic: boolean
 }
 
 export const user = createSlice({

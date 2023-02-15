@@ -112,8 +112,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
     }
   }, [isNewUser, user, updateIsNewUser, saveNewUserData, dispatch])
 
-  console.log('isSignedOutPage', isSignedOutPage)
-
   return (
     <>
       {is404 ? (

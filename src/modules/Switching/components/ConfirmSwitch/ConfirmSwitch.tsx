@@ -128,9 +128,6 @@ export const ConfirmSwitch: NextPage = () => {
                   <Button type='button' mode='secondary' onClick={() => back()}>
                     Back
                   </Button>
-                  {/* <Button type='button' mode='secondary' onClick={onCancel}>
-                    Cancel
-                  </Button> */}
                   {hasConfirmed ? (
                     <Button type='button' disabled={!value} onClick={onNext}>
                       Maximise Your Impact

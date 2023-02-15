@@ -22,8 +22,6 @@ export type Resource = {
 export type ResourcesType = Resource[]
 
 const Resources: NextPage<{ resources: ResourcesType }> = ({ resources }) => {
-  console.log('resources', resources)
-
   return (
     <>
       <Head>

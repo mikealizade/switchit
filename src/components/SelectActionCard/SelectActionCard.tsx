@@ -5,18 +5,6 @@ import * as S from '@components/SelectActionCard/SelectActionCard.style'
 import { RootState } from '@state/store'
 import { actionsConfig } from '@utils/data'
 
-export const SelectActionCards = () => {
-  const actionCardIndex = useSelector((state: RootState) => state.generic.actionCardIndex)
-
-  return (
-    <S.SelectActionContainer>
-      {actionsConfig.map((action, i) => (
-        <SelectActionCard key={action.route} action={action} isActive={i === actionCardIndex} />
-      ))}
-    </S.SelectActionContainer>
-  )
-}
-
 export const SelectActionCard: NextPage<{ action: any; isActive: boolean }> = ({
   action: { actionTitle, actionText, icon },
   isActive = false,
@@ -29,5 +17,17 @@ export const SelectActionCard: NextPage<{ action: any; isActive: boolean }> = ({
       </S.HeaderContainer>
       <S.Text>{actionText}</S.Text>
     </S.SelectActionCard>
+  )
+}
+
+export const SelectActionCards = () => {
+  const actionCardIndex = useSelector((state: RootState) => state.generic.actionCardIndex)
+
+  return (
+    <S.SelectActionContainer>
+      {actionsConfig.map((action, i) => (
+        <SelectActionCard key={action.route} action={action} isActive={i === actionCardIndex} />
+      ))}
+    </S.SelectActionContainer>
   )
 }
