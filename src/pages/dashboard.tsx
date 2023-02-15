@@ -27,6 +27,7 @@ export type Post = {
   imageName: string
   articleImageName?: string
   isFeatured: boolean
+  type: string
 }
 
 export type Posts = Array<Post>

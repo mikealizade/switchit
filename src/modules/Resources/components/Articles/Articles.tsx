@@ -11,30 +11,32 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
       <S.ResourcesTitle>Articles</S.ResourcesTitle>
 
       <S.ArticlesList>
-        {resources.map(({ id, title, summary, mins, points, imageName }) => {
-          return (
-            <S.Item key={id}>
-              <Link href={`/resources/article/${id}`}>
-                <S.ArticleLink>
-                  <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={195} />
-                  <S.Title>{title}</S.Title>
-                  <S.Intro>{summary}</S.Intro>
-                </S.ArticleLink>
-              </Link>
+        {resources
+          .filter(({ type }) => type === 'app')
+          .map(({ id, title, summary, mins, points, imageName }) => {
+            return (
+              <S.Item key={id}>
+                <Link href={`/resources/article/${id}`}>
+                  <S.ArticleLink>
+                    <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={195} />
+                    <S.Title>{title}</S.Title>
+                    <S.Intro>{summary}</S.Intro>
+                  </S.ArticleLink>
+                </Link>
 
-              <S.ArticleData>
-                <S.Data>
-                  <Image src={'/icons/icon_clock.svg'} alt='' width={20} height={20} />
-                  {mins}min
-                </S.Data>
-                <S.Data>
-                  <Image src={'/icons/icon_star_blue.svg'} alt='' width={20} height={20} />+{points}
-                  pts
-                </S.Data>
-              </S.ArticleData>
-            </S.Item>
-          )
-        })}
+                <S.ArticleData>
+                  <S.Data>
+                    <Image src={'/icons/icon_clock.svg'} alt='' width={20} height={20} />
+                    {mins}min
+                  </S.Data>
+                  <S.Data>
+                    <Image src={'/icons/icon_star_blue.svg'} alt='' width={20} height={20} />+
+                    {points}pts
+                  </S.Data>
+                </S.ArticleData>
+              </S.Item>
+            )
+          })}
       </S.ArticlesList>
     </S.Articles>
   )

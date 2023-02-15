@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Article from '@modules/WhySwitchIt/components/Article/Article'
+import Article from '@modules/Resources/components/Article/Article'
 import { Posts } from '@pages/dashboard'
 import { baseUrl } from '@utils/constants'
 
