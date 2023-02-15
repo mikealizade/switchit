@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
-import { AnchorLink, OrderedList, Text, BasicTable } from '@styles/common.style'
+import { AnchorLink, OrderedList, Text, TableContainer, BasicTable } from '@styles/common.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const PrivacyPolicy = (): JSX.Element => {
@@ -124,45 +124,47 @@ const PrivacyPolicy = (): JSX.Element => {
                 <li>
                   We will only process your personal data where the law allows us to (i.e., where we
                   have a {`'lawful basis'`}).
-                  <BasicTable>
-                    <thead>
-                      <tr>
-                        <th>Lawful basis</th>
-                        <th>Processing</th>
-                        <th>Categories of personal data </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Legitimate interests </td>
-                        <td>
-                          respond to your queries
-                          <br />
-                          To interact with you on our social media pages
-                        </td>
-                        <td>Name, contact information</td>
-                      </tr>
-                      <tr>
-                        <td>Consent</td>
-                        <td>Sending you marketing by email</td>
-                        <td>Name, contact information</td>
-                      </tr>
-                      <tr>
-                        <td>Performance of a contract</td>
-                        <td>To allow you to participate in an event you have signed up for</td>
-                        <td>Name, contact information</td>
-                      </tr>
-                      <tr>
-                        <td>Compliance with a legal obligation</td>
-                        <td>
-                          Where we are obliged to share your personal information with regulatory
-                          bodies which govern our work and services. If you do not supply the
-                          relevant information we may not be able to provide our services to you.
-                        </td>
-                        <td>Name, contact information</td>
-                      </tr>
-                    </tbody>
-                  </BasicTable>
+                  <TableContainer>
+                    <BasicTable>
+                      <thead>
+                        <tr>
+                          <th>Lawful basis</th>
+                          <th>Processing</th>
+                          <th>Categories of personal data </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Legitimate interests </td>
+                          <td>
+                            respond to your queries
+                            <br />
+                            To interact with you on our social media pages
+                          </td>
+                          <td>Name, contact information</td>
+                        </tr>
+                        <tr>
+                          <td>Consent</td>
+                          <td>Sending you marketing by email</td>
+                          <td>Name, contact information</td>
+                        </tr>
+                        <tr>
+                          <td>Performance of a contract</td>
+                          <td>To allow you to participate in an event you have signed up for</td>
+                          <td>Name, contact information</td>
+                        </tr>
+                        <tr>
+                          <td>Compliance with a legal obligation</td>
+                          <td>
+                            Where we are obliged to share your personal information with regulatory
+                            bodies which govern our work and services. If you do not supply the
+                            relevant information we may not be able to provide our services to you.
+                          </td>
+                          <td>Name, contact information</td>
+                        </tr>
+                      </tbody>
+                    </BasicTable>
+                  </TableContainer>
                 </li>
               </OrderedList>
             </li>
@@ -246,106 +248,108 @@ const PrivacyPolicy = (): JSX.Element => {
                   manage your personal data and contact them for further details:
                   <br />
                   <br />
-                  <BasicTable>
-                    <thead>
-                      <tr>
-                        <th>Platform</th>
-                        <th>Legal entity </th>
-                        <th>Privacy Notice </th>
-                        <th>Contact</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Twitter</td>
-                        <td>Twitter, Inc</td>
-                        <td>
-                          <AnchorLink
-                            href='https://twitter.com/en/privacy'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://twitter.com/en/privacy
-                          </AnchorLink>
-                        </td>
-                        <td>
-                          <AnchorLink
-                            href='https://help.twitter.com/forms/privacy'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://help.twitter.com/forms/privacy
-                          </AnchorLink>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Facebook</td>
-                        <td>Meta Platforms Ireland Limited</td>
-                        <td>
-                          <AnchorLink
-                            href='https://www.facebook.com/about/privacy'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://www.facebook.com/about/privacy
-                          </AnchorLink>
-                        </td>
-                        <td>
-                          <AnchorLink
-                            href='https://www.facebook.com/help/contact/540977946302970'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://www.facebook.com/help/contact/540977946302970
-                          </AnchorLink>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Instagram</td>
-                        <td>Meta Platforms Ireland Limited</td>
-                        <td>
-                          <AnchorLink
-                            href='https://help.instagram.com/519522125107875/?maybe_redirect_pol=0 '
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://help.instagram.com/519522125107875/?maybe_redirect_pol=0{' '}
-                          </AnchorLink>
-                        </td>
-                        <td>
-                          <AnchorLink
-                            href='https://www.facebook.com/help/contact/540977946302970'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://www.facebook.com/help/contact/540977946302970
-                          </AnchorLink>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>LinkedIn</td>
-                        <td>LinkedIn Corporation</td>
-                        <td>
-                          <AnchorLink
-                            href='https://www.linkedin.com/legal/privacy-policy'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://www.linkedin.com/legal/privacy-policy
-                          </AnchorLink>
-                        </td>
-                        <td>
-                          <AnchorLink
-                            href='https://www.linkedin.com/help/linkedin'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            https://www.linkedin.com/help/linkedin
-                          </AnchorLink>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </BasicTable>
+                  <TableContainer>
+                    <BasicTable>
+                      <thead>
+                        <tr>
+                          <th>Platform</th>
+                          <th>Legal entity </th>
+                          <th>Privacy Notice </th>
+                          <th>Contact</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Twitter</td>
+                          <td>Twitter, Inc</td>
+                          <td>
+                            <AnchorLink
+                              href='https://twitter.com/en/privacy'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://twitter.com/en/privacy
+                            </AnchorLink>
+                          </td>
+                          <td>
+                            <AnchorLink
+                              href='https://help.twitter.com/forms/privacy'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://help.twitter.com/forms/privacy
+                            </AnchorLink>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Facebook</td>
+                          <td>Meta Platforms Ireland Limited</td>
+                          <td>
+                            <AnchorLink
+                              href='https://www.facebook.com/about/privacy'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://www.facebook.com/about/privacy
+                            </AnchorLink>
+                          </td>
+                          <td>
+                            <AnchorLink
+                              href='https://www.facebook.com/help/contact/540977946302970'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://www.facebook.com/help/contact/540977946302970
+                            </AnchorLink>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Instagram</td>
+                          <td>Meta Platforms Ireland Limited</td>
+                          <td>
+                            <AnchorLink
+                              href='https://help.instagram.com/519522125107875/?maybe_redirect_pol=0 '
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://help.instagram.com/519522125107875/?maybe_redirect_pol=0{' '}
+                            </AnchorLink>
+                          </td>
+                          <td>
+                            <AnchorLink
+                              href='https://www.facebook.com/help/contact/540977946302970'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://www.facebook.com/help/contact/540977946302970
+                            </AnchorLink>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>LinkedIn</td>
+                          <td>LinkedIn Corporation</td>
+                          <td>
+                            <AnchorLink
+                              href='https://www.linkedin.com/legal/privacy-policy'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://www.linkedin.com/legal/privacy-policy
+                            </AnchorLink>
+                          </td>
+                          <td>
+                            <AnchorLink
+                              href='https://www.linkedin.com/help/linkedin'
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              https://www.linkedin.com/help/linkedin
+                            </AnchorLink>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </BasicTable>
+                  </TableContainer>
                 </li>
               </OrderedList>
             </li>

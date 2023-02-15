@@ -6,7 +6,7 @@ import * as S from '../SignedOutLanding/SignedOutLanding.style'
 const Donate = (): JSX.Element => {
   return (
     <SignedOutLayout>
-      <S.PageSection grey padding='80px 250px'>
+      <S.PageSection grey>
         <S.PageHeader>An Opportunity To Support</S.PageHeader>
         <S.Text>
           The vast majority of our work is funded by small grants and donations. We’ve got big plans

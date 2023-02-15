@@ -197,7 +197,11 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number; width?:
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '20px')};
   flex: ${({ flex }) => flex ?? 'none'};
   justify-content: flex-start;
-  width: ${({ width }) => (width ? width : 'auto')};
+  /* width: auto; */
+
+  ${() => mediaQuery.tablet} {
+    width: ${({ width }) => (width ? width : 'auto')};
+  }
 `
 
 export const Row = styled.div<{ wrap?: boolean }>`
@@ -292,6 +296,9 @@ export const BulletList = styled.ul<{ fontsize?: number }>`
   list-style-position: outside;
   padding-left: 20px;
   font-size: ${({ fontsize }) => (fontsize ? `${fontsize}px` : 'inherit')};
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
 `
 
 export const OrderedList = styled.ol`
@@ -301,6 +308,13 @@ export const OrderedList = styled.ol`
   li {
     margin-top: 15px;
     font-size: var(--fsMedium8);
+    display: flex;
+    flex-direction: column;
+
+    ${() => mediaQuery.tablet} {
+      /* flex-direction: row; */
+      display: block;
+    }
 
     p {
       padding: 10px 0 0 0;
@@ -312,7 +326,11 @@ export const OrderedList = styled.ol`
     counter-increment: item;
     width: 75px;
     display: inline-block;
-    margin-left: -7.5rem;
+    margin-left: 0;
+
+    ${() => mediaQuery.tablet} {
+      margin-left: -7.5rem;
+    }
   }
 `
 
@@ -349,6 +367,11 @@ export const PaypalContainer = styled.div`
   margin-top: 70px;
   display: flex;
   justify-content: flex-start;
+`
+
+export const TableContainer = styled.div`
+  max-width: 100%;
+  overflow: scroll;
 `
 
 export const BasicTable = styled.table`

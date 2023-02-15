@@ -6,7 +6,6 @@ import {
   RegisterInterestContainer,
   RegisterInterestIntro,
   RegisterInterestHeader,
-  RegisterInterestHint,
 } from './RegisterInterestForm.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
@@ -117,9 +116,7 @@ const Students = (): JSX.Element => {
         <RegisterInterestContainer>
           <RegisterInterestIntro>
             <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
-            <RegisterInterestHint>
-              Fill out the form to the right and we’ll be in touch
-            </RegisterInterestHint>
+            <p>Fill out the form to the right and {`we'll`} be in touch</p>
           </RegisterInterestIntro>
           <RegisterInterestForm />
         </RegisterInterestContainer>

@@ -26,7 +26,13 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
               <S.Item key={id}>
                 <Link href={`/why-switch-it/article/${id}`}>
                   <S.ArticleLink>
-                    <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={262} />
+                    <Image
+                      src={getArticleImageUrl(imageName)}
+                      alt=''
+                      width={350}
+                      height={262}
+                      objectFit='contain'
+                    />
                     <S.Intro>{title}</S.Intro>
                     <S.Title>{summary}</S.Title>
                   </S.ArticleLink>

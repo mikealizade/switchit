@@ -9,16 +9,24 @@ export const ImageContainer = styled.div`
 `
 
 export const ImageTitle = styled.div`
-  font-size: var(--fsHuge8);
+  font-size: var(--fsVLarge6);
   font-family: 'Konsolev SemiBold';
   margin: auto 0 50px 160px;
   color: var(--white);
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsHuge8);
+  }
 `
 
 export const ArticleTitle = styled.h1`
-  font-size: var(--fsHuge8);
+  font-size: var(--fsVLarge6);
   font-family: 'Konsolev SemiBold';
   margin-bottom: 50px;
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsHuge8);
+  }
 `
 
 export const PostText = styled.div`
@@ -32,5 +40,13 @@ export const Article = styled(PageSection)`
     font-size: var(--fsVLarge3);
     font-family: 'Konsolev SemiBold';
     margin: 30px 0;
+  }
+
+  p {
+    font-size: var(--fsLarge0);
+
+    ${() => mediaQuery.tablet} {
+      font-size: var(--fsLarge1);
+    }
   }
 `

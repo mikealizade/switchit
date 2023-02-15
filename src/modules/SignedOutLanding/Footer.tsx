@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SocialMediaLinks } from '@components/SocialMediaLinks/SocialMediaLinks'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { AnchorLink } from '@styles/common.style'
 import * as S from './SignedOutLanding.style'
 
@@ -40,6 +41,8 @@ export const footerSubNav = [
 
 export const Footer: NextPage = (): JSX.Element => {
   const year = new Date().getUTCFullYear()
+  const { isMobile } = useMediaQuery()
+  const igWidth = isMobile ? 100 : 160
 
   return (
     <S.Footer>
@@ -61,21 +64,21 @@ export const Footer: NextPage = (): JSX.Element => {
               target='_blank'
               rel='noreferrer'
             >
-              <Image src={'/images/img_igfeed1.jpeg'} alt='' width={160} height={160} />
+              <Image src={'/images/img_igfeed1.jpeg'} alt='' width={igWidth} height={igWidth} />
             </AnchorLink>
             <AnchorLink
               href='https://www.instagram.com/switchit.green'
               target='_blank'
               rel='noreferrer'
             >
-              <Image src={'/images/img_igfeed2.jpeg'} alt='' width={160} height={160} />
+              <Image src={'/images/img_igfeed2.jpeg'} alt='' width={igWidth} height={igWidth} />
             </AnchorLink>
             <AnchorLink
               href='https://www.instagram.com/switchit.green'
               target='_blank'
               rel='noreferrer'
             >
-              <Image src={'/images/img_igfeed3.jpeg'} alt='' width={160} height={160} />
+              <Image src={'/images/img_igfeed3.jpeg'} alt='' width={igWidth} height={igWidth} />
             </AnchorLink>
           </S.InstagramFeed>
           <SocialMediaLinks />

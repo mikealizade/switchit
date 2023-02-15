@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import * as S from './SocialMediaLinks.style'
 
-export const SocialMediaLinks = () => {
+export const SocialMediaLinks = ({ isMobileNav }: { isMobileNav?: boolean }) => {
   return (
-    <S.Links>
-      <S.Item>Follow Us Here</S.Item>
+    <S.Links isMobileNav={isMobileNav}>
+      {/* <S.Item>Follow Us Here</S.Item> */}
       <li>
         <a href='https://www.facebook.com/switchit.green' target='_blank' rel='noreferrer'>
           <Image src={'/icons/icon_follow_fb.svg'} alt='' width={12} height={27} />

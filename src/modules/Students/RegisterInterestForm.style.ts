@@ -7,12 +7,17 @@ export const FormButtons = styled.div`
 
 export const RegisterInterestContainer = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  row-gap: 40px;
   padding: 40px;
   border-radius: 10px;
-  column-gap: 80px;
   align-self: center;
   background-color: var(--white);
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+    column-gap: 80px;
+  }
 `
 
 export const RegisterInterest = styled.form`
@@ -77,8 +82,4 @@ export const RegisterInterestForm = styled.div`
 
 export const RegisterInterestHeader = styled.h2`
   font-size: var(--fsVLarge6);
-`
-
-export const RegisterInterestHint = styled.p`
-  /* font-size: var(--fsMedium9); */
 `

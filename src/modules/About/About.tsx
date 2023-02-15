@@ -12,7 +12,7 @@ const profiles = [
     image: 'img_anna_chirico.jpg',
   },
   {
-    name: 'Sohphie Cowen',
+    name: 'Sophie Cowen',
     role: 'Co-founder | Campaign Director ',
     text: 'Sophie leads campaign strategy and partnership management. With experience in advertising, climate campaigning, and movement building, she is responsible for the development and growth of the organisation. Sophie coordinates our work with other organisations & businesses and oversees the development of our programs.',
     image: 'img_sophie_cowen.jpg',
@@ -38,7 +38,7 @@ const profiles = [
   {
     name: 'Tom Rickey',
     role: 'Advisor',
-    text: '',
+    text: 'Tom is a commercial leader with 20 years working in sustainable tech and digital marketing. He is passionate about the potential for technology to drive positive change in the fight against the climate crisis. He has helped to launch and grow businesses including Beagle Button, Loamin and One Tribe.',
     image: 'img_tom_rickey.jpg',
   },
 ]
@@ -74,10 +74,6 @@ const About = (): JSX.Element => {
           Your role is simple: help us push for a more just and liveable future by switching to a
           green bank today. <em>{`We've`} done the hard parts for you, the rest is up to you.</em>
         </S.Text>
-
-        {/* <Div rowGap={30}>
-          <S.PageHeader>Who We Are</S.PageHeader>
-        </Div> */}
       </S.PageSection>
       <S.PageSection rowGap={30} highfive position='right 170px bottom'>
         <S.PageHeader>The Switching Platform</S.PageHeader>
@@ -111,12 +107,22 @@ const About = (): JSX.Element => {
         <S.TeamImages>
           {profiles.map(({ name, role, text, image }) => (
             <S.Image key={name}>
-              <S.Profile>
+              <S.HoverProfile>
                 <S.Name>{name}</S.Name>
                 <S.Role>{role}</S.Role>
                 <S.Bio>{text}</S.Bio>
+              </S.HoverProfile>
+              <S.Profile>
+                <S.Name>{name}</S.Name>
+                <S.Role>{role}</S.Role>
               </S.Profile>
-              <Image src={`/images/${image}`} alt={`Picture of ${name}`} width={450} height={450} />
+              <Image
+                src={`/images/${image}`}
+                alt={`Picture of ${name}`}
+                width={335}
+                height={335}
+                objectFit='cover'
+              />
             </S.Image>
           ))}
         </S.TeamImages>
