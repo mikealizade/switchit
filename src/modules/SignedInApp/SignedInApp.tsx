@@ -11,6 +11,8 @@ const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children
   isValidating,
   children,
 }): JSX.Element => {
+  console.log('showUser', showUser)
+
   const { pathname } = useRouter()
   const hasSwitchDrawer = pathname.includes('/switching')
   const hasDrawer = pathname === '/profile' || pathname === '/dashboard'

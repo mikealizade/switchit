@@ -49,7 +49,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
   // const isSignedOutPage = signedOutPages.includes(pathname)
-  const isSignedOutPage = signedOutPages.some(page => pathname.includes(page))
+  const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it')
   const is404 = pathname === '/404'
   const showUser = pathname !== '/settings'
 
@@ -113,6 +113,8 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
     }
   }, [isNewUser, user, updateIsNewUser, saveNewUserData, dispatch])
 
+  console.log('isMobile', isMobile)
+
   return (
     <>
       {is404 ? (
@@ -123,7 +125,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
         <S.AppContainer isHome={isHome}>
           <Toast />
           <>
-            {isMobile ? <MobileNavigation /> : <Navigation />}
+            <Navigation />
             <SignedInApp showUser={showUser} isValidating={isValidating}>
               {children}
             </SignedInApp>

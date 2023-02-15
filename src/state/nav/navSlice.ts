@@ -6,7 +6,7 @@ type Nav = {
 }
 
 export const initialNavState: Nav = {
-  isNavOpen: false,
+  isNavOpen: true,
   isWebsiteNavOpen: false,
 }
 
