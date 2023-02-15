@@ -20,6 +20,7 @@ export const RadioGroup = styled.div<{ row?: boolean }>`
     column-gap: 15px;
     flex-direction: ${({ row }) => (row ? 'row' : 'column')};
     row-gap: 10px;
+    flex-wrap: wrap;
 
     label {
       gap: initial;

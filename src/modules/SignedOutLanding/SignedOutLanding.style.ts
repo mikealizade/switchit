@@ -68,6 +68,12 @@ export const MobileNavHeader = styled.div`
   align-self: center;
   align-self: stretch;
   padding: 30px 40px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 92px;
+  background: white;
+  z-index: 10;
 `
 
 export const MobileNSubnav = styled.ul`
@@ -204,7 +210,7 @@ export const PageSection = styled.section<{
   flex-direction: column;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
   font-size: var(--fsLarge1);
-  padding: 40px;
+  padding: 138px 40px 40px;
 
   a {
     text-decoration: underline;
@@ -399,7 +405,7 @@ export const FooterNavHeader = styled.h2`
   width: auto;
   height: 35px;
   font-family: 'Konsolev SemiBold';
-  width: 100px;
+  width: auto;
 `
 
 export const FooterNavContainer = styled.nav`
