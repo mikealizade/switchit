@@ -311,8 +311,11 @@ export const OrderedList = styled.ol`
     display: flex;
     flex-direction: column;
 
+    > a {
+      word-break: break-word;
+    }
+
     ${() => mediaQuery.tablet} {
-      /* flex-direction: row; */
       display: block;
     }
 
