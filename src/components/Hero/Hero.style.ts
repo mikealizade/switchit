@@ -4,7 +4,7 @@ import { mediaQuery } from '@utils/functions'
 export const Hero = styled.div<{ type?: string }>`
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   column-gap: 20px;
   row-gap: 50px;
   border-radius: 0;
@@ -12,6 +12,8 @@ export const Hero = styled.div<{ type?: string }>`
   padding: 0;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
   position: relative;
+  height: 190px;
+  overflow: hidden;
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;
@@ -20,6 +22,7 @@ export const Hero = styled.div<{ type?: string }>`
     border-radius: 10px;
     height: 224px;
     padding-right: 40px;
+    height: auto;
   }
 
   > span {
@@ -41,13 +44,25 @@ export const Content = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 20px;
   flex: 5;
   justify-content: center;
+  padding-right: 20px;
+
+  ${() => mediaQuery.tablet} {
+    padding: 0;
+  }
+
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 `
 
 export const Title = styled.h2`
-  font-size: var(--fsLarge9);
+  font-size: var(--fsLarge0);
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsVLarge6);
@@ -55,5 +70,9 @@ export const Title = styled.h2`
 `
 
 export const Text = styled.p`
-  font-size: var(--fsLarge0);
+  font-size: var(--fsSmall6);
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsLarge0);
+  }
 `

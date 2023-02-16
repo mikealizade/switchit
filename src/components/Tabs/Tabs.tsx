@@ -68,6 +68,7 @@ export const Tabs: NextPage<TabsProps> = ({
         aria-label='Switching Journeys'
         centered={centered}
         className='tabs-menu'
+        variant='scrollable'
       >
         {tabs.map((tab: any, i: number) => {
           const tabItem = onSelectTab ? tab.tab : tab

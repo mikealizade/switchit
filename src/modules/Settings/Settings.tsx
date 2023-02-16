@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
 // import { Tabs } from '@components/Tabs/Tabs'
 // import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { SettingsCard } from '@modules/Settings/Settings.style'
 import * as S from '@styles/common.style'
 import { AccountForm } from './components/AccountForm/AccountForm'
@@ -22,6 +23,8 @@ import { UpdateProfile } from './components/UpdateProfile/UpdateProfile'
 // const tabs: string[] = ['Account', 'Security']
 
 const Settings: NextPage = () => {
+  const { isMobile } = useMediaQuery()
+
   return (
     <>
       <Head>
@@ -34,7 +37,7 @@ const Settings: NextPage = () => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <SettingsCard>
-            <h2>Settings</h2>
+            {!isMobile && <h2>Settings</h2>}
             {/* <StyledTabs>
               <Tabs tabs={tabs} panels={panels}></Tabs>
             </StyledTabs> */}

@@ -8,12 +8,13 @@ export const UserContainer = styled.section`
   align-items: center;
   padding: 30px;
   row-gap: 20px;
-  background-color: var(--pampas);
+  background-color: var(--nileBlue);
   position: relative;
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;
     padding: 40px 40px 5px;
+    background-color: var(--pampas);
   }
 `
 
@@ -87,10 +88,22 @@ export const ToSwitchLanding = styled.span`
   column-gap: 10px;
   cursor: pointer;
 `
+export const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+`
+
+export const SectionName = styled.div`
+  color: var(--white);
+  font-size: var(--fsMedium9);
+  font-weight: bold;
+  text-transform: capitalize;
+`
 
 export const Burger = styled.div`
   position: absolute;
-  background-color: var(--white);
   border-radius: 0 0 8px 0;
   display: flex;
   justify-content: center;
@@ -98,9 +111,8 @@ export const Burger = styled.div`
   width: 30px;
   height: 30px;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  transform: rotate(90deg);
+  top: 20px;
+  left: 20px;
   padding-top: 5px;
 
   ${() => mediaQuery.laptop} {

@@ -21,10 +21,11 @@ export const AppContent = styled.main<{ hasAside: boolean }>`
   position: relative;
   overflow: hidden;
   background-color: var(--pampas);
-  border-radius: ${({ hasAside }) => (hasAside ? '0' : '0 16px 16px 0')};
   padding-bottom: 80px;
+  border-radius: 0;
 
   ${() => mediaQuery.tablet} {
+    border-radius: ${({ hasAside }) => (hasAside ? '0' : '0 16px 16px 0')};
     padding-bottom: 0;
   }
 `

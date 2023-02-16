@@ -1,30 +1,35 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { Div } from '@styles/common.style'
+import { Div, Text } from '@styles/common.style'
 import * as S from './SignedOutLanding.style'
 
 export const StudentPrograms: NextPage = (): JSX.Element => {
   return (
-    <S.PageSection rowGap={30}>
-      <S.HomePageHeader>Student Programs</S.HomePageHeader>
-      <Div width='50%'>
-        <S.Text>Work or study at a school, college, or university? </S.Text>
-        <S.Text>
-          We are partnering with educational institutions to harness the power of switching en
-          masse.
-        </S.Text>
-        <S.Text>
-          Our programs deliver financial literacy and tangible climate education to students while
-          moving £ billions out of fossil fuel support.
-        </S.Text>
-        <S.Text>
-          Get access to bespoke resources, high-profile guest speaker events, exclusive workshops,
-          tailored data reporting & impact tracking, and more
-        </S.Text>
-      </Div>
-      <S.BlockButton margin='40px 0 0'>
-        <Link href='/programs'>Find out more</Link>
-      </S.BlockButton>
-    </S.PageSection>
+    <S.StudentPrograms>
+      <S.StudentProgramsContent>
+        <S.StudentProgramsHeader>Student Programs:</S.StudentProgramsHeader>
+        <Div rowGap={24}>
+          <S.StudentProgramsText>
+            Work or study at a school, college, or university?
+          </S.StudentProgramsText>
+          <S.StudentProgramsText>
+            We are partnering with educational institutions to harness the power of switching en
+            masse.
+          </S.StudentProgramsText>
+          <S.StudentProgramsText>
+            Our programs deliver financial literacy and tangible climate education to students while
+            moving £ billions out of fossil fuel support.
+          </S.StudentProgramsText>
+          <S.StudentProgramsText>
+            Get access to bespoke resources, high-profile guest speaker events, exclusive workshops,
+            tailored data reporting & impact tracking, and more
+          </S.StudentProgramsText>
+        </Div>
+
+        <S.BlockButton>
+          <Link href='/programs'>Find out more</Link>
+        </S.BlockButton>
+      </S.StudentProgramsContent>
+    </S.StudentPrograms>
   )
 }

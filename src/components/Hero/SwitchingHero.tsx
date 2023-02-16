@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 import * as S from '@components/Hero/Hero.style'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { getRandomInt } from '@utils/functions'
 import { heroConfig, HeroConfig, heroTips } from './data'
 
@@ -12,6 +13,9 @@ export const SwitchingHero: NextPage<{ type: string; hasLoaded?: boolean }> = ({
   const isTipsLoaded = useRef(window.localStorage.getItem('isTipsLoaded'))
   const randomIndex = useRef(getRandomInt(0, heroTips.length - 1))
   const hero = heroConfig[type as keyof HeroConfig]
+  const { isMobile } = useMediaQuery()
+  const width = isMobile ? hero.dimensions.mobileWidth : hero.dimensions.width
+  const height = isMobile ? hero.dimensions.mobileHeight : hero.dimensions.height
 
   useEffect(() => {
     if (isTipsLoaded.current !== 'true') {
@@ -26,16 +30,16 @@ export const SwitchingHero: NextPage<{ type: string; hasLoaded?: boolean }> = ({
           position: 'relative',
           display: 'flex',
           alignSelf: `${hero.dimensions.alignSelf}`,
-          width: `${hero.dimensions.width}px`,
-          height: `${hero.dimensions.height}px`,
+          width: `${width}px`,
+          height: `${height}px`,
           backgroundPositionY: `${hero.dimensions.backgroundPositionY}px`,
         }}
       >
         <Image
           src={`/images/${heroConfig[type as keyof HeroConfig].icon}`}
           alt=''
-          width={hero.dimensions.width}
-          height={hero.dimensions.height}
+          width={width}
+          height={height}
           objectFit='contain'
         />
       </div>

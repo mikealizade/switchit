@@ -5,16 +5,18 @@ import { Aside as AsideContent } from '@components/Aside/Aside'
 import { Drawer } from '@components/Drawer/Drawer'
 import * as S from '@components/Layout/Layout.style'
 import { User } from '@components/User/User'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 
-const SignedInApp: NextPage<{ showUser: boolean; isValidating: boolean; children: any }> = ({
-  showUser,
+const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
   isValidating,
   children,
 }): JSX.Element => {
   const { pathname } = useRouter()
+  const { isMobile } = useMediaQuery()
   const hasSwitchDrawer = pathname.includes('/switching')
   const hasDrawer = pathname === '/profile' || pathname === '/dashboard'
   const hasAside = pathname.includes('/switching/')
+  const showUser = pathname !== '/settings' || (pathname === '/settings' && isMobile)
 
   return (
     <>

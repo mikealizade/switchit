@@ -1,10 +1,14 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import * as S from '@components/Hero/Hero.style'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { heroConfig, HeroConfig } from './data'
 
 export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => {
   const hero = heroConfig[type as keyof HeroConfig]
+  const { isMobile } = useMediaQuery()
+  const width = isMobile ? hero.dimensions.mobileWidth : hero.dimensions.width
+  const height = isMobile ? hero.dimensions.mobileHeight : hero.dimensions.height
 
   return (
     <S.Hero>
@@ -13,15 +17,15 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
           position: 'relative',
           display: 'flex',
           alignSelf: `${hero.dimensions.alignSelf}`,
-          width: `${hero.dimensions.width}px`,
-          height: `${hero.dimensions.height}px`,
+          width: `${width}px`,
+          height: `${height}px`,
         }}
       >
         <Image
           src={`/images/${heroConfig[type as keyof HeroConfig].icon}`}
           alt=''
-          width={hero.dimensions.width}
-          height={hero.dimensions.height}
+          width={width}
+          height={height}
           objectFit='contain'
         />
       </div>

@@ -25,6 +25,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 304,
       height: 234,
+      mobileWidth: 138,
+      mobileHeight: 135,
       alignSelf: 'flex-end',
     },
   },
@@ -37,6 +39,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 205,
       height: 224,
+      mobileWidth: 138,
+      mobileHeight: 135,
       alignSelf: 'center',
     },
   },
@@ -47,6 +51,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 286,
       height: 192,
+      mobileWidth: 138,
+      mobileHeight: 135,
     },
   },
   resources: {
@@ -56,6 +62,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 286,
       height: 192,
+      mobileWidth: 138,
+      mobileHeight: 135,
       alignSelf: 'flex-end',
     },
   },
@@ -66,6 +74,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 286,
       height: 192,
+      mobileWidth: 138,
+      mobileHeight: 135,
     },
   },
   help: {
@@ -75,6 +85,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 241,
       height: 181,
+      mobileWidth: 138,
+      mobileHeight: 135,
       alignSelf: 'center',
     },
   },
@@ -85,6 +97,8 @@ export const heroConfig: HeroConfig = {
     dimensions: {
       width: 274,
       height: 213,
+      mobileWidth: 138,
+      mobileHeight: 135,
       alignSelf: 'flex-end',
     },
   },

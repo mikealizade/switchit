@@ -17,10 +17,13 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
   const [current] = useState('')
-  const isActive = (route: string): boolean =>
-    pathname === `/${route}` || pathname.includes(`/${route}`)
+  const isActive = (route: string): boolean => pathname === route || pathname.includes(route)
   const totalPoints = useGetTotalPoints()
   const { nickname = '', picture = '' } = useSelector((state: RootState) => state.user)
+
+  const onToggleNav = () => {
+    dispatch(toggleNav())
+  }
 
   return (
     <>
@@ -49,7 +52,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
         </S.Logo>
 
         <S.Navigation>
-          <li>
+          <li onClick={onToggleNav}>
             <Link href='/profile'>
               <S.MobileNavUser>
                 <Image src={picture} alt={nickname} width={54} height={54} unoptimized />
@@ -65,7 +68,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
           </li>
 
           {subNav.map(({ text, route, icon }: Nav) => (
-            <li key={route}>
+            <li key={route} onClick={onToggleNav}>
               <Link href={`/${route}`}>
                 <a
                   style={{

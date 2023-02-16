@@ -4,14 +4,25 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { Loader } from '@components/Loader/Loader'
+import { mobileNav, subNav } from '@components/Navigation/data'
 import * as S from '@components/User/User.style'
 import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
 
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
+
+  console.log('pathname', pathname)
+
+  console.log(
+    '[...mobileNav, ...subNav]',
+    [...mobileNav, ...subNav].map(({ text }) => text),
+  )
+
   const dispatch = useDispatch()
+  const { isMobile } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
   const {
     email = '',
@@ -20,10 +31,22 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
     isNewUser,
   } = useSelector((state: RootState) => state.user)
 
+  const [pageTitle] = [...mobileNav, ...subNav]
+    .map(({ text }) => text.toLowerCase())
+    .filter((item: string) => pathname.includes(item))
+
+  console.log('pageTitle', pageTitle)
+
   return (
     <S.UserContainer>
-      <S.Burger onClick={() => dispatch(toggleNav())}>|||</S.Burger>
-      {isValidating ? (
+      <S.Burger onClick={() => dispatch(toggleNav())}>
+        <Image src={`/icons/icon_hamburger_white.svg`} alt='' width={23} height={19} />
+      </S.Burger>
+      {isMobile ? (
+        <S.SectionHeader>
+          <S.SectionName>{pageTitle}</S.SectionName>
+        </S.SectionHeader>
+      ) : isValidating ? (
         <Loader />
       ) : (
         <>

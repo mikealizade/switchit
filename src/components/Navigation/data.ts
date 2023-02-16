@@ -53,8 +53,8 @@ export const navigation = [
 
 export const mobileNav = [
   {
-    text: 'Community',
-    route: 'community',
+    text: 'Programs',
+    route: 'programs',
     icon: '/icons/icon_mobile_community',
     width: 35,
     height: 21,

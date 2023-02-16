@@ -59,8 +59,11 @@ export const ProgramContent = styled.div`
   flex-direction: column;
   row-gap: 40px;
   flex: 1;
-  width: 80%;
   align-self: center;
+
+  ${() => mediaQuery.tablet} {
+    width: 80%;
+  }
 `
 
 export const Section = styled.div`

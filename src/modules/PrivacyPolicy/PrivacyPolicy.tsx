@@ -485,9 +485,7 @@ const PrivacyPolicy = (): JSX.Element => {
                   </AnchorLink>{' '}
                   <br />
                   <br />
-                  Postal address: [Details] <br />
-                  <br />
-                  Telephone number: [Details]
+                  Postal address: Suite 2.8 Monument House, 215 Marsh Road, Pinner, HA5 5NE <br />
                 </li>
               </OrderedList>
             </li>

@@ -33,7 +33,7 @@ export const Subscribe: NextPage = (): JSX.Element => {
   }
 
   return (
-    <S.PageSection isSubscribe rowGap={40}>
+    <S.Subscribe isSubscribe rowGap={40}>
       <S.HomePageHeader>Subscribe</S.HomePageHeader>
 
       <S.SubscribeForm>
@@ -52,12 +52,12 @@ export const Subscribe: NextPage = (): JSX.Element => {
           </>
         )}
       </S.SubscribeForm>
-      <Div width='25%'>
+      <Div width='30%'>
         <S.Text>Subscribe to our newsletter for news, insights, and updates.</S.Text>
         <S.Text>
           No spam -<em>just the juicy bits</em>
         </S.Text>
       </Div>
-    </S.PageSection>
+    </S.Subscribe>
   )
 }

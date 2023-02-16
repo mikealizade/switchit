@@ -38,7 +38,8 @@ export const Item = styled.li`
   border-radius: 8px;
   border: 1px solid var(--porcelain);
   padding: 22px;
-  width: 100%;
+  width: 395px;
+  justify-content: center;
 
   ${() => mediaQuery.laptop} {
     width: 395px;

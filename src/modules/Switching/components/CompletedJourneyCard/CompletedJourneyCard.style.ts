@@ -8,13 +8,11 @@ export const CompletedJourneyCard = styled.div`
   flex-direction: column;
   padding: 0;
   border-radius: 10px;
-  min-width: 395px;
-  max-width: 395px;
+  width: 100%;
 
   ${() => mediaQuery.tablet} {
-    /* flex-direction: row; */
-    /* padding: 60px 0 0; */
-    /* padding: 30px; */
+    min-width: 395px;
+    max-width: 395px;
   }
 `
 

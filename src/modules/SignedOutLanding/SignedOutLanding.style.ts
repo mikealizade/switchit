@@ -124,7 +124,7 @@ export const BlockButton = styled.div<{ margin?: string }>`
     align-items: center;
     color: var(--pink);
     border: 3px solid var(--pink);
-    padding: 12px 20px;
+    padding: 10px 15px;
     border-radius: 3px;
     font-size: var(--fsSmall3);
     z-index: 2;
@@ -192,7 +192,7 @@ type ImageType = any
 const getBgImage =
   () =>
   ({ isSubscribe, highfive }: ImageType) =>
-    isSubscribe ? '/images/img_subscribe.jpg' : highfive ? '/images/img_highfive.jpg' : 'none'
+    isSubscribe ? '/images/img_subscribe.png' : highfive ? '/images/img_highfive.jpg' : 'none'
 
 export const PageSection = styled.section<{
   isSubscribe?: boolean
@@ -222,18 +222,6 @@ export const PageSection = styled.section<{
 
   ${() => mediaQuery.tablet} {
     padding: ${({ padding }) => (padding ? padding : '80px 18%')};
-  }
-`
-
-export const MainSection = styled(PageSection)`
-  padding: 60px 830px 80px 300px;
-
-  ${() => mediaQuery.xmobile} {
-    padding: 60px 830px 80px 12%;
-  }
-
-  ${() => mediaQuery.tablet} {
-    padding: 60px 830px 80px 18%;
   }
 `
 
@@ -307,11 +295,6 @@ export const EmailButton = styled.button`
   height: 63px;
   position: relative;
   z-index: 2;
-`
-
-export const HomePageHeader = styled.h1`
-  font-size: 6rem;
-  font-family: 'Konsolev SemiBold';
 `
 
 export const PageHeader = styled.h1`
@@ -623,4 +606,273 @@ export const Intro = styled.h2`
 export const Title = styled.h3`
   font-size: var(--fsLarge1);
   font-weight: normal;
+`
+
+// home page
+
+export const MainSection = styled(PageSection)`
+  padding: 138px 40px 70px;
+  position: relative;
+  background: url('/images/img_pointing.png') no-repeat right bottom 30px;
+
+  ${() => mediaQuery.xmobile} {
+    padding: 60px 12% 80px 12%;
+  }
+
+  ${() => mediaQuery.tablet} {
+    padding: 60px 18% 80px 18%;
+  }
+`
+
+export const HomePageHeader = styled.h1`
+  font-size: var(--fsVLarge6);
+  font-family: 'Konsolev SemiBold';
+
+  ${() => mediaQuery.tablet} {
+    font-size: 5.4rem;
+  }
+`
+
+export const MainSectionContent = styled.div`
+  width: 53%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+`
+
+export const SpeechBubble = styled.div`
+  position: absolute;
+  top: 55;
+  right: 100px;
+  width: 290px;
+  height: 230px;
+  background: url('/images/img_speech_bubble.png') no-repeat;
+`
+
+export const SpeechBubbleText = styled.div`
+  font-size: var(--fsLarge5);
+  line-height: 32px;
+  transform: rotate(339deg);
+  position: absolute;
+  top: 42px;
+  left: 30px;
+  width: 230px;
+  text-align: center;
+`
+
+export const TheProblem = styled(PageSection)`
+  background: #fdecf5 url('/images/img_bank_chimneys.png') no-repeat left top;
+  height: 650px;
+  align-items: center;
+`
+
+export const TheProblemContent = styled.div`
+  width: 53%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+  padding: 50px 0 0 50px;
+`
+
+export const TheProblemHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const TheProblemSubHeader = styled.h3`
+  font-size: var(--fsLarge4);
+`
+
+export const TheProblemText = styled.p`
+  font-size: var(--fsMedium8);
+  font-weight: normal;
+`
+
+export const PinkLink = styled.a`
+  font-size: var(--fsMedium8);
+  color: var(--pink);
+  text-decoration: none !important;
+  margin-top: 70px;
+`
+
+export const TheSolution = styled(PageSection)`
+  padding: 138px 40px 70px;
+  position: relative;
+  background: #f5faf0 url('/images/img_wallet.png') no-repeat right bottom 30px;
+
+  ${() => mediaQuery.xmobile} {
+    padding: 60px 12% 80px 12%;
+  }
+
+  ${() => mediaQuery.tablet} {
+    padding: 60px 18% 80px 18%;
+  }
+`
+
+export const TheSolutionContent = styled.div`
+  width: 53%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+`
+
+export const TheSolutionHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const TheSolutionSubHeader = styled.h3`
+  font-size: var(--fsLarge4);
+`
+
+export const TheSolutionText = styled.p`
+  font-size: var(--fsMedium8);
+`
+
+export const TheImpact = styled(PageSection)`
+  background: #eff9fa url('/images/img_globe_windmills.png') no-repeat left bottom;
+  height: 650px;
+  align-items: center;
+`
+
+export const TheImpactContent = styled.div`
+  width: 67%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+  padding: 0 0 0 112px;
+`
+
+export const TheImpactHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const TheImpactSubHeader = styled.h3`
+  font-size: var(--fsLarge4);
+`
+
+export const TheImpactText = styled.p`
+  font-size: var(--fsMedium8);
+  font-weight: normal;
+`
+
+export const GetInvolved = styled(PageSection)`
+  padding: 138px 40px 70px;
+  position: relative;
+  background: #f5faf0 url('/images/img_thumbs_up.png') no-repeat right bottom;
+
+  ${() => mediaQuery.xmobile} {
+    padding: 60px 12% 80px 12%;
+  }
+
+  ${() => mediaQuery.tablet} {
+    padding: 60px 18% 80px 18%;
+  }
+`
+
+export const GetInvolvedContent = styled.div`
+  width: 53%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+`
+
+export const GetInvolvedHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const GetInvolvedSubHeader = styled.h3`
+  font-size: var(--fsLarge4);
+`
+
+export const GetInvolvedList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  list-style-type: disc;
+  list-style-position: inside;
+`
+
+export const StudentPrograms = styled(PageSection)`
+  background: #eff9fa url('/images/img_students.png') no-repeat right center;
+  height: 650px;
+  align-items: flex-start;
+`
+
+export const StudentProgramsContent = styled.div`
+  width: 67%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+  padding: 0;
+`
+
+export const StudentProgramsHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const StudentProgramsSubHeader = styled.h3`
+  font-size: var(--fsLarge4);
+`
+
+export const StudentProgramsText = styled.p`
+  font-size: var(--fsMedium8);
+  font-weight: normal;
+`
+
+export const WhySwitchIt = styled(PageSection)`
+  background: #f5faf0 url('/images/img_greenbanking.jpg') no-repeat left 24% center;
+  align-items: flex-end;
+  background-size: 394px 234px;
+`
+
+export const WhySwitchItContent = styled.div`
+  width: 67%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 38px;
+  padding: 0 0 0 112px;
+`
+
+export const WhySwitchItHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const WhySwitchItSubHeader = styled.h3`
+  font-size: var(--fsLarge4);
+`
+
+export const WhySwitchItText = styled.p`
+  font-size: var(--fsMedium8);
+  font-weight: normal;
+`
+
+export const Subscribe = styled(PageSection)`
+  background: #fff url('/images/img_subscribe.png') no-repeat right 18% bottom;
+`
+
+export const TheCampaign = styled(PageSection)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const TheCampaignHeader = styled.h2`
+  font-size: var(--fsVLarge6);
+`
+
+export const TheCampaignItems = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  li {
+    text-align: center;
+  }
+`
+
+export const TheCampaignFigure = styled.div`
+  font-size: 6rem;
+`
+
+export const TheCampaignText = styled.div`
+  font-size: var(--fsLarge4);
 `

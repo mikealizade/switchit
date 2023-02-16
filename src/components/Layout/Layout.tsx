@@ -50,7 +50,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it')
   const is404 = pathname === '/404'
-  const showUser = pathname !== '/settings'
 
   const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {
@@ -122,10 +121,8 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
         <S.AppContainer isHome={isHome}>
           <Toast />
           <>
-            <Navigation />
-            <SignedInApp showUser={showUser} isValidating={isValidating}>
-              {children}
-            </SignedInApp>
+            {isMobile ? <MobileNavigation /> : <Navigation />}
+            <SignedInApp isValidating={isValidating}>{children}</SignedInApp>
           </>
         </S.AppContainer>
       )}

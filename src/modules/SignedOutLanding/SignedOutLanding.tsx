@@ -1,8 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { GetInvolved } from './GetInvolved'
 import { MainSection } from './MainSection'
 import { StudentPrograms } from './StudentPrograms'
 import { Subscribe } from './Subscribe'
+import { TheCampaign } from './TheCampaign'
+import { TheImpact } from './TheImpact'
+import { TheProblem } from './TheProblem'
+import { TheSolution } from './TheSolution'
 import { WhySwitchIt } from './WhySwitchIt'
 
 export const SignedOutLanding: NextPage = (): JSX.Element => {
@@ -18,8 +23,13 @@ export const SignedOutLanding: NextPage = (): JSX.Element => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <MainSection />
-      <WhySwitchIt />
+      <TheProblem />
+      <TheSolution />
+      <TheImpact />
+      <GetInvolved />
       <StudentPrograms />
+      <WhySwitchIt />
+      <TheCampaign />
       <Subscribe />
     </>
   )

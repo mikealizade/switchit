@@ -10,15 +10,17 @@ export const UpdateProfile: NextPage = (): JSX.Element => {
 
   return (
     <S.UpdateProfile>
-      {picture && <Image src={picture} alt={nickname} width={50} height={50} unoptimized />}
-      <S.NameEmail>
-        <S.Name>{nickname}</S.Name>
-        <S.Email>{email}</S.Email>
-      </S.NameEmail>
-      <FileUploader />
-      {/* <Button type='button' mode='primary' onClick={uploadProflePicture}> */}
-      {/* Update Profile Picture */}
-      {/* </Button> */}
+      <S.PictureContainer>
+        {picture && <Image src={picture} alt={nickname} width={50} height={50} unoptimized />}
+        <S.NameEmail>
+          <S.Name>{nickname}</S.Name>
+          <S.Email>{email}</S.Email>
+        </S.NameEmail>
+      </S.PictureContainer>
+
+      <S.ButtonContainer>
+        <FileUploader />
+      </S.ButtonContainer>
     </S.UpdateProfile>
   )
 }
