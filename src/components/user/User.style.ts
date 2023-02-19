@@ -111,9 +111,21 @@ export const Burger = styled.div`
   width: 30px;
   height: 30px;
   cursor: pointer;
-  top: 20px;
+  top: 28px;
   left: 20px;
   padding-top: 5px;
+
+  ${() => mediaQuery.laptop} {
+    display: none;
+  }
+`
+
+export const ImpactCardToggle = styled.div`
+  position: absolute;
+
+  cursor: pointer;
+  top: 28px;
+  right: 20px;
 
   ${() => mediaQuery.laptop} {
     display: none;

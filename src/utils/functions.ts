@@ -1,7 +1,6 @@
 import { Fetcher } from 'swr'
-// import { journeyTypes } from '@utils/constants'
 import { impactCalculatorOptions, impacts } from '@components/ImpactCalculator/importCalculatorData'
-import { journeyTypes, steps, awsS3Uri } from '@utils/constants'
+import { journeyTypes, awsS3Uri } from '@utils/constants'
 
 const breakpoints: Record<string, number> = {
   mobile: 480,

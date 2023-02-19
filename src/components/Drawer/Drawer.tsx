@@ -147,20 +147,23 @@ export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element 
   const { isMobile } = useMediaQuery()
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
+
+  console.log('isDrawerOpen', isDrawerOpen)
+
   const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
 
   return (
     <>
       <S.MobileBackdrop isDrawerOpen={isDrawerOpen}></S.MobileBackdrop>
       <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
-        <S.BackLink onClick={() => dispatch(toggleDrawer(section))}>
+        <S.DrawerBackLink onClick={() => dispatch(toggleDrawer(section))}>
           {!isMobile && (
             <>
               <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
               {backLink}
             </>
           )}
-        </S.BackLink>
+        </S.DrawerBackLink>
         <S.DrawerContent>{component}</S.DrawerContent>
       </S.Drawer>
     </>

@@ -50,6 +50,7 @@
   --pampas: #f2f0ed;
   --porcelain: #e5eaea;
   --atol: #fbfafa;
+  --fsVSmall: 0.9rem;
   --fsSmall0: 1rem;
   --fsSmall1: 1.1rem;
   --fsSmall2: 1.2rem;
@@ -67,6 +68,7 @@
   --fsLarge4: 2.4rem;
   --fsLarge5: 2.5rem;
   --fsLarge6: 2.6rem;
+  --fsLarge8: 2.8rem;
   --fsLarge9: 2.9rem;
   --fsVLarge3: 3rem;
   --fsVLarge6: 3.6rem;

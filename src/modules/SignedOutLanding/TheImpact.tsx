@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import * as S from './SignedOutLanding.style'
+import * as S from './SignedOutHome.style'
+import { BlockButton } from './SignedOutLanding.style'
 
 export const TheImpact: NextPage = (): JSX.Element => {
   return (
@@ -14,13 +15,15 @@ export const TheImpact: NextPage = (): JSX.Element => {
           “Our switchers’ actions, at scale, will force banks to shift their policies towards those
           which support a more liveable future” <br />- Sophie Cowen, Co-Founder of Switch It Green
         </S.TheImpactText>
-        <S.PinkLink href='/'>
-          Find out how switching on our platform, alongside thousands of others, will help end
-          fossil fuel financing.{' '}
-        </S.PinkLink>
-        <S.BlockButton>
-          <Link href='/programs'>Read more</Link>
-        </S.BlockButton>
+        <S.TextContainer mobileWidth={60}>
+          <S.PinkLink marginTop={50} href='/why-switch-it/article/the-impact'>
+            Find out how switching on our platform, alongside thousands of others, will help end
+            fossil fuel financing.{' '}
+          </S.PinkLink>
+        </S.TextContainer>
+        <BlockButton>
+          <Link href='/why-switch-it/article/the-impact'>Read more</Link>
+        </BlockButton>
       </S.TheImpactContent>
     </S.TheImpact>
   )

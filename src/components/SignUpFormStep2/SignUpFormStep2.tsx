@@ -2,11 +2,10 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
 import { Input } from '@components/Input/Input'
 import { RootState } from '@state/store'
-import { updateUser } from '@state/user/userSlice'
 import { Form } from '@styles/common.style'
 import { defaultProfile } from './data'
 
@@ -14,7 +13,7 @@ export const SignUpFormStep2: NextPage<{
   data?: any
   nextSlide: () => void
   previousSlide: () => void
-}> = ({ data, nextSlide, previousSlide }): JSX.Element => {
+}> = ({ data }): JSX.Element => {
   const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
   const { replace } = useRouter()

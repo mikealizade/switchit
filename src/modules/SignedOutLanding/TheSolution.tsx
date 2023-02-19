@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import * as S from './SignedOutLanding.style'
+import * as S from './SignedOutHome.style'
+import { BlockButton } from './SignedOutLanding.style'
 
 export const TheSolution: NextPage = (): JSX.Element => {
   return (
@@ -14,10 +15,12 @@ export const TheSolution: NextPage = (): JSX.Element => {
           We have ranked all UK current account providers against our stringent criteria and have
           identified a number of truly green banks you can trust.
         </S.TheSolutionText>
-        <S.PinkLink href='/'>What is a green bank?</S.PinkLink>
-        <S.BlockButton>
-          <Link href='/programs'>Learn more here</Link>
-        </S.BlockButton>
+        <S.TextContainer mobileWidth={50} mobileMarginTop={30} marginTop={70}>
+          <S.PinkLink href='/why-switch-it/article/the-solution'>What is a green bank?</S.PinkLink>
+        </S.TextContainer>
+        <BlockButton>
+          <Link href='/why-switch-it/article/the-solution'>Learn more here</Link>
+        </BlockButton>
       </S.TheSolutionContent>
     </S.TheSolution>
   )

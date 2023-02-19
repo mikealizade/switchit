@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { Div, Text } from '@styles/common.style'
-import * as S from './SignedOutLanding.style'
-
+import { Div } from '@styles/common.style'
+import * as S from './SignedOutHome.style'
+import { BlockButton } from './SignedOutLanding.style'
 export const StudentPrograms: NextPage = (): JSX.Element => {
   return (
     <S.StudentPrograms>
@@ -26,9 +26,9 @@ export const StudentPrograms: NextPage = (): JSX.Element => {
           </S.StudentProgramsText>
         </Div>
 
-        <S.BlockButton>
-          <Link href='/programs'>Find out more</Link>
-        </S.BlockButton>
+        <BlockButton>
+          <Link href='/students'>Find out more</Link>
+        </BlockButton>
       </S.StudentProgramsContent>
     </S.StudentPrograms>
   )

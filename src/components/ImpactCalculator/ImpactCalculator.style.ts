@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { PlainInput } from '@styles/common.style'
+import { mediaQuery } from '@utils/functions'
 
 export const ImpactCalculator = styled.div`
   display: flex;
@@ -36,8 +37,40 @@ export const QuantifyImpact = styled(Calculator)`
   }
 `
 
-export const ImpactCardHeader = styled.h2`
+export const ImpactCardHeader = styled.header`
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  ${() => mediaQuery.tablet} {
+    justify-content: flex-start;
+    font-size: var(--fsBase);
+  }
+
+  > span {
+    position: absolute !important;
+    left: 0;
+  }
+`
+
+export const ImpactCardHeaderText = styled.h2`
   font-family: 'Konsolev SemiBold';
+  font-size: var(--fsLarge0);
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsLarge4);
+  }
+`
+
+export const BackLink = styled.div`
+  font-size: var(--fsLarge0);
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
+  position: relative;
+  justify-content: center;
+  flex: 1;
 `
 
 export const Header = styled.h3`

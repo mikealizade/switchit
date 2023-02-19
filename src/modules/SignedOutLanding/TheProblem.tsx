@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import * as S from './SignedOutLanding.style'
+import * as S from './SignedOutHome.style'
+import { BlockButton } from './SignedOutLanding.style'
 
 export const TheProblem: NextPage = (): JSX.Element => {
   return (
@@ -12,10 +13,14 @@ export const TheProblem: NextPage = (): JSX.Element => {
           Since the Paris Agreement was signed, banks have pumped over £3.8 trillion into the fossil
           fuel industry.
         </S.TheProblemText>
-        <S.PinkLink href='/'>How do banks contribute to climate change?</S.PinkLink>
-        <S.BlockButton>
-          <Link href='/programs'>Find out more</Link>
-        </S.BlockButton>
+        <S.TextContainer mobileWidth={50} mobileMarginTop={50} marginTop={70}>
+          <S.PinkLink href='/why-switch-it/article/the-problem'>
+            How do banks contribute to climate change?
+          </S.PinkLink>
+        </S.TextContainer>
+        <BlockButton>
+          <Link href='/why-switch-it/article/the-problem'>Find out more</Link>
+        </BlockButton>
       </S.TheProblemContent>
     </S.TheProblem>
   )

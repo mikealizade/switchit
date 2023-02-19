@@ -22,28 +22,33 @@ export const ButtonsContainer = styled.div`
 export const ModalContent = styled.section`
   background: #ffffff;
   position: fixed;
-  left: 10%;
-  right: 10%;
-  top: 50%;
-  transform: translateY(-50%);
+  inset: 10%;
   overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 2;
   border-radius: 15px;
-  padding: 60px;
+  padding: 60px 25px;
   row-gap: 30px;
   z-index: 10;
+
+  ${() => mediaQuery.xmobile} {
+    left: 20%;
+    right: 20%;
+    padding: 60px;
+  }
 
   ${() => mediaQuery.laptop} {
     left: 20%;
     right: 20%;
+    padding: 60px;
   }
 
   ${() => mediaQuery.xlaptop} {
     left: 30%;
     right: 30%;
+    padding: 60px;
   }
 
   h2 {

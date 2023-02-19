@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import * as S from './SignedOutLanding.style'
-
+import * as S from './SignedOutHome.style'
+import { BlockButton } from './SignedOutLanding.style'
 export const WhySwitchIt: NextPage = (): JSX.Element => {
   return (
     <S.WhySwitchIt>
@@ -9,14 +9,14 @@ export const WhySwitchIt: NextPage = (): JSX.Element => {
         <S.WhySwitchItHeader>Why Switch It?</S.WhySwitchItHeader>
         <S.WhySwitchItSubHeader>What is green banking?</S.WhySwitchItSubHeader>
         <S.WhySwitchItText>
-          In 2021, 44 banks that had made ‘Net Zero’ commitments invested over £120 billion in the
+          In 2021, 44 banks that had made {'Net Zero'} commitments invested over £120 billion in the
           100 biggest companies driving oil, gas, & coal expansion. So, what is the difference
-          between a ‘Net Zero’ bank and a truly green bank?
+          between a {'Net Zero'} bank and a truly green bank?
         </S.WhySwitchItText>
 
-        <S.BlockButton>
-          <Link href='/'>Read more</Link>
-        </S.BlockButton>
+        <BlockButton>
+          <Link href='/why-switch-it'>Read more</Link>
+        </BlockButton>
       </S.WhySwitchItContent>
     </S.WhySwitchIt>
   )

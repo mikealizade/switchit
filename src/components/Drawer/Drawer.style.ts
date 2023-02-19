@@ -41,13 +41,15 @@ export const DrawerHeader = styled.h3`
   font-size: var(--fsBase);
 `
 
-export const BackLink = styled.h2`
-  font-size: var(--fsLarge);
+export const DrawerBackLink = styled.h2`
+  font-size: var(--fsLarge0);
   display: flex;
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
   position: relative;
+  justify-content: center;
+  /* flex: 1; */
 
   &:after {
     content: '';

@@ -182,7 +182,7 @@ export const Anchor = styled.a`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  padding: 50px;
+  /* padding: 50px; */
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   height: 85px;
 
@@ -197,7 +197,6 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number; width?:
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '20px')};
   flex: ${({ flex }) => flex ?? 'none'};
   justify-content: flex-start;
-  /* width: auto; */
 
   ${() => mediaQuery.tablet} {
     width: ${({ width }) => (width ? width : 'auto')};

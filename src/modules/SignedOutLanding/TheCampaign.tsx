@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import * as S from './SignedOutLanding.style'
+import * as S from './SignedOutHome.style'
 
 export const TheCampaign: NextPage = (): JSX.Element => {
   return (
