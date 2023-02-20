@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-// import { useMediaQuery } from '@hooks/useMediaQuery'
 import { GetInvolved } from './GetInvolved'
 import { MainSection } from './MainSection'
 import { StudentPrograms } from './StudentPrograms'

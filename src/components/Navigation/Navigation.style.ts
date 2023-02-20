@@ -136,3 +136,7 @@ export const CloseMenu = styled.div`
     display: none;
   }
 `
+
+export const LogoutLink = styled.a`
+  cursor: pointer;
+`

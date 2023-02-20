@@ -45,7 +45,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const updateUser = useUpdateUser()
-  const { isMobile } = useMediaQuery()
+  const { isLaptop } = useMediaQuery()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it')
@@ -121,7 +121,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
         <S.AppContainer isHome={isHome}>
           <Toast />
           <>
-            {isMobile ? <MobileNavigation /> : <Navigation />}
+            {isLaptop ? <Navigation /> : <MobileNavigation />}
             <SignedInApp isValidating={isValidating}>{children}</SignedInApp>
           </>
         </S.AppContainer>

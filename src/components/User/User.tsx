@@ -23,7 +23,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
   )
 
   const dispatch = useDispatch()
-  const { isMobile } = useMediaQuery()
+  const { isMobile, isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
   const {
     email = '',
@@ -44,23 +44,9 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
 
   return (
     <S.UserContainer>
-      <S.Burger onClick={() => dispatch(toggleNav())}>
-        <Image src={`/icons/icon_hamburger_white.svg`} alt='' width={23} height={19} />
-      </S.Burger>
-      {isMobile ? (
-        <>
-          <S.SectionHeader>
-            <S.SectionName>{pageTitle}</S.SectionName>
-          </S.SectionHeader>
-          {isSwitchingJourney && isMobile && (
-            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard())}>
-              <Image src={'/icons/icon_leaf.svg'} alt='' width={34} height={34} />
-            </S.ImpactCardToggle>
-          )}
-        </>
-      ) : isValidating ? (
+      {isValidating ? (
         <Loader />
-      ) : (
+      ) : isLaptop ? (
         <>
           <S.User>
             {pathname.includes('/switching/') ? (
@@ -90,11 +76,25 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
                   <p>{email}</p>
                 </S.SignedInUser>
                 {/* <S.Notifications>
-                  <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />
-                </S.Notifications> */}
+        <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />
+      </S.Notifications> */}
               </>
             )}
           </S.UserDetails>
+        </>
+      ) : (
+        <>
+          <S.Burger onClick={() => dispatch(toggleNav())}>
+            <Image src={`/icons/icon_hamburger_white.svg`} alt='' width={23} height={19} />
+          </S.Burger>
+          <S.SectionHeader>
+            <S.SectionName>{pageTitle}</S.SectionName>
+          </S.SectionHeader>
+          {isSwitchingJourney && isLaptop && (
+            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard())}>
+              <Image src={'/icons/icon_leaf.svg'} alt='' width={34} height={34} />
+            </S.ImpactCardToggle>
+          )}
         </>
       )}
     </S.UserContainer>

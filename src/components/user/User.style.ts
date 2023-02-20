@@ -11,7 +11,7 @@ export const UserContainer = styled.section`
   background-color: var(--nileBlue);
   position: relative;
 
-  ${() => mediaQuery.tablet} {
+  ${() => mediaQuery.laptop} {
     flex-direction: row;
     padding: 40px 40px 5px;
     background-color: var(--pampas);

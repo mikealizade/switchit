@@ -24,7 +24,7 @@ export const AppContent = styled.main<{ hasAside: boolean }>`
   padding-bottom: 80px;
   border-radius: 0;
 
-  ${() => mediaQuery.tablet} {
+  ${() => mediaQuery.laptop} {
     border-radius: ${({ hasAside }) => (hasAside ? '0' : '0 16px 16px 0')};
     padding-bottom: 0;
   }

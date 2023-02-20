@@ -3,18 +3,18 @@ import { mediaQuery } from '@utils/functions'
 
 export const MobileNav = styled.nav<{ isNavOpen: boolean }>`
   width: 100vw;
-  height: calc(100vh - 92px);
+  height: 100vh;
   background-color: var(--white);
   border-radius: 16px 0 0 16px;
-  padding: 45px 45px 65px;
-  row-gap: 100px;
+  padding: 0;
+  row-gap: 40px;
   display: flex;
   position: fixed;
   transform: ${({ isNavOpen }) => (isNavOpen ? 'translateX(0)' : `translateX(-100vw)`)};
   transition: all 0.2s ease-in-out;
   flex-direction: column;
   z-index: 2;
-  top: 92px;
+  top: 0;
   bottom: 0;
   left: 0;
   z-index: 100;
@@ -35,6 +35,7 @@ export const MobileNavigation = styled.ul`
   flex-direction: column;
   row-gap: 16px;
   align-items: center;
+  padding: 45px 45px 65px;
 
   ${() => mediaQuery.laptop} {
     &:last-of-type {
@@ -68,10 +69,6 @@ export const MobileNavHeader = styled.div`
   align-self: center;
   align-self: stretch;
   padding: 30px 40px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 92px;
   background: white;
   z-index: 10;
 `
@@ -81,7 +78,7 @@ export const MobileNSubnav = styled.ul`
   justify-content: center;
   align-self: center;
   column-gap: 40px;
-  margin-top: auto;
+  margin-top: 100px;
 
   li {
     font-size: var(--fsMedium8);
@@ -95,6 +92,10 @@ export const MobileNSubnav = styled.ul`
       height: 18px;
       left: 84px;
     }
+  }
+
+  + ul {
+    margin: auto 0 60px;
   }
 `
 

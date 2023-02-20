@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import * as S from './SignedOutHome.style'
 import { BlockButton } from './SignedOutLanding.style'
+
 export const GetInvolved: NextPage = (): JSX.Element => {
   return (
     <S.GetInvolved>

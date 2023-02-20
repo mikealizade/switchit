@@ -3,7 +3,7 @@ import cs from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as S from '@components/Navigation/Navigation.style'
 import { toggleNav } from '@state/nav/navSlice'
@@ -22,17 +22,10 @@ export const Navigation: NextPage = (): JSX.Element => {
   const isActive = (route: string): boolean =>
     pathname === `/${route}` || pathname.includes(`/${route}`)
 
-  // const logOut = () => {
-  //   window.sessionStorage.clear()
-  //   push('/api/auth/logout')
-  // }
-
-  // useEffect(() => {
-  //   return () => {
-  //     debugger
-  //     window.sessionStorage.clear()
-  //   }
-  // }, [])
+  const logOut = () => {
+    window.sessionStorage.clear()
+    push('/api/auth/logout')
+  }
 
   return (
     <S.Nav isNavOpen={isNavOpen}>
@@ -74,7 +67,7 @@ export const Navigation: NextPage = (): JSX.Element => {
           </li>
         ))}
         <li>
-          <Link href='/api/auth/logout'>Log out</Link>
+          <S.LogoutLink onClick={logOut}>Log out</S.LogoutLink>
         </li>
       </S.Navigation>
     </S.Nav>

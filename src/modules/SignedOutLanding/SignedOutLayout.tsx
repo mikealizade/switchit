@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-// import Head from 'next/head'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Fallback } from '@components/Fallback/Fallback'
 import { useMediaQuery } from '@hooks/useMediaQuery'

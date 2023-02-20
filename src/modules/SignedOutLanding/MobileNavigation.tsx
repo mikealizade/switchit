@@ -62,6 +62,19 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
         </S.CloseMenu>
       </S.MobileNavHeader>
       <S.MobileNav isNavOpen={isWebsiteNavOpen}>
+        <S.MobileNavHeader>
+          <Link href='/'>
+            <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
+          </Link>
+          <S.CloseMenu onClick={toggleNav}>
+            <Image
+              src={`/icons/icon_${isWebsiteNavOpen ? 'close' : 'hamburger'}.svg`}
+              alt='Close'
+              width={isWebsiteNavOpen ? 22 : 32}
+              height={isWebsiteNavOpen ? 22 : 32}
+            />
+          </S.CloseMenu>
+        </S.MobileNavHeader>
         <S.MobileNavigation>
           {navigation.map(({ text, route }: any) => (
             <li key={route} onClick={toggleNav}>

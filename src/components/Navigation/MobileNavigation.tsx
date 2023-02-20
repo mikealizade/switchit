@@ -13,7 +13,7 @@ import { Nav } from '@utils/types'
 import { subNav, mobileNav } from './data'
 
 export const MobileNavigation: NextPage = (): JSX.Element => {
-  const { pathname } = useRouter()
+  const { pathname, push } = useRouter()
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
   const [current] = useState('')
@@ -23,6 +23,11 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
 
   const onToggleNav = () => {
     dispatch(toggleNav())
+  }
+
+  const logOut = () => {
+    window.sessionStorage.clear()
+    push('/api/auth/logout')
   }
 
   return (
@@ -86,14 +91,15 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
 
           <li>
             <Link href='/api/auth/logout'>
-              <a
+              <S.LogoutLink
+                onClick={logOut}
                 style={{
                   backgroundImage: `url('/icons/icon_logout.svg`,
                   backgroundPosition: '11px',
                 }}
               >
                 Log out
-              </a>
+              </S.LogoutLink>
             </Link>
           </li>
         </S.Navigation>
