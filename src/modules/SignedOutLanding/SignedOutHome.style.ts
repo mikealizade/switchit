@@ -402,6 +402,11 @@ export const Subscribe = styled(PageSection)`
   }
 `
 
+export const SubscribeHeader = styled.div`
+  font-size: var(--fsVLarge6);
+  font-family: 'Konsolev SemiBold';
+`
+
 export const SubscribeForm = styled.div`
   display: flex;
   align-items: center;
@@ -415,8 +420,8 @@ export const SubscribeForm = styled.div`
   font-size: var(--fsMedium6);
 
   ${() => mediaQuery.tablet} {
-    height: 69px;
-    width: 462px;
+    height: 60px;
+    width: 382px;
   }
 
   &::after {
@@ -432,7 +437,7 @@ export const SubscribeForm = styled.div`
 
     ${() => mediaQuery.tablet} {
       content: '';
-      width: 100%;
+      width: 373px;
       height: 100%;
       left: 12px;
       top: 8px;
@@ -447,7 +452,7 @@ export const NewsletterThanks = styled.div`
 `
 
 export const EmailField = styled.input`
-  color: var(--pink);
+  color: var(--base);
   border: 0;
   padding: 16px;
   font-size: var(--fsSmall5);
@@ -457,8 +462,8 @@ export const EmailField = styled.input`
   width: 263px;
 
   ${() => mediaQuery.tablet} {
-    height: 63px;
-    width: 320px;
+    height: 54px;
+    width: 240px;
     font-size: var(--fsLarge1);
   }
 
@@ -486,7 +491,7 @@ export const EmailButton = styled.button`
 
   ${() => mediaQuery.tablet} {
     padding: 16px 25px;
-    height: 63px;
+    height: 54px;
     font-size: var(--fsLarge1);
   }
 `

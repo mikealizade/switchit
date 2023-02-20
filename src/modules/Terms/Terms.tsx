@@ -32,7 +32,10 @@ const Terms = (): JSX.Element => {
                       </AnchorLink>
                       , or
                     </li>
-                    <li>filling out and submitting the online form available here [insert link]</li>
+                    <li>
+                      filling out and{' '}
+                      <Link href='/contact-us'>submitting the online form available here.</Link>
+                    </li>
                   </OrderedList>
                 </li>
               </OrderedList>

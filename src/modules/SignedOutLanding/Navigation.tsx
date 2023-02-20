@@ -40,6 +40,7 @@ export const Navigation: NextPage = (): JSX.Element => {
         <Link href='/'>
           <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
         </Link>
+        <S.LogoName>Switch It Green</S.LogoName>
       </Logo>
 
       <S.Navigation>

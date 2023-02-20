@@ -64,7 +64,7 @@ export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({
       <PageSection grey rowGap={60}>
         {hasSubmitted ? (
           <>
-            <PageHeader>Super!</PageHeader>
+            <PageHeader>Thanks for writing</PageHeader>
             <Div rowGap={40}>
               <Text>{`We'll`} be in touch.</Text>
               <Buttons>

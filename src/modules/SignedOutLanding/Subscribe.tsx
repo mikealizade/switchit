@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
 import { Div } from '@styles/common.style'
 import { sendRequest } from '@utils/functions'
@@ -33,26 +33,35 @@ export const Subscribe: NextPage = (): JSX.Element => {
     }
   }
 
+  useEffect(() => {
+    if (hasEnteredEmail) {
+      const delay = setTimeout(() => {
+        setThanks(false)
+        setEmail('')
+        clearTimeout(delay)
+      }, 3000)
+    }
+  }, [hasEnteredEmail])
+
   return (
     <S.Subscribe rowGap={40}>
-      <S.HomePageHeader>Subscribe</S.HomePageHeader>
-
-      <S.SubscribeForm>
+      <S.SubscribeHeader>Subscribe</S.SubscribeHeader>
+      <>
         {isError ? (
           <Text>
             Sorry, we {`couldn't`} subscribe you to our newsletter. Please try again later.
           </Text>
         ) : hasEnteredEmail ? (
-          <S.NewsletterThanks>Brill! {`We'll`} be in touch</S.NewsletterThanks>
+          <S.NewsletterThanks>Thanks for subscribing. {`We'll`} be in touch.</S.NewsletterThanks>
         ) : (
-          <>
-            <S.EmailField value={value} onChange={onChange} placeholder='Email' />
-            <S.EmailButton>
-              <span onClick={saveEmail}>Submit</span>
-            </S.EmailButton>
-          </>
+          <S.SubscribeForm>
+            <>
+              <S.EmailField value={value} onChange={onChange} placeholder='Email' />
+              <S.EmailButton onClick={saveEmail}>Submit</S.EmailButton>
+            </>
+          </S.SubscribeForm>
         )}
-      </S.SubscribeForm>
+      </>
       <Div width='30%'>
         <S.TextContainer mobileWidth={50}>
           <Text>Subscribe to our newsletter for news, insights, and updates.</Text>

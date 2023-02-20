@@ -58,7 +58,7 @@ const Students = (): JSX.Element => {
               Students are asking for financial literacy training and tangible climate education
               amid the ongoing cost of living and climate crises.
             </S.BoldText>
-            <BulletList>
+            <BulletList fontsize={18}>
               <li>
                 <AnchorLink href='https://www.forceofnature.xyz/' target='_blank' rel='noreferrer'>
                   74% of young people
@@ -92,7 +92,7 @@ const Students = (): JSX.Element => {
               Together, we can help end fossil fuel financing and move £ billions out of fossil fuel
               support.
             </S.BoldText>
-            <BulletList>
+            <BulletList fontsize={18}>
               <li>What to expect from a Switch It Green program:</li>
               <li>A tailored program of events, training, and resources.</li>
               <li>A bespoke university portal on our Switching Platform.</li>
@@ -103,7 +103,7 @@ const Students = (): JSX.Element => {
             <S.BoldText>
               Improve your {`institution's`} profile, performance, and student & staff recruitment.
             </S.BoldText>
-            <BulletList>
+            <BulletList fontsize={18}>
               <li>
                 Demonstrate your {`institution's`} commitment to sustainability.
                 <em>

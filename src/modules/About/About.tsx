@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
-import { Div } from '@styles/common.style'
+import { BulletList, Div } from '@styles/common.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const profiles = [
@@ -88,26 +88,26 @@ const About = (): JSX.Element => {
             green bank today. <em>{`We've`} done the hard parts for you, the rest is up to you.</em>
           </S.Text>
         </S.PageSection>
-        <S.PageSection rowGap={30} highfive position='right 170px bottom'>
+        <S.PageSection rowGap={30}>
           <S.PageHeader>The Switching Platform</S.PageHeader>
-          <Div width='50%'>
+          <Div>
             <S.Text>
               Our Bank Switching Platform makes switching to a green bank as simple and impactful as
               possible.
             </S.Text>
-            <S.Text>
-              See how your bank stacks up against our stringent investment criteria | Get to know
-              exactly what your bank has been investing in behind your back | Select a new
-              Switch-It-Green-approved provider | Make the switch alongside thousands of others |
-              Maximise your switch with our series of ready-to-go lobbying steps. [I’m picturing a
-              little graphic-y timeline/arrows/journey if poss]
-            </S.Text>
+            <BulletList fontsize={21}>
+              <li>See how your bank stacks up against our stringent investment criteria</li>
+              <li>Get to know exactly what your bank has been investing in behind your back</li>
+              <li>Select a new Switch-It-Green-approved provider</li>
+              <li>Make the switch alongside thousands of others</li>
+              <li>Maximise your switch with our series of ready-to-go lobbying steps.</li>
+            </BulletList>
             <S.Text>
               <em>Plus much more!</em>
             </S.Text>
             <S.Text>
               <strong>
-                Create an account to get started. <em>psst - {`It's`} free!</em>
+                Create an account to get started. <em>Psst - {`It's`} free!</em>
               </strong>
             </S.Text>
           </Div>

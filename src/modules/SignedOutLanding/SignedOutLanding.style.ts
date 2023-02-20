@@ -209,7 +209,6 @@ export const SignUp = styled.li`
 
 export const PageSection = styled.section<{
   isSubscribe?: boolean
-  highfive?: boolean
   rowGap?: number
   padding?: string
   position?: string
@@ -222,6 +221,7 @@ export const PageSection = styled.section<{
   flex-direction: column;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
   /* font-size: var(--fsLarge1); */
+  font-size: var(--fsMedium8);
   padding: 138px 40px 40px;
 
   a {

@@ -70,7 +70,7 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
               {...methods}
               minLength={1}
               maxLength={50}
-              pattern='alphanumeric'
+              pattern='email'
               message='Please enter a valid email'
               disabled={disabled}
               required
