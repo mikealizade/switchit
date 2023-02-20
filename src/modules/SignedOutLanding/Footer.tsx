@@ -12,11 +12,11 @@ export const footerNav = [
     route: '/students',
   },
   {
-    text: 'The Company',
+    text: 'About Us',
     route: '/about',
   },
   {
-    text: 'Why Switch',
+    text: 'Why Switch It',
     route: '/why-switch-it',
   },
   {

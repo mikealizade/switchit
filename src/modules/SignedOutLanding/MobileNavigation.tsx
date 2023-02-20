@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
+import cs from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { SocialMediaLinks } from '@components/SocialMediaLinks/SocialMediaLinks'
 import { toggleWebsiteNav } from '@state/nav/navSlice'
@@ -40,7 +42,9 @@ export const subNav = [
 
 export const MobileNavigation: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
+  const { pathname } = useRouter()
   const { isWebsiteNavOpen } = useSelector((state: RootState) => state.nav)
+  const isActive = (route: string): boolean => pathname === route || pathname.includes(route)
 
   const toggleNav = () => {
     dispatch(toggleWebsiteNav())
@@ -52,12 +56,13 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
         <Link href='/'>
           <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
         </Link>
+        <S.LogoName>Switch It Green</S.LogoName>
         <S.CloseMenu onClick={toggleNav}>
           <Image
             src={`/icons/icon_${isWebsiteNavOpen ? 'close' : 'hamburger'}.svg`}
             alt='Close'
-            width={isWebsiteNavOpen ? 22 : 32}
-            height={isWebsiteNavOpen ? 22 : 32}
+            width={isWebsiteNavOpen ? 28 : 32}
+            height={isWebsiteNavOpen ? 19 : 32}
           />
         </S.CloseMenu>
       </S.MobileNavHeader>
@@ -66,6 +71,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
           <Link href='/'>
             <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
           </Link>
+          <S.LogoName>Switch It Green</S.LogoName>
           <S.CloseMenu onClick={toggleNav}>
             <Image
               src={`/icons/icon_${isWebsiteNavOpen ? 'close' : 'hamburger'}.svg`}
@@ -78,7 +84,9 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
         <S.MobileNavigation>
           {navigation.map(({ text, route }: any) => (
             <li key={route} onClick={toggleNav}>
-              <Link href={route}>{text}</Link>
+              <Link href={route}>
+                <a className={cs({ ['active']: isActive(route) })}>{text}</a>
+              </Link>
             </li>
           ))}
         </S.MobileNavigation>

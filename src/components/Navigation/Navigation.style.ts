@@ -4,7 +4,7 @@ import { mediaQuery } from '@utils/functions'
 
 export const Nav = styled.nav<{ isNavOpen: boolean }>`
   min-width: 230px;
-  background-color: var(--white);
+  background-color: var(--concrete);
   border-radius: 16px 0 0 16px;
   padding: 20px;
   row-gap: 100px;

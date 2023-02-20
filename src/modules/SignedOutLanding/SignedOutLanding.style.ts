@@ -4,7 +4,7 @@ import { mediaQuery } from '@utils/functions'
 export const MobileNav = styled.nav<{ isNavOpen: boolean }>`
   width: 100vw;
   height: 100vh;
-  background-color: var(--white);
+  background-color: var(--concrete);
   border-radius: 16px 0 0 16px;
   padding: 0;
   row-gap: 40px;
@@ -56,8 +56,7 @@ export const MobileNavigation = styled.ul`
 
       &.active,
       &:hover {
-        background-color: var(--nileBlue);
-        color: var(--white);
+        font-weight: bold;
       }
     }
   }
@@ -66,11 +65,18 @@ export const MobileNavigation = styled.ul`
 export const MobileNavHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-self: center;
+  align-items: center;
   align-self: stretch;
   padding: 30px 40px;
-  background: white;
+  background: var(--concrete);
   z-index: 10;
+  column-gap: 20px;
+`
+
+export const LogoName = styled.span`
+  font-size: var(--fsMedium6);
+  margin-right: auto;
+  font-weight: bold;
 `
 
 export const MobileNSubnav = styled.ul`
@@ -164,7 +170,7 @@ export const BlockButton = styled.div<{ margin?: string }>`
 `
 
 export const Nav = styled.nav`
-  background-color: var(--white);
+  background-color: var(--concrete);
   display: flex;
   justify-content: space-between;
   padding: 20px 5%;
@@ -272,7 +278,7 @@ export const NavItem = styled.li`
 `
 
 export const Content = styled.main`
-  background-color: var(--white);
+  background-color: var(--concrete);
   display: flex;
   flex-direction: column;
 `

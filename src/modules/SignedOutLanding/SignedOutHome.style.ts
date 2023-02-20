@@ -47,7 +47,7 @@ export const MainSectionContent = styled.div`
   row-gap: 38px;
 
   ${() => mediaQuery.tablet} {
-    width: 53%;
+    width: 55%;
   }
 `
 
