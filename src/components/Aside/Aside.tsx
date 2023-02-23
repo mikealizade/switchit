@@ -6,5 +6,9 @@ export const Aside = (): JSX.Element => {
   const { pathname } = useRouter()
   const asideContent = pathname.includes('/switching') ? <ImpactCard /> : null
 
-  return <S.AsideContent>{asideContent}</S.AsideContent>
+  return (
+    // <S.ScrollContainer>
+    <S.AsideContent>{asideContent}</S.AsideContent>
+    // </S.ScrollContainer>
+  )
 }

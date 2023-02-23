@@ -9,6 +9,7 @@ import { ImpactCalculator } from '@components/ImpactCalculator/ImpactCalculator'
 import {
   ImpactCardHeader,
   ImpactCardHeaderText,
+  ImpactContent,
   BackLink,
 } from '@components/ImpactCalculator/ImpactCalculator.style'
 import { SelectActionCards } from '@components/SelectActionCard/SelectActionCard'
@@ -52,7 +53,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
   const actions = actionsConfig.filter(filterActionType(currentJourneyType))
 
   return (
-    <Div rowGap={50} flex={1}>
+    <>
       <ImpactCardHeader>
         {isXXLaptop ? (
           <ImpactCardHeaderText>Impact Card</ImpactCardHeaderText>
@@ -65,14 +66,16 @@ export const ImpactCard: NextPage = (): JSX.Element => {
           </>
         )}
       </ImpactCardHeader>
-      {hasBank && <Banks />}
-      {hasProgressBar && (
-        <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />
-      )}
-      <ImpactCalculator hasProgressBar={hasProgressBar} />
-      {hasFAQ && <SwitchingFaqs />}
-      {hasViewResearch && <ViewResearch compact />}
-      {hasActionCards && <SelectActionCards />}
-    </Div>
+      <ImpactContent>
+        {hasBank && <Banks />}
+        {hasProgressBar && (
+          <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />
+        )}
+        <ImpactCalculator hasProgressBar={hasProgressBar} />
+        {hasFAQ && <SwitchingFaqs />}
+        {hasViewResearch && <ViewResearch compact />}
+        {hasActionCards && <SelectActionCards />}
+      </ImpactContent>
+    </>
   )
 }

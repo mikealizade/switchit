@@ -26,12 +26,7 @@ export const ImageTitle = styled.div`
 
 export const ArticleTitle = styled.h1`
   font-size: var(--fsVLarge6);
-  font-family: 'Konsolev SemiBold';
   margin-bottom: 50px;
-
-  ${() => mediaQuery.tablet} {
-    font-size: var(--fsHuge8);
-  }
 `
 
 export const PostText = styled.div`
@@ -42,16 +37,11 @@ export const PostText = styled.div`
 
 export const Article = styled(PageSection)`
   h2 {
-    font-size: var(--fsVLarge3);
-    font-family: 'Konsolev SemiBold';
+    font-size: var(--fsLarge4);
     margin: 30px 0;
   }
 
   p {
-    font-size: var(--fsLarge0);
-
-    ${() => mediaQuery.tablet} {
-      font-size: var(--fsLarge1);
-    }
+    font-size: var(--fsMedium8);
   }
 `

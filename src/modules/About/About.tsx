@@ -71,21 +71,27 @@ const About = (): JSX.Element => {
           <S.Text>
             Switch It Green Co-Founders, Anna Chirico and Sophie Cowen, first connected over their
             shared frustration at climate inaction in 2020. They knew that for just climate
-            solutions to be heard, big corporations first had to be held responsible - and that
-            individual actions needed to have proper direction and be taken en masse to initiate
-            real change. They also knew to get people in power to listen, they had to follow the
-            money.
+            solutions to be heard, big corporations first had to be held responsible. They could see
+            that individual actions needed to have clear direction, and be taken en masse to
+            initiate real change. And they knew that in order to get key decision makers to listen,
+            they had to follow the money.
           </S.Text>
           <S.Text>And with that, Switch It Green was born.</S.Text>
           <S.Text>
-            Our goal is to pressure banks to change their investment policies and rapidly phase out
-            fossil fuel financing while moving £ billions out of fossil fuel support. Without
-            investment from financial institutions, the fossil fuel industry will be under
-            significant pressure to transform its operations.
+            Our mission is to pressure banks to change their investment policies to rapidly phase
+            out fossil fuel financing, by harnessing the power of individual action to move £
+            billions out of fossil fuel support. Without support from customers, banks will be less
+            able to invest in fossil fuels. Without investment from financial institutions, the
+            fossil fuel industry will be under significant pressure to transform its operations.
           </S.Text>
           <S.Text>
-            Your role is simple: help us push for a more just and liveable future by switching to a
-            green bank today. <em>{`We've`} done the hard parts for you, the rest is up to you.</em>
+            Your role is simple: help us push for a more just and liveable future by using the
+            platform to switch to a green bank today, and maximise the impact of your switch.
+            <br />
+            <em>
+              {`We've`} made it easy for you to be part of the change - all you need to do now is
+              follow our simple switching journey!
+            </em>
           </S.Text>
         </S.PageSection>
         <S.PageSection rowGap={30}>

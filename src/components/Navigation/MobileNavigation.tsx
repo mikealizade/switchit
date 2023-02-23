@@ -60,7 +60,13 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
           <li onClick={onToggleNav}>
             <Link href='/profile'>
               <S.MobileNavUser>
-                <Image src={picture} alt={nickname} width={54} height={54} unoptimized />
+                <Image
+                  src={picture || '/icons/icon_noprofile.svg'}
+                  alt={nickname}
+                  width={54}
+                  height={54}
+                  unoptimized
+                />
                 <S.MobileNavUserNames>
                   <S.UserName>{nickname}</S.UserName>
                   <S.UserPoints>

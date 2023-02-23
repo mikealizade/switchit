@@ -62,6 +62,13 @@ export const ImpactCardHeaderText = styled.h2`
   }
 `
 
+export const ImpactContent = styled.div`
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+`
+
 export const BackLink = styled.div`
   font-size: var(--fsLarge0);
   display: flex;

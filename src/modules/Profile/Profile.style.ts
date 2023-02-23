@@ -6,12 +6,12 @@ export const ProfileEllipsis = styled(Ellipsis)`
   position: absolute;
   cursor: pointer;
   font-size: var(--fsLarge);
-  top: 60px;
-  right: 0;
+  top: 15px;
+  right: 25px;
 
   ${() => mediaQuery.tablet} {
-    top: 90px;
-    right: 20px;
+    top: 120px;
+    right: 30px;
   }
 `
 

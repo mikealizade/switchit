@@ -12,13 +12,15 @@ export const TheImpact: NextPage = (): JSX.Element => {
           Together, we will move £7 billion out of fossil fuel support this year.{' '}
         </S.TheImpactSubHeader>
         <S.TheImpactText>
-          “Our switchers’ actions, at scale, will force banks to shift their policies towards those
-          which support a more liveable future” <br />- Sophie Cowen, Co-Founder of Switch It Green
+          “Our {`switchers'`} actions, at scale, will force banks to change policies in respond to
+          consumer demand - shifting priorities away from environmetally destructive projects, and
+          towards those that will support a sustainable future” <br />- Sophie Cowen, Co-Founder -
+          Switch It Green
         </S.TheImpactText>
         <S.TextContainer mobileWidth={60}>
           <S.PinkLink marginTop={50} href='/why-switch-it/article/the-impact'>
-            Find out how switching on our platform, alongside thousands of others, will help end
-            fossil fuel financing.{' '}
+            Find out how switching through our platform, alongside thousands of others, will help
+            end fossil fuel financing.
           </S.PinkLink>
         </S.TextContainer>
         <BlockButton>

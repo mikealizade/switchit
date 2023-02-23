@@ -16,12 +16,6 @@ import 'swiper/css/pagination'
 import * as S from '@modules/Signup/Signup.style'
 import Logo from '../../../public/switchit_logo.png'
 
-// Log in flow TODOs
-// sign up, new pw links
-// social log ins wih icons
-// save user and user meta to db on sign up
-// prev slide
-
 const pagination = {
   clickable: true,
   renderBullet: function (index: number, className: string): string {

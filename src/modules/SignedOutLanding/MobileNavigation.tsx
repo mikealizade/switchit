@@ -56,7 +56,9 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
         <Link href='/'>
           <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
         </Link>
-        <S.LogoName>Switch It Green</S.LogoName>
+        <S.LogoName>
+          <Link href='/'>Switch It Green</Link>
+        </S.LogoName>
         <S.CloseMenu onClick={toggleNav}>
           <Image
             src={`/icons/icon_${isWebsiteNavOpen ? 'close' : 'hamburger'}.svg`}
@@ -71,7 +73,9 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
           <Link href='/'>
             <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
           </Link>
-          <S.LogoName>Switch It Green</S.LogoName>
+          <S.LogoName>
+            <Link href='/'>Switch It Green</Link>
+          </S.LogoName>
           <S.CloseMenu onClick={toggleNav}>
             <Image
               src={`/icons/icon_${isWebsiteNavOpen ? 'close' : 'hamburger'}.svg`}

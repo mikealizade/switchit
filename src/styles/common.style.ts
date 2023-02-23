@@ -197,6 +197,7 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number; width?:
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '20px')};
   flex: ${({ flex }) => flex ?? 'none'};
   justify-content: flex-start;
+  /* overflow: auto; */
 
   ${() => mediaQuery.tablet} {
     width: ${({ width }) => (width ? width : 'auto')};

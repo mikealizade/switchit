@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { ProfileEllipsis } from '@modules/Profile/Profile.style'
 import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
@@ -13,6 +14,8 @@ export const ProfileHead: NextPage = (): JSX.Element => {
     picture = '',
     location = '',
   } = useSelector((state: RootState) => state.user)
+  const { isMobile } = useMediaQuery()
+  const imageSize = isMobile ? 105 : 156
 
   return (
     <S.ProfileHead>
@@ -20,8 +23,8 @@ export const ProfileHead: NextPage = (): JSX.Element => {
         <Image
           src={picture || '/icons/icon_noprofile.svg'}
           alt={nickname}
-          width={132}
-          height={132}
+          width={imageSize}
+          height={imageSize}
           priority
         />
       </S.Picture>

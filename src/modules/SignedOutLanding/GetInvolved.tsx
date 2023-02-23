@@ -16,7 +16,7 @@ export const GetInvolved: NextPage = (): JSX.Element => {
             {`We've`} done the research so you {`don't`} have to
           </li>
           <li>Switch alongside thousands of others in a collective push for change</li>
-          <li>Maximise your switch with our ready-to-go lobbying features</li>
+          <li>Maximise the impact of your switch with our ready-to-go lobbying features</li>
         </S.GetInvolvedList>
         <S.PinkLink href='/why-switch-it/article/get-involved'>How do I switch banks?</S.PinkLink>
         <BlockButton>

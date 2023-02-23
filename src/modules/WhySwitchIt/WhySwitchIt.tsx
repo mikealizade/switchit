@@ -23,7 +23,7 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
       </Head>
 
       <SignedOutLayout>
-        <S.PageSection rowGap={50}>
+        <S.PageSection rowGap={40}>
           <S.PageHeader>Why Switch It Green?</S.PageHeader>
           <S.Text>
             Switching to green finance {`isn't`} the sexiest thing you can do for the planet but it

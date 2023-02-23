@@ -143,13 +143,12 @@ const drawerConfig = {
 }
 
 export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
+  console.log('narrow', narrow)
+
   window.scroll(0, 0)
   const { isMobile } = useMediaQuery()
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
-
-  console.log('isDrawerOpen', isDrawerOpen)
-
   const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
 
   return (

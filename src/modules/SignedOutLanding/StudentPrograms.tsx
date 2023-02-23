@@ -8,7 +8,7 @@ export const StudentPrograms: NextPage = (): JSX.Element => {
   return (
     <S.StudentPrograms>
       <S.StudentProgramsContent>
-        <S.StudentProgramsHeader>Student Programs:</S.StudentProgramsHeader>
+        <S.StudentProgramsHeader>Student Switching Programs:</S.StudentProgramsHeader>
         <Div rowGap={24}>
           <S.StudentProgramsText>
             Work or study at a school, college, or university?
@@ -18,12 +18,12 @@ export const StudentPrograms: NextPage = (): JSX.Element => {
             masse.
           </S.StudentProgramsText>
           <S.StudentProgramsText>
-            Our programs deliver financial literacy and tangible climate education to students while
-            moving £ billions out of fossil fuel support.
+            Our Student Switching programs deliver financial literacy and tangible climate education
+            to students while moving £ billions out of fossil fuel support.
           </S.StudentProgramsText>
           <S.StudentProgramsText>
             Get access to bespoke resources, high-profile guest speaker events, exclusive workshops,
-            tailored data reporting & impact tracking, and more
+            tailored data reporting & impact tracking, and more.
           </S.StudentProgramsText>
         </Div>
 

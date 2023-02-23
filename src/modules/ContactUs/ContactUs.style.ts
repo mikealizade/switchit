@@ -7,9 +7,15 @@ export const FormButtons = styled.div`
 
 export const InputsContainer = styled.div`
   display: flex;
+  flex-direction: column;
   column-gap: 50px;
+  row-gap: 20px;
   justify-content: space-between;
   width: 100%;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+  }
 `
 
 export const ContactUsForm = styled.form`

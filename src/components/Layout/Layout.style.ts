@@ -46,6 +46,8 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   bottom: 0;
   transform: ${({ isImpactCardOpen }) => (isImpactCardOpen ? 'translateX(0)' : `translateX(90vh)`)};
   transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  display: flex;
 
   ${() => mediaQuery.xlaptop} {
     overflow: hidden;
@@ -57,15 +59,23 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   }
 `
 
+// export const ScrollContainer = styled.div`
+//   overflow: auto;
+//   flex: 1;
+//   display: flex;
+// `
+
 export const AsideContent = styled.section`
   display: flex;
   background-color: var(--white);
   flex-direction: column;
   flex: 1;
-  padding: 40px;
+  padding: 40px 40px 120px;
   row-gap: 40px;
+  overflow-y: auto;
 
   ${() => mediaQuery.laptop} {
+    padding: 40px;
     border-radius: 10px;
   }
 `

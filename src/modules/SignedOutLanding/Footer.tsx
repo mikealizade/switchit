@@ -48,7 +48,7 @@ export const Footer: NextPage = (): JSX.Element => {
     <S.Footer>
       <S.FooterMain>
         <S.FooterNavContainer>
-          <S.FooterNavHeader>Switch It</S.FooterNavHeader>
+          <S.FooterNavHeader>Switch It Green</S.FooterNavHeader>
           <S.FooterNav>
             {footerNav.map(({ text, route }: any) => (
               <li key={route}>

@@ -33,10 +33,6 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
     profile: { summary: { proudActions = '', campaigns = '', switchingStatement = '' } = {} } = {},
   } = user
 
-  const onSubmit = async (data: FieldValues): Promise<void> => {
-    await save(data)
-  }
-
   const onCancel = (): void => {
     reset()
   }
@@ -68,6 +64,10 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
     }
   }
 
+  const onSubmit = async (data: FieldValues): Promise<void> => {
+    await save(data)
+  }
+
   useEffect(() => {
     reset && reset(data)
   }, [data, reset])
@@ -76,13 +76,17 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
     <>
       <S.ProfileHead isProfile>
         <S.Picture isProfile>
-          {picture && nickname && (
-            <Image src={picture} alt={nickname} width={132} height={132} unoptimized />
-          )}
+          <Image
+            src={picture || '/icons/icon_noprofile.svg'}
+            alt={nickname}
+            width={132}
+            height={132}
+            unoptimized
+          />
         </S.Picture>
         <S.ProfileNames>
           <S.ProfileName>{nickname}</S.ProfileName>
-          <S.Username>{username}</S.Username>
+          <S.Username isProfile>{username}</S.Username>
         </S.ProfileNames>
       </S.ProfileHead>
       <FormProvider {...methods}>

@@ -246,10 +246,10 @@ export const PageSectionContent = styled.div`
 `
 
 export const PageHeader = styled.h1`
-  font-size: var(--fsVLarge6);
+  font-size: var(--fsVLarge4);
 
   ${() => mediaQuery.tablet} {
-    font-size: 5rem;
+    font-size: var(--fsVLarge6);
   }
 `
 
@@ -261,10 +261,6 @@ export const PageSubHeader = styled.h2`
 export const Text = styled.p`
   font-weight: normal;
   font-size: var(--fsMedium8);
-
-  ${() => mediaQuery.tablet} {
-    font-size: var(--fsLarge1);
-  }
 `
 
 export const BoldText = styled.p`
@@ -442,7 +438,7 @@ export const Image = styled.li`
     transition: opacity 0.2s linear;
 
     &:hover {
-      opacity: 0.7;
+      opacity: 0.9;
       color: rgba(255, 255, 255, 1);
 
       + div {

@@ -14,16 +14,8 @@ import { RootState } from '@state/store'
 
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
-
-  console.log('pathname', pathname)
-
-  console.log(
-    '[...mobileNav, ...subNav]',
-    [...mobileNav, ...subNav].map(({ text }) => text),
-  )
-
   const dispatch = useDispatch()
-  const { isMobile, isLaptop } = useMediaQuery()
+  const { isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
   const {
     email = '',
@@ -31,16 +23,11 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
     picture = '',
     isNewUser,
   } = useSelector((state: RootState) => state.user)
-
+  const isSwitchingJourney = pathname.includes('/switching')
   let [pageTitle] = [...mobileNav, ...subNav]
-
     .map(({ text }) => text.toLowerCase())
     .filter((item: string) => pathname.includes(item))
-  console.log('pageTitle', pageTitle)
   pageTitle = pageTitle === 'switching' ? 'Switching Journeys' : pageTitle
-  const isSwitchingJourney = pathname.includes('/switching')
-
-  console.log('pageTitle', pageTitle)
 
   return (
     <S.UserContainer>
@@ -90,7 +77,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
           <S.SectionHeader>
             <S.SectionName>{pageTitle}</S.SectionName>
           </S.SectionHeader>
-          {isSwitchingJourney && isLaptop && (
+          {isSwitchingJourney && (
             <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard())}>
               <Image src={'/icons/icon_leaf.svg'} alt='' width={34} height={34} />
             </S.ImpactCardToggle>

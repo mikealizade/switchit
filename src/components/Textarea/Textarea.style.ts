@@ -7,7 +7,7 @@ export const Textarea = styled.textarea<{ height?: number }>`
   padding: 10px;
   height: ${({ height }) => (height ? `${height}px` : 'auto')};
   resize: vertical;
-  background-color: var(--atol);
+  background-color: var(--white);
 `
 
 export const Label = styled.label`

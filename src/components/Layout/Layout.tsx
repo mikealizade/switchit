@@ -8,6 +8,7 @@ import useSWRMutation from 'swr/mutation'
 import * as S from '@components/Layout/Layout.style'
 import { MobileNavigation } from '@components/Navigation/MobileNavigation'
 import { Navigation } from '@components/Navigation/Navigation'
+import { defaultProfile } from '@components/SignUpFormStep2/data'
 import { Toast } from '@components/Toast/Toast'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
 import { useMediaQuery } from '@hooks/useMediaQuery'
@@ -54,14 +55,19 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {
       try {
-        const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
+        // uncomment when reinstating onboarding journey
+        // const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
         const userData = {
           ...auth0user,
           ...user,
-          ...storedUser,
+          // ...storedUser,
+          ...defaultProfile,
           isNewUser,
           picture: '',
         }
+
+        console.log('userData', userData)
+
         //mongo errors if trying to overwrite _id
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { _id, ...newUserData } = userData
@@ -74,9 +80,9 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
 
         request(body)
 
-        checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
-
-        window.localStorage.removeItem('userData')
+        // uncomment when reinstating onboarding journey
+        // checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
+        // window.localStorage.removeItem('userData')
 
         dispatch(setUser(newUserData))
       } catch (error) {

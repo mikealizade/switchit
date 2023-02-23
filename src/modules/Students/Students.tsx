@@ -92,8 +92,8 @@ const Students = (): JSX.Element => {
               Together, we can help end fossil fuel financing and move £ billions out of fossil fuel
               support.
             </S.BoldText>
+            <S.Text>What to expect from a Switch It Green program:</S.Text>
             <BulletList fontsize={18}>
-              <li>What to expect from a Switch It Green program:</li>
               <li>A tailored program of events, training, and resources.</li>
               <li>A bespoke university portal on our Switching Platform.</li>
               <li>Impact tracking and data reporting for your university.</li>
@@ -130,7 +130,7 @@ const Students = (): JSX.Element => {
           <RegisterInterestContainer>
             <RegisterInterestIntro>
               <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
-              <p>Fill out the form to the right and {`we'll`} be in touch</p>
+              <p>Fill out the form and {`we'll`} be in touch.</p>
             </RegisterInterestIntro>
             <RegisterInterestForm />
           </RegisterInterestContainer>
