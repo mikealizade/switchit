@@ -13,7 +13,7 @@ type CompletedSteps = {
   journeyType: string
 }
 
-// NOTE: only show formatted sum when user has switched and age is selected
+// NOTE: only show formatted sum and shuffle when user has switched and age is selected
 
 export const ClimateImpactReport: NextPage = (): JSX.Element => {
   const { push } = useRouter()
@@ -40,9 +40,9 @@ export const ClimateImpactReport: NextPage = (): JSX.Element => {
         <S.Text>from fossil fuel support</S.Text>
         <S.TextHighlight>that amount of money could</S.TextHighlight>
         <S.Text>{formattedVerb}</S.Text>
-        <S.Amount>{number}</S.Amount>
+        <S.Amount>{hasSwitched && userAge ? number : '0'}</S.Amount>
         <S.Text>{rest}</S.Text>
-        {userAge ? (
+        {hasSwitched && userAge ? (
           <Button type='button' mode='primary' onClick={() => onShuffle()} bold>
             Shuffle
           </Button>

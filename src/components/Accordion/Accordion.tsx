@@ -43,6 +43,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(() => ({
   rowGap: '25px',
   display: 'flex',
   flexDirection: 'column',
+  color: '#153F45',
 }))
 
 export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIcon?: boolean }) => {

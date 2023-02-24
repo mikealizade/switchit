@@ -58,7 +58,7 @@ export const Button = styled.button<{ size?: string; bold?: boolean }>`
 `
 
 export const TextButton = styled.button`
-  padding: 6px 16px;
+  padding: 0;
   min-width: 64px;
   font-family: 'Konsolev SemiBold', sans-serif;
   font-weight: 500;

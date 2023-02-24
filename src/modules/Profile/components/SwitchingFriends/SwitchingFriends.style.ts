@@ -25,3 +25,8 @@ export const Total = styled.span`
   padding-left: 15px;
   display: inline-flex;
 `
+
+export const FriendsHint = styled.p`
+  margin-top: auto;
+  text-align: center;
+`

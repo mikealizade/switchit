@@ -13,6 +13,7 @@ export const ProfileHead: NextPage = (): JSX.Element => {
     nickname = '',
     picture = '',
     location = '',
+    username,
   } = useSelector((state: RootState) => state.user)
   const { isMobile } = useMediaQuery()
   const imageSize = isMobile ? 105 : 156
@@ -31,6 +32,7 @@ export const ProfileHead: NextPage = (): JSX.Element => {
       <S.UserDetails>
         <S.Name>{nickname}</S.Name>
         <S.Location>{location}</S.Location>
+        <S.Username>{username}</S.Username>
       </S.UserDetails>
       <ProfileEllipsis onClick={() => dispatch(toggleDrawer('profile'))}>
         <Image src={'/icons/icon_ellipsis.svg'} alt='' width={25} height={25} className='profile' />

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="48px" viewBox="0 0 51 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bank icon</title>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PROFILE---ACTIVE-USER-Copy-9" transform="translate(-823.000000, -459.000000)">
+            <g id="Group-23" transform="translate(823.000000, 458.000000)">
+                <g id="bank-icon" transform="translate(1.101399, 2.208000)">
+                    <g id="Group-18" stroke="#153F45" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65">
+                        <polygon id="Path" points="24.5411745 0 0 12.6468518 0 14.4288399 48.3465736 14.4288399 48.3465736 12.5415867"></polygon>
+                        <polyline id="Path" points="46.3001983 14.4288399 46.3001983 17.3762631 2.05403959 17.3762631 2.05403959 14.4288399"></polyline>
+                        <line x1="6.90555846" y1="17.8574751" x2="6.90555846" y2="37.5721276" id="Path"></line>
+                        <line x1="10.6994002" y1="17.9025887" x2="10.6994002" y2="37.5721276" id="Path"></line>
+                        <polyline id="Path" points="2.08469689 42.2263495 2.08469689 38.4894379 46.3308556 38.4894379 46.3308556 42.2263495"></polyline>
+                        <rect id="Rectangle" x="0.0229929805" y="42.286501" width="48.4385455" height="2.977499"></rect>
+                        <line x1="17.1527634" y1="17.8349183" x2="17.1527634" y2="37.5570897" id="Path"></line>
+                        <line x1="20.9466052" y1="17.8800319" x2="20.9466052" y2="37.5570897" id="Path"></line>
+                        <line x1="27.3999684" y1="17.8424372" x2="27.3999684" y2="37.5646086" id="Path"></line>
+                        <line x1="31.1938101" y1="17.8950698" x2="31.1938101" y2="37.5646086" id="Path"></line>
+                        <line x1="37.639509" y1="17.8424372" x2="37.639509" y2="37.5646086" id="Path"></line>
+                        <line x1="41.4333508" y1="17.8950698" x2="41.4333508" y2="37.5646086" id="Path"></line>
+                    </g>
+                    <g id="Group" transform="translate(6.522342, 17.857475)"></g>
+                    <g id="Group" transform="translate(16.769547, 17.834918)"></g>
+                    <g id="Group" transform="translate(27.016752, 17.842437)"></g>
+                    <g id="Group" transform="translate(37.256293, 17.842437)"></g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

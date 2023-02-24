@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Button } from '@components/Button/Button'
 import { Buttons } from '@modules/Switching/Switching.style'
-import { Title, Div, Text, Header } from '@styles/common.style'
+import { TitleLink, Div, Text, Header } from '@styles/common.style'
 import * as S from './Programs.style'
 
 export const ProgramsInfo: NextPage = (): JSX.Element => {
@@ -10,7 +12,13 @@ export const ProgramsInfo: NextPage = (): JSX.Element => {
 
   return (
     <Div rowGap={30} flex={1}>
-      <Title>Programs</Title>
+      <Link href='/programs'>
+        <TitleLink>
+          Programs
+          <Image src={'/icons/icon_chevron_right.svg'} alt='' width={25} height={25} />
+        </TitleLink>
+      </Link>
+
       <S.ProgramsContainer>
         <Div rowGap={30}>
           <Header>

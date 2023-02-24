@@ -23,7 +23,7 @@ export const Blog: NextPage<{ data: Blog[] }> = ({ data = [] }): JSX.Element => 
       <Link href={`/resources/article/${id}`}>
         <S.BlogItem>
           <Title>
-            Latest Resources
+            Featured Article
             <Image src={'/icons/icon_chevron_right.svg'} alt='' width={25} height={25} />
           </Title>
           <S.Details>

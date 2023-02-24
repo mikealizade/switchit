@@ -60,7 +60,9 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
               <>
                 <S.SignedInUser>
                   <Image src={picture} alt={nickname} width={30} height={30} unoptimized />
-                  <p>{email}</p>
+                  <p>
+                    <Link href='/profile'>{email}</Link>
+                  </p>
                 </S.SignedInUser>
                 {/* <S.Notifications>
         <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />

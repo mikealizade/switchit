@@ -17,14 +17,14 @@ export const Goals: NextPage = (): JSX.Element => {
           </S.Goal>
         </S.DivestedItem>
         <S.Item>
-          <Image src={`/icons/icon_provider.svg`} alt='' width={44} height={44} />
+          <Image src={`/icons/icon_providers.svg`} alt='' width={44} height={44} />
           <S.Goal>
             <h3>5,000</h3>
             <Text>Green Accounts Opened</Text>
           </S.Goal>
         </S.Item>
         <S.Item>
-          <Image src={`/icons/icon_programs.svg`} alt='' width={44} height={44} />
+          <Image src={`/icons/icon_programs.svg`} alt='' width={48} height={48} />
           <S.Goal>
             <h3>15,000</h3>
             <Text>Climate Actions Taken</Text>

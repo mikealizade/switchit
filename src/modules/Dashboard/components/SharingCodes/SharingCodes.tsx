@@ -7,9 +7,9 @@ import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Dashboard/components/SharingCodes/SharingCodes.style'
 import { Title, ShareButton, Text } from '@styles/common.style'
 
-type SharingCodesProps = { total: number }
+type SharingCodesProps = { total: number; hasEllipsis?: boolean }
 
-export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Element => {
+export const SharingCodes: NextPage<SharingCodesProps> = ({ total, hasEllipsis }): JSX.Element => {
   const shareCode = useShareCode()
   const { addPoints } = useUpdatePoints('sharingCodes')
 
@@ -22,7 +22,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total }): JSX.Elemen
     <S.SharingCodes>
       <Title>
         Sharing Codes
-        <Ellipsis section='sharingCodes' />
+        {hasEllipsis && <Ellipsis section='sharingCodes' />}
       </Title>
       {!total && isNaN(total) ? (
         <Loader />

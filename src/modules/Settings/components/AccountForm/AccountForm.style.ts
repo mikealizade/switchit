@@ -28,6 +28,10 @@ export const AccountForm = styled.form`
     gap: 10px;
     width: 100%;
 
+    > span {
+      display: none;
+    }
+
     ${() => mediaQuery.tablet} {
       flex: 0 0 calc(50% - 15px);
       width: auto;

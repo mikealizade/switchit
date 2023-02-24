@@ -34,7 +34,7 @@ export const SwitchingJourney: NextPage<SwitchingJourneyProps> = ({
     <S.SwitchingJourney>
       <Link href='/switching'>
         <TitleLink>
-          Switching Journeys
+          Your Switching Journeys
           <Image src={'/icons/icon_chevron_right.svg'} alt='' width={25} height={25} />
         </TitleLink>
       </Link>

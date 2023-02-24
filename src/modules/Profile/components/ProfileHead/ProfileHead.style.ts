@@ -107,7 +107,7 @@ export const Username = styled.div<{ isProfile?: boolean }>`
 `
 
 export const Location = styled.p`
-  font-size: inherit;
+  font-size: var(--fsBase);
 `
 
 export const Points = styled.p`

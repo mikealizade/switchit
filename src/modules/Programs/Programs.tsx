@@ -82,7 +82,7 @@ const Programs = (): JSX.Element => {
               </Card>
             </S.Column>
             <S.Column flex={1}>
-              <Card>
+              <Card stretch>
                 <ProgramsForm />
               </Card>
             </S.Column>

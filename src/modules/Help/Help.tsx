@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Accordion } from '@components/Accordion/Accordion'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
-import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { Hero } from '@components/Hero/Hero'
@@ -11,20 +9,25 @@ import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs, HelpContainer } from '@components/Tabs/Tabs.style'
 import * as S from '@styles/common.style'
 import { HelpForm } from './HelpForm'
-import { research, general, programs, switching } from './data'
+import { research, general, programs, switching, legal } from './data'
 
-const panels: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode] = [
+const panels: [
+  React.ReactNode,
+  React.ReactNode,
+  React.ReactNode,
+  React.ReactNode,
+  React.ReactNode,
+] = [
+  <Accordion key='accordion' data={general} />,
+  <Accordion key='accordion' data={switching} />,
   <Accordion key='accordion' data={research} />,
   <Accordion key='accordion' data={programs} />,
-  <Accordion key='accordion' data={switching} />,
-  <Accordion key='accordion' data={general} />,
+  <Accordion key='accordion' data={legal} />,
 ]
 
-const tabs: string[] = ['Our Research', 'Programs', 'Switching', 'General']
+const tabs: string[] = ['General', 'Switching', 'Our Research', 'Programs', 'Legal']
 
 const Faqs = (): JSX.Element => {
-  const { back } = useRouter()
-
   return (
     <>
       <Head>
@@ -48,11 +51,6 @@ const Faqs = (): JSX.Element => {
                     </StyledTabs>
                   </S.TabsContainer>
                 </HelpContainer>
-                <S.Buttons align='left'>
-                  <Button type='button' mode='secondary' onClick={() => back()}>
-                    Back
-                  </Button>
-                </S.Buttons>
               </Card>
             </S.Column>
             <S.Column flex={1}>

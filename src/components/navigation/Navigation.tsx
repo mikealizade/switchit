@@ -31,7 +31,7 @@ export const Navigation: NextPage = (): JSX.Element => {
     <S.Nav isNavOpen={isNavOpen}>
       <S.Logo>
         <Image src={logo} alt='SwitchIt logo' width={62} height={33} />
-        <span>Switch It</span>
+        {/* <span>Switch It</span> */}
         <S.CloseMenu onClick={() => dispatch(toggleNav())}>
           <Image src='/icons/icon_close.svg' alt='Close' width={18} height={18} />
         </S.CloseMenu>

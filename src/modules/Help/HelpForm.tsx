@@ -57,6 +57,8 @@ export const HelpForm: NextPage<{ data?: any; disabled?: boolean }> = (): JSX.El
       {isQuestionSent ? (
         <>
           <LargeTitle>Thanks for your question!</LargeTitle>
+
+          <Text>{`We'll`} be in touch within 3 working days.</Text>
           <Buttons align='right'>
             <Button
               type='submit'

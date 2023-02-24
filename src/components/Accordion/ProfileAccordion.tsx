@@ -8,14 +8,14 @@ import { useState } from 'react'
 import * as S from './Accordion.style'
 
 type Award = {
-  count: number
-  type: string
-  icon: string
+  total: number
+  badge: string
+  id: string
 }
 
 const AccordionItem = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
   '&:not(:last-child)': {
     borderBottom: 0,
   },
@@ -48,9 +48,9 @@ export const Accordion = ({ data }: { data: any }) => {
 
   return (
     <S.AccordionContainer>
-      {data.map(({ count, type, icon }: Award, i: number) => (
+      {data.map(({ total, badge, id: icon }: Award, i: number) => (
         <AccordionItem
-          key={`type${i}`}
+          key={`badge${i}`}
           expanded={expanded === `panel${i}`}
           onChange={handleChange(`panel${i}`)}
         >
@@ -58,9 +58,9 @@ export const Accordion = ({ data }: { data: any }) => {
             <Typography
               sx={{ fontSize: '1.6rem', display: 'flex', alignItems: 'center', columnGap: '20px' }}
             >
-              {count} x
+              {total} x
               <Image src={`/icons/icon_${icon}.svg`} alt='' width={60} height={60} />
-              {type}
+              {badge}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>

@@ -17,7 +17,7 @@ export const PointsTotal: NextPage<{ data: PointsTotalProps }> = ({ data = [] })
   return (
     <S.PointsTotal>
       <Title>
-        Switch It Points
+        Switch It Green Points
         <Ellipsis section='points' />
       </Title>
       <S.TotalPoints>
@@ -33,7 +33,7 @@ export const PointsTotal: NextPage<{ data: PointsTotalProps }> = ({ data = [] })
           </S.Item>
         ))}
       </S.PointTypes>
-      <S.ComingSoon>Coming soon: spend your points on planet positive prizes.</S.ComingSoon>
+      <S.ComingSoon>Coming soon: spend points on planet positive prizes.</S.ComingSoon>
     </S.PointsTotal>
   )
 }

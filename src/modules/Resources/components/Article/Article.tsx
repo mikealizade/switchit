@@ -56,6 +56,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
           <Card column rowGap={40}>
             <S.ArticleContent>
               <S.Article>
+                {/* <S.ArticleScrollContainer> */}
                 <Image src={getArticleImageUrl(imageName)} alt='' width={730} height={410} />
                 <ArticleData align='right' small>
                   <Data>
@@ -75,12 +76,13 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                 </ArticleData>
                 <S.PostTitle>{title}</S.PostTitle>
                 <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
+                {/* </S.ArticleScrollContainer> */}
               </S.Article>
               <S.MoreArticles>
                 <S.MoreArticlesHeader>More in Resources</S.MoreArticlesHeader>
                 <S.ArticlesList>
                   {posts
-                    .filter(({ type }) => type === 'app')
+                    .filter(({ id: articleId, type }) => type === 'app' && articleId !== id)
                     .map(({ id, title, imageName }) => {
                       console.log(
                         'getArticleImageUrl(imageName, false, true)',

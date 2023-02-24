@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge, Badges } from '@components/Badges/Badges'
+import { Awards, Award } from '@components/Awards/Awards'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { User } from '@components/User/User'
@@ -29,7 +29,7 @@ export type User = {
   programCode: string
   referralCode: string
   profile: {
-    badges: Badge[]
+    badges: Award[]
     summary: ProfileSummaryProps
     sharingCodes: Array<string>
     switchItPoints: PointsTotalProps
@@ -69,10 +69,10 @@ const Profile = (): JSX.Element => {
             </S.Column>
             <S.Column>
               <Card>
-                <SharingCodes total={sharingCodes.length} />
+                <SharingCodes total={sharingCodes.length} hasEllipsis />
               </Card>
               <Card>
-                <Badges data={badges} />
+                <Awards data={badges} />
               </Card>
               <Card column>
                 <PointsTotal data={switchItPoints} />

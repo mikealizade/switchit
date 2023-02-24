@@ -30,7 +30,13 @@ export const Friends: NextPage = (): JSX.Element => {
     setFriends(filtered)
   }, [value, friends])
 
-  if (!friends.length) return <p>You are not connected with any friends</p>
+  if (!friends.length)
+    return (
+      <p>
+        Invite friends to boost your impact and help us reach our goal of £7 billion divested in
+        2023.
+      </p>
+    )
 
   return (
     <>

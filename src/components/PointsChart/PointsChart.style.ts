@@ -20,20 +20,20 @@ export const Item = styled.li`
     border-radius: 20px;
   }
 
-  &.sharingcodes {
+  &.friendsengaged {
     background-color: var(--dodgerBlue);
   }
 
-  &.resourcesread {
-    background-color: var(--aurora);
-  }
-
-  &.switchingcampaigns {
+  &.greenfinanceknowledge {
     background-color: var(--mustard);
   }
 
-  &.switchingactions {
+  &.switchingcampaigns {
     background-color: var(--vermilion);
+  }
+
+  &.switchingactions {
+    background-color: var(--aurora);
   }
 `
 

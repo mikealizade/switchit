@@ -55,6 +55,10 @@ export const Intro = styled.p`
   font-size: var(--fsSmall7);
   line-height: 1.4;
   color: var(--juniper);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
 
 export const ArticleLink = styled.div`

@@ -6,8 +6,8 @@ import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { Friends } from './Friends'
 
 export const ProfileFriends: NextPage = (): JSX.Element => {
-  const panels: [React.ReactNode, React.ReactNode] = [
-    <S.FriendsFeed key='feed'>Feed content</S.FriendsFeed>,
+  const panels: [React.ReactNode] = [
+    // <S.FriendsFeed key='feed'>Feed content</S.FriendsFeed>,
     <S.FriendsContainer key='friends'>
       <Friends />
     </S.FriendsContainer>,
@@ -16,7 +16,7 @@ export const ProfileFriends: NextPage = (): JSX.Element => {
   return (
     <>
       <StyledTabs>
-        <Tabs tabs={['Friends Feed', 'Friends']} panels={panels}></Tabs>
+        <Tabs tabs={['Friends']} panels={panels}></Tabs>
       </StyledTabs>
     </>
   )

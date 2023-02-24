@@ -28,3 +28,9 @@ export const SummaryItem = styled.li`
     color: initial;
   }
 `
+
+export const SummaryHint = styled.p`
+  margin-top: auto;
+  text-align: center;
+  font-size: var(--fsSmall4);
+`

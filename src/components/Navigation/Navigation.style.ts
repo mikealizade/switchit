@@ -116,12 +116,12 @@ export const UserPoints = styled.div`
   color: var(--grey);
 `
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   display: flex;
   column-gap: 15px;
   align-items: center;
   font-size: var(--fsMedium8);
-  cursor: pointer;
+  margin-left: 20px;
 `
 
 export const CloseMenu = styled.div`

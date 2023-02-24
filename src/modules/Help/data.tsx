@@ -1,21 +1,48 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import * as S from '@styles/common.style'
 
 export const general = [
   {
     text: 'How does Switch It Green Make money?',
-    copy: [
-      'Switch It Green operates as a not-for-profit and the vast majority of our work is funded by small grants and donations.',
-      'Banks can’t pay us to recommend them. We have researched all UK current account offerings and only recommend those banks which score 4/5 or above against our stringent investment policy criteria. You can find out more about our criteria for recommendation here. Some of our recommended providers pay us a small commission for each customer we send their way. This support helps ramp up our work and allows us to educate more people on the power of their money.',
-      'If you would like to support our work, you can donate here.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          Switch It Green operates as a not-for-profit and the vast majority of our work is funded
+          by small grants and donations.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Banks can’t pay us to recommend them. We have researched all UK current account offerings
+          and only recommend those banks which score 4/5 or above against our stringent investment
+          policy criteria. You can find out more about our{' '}
+          <S.AnchorLink href='/help?tab=ourresearch'>criteria for recommendation</S.AnchorLink>{' '}
+          here. Some of our recommended providers pay us a small commission for each customer we
+          send their way. This support helps ramp up our work and allows us to educate more people
+          on the power of their money.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          <S.AnchorLink href='/donate-page'>
+            If you would like to support our work, you can donate here.
+          </S.AnchorLink>{' '}
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'Is Switch It Green a registered charity?',
-    copy: [
-      'While we operate as a not-for-profit, we are a small team and are not yet set up as a registered charity due to a lack of time and resources.',
-      'If you would like to support our work by donating, this, unfortunately, means that your donation is not eligible for tax relief, and we are unable to claim UK Gift Aid.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          While we operate as a not-for-profit, we are a small team and are not yet set up as a
+          registered charity due to a lack of time and resources.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          If you would like to support our work by{' '}
+          <S.AnchorLink href='/donate-page'>donating</S.AnchorLink>, this, unfortunately, means that
+          your donation is not eligible for tax relief, and we are unable to claim UK Gift Aid.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'How can I support your work?',
@@ -28,18 +55,25 @@ export const general = [
           <li>Using our Bank Switching Platform to switch to a green bank</li>
           <li>Completing all of our ready-to-go lobbying steps to maximise your switch</li>
           <li>Following us on social media (@switchit.green)</li>
-          <li>Using your unique sharing code to spread the word to all your contacts</li>
+          <li>
+            Using your <S.AnchorLink href='/programs'>unique sharing code</S.AnchorLink> to spread
+            the word to all your contacts
+          </li>
           <li>
             Every 10 friends switched means over £10 million moved out of fossil fuel support!
           </li>
           <li>Inviting us to run a program at your place of work or study</li>
           <li>
-            Inviting us to run or attend an event by emailing{' '}
+            <S.AnchorLink href='/programs'>Inviting us</S.AnchorLink> to run or attend an event by
+            emailing{' '}
             <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
               hello@switchit.green
             </S.AnchorLink>
           </li>
-          <li>Helping us to keep the lights on and expand our work by making a donation.</li>
+          <li>
+            Helping us to keep the lights on and expand our work by{' '}
+            <S.AnchorLink href='/donate-page'>making a donation.</S.AnchorLink>
+          </li>
           <li>
             Run an organisation? Have a big following on social media? Got a famous friend? Let’s
             link up. Email us at{' '}
@@ -59,11 +93,30 @@ export const general = [
   },
   {
     text: 'Are you hiring?',
-    copy: [
-      'We are always looking for extra hands and brains to join the Switch It Green team.',
-      'Think your skills could help ramp up the campaign? Send an email to hello@switchit.green',
-      'Check out our  LinkedIn to see if we are currently hiring for any paid positions.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          We are always looking for extra hands and brains to join the Switch It Green team.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Think your skills could help ramp up the campaign? Send an email to{' '}
+          <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            hello@switchit.green
+          </S.AnchorLink>
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Check out our{' '}
+          <S.AnchorLink
+            href='https://www.linkedin.com/company/switchit-green'
+            target='_blank'
+            rel='noreferrer'
+          >
+            LinkedIn
+          </S.AnchorLink>{' '}
+          to see if we are currently hiring for any paid positions.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'Can I book Switch It Green for an event?',
@@ -86,11 +139,27 @@ export const general = [
       'Our platform is designed o lobby banks to change their policies, as well as moving money out of fossil fuel support. Our ready-to-go breakup letters are a great way to use your stakeholder power to pressure your old bank to change its policies.',
     ],
   },
+
   {
     text: 'Can I use Switch It Green to switch to a green pension?',
-    copy: [
-      'The future of Switch It Green is a one-stop shop for switching all of your financial providers in the most simple and impactful way possible. In February 2023, we launched with our new research on UK current accounts. Business banking, pensions, and more are already in the works. Follow our social media to be the first to know about new launches.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          The future of Switch It Green is a one-stop shop for switching all of your financial
+          providers in the most simple and impactful way possible. In February 2023, we launched
+          with our new research on UK current accounts. Business banking, pensions, and more are
+          already in the works. Follow our{' '}
+          <S.AnchorLink
+            href='https://www.instagram.com/switchit.green'
+            target='_blank'
+            rel='noreferrer'
+          >
+            social media
+          </S.AnchorLink>{' '}
+          to be the first to know about new launches.{' '}
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'Can I use Switch It Green to switch my business bank account?',
@@ -150,17 +219,33 @@ export const general = [
 export const programs = [
   {
     text: 'What is a Switch It Green program?',
-    copy: [
-      'Our programs were developed to harness the power of switching en masse while delivering tangible climate education and financial literacy to students and employees, and moving £ billions out of fossil fuel support.',
-      'Find out more on our programs page.',
-      '',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          Our programs were developed to harness the power of switching en masse while delivering
+          tangible climate education and financial literacy to students and employees, and moving £
+          billions out of fossil fuel support.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          <S.AnchorLink href='programs'>Find out more on our programs page.</S.AnchorLink>{' '}
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'How do I find out if there is a program at my school, university, or business?',
-    copy: [
-      'If you are unsure if there is an active or pending program at your school, university or business, simply register your interest in our programs and we will let you know if there is anything in the works - if not, we can explore what a program at your place of work or study might look like and get the ball rolling.',
-    ],
+
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          If you are unsure if there is an active or pending program at your school, university or
+          business, simply <S.AnchorLink href='programs'>register your interest</S.AnchorLink> in
+          our programs and we will let you know if there is anything in the works - if not, we can
+          explore what a program at your place of work or study might look like and get the ball
+          rolling.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'Program vs. programme',
@@ -227,18 +312,36 @@ export const switching = [
   },
 
   {
-    text: 'Will switching banks affect my credit score',
-    copy: [
-      'There seem to be a lot of myths flying around about switching banks and credit scores. We get this question a lot so we have created a resource answering it in detail here.',
-      'Long story short, a one-off switch to a green bank should not cause your credit score to take a hit. In fact, as you are (hopefully) choosing a bank for life, making the switch now could actually improve your credit score in the long run.',
-      'If you are currently in an overdraft or thinking about applying for a large loan or mortgage in the next 6 months, check out our resource to ensure you’ve got everything you need to make an informed decision.',
-    ],
+    text: 'Will switching banks affect my credit score?',
+
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          There seem to be a lot of myths flying around about switching banks and credit scores. We
+          get this question a lot so we have created{' '}
+          <S.AnchorLink href='/resources/article/3'>
+            a resource answering it in detail here.
+          </S.AnchorLink>
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Long story short, a one-off switch to a green bank should not cause your credit score to
+          take a hit. In fact, as you are (hopefully) choosing a bank for life, making the switch
+          now could actually improve your credit score in the long run.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          If you are currently in an overdraft or thinking about applying for a large loan or
+          mortgage in the next 6 months,{' '}
+          <S.AnchorLink href='/resources/article/3'> check out our resource</S.AnchorLink> to ensure
+          you’ve got everything you need to make an informed decision.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'Can I consolidate multiple accounts when I make the switch?',
     copy: [
       'It is important to close old, unused accounts when you switch to a green bank; and to switch all of your active accounts over to green accounts (not just your main account).',
-      'By just holding an account with a dirty bank, you are (inadvertently) supporting their continued fossil fuel investments. Find out more here.  ',
+      'By just holding an account with a dirty bank, you are (inadvertently) supporting their continued fossil fuel investments. Find out more here.',
       'The Current Account Switch Service does not enable multiple accounts to be automatically consolidated and closed in one switch.',
       'We recommend that you use our platform to switch your main current account to a green bank and, once the switch is completed, either close or switch your other accounts. You can switch multiple accounts (one at a time) on our platform (and maximise each one).',
       'Check the process for closing an account and transferring funds with your current provider(s) first.',
@@ -285,11 +388,24 @@ export const switching = [
   },
   {
     text: 'Will I find a green bank that fits my needs?',
-    copy: [
-      'You can use the comparison table on your Switching Journey to help find a bank that fits your needs as well as your values.',
-      'We want there to be a green bank for everyone.',
-      'Can’t find the perfect fit? We work with our recommended providers to help them improve their services - so we can persuade more people to Switch It Green. We have drafted ‘Hello Letters’ for each recommended provider, which you can edit and send to your new green bank with recommendations for improvement.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          You can use the comparison table on your{' '}
+          <S.AnchorLink href='/switching' target='_blank' rel='noreferrer'>
+            Switching Journey
+          </S.AnchorLink>{' '}
+          to help find a bank that fits your needs as well as your values.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>We want there to be a green bank for everyone.</S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Can’t find the perfect fit? We work with our recommended providers to help them improve
+          their services - so we can persuade more people to Switch It Green. We have drafted ‘Hello
+          Letters’ for each recommended provider, which you can edit and send to your new green bank
+          with recommendations for improvement.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'What if something goes wrong with my switch?',
@@ -387,16 +503,23 @@ export const switching = [
           to end fossil fuel financing:
         </S.ParagraphCopy>
         <S.BulletList fontsize={18}>
-          <li>Check out our resource on other actions you can take besides switching.</li>
           <li>
-            Get clued up on all things green finance by checking out our additional resources.
+            <S.AnchorLink href='/resources/article/5'>Check out our resource</S.AnchorLink> on other
+            actions you can take besides switching.
           </li>
-          <li> Support our work by making a donation to Switch It Green.</li>
           <li>
-            Want to get more involved? Reach out and let us know how you’d like to help by emailing
-            <a href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            Get clued up on all things green finance by checking out our{' '}
+            <S.AnchorLink href='/resources'>additional resources</S.AnchorLink>.
+          </li>
+          <li>
+            Support our work by <S.AnchorLink href='/donate-page'>making a donation</S.AnchorLink>{' '}
+            to Switch It Green.
+          </li>
+          <li>
+            Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
+            <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
               hello@switchit.green
-            </a>
+            </S.AnchorLink>
           </li>
         </S.BulletList>
       </S.Div>
@@ -414,16 +537,23 @@ export const switching = [
           Here’s some more ways to support the campaign against fossil fuel financing:
         </S.ParagraphCopy>
         <S.BulletList fontsize={18}>
-          <li>Check out our resource on other actions you can take besides switching.</li>
           <li>
-            Get clued up on all things green finance by checking out our additional resources.
+            <S.AnchorLink href='/resources/article/5'>Check out our resource</S.AnchorLink> on other
+            actions you can take besides switching.
           </li>
-          <li>Support our work by making a donation to Switch It Green.</li>
           <li>
-            Want to get more involved? Reach out and let us know how you’d like to help by emailing
-            <a href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            Get clued up on all things green finance by checking out our{' '}
+            <S.AnchorLink href='/resources'>additional resources</S.AnchorLink>.
+          </li>
+          <li>
+            Support our work by <S.AnchorLink href='/donate-page'>making a donation</S.AnchorLink>{' '}
+            to Switch It Green.
+          </li>
+          <li>
+            Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
+            <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
               hello@switchit.green
-            </a>
+            </S.AnchorLink>
           </li>
         </S.BulletList>
       </S.Div>
@@ -460,7 +590,9 @@ export const switching = [
           whether they care about the future of our planet or just future profits.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          Find out more about our research and criteria for recommendation here.
+          <S.AnchorLink href='/help?tab=ourresearch'>
+            Find out more about our research and criteria for recommendation here.
+          </S.AnchorLink>
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           <strong>
@@ -485,8 +617,16 @@ export const switching = [
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           *BUT we are all about transparency and are dedicated to keeping you updated with what our
-          recommended providers are investing in. Follow our socials and check out our resources and
-          blog for more information.
+          recommended providers are investing in.{' '}
+          <S.AnchorLink
+            href='https://www.instagram.com/switchit.green'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Follow our socials
+          </S.AnchorLink>{' '}
+          and <S.AnchorLink href='/resources'>check out our resources</S.AnchorLink> and blog for
+          more information.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           The bottom line is <strong>for now</strong> our research is centred around fossil fuels as
@@ -523,7 +663,7 @@ export const research = [
           our research, which will be regularly updated to ensure its accuracy.
         </S.ParagraphCopy>
         <S.ParagraphCopy> Our research is based on three main criteria:</S.ParagraphCopy>
-        <S.OrderedList fontsize={18}>
+        <S.OrderedList>
           <li>
             How much money is the bank investing in planetary destruction by means of fossil fuels?
           </li>
@@ -839,6 +979,17 @@ export const research = [
             hello@switchit.green
           </S.AnchorLink>
         </S.ParagraphCopy>
+      </S.Div>
+    ),
+  },
+]
+
+export const legal = [
+  {
+    text: 'Legal qs',
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>Copy here</S.ParagraphCopy>
       </S.Div>
     ),
   },

@@ -53,17 +53,17 @@ export const Item = styled.li`
   }
   &:nth-of-type(2) {
     &:before {
-      background-color: var(--aurora);
+      background-color: var(--mustard);
     }
   }
   &:nth-of-type(3) {
     &:before {
-      background-color: var(--mustard);
+      background-color: var(--vermilion);
     }
   }
   &:nth-of-type(4) {
     &:before {
-      background-color: var(--vermilion);
+      background-color: var(--aurora);
     }
   }
 `

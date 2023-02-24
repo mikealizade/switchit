@@ -12,7 +12,7 @@ export const Content = styled.main`
 
 export const ArticleContent = styled.div`
   display: flex;
-  column-gap: 120px;
+  column-gap: 90px;
   justify-content: space-between;
   width: 100%;
   flex-direction: column;
@@ -43,9 +43,9 @@ export const Article = styled.article`
     padding: 30px;
     border-radius: 10px;
     background-color: var(--alabaster);
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    row-gap: 18px;
+    row-gap: 18px; */
   }
 
   figure {
@@ -66,7 +66,7 @@ export const MoreArticles = styled.aside`
   row-gap: 50px;
 
   ${() => mediaQuery.laptop} {
-    min-width: 420px;
+    /* min-width: 420px; */
     padding: 40px;
   }
 `
@@ -114,6 +114,11 @@ export const Date = styled.time`
   font-weight: 100;
   color: var(--juniper);
 `
+
+// export const ArticleScrollContainer = styled.div`
+//   height: 690px;
+//   overflow-y: scroll;
+// `
 
 export const PostTitle = styled.h1`
   font-size: var(--fsLarge3);

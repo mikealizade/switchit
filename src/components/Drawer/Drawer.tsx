@@ -74,7 +74,7 @@ const drawerConfig = {
   },
   points: {
     component: <ProfilePoints />,
-    backLink: 'Switch It Points',
+    backLink: 'Switch It Green Points',
   },
   awardsbadges: {
     component: <ProfileAwardsBadges />,

@@ -338,7 +338,7 @@ export const OrderedList = styled.ol`
 `
 
 export const ParagraphCopy = styled.p<{ bold?: boolean; display?: string }>`
-  display: ${({ display }) => display ?? 'flex'};
+  display: ${({ display }) => display ?? 'inline'};
   flex-direction: column;
   row-gap: 15px;
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
