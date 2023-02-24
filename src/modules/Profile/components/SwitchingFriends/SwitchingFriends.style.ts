@@ -26,7 +26,7 @@ export const Total = styled.span`
   display: inline-flex;
 `
 
-export const FriendsHint = styled.p`
-  margin-top: auto;
-  text-align: center;
-`
+// export const FriendsHint = styled.p`
+//   margin-top: auto;
+//   text-align: center;
+// `

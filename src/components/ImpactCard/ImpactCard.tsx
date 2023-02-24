@@ -54,12 +54,12 @@ export const ImpactCard: NextPage = (): JSX.Element => {
 
   return (
     <>
-      <ImpactCardHeader>
+      <ImpactCardHeader isXXLaptop={isXXLaptop}>
         {isXXLaptop ? (
           <ImpactCardHeaderText>Impact Card</ImpactCardHeaderText>
         ) : (
           <>
-            <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
+            <Image src={'/icons/icon_chevron_left_white.svg'} alt='' width={20} height={20} />
             <BackLink onClick={() => dispatch(toggleImpactCard())}>
               <ImpactCardHeaderText>Impact Card</ImpactCardHeaderText>
             </BackLink>

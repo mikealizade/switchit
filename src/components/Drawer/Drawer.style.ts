@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-const drawerWidth = ({ narrow }: { narrow?: boolean }) => (narrow ? '398px' : '450px')
+const drawerWidth = ({ narrow }: { narrow?: boolean }) => (narrow ? '398px' : '465px')
 
 export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }>`
   background-color: var(--white);
@@ -25,7 +25,7 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
     right: 0;
     top: 0;
     height: 100%;
-    margin: 20px;
+    /* margin: 20px; */
     width: ${drawerWidth};
     max-width: ${drawerWidth};
     min-width: ${drawerWidth};
@@ -46,14 +46,14 @@ export const DrawerHeader = styled.h3`
 `
 
 export const DrawerBackLink = styled.h2`
-  font-size: var(--fsLarge0);
+  font-size: var(--fsBase);
+  color: var(--slate);
   display: flex;
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
   position: relative;
-  justify-content: center;
-  /* flex: 1; */
+  justify-content: flex-start;
 
   &:after {
     content: '';

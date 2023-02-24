@@ -166,12 +166,13 @@ const Switching = (): JSX.Element => {
           <Row key='switchJourneys'>
             <S.NoJourneysTextContainer>
               <S.NoJourneysText>
-                {`It's why you're here!`} Start your first switching journey by clicking on the pink
-                plus sign on the right
+                {`It's why you're here!`} Start your first switching
+                <br />
+                journey by clicking on the pink plus sign on the right
               </S.NoJourneysText>
-              <S.NoJourneysText>
+              {/* <S.NoJourneysText>
                 Have multiple bank accounts? No problem! {`We'll`} switch one at a time
-              </S.NoJourneysText>
+              </S.NoJourneysText> */}
             </S.NoJourneysTextContainer>
           </Row>,
         ]
@@ -196,7 +197,7 @@ const Switching = (): JSX.Element => {
 
       <Content>
         <SwitchingHero type='switching' hasLoaded={!!sub} />
-        <Card stretch={isAddName}>
+        <Card stretch>
           <S.SwitchingColumnContainer>
             {isAddName ? (
               <S.NoJourneysTextContainer>

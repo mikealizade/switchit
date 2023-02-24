@@ -17,7 +17,7 @@ export const JourneyName: FC<{
   return (
     <S.JourneyNameContainer>
       <S.JourneyNameHeader>
-        <S.JourneyNameTitle>{`Let's give this switching journey a name.`}</S.JourneyNameTitle>
+        <S.JourneyNameTitle>{`First, give this switching journey a name.`}</S.JourneyNameTitle>
         <S.JourneyNameSubHeader>
           Get creative or be practical. You may have more than one bank to switch. This way you can
           set each journey apart
@@ -31,7 +31,7 @@ export const JourneyName: FC<{
           onChange={({ target: { value } }) => setValue(value)}
           value={value}
           placeholder='Switching Journey #1'
-          maxLength={30}
+          maxLength={20}
         />
       </S.Label>
       <Buttons>

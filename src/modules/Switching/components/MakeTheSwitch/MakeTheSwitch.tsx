@@ -45,7 +45,7 @@ const logoConfig = {
 }
 
 const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
-  const { push } = useRouter()
+  const { push, back } = useRouter()
   const dispatch = useDispatch()
   const nextStep = useNextStep()
   const { currentJourney, currentJourneyType } = useGetCurrentJourney()
@@ -98,12 +98,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
             </S.TextContent>
             <Buttons>
-              <Button
-                type='button'
-                size='small'
-                mode='secondary'
-                onClick={() => push('/switching/green-banks')}
-              >
+              <Button type='button' size='small' mode='secondary' onClick={() => back()}>
                 Back
               </Button>
               <Button type='button' size='small' mode='primary' onClick={onMakeTheSwitch}>

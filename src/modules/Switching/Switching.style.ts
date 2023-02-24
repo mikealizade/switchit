@@ -8,16 +8,21 @@ export const NoJourneysTextContainer = styled.div`
   place-items: center;
   row-gap: 40px;
   flex: 1;
-  min-height: 300px;
+  /* min-height: 300px; */
   justify-content: center;
 `
 
 export const NoJourneysText = styled.p`
   font-size: var(--fsBase);
   font-weight: bold;
+  text-align: center;
 
   &:first-of-type {
     color: var(--pink);
+  }
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsLarge1);
   }
 `
 
@@ -78,7 +83,7 @@ export const NextStep = styled.div`
 export const Detail = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
+  row-gap: 12px;
   flex: 1.8;
 `
 
@@ -88,13 +93,16 @@ export const DetailName = styled.h3`
 `
 
 export const DetailHeader = styled.h3`
-  font-size: var(--fsSmall5);
+  font-size: var(--fsSmall6);
   color: initial;
+  font-family: 'Konsolev SemiBold';
 `
 
 export const DetailText = styled.p`
   font-weight: bold;
-  padding-left: 10px;
+  margin-bottom: 16px;
+  color: var(--juniper);
+  letter-spacing: 1px;
 `
 
 // TODO  below s/b in common styles

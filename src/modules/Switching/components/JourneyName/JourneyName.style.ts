@@ -11,7 +11,7 @@ export const JourneyNameContainer = styled.div`
   row-gap: 40px;
 
   ${() => mediaQuery.tablet} {
-    width: 40%;
+    width: 60%;
   }
 `
 
@@ -23,11 +23,11 @@ export const JourneyNameHeader = styled.header`
 
 export const JourneyNameTitle = styled.h2`
   font-weight: bold;
-  font-size: var(--fsMedium9);
+  font-size: var(--fsLarge4);
 `
 
 export const JourneyNameSubHeader = styled.p`
-  font-size: var(--fsMedium6);
+  font-size: var(--fsLarge0);
 `
 
 export const Label = styled.label`
@@ -37,12 +37,18 @@ export const Label = styled.label`
   align-items: center;
   flex-wrap: wrap;
   row-gap: 10px;
+  font-size: var(--fsLarge0);
 `
 
 export const JourneyNameInput = styled(PlainInput)`
   width: 100%;
+  padding: 7px 15px;
+
+  &::placeholder {
+    color: var(--gallery);
+  }
 
   ${() => mediaQuery.tablet} {
-    width: 300px;
+    width: 315px;
   }
 `

@@ -51,5 +51,6 @@ export const Tabs = styled.div<{ wide?: boolean }>`
     display: flex;
     flex-direction: column;
     row-gap: 25px;
+    flex: 1;
   }
 `

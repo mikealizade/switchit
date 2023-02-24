@@ -32,8 +32,7 @@ export const AppContent = styled.main<{ hasAside: boolean }>`
 
 export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   display: flex;
-  min-width: 400px;
-  max-width: 400px;
+
   width: 100vw;
   position: fixed;
   top: 0;
@@ -48,6 +47,11 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   transition: all 0.2s ease-in-out;
   overflow: hidden;
   display: flex;
+
+  ${() => mediaQuery.tablet} {
+    min-width: 400px;
+    max-width: 400px;
+  }
 
   ${() => mediaQuery.xlaptop} {
     overflow: hidden;
@@ -70,12 +74,11 @@ export const AsideContent = styled.section`
   background-color: var(--white);
   flex-direction: column;
   flex: 1;
-  padding: 40px 40px 120px;
   row-gap: 40px;
   overflow-y: auto;
 
   ${() => mediaQuery.laptop} {
-    padding: 40px;
+    /* padding: 40px; */
     border-radius: 10px;
   }
 `

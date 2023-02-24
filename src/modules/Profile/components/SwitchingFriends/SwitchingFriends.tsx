@@ -19,8 +19,8 @@ export const SwitchingFriends: NextPage = (): JSX.Element => {
       <S.Friends>
         {!friends.length ? (
           <p>
-            Invite friends to boost your impact and help us reach our goal of £7 billion divested in
-            2023.
+            Share Switch It Green with your friends to connect. Boost your impact and help us reach
+            our goal of £7 billion divested in 2023.
           </p>
         ) : (
           friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (
@@ -37,10 +37,6 @@ export const SwitchingFriends: NextPage = (): JSX.Element => {
           ))
         )}
       </S.Friends>
-      <S.FriendsHint>
-        Share Switch It Green with your friends to connect. Boost your impact and help us reach our
-        goal of £7 billion divested in 2023.
-      </S.FriendsHint>
     </S.SwitchingFriends>
   )
 }

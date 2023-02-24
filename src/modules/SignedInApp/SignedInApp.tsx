@@ -18,6 +18,7 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
   const { isImpactCardOpen } = useSelector((state: RootState) => state.impactCard)
   const hasSwitchDrawer = pathname.includes('/switching')
   const isWideDrawer = pathname === '/profile' || pathname === '/dashboard'
+  const hasDrawer = pathname === '/profile'
 
   console.log('isWideDrawer', isWideDrawer)
 
@@ -29,14 +30,14 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
       <S.AppContent hasAside={hasAside}>
         {showUser && <User isValidating={isValidating} />}
         {children}
+        {hasDrawer && <Drawer narrow={false} />}
       </S.AppContent>
       {hasAside && (
         <S.Aside isImpactCardOpen={isImpactCardOpen}>
           <AsideContent />
-          {/* {hasSwitchDrawer && <Drawer narrow />} */}
         </S.Aside>
       )}
-      <Drawer narrow={!isWideDrawer} />
+      <Drawer narrow />
     </>
   )
 }

@@ -209,6 +209,7 @@ export const Row = styled.div<{ wrap?: boolean }>`
   flex-direction: row;
   gap: 30px;
   flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'initial')};
+  flex: 1;
 `
 
 export const BoldLink = styled.a`

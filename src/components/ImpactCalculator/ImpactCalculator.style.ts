@@ -17,7 +17,6 @@ export const Calculator = styled.div`
   background-color: #fef4fa;
   padding: 30px;
   border-radius: 10px;
-  /* margin-top: auto; */
 
   .react-select {
     width: 100%;
@@ -27,7 +26,6 @@ export const Calculator = styled.div`
 export const QuantifyImpact = styled(Calculator)`
   padding: 40px;
   background-color: #ecf5e3;
-  /* margin-top: auto; */
   place-items: initial;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
@@ -37,19 +35,23 @@ export const QuantifyImpact = styled(Calculator)`
   }
 `
 
-export const ImpactCardHeader = styled.header`
+export const ImpactCardHeader = styled.header<{ isXXLaptop?: boolean }>`
   position: relative;
   display: flex;
   justify-content: center;
+  padding: 33px 40px 34px;
+  color: ${({ isXXLaptop }) => (isXXLaptop ? 'initial' : 'var(--white)')};
+  background-color: ${({ isXXLaptop }) => (isXXLaptop ? 'var(--white)' : 'var(--sushi)')};
 
   ${() => mediaQuery.tablet} {
     justify-content: flex-start;
     font-size: var(--fsBase);
+    padding: 50px 40px 0;
   }
 
   > span {
     position: absolute !important;
-    left: 0;
+    left: 20px;
   }
 `
 
@@ -67,6 +69,12 @@ export const ImpactContent = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 50px;
+  padding: 40px 40px 120px;
+  flex: 1;
+
+  ${() => mediaQuery.tablet} {
+    padding: 40px;
+  }
 `
 
 export const BackLink = styled.div`

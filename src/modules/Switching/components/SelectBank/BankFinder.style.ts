@@ -5,6 +5,7 @@ export const BankFinder = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 50px;
+  flex: 1;
 `
 
 export const BankSelector = styled.div`

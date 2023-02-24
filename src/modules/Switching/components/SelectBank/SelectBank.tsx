@@ -20,7 +20,7 @@ export const SelectBank = (): JSX.Element => {
       <Content>
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
-            <Card column>
+            <Card column stretch>
               <Header>{`First, let's see how your bank stacks up...`}</Header>
               <BankFinder />
             </Card>

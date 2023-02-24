@@ -10,6 +10,7 @@ export const ViewResearch = styled.div<{ compact: boolean }>`
   justify-content: flex-start;
   font-size: var(--fsMedium9);
   border-radius: 10px;
+  margin-top: auto;
 
   ${() => mediaQuery.tablet} {
     background: var(--porcelain) url('/icons/icon_magnify2.svg') no-repeat;

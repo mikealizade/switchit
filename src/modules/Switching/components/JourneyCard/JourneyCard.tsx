@@ -42,7 +42,7 @@ export const JourneyCard: NextPage<JourneyCard> = ({
       </S.Detail>
 
       <S.JourneySection>
-        <S.JourneySectionHeader>Progress</S.JourneySectionHeader>
+        <S.JourneySectionHeader>Open Account</S.JourneySectionHeader>
         <S.JourneySectionContent>
           <CircularProgressBar progress={progress} />
           <S.NextStep>
