@@ -9,6 +9,7 @@ type LetterButtonsProps = {
   onSend: () => void
   onNext: () => void
   isDisabled: boolean
+  isNextDisabled: boolean
 }
 
 export const LetterButtons: NextPage<LetterButtonsProps> = ({
@@ -18,7 +19,10 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   onSend,
   onNext,
   isDisabled,
+  isNextDisabled,
 }) => {
+  console.log('isNextDisabled', isNextDisabled)
+
   return (
     <S.Buttons>
       <S.ButtonsAlign>
@@ -39,7 +43,7 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
         <Button type='button' size='small' onClick={onSend} disabled={isDisabled}>
           Send To {bankName}
         </Button>
-        <Button type='button' size='small' onClick={onNext}>
+        <Button type='button' size='small' onClick={onNext} disabled={!isNextDisabled}>
           Next
         </Button>
       </S.ButtonsAlign>

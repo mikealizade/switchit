@@ -161,12 +161,12 @@ export const MonzoProjectCopy = () => (
       company that powers environmental programmes for businesses.
     </p>
     <p>
-      <strong>Watershed</strong> uses industry-leading GHG protocols to accurately measure
+      <strong>Watershed</strong> uses industry-leading GHG protocols to accurately measure{' '}
       {`Monzo's`} carbon footprint and help them identify opportunities to mitigate their harmful
       output.
     </p>
     <p>
-      You can find out more about
+      You can find out more about{' '}
       <AnchorLink
         href='https://monzo.com/i/protecting-the-environment'
         target='_blank'

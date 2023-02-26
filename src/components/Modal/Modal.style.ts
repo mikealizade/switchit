@@ -33,12 +33,6 @@ export const ModalContent = styled.section`
   row-gap: 30px;
   z-index: 10;
 
-  ${() => mediaQuery.xmobile} {
-    left: 20%;
-    right: 20%;
-    padding: 60px;
-  }
-
   ${() => mediaQuery.laptop} {
     left: 20%;
     right: 20%;
@@ -46,6 +40,7 @@ export const ModalContent = styled.section`
   }
 
   ${() => mediaQuery.xlaptop} {
+    inset: 15%;
     left: 30%;
     right: 30%;
     padding: 60px;

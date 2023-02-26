@@ -45,6 +45,10 @@ export const Tabs = styled.div<{ wide?: boolean }>`
         color: var(--pink);
       }
     }
+
+    ~ div {
+      min-height: 237px;
+    }
   }
 
   .panel {

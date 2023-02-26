@@ -94,7 +94,7 @@ const drawerConfig = {
   },
   calculateImpact: {
     component: <PotentialClimateImpactCopy />,
-    backLink: 'Impact Card View',
+    backLink: 'Back to Impact Card',
   },
   calculateAgeImpact: {
     component: <CalculateAgeImpact />,
@@ -106,7 +106,7 @@ const drawerConfig = {
   },
   research: {
     component: <ResearchCopy />,
-    backLink: 'Select Your Current Bank',
+    backLink: 'Impact Card View',
   },
   disclaimer: {
     component: <DisclaimerCopy />,

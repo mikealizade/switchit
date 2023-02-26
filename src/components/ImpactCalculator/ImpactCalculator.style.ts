@@ -73,7 +73,7 @@ export const ImpactContent = styled.div`
   flex: 1;
 
   ${() => mediaQuery.tablet} {
-    padding: 40px;
+    padding: 20px 40px 40px;
   }
 `
 

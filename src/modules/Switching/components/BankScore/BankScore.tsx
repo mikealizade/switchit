@@ -17,7 +17,7 @@ import {
   Buttons,
   Header,
 } from '@modules/Switching/Switching.style'
-import { Content, ParagraphCopy, BoldLink } from '@styles/common.style'
+import { Content, ParagraphCopy, CopyContainer, BoldLink } from '@styles/common.style'
 import { steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from '../BankScore/BankScore.style'
@@ -89,7 +89,7 @@ export const BankScore = (): JSX.Element => {
       <Content>
         <SwitchingColumnContainer>
           <SwitchingColumn>
-            <Card column padded rowGap={40}>
+            <Card column padded rowGap={40} stretch>
               <Header>
                 The results are in for <strong>{badBank}</strong> and your bank scored ...
               </Header>
@@ -120,7 +120,11 @@ export const BankScore = (): JSX.Element => {
                   </ProgressProvider>
                 </S.BankScoreContainer>
                 <S.BankData>
-                  <ParagraphCopy dangerouslySetInnerHTML={{ __html: summary }} bold />
+                  <CopyContainer
+                    display='flex'
+                    dangerouslySetInnerHTML={{ __html: summary }}
+                    bold
+                  />
                   <BoldLink onClick={onToggleModal(true)}>
                     Why did {badBank} score {score}/5?
                   </BoldLink>
@@ -156,7 +160,11 @@ export const BankScore = (): JSX.Element => {
                     </Buttons>
                   ) : (
                     <Buttons>
-                      <Button type='button' mode='secondary' onClick={() => back()}>
+                      <Button
+                        type='button'
+                        mode='secondary'
+                        onClick={() => push('/switching/select-bank')}
+                      >
                         Back
                       </Button>
                       <Button type='button' onClick={onNext}>
@@ -179,7 +187,7 @@ export const BankScore = (): JSX.Element => {
           onConfirm={onToggleModal(false)}
           onClose={onToggleModal(false)}
         >
-          <ParagraphCopy dangerouslySetInnerHTML={{ __html: info }} />
+          <CopyContainer display='flex' dangerouslySetInnerHTML={{ __html: info }} />
         </Modal>
       )}
     </>

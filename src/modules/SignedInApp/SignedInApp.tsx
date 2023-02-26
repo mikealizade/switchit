@@ -16,28 +16,25 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
   const { pathname } = useRouter()
   const { isMobile } = useMediaQuery()
   const { isImpactCardOpen } = useSelector((state: RootState) => state.impactCard)
-  const hasSwitchDrawer = pathname.includes('/switching')
-  const isWideDrawer = pathname === '/profile' || pathname === '/dashboard'
   const hasDrawer = pathname === '/profile'
-
-  console.log('isWideDrawer', isWideDrawer)
-
   const hasAside = pathname.includes('/switching/')
   const showUser = pathname !== '/settings' || (pathname === '/settings' && isMobile)
 
   return (
     <>
       <S.AppContent hasAside={hasAside}>
-        {showUser && <User isValidating={isValidating} />}
-        {children}
-        {hasDrawer && <Drawer narrow={false} />}
+        <S.AppContentContainer>
+          {showUser && <User isValidating={isValidating} />}
+          {children}
+          {hasDrawer && <Drawer narrow={false} />}
+        </S.AppContentContainer>
+        {hasAside && (
+          <S.Aside isImpactCardOpen={isImpactCardOpen}>
+            <AsideContent />
+          </S.Aside>
+        )}
+        <Drawer narrow />
       </S.AppContent>
-      {hasAside && (
-        <S.Aside isImpactCardOpen={isImpactCardOpen}>
-          <AsideContent />
-        </S.Aside>
-      )}
-      <Drawer narrow />
     </>
   )
 }

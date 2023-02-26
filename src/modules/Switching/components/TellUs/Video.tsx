@@ -42,7 +42,7 @@ export const Video: NextPage = () => {
       <S.Testimonial>
         <S.VideoImage>
           {isUploaded || videoUri ? (
-            <Image src='/icons/icon_radio_checked.svg' alt='' width={83} height={55} />
+            <Image src='/icons/icon_checked.svg' alt='' width={83} height={55} />
           ) : !file?.name ? (
             <Image src='/icons/icon_upload.svg' alt='' width={50} height={37} />
           ) : (

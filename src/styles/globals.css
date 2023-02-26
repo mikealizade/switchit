@@ -204,6 +204,7 @@ fieldset {
 
 .react-select [class$='control'] + [class$='menu'] div [class$='option'] {
   background-color: var(--sand);
+  color: var(--nileBlue);
 }
 
 .react-select [class$='IndicatorsContainer'] {
@@ -230,6 +231,14 @@ fieldset {
 
 [class*='MuiSnackbarContent'] {
   font-size: var(--fsBase);
+}
+
+.MuiAccordionSummary-root [class*='MuiTypography'] {
+  font-family: 'Konsolev SemiBold';
+}
+
+[hidden] {
+  display: none !important;
 }
 
 .success > div > [class*='MuiSnackbarContent'] {

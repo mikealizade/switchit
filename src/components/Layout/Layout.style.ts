@@ -13,9 +13,8 @@ export const AppContainer = styled.div<{ isHome: boolean }>`
   }
 `
 
-export const AppContent = styled.main<{ hasAside: boolean }>`
+export const AppContent = styled.div<{ hasAside: boolean }>`
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
   flex: auto;
   position: relative;
@@ -30,9 +29,15 @@ export const AppContent = styled.main<{ hasAside: boolean }>`
   }
 `
 
+export const AppContentContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+`
+
 export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   display: flex;
-
+  flex: 1;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -46,7 +51,6 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   transform: ${({ isImpactCardOpen }) => (isImpactCardOpen ? 'translateX(0)' : `translateX(90vh)`)};
   transition: all 0.2s ease-in-out;
   overflow: hidden;
-  display: flex;
 
   ${() => mediaQuery.tablet} {
     min-width: 400px;

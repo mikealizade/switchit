@@ -57,6 +57,7 @@ export const ProgressBar: FC<{ step: number; type?: string }> = ({ step, type = 
     ...contentStyle,
     width: `${(step - 1) * 20}%`,
   })
+  console.log('step', step)
 
   useEffect(() => {
     const delay = setTimeout(() => {

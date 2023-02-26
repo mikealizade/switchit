@@ -90,7 +90,6 @@ export const SelectAction = (): JSX.Element => {
             </Card>
           </SwitchingColumn>
         </SwitchingColumnContainer>
-        <ProgressBar step={steps.breakupLetter} />
       </Content>
     </>
   )

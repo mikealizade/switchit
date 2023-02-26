@@ -16,9 +16,14 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useUpdateAwards } from '@hooks/useUpdateAwards'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
+import {
+  WoohooContainer,
+  WoohooHeader,
+  WoohooText,
+} from '@modules/Switching/components/TellUs/TellUs.style'
 import { setSignature } from '@state/generic/genericSlice'
 import { RootState } from '@state/store'
-import { Form, Content, ParagraphCopy } from '@styles/common.style'
+import { Form, Content, CopyContainer, BoldLink } from '@styles/common.style'
 import { actionHeaderSubText, journeyTypes } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
@@ -38,6 +43,29 @@ const months = [
   'December',
 ]
 
+const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
+  const { push } = useRouter()
+
+  return (
+    <WoohooContainer>
+      <WoohooHeader>Congrats on your new green bank account.</WoohooHeader>
+      <WoohooText>Thank you. Verifying your switch supports our work.</WoohooText>
+      <WoohooText>
+        {goodBank === 'starling' && (
+          <p>
+            A donation will be made to our charity partner once we have confirmed your switch with
+            your new provider.
+          </p>
+        )}
+      </WoohooText>
+      <Button type='button' onClick={() => push('/switching/select-action')}>
+        Maximise My Switch
+      </Button>
+      <BoldLink href='/switching/'>Journey Homepage</BoldLink>
+    </WoohooContainer>
+  )
+}
+
 export const ConfirmSwitch: NextPage = () => {
   const { back, push } = useRouter()
   const dispatch = useDispatch()
@@ -48,7 +76,7 @@ export const ConfirmSwitch: NextPage = () => {
   const { addPoints } = useUpdatePoints('actions')
   const date = new Date()
   const getSteps = useStepsByJourneyType()
-  const { currentJourney: { goodBank } = {}, currentJourneyType } = useGetCurrentJourney()
+  const { currentJourney: { goodBank = '' } = {}, currentJourneyType } = useGetCurrentJourney()
   const [hasConfirmed, setConfirmed] = useState(false)
   const steps = getSteps()
   const confirmDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
@@ -73,25 +101,16 @@ export const ConfirmSwitch: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column padded>
-            <ActionHeader
-              header='Sign The Agreement'
-              subHeader={actionHeaderSubText.confirmSwitch}
-            />
+          <Card column padded stretch>
+            {hasConfirmed ? (
+              <CongratsMessage goodBank={goodBank} />
+            ) : (
+              <>
+                <ActionHeader
+                  header='Sign The Agreement'
+                  subHeader={actionHeaderSubText.confirmSwitch}
+                />
 
-            <>
-              {hasConfirmed ? (
-                <ParagraphCopy>
-                  <p>Congrats on your new green bank account.</p>
-                  <p>Thank you. Verifying your switch supports our work.</p>
-                  {goodBank === 'starling' && (
-                    <p>
-                      A donation will be made to our charity partner once we have confirmed your
-                      switch with your new provider.
-                    </p>
-                  )}
-                </ParagraphCopy>
-              ) : (
                 <S.Agreement>
                   I confirm that I have signed up for an account with my chosen provider on their
                   website by providing all the necessary details.
@@ -105,42 +124,42 @@ export const ConfirmSwitch: NextPage = () => {
                     </>
                   )}
                 </S.Agreement>
-              )}
-            </>
 
-            <S.Signature>
-              <Form row>
-                <S.SignatureFieldset>
-                  <S.Label htmlFor='bankName'>
-                    <S.SignatureInput name='signature' onChange={onSign} value={value} />
+                <S.Signature>
+                  <Form>
+                    <S.SignatureFieldset>
+                      <S.Label htmlFor='bankName'>
+                        <S.SignatureInput name='signature' onChange={onSign} value={value} />
 
-                    <span>
-                      <span>Signature</span>
-                      <span>{confirmDate}</span>
-                    </span>
-                  </S.Label>
-                  <S.Date>
-                    <Image src={`/icons/icon_date.svg`} alt='' width={20} height={20} />
-                    <div>{confirmDate}</div>
-                  </S.Date>
-                </S.SignatureFieldset>
-                <Buttons>
-                  <Button type='button' mode='secondary' onClick={() => back()}>
-                    Back
-                  </Button>
-                  {hasConfirmed ? (
-                    <Button type='button' disabled={!value} onClick={onNext}>
-                      Maximise Your Impact
-                    </Button>
-                  ) : (
-                    <Button type='button' disabled={!value} onClick={onConfirm}>
-                      Submit
-                    </Button>
-                  )}
-                  {/* TODO handle isSubmitting */}
-                </Buttons>
-              </Form>
-            </S.Signature>
+                        <span>
+                          <span>Signature</span>
+                          <span>{confirmDate}</span>
+                        </span>
+                      </S.Label>
+                      <S.Date>
+                        <Image src={`/icons/icon_date.svg`} alt='' width={20} height={20} />
+                        <div>{confirmDate}</div>
+                      </S.Date>
+                    </S.SignatureFieldset>
+                    <Buttons>
+                      <Button type='button' mode='secondary' onClick={() => back()}>
+                        Back
+                      </Button>
+                      {hasConfirmed ? (
+                        <Button type='button' disabled={!value} onClick={onNext}>
+                          Maximise Your Impact
+                        </Button>
+                      ) : (
+                        <Button type='button' disabled={!value} onClick={onConfirm}>
+                          Submit
+                        </Button>
+                      )}
+                      {/* TODO handle isSubmitting */}
+                    </Buttons>
+                  </Form>
+                </S.Signature>
+              </>
+            )}
           </Card>
           <ProgressBar step={steps.confirmSwitch} />
         </Content>

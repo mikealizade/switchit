@@ -27,6 +27,8 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
   isSwitchLanding = false,
   isJourneyComplete,
 }): JSX.Element => {
+  console.log('isDefault', isDefault)
+
   const { push } = useRouter()
   const { currentJourney, currentJourneyType } = useGetCurrentJourney() //should this be used?
   const completedSteps = currentJourney?.completedSteps
@@ -62,7 +64,7 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
           const maximisingIndex = i + letter
           const isCompleted = isJourneyComplete || !!completedSteps?.includes(maximisingIndex)
           const isActive = icon === currentAction?.icon
-          const src = `/icons/icon_${icon}${
+          const src = `/icons/icon_action_${icon}${
             isCompleted ? '_complete' : icon === currentIcon || isActive ? '_on' : ''
           }.svg`
 
@@ -79,10 +81,10 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
               <S.LinkContainer onClick={selectAction ? selectAction(i) : selectRoute(i)}>
                 {isCompleted && isDefault ? (
                   <S.Tick>
-                    <Image src={`/icons/icon_radio_checked.svg`} alt='' width={48} height={48} />
+                    <Image src={`/icons/icon_checked.svg`} alt='' width={48} height={48} />
                   </S.Tick>
                 ) : (
-                  <Image src={src} alt={text} width={70} height={70} />
+                  <Image src={src} alt={text} width={44} height={44} />
                 )}
                 {isDefault && (
                   <>

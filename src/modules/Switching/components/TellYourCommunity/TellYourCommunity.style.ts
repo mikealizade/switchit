@@ -2,6 +2,9 @@ import styled from '@emotion/styled'
 
 export const ShareCodeInfo = styled.p`
   font-size: var(--fsMedium8);
+  width: 75%;
+  margin: 0 auto;
+  line-height: 26px;
 `
 
 export const Actions = styled.ul`

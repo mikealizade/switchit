@@ -67,6 +67,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
         )}
       </ImpactCardHeader>
       <ImpactContent>
+        {hasActionCards && <SelectActionCards />}
         {hasBank && <Banks />}
         {hasProgressBar && (
           <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />
@@ -74,7 +75,6 @@ export const ImpactCard: NextPage = (): JSX.Element => {
         <ImpactCalculator hasProgressBar={hasProgressBar} />
         {hasFAQ && <SwitchingFaqs />}
         {hasViewResearch && <ViewResearch compact />}
-        {hasActionCards && <SelectActionCards />}
       </ImpactContent>
     </>
   )

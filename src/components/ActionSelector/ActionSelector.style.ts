@@ -4,7 +4,7 @@ export const ActionSelector = styled.ul<{
   isDefault?: boolean
 }>`
   display: flex;
-  gap: ${({ isDefault }) => (isDefault ? '30px' : '10px')};
+  gap: ${({ isDefault }) => (isDefault ? '20px' : '10px')};
   flex-wrap: wrap;
   justify-content: center;
   align-self: flex-start;
@@ -29,7 +29,7 @@ export const Item = styled.li<{
   flex: 1;
   min-width: ${({ isDefault }) => (isDefault ? '133px' : '88px')};
   max-width: ${({ isDefault }) => (isDefault ? '133px' : '88px')};
-  min-height: ${({ isDefault }) => (isDefault ? '133px' : '88px')};
+  min-height: ${({ isDefault }) => (isDefault ? '185px' : '88px')};
   max-height: ${({ isDefault }) => (isDefault ? 'none' : '88px')};
   transition: all 0.1s linear;
   display: flex;
@@ -40,7 +40,7 @@ export const Item = styled.li<{
   place-items: center;
 
   &:hover {
-    transform: ${({ isDefault }) => (isDefault ? 'scale(1.15)' : 'scale(1.05)')};
+    transform: ${({ isDefault }) => (isDefault ? 'scale(1.1)' : 'scale(1.05)')};
     background-color: ${({ isCompleted }) => (isCompleted ? 'var(--white)' : 'var(--nileBlue)')};
 
     * {
@@ -79,6 +79,8 @@ export const LinkContainer = styled.div`
   justify-content: space-between;
   row-gap: 10px;
   flex: 1;
+  height: 100%;
+  padding-top: 10px;
 `
 
 export const Tick = styled.div`

@@ -12,7 +12,7 @@ export const SelectActionCard: NextPage<{ action: any; isActive: boolean }> = ({
   return (
     <S.SelectActionCard className={isActive ? 'isActive' : ''}>
       <S.HeaderContainer>
-        <Image src={`/icons/icon_${icon}.svg`} alt='' width={70} height={70} />
+        <Image src={`/icons/icon_action_${icon}.svg`} alt='' width={70} height={70} />
         <S.Header>{actionTitle}</S.Header>
       </S.HeaderContainer>
       <S.Text>{actionText}</S.Text>

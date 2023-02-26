@@ -29,15 +29,12 @@ export const BankData = styled.div`
   font-size: var(--fsBase);
 `
 
-// export const BankDataHeader = styled.h2`
-//   font-size: var(--fsMedium6);
-// `
-
 export const BankRating = styled.div`
   font-size: var(--fsMedium9);
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  margin-top: auto;
 `
 
 export const Rating = styled.div`
@@ -45,7 +42,6 @@ export const Rating = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  flex: 4;
 `
 
 export const RatingHeader = styled.div`

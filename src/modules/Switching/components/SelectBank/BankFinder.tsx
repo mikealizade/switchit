@@ -8,7 +8,7 @@ import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 import { useNextStep } from '@hooks/useNextStep'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { setJourneyData } from '@state/switchJourney/switchJourneySlice'
-import { Subheader } from '@styles/common.style'
+import { Subheader, BoldLink } from '@styles/common.style'
 import { journeyTypes, steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from './BankFinder.style'
@@ -17,7 +17,7 @@ type Sort = { label: string }
 
 export const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
-  const { push } = useRouter()
+  const { push, back } = useRouter()
   const nextStep = useNextStep()
   const { data } = useSWR('/api/json/bankdata', fetcher)
   const [banks, setBanks] = useState([])
@@ -53,7 +53,7 @@ export const BankFinder = (): JSX.Element => {
     <S.BankFinder>
       <S.BankSelector>
         <S.BankList>
-          <Subheader>{`I'm currently banking with...`}</Subheader>
+          <Subheader>{`I'm currently banking with`}</Subheader>
           <Select
             name='bankfinder'
             defaultValue={{ value: '', label: 'Select your bank...' }}
@@ -61,18 +61,19 @@ export const BankFinder = (): JSX.Element => {
             onChange={onSelectBank}
           />
         </S.BankList>
-        <Buttons>
-          <Button type='button' mode='secondary' onClick={onNoBankAccountSelect}>
-            I {`don't`} have a bank account yet
-          </Button>
-          <Button type='button' mode='secondary' onClick={() => push('/switching/bank-not-listed')}>
-            My bank {`isn't`} listed
-          </Button>
-          <Button type='button' disabled={!isBankSelected} onClick={onNext}>
-            Next
-          </Button>
-        </Buttons>
+        <BoldLink onClick={onNoBankAccountSelect}>I {`don't`} have a bank account yet</BoldLink>
+        <BoldLink onClick={() => push('/switching/bank-not-listed')}>
+          My bank {`isn't`} listed
+        </BoldLink>
       </S.BankSelector>
+      <Buttons>
+        <Button type='button' mode='secondary' onClick={() => push('/switching')}>
+          Back
+        </Button>
+        <Button type='button' disabled={!isBankSelected} onClick={onNext}>
+          Next
+        </Button>
+      </Buttons>
       <ViewResearch />
     </S.BankFinder>
   )

@@ -61,6 +61,7 @@ export const SignatureInput = styled(PlainInput)`
 
   ${() => mediaQuery.tablet} {
     padding: 30px;
+    width: 280px;
     height: 100px;
   }
 `
@@ -73,8 +74,8 @@ export const Date = styled.div`
     justify-content: space-between;
     column-gap: 20px;
     padding: 10px 35px 10px 15px;
-    border: 1px solid var(--gallery);
-    border-radius: 10px;
+    /* border: 1px solid var(--gallery);
+    border-radius: 10px; */
     align-self: flex-start;
     font-size: initial;
   }

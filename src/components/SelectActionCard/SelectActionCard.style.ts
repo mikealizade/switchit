@@ -3,8 +3,7 @@ import { mediaQuery } from '@utils/functions'
 
 export const SelectActionContainer = styled.div`
   position: relative;
-  min-height: 400px;
-  flex: 1;
+  min-height: 350px;
 `
 
 export const SelectActionCard = styled.aside`
@@ -19,7 +18,7 @@ export const SelectActionCard = styled.aside`
   transition: opacity 0.5s linear;
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
 
   ${() => mediaQuery.tablet} {
     height: 332px;

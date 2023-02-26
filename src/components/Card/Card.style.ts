@@ -20,7 +20,7 @@ export const Card = styled.section<{
 
   ${() => mediaQuery.tablet} {
     flex-direction: ${({ column }) => (column ? 'column' : 'flex')};
-    padding: ${({ padded }) => (padded ? '60px' : '30px')};
+    padding: ${({ padded }) => (padded ? '50px' : '30px')};
     border-radius: 10px;
   }
 `

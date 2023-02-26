@@ -16,15 +16,6 @@ export const Content = styled.main`
   }
 `
 
-export const NarrowContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 75%;
-  margin: 0 auto;
-  row-gap: 30px;
-`
-
 export const ColumnContainer = styled.section`
   display: flex;
   column-gap: 25px;
@@ -204,6 +195,10 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number; width?:
   }
 `
 
+export const NarrowContent = styled(Div)`
+  margin: 0 auto;
+`
+
 export const Row = styled.div<{ wrap?: boolean }>`
   display: flex;
   flex-direction: row;
@@ -335,6 +330,17 @@ export const OrderedList = styled.ol`
     ${() => mediaQuery.tablet} {
       margin-left: -7.5rem;
     }
+  }
+`
+
+export const CopyContainer = styled.div<{ bold?: boolean; display?: string }>`
+  display: ${({ display }) => display ?? 'inline'};
+  flex-direction: column;
+  row-gap: 15px;
+  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
+
+  p {
+    font-size: var(--fsMedium8);
   }
 `
 

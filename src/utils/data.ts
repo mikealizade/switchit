@@ -30,7 +30,7 @@ export const goodBanksConfig = {
 export const actionsConfig = [
   {
     text: `Write your 'breakup' letter`,
-    icon: 'brokenheart',
+    icon: 'breakup',
     type: 'breakup',
     duration: '2',
     pointsEarned: '50',
@@ -40,7 +40,7 @@ export const actionsConfig = [
   },
   {
     text: `Write your 'hello' letter`,
-    icon: 'wave',
+    icon: 'hello',
     type: 'hello',
     duration: '2',
     pointsEarned: '50',
@@ -50,7 +50,7 @@ export const actionsConfig = [
   },
   {
     text: 'Post To Socials',
-    icon: 'socialposts',
+    icon: 'socials',
     type: 'socials',
     duration: '4',
     pointsEarned: '25',
@@ -60,7 +60,7 @@ export const actionsConfig = [
   },
   {
     text: 'Tell Your Community',
-    icon: 'speechbubbles',
+    icon: 'community',
     type: 'tellcommunity',
     duration: '3',
     pointsEarned: '100',

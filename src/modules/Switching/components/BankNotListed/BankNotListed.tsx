@@ -24,7 +24,7 @@ type Sort = { label: string }
 
 export const BankNotListed: NextPage = () => {
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
-  const { push } = useRouter()
+  const { push, back } = useRouter()
   const toast = useToast()
   const [country, setCountry] = useState('')
   const [isConfirmation, setConfirmation] = useState(false)
@@ -57,11 +57,11 @@ export const BankNotListed: NextPage = () => {
     saveNotListedBank({ value, country })
   }
 
-  const resetForm = (): void => {
-    setConfirmation(false)
-    setValue('')
-    setCountry('')
-  }
+  // const resetForm = (): void => {
+  //   setConfirmation(false)
+  //   setValue('')
+  //   setCountry('')
+  // }
 
   return (
     <>
@@ -75,9 +75,9 @@ export const BankNotListed: NextPage = () => {
       <Content>
         <S.SwitchingColumnContainer>
           <S.SwitchingColumn>
-            <Card column padded>
+            <Card column padded stretch>
               <ActionHeader header={header} subHeader={subHeader} />
-              <NarrowContent>
+              <NarrowContent width='50%'>
                 {isConfirmation ? (
                   <>
                     <p>
@@ -119,8 +119,8 @@ export const BankNotListed: NextPage = () => {
                       </label>
                     </fieldset>
                     <S.Buttons>
-                      <Button type='button' mode='secondary' onClick={resetForm}>
-                        Cancel
+                      <Button type='button' mode='secondary' onClick={() => back()}>
+                        Back
                       </Button>
                       <Button type='button' disabled={!value || !country} onClick={onSubmit}>
                         Submit

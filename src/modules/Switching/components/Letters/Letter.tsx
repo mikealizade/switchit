@@ -129,6 +129,12 @@ export const Letter: NextPage<LetterProps> = ({
   }
 
   useEffect(() => {
+    if (isStepCompleted) {
+      toast('Your letter has already been sent', 'success')
+    }
+  }, [])
+
+  useEffect(() => {
     if (letter) {
       text.current = letter
       setLetter(text.current)
@@ -165,6 +171,7 @@ export const Letter: NextPage<LetterProps> = ({
             onSend={onSend}
             onNext={onNext}
             isDisabled={!text.current || isStepCompleted}
+            isNextDisabled={isStepCompleted}
           />
         </S.LetterContainer>
       </Container>

@@ -68,7 +68,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
         <Content>
           <Card column stretch rowGap={50}>
             <ActionHeader
-              header='Choose Your Bank'
+              header='Make The Switch With Switch It Green'
               subHeader={`You've selected ${bank?.fullName}`}
             />
             <div style={{ alignSelf: 'center' }}>
@@ -115,7 +115,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               </Button>
             </Buttons>
           </Card>
-          <ProgressBar step={steps.chooseGreenBank} />
+          <ProgressBar step={steps.makeSwitch} />
         </Content>
       </ErrorBoundary>
     </>

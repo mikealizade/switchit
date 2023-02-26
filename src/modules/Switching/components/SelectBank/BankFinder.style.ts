@@ -10,10 +10,11 @@ export const BankFinder = styled.div`
 
 export const BankSelector = styled.div`
   display: flex;
-  place-items: center;
   flex-direction: column;
-  row-gap: 40px;
+  row-gap: 30px;
   margin-bottom: 100px;
+  width: 75%;
+  margin: 0 auto 50px;
 
   .react-select {
     width: 100%;
@@ -30,13 +31,14 @@ export const BankSelector = styled.div`
 `
 
 export const BankList = styled.div`
-  padding: 20px;
   display: flex;
   align-items: center;
+  place-items: center;
   justify-content: space-between;
-  column-gap: 50px;
+  column-gap: 10px;
   flex-wrap: wrap;
   row-gap: 20px;
+  margin-bottom: 30px;
 `
 
 export const ViewResearch = styled.div`

@@ -14,7 +14,7 @@ import { useShareCode } from '@hooks/useShareCode'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Switching/Switching.style'
-import { Content, ShareButton, TabsContainer } from '@styles/common.style'
+import { Content, Div, ShareButton, TabsContainer } from '@styles/common.style'
 import { actionHeaderSubText } from '@utils/constants'
 import { ShareCodeInfo } from './TellYourCommunity.style'
 import { data } from './data'
@@ -31,17 +31,17 @@ export const TellYourCommunity: NextPage = () => {
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <Accordion key='accordion' data={data} hasCopyIcon />,
-    <>
-      <ShareButton key='share' type='button' onClick={() => shareCode(5, 'add')} bold>
-        Share
-        <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
-      </ShareButton>
+    <Div rowGap={50} key='share'>
       <ShareCodeInfo>
         Effective climate action just entered the chat. Use this code for fast sharing action. A
         unique code just for you means you can watch your impact multiply as more friends make the
         switch.
       </ShareCodeInfo>
-    </>,
+      <ShareButton type='button' onClick={() => shareCode(5, 'add')} size='normal' bold>
+        Share
+        <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
+      </ShareButton>
+    </Div>,
   ]
 
   const onNext = (): void => {
