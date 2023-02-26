@@ -48,11 +48,7 @@ export const Button = styled.button<{ size?: string; bold?: boolean }>`
 
   ${() => mediaQuery.tablet} {
     font-size: ${({ size }) =>
-      size === 'small'
-        ? 'var(--fsSmall4)'
-        : size === 'normal'
-        ? 'var(--fsLarge0)'
-        : 'var(--fsBase)'};
+      size === 'small' ? 'var(--fsSmall4)' : size === 'normal' ? 'inherit' : 'var(--fsBase)'};
   }
 
   &:disabled {
