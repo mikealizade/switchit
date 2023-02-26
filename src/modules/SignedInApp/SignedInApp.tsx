@@ -33,7 +33,7 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
             <AsideContent />
           </S.Aside>
         )}
-        <Drawer narrow />
+        {!hasDrawer && <Drawer narrow />}
       </S.AppContent>
     </>
   )
