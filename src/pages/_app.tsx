@@ -59,8 +59,13 @@ const App = ({ Component, pageProps }: AppProps) => {
             property='og:description'
             content='Switch to a green bank on our Bank Switching Platform'
           />
+          <meta property='og:url' content='https://switchit-weld.vercel.app' />
           <meta
             property='og:image:secure_url'
+            content='https://switchit-weld.vercel.app/switchit_logo.png'
+          />
+          <meta
+            property='og:image:url'
             content='https://switchit-weld.vercel.app/switchit_logo.png'
           />
           <meta property='og:image:type' content='image/png' />
