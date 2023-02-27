@@ -29,7 +29,7 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
           {hasDrawer && <Drawer narrow={false} />}
         </S.AppContentContainer>
         {hasAside && (
-          <S.Aside isImpactCardOpen={isImpactCardOpen}>
+          <S.Aside isImpactCardOpen={isMobile ? isImpactCardOpen : true}>
             <AsideContent />
           </S.Aside>
         )}

@@ -5,7 +5,7 @@ type ImpactCard = {
 }
 
 export const initialNavState: ImpactCard = {
-  isImpactCardOpen: true,
+  isImpactCardOpen: false,
 }
 
 export const impactCard = createSlice({
