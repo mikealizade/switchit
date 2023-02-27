@@ -433,7 +433,7 @@ export const Image = styled.li`
   position: relative;
   max-width: 335px;
 
-  div:nth-of-type(1) {
+  div:nth-of-type(2) {
     opacity: 0;
     transition: opacity 0.2s linear;
 
@@ -447,7 +447,7 @@ export const Image = styled.li`
     }
   }
 
-  div:nth-of-type(2) {
+  div:nth-of-type(1) {
     opacity: 1;
     transition: opacity 0.2s linear;
   }

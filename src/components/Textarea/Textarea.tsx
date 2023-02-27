@@ -42,13 +42,15 @@ export const Textarea: FC<InputProps> = ({
   const errorMessage = errors?.[name]?.message as string
 
   return (
-    <S.Label htmlFor={name} className={cs({ ['error']: hasError })}>
-      {label && label}
-      {required && (
-        <span className='required' aria-hidden='true'>
-          *
-        </span>
-      )}
+    <>
+      <S.Label htmlFor={name} className={cs({ ['error']: hasError })}>
+        {label && label}
+        {required && (
+          <span className='required' aria-hidden='true'>
+            *
+          </span>
+        )}
+      </S.Label>
       <S.Textarea
         name={name}
         {...(register &&
@@ -73,6 +75,6 @@ export const Textarea: FC<InputProps> = ({
           {errorMessage ?? 'This field is required'}
         </p>
       )}
-    </S.Label>
+    </>
   )
 }

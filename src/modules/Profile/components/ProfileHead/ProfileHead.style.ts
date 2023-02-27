@@ -98,11 +98,12 @@ export const ProfileName = styled.h2`
 export const Username = styled.div<{ isProfile?: boolean }>`
   margin: 0;
   font-size: var(--fsBase);
-  color: ${({ isProfile }) => (isProfile ? 'var(--white)' : 'var(--slate)')};
+  color: var(--white);
   text-align: center;
 
   ${() => mediaQuery.tablet} {
     color: var(--slate);
+    /* color: var(--slate); */
   }
 `
 

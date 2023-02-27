@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Div, BulletList, AnchorLink } from '@styles/common.style'
 import { RegisterInterestForm } from './RegisterInterestForm'
@@ -11,6 +12,17 @@ import {
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const Students = (): JSX.Element => {
+  const [isSubmitted, setSubmitted] = useState(false)
+
+  const onSendSuccess = () => {
+    setSubmitted(true)
+
+    // const delay = setTimeout(() => {
+    //   setSubmitted(false)
+    //   clearTimeout(delay)
+    // }, 5000)
+  }
+
   return (
     <>
       <Head>
@@ -128,11 +140,20 @@ const Students = (): JSX.Element => {
             </S.BlockButton>
           </Div>
           <RegisterInterestContainer>
-            <RegisterInterestIntro>
-              <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
-              <p>Fill out the form and {`we'll`} be in touch.</p>
-            </RegisterInterestIntro>
-            <RegisterInterestForm />
+            {isSubmitted ? (
+              <>
+                <RegisterInterestHeader>Thanks for your interest</RegisterInterestHeader>
+                <p>{`We'll`} be in touch soon</p>
+              </>
+            ) : (
+              <>
+                <RegisterInterestIntro>
+                  <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
+                  <p>Fill out the form and {`we'll`} be in touch.</p>
+                </RegisterInterestIntro>
+                <RegisterInterestForm onSendSuccess={onSendSuccess} />
+              </>
+            )}
           </RegisterInterestContainer>
         </S.PageSection>
       </SignedOutLayout>

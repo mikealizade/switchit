@@ -13,9 +13,9 @@ export const RegisterInterestContainer = styled.section`
   border-radius: 10px;
   align-self: center;
   background-color: var(--white);
+  width: 100%;
 
   ${() => mediaQuery.tablet} {
-    flex-direction: row;
     column-gap: 80px;
   }
 `
@@ -34,13 +34,22 @@ export const RegisterInterest = styled.form`
     ~ div:last-child {
       justify-content: flex-end;
     }
-  }
 
-  label {
-    flex: 0 0 calc(50% - 15px);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      ${() => mediaQuery.laptop} {
+        flex: 0 0 calc(50% - 15px);
+      }
+    }
+  }
+`
+
+export const RadioGroupContainer = styled.fieldset`
+  div label {
+    flex: none;
   }
 `
 

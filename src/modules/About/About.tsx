@@ -33,7 +33,7 @@ const profiles = [
   {
     name: 'Mike Alizade',
     role: 'Lead Web Developer',
-    text: '',
+    text: 'A veteran of the web industry for over 20 years, Mike is dedicated to using his technical skills and experience to fight the climate crisis and helped us launch our new Switch It Green website.',
     image: 'img_mike_alizade.jpg',
   },
   {
@@ -126,15 +126,15 @@ const About = (): JSX.Element => {
           <S.TeamImages>
             {profiles.map(({ name, role, text, image }) => (
               <S.Image key={name}>
+                <S.Profile>
+                  <S.Name>{name}</S.Name>
+                  <S.Role>{role}</S.Role>
+                </S.Profile>
                 <S.HoverProfile>
                   <S.Name>{name}</S.Name>
                   <S.Role>{role}</S.Role>
                   <S.Bio>{text}</S.Bio>
                 </S.HoverProfile>
-                <S.Profile>
-                  <S.Name>{name}</S.Name>
-                  <S.Role>{role}</S.Role>
-                </S.Profile>
                 <Image
                   src={`/images/${image}`}
                   alt={`Picture of ${name}`}

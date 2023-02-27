@@ -7,13 +7,14 @@ import { Input } from '@components/Input/Input'
 import { RadioGroup } from '@components/RadioGroup/RadioGroup'
 import { Textarea } from '@components/Textarea/Textarea'
 import { useToast } from '@hooks/useToast'
-import { sendRequest } from '@utils/functions'
+import { sendRequest, formatDate } from '@utils/functions'
 import * as S from './RegisterInterestForm.style'
 
-export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> = ({
-  data,
-  disabled,
-}): JSX.Element => {
+export const RegisterInterestForm: NextPage<{
+  data?: any
+  disabled?: boolean
+  onSendSuccess: any
+}> = ({ data, disabled, onSendSuccess }): JSX.Element => {
   const methods = useForm()
   const toast = useToast()
   const { handleSubmit, reset, watch } = methods
@@ -26,7 +27,7 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
         filter: {},
         payload: {
           $push: {
-            interestedUsers: data,
+            interestedUsers: { ...data, created: formatDate(new Date()) },
           },
         },
         collection: 'usersInterestInSwitchIt',
@@ -34,6 +35,7 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
       }
 
       request(body)
+      onSendSuccess()
     } catch {
       toast('An error has occurred registering your interest.', 'error')
     }
@@ -86,6 +88,8 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
               required={false}
               placeholder='School or University'
             />
+          </fieldset>
+          <S.RadioGroupContainer>
             <RadioGroup
               label='I am'
               name='staffOrStudent'
@@ -94,6 +98,8 @@ export const RegisterInterestForm: NextPage<{ data?: any; disabled?: boolean }> 
               disabled={false}
               row
             />
+          </S.RadioGroupContainer>
+          <fieldset>
             <Textarea name='message' {...methods} label='Message' height={200} />
           </fieldset>
           <FormButtons disabled={!nickname || !email} isSubmitting={false} text='Submit' />
