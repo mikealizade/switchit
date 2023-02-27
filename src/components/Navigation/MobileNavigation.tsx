@@ -16,10 +16,12 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
   const { pathname, push } = useRouter()
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
+  const { isImpactCardOpen } = useSelector((state: RootState) => state.impactCard)
   const [current] = useState('')
   const isActive = (route: string): boolean => pathname === route || pathname.includes(route)
   const totalPoints = useGetTotalPoints()
   const { nickname = '', picture = '' } = useSelector((state: RootState) => state.user)
+  const isMobileNavOpen = isNavOpen || isImpactCardOpen
 
   const onToggleNav = () => {
     dispatch(toggleNav())
@@ -32,7 +34,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
 
   return (
     <>
-      <S.MobileNav>
+      <S.MobileNav isNavOpen={isMobileNavOpen}>
         <S.MobileNavigation>
           {mobileNav.map(({ route, icon, text, width, height }: Nav) => (
             <li key={route}>

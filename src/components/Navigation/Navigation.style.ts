@@ -5,7 +5,7 @@ import { mediaQuery } from '@utils/functions'
 export const Nav = styled.nav<{ isNavOpen: boolean }>`
   min-width: 230px;
   background-color: var(--concrete);
-  border-radius: 16px 0 0 16px;
+  border-radius: 0 16px 16px 0;
   padding: 20px;
   row-gap: 100px;
   display: flex;
@@ -26,6 +26,7 @@ export const Nav = styled.nav<{ isNavOpen: boolean }>`
     transform: translateX(0);
     box-shadow: none;
     overflow-y: none;
+    border-radius: 16px 0 0 16px;
   }
 `
 
@@ -68,7 +69,8 @@ export const Navigation = styled.ul`
   }
 `
 
-export const MobileNav = styled.nav`
+export const MobileNav = styled.nav<{ isNavOpen: boolean }>`
+  display: ${({ isNavOpen }) => (isNavOpen ? 'none' : 'block')};
   position: fixed;
   bottom: 0;
   height: 80px;

@@ -110,7 +110,7 @@ export const TheProblem = styled(PageSection)`
   padding: 40px;
 
   ${() => mediaQuery.tablet} {
-    background-position: left top;
+    background-position: 10% center;
     background-image: url('/images/img_bank_chimneys.png');
   }
 `
@@ -171,6 +171,7 @@ export const TheSolution = styled(PageSection)`
 
   ${() => mediaQuery.laptop} {
     padding: 60px 18% 80px 18%;
+    background: #f5faf0 no-repeat right 20% center;
     background-image: url('/images/img_wallet.png');
   }
 `
@@ -212,14 +213,14 @@ export const TheImpact = styled(PageSection)`
 
   ${() => mediaQuery.tablet} {
     background-image: url('/images/img_globe_windmills.png');
-    background-size: 50%;
-    background-position: right bottom;
+    background-size: 40%;
+    background-position: right bottom 20px;
   }
 
   ${() => mediaQuery.laptop} {
     padding: 60px 18% 80px 18%;
     background-image: url('/images/img_globe_windmills.png');
-    background-position: left center;
+    background-position: 10% center;
     background-size: auto;
 
     height: 650px;
@@ -257,7 +258,7 @@ export const TheImpactText = styled.p`
 export const GetInvolved = styled(PageSection)`
   padding: 60px 40px 175px;
   position: relative;
-  background: #fdecf5 no-repeat right bottom;
+  background: #fdecf5 no-repeat right 10% bottom;
   background-image: url('/images/img_thumbs_up_mobile.png');
 
   ${() => mediaQuery.xmobile} {
@@ -266,7 +267,7 @@ export const GetInvolved = styled(PageSection)`
 
   ${() => mediaQuery.laptop} {
     padding: 60px 18% 80px 18%;
-    background: #f5faf0 no-repeat right bottom;
+    background: #f5faf0 no-repeat right 20% bottom;
     background-image: url('/images/img_thumbs_up.png');
   }
 `

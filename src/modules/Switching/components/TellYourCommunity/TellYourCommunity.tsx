@@ -66,7 +66,7 @@ export const TellYourCommunity: NextPage = () => {
             </TabsContainer>
 
             <S.Buttons align='right'>
-              <Button type='button' size='small' onClick={onNext}>
+              <Button type='button' onClick={onNext}>
                 Next Impact Action
               </Button>
             </S.Buttons>

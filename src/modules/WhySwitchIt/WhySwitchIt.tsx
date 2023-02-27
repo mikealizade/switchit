@@ -24,7 +24,7 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
 
       <SignedOutLayout>
         <S.PageSection rowGap={40}>
-          <S.PageHeader>Why Switch It Green?</S.PageHeader>
+          <S.PageHeader>Why Should I Switch It Green?</S.PageHeader>
           <S.Text>
             Switching to green finance {`isn't`} the sexiest thing you can do for the planet but it
             is one of the most impactful climate actions you can take. Let us walk you through the

@@ -74,7 +74,7 @@ export const PostToSocials: NextPage = () => {
 
             <S.Buttons>
               <SocialMediaLinks />
-              <Button type='button' size='small' onClick={onNext}>
+              <Button type='button' onClick={onNext}>
                 Next Impact Action
               </Button>
             </S.Buttons>
