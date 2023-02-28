@@ -18,3 +18,7 @@ export type Point = {
   type: string
   points: number
 }
+
+export type App = {
+  app?: boolean
+}

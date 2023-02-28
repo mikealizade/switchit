@@ -1,5 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { DisclaimerContent as Disclaimer } from '@modules/Disclaimer/Disclaimer'
+import { PrivacyPolicyContent as PrivacyPolicy } from '@modules/PrivacyPolicy/PrivacyPolicy'
+import { TermsContent as Terms } from '@modules/Terms/Terms'
 import * as S from '@styles/common.style'
 
 export const general = [
@@ -986,11 +989,15 @@ export const research = [
 
 export const legal = [
   {
-    text: 'Legal qs',
-    copy: (
-      <S.Div>
-        <S.ParagraphCopy>Copy here</S.ParagraphCopy>
-      </S.Div>
-    ),
+    text: 'Terms',
+    copy: <Terms app />,
+  },
+  {
+    text: 'Privacy Policy',
+    copy: <PrivacyPolicy app />,
+  },
+  {
+    text: 'Disclaimer',
+    copy: <Disclaimer />,
   },
 ]

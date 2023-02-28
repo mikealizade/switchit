@@ -297,7 +297,7 @@ export const BulletList = styled.ul<{ fontsize?: number }>`
   row-gap: 4px;
 `
 
-export const OrderedList = styled.ol`
+export const OrderedList = styled.ol<{ app?: boolean }>`
   counter-reset: item;
   list-style-position: inside;
 
@@ -320,7 +320,10 @@ export const OrderedList = styled.ol`
     }
   }
 
-  li:before {
+  li:before,
+  ol li:before,
+  ol ol li:before,
+  ol ol ol li:before {
     content: counters(item, '.') ' ';
     counter-increment: item;
     width: 75px;
@@ -328,7 +331,7 @@ export const OrderedList = styled.ol`
     margin-left: 0;
 
     ${() => mediaQuery.tablet} {
-      margin-left: -7.5rem;
+      margin-left: ${({ app }) => (app ? '0' : '-7.5rem')};
     }
   }
 `
