@@ -68,6 +68,10 @@ export const TestimonialImage = styled.div`
   padding: 20px;
 `
 
+export const LabelContainer = styled.div`
+  height: 18px;
+`
+
 export const VideoImage = styled(TestimonialImage)`
   min-height: 50px;
 

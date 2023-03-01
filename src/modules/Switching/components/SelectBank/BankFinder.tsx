@@ -26,7 +26,7 @@ export const BankFinder = (): JSX.Element => {
 
   const onSelectBank = (bank: string): void => {
     selectBank(true)
-    dispatch(setJourneyData({ badBank: bank }))
+    dispatch(setJourneyData({ badBank: bank, journeyType: journeyTypes.readyToSwitch }))
   }
 
   const onNoBankAccountSelect = (): void => {

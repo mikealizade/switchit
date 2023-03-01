@@ -113,6 +113,8 @@ export const Testimonial: NextPage = () => {
     }
   }, [testimonial, text])
 
+  console.log('isStepCompleted', isStepCompleted)
+
   return (
     <>
       <S.Testimonial>
@@ -132,12 +134,14 @@ export const Testimonial: NextPage = () => {
         )}
       </S.Testimonial>
 
-      {!isStepCompleted && (
-        <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>
-          <Checkbox id='canPostPublicly' isActive={canPostPublicly} />
-          Allow us to post publicly
-        </Label>
-      )}
+      <S.LabelContainer>
+        {!isStepCompleted && !hasSentTestimonial && (
+          <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>
+            <Checkbox id='canPostPublicly' isActive={canPostPublicly} />
+            Allow us to post publicly
+          </Label>
+        )}
+      </S.LabelContainer>
 
       <Buttons>
         <Button
