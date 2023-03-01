@@ -4,12 +4,11 @@ export const EditableContent = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  flex: 1;
   background-color: var(--white);
-  min-width: 255px;
-  max-width: 365px;
-  align-self: stretch;
-  flex: 1;
+  /* min-width: 255px;
+  max-width: 365px; */
+  /* align-self: stretch; */
+  /* flex: 1; */
 `
 
 export const Container = styled.div`

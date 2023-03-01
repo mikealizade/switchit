@@ -14,8 +14,10 @@ export const TheProblem: NextPage = (): JSX.Element => {
           fuel industry.
         </S.TheProblemText>
         <S.TextContainer mobileWidth={50} mobileMarginTop={50} marginTop={70}>
-          <S.PinkLink href='/why-switch-it/article/the-problem'>
-            How do banks contribute to climate change?
+          <S.PinkLink>
+            <Link href='/why-switch-it/article/the-problem'>
+              How do banks contribute to climate change?
+            </Link>
           </S.PinkLink>
         </S.TextContainer>
         <BlockButton>

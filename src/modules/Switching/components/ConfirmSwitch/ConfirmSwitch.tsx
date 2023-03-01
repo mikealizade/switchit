@@ -23,7 +23,7 @@ import {
 } from '@modules/Switching/components/TellUs/TellUs.style'
 import { setSignature } from '@state/generic/genericSlice'
 import { RootState } from '@state/store'
-import { Form, Content, CopyContainer, BoldLink } from '@styles/common.style'
+import { Form, Content, BoldLink } from '@styles/common.style'
 import { actionHeaderSubText, journeyTypes } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
@@ -67,7 +67,7 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
 }
 
 export const ConfirmSwitch: NextPage = () => {
-  const { back, push } = useRouter()
+  const { push } = useRouter()
   const dispatch = useDispatch()
   const signature = useSelector((state: RootState) => state.generic.signature)
   const [value, setValue] = useState(signature)
@@ -142,8 +142,12 @@ export const ConfirmSwitch: NextPage = () => {
                       </S.Date>
                     </S.SignatureFieldset>
                     <Buttons>
-                      <Button type='button' mode='secondary' onClick={() => back()}>
-                        Back
+                      <Button
+                        type='button'
+                        mode='secondary'
+                        onClick={() => push(`/switching/make-the-switch/${goodBank}`)}
+                      >
+                        Previous Step
                       </Button>
                       {hasConfirmed ? (
                         <Button type='button' disabled={!value} onClick={onNext}>

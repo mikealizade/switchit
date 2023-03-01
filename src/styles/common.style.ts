@@ -241,6 +241,7 @@ export const CopyIconHover = styled.span`
 export const TabsContainer = styled(Div)`
   width: 100%;
   align-self: center;
+  width: 100% !important;
 `
 
 export const Header = styled.h3`

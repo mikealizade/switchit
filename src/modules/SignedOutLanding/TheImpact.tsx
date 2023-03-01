@@ -18,9 +18,11 @@ export const TheImpact: NextPage = (): JSX.Element => {
           Switch It Green
         </S.TheImpactText>
         <S.TextContainer mobileWidth={60}>
-          <S.PinkLink marginTop={50} href='/why-switch-it/article/the-impact'>
-            Find out how switching through our platform, alongside thousands of others, will help
-            end fossil fuel financing.
+          <S.PinkLink marginTop={50}>
+            <Link href='/why-switch-it/article/the-impact'>
+              Find out how switching through our platform, alongside thousands of others, will help
+              end fossil fuel financing.
+            </Link>
           </S.PinkLink>
         </S.TextContainer>
         <BlockButton>

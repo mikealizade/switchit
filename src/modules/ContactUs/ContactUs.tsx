@@ -61,7 +61,7 @@ export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({
 
   return (
     <SignedOutLayout>
-      <PageSection grey rowGap={60}>
+      <PageSection rowGap={60}>
         {hasSubmitted ? (
           <>
             <PageHeader>Thanks for writing</PageHeader>

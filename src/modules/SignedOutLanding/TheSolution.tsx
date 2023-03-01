@@ -16,7 +16,9 @@ export const TheSolution: NextPage = (): JSX.Element => {
           identified a number of truly green banks you can trust.
         </S.TheSolutionText>
         <S.TextContainer mobileWidth={50} mobileMarginTop={30} marginTop={70}>
-          <S.PinkLink href='/why-switch-it/article/the-solution'>What is a green bank?</S.PinkLink>
+          <S.PinkLink>
+            <Link href='/why-switch-it/article/the-solution'>What is a green bank?</Link>
+          </S.PinkLink>
         </S.TextContainer>
         <BlockButton>
           <Link href='/why-switch-it/article/the-solution'>Learn more here</Link>

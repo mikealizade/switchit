@@ -17,7 +17,7 @@ type Sort = { label: string }
 
 export const BankFinder = (): JSX.Element => {
   const dispatch = useDispatch()
-  const { push, back } = useRouter()
+  const { push } = useRouter()
   const nextStep = useNextStep()
   const { data } = useSWR('/api/json/bankdata', fetcher)
   const [banks, setBanks] = useState([])
@@ -68,10 +68,10 @@ export const BankFinder = (): JSX.Element => {
       </S.BankSelector>
       <Buttons>
         <Button type='button' mode='secondary' onClick={() => push('/switching')}>
-          Back
+          Previous Step
         </Button>
         <Button type='button' disabled={!isBankSelected} onClick={onNext}>
-          Next
+          Next Step
         </Button>
       </Buttons>
       <ViewResearch />

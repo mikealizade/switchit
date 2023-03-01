@@ -143,8 +143,6 @@ const drawerConfig = {
 }
 
 export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
-  console.log('narrow', narrow)
-
   window.scroll(0, 0)
   const { isMobile } = useMediaQuery()
   const dispatch = useDispatch()

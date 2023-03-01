@@ -29,26 +29,28 @@ export const PostToSocials: NextPage = () => {
     <PostsContainer key='twitter'>
       {socialPostsConfig.twitter.map((postsArray, i) => {
         return (
-          <EditableContent
-            key={i}
-            btnText='Post'
-            data={postsArray.join('\n\n')}
-            type='post'
-            meta='twitter'
-          />
+          <li key={i}>
+            <EditableContent
+              btnText='Post'
+              data={postsArray.join('\n\n')}
+              type='post'
+              meta='twitter'
+            />
+          </li>
         )
       })}
     </PostsContainer>,
     <PostsContainer key='instagram'>
       {socialPostsConfig.instagramPosts.map((postsArray, i) => {
         return (
-          <EditableContent
-            key={i}
-            btnText='Post'
-            data={postsArray.join('\n\n')}
-            type='instagramPosts'
-            meta='instagramPosts'
-          />
+          <li key={i}>
+            <EditableContent
+              btnText='Post'
+              data={postsArray.join('\n\n')}
+              type='instagramPosts'
+              meta='instagramPosts'
+            />
+          </li>
         )
       })}
     </PostsContainer>,

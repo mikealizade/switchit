@@ -16,7 +16,7 @@ export const footerNav = [
     route: '/about',
   },
   {
-    text: 'Why Switch It',
+    text: 'Why Switch It?',
     route: '/why-switch-it',
   },
   {
@@ -34,7 +34,7 @@ export const footerSubNav = [
     route: 'privacy-policy',
   },
   {
-    text: 'T&Cs',
+    text: 'Terms & Conditions',
     route: 'terms',
   },
 ]

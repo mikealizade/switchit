@@ -36,7 +36,7 @@ const Students = (): JSX.Element => {
       </Head>
 
       <SignedOutLayout>
-        <S.PageSection grey>
+        <S.PageSection>
           <S.PageHeader>Our Program Offerings</S.PageHeader>
           <S.Text>
             <em>
@@ -63,7 +63,7 @@ const Students = (): JSX.Element => {
             </strong>
           </S.Text>
         </S.PageSection>
-        <S.PageSection grey rowGap={70} position='right 170px bottom'>
+        <S.PageSection rowGap={70} position='right 170px bottom'>
           <S.PageHeader>Why run a Switch It Green Program at your university?</S.PageHeader>
           <Div>
             <S.BoldText>

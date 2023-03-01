@@ -60,33 +60,42 @@ export const LeaveReviews: NextPage = () => {
                   <EditableContent btnText='Copy' data={copy} type='copy' />
 
                   <TileLinks isColumn>
-                    <Item>
-                      <Anchor
-                        href={`https://uk.trustpilot.com/evaluate/${bank?.trustPilot}`}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        <Image src={'/icons/icon_trustpilot.png'} alt='' width={203} height={50} />
-                      </Anchor>
-                    </Item>
-                    <Item>
-                      <Anchor
-                        href={`https://www.google.com/search?q=${bank?.google}`}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        <Image
-                          src={'/icons/icon_google.png'}
-                          alt=''
-                          width={googleSize}
-                          height={googleSize}
-                        />
-                        <S.GoogleCopy>
-                          This will take you to google maps. We suggest leaving a review at your
-                          local branch
-                        </S.GoogleCopy>
-                      </Anchor>
-                    </Item>
+                    {bank?.trustPilot && (
+                      <Item>
+                        <Anchor
+                          href={`https://uk.trustpilot.com/evaluate/${bank?.trustPilot}`}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          <Image
+                            src={'/icons/icon_trustpilot.png'}
+                            alt=''
+                            width={203}
+                            height={50}
+                          />
+                        </Anchor>
+                      </Item>
+                    )}
+                    {bank?.google && (
+                      <Item>
+                        <Anchor
+                          href={`https://www.google.com/search?q=${bank?.google}`}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          <Image
+                            src={'/icons/icon_google.png'}
+                            alt=''
+                            width={googleSize}
+                            height={googleSize}
+                          />
+                          <S.GoogleCopy>
+                            This will take you to google maps. We suggest leaving a review at your
+                            local branch
+                          </S.GoogleCopy>
+                        </Anchor>
+                      </Item>
+                    )}
                   </TileLinks>
                 </S.Container>
 

@@ -174,7 +174,7 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 20px 5%;
-  border-bottom: 1px solid var(--gallery);
+  border-bottom: 1px solid var(--porcelain);
 
   ${() => mediaQuery.laptop} {
     padding: 20px 12%;
@@ -212,9 +212,9 @@ export const PageSection = styled.section<{
   rowGap?: number
   padding?: string
   position?: string
-  grey?: boolean
+  white?: boolean
 }>`
-  background-color: ${({ grey }) => (grey ? 'var(--alabaster)' : 'var(--white)')};
+  background-color: ${({ white }) => (white ? 'var(--white)' : 'var(--concrete)')};
   background-repeat: no-repeat;
   background-position: ${({ position }) => (position ? position : 'right bottom')};
   display: flex;
@@ -280,6 +280,7 @@ export const Content = styled.main`
 `
 
 export const Footer = styled.footer`
+  background-color: var(--white);
   display: flex;
   column-gap: 50px;
   row-gap: 20px;
@@ -399,24 +400,28 @@ export const FooterSubnav = styled.section`
 
 export const Subnav = styled.ul`
   display: flex;
-  column-gap: 35px;
+  column-gap: 10px;
   align-items: center;
 
-  li {
-    position: relative;
-    :after {
-      content: '';
-      position: absolute;
-      right: -18px;
-      top: 2px;
-      height: 10px;
-      width: 1px;
-      background-color: var(--juniper);
-    }
+  @media (min-width: 430px) {
+    column-gap: 35px;
 
-    &:last-of-type {
-      &::after {
-        content: none;
+    li {
+      position: relative;
+      :after {
+        content: '';
+        position: absolute;
+        right: -18px;
+        top: 2px;
+        height: 10px;
+        width: 1px;
+        background-color: var(--juniper);
+      }
+
+      &:last-of-type {
+        &::after {
+          content: none;
+        }
       }
     }
   }

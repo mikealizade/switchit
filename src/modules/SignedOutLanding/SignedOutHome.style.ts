@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 import { mediaQuery } from '@utils/functions'
 import { PageSection } from './SignedOutLanding.style'
 
@@ -148,14 +149,17 @@ export const TheProblemText = styled.p`
   font-weight: normal;
 `
 
-export const PinkLink = styled.a<{ marginTop?: number }>`
+export const PinkLink = styled.div<{ marginTop?: number }>`
   font-size: var(--fsMedium6);
-  color: var(--pink);
   text-decoration: none !important;
   margin-top: ${({ marginTop }) => (marginTop ? `${marginTop}px` : '0')};
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsMedium8);
+  }
+
+  a {
+    color: var(--pink);
   }
 `
 

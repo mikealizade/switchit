@@ -18,7 +18,9 @@ export const GetInvolved: NextPage = (): JSX.Element => {
           <li>Switch alongside thousands of others in a collective push for change</li>
           <li>Maximise the impact of your switch with our ready-to-go lobbying features</li>
         </S.GetInvolvedList>
-        <S.PinkLink href='/why-switch-it/article/get-involved'>How do I switch banks?</S.PinkLink>
+        <S.PinkLink>
+          <Link href='/why-switch-it/article/get-involved'>How do I switch banks?</Link>
+        </S.PinkLink>
         <BlockButton>
           <Link href='/why-switch-it/article/get-involved'>Learn more here</Link>
         </BlockButton>

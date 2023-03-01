@@ -16,7 +16,7 @@ import { actionText } from '@utils/constants'
 import { bankConfig } from './data'
 
 export const GreenBanks = (): JSX.Element => {
-  const { back } = useRouter()
+  const { push } = useRouter()
   const dispatch = useDispatch()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
@@ -79,8 +79,12 @@ export const GreenBanks = (): JSX.Element => {
                 <BanksTable bankData={bankData} />
               </S.Section>
               <S.Buttons align='left'>
-                <Button type='button' mode='secondary' onClick={() => back()}>
-                  Back
+                <Button
+                  type='button'
+                  mode='secondary'
+                  onClick={() => push('/switching/bank-score')}
+                >
+                  Previous Step
                 </Button>
               </S.Buttons>
             </Card>

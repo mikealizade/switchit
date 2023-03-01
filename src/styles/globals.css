@@ -80,7 +80,7 @@
 html {
   font-size: 62.5%;
   background-color: var(--beige);
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 body {

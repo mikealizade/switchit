@@ -1,10 +1,15 @@
 import styled from '@emotion/styled'
 
-export const PostsContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
+export const PostsContainer = styled.ul`
   gap: 15px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+
+  li {
+    display: flex;
+    align-self: stretch;
+    min-height: 520px;
+  }
 `
 
 export const FollowUs = styled.ul`

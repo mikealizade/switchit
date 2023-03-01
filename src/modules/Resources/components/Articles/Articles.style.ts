@@ -9,9 +9,10 @@ export const Articles = styled.div`
 
 export const ArticlesList = styled.ul`
   width: 100%;
-  display: flex;
   gap: 30px;
-  flex-wrap: wrap;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `
 
 export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`
@@ -34,16 +35,11 @@ export const Data = styled.li`
 export const Item = styled.li`
   display: flex;
   flex-direction: column;
-  row-gap: 18px;
+  gap: 18px;
   border-radius: 8px;
   border: 1px solid var(--porcelain);
   padding: 22px;
-  width: 395px;
   justify-content: center;
-
-  ${() => mediaQuery.laptop} {
-    width: 395px;
-  }
 `
 
 export const Title = styled.h3`

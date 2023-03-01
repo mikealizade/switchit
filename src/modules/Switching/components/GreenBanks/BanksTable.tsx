@@ -74,43 +74,38 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
     <>
       {isMobile ? (
         <S.BanksList>
-          {bankData.map(
-            (
-              { route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData,
-              i: number,
-            ) => (
-              <S.BanksListItem key={route}>
-                <S.BankItemHeader>
-                  <Image
-                    src={logo[icon as keyof typeof logo].img.src}
-                    alt={bank}
-                    width={logo[icon as keyof typeof logo].width}
-                    height={logo[icon as keyof typeof logo].height}
-                  />
-                  <S.BankItemName>{bank}</S.BankItemName>
-                  <S.BankItemHeaderDetails>{details}</S.BankItemHeaderDetails>
-                </S.BankItemHeader>
+          {bankData.map(({ route, icon, bank, details, donation, fee, project }: BankData) => (
+            <S.BanksListItem key={route}>
+              <S.BankItemHeader>
+                <Image
+                  src={logo[icon as keyof typeof logo].img.src}
+                  alt={bank}
+                  width={logo[icon as keyof typeof logo].width}
+                  height={logo[icon as keyof typeof logo].height}
+                />
+                <S.BankItemName>{bank}</S.BankItemName>
+                <S.BankItemHeaderDetails>{details}</S.BankItemHeaderDetails>
+              </S.BankItemHeader>
 
-                <S.BankItemDetails>
-                  <S.BankDetailsItem>
-                    <S.DetailHeader>Donation</S.DetailHeader>
-                    {donation}
-                  </S.BankDetailsItem>
-                  <S.BankDetailsItem>
-                    <S.DetailHeader>Monthly Fee</S.DetailHeader>
-                    {fee}
-                  </S.BankDetailsItem>
-                  <S.BankDetailsItem>
-                    <S.DetailHeader>Latest Green Project</S.DetailHeader>
-                    {project}
-                  </S.BankDetailsItem>
-                </S.BankItemDetails>
-                <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
-                  Make The Switch
-                </Button>
-              </S.BanksListItem>
-            ),
-          )}
+              <S.BankItemDetails>
+                <S.BankDetailsItem>
+                  <S.DetailHeader>Donation</S.DetailHeader>
+                  {donation}
+                </S.BankDetailsItem>
+                <S.BankDetailsItem>
+                  <S.DetailHeader>Monthly Fee</S.DetailHeader>
+                  {fee}
+                </S.BankDetailsItem>
+                <S.BankDetailsItem>
+                  <S.DetailHeader>Latest Green Project</S.DetailHeader>
+                  {project}
+                </S.BankDetailsItem>
+              </S.BankItemDetails>
+              <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
+                Make The Switch
+              </Button>
+            </S.BanksListItem>
+          ))}
         </S.BanksList>
       ) : (
         <S.BanksTable>

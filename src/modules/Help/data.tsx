@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { DisclaimerContent as Disclaimer } from '@modules/Disclaimer/Disclaimer'
 import { PrivacyPolicyContent as PrivacyPolicy } from '@modules/PrivacyPolicy/PrivacyPolicy'
 import { TermsContent as Terms } from '@modules/Terms/Terms'

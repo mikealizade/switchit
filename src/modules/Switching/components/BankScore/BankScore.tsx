@@ -165,10 +165,10 @@ export const BankScore = (): JSX.Element => {
                         mode='secondary'
                         onClick={() => push('/switching/select-bank')}
                       >
-                        Back
+                        Previous Step
                       </Button>
                       <Button type='button' onClick={onNext}>
-                        Next
+                        Next Step
                       </Button>
                     </Buttons>
                   )}
