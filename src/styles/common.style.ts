@@ -46,6 +46,29 @@ export const Column = styled.div<{ flex?: number }>`
   }
 `
 
+export const ProfileColumnRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 3;
+  min-width: 400px;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: row;
+    > section {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    flex-direction: column;
+
+    > section {
+      width: 100%;
+    }
+  }
+`
+
 export const Title = styled.h2`
   font-size: var(--fsBase);
   color: var(--slate);

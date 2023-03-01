@@ -211,11 +211,6 @@ fieldset {
   display: none;
 }
 
-.grey-card {
-  border-radius: 10px;
-  background-color: var(--haze);
-}
-
 .orderedbloglist,
 .bloglist {
   list-style-type: disc;

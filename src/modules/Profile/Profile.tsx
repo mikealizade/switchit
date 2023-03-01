@@ -78,14 +78,14 @@ const Profile = (): JSX.Element => {
                 <PointsTotal data={switchItPoints} />
               </Card>
             </S.Column>
-            <S.Column>
+            <S.ProfileColumnRight>
               <Card stretch>
                 <SwitchingFriends />
               </Card>
               <Card>
                 <ClimateImpactReport />
               </Card>
-            </S.Column>
+            </S.ProfileColumnRight>
           </S.ColumnContainer>
         </S.Content>
       </ErrorBoundary>

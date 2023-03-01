@@ -6,23 +6,10 @@ export const ClimateImpactReport = styled.div`
   row-gap: 18px;
   flex: 1;
 
-  /* .grey-card {
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-
-    &:first-of-type {
-      width: 100%;
+  @media (min-width: 1600px) {
+    button {
+      white-space: nowrap;
     }
-
-    &:not(:first-of-type) {
-      flex: 1;
-    }
-  } */
-
-  button {
-    white-space: nowrap;
   }
 `
 
