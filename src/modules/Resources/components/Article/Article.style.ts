@@ -1,15 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const Content = styled.main`
-  background-color: #f2f0ed;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 40px;
-  row-gap: 50px;
-`
-
 export const ArticleContent = styled.div`
   display: flex;
   column-gap: 90px;
@@ -18,7 +9,6 @@ export const ArticleContent = styled.div`
   flex-direction: column;
 
   ${() => mediaQuery.xlaptop} {
-    /* width: 395px; */
     flex-direction: row;
   }
 `
@@ -28,6 +18,10 @@ export const Article = styled.article`
   flex-direction: column;
   flex: 7;
   row-gap: 30px;
+
+  img {
+    width: 100%;
+  }
 
   h2 {
     font-size: var(--fsLarge0);
@@ -43,9 +37,11 @@ export const Article = styled.article`
     padding: 30px;
     border-radius: 10px;
     background-color: var(--alabaster);
-    /* display: flex;
-    flex-direction: column;
-    row-gap: 18px; */
+    margin: 10px;
+
+    ${() => mediaQuery.tablet} {
+      margin: 15px 40px;
+    }
   }
 
   figure {
@@ -66,7 +62,6 @@ export const MoreArticles = styled.aside`
   row-gap: 50px;
 
   ${() => mediaQuery.laptop} {
-    /* min-width: 420px; */
     padding: 40px;
   }
 `

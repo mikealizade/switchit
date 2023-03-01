@@ -40,7 +40,7 @@ const Faqs = (): JSX.Element => {
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <S.Content>
           <Hero type='help' />
-          <S.ColumnContainer>
+          <S.HelpColumnContainer>
             <S.Column flex={3}>
               <Card column padded>
                 <ActionHeader header='FAQs' />
@@ -58,7 +58,7 @@ const Faqs = (): JSX.Element => {
                 <HelpForm />
               </Card>
             </S.Column>
-          </S.ColumnContainer>
+          </S.HelpColumnContainer>
         </S.Content>
       </ErrorBoundary>
     </>

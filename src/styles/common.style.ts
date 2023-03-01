@@ -29,6 +29,24 @@ export const ColumnContainer = styled.section`
   }
 `
 
+export const HelpColumnContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  column-gap: 25px;
+  flex-wrap: wrap;
+  row-gap: 25px;
+  position: relative;
+  flex: 1;
+
+  ${() => mediaQuery.xlaptop} {
+    flex-direction: row;
+  }
+
+  ${() => mediaQuery.xlaptop} {
+    row-gap: inherit;
+  }
+`
+
 export const Column = styled.div<{ flex?: number }>`
   display: flex;
   flex-direction: column;

@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import TabsPanel from '@mui/material/Tabs'
 import { useRouter } from 'next/router'
@@ -62,37 +63,44 @@ export const Tabs: NextPage<TabsProps> = ({
 
   return (
     <S.Tabs>
-      <TabsPanel
-        value={value}
-        onChange={onChange}
-        aria-label='Switching Journeys'
-        centered={centered}
-        className='tabs-menu'
-        variant='scrollable'
+      <Box
+        sx={{
+          flexGrow: 1,
+          maxWidth: { xs: '90vw', sm: '100%' },
+        }}
       >
-        {tabs.map((tab: any, i: number) => {
-          const tabItem = onSelectTab ? tab.tab : tab
+        <TabsPanel
+          value={value}
+          onChange={onChange}
+          aria-label='Switching Journeys'
+          centered={centered}
+          className='tabs-menu'
+          variant='scrollable'
+        >
+          {tabs.map((tab: any, i: number) => {
+            const tabItem = onSelectTab ? tab.tab : tab
 
-          return (
-            <Tab
-              disableRipple
-              key={tabItem}
-              label={tabItem}
-              {...a11yProps(i)}
-              {...(onSelectTab && { onClick: onSelectTab(tab.currentJourneyId) })}
-            />
-          )
-        })}
-      </TabsPanel>
-      <>
-        {panels.map((panel: React.ReactNode, i: number) => {
-          return (
-            <Panel key={`panel-${i}`} value={value} index={i}>
-              {panel}
-            </Panel>
-          )
-        })}
-      </>
+            return (
+              <Tab
+                disableRipple
+                key={tabItem}
+                label={tabItem}
+                {...a11yProps(i)}
+                {...(onSelectTab && { onClick: onSelectTab(tab.currentJourneyId) })}
+              />
+            )
+          })}
+        </TabsPanel>
+        <>
+          {panels.map((panel: React.ReactNode, i: number) => {
+            return (
+              <Panel key={`panel-${i}`} value={value} index={i}>
+                {panel}
+              </Panel>
+            )
+          })}
+        </>
+      </Box>
     </S.Tabs>
   )
 }

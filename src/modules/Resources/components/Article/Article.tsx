@@ -11,6 +11,7 @@ import { useUpdateAwards } from '@hooks/useUpdateAwards'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Resources/components/Article/Article.style'
 import { Post } from '@pages/dashboard'
+import { Content } from '@styles/common.style'
 import { getArticleImageUrl, toDateString } from '@utils/functions'
 import { ArticleData, Data } from '../Articles/Articles.style'
 
@@ -52,7 +53,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
       </Head>
 
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
-        <S.Content>
+        <Content>
           <Card column rowGap={40}>
             <S.ArticleContent>
               <S.Article>
@@ -113,7 +114,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
               </S.MoreArticles>
             </S.ArticleContent>
           </Card>
-        </S.Content>
+        </Content>
       </ErrorBoundary>
     </>
   )

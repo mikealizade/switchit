@@ -1,8 +1,15 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const HelpContainer = styled.div`
   [class*='MuiTypography'] {
     font-family: 'Konsolev SemiBold';
+    padding-right: 15px;
+    font-size: var(--fsBase);
+
+    ${() => mediaQuery.tablet} {
+      font-size: var(--fsMedium8);
+    }
   }
 
   [class*='MuiAccordionDetails'],
