@@ -1,10 +1,9 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
 import { mediaQuery } from '@utils/functions'
 import { PageSection } from './SignedOutLanding.style'
 
 export const MainSection = styled(PageSection)`
-  padding: 138px 40px 155px;
+  padding: 50px 40px 155px;
   position: relative;
   background: var(--concrete) no-repeat right bottom 30px;
   background-image: url('/images/img_pointing_mobile.png');
