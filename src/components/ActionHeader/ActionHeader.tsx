@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { Header } from '@modules/Switching/Switching.style'
 import { Subheader, ParagraphCopy } from '@styles/common.style'
-import { HeaderContainer } from './ActionHeader.style'
+import { HeaderContainer, ActionHeaderLink } from './ActionHeader.style'
 
 type ActionHeader = {
   header: string
@@ -23,10 +23,10 @@ export const ActionHeader: NextPage<ActionHeader> = ({
   const content = isHTML ? (
     <ParagraphCopy dangerouslySetInnerHTML={{ __html: text }} />
   ) : (
-    <p>
+    <ActionHeaderLink>
       {text}
       {component ?? ''}
-    </p>
+    </ActionHeaderLink>
   )
   return (
     <HeaderContainer>

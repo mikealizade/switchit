@@ -6,7 +6,6 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
-import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import {
   SwitchingColumnContainer,
@@ -16,7 +15,7 @@ import {
 import * as S from '@modules/Switching/Switching.style'
 import { setActionCard } from '@state/generic/genericSlice'
 import { Content } from '@styles/common.style'
-import { steps, journeyTypes } from '@utils/constants'
+import { journeyTypes } from '@utils/constants'
 import { actionsConfig } from '@utils/data'
 import { Action } from '@utils/types'
 

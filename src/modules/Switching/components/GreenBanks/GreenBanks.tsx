@@ -6,23 +6,29 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import * as S from '@modules/Switching/Switching.style'
 import { BankFilters } from '@modules/Switching/components/GreenBanks/BankFilters'
 import { BanksTable } from '@modules/Switching/components/GreenBanks/BanksTable'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { Content, TextLink } from '@styles/common.style'
-import { actionText } from '@utils/constants'
+import { actionText, journeyTypes } from '@utils/constants'
 import { bankConfig } from './data'
 
 export const GreenBanks = (): JSX.Element => {
   const { push } = useRouter()
   const dispatch = useDispatch()
+  const { currentJourneyType } = useGetCurrentJourney()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
+  const previousStep =
+    currentJourneyType === journeyTypes.noBankAccount
+      ? '/switching/select-bank'
+      : '/switching/bank-score'
 
   useEffect(() => {
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
@@ -79,11 +85,7 @@ export const GreenBanks = (): JSX.Element => {
                 <BanksTable bankData={bankData} />
               </S.Section>
               <S.Buttons align='left'>
-                <Button
-                  type='button'
-                  mode='secondary'
-                  onClick={() => push('/switching/bank-score')}
-                >
+                <Button type='button' mode='secondary' onClick={() => push(previousStep)}>
                   Previous Step
                 </Button>
               </S.Buttons>

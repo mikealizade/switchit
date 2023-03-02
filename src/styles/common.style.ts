@@ -322,6 +322,10 @@ export const TextLink = styled.span<{ isGrey?: boolean }>`
   text-decoration: underline;
   cursor: pointer;
   color: ${({ isGrey }) => (isGrey ? 'var(--grey)' : 'initial')};
+
+  p span {
+    color: var(--nileBlue);
+  }
 `
 
 export const AnchorLink = styled.a`

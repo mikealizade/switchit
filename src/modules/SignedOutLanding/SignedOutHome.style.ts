@@ -419,19 +419,19 @@ export const SubscribeForm = styled.div`
   height: 45px;
   border: 3px solid var(--pink);
   border-radius: 3px;
-  width: 295px;
+  width: 286px;
   position: relative;
   z-index: 2;
   font-size: var(--fsMedium6);
 
   ${() => mediaQuery.tablet} {
     height: 60px;
-    width: 382px;
+    width: 386px;
   }
 
   &::after {
     content: '';
-    width: 292px;
+    width: 286px;
     height: 39px;
     position: absolute;
     left: 4px;
@@ -442,9 +442,9 @@ export const SubscribeForm = styled.div`
 
     ${() => mediaQuery.tablet} {
       content: '';
-      width: 373px;
+      width: 380px;
       height: 100%;
-      left: 12px;
+      left: 8px;
       top: 8px;
     }
   }
@@ -464,11 +464,11 @@ export const EmailField = styled.input`
   position: relative;
   z-index: 2;
   height: 39px;
-  width: 263px;
+  width: 190px;
 
   ${() => mediaQuery.tablet} {
     height: 54px;
-    width: 240px;
+    width: 244px;
     font-size: var(--fsLarge1);
   }
 
@@ -493,11 +493,13 @@ export const EmailButton = styled.button`
   height: 39px;
   position: relative;
   z-index: 2;
+  width: 90px;
 
   ${() => mediaQuery.tablet} {
     padding: 16px 25px;
     height: 54px;
     font-size: var(--fsLarge1);
+    width: 136px;
   }
 `
 
