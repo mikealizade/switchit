@@ -11,6 +11,7 @@ import { SwitchingHero } from '@components/Hero/SwitchingHero'
 import { Loader } from '@components/Loader/Loader'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import * as S from '@modules/Switching/Switching.style'
 import {
   setAddNewJourney,
@@ -34,6 +35,7 @@ const getJourneys = (
   switchJourneys: Journey[],
   filter: ({ journeyType, completedSteps }: JourneyFilter) => boolean,
   resumeJourney: (route: string) => () => void,
+  addJourneyName: () => void,
   isJourneyComplete: boolean,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
@@ -70,6 +72,7 @@ const getJourneys = (
             completedSteps={completedSteps}
             isJourneyComplete={isJourneyComplete}
             resumeJourney={resumeJourney}
+            addJourneyName={addJourneyName}
           />
         )}
       </>
@@ -80,7 +83,8 @@ const getJourneys = (
 const Switching = (): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
   const dispatch = useDispatch()
-  const { push } = useRouter()
+  const { push, pathname } = useRouter()
+  const { isMobile } = useMediaQuery()
   const [value, setValue] = useState('')
   const [isAddName, setAddName] = useState(false)
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
@@ -124,12 +128,19 @@ const Switching = (): JSX.Element => {
     dispatch(setCurrentJourneyId(id))
   }
 
-  const activeJourneys = getJourneys(switchJourneys, activeJourneysFilter, resumeJourney, false)
+  const activeJourneys = getJourneys(
+    switchJourneys,
+    activeJourneysFilter,
+    resumeJourney,
+    addJourneyName,
+    false,
+  )
 
   const completedJourneys = getJourneys(
     switchJourneys,
     completedJourneysFilter,
     resumeJourney,
+    addJourneyName,
     true,
   )
 
@@ -196,7 +207,9 @@ const Switching = (): JSX.Element => {
       </Head>
 
       <Content>
-        <SwitchingHero type='switching' hasLoaded={!!sub} />
+        {pathname === '/switching' && !isMobile && (
+          <SwitchingHero type='switching' hasLoaded={!!sub} />
+        )}
         <Card stretch>
           <S.SwitchingColumnContainer>
             {isAddName ? (
@@ -213,9 +226,11 @@ const Switching = (): JSX.Element => {
                 <StyledTabs wide>
                   <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
                 </StyledTabs>
-                <S.StartJourney onClick={addJourneyName}>
-                  <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-                </S.StartJourney>
+                {!isMobile && (
+                  <S.NewJourney onClick={addJourneyName}>
+                    <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                  </S.NewJourney>
+                )}
               </>
             )}
           </S.SwitchingColumnContainer>

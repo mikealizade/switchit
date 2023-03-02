@@ -32,7 +32,6 @@ export const LatestJourney: NextPage<SwitchingJourneyProps> = ({
   hasStartedMaximising,
   hasFinishedMaximising,
 }): JSX.Element => {
-  console.log('canMaximise lastestj', canMaximise)
   const { push } = useRouter()
   const actions = actionsConfig.filter(filterActionType(journeyType))
 

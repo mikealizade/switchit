@@ -63,7 +63,7 @@ export const JourneySectionContent = styled.div`
   row-gap: 40px;
 `
 
-export const StartJourney = styled.div`
+export const NewJourney = styled.div`
   display: flex;
   flex-direction: column;
   color: var(--pink);
@@ -71,6 +71,22 @@ export const StartJourney = styled.div`
   cursor: pointer;
   right: 0;
   top: 0;
+`
+
+export const NewJourneyMobile = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 13px 15px;
+  background-color: var(--sushi);
+  border-radius: 10px;
+  color: var(--white);
+  font-weight: bold;
+  width: 350px;
+  font-size: var(--fsLarge2);
+  font-family: 'Konsolev SemiBold';
+  margin: -15px 0 15px;
 `
 
 export const NextStep = styled.div`

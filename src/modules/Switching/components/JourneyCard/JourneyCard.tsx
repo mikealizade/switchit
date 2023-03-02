@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Button } from '@components/Button/Button'
 import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useShuffleImpact } from '@hooks/useShuffleImpact'
 import { JourneyStep } from '@modules/Switching/Switching'
 import * as S from '@modules/Switching/Switching.style'
@@ -17,6 +18,7 @@ type JourneyCard = {
   completedSteps: number[]
   isJourneyComplete: boolean
   resumeJourney: (route: string) => () => void
+  addJourneyName: () => void
 }
 
 export const JourneyCard: NextPage<JourneyCard> = ({
@@ -27,11 +29,16 @@ export const JourneyCard: NextPage<JourneyCard> = ({
   completedSteps,
   isJourneyComplete,
   resumeJourney,
+  addJourneyName,
 }) => {
   const { formattedTotalSum } = useShuffleImpact()
+  const { isMobile } = useMediaQuery()
 
   return (
     <S.JourneyCard isJourneyComplete={isJourneyComplete}>
+      {isMobile && (
+        <S.NewJourneyMobile onClick={addJourneyName}>New Current Account</S.NewJourneyMobile>
+      )}
       <S.Detail>
         <S.DetailHeader>Green Account</S.DetailHeader>
         <S.DetailText>{greenBank?.fullName || '[not yet selected]'}</S.DetailText>
