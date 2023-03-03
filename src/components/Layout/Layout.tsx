@@ -66,8 +66,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
           picture: '',
         }
 
-        console.log('userData', userData)
-
         //mongo errors if trying to overwrite _id
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { _id, ...newUserData } = userData

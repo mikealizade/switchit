@@ -21,8 +21,6 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   isDisabled,
   isNextDisabled,
 }) => {
-  console.log('isNextDisabled', isNextDisabled)
-
   return (
     <S.Buttons>
       <S.ButtonsAlign>

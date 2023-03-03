@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { MobileBackdrop } from '@components/Drawer/Drawer.style'
 import * as S from '@components/Navigation/Navigation.style'
 import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import { toggleNav } from '@state/nav/navSlice'
@@ -32,19 +33,26 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
     push('/api/auth/logout')
   }
 
+  const closeNav = () => {
+    dispatch(toggleNav())
+  }
+
   return (
     <>
+      <MobileBackdrop isVisible={isMobileNavOpen} onClick={closeNav}></MobileBackdrop>
       <S.MobileNav isNavOpen={isMobileNavOpen}>
         <S.MobileNavigation>
           {mobileNav.map(({ route, icon, text, width, height }: Nav) => (
             <li key={route}>
               <Link href={`/${route}`}>
-                <Image
-                  src={`${icon}${isActive(route) ? '_on' : ''}.svg`}
-                  alt={text}
-                  width={width}
-                  height={height}
-                />
+                <a>
+                  <Image
+                    src={`${icon}${isActive(route) ? '_on' : ''}.svg`}
+                    alt={text}
+                    width={width}
+                    height={height}
+                  />
+                </a>
               </Link>
             </li>
           ))}
@@ -53,7 +61,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
 
       <S.MobileSubNav isNavOpen={isNavOpen}>
         <S.Logo>
-          <S.CloseMenu onClick={() => dispatch(toggleNav())}>
+          <S.CloseMenu onClick={closeNav}>
             <Image src='/icons/icon_close.svg' alt='Close' width={18} height={18} />
           </S.CloseMenu>
         </S.Logo>

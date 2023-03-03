@@ -20,14 +20,14 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
   const { pathname } = router
   const { isMobile } = useMediaQuery()
   const { isImpactCardOpen } = useSelector((state: RootState) => state.impactCard)
-  const { isDrawerOpen } = useSelector((state: RootState) => state.drawer)
+  // const { isDrawerOpen } = useSelector((state: RootState) => state.drawer)
   const hasDrawer = pathname === '/profile'
   const hasAside = pathname.includes('/switching/')
   const showUser = pathname !== '/settings' || (pathname === '/settings' && isMobile)
 
   useEffect(() => {
     router.events.on('routeChangeStart', () => {
-      isDrawerOpen && dispatch(toggleDrawer(''))
+      dispatch(toggleDrawer(''))
     })
   }, [])
 

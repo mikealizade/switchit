@@ -13,10 +13,6 @@ export type ProfileSummaryProps = {
 export const ProfileSummary: NextPage<{ data: Partial<ProfileSummaryProps> }> = ({
   data: { proudActions = '', campaigns = '', switchingStatement = '' } = {},
 }): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user)
-
-  console.log('user', user)
-
   const { isNewUser } = useSelector((state: RootState) => state.user)
 
   return (

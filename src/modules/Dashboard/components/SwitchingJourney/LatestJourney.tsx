@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { Fragment } from 'react'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Button } from '@components/Button/Button'
 import { CircularProgressBar } from '@components/CircularProgressBar/CircularProgressBar'
@@ -80,14 +81,14 @@ export const LatestJourney: NextPage<SwitchingJourneyProps> = ({
 
               if (isFirstIncompleteStep) {
                 return (
-                  <>
+                  <Fragment key={route}>
                     {!isComplete && isFirstIncompleteStep && route && (
                       <Button type='button' mode='primary' onClick={() => push(route)} bold>
                         Next Step
                       </Button>
                     )}
                     <span>{text}</span>
-                  </>
+                  </Fragment>
                 )
               }
               return null

@@ -113,8 +113,6 @@ export const Testimonial: NextPage = () => {
     }
   }, [testimonial, text])
 
-  console.log('isStepCompleted', isStepCompleted)
-
   return (
     <>
       <S.Testimonial>

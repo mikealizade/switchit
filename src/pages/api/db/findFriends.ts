@@ -11,8 +11,6 @@ const findFriends = async (req: NextApiRequest, res: NextApiResponse) => {
       .find({ friends: { $in: [id] } }) // TODO add sub to another user and see if this user is returned
       .toArray() //find returns a cursor so cast to array
 
-    console.log('result', result)
-
     res.status(200).json(result)
   } catch (e) {
     console.error(e)

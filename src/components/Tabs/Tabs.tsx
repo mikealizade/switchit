@@ -73,7 +73,7 @@ export const Tabs: NextPage<TabsProps> = ({
           value={value}
           onChange={onChange}
           aria-label='Switching Journeys'
-          centered={centered}
+          // centered={centered}
           className='tabs-menu'
           variant='scrollable'
         >

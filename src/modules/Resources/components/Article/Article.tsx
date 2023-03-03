@@ -69,11 +69,6 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                     {points}
                     pts
                   </Data>
-                  {/* <Data>
-                    <ShareArticle onClick={onShareArticle}>
-                      <Image src={'/icons/icon_airplane_pink.svg'} alt='' width={19} height={16} />
-                    </ShareArticle>
-                  </Data> */}
                 </ArticleData>
                 <S.PostTitle>{title}</S.PostTitle>
                 <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
@@ -85,20 +80,18 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                   {posts
                     .filter(({ id: articleId, type }) => type === 'app' && articleId !== id)
                     .map(({ id, title, imageName }) => {
-                      console.log(
-                        'getArticleImageUrl(imageName, false, true)',
-                        getArticleImageUrl(imageName, false, true),
-                      )
                       return (
                         <S.MoreItem key={id}>
                           <S.ImageContainer>
                             <Link href={`/resources/article/${id}`}>
-                              <Image
-                                src={getArticleImageUrl(imageName, false, true)}
-                                alt={title}
-                                width={82}
-                                height={82}
-                              />
+                              <a>
+                                <Image
+                                  src={getArticleImageUrl(imageName, false, true)}
+                                  alt={title}
+                                  width={82}
+                                  height={82}
+                                />
+                              </a>
                             </Link>
                           </S.ImageContainer>
                           <Link href={`/resources/article/${id}`}>

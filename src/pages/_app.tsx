@@ -9,13 +9,8 @@ import 'normalize.css'
 import '@styles/globals.css'
 
 // PER PAGE
-// desktop
-// mobile
 // error handling
 // loading state ui
-// page reload
-// content
-//
 
 // AUTH0
 // pw page

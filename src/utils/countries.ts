@@ -1080,11 +1080,3 @@ export const countries = [
     label: 'Zimbabwe',
   },
 ]
-
-export const mapCountriesList = () => {
-  const countriesList = countries.map((item: any) => ({
-    value: item.label,
-    label: item.label,
-  }))
-  console.log('countriesList', countriesList)
-}

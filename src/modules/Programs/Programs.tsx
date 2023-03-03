@@ -7,35 +7,6 @@ import { ProgramsForm } from '@modules/Dashboard/components/Programs/ProgramsFor
 import * as S from '@styles/common.style'
 import { Intro, BulletList, ListHeader, ProgramContent, Section } from './Programs.style'
 
-// export const PostToSocials = () => {
-//   const school = 'lse' //from db?
-//   const type = 'twitter' //from db?
-//   const socialTwitter = socialPostsConfig[school as keyof typeof socialPostsConfig]?.[type]
-
-//   return (
-//     <S.ProgramContainer>
-//       <S.Program>
-//         {socialTwitter.map((postsArray, i) => {
-//           console.log('postsArray', postsArray)
-//           return <SocialPost key={i} post={postsArray.join('\n\n')} type='twitter' index={i} />
-//         })}
-//       </S.Program>
-//       <S.Program>
-//         {socialTwitter.map((postsArray, i) => {
-//           console.log('postsArray', postsArray)
-//           return <SocialPost key={i} post={postsArray.join('\n\n')} type='facebook' index={i} />
-//         })}
-//       </S.Program>
-//       <S.Program>
-//         {socialTwitter.map((postsArray, i) => {
-//           console.log('postsArray', postsArray)
-//           return <SocialPost key={i} post={postsArray.join('\n\n')} type='instagram' index={i} />
-//         })}
-//       </S.Program>
-//     </S.ProgramContainer>
-//   )
-// }
-
 const Programs = (): JSX.Element => {
   return (
     <>

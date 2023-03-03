@@ -27,8 +27,6 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
   isSwitchLanding = false,
   isJourneyComplete,
 }): JSX.Element => {
-  console.log('isDefault', isDefault)
-
   const { push } = useRouter()
   const { currentJourney, currentJourneyType } = useGetCurrentJourney() //should this be used?
   const completedSteps = currentJourney?.completedSteps

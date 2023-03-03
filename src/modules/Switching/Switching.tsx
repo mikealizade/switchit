@@ -97,7 +97,6 @@ const Switching = (): JSX.Element => {
     (journeyType === 'readyToSwitch' && completedSteps.length < 11)
   const completedJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
     completedSteps.length === (journeyType === journeyTypes.noBankAccount ? 7 : 11)
-  console.log('switchJourneys', switchJourneys)
   const [firstActiveJourney] = switchJourneys.filter(activeJourneysFilter)
   const { id: defaultJourneyId = '' } = firstActiveJourney ?? {}
 
@@ -107,8 +106,6 @@ const Switching = (): JSX.Element => {
       tab: name,
       currentJourneyId: id,
     }))
-
-  console.log('switchJourneys', switchJourneys)
 
   const addNewJourney = (): void => {
     const id = nanoid()

@@ -76,7 +76,7 @@ export const MobileNav = styled.nav<{ isNavOpen: boolean }>`
   height: 80px;
   width: 100%;
   background-color: var(--white);
-  z-index: 10;
+  z-index: 5;
   padding: 20px;
   box-shadow: 1px -4px 7px var(--pampas);
 `

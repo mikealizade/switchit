@@ -149,11 +149,15 @@ export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element 
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
   const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
 
+  const closeNav = () => {
+    dispatch(toggleDrawer(section))
+  }
+
   return (
     <>
-      <S.MobileBackdrop isDrawerOpen={isDrawerOpen}></S.MobileBackdrop>
+      <S.MobileBackdrop isVisible={isDrawerOpen} onClick={closeNav}></S.MobileBackdrop>
       <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
-        <S.DrawerBackLink onClick={() => dispatch(toggleDrawer(section))}>
+        <S.DrawerBackLink onClick={closeNav}>
           {!isMobile && (
             <>
               <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
