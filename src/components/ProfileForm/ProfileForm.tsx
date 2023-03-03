@@ -103,8 +103,6 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               maxLength={50}
               pattern='alphanumeric'
               message='Please enter a valid name'
-              disabled={false}
-              required={true}
             />
             <Input
               name='username'
@@ -115,8 +113,6 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               maxLength={50}
               pattern='alphanumeric'
               message='Please enter a valid username'
-              disabled={false}
-              required={true}
             />
             <Input
               name='location'
@@ -125,8 +121,6 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
               minLength={1}
               maxLength={50}
-              disabled={false}
-              required={false}
             />
             <Input
               name='switchingStatement'
@@ -135,24 +129,18 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
               minLength={1}
               maxLength={50}
-              disabled={false}
-              required={false}
             />
             <Input
               name='campaigns'
               label='Campaigns I support'
               {...(campaigns && { defaultValue: campaigns })}
               {...methods}
-              disabled={false}
-              required={false}
             />
             <Input
               name='proudActions'
               label={`Climate actions I'm proud of`}
               {...(proudActions && { defaultValue: proudActions })}
               {...methods}
-              disabled={false}
-              required={false}
             />
           </fieldset>
           <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} />{' '}

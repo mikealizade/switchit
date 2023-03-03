@@ -8,16 +8,9 @@ import { store, persistor } from 'src/state/store'
 import 'normalize.css'
 import '@styles/globals.css'
 
-// PER PAGE
-// error handling
-// loading state ui
-
 // AUTH0
 // pw page
 // mobile
-
-// FOR APP
-// db backups
 
 // V2
 // security

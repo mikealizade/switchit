@@ -4,7 +4,7 @@ import { mediaQuery } from '@utils/functions'
 
 export const ProfileHead = styled.header<{ isProfile?: boolean }>`
   display: flex;
-  column-gap: 20px;
+  column-gap: 10px;
   flex-direction: row;
   row-gap: 140px;
   position: relative;
