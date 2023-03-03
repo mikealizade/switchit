@@ -62,8 +62,8 @@ export const HomePageHeader = styled.h1`
 
 export const SpeechBubble = styled.div`
   position: absolute;
-  top: 254px;
-  right: 10px;
+  top: 178px;
+  right: 18px;
   width: 131px;
   height: 104px;
   background: url('/images/img_speech_bubble.png') no-repeat;
