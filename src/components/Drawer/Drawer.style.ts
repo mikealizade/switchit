@@ -10,7 +10,7 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
   gap: 40px;
   border-radius: 20px 20px 0 0;
   width: 100vw;
-  height: 90vh;
+  height: 80vh;
   position: fixed;
   bottom: 0;
   transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateY(0)' : `translateY(90vh)`)};

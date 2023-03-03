@@ -17,7 +17,6 @@ export const Nav = styled.nav<{ isNavOpen: boolean }>`
   top: 0;
   bottom: 0;
   left: 0;
-  box-shadow: ${({ isNavOpen }) => (isNavOpen ? '2px 0px 8px var(--pampas)' : 'none')};
   overflow-y: auto;
 
   ${() => mediaQuery.laptop} {
