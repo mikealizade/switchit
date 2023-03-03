@@ -6,6 +6,7 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { Input } from '@components/Input/Input'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useToast } from '@hooks/useToast'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import * as St from '@modules/Profile/Profile.style'
@@ -15,14 +16,14 @@ import { setUser } from '@state/user/userSlice'
 
 export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
   data,
-  disabled,
 }): JSX.Element => {
   const methods = useForm()
   const dispatch = useDispatch()
   const updateUser = useUpdateUser()
+  const { isMobile } = useMediaQuery()
   const toast = useToast()
   const { handleSubmit, reset } = methods
-  const { user: { sub } = {}, isLoading = false } = useUser()
+  const { isLoading = false } = useUser()
   const user = useSelector((state: RootState) => state.user)
   const {
     nickname = '',
@@ -32,6 +33,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
     profile,
     profile: { summary: { proudActions = '', campaigns = '', switchingStatement = '' } = {} } = {},
   } = user
+  const imageSize = isMobile ? 105 : 156
 
   const onCancel = (): void => {
     reset()
@@ -79,8 +81,8 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
           <Image
             src={picture || '/icons/icon_noprofile.svg'}
             alt={nickname}
-            width={132}
-            height={132}
+            width={imageSize}
+            height={imageSize}
             unoptimized
           />
         </S.Picture>
@@ -99,10 +101,10 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
               minLength={1}
               maxLength={50}
-              pattern='alpha'
+              pattern='alphanumeric'
               message='Please enter a valid name'
-              disabled={disabled}
-              required={false}
+              disabled={false}
+              required={true}
             />
             <Input
               name='username'
@@ -113,8 +115,8 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               maxLength={50}
               pattern='alphanumeric'
               message='Please enter a valid username'
-              disabled={disabled}
-              required={false}
+              disabled={false}
+              required={true}
             />
             <Input
               name='location'
@@ -123,9 +125,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
               minLength={1}
               maxLength={50}
-              pattern='alpha'
-              message='Please enter a valid name'
-              disabled={disabled}
+              disabled={false}
               required={false}
             />
             <Input
