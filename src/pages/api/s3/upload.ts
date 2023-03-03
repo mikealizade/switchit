@@ -30,12 +30,4 @@ const upload = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '8mb', // how big?
-    },
-  },
-}
-
 export default upload

@@ -64,7 +64,7 @@ export const Accordion = ({ data }: { data: any }) => {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography sx={{ fontSize: '1.5rem' }}>10/05/2023 - LSE University</Typography>
+            <Typography sx={{ fontSize: '1.5rem' }}></Typography>
           </AccordionDetails>
         </AccordionItem>
       ))}

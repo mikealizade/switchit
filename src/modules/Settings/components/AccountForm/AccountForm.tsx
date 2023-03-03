@@ -66,10 +66,8 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boole
               {...methods}
               minLength={1}
               maxLength={50}
-              // pattern='alpha'
               message='Please enter a valid name'
               disabled={disabled}
-              required
             />
             <Input
               name='username'

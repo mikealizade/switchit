@@ -4,6 +4,7 @@ import { useRef, useEffect, useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
+import { useToast } from '@hooks/useToast'
 import { updateUser } from '@state/user/userSlice'
 import { sendRequest } from '@utils/functions'
 
@@ -11,11 +12,19 @@ export const FileUploader = () => {
   const { user: { sub } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const dispatch = useDispatch()
+  const toast = useToast()
   const fileInput = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<any>(null)
 
   const handleClick = () => {
     fileInput.current!.click()
+  }
+
+  const validateFileSize = () => {
+    const maxfilesize = 100_000 // 100KB
+    const filesize = file?.size
+
+    return filesize > maxfilesize
   }
 
   const uploadFile = useCallback(async () => {
@@ -58,6 +67,11 @@ export const FileUploader = () => {
   }, [file, sub, dispatch, request])
 
   useEffect(() => {
+    if (validateFileSize()) {
+      toast('The maximum file size is 100KB', 'error')
+      return
+    }
+
     if (file) {
       const uploadedFileDetail = async () => await uploadFile()
       uploadedFileDetail()
