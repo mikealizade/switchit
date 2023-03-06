@@ -25,7 +25,7 @@ export const SummaryItem = styled.li`
   }
 
   p {
-    color: initial;
+    color: var(--nileBlue);
   }
 `
 

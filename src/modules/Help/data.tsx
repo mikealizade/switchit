@@ -58,7 +58,7 @@ export const general = [
           <li>Completing all of our ready-to-go lobbying steps to maximise your switch</li>
           <li>Following us on social media (@switchit.green)</li>
           <li>
-            Using your <S.AnchorLink href='/programs'>unique sharing code</S.AnchorLink> to spread
+            Using your <S.AnchorLink href='/profile'>unique sharing code</S.AnchorLink> to spread
             the word to all your contacts
           </li>
           <li>
@@ -394,10 +394,8 @@ export const switching = [
       <S.Div>
         <S.ParagraphCopy>
           You can use the comparison table on your{' '}
-          <S.AnchorLink href='/switching' target='_blank' rel='noreferrer'>
-            Switching Journey
-          </S.AnchorLink>{' '}
-          to help find a bank that fits your needs as well as your values.
+          <S.AnchorLink href='/switching'>Switching Journey</S.AnchorLink> to help find a bank that
+          fits your needs as well as your values.
         </S.ParagraphCopy>
         <S.ParagraphCopy>We want there to be a green bank for everyone.</S.ParagraphCopy>
         <S.ParagraphCopy>
@@ -633,7 +631,7 @@ export const switching = [
         <S.ParagraphCopy>
           The bottom line is <strong>for now</strong> our research is centred around fossil fuels as
           we want to keep it as straightforward as possible (plus it’s a pretty good indicator of a
-          bank’s general ethics). However, as an organisation **we** care, and want to spread
+          bank’s general ethics). However, as an organisation <em>we</em> care, and want to spread
           awareness, about all types of dirty and unethical investments - so, what our tool doesn’t
           cover, our content, website, and mouths will.
         </S.ParagraphCopy>
@@ -988,7 +986,7 @@ export const research = [
 
 export const legal = [
   {
-    text: 'Terms',
+    text: 'Terms & Conditions',
     copy: <Terms app />,
   },
   {

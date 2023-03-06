@@ -97,7 +97,7 @@ export const SpeechBubbleText = styled.div`
     font-size: var(--fsLarge5);
     line-height: 32px;
     width: 230px;
-    top: 42px;
+    top: 52px;
     left: 30px;
   }
 `
@@ -159,6 +159,7 @@ export const PinkLink = styled.div<{ marginTop?: number }>`
 
   a {
     color: var(--pink);
+    text-decoration: none;
   }
 `
 
@@ -396,7 +397,7 @@ export const WhySwitchItText = styled.p`
 `
 
 export const Subscribe = styled(PageSection)`
-  background: var(--alabaster) no-repeat right 10% bottom;
+  background: var(--concrete) no-repeat right 10% bottom;
   background-image: url('/images/img_subscribe_mobile.png');
   padding: 40px;
   row-gap: 30px;

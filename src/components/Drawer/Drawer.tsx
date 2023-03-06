@@ -94,7 +94,7 @@ const drawerConfig = {
   },
   calculateImpact: {
     component: <PotentialClimateImpactCopy />,
-    backLink: 'Back to Impact Card',
+    backLink: 'Impact Card View',
   },
   calculateAgeImpact: {
     component: <CalculateAgeImpact />,

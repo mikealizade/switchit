@@ -38,7 +38,6 @@ export const AwardData = styled.div`
 `
 
 export const Total = styled.span`
-  color: initial;
   font-family: 'Konsolev SemiBold';
   font-size: var(--fsSmall5);
 `

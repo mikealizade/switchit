@@ -1,9 +1,9 @@
 import { MongoClient } from 'mongodb'
 
-type Opts = {
-  useNewUrlParser: boolean
-  useUnifiedTopology: boolean
-}
+// type Opts = {
+//   useNewUrlParser: boolean
+//   useUnifiedTopology: boolean
+// }
 
 const { MONGO_URI = '', MONGO_DB = '' } = process.env
 
@@ -12,6 +12,7 @@ const { MONGO_URI = '', MONGO_DB = '' } = process.env
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
+
 let cached = global.mongo
 
 if (!cached) {
@@ -25,7 +26,7 @@ export async function connectToDatabase() {
   }
 
   if (!cached.promise) {
-    const opts: Opts = {
+    const opts: any = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }

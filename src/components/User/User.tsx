@@ -56,19 +56,21 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
                 <Image src={'/icons/icon_star_green.svg'} alt='' width={45} height={45} />
               </S.Score>
             )}
-            {picture && (
-              <>
-                <S.SignedInUser>
-                  <Image src={picture} alt={nickname} width={30} height={30} unoptimized />
-                  <p>
-                    <Link href='/profile'>{nickname}</Link>
-                  </p>
-                </S.SignedInUser>
-                {/* <S.Notifications>
+            <S.SignedInUser>
+              <Image
+                src={picture || '/icons/icon_noprofile.svg'}
+                alt={nickname}
+                width={30}
+                height={30}
+                unoptimized
+              />
+              <p>
+                <Link href='/profile'>{nickname}</Link>
+              </p>
+            </S.SignedInUser>
+            {/* <S.Notifications>
         <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />
       </S.Notifications> */}
-              </>
-            )}
           </S.UserDetails>
         </>
       ) : (

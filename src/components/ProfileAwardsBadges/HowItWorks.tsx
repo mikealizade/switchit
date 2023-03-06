@@ -45,7 +45,7 @@ export const HowItWorks = () => {
         Check out our resources and earn badges for each one you read.
       </p>
       <S.StartLink>
-        <Link href='/resources'>Visit the blog</Link>
+        <Link href='/resources'>Visit our Resources page</Link>
         <Image src={'/icons/icon_chevron_right.svg'} alt='' width={10} height={10} />
       </S.StartLink>
 

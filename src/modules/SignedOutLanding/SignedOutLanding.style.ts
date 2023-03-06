@@ -220,20 +220,27 @@ export const PageSection = styled.section<{
   display: flex;
   flex-direction: column;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
-  /* font-size: var(--fsLarge1); */
   font-size: var(--fsMedium8);
-  padding: 138px 40px 40px;
+  padding: 70px 40px 40px;
 
   a {
     text-decoration: underline;
   }
 
   ${() => mediaQuery.xmobile} {
-    padding: ${({ padding }) => (padding ? padding : '80px 12%')};
+    padding: ${({ padding }) => (padding ? padding : '40px 12%')};
   }
 
   ${() => mediaQuery.tablet} {
-    padding: ${({ padding }) => (padding ? padding : '80px 18%')};
+    padding: ${({ padding }) => (padding ? padding : '40px 18%')};
+
+    &:first-of-type {
+      padding-top: 80px;
+    }
+
+    &:last-of-type {
+      padding-bottom: 80px;
+    }
   }
 `
 
@@ -400,10 +407,12 @@ export const FooterSubnav = styled.section`
 
 export const Subnav = styled.ul`
   display: flex;
-  column-gap: 10px;
+  flex-direction: column;
+  row-gap: 10px;
   align-items: center;
 
   @media (min-width: 430px) {
+    flex-direction: row;
     column-gap: 35px;
 
     li {
@@ -438,9 +447,10 @@ export const Image = styled.li`
   position: relative;
   max-width: 335px;
 
-  div:nth-of-type(2) {
+  div:nth-of-type(1) {
     opacity: 0;
     transition: opacity 0.2s linear;
+    z-index: 2;
 
     &:hover {
       opacity: 0.9;
@@ -452,9 +462,10 @@ export const Image = styled.li`
     }
   }
 
-  div:nth-of-type(1) {
+  div:nth-of-type(2) {
     opacity: 1;
     transition: opacity 0.2s linear;
+    z-index: 1;
   }
 `
 
@@ -503,12 +514,26 @@ export const Donorbox = styled.div`
   justify-content: flex-start;
 `
 
-export const ArticlesList = styled.ul`
+export const ContentContainer = styled.div<{
+  rowGap?: number
+}>`
+  max-width: 945px;
   display: flex;
+  flex-direction: column;
+  align-self: center;
+  row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
+`
+
+export const ArticlesList = styled.ul`
+  width: 100%;
   gap: 60px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 50px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  ${() => mediaQuery.xxlaptop} {
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  }
 `
 
 export const Item = styled.li`

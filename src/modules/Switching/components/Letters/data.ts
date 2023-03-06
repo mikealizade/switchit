@@ -241,7 +241,7 @@ export const getDefaultHelloLetterText = (
     <div>
       <br />
     </div>
-    <div>Your sincerely</div>
+    <div>Yours sincerely</div>
     <div>
       <br />
     </div>
@@ -281,7 +281,7 @@ export const getDefaultBreakupLetterText = (
     <div>
       <br />
     </div>
-    <div>Your sincerely</div>
+    <div>Yours sincerely</div>
     <div>
       <br />
     </div>

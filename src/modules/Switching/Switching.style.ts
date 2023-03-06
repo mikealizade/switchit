@@ -110,7 +110,6 @@ export const DetailName = styled.h3`
 
 export const DetailHeader = styled.h3`
   font-size: var(--fsSmall6);
-  color: initial;
   font-family: 'Konsolev SemiBold';
 `
 

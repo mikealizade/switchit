@@ -10,7 +10,6 @@ export const Articles = styled.div`
 export const ArticlesList = styled.ul`
   width: 100%;
   gap: 30px;
-  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `
