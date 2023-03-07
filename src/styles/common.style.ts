@@ -190,7 +190,7 @@ export const Checkbox = styled.span<{ isActive?: boolean }>`
 
 export const TileLinks = styled.ul<{ isColumn?: boolean }>`
   display: flex;
-  flex-direction: ${({ isColumn }) => (isColumn ? 'column' : 'flex')};
+  flex-direction: ${({ isColumn }) => (isColumn ? 'column' : 'row')};
   column-gap: 50px;
   justify-content: flex-start;
   flex-wrap: wrap;

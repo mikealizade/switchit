@@ -33,4 +33,10 @@ export const AccountForm = styled.form`
       width: auto;
     }
   }
+
+  .radios {
+    label {
+      flex: initial;
+    }
+  }
 `

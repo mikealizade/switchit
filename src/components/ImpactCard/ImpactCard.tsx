@@ -1,44 +1,22 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-// import { useDispatch } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Banks } from '@components/ImpactCalculator/Banks'
 import { ImpactCalculator } from '@components/ImpactCalculator/ImpactCalculator'
-import {
-  ImpactCardHeader,
-  ImpactCardHeaderText,
-  ImpactContent,
-  BackLink,
-} from '@components/ImpactCalculator/ImpactCalculator.style'
+import { ImpactCardHeader, ImpactCardHeaderText, ImpactContent, BackLink } from '@components/ImpactCalculator/ImpactCalculator.style'
 import { SelectActionCards } from '@components/SelectActionCard/SelectActionCard'
 import { SwitchingFaqs } from '@components/SwitchingFaqs/SwitchingFaqs'
 import { ViewResearch } from '@components/ViewResearch/ViewResearch'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useMediaQuery } from '@hooks/useMediaQuery'
-// import { toggleImpactCard } from '@state/impactCard/impactCardSlice'
 import { toggleImpactCard } from '@state/impactCard/impactCardSlice'
-import { Div } from '@styles/common.style'
 import { actionsConfig } from '@utils/data'
 import { filterActionType } from '@utils/functions'
 
-const bankPages = [
-  'select-bank',
-  'bank-not-listed',
-  'bank-score',
-  'green-banks',
-  'make-the-switch',
-  'confirm-switch',
-]
-const maximisePages = [
-  'breakup-letter',
-  'hello-letter',
-  'post-to-socials',
-  'tell-your-community',
-  'leave-reviews',
-  'tell-us',
-]
+const bankPages = ['select-bank', 'bank-not-listed', 'bank-score', 'green-banks', 'make-the-switch', 'confirm-switch']
+const maximisePages = ['breakup-letter', 'hello-letter', 'post-to-socials', 'tell-your-community', 'leave-reviews', 'tell-us']
 
 export const ImpactCard: NextPage = (): JSX.Element => {
   const { pathname } = useRouter()
@@ -69,9 +47,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
       <ImpactContent>
         {hasActionCards && <SelectActionCards />}
         {hasBank && <Banks />}
-        {hasProgressBar && (
-          <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />
-        )}
+        {hasProgressBar && <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />}
         <ImpactCalculator hasProgressBar={hasProgressBar} />
         {hasFAQ && <SwitchingFaqs />}
         {hasViewResearch && <ViewResearch compact />}

@@ -53,14 +53,16 @@ const contentStyle = (bar: Bar) => {
 export const ProgressBar: FC<{ step: number; type?: string }> = ({ step, type = 'journey' }) => {
   const bar = barConfig[type as keyof typeof barConfig]
   const stepPercentage = type === 'journey' ? 20 : 16.66
+  const isImpact = type === 'impact'
   const [style, setStyle] = useState<Record<string, string>>({
     ...contentStyle,
-    width: `${(step - 1) * 20}%`,
+    width: isImpact ? `${step}%` : `${(step - 1) * 20}%`,
   })
+  const width = isImpact ? `${step}%` : `${step * stepPercentage}%`
 
   useEffect(() => {
     const delay = setTimeout(() => {
-      setStyle({ ...contentStyle(bar), width: `${step * stepPercentage}%`, transition: '1s' })
+      setStyle({ ...contentStyle(bar), width, transition: '1s' })
     }, 800)
 
     return () => {
@@ -70,7 +72,7 @@ export const ProgressBar: FC<{ step: number; type?: string }> = ({ step, type = 
 
   return (
     <S.ProgressBarContainer>
-      {type === 'impact' && <S.Header>Impact Bar</S.Header>}
+      {isImpact && <S.Header>Impact Bar</S.Header>}
       <div style={containerStyle(bar)}>
         <div style={{ ...style }}></div>
       </div>

@@ -66,8 +66,10 @@ const Students = (): JSX.Element => {
                 </strong>
               </S.Text>
             </Div>
-            {/* </S.PageSection>
-        <S.PageSection rowGap={70} position='right 170px bottom'> */}
+          </S.ContentContainer>
+        </S.PageSection>
+        <S.PageSection position='right 170px bottom'>
+          <S.ContentContainer>
             <S.PageHeader>Why run a Switch It Green Program at your university?</S.PageHeader>
             <Div>
               <S.BoldText>
@@ -149,6 +151,8 @@ const Students = (): JSX.Element => {
               </S.BlockButton>
             </Div>
           </S.ContentContainer>
+        </S.PageSection>
+        <S.PageSection>
           <RegisterInterestContainer>
             {isSubmitted ? (
               <>

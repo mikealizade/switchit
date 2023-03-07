@@ -4,6 +4,10 @@ export const Container = styled.div`
   gap: 40px;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  > div {
+    flex: 1;
+  }
 `
 
 export const CopyContainer = styled.div`

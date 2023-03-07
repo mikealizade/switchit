@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
@@ -14,7 +15,9 @@ export const SignUpFormStep2: NextPage<{
   nextSlide: () => void
   previousSlide: () => void
 }> = ({ data }): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user)
+  const { user = {}, error = {}, isLoading = false } = useUser()
+
+  // const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
   const { replace } = useRouter()
   const { handleSubmit, reset } = methods

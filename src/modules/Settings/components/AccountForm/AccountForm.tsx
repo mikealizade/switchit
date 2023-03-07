@@ -5,8 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { FormButtons } from '@components/FormButtons/FormButtons'
 import { Input } from '@components/Input/Input'
 import { RadioGroup } from '@components/RadioGroup/RadioGroup'
+import { useToast } from '@hooks/useToast'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import { RootState } from '@state/store'
+import { toast } from '@state/toast/toastSlice'
 import { setUser } from '@state/user/userSlice'
 import * as S from './AccountForm.style'
 
@@ -18,6 +20,7 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boole
   const methods = useForm()
   const dispatch = useDispatch()
   const updateUser = useUpdateUser()
+  const toast = useToast()
   const { handleSubmit, reset } = methods
   const user = useSelector((state: RootState) => state.user)
   const { nickname = '', username = '', location = '', isProfilePublic } = user
@@ -27,21 +30,26 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boole
   }
 
   const save = async (data: FieldValues): Promise<void> => {
-    const { nickname, username, location, profileStatus } = data
+    try {
+      const { nickname, username, location, profileStatus } = data
 
-    updateUser({
-      [`nickname`]: nickname,
-      [`username`]: username,
-      [`location`]: location,
-      [`isProfilePublic`]: profileStatus === 'Public',
-    })
+      updateUser({
+        [`nickname`]: nickname,
+        [`username`]: username,
+        [`location`]: location,
+        [`isProfilePublic`]: profileStatus === 'Public',
+      })
 
-    dispatch(
-      setUser({
-        ...user,
-        ...{ nickname, username, location, isProfilePublic: profileStatus === 'Public' },
-      }),
-    )
+      dispatch(
+        setUser({
+          ...user,
+          ...{ nickname, username, location, isProfilePublic: profileStatus === 'Public' },
+        }),
+      )
+      toast('Your profile has been updated successfully', 'success')
+    } catch {
+      toast('An error occurred updating your profile', 'error')
+    }
   }
 
   const onSubmit = async (data: FieldValues): Promise<void> => {
@@ -77,7 +85,7 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boole
               minLength={1}
               maxLength={50}
               pattern='alphanumeric'
-              message='Please enter a valid username'
+              message='Please enter a valid username - letters or numbers only'
               disabled={disabled}
               required={false}
             />

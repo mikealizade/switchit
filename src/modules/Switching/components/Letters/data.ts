@@ -225,7 +225,7 @@ export const getDefaultHelloLetterText = (
   const bank = goodBankLetterConfig[bankName as keyof typeof goodBankLetterConfig]
   return `
   <div>
-    Dear ${bank?.name}
+    Dear ${bank?.name},
     <div>
       <br />
     </div><div><br /></div>
@@ -241,7 +241,7 @@ export const getDefaultHelloLetterText = (
     <div>
       <br />
     </div>
-    <div>Yours sincerely</div>
+    <div>Yours sincerely,</div>
     <div>
       <br />
     </div>
@@ -257,7 +257,7 @@ export const getDefaultBreakupLetterText = (
   const bank = badBankLetterConfig[bankName as keyof typeof badBankLetterConfig]
   return `
   <div>
-    Dear ${bank?.name}
+    Dear ${bank?.name},
     <div>
       <br />
     </div>
@@ -281,7 +281,7 @@ export const getDefaultBreakupLetterText = (
     <div>
       <br />
     </div>
-    <div>Yours sincerely</div>
+    <div>Yours sincerely,</div>
     <div>
       <br />
     </div>
