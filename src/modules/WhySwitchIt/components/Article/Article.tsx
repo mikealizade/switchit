@@ -1,7 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { BlockButton } from '@modules/SignedOutLanding/SignedOutLanding.style'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Post } from '@pages/dashboard'
@@ -39,14 +41,17 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
   const {
     query: { id },
   } = useRouter()
+  const { isTablet } = useMediaQuery()
+
   const {
     title = '',
     text = '',
     articleImageName = '',
+    titleImageName = '',
     summary = '',
   } = posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
     Post,
-    'title' | 'text' | 'summary' | 'articleImageName'
+    'title' | 'text' | 'summary' | 'articleImageName' | 'titleImageName'
   >
   const article = metaDataConfig[id as keyof typeof metaDataConfig]
   const metaTitle = article?.title
@@ -74,7 +79,11 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
             WebkitBackgroundSize: 'cover',
           }}
         >
-          <S.ImageTitle>{title}</S.ImageTitle>
+          {isTablet && (
+            <S.ImageTitle>
+              <Image src={`/images/img_${titleImageName}.svg`} alt='' width={320} height={40} objectFit='contain' />
+            </S.ImageTitle>
+          )}
         </S.ImageContainer>
         <S.Article>
           <S.ArticleTitle>{summary}</S.ArticleTitle>

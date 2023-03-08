@@ -143,3 +143,15 @@ export const CloseMenu = styled.div`
 export const LogoutLink = styled.a`
   cursor: pointer;
 `
+
+export const NavMobileBackdrop = styled.div<{ isVisible: boolean }>`
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: ${({ isVisible }) => (isVisible ? 'flex' : `none`)};
+  z-index: 2;
+
+  ${() => mediaQuery.laptop} {
+    display: none;
+  }
+`

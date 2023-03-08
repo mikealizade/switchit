@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { MobileBackdrop } from '@components/Drawer/Drawer.style'
 import * as S from '@components/Navigation/Navigation.style'
 import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import { toggleNav } from '@state/nav/navSlice'
@@ -17,12 +16,10 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
   const { pathname, push } = useRouter()
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
-  const { isImpactCardOpen } = useSelector((state: RootState) => state.impactCard)
   const [current] = useState('')
   const isActive = (route: string): boolean => pathname === route || pathname.includes(route)
   const totalPoints = useGetTotalPoints()
   const { nickname = '', picture = '' } = useSelector((state: RootState) => state.user)
-  const isMobileNavOpen = isNavOpen || isImpactCardOpen
 
   const onToggleNav = () => {
     dispatch(toggleNav())
@@ -39,19 +36,14 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
 
   return (
     <>
-      <MobileBackdrop isVisible={isMobileNavOpen} onClick={closeNav}></MobileBackdrop>
-      <S.MobileNav isNavOpen={isMobileNavOpen}>
+      <S.NavMobileBackdrop isVisible={isNavOpen} onClick={closeNav}></S.NavMobileBackdrop>
+      <S.MobileNav isNavOpen={isNavOpen}>
         <S.MobileNavigation>
           {mobileNav.map(({ route, icon, text, width, height }: Nav) => (
             <li key={route}>
               <Link href={`/${route}`}>
                 <a>
-                  <Image
-                    src={`${icon}${isActive(route) ? '_on' : ''}.svg`}
-                    alt={text}
-                    width={width}
-                    height={height}
-                  />
+                  <Image src={`${icon}${isActive(route) ? '_on' : ''}.svg`} alt={text} width={width} height={height} />
                 </a>
               </Link>
             </li>
@@ -70,13 +62,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
           <li onClick={onToggleNav}>
             <Link href='/profile'>
               <S.MobileNavUser>
-                <Image
-                  src={picture || '/icons/icon_noprofile.svg'}
-                  alt={nickname}
-                  width={54}
-                  height={54}
-                  unoptimized
-                />
+                <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={54} height={54} unoptimized />
                 <S.MobileNavUserNames>
                   <S.UserName>{nickname}</S.UserName>
                   <S.UserPoints>
@@ -93,9 +79,7 @@ export const MobileNavigation: NextPage = (): JSX.Element => {
               <Link href={`/${route}`}>
                 <a
                   style={{
-                    backgroundImage: `url(${icon}${
-                      isActive(route) || current === route ? '_on' : ''
-                    }.svg)`,
+                    backgroundImage: `url(${icon}${isActive(route) || current === route ? '_on' : ''}.svg)`,
                   }}
                   className={cs(route, { ['active']: isActive(route) })}
                 >
