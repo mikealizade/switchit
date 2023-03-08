@@ -99,11 +99,13 @@ export const MobileNavUser = styled.div`
 
   img {
     border-radius: 50%;
+    object-fit: cover;
   }
 `
 
 export const MobileNavUserNames = styled(Div)`
   row-gap: 10px;
+  width: min-content;
 `
 
 export const UserName = styled.strong`

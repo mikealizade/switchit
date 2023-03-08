@@ -61,8 +61,7 @@ export const Picture = styled.div<{ isProfile?: boolean }>`
 
 export const UserDetails = styled(Div)`
   align-items: flex-start;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+  justify-content: center;
   row-gap: 12px;
 
   ${() => mediaQuery.tablet} {

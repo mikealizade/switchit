@@ -226,7 +226,7 @@ export const Div = styled.div<{ rowGap?: number; flex?: string | number; width?:
   display: flex;
   flex-direction: column;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '20px')};
-  flex: ${({ flex }) => flex ?? 'none'};
+  flex: ${({ flex }) => flex ?? 'auto'};
   justify-content: flex-start;
   /* overflow: auto; */
 
@@ -310,8 +310,7 @@ export const Buttons = styled.div<{ align?: string }>`
   justify-content: space-between;
 
   ${() => mediaQuery.tablet} {
-    justify-content: ${({ align }) =>
-      align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between'};
+    justify-content: ${({ align }) => (align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between')};
     flex-direction: row;
     padding: 0;
   }
