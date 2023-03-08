@@ -26,6 +26,7 @@ export type Post = {
   mins: string
   imageName: string
   articleImageName?: string
+  titleImageName?: string
   isFeatured: boolean
   type: string
 }

@@ -30,12 +30,7 @@ export const PostToSocials: NextPage = () => {
       {socialPostsConfig.twitter.map((postsArray, i) => {
         return (
           <li key={i}>
-            <EditableContent
-              btnText='Post'
-              data={postsArray.join('\n\n')}
-              type='post'
-              meta='twitter'
-            />
+            <EditableContent btnText='Post' data={postsArray.join('\n\n')} type='post' meta='twitter' />
           </li>
         )
       })}
@@ -44,12 +39,7 @@ export const PostToSocials: NextPage = () => {
       {socialPostsConfig.instagramPosts.map((postsArray, i) => {
         return (
           <li key={i}>
-            <EditableContent
-              btnText='Post'
-              data={postsArray.join('\n\n')}
-              type='instagramPosts'
-              meta='instagramPosts'
-            />
+            <EditableContent btnText='Post' data={postsArray.join('\n\n')} type='instagramPosts' meta='instagramPosts' />
           </li>
         )
       })}
@@ -65,7 +55,7 @@ export const PostToSocials: NextPage = () => {
     <>
       <ErrorBoundary fallbackRender={({ error }) => <Fallback error={error?.message} />}>
         <Content>
-          <Card column>
+          <Card column padded>
             <ActionHeader header='Post To Socials' subHeader={actionHeaderSubText.postToSocials} />
 
             <TabsContainer>

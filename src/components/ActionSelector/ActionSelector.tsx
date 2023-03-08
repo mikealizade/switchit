@@ -3,10 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as S from '@components/ActionSelector/ActionSelector.style'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { toggleImpactCard } from '@state/impactCard/impactCardSlice'
 import { steps, journeyTypes, noBankAccountSteps } from '@utils/constants'
 import { Action } from '@utils/types'
 
@@ -28,12 +31,14 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
   isJourneyComplete,
 }): JSX.Element => {
   const { push } = useRouter()
+  const dispatch = useDispatch()
   const { currentJourney, currentJourneyType } = useGetCurrentJourney() //should this be used?
   const completedSteps = currentJourney?.completedSteps
   const getSteps = useStepsByJourneyType()
   const journeySteps = getSteps()
   const isNoBankAccountJourney = currentJourneyType === journeyTypes.noBankAccount
   const [currentIcon, setIcon] = useState('')
+  const { isMobile } = useMediaQuery()
 
   const maximiseText = isJourneyComplete ? (
     ''
@@ -51,20 +56,20 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
     push(`/switching/${actions[index].route}`)
   }
 
+  const closeImpactBar = () => {
+    dispatch(toggleImpactCard())
+  }
+
   const hasConfirmed = isJourneyComplete || !!completedSteps?.includes(journeySteps.confirmSwitch)
   return (
     <>
       <S.ActionSelector isDefault={isDefault}>
         {actions.map(({ text, icon, duration, pointsEarned, route }, i: number) => {
-          const letter = isNoBankAccountJourney
-            ? noBankAccountSteps.helloLetter
-            : steps.breakupLetter
+          const letter = isNoBankAccountJourney ? noBankAccountSteps.helloLetter : steps.breakupLetter
           const maximisingIndex = i + letter
           const isCompleted = isJourneyComplete || !!completedSteps?.includes(maximisingIndex)
           const isActive = icon === currentAction?.icon
-          const src = `/icons/icon_action_${icon}${
-            isCompleted ? '_complete' : icon === currentIcon || isActive ? '_on' : ''
-          }.svg`
+          const src = `/icons/icon_action_${icon}${isCompleted ? '_complete' : icon === currentIcon || isActive ? '_on' : ''}.svg`
 
           return (
             <S.Item
@@ -75,6 +80,7 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
               isDefault={isDefault}
               onMouseEnter={onHover(icon)}
               onMouseLeave={onHover('')}
+              {...(isMobile && { onClick: closeImpactBar })}
             >
               <S.LinkContainer onClick={selectAction ? selectAction(i) : selectRoute(i)}>
                 {isCompleted && isDefault ? (
