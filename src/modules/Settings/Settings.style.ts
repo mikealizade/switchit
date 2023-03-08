@@ -46,17 +46,13 @@ export const PictureContainer = styled.div`
   width: 100%;
   flex: 1;
 
-  /* ${() => mediaQuery.tablet} {
-    flex-direction: row;
-  } */
+  img {
+    object-fit: cover;
+  }
 `
 
 export const ButtonContainer = styled.div`
   justify-content: flex-end;
-
-  /* ${() => mediaQuery.tablet} {
-    flex-direction: row;
-  } */
 `
 
 export const NameEmail = styled.div`

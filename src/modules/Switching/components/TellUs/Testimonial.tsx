@@ -30,14 +30,10 @@ export const Testimonial: NextPage = () => {
   // const steps = getSteps()
   // const nextStep = useNextStep()
   const { currentJourneyId = {} } = useGetCurrentJourney()
-  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
-    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
-    fetcher,
-    { revalidateOnFocus: false },
-  ) as SWRResponse
-  const [{ testimonial = '' } = {}] = switchJourneys.filter(
-    ({ id }: JourneyId) => id === currentJourneyId,
-  )
+  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
+    revalidateOnFocus: false,
+  }) as SWRResponse
+  const [{ testimonial = '' } = {}] = switchJourneys.filter(({ id }: JourneyId) => id === currentJourneyId)
   const [, setTestimonial] = useState('')
   const [isEditable, setEdit] = useState(false)
   const [hasTestimonial, setHasTestimonial] = useState(false)
@@ -117,9 +113,7 @@ export const Testimonial: NextPage = () => {
     <>
       <S.Testimonial>
         {!isEditable && !text.current ? (
-          <S.TestimonialImage>
-            <Image src={`/icons/icon_testimonial.svg`} alt='' width={60} height={42} />
-          </S.TestimonialImage>
+          <S.TestimonialImage>Click edit to start</S.TestimonialImage>
         ) : (
           <ContentEditable
             className={`editable ${isStepCompleted ? 'disabled' : ''}`}
@@ -142,30 +136,13 @@ export const Testimonial: NextPage = () => {
       </S.LabelContainer>
 
       <Buttons>
-        <Button
-          type='button'
-          onClick={onToggleEditable}
-          mode='secondary'
-          size='small'
-          disabled={isStepCompleted || hasSentTestimonial}
-        >
+        <Button type='button' onClick={onToggleEditable} mode='secondary' size='small' disabled={isStepCompleted || hasSentTestimonial}>
           Edit
         </Button>
-        <Button
-          type='button'
-          size='small'
-          mode='secondary'
-          onClick={onSave}
-          disabled={isStepCompleted || hasSentTestimonial}
-        >
+        <Button type='button' size='small' mode='secondary' onClick={onSave} disabled={isStepCompleted || hasSentTestimonial}>
           Save Draft
         </Button>
-        <Button
-          type='button'
-          size='small'
-          onClick={onSend}
-          disabled={isStepCompleted || hasSentTestimonial}
-        >
+        <Button type='button' size='small' onClick={onSend} disabled={isStepCompleted || hasSentTestimonial}>
           Send
         </Button>
       </Buttons>

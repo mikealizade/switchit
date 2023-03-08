@@ -23,6 +23,10 @@ export const Picture = styled.div<{ isProfile?: boolean }>`
   flex-direction: column;
   row-gap: 12px;
 
+  img {
+    object-fit: cover;
+  }
+
   ${() => mediaQuery.tablet} {
     height: ${({ isProfile }) => (isProfile ? '130px' : '160px')};
   }

@@ -38,6 +38,7 @@ export const SignedInUser = styled.div`
   img {
     border-radius: 50%;
     min-width: 30px;
+    object-fit: cover;
   }
 `
 

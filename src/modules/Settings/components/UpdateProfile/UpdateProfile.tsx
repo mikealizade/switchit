@@ -11,13 +11,7 @@ export const UpdateProfile: NextPage = (): JSX.Element => {
   return (
     <S.UpdateProfile>
       <S.PictureContainer>
-        <Image
-          src={picture || '/icons/icon_noprofile.svg'}
-          alt={nickname}
-          width={50}
-          height={50}
-          unoptimized
-        />
+        <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={50} height={50} />
         <S.NameEmail>
           <S.Name>{nickname}</S.Name>
           <S.Email>{email}</S.Email>
