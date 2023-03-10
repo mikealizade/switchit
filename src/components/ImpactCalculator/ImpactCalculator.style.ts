@@ -35,13 +35,13 @@ export const QuantifyImpact = styled(Calculator)`
   }
 `
 
-export const ImpactCardHeader = styled.header<{ isXXLaptop?: boolean }>`
+export const ImpactCardHeader = styled.header<{ isTablet?: boolean }>`
   position: relative;
   display: flex;
   justify-content: center;
   padding: 33px 40px 34px;
-  color: ${({ isXXLaptop }) => (isXXLaptop ? 'initial' : 'var(--white)')};
-  background-color: ${({ isXXLaptop }) => (isXXLaptop ? 'var(--white)' : 'var(--sushi)')};
+  color: ${({ isTablet }) => (isTablet ? 'initial' : 'var(--white)')};
+  background-color: ${({ isTablet }) => (isTablet ? 'var(--white)' : 'var(--sushi)')};
 
   ${() => mediaQuery.tablet} {
     justify-content: flex-start;
@@ -55,12 +55,39 @@ export const ImpactCardHeader = styled.header<{ isXXLaptop?: boolean }>`
   }
 `
 
+export const ImpactCardHeaderDesktop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+`
+
+export const ImpactCardHeaderMobile = styled(ImpactCardHeaderDesktop)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+`
+
 export const ImpactCardHeaderText = styled.h2`
   font-family: 'Konsolev SemiBold';
   font-size: var(--fsLarge0);
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsLarge4);
+  }
+`
+
+export const CloseMenu = styled.div`
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  ${() => mediaQuery.xxlaptop} {
+    display: none;
   }
 `
 

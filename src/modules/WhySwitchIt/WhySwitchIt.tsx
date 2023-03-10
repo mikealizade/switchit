@@ -25,11 +25,10 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
       <SignedOutLayout>
         <S.PageSection>
           <S.ContentContainer>
-            <S.PageHeader>Why Should I Switch It Green?</S.PageHeader>
+            <S.PageHeaderMono>Why Should I Switch It Green?</S.PageHeaderMono>
             <S.Text>
-              Switching to green finance {`isn't`} the sexiest thing you can do for the planet but
-              it is one of the most impactful climate actions you can take. Let us walk you through
-              the problem, the solution, the impact, and how to get involved.
+              Switching to green finance {`isn't`} the sexiest thing you can do for the planet but it is one of the most impactful climate
+              actions you can take. Let us walk you through the problem, the solution, the impact, and how to get involved.
             </S.Text>
             <S.ArticlesList>
               {articles.map(({ id, title, summary, imageName }) => {
@@ -37,13 +36,7 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
                   <S.Item key={id}>
                     <Link href={`/why-switch-it/article/${id}`}>
                       <S.ArticleLink>
-                        <Image
-                          src={getArticleImageUrl(imageName)}
-                          alt=''
-                          width={350}
-                          height={262}
-                          objectFit='contain'
-                        />
+                        <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={262} objectFit='contain' />
                         <S.Intro>{title}</S.Intro>
                         <S.Title>{summary}</S.Title>
                       </S.ArticleLink>

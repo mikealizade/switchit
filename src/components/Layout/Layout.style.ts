@@ -19,7 +19,7 @@ export const AppContent = styled.div<{ hasAside: boolean }>`
   flex: auto;
   position: relative;
   overflow: hidden;
-  background-color: var(--pampas);
+  /* background-color: var(--pampas); */
   padding-bottom: 80px;
   border-radius: 0;
 
@@ -48,22 +48,41 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   overflow-y: auto;
   z-index: 1;
   bottom: 0;
-  transform: ${({ isImpactCardOpen }) => (isImpactCardOpen ? 'translateX(0)' : `translateX(90vh)`)};
+  transform: ${({ isImpactCardOpen }) =>
+    console.log('isImpactCardOpen', isImpactCardOpen) || (isImpactCardOpen ? 'translateX(0)' : `translateX(100vw)`)};
   transition: all 0.2s ease-in-out;
   overflow: hidden;
 
   ${() => mediaQuery.tablet} {
     min-width: 400px;
     max-width: 400px;
+    border-radius: 16px;
+    box-shadow: -2px 4px 12px rgb(0 0 0 / 15%);
+  }
+
+  ${() => mediaQuery.laptop} {
+    overflow: hidden;
+    /* position: relative; */
+    min-width: 400px;
+    width: 400px;
+    height: auto;
+    top: 20px;
   }
 
   ${() => mediaQuery.xlaptop} {
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
     min-width: 400px;
     width: 400px;
-    border-radius: 0 10px 10px 0;
     height: auto;
+    /* top: 20px; */
+  }
+
+  ${() => mediaQuery.xxlaptop} {
+    position: relative;
+    top: 0;
+    border-radius: 0 16px 16px 0;
+    box-shadow: none;
   }
 `
 
@@ -83,6 +102,6 @@ export const AsideContent = styled.section`
 
   ${() => mediaQuery.laptop} {
     /* padding: 40px; */
-    border-radius: 10px;
+    border-radius: 16px;
   }
 `

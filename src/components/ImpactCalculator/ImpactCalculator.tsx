@@ -32,7 +32,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({ hasPro
 
   return (
     <>
-      <Div>
+      <Div flex='initial'>
         <S.Header>
           Potential Climate Impact
           <S.MoreInfo onClick={() => dispatch(toggleDrawer('calculateImpact'))}>

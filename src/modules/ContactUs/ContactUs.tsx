@@ -12,12 +12,9 @@ import { Buttons } from '@modules/Switching/Switching.style'
 import { Div } from '@styles/common.style'
 import { sendRequest, formatDate } from '@utils/functions'
 import * as S from './ContactUs.style'
-import { PageSection, Text, PageHeader } from '../SignedOutLanding/SignedOutLanding.style'
+import { PageSection, Text, PageHeader, PageHeaderMono } from '../SignedOutLanding/SignedOutLanding.style'
 
-export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({
-  data,
-  disabled,
-}): JSX.Element => {
+export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({ data, disabled }): JSX.Element => {
   const methods = useForm()
   const toast = useToast()
   const { handleSubmit, reset, watch } = methods
@@ -76,11 +73,8 @@ export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({
           </>
         ) : (
           <>
-            <PageHeader>Hello!</PageHeader>
-            <Text>
-              Questions about our student programs? Press inquiries? Use the form below to get in
-              touch.
-            </Text>
+            <PageHeaderMono>Hello!</PageHeaderMono>
+            <Text>Questions about our student programs? Press inquiries? Use the form below to get in touch.</Text>
             <FormProvider {...methods}>
               <S.ContactUsForm onSubmit={handleSubmit(onSubmit)} className='form'>
                 <fieldset>
@@ -112,11 +106,7 @@ export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({
                   </S.InputsContainer>
                   <Textarea name='message' {...methods} label='Message' height={220} required />
                 </fieldset>
-                <FormButtons
-                  disabled={!nickname || !email || !message}
-                  isSubmitting={false}
-                  text='Submit'
-                />
+                <FormButtons disabled={!nickname || !email || !message} isSubmitting={false} text='Submit' />
               </S.ContactUsForm>
             </FormProvider>
           </>

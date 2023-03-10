@@ -91,4 +91,5 @@ export const RegisterInterestForm = styled.div`
 
 export const RegisterInterestHeader = styled.h2`
   font-size: var(--fsVLarge6);
+  font-family: 'Mono Regular';
 `

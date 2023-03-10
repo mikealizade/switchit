@@ -44,7 +44,6 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
   const { isTablet } = useMediaQuery()
 
   const {
-    title = '',
     text = '',
     articleImageName = '',
     titleImageName = '',

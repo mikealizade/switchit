@@ -11,7 +11,7 @@ export const ProgressBarContainer = styled.div`
 
   ${() => mediaQuery.laptop} {
     display: flex;
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
 `
 

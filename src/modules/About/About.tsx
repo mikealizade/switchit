@@ -62,53 +62,43 @@ const About = (): JSX.Element => {
           <S.ContentContainer>
             <S.PageHeader>About Switch It</S.PageHeader>
             <S.Text>
-              Switch It Green is a campaign and platform which informs, empowers, and mobilises
-              individuals to take impactful climate action at scale by switching en masse to greener
-              financial providers.
+              Switch It Green is a campaign and platform which informs, empowers, and mobilises individuals to take impactful climate action
+              at scale by switching en masse to greener financial providers.
             </S.Text>
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection>
           <S.ContentContainer>
-            <S.PageHeader>Our Story</S.PageHeader>
+            <S.PageHeaderMono>Our Story</S.PageHeaderMono>
             <S.Text>
-              Switch It Green Co-Founders, Anna Chirico and Sophie Cowen, first connected over their
-              shared frustration at climate inaction in 2020. They knew that for just climate
-              solutions to be heard, big corporations first had to be held responsible. They could
-              see that individual actions needed to have clear direction, and be taken en masse to
-              initiate real change. And they knew that in order to get key decision makers to
-              listen, they had to follow the money.
+              Switch It Green Co-Founders, Anna Chirico and Sophie Cowen, first connected over their shared frustration at climate inaction
+              in 2020. They knew that for just climate solutions to be heard, big corporations first had to be held responsible. They could
+              see that individual actions needed to have clear direction, and be taken en masse to initiate real change. And they knew that
+              in order to get key decision makers to listen, they had to follow the money.
             </S.Text>
             <S.Text>And with that, Switch It Green was born.</S.Text>
             <S.Text>
-              Our mission is to pressure banks to change their investment policies to rapidly phase
-              out fossil fuel financing, by harnessing the power of individual action to move £
-              billions out of fossil fuel support. Without support from customers, banks will be
-              less able to invest in fossil fuels. Without investment from financial institutions,
-              the fossil fuel industry will be under significant pressure to transform its
-              operations.
+              Our mission is to pressure banks to change their investment policies to rapidly phase out fossil fuel financing, by harnessing
+              the power of individual action to move £ billions out of fossil fuel support. Without support from customers, banks will be
+              less able to invest in fossil fuels. Without investment from financial institutions, the fossil fuel industry will be under
+              significant pressure to transform its operations. Your role is simple:
             </S.Text>
-            <S.Text>Your role is simple: </S.Text>
-
             <S.Text>
-              help us push for a more just and liveable future by using the platform to switch to a
-              green bank today, and maximise the impact of your switch.
-              <br />
+              Help us push for a more just and liveable future by using the platform to switch to a green bank today, and maximise the
+              impact of your switch.
+            </S.Text>
+            <S.Text>
               <em>
-                {`We've`} made it easy for you to be part of the change - all you need to do now is
-                follow our simple switching journey!
+                {`We've`} made it easy for you to be part of the change - all you need to do now is follow our simple switching journey!
               </em>
             </S.Text>
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection rowGap={30}>
           <S.ContentContainer>
-            <S.PageHeader>The Switching Platform</S.PageHeader>
+            <S.PageHeaderMono>The Switching Platform</S.PageHeaderMono>
             <Div>
-              <S.Text>
-                Our Bank Switching Platform makes switching to a green bank as simple and impactful
-                as possible.
-              </S.Text>
+              <S.Text>Our Bank Switching Platform makes switching to a green bank as simple and impactful as possible.</S.Text>
               <BulletList>
                 <li>See how your bank stacks up against our stringent investment criteria</li>
                 <li>Get to know exactly what your bank has been investing in behind your back</li>
@@ -144,13 +134,7 @@ const About = (): JSX.Element => {
                   <S.Name>{name}</S.Name>
                   <S.Role>{role}</S.Role>
                 </S.Profile>
-                <Image
-                  src={`/images/${image}`}
-                  alt={`Picture of ${name}`}
-                  width={335}
-                  height={335}
-                  objectFit='cover'
-                />
+                <Image src={`/images/${image}`} alt={`Picture of ${name}`} width={335} height={335} objectFit='cover' />
               </S.Image>
             ))}
           </S.TeamImages>

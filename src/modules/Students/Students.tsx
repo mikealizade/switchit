@@ -4,11 +4,7 @@ import { useState } from 'react'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Div, BulletList, AnchorLink } from '@styles/common.style'
 import { RegisterInterestForm } from './RegisterInterestForm'
-import {
-  RegisterInterestContainer,
-  RegisterInterestIntro,
-  RegisterInterestHeader,
-} from './RegisterInterestForm.style'
+import { RegisterInterestContainer, RegisterInterestIntro, RegisterInterestHeader } from './RegisterInterestForm.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const Students = (): JSX.Element => {
@@ -38,51 +34,40 @@ const Students = (): JSX.Element => {
       <SignedOutLayout>
         <S.PageSection rowGap={100}>
           <S.ContentContainer>
-            <S.PageHeader>Our Program Offerings</S.PageHeader>
+            <S.PageHeaderMono>Our Program Offerings</S.PageHeaderMono>
             <Div>
               <S.Text>
                 <em>
-                  Switch It Green is a campaign and platform which informs, empowers, and mobilises
-                  individuals to take impactful climate action at scale by switching en masse to
-                  greener financial providers.
+                  Switch It Green is a campaign and platform which informs, empowers, and mobilises individuals to take impactful climate
+                  action at scale by switching en masse to greener financial providers.
                 </em>
               </S.Text>
+              <S.Text>Want your university to be part of the push against fossil fuel financing?</S.Text>
               <S.Text>
-                Want your university to be part of the push against fossil fuel financing?
+                Our programs deliver financial literacy and tangible climate education to students while moving £ billions out of fossil
+                fuel support.
               </S.Text>
               <S.Text>
-                Our programs deliver financial literacy and tangible climate education to students
-                while moving £ billions out of fossil fuel support.
+                Get access to bespoke resources, high-profile guest speaker events, exclusive workshops, tailored data reporting & impact
+                tracking, and more. Select your institution below.
               </S.Text>
               <S.Text>
-                Get access to bespoke resources, high-profile guest speaker events, exclusive
-                workshops, tailored data reporting & impact tracking, and more. Select your
-                institution below.
-              </S.Text>
-              <S.Text>
-                <strong>
-                  Work or study at a school, sixth form, or college? Find out about our work with
-                  16- to 18-year-olds
-                </strong>
+                <strong>Work or study at a school, sixth form, or college? Find out about our work with 16- to 18-year-olds</strong>
               </S.Text>
             </Div>
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection position='right 170px bottom'>
           <S.ContentContainer>
-            <S.PageHeader>Why run a Switch It Green Program at your university?</S.PageHeader>
+            <S.PageHeaderMono>Why run a Switch It Green Program at your university?</S.PageHeaderMono>
             <Div>
               <S.BoldText>
-                Students are asking for financial literacy training and tangible climate education
-                amid the ongoing cost of living and climate crises.
+                Students are asking for financial literacy training and tangible climate education amid the ongoing cost of living and
+                climate crises.
               </S.BoldText>
               <BulletList fontsize={18}>
                 <li>
-                  <AnchorLink
-                    href='https://www.forceofnature.xyz/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
+                  <AnchorLink href='https://www.forceofnature.xyz/' target='_blank' rel='noreferrer'>
                     74% of young people
                   </AnchorLink>{' '}
                   {`don't`} know how to contribute to positive climate action.
@@ -110,10 +95,7 @@ const Students = (): JSX.Element => {
               </BulletList>
             </Div>
             <Div>
-              <S.BoldText>
-                Together, we can help end fossil fuel financing and move £ billions out of fossil
-                fuel support.
-              </S.BoldText>
+              <S.BoldText>Together, we can help end fossil fuel financing and move £ billions out of fossil fuel support.</S.BoldText>
               <S.Text>What to expect from a Switch It Green program:</S.Text>
               <BulletList fontsize={18}>
                 <li>A tailored program of events, training, and resources.</li>
@@ -122,29 +104,24 @@ const Students = (): JSX.Element => {
               </BulletList>
             </Div>
             <Div>
-              <S.BoldText>
-                Improve your {`institution's`} profile, performance, and student & staff
-                recruitment.
-              </S.BoldText>
+              <S.BoldText>Improve your {`institution's`} profile, performance, and student & staff recruitment.</S.BoldText>
               <BulletList fontsize={18}>
                 <li>
                   Demonstrate your {`institution's`} commitment to sustainability.
                   <em>
-                    Our programs are aligned with green league table criteria and can support your
-                    sustainability targets and impact reporting.
+                    Our programs are aligned with green league table criteria and can support your sustainability targets and impact
+                    reporting.
                   </em>
                 </li>
                 <li>
-                  Illustrate your dedication to student development and welfare by providing access
-                  to high-profile events and resources.
+                  Illustrate your dedication to student development and welfare by providing access to high-profile events and resources.
                 </li>
                 <li>Champion the campaign against fossil fuel financing.</li>
               </BulletList>
             </Div>
             <Div>
               <S.BoldText>
-                Register your interest in bringing a Switch It Green Student Program to your
-                university by completing the form below.
+                Register your interest in bringing a Switch It Green Student Program to your university by completing the form below.
               </S.BoldText>
               <S.BlockButton margin='30px 0 0'>
                 <Link href='/signup'>Check out our Bank Switching Platform </Link>

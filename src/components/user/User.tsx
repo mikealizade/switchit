@@ -17,16 +17,9 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
   const dispatch = useDispatch()
   const { isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
-  const {
-    email = '',
-    nickname = '',
-    picture = '',
-    isNewUser,
-  } = useSelector((state: RootState) => state.user)
-  const isSwitchingJourney = pathname.includes('/switching')
-  let [pageTitle] = [...mobileNav, ...subNav]
-    .map(({ text }) => text.toLowerCase())
-    .filter((item: string) => pathname.includes(item))
+  const { email = '', nickname = '', picture = '', isNewUser } = useSelector((state: RootState) => state.user)
+  const isSwitchingJourney = pathname.includes('/switching/')
+  let [pageTitle] = [...mobileNav, ...subNav].map(({ text }) => text.toLowerCase()).filter((item: string) => pathname.includes(item))
   pageTitle = pageTitle === 'switching' ? 'Switching Journeys' : pageTitle
 
   return (
@@ -57,17 +50,14 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
               </S.Score>
             )}
             <S.SignedInUser>
-              <Image
-                src={picture || '/icons/icon_noprofile.svg'}
-                alt={nickname}
-                width={30}
-                height={30}
-                unoptimized
-              />
+              <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={30} height={30} unoptimized />
               <p>
                 <Link href='/profile'>{nickname}</Link>
               </p>
             </S.SignedInUser>
+            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard())}>
+              <Image src={'/icons/icon_leaf.svg'} alt='' width={44} height={44} />
+            </S.ImpactCardToggle>
             {/* <S.Notifications>
         <Image src={'/icons/icon_bell.svg'} alt='' width={26} height={26} />
       </S.Notifications> */}

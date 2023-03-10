@@ -1,25 +1,31 @@
 @font-face {
   font-family: 'Konsolev Regular';
-  src: url(../../public/fonts/Konsolev-Regular.woff2) format('woff2'),
-    url(../../public/fonts/Konsolev-Regular.woff) format('woff');
+  src: url(../../public/fonts/Konsolev-Regular.woff2) format('woff2'), url(../../public/fonts/Konsolev-Regular.woff) format('woff');
 }
 
 @font-face {
   font-family: 'Konsolev SemiBold';
-  src: url(../../public/fonts/Konsolev-Semibold.woff2) format('woff2'),
-    url(../../public/fonts/Konsolev-Semibold.woff) format('woff');
+  src: url(../../public/fonts/Konsolev-Semibold.woff2) format('woff2'), url(../../public/fonts/Konsolev-Semibold.woff) format('woff');
 }
 
 @font-face {
   font-family: 'Konsolev LightItalic';
-  src: url(../../public/fonts/Konsolev-LightItalic.woff2) format('woff2'),
-    url(../../public/fonts/Konsolev-LightItalic.woff) format('woff');
+  src: url(../../public/fonts/Konsolev-LightItalic.woff2) format('woff2'), url(../../public/fonts/Konsolev-LightItalic.woff) format('woff');
 }
 
 @font-face {
   font-family: 'Bambang';
-  src: url(../../public/fonts/Bambang.woff2) format('woff2'),
-    url(../../public/fonts/Bambang.woff) format('woff');
+  src: url(../../public/fonts/Bambang.woff2) format('woff2'), url(../../public/fonts/Bambang.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Mono Regular';
+  src: url(../../public/fonts/Mono-Regular.woff2) format('woff2'), url(../../public/fonts/Mono-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Mono Bold';
+  src: url(../../public/fonts/Mono-Bold.woff2) format('woff2'), url(../../public/fonts/Mono-Bold.woff) format('woff');
 }
 
 :root {

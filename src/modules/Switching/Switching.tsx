@@ -13,12 +13,7 @@ import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useMediaQuery } from '@hooks/useMediaQuery'
 import * as S from '@modules/Switching/Switching.style'
-import {
-  setAddNewJourney,
-  setCurrentJourney,
-  setCurrentJourneyId,
-  Journey,
-} from '@state/switchJourney/switchJourneySlice'
+import { setAddNewJourney, setCurrentJourney, setCurrentJourneyId, Journey } from '@state/switchJourney/switchJourneySlice'
 import { Content, Row } from '@styles/common.style'
 import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
 import { actionsConfig, goodBanksConfig } from '@utils/data'
@@ -35,33 +30,23 @@ const getJourneys = (
   switchJourneys: Journey[],
   filter: ({ journeyType, completedSteps }: JourneyFilter) => boolean,
   resumeJourney: (route: string) => () => void,
-  addJourneyName: () => void,
+  // addJourneyName: () => void,
   isJourneyComplete: boolean,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
     const { id, name, journeyType, goodBank, completedSteps = [] } = journey
-    const currentJourneySteps =
-      journeyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
-    const progress = completedSteps.filter(
-      (step: number) => step <= currentJourneySteps.confirmSwitch,
-    ).length
+    const currentJourneySteps = journeyType === journeyTypes.noBankAccount ? noBankAccountSteps : steps
+    const progress = completedSteps.filter((step: number) => step <= currentJourneySteps.confirmSwitch).length
     const greenBank = goodBanksConfig[goodBank as keyof typeof goodBanksConfig]
     const actions = actionsConfig.filter(filterActionType(journeyType))
 
     const journeySteps =
-      journeyType === journeyTypes.noBankAccount
-        ? startJourneyNoBankConfig(String(goodBank))
-        : startJourneyConfig(String(goodBank))
+      journeyType === journeyTypes.noBankAccount ? startJourneyNoBankConfig(String(goodBank)) : startJourneyConfig(String(goodBank))
 
     return (
       <>
         {isJourneyComplete ? (
-          <CompletedJourneyCard
-            key={id}
-            journeyType={journeyType}
-            name={name}
-            greenBank={greenBank}
-          />
+          <CompletedJourneyCard key={id} journeyType={journeyType} name={name} greenBank={greenBank} />
         ) : (
           <JourneyCard
             key={id}
@@ -72,7 +57,7 @@ const getJourneys = (
             completedSteps={completedSteps}
             isJourneyComplete={isJourneyComplete}
             resumeJourney={resumeJourney}
-            addJourneyName={addJourneyName}
+            // addJourneyName={addJourneyName}
           />
         )}
       </>
@@ -87,25 +72,20 @@ const Switching = (): JSX.Element => {
   const { isMobile } = useMediaQuery()
   const [value, setValue] = useState('')
   const [isAddName, setAddName] = useState(false)
-  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
-    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
-    fetcher,
-    { revalidateOnFocus: false },
-  ) as SWRResponse
+  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
+    revalidateOnFocus: false,
+  }) as SWRResponse
   const activeJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
-    (journeyType === 'noBankAccount' && completedSteps.length < 7) ||
-    (journeyType === 'readyToSwitch' && completedSteps.length < 11)
+    (journeyType === 'noBankAccount' && completedSteps.length < 7) || (journeyType === 'readyToSwitch' && completedSteps.length < 11)
   const completedJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
     completedSteps.length === (journeyType === journeyTypes.noBankAccount ? 7 : 11)
   const [firstActiveJourney] = switchJourneys.filter(activeJourneysFilter)
   const { id: defaultJourneyId = '' } = firstActiveJourney ?? {}
 
-  const journeyTabs = switchJourneys
-    .filter(activeJourneysFilter)
-    .map(({ id, name }: { id: string; name: string }) => ({
-      tab: name,
-      currentJourneyId: id,
-    }))
+  const journeyTabs = switchJourneys.filter(activeJourneysFilter).map(({ id, name }: { id: string; name: string }) => ({
+    tab: name,
+    currentJourneyId: id,
+  }))
 
   const addNewJourney = (): void => {
     const id = nanoid()
@@ -129,7 +109,7 @@ const Switching = (): JSX.Element => {
     switchJourneys,
     activeJourneysFilter,
     resumeJourney,
-    addJourneyName,
+    // addJourneyName,
     false,
   )
 
@@ -137,7 +117,7 @@ const Switching = (): JSX.Element => {
     switchJourneys,
     completedJourneysFilter,
     resumeJourney,
-    addJourneyName,
+    // addJourneyName,
     true,
   )
 
@@ -204,19 +184,12 @@ const Switching = (): JSX.Element => {
       </Head>
 
       <Content>
-        {pathname === '/switching' && !isMobile && (
-          <SwitchingHero type='switching' hasLoaded={!!sub} />
-        )}
+        {pathname === '/switching' && !isMobile && <SwitchingHero type='switching' hasLoaded={!!sub} />}
         <Card stretch>
           <S.SwitchingColumnContainer>
             {isAddName ? (
               <S.NoJourneysTextContainer>
-                <JourneyName
-                  value={value}
-                  setValue={setValue}
-                  setAddName={setAddName}
-                  addNewJourney={addNewJourney}
-                />
+                <JourneyName value={value} setValue={setValue} setAddName={setAddName} addNewJourney={addNewJourney} />
               </S.NoJourneysTextContainer>
             ) : (
               <>

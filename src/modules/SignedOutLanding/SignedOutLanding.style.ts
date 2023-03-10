@@ -260,6 +260,10 @@ export const PageHeader = styled.h1`
   }
 `
 
+export const PageHeaderMono = styled(PageHeader)`
+  font-family: 'Mono Regular';
+`
+
 export const PageSubHeader = styled.h2`
   font-size: var(--fsVLarge6);
   font-family: 'Konsolev SemiBold';
@@ -268,6 +272,14 @@ export const PageSubHeader = styled.h2`
 export const Text = styled.p`
   font-weight: normal;
   font-size: var(--fsMedium8);
+`
+
+export const TextMono = styled(Text)`
+  font-family: 'Mono Regular';
+`
+
+export const TextMonoBold = styled(Text)`
+  font-family: 'Mono Bold';
 `
 
 export const BoldText = styled.p`

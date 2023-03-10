@@ -11,14 +11,11 @@ import { useMediaQuery } from '@hooks/useMediaQuery'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import { RootState } from '@state/store'
 
-const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
-  isValidating,
-  children,
-}): JSX.Element => {
+const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({ isValidating, children }): JSX.Element => {
   const router = useRouter()
   const dispatch = useDispatch()
   const { pathname } = router
-  const { isMobile } = useMediaQuery()
+  const { isMobile, isXXLaptop } = useMediaQuery()
   const { isImpactCardOpen } = useSelector((state: RootState) => state.impactCard)
   // const { isDrawerOpen } = useSelector((state: RootState) => state.drawer)
   const hasDrawer = pathname === '/profile'
@@ -40,7 +37,7 @@ const SignedInApp: NextPage<{ isValidating: boolean; children: any }> = ({
           {hasDrawer && <Drawer narrow={false} />}
         </S.AppContentContainer>
         {hasAside && (
-          <S.Aside isImpactCardOpen={isMobile ? isImpactCardOpen : true}>
+          <S.Aside isImpactCardOpen={!isXXLaptop ? isImpactCardOpen : true}>
             <AsideContent />
           </S.Aside>
         )}

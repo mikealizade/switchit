@@ -27,6 +27,7 @@ export const ImageTitle = styled.div`
 export const ArticleTitle = styled.h1`
   font-size: var(--fsVLarge6);
   margin-bottom: 50px;
+  font-family: 'Mono Regular';
 `
 
 export const PostText = styled.div`

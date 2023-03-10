@@ -13,6 +13,7 @@ export const impactCard = createSlice({
   initialState: initialNavState,
   reducers: {
     toggleImpactCard: state => {
+      console.log('state.isImpactCardOpen', state.isImpactCardOpen)
       return {
         isImpactCardOpen: !state.isImpactCardOpen,
       }

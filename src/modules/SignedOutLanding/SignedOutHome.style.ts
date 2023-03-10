@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
-import { PageSection } from './SignedOutLanding.style'
+import { PageSection, TextMono, TextMonoBold } from './SignedOutLanding.style'
 
 export const MainSection = styled(PageSection)`
   padding: 50px 40px 155px;
@@ -58,6 +58,14 @@ export const HomePageHeader = styled.h1`
   ${() => mediaQuery.tablet} {
     font-size: 5.4rem;
   }
+`
+
+export const HomePageTextMono = styled(TextMono)`
+  font-size: var(--fsLarge2);
+`
+
+export const HomePageTextMonoBold = styled(TextMonoBold)`
+  font-size: var(--fsLarge2);
 `
 
 export const SpeechBubble = styled.div`
@@ -146,10 +154,12 @@ export const TheProblemSubHeader = styled.h3`
 export const TheProblemText = styled.p`
   font-size: var(--fsMedium8);
   font-weight: normal;
+  font-family: 'Mono Regular';
 `
 
 export const PinkLink = styled.div<{ marginTop?: number }>`
   font-size: var(--fsMedium6);
+  font-family: 'Mono Regular';
   text-decoration: none !important;
   margin-top: ${({ marginTop }) => (marginTop ? `${marginTop}px` : '0')};
 
@@ -201,6 +211,7 @@ export const TheSolutionSubHeader = styled.h3`
 
 export const TheSolutionText = styled.p`
   font-size: var(--fsMedium8);
+  font-family: 'Mono Regular';
 `
 
 export const TheImpact = styled(PageSection)`
@@ -257,6 +268,7 @@ export const TheImpactSubHeader = styled.h3`
 export const TheImpactText = styled.p`
   font-size: var(--fsMedium8);
   font-weight: normal;
+  font-family: 'Mono Regular';
 `
 
 export const GetInvolved = styled(PageSection)`
@@ -301,6 +313,7 @@ export const GetInvolvedList = styled.ul`
   row-gap: 20px;
   list-style-type: disc;
   list-style-position: inside;
+  font-family: 'Mono Regular';
 `
 
 export const StudentPrograms = styled(PageSection)`

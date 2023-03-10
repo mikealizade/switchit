@@ -129,6 +129,11 @@ export const ImpactCardToggle = styled.div`
   right: 20px;
 
   ${() => mediaQuery.laptop} {
+    position: static;
+    display: flex;
+  }
+
+  ${() => mediaQuery.xxlaptop} {
     display: none;
   }
 `
