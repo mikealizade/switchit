@@ -566,6 +566,10 @@ export const ArticleLink = styled.div`
   flex-direction: column;
   row-gap: 16px;
   cursor: pointer;
+
+  img {
+    border-radius: 16px;
+  }
 `
 
 export const Intro = styled.h2`

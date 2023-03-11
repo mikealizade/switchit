@@ -1,11 +1,23 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { getArticleImageUrl } from '@utils/functions'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
+
+//img_assets
+//img_greenbanking
+//img_sustainability
+//img_neobank
+
+// img_divestment
+//  img_creditscore
+//  img_greenbankaccount
+
+// TODO replace native image with next image
 
 const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] }): JSX.Element => {
   const articles = resources.filter(({ type }) => type === 'website')
@@ -32,11 +44,13 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
             </S.Text>
             <S.ArticlesList>
               {articles.map(({ id, title, summary, imageName }) => {
+                console.log('imageName link..', getArticleImageUrl(imageName))
+
                 return (
                   <S.Item key={id}>
                     <Link href={`/why-switch-it/article/${id}`}>
                       <S.ArticleLink>
-                        <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={262} objectFit='contain' />
+                        <img src={getArticleImageUrl(imageName)} alt='' />
                         <S.Intro>{title}</S.Intro>
                         <S.Title>{summary}</S.Title>
                       </S.ArticleLink>

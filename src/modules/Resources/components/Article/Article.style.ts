@@ -21,6 +21,7 @@ export const Article = styled.article`
 
   img {
     width: 100%;
+    border-radius: 12px;
   }
 
   h2 {

@@ -8,15 +8,16 @@ import useSWRMutation from 'swr/mutation'
 import * as S from '@components/Layout/Layout.style'
 import { MobileNavigation } from '@components/Navigation/MobileNavigation'
 import { Navigation } from '@components/Navigation/Navigation'
-import { defaultProfile } from '@components/SignUpFormStep2/data'
 import { Toast } from '@components/Toast/Toast'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
 import { useMediaQuery } from '@hooks/useMediaQuery'
+import { useToast } from '@hooks/useToast'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import PageNotFound from '@modules/PageNotFound/PageNotFound'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
+import { defaultProfile } from '@utils/defaultProfile'
 import { sendRequest, setTotalPoints, fetcher } from '@utils/functions'
 
 const signedOutPages = [
@@ -38,15 +39,12 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { sub: userId = '' } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
   const { pathname } = useRouter()
-  const {
-    data: { user = {} } = {},
-    error,
-    isValidating,
-  } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
+  const { data: { user = {} } = {}, error, isValidating } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const updateUser = useUpdateUser()
   const { isLaptop } = useMediaQuery()
+  const toast = useToast()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it')
@@ -55,13 +53,12 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {
       try {
-        // uncomment when reinstating onboarding journey
-        // const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
+        const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
         const userData = {
           ...auth0user,
           ...user,
-          // ...storedUser,
           ...defaultProfile,
+          ...storedUser,
           isNewUser,
           picture: '',
         }
@@ -78,13 +75,12 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
 
         request(body)
 
-        // uncomment when reinstating onboarding journey
-        // checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
-        // window.localStorage.removeItem('userData')
+        checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
+        window.localStorage.removeItem('userData')
 
         dispatch(setUser(newUserData))
       } catch (error) {
-        //error
+        toast('An error occurred saving your details', 'error')
       }
     },
     [auth0user, user, sub, dispatch, checkReferralCodeAndUpdate, request],

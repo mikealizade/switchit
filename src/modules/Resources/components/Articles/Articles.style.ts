@@ -61,6 +61,10 @@ export const ArticleLink = styled.div`
   flex-direction: column;
   row-gap: 20px;
   cursor: pointer;
+
+  img {
+    border-radius: 12px;
+  }
 `
 
 export const ResourcesTitle = styled.h2`

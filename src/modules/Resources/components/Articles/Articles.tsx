@@ -1,9 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
 import * as S from '@modules/Resources/components/Articles/Articles.style'
 import { getArticleImageUrl } from '@utils/functions'
+
+//TODO usee Next image
 
 export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {
   return (
@@ -14,17 +17,13 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
         {resources
           .filter(({ type }) => type === 'app')
           .map(({ id, title, summary, mins, points, imageName }) => {
+            console.log('imageName', imageName)
+
             return (
               <S.Item key={id}>
                 <Link href={`/resources/article/${id}`}>
                   <S.ArticleLink>
-                    <Image
-                      src={getArticleImageUrl(imageName)}
-                      alt=''
-                      width={350}
-                      height={195}
-                      objectFit='contain'
-                    />
+                    <img src={getArticleImageUrl(imageName)} alt='' />
                     <S.Title>{title}</S.Title>
                     <S.Intro>{summary}</S.Intro>
                   </S.ArticleLink>
@@ -36,8 +35,7 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
                     {mins}min
                   </S.Data>
                   <S.Data>
-                    <Image src={'/icons/icon_star_blue.svg'} alt='' width={20} height={20} />+
-                    {points}pts
+                    <Image src={'/icons/icon_star_blue.svg'} alt='' width={20} height={20} />+{points}pts
                   </S.Data>
                 </S.ArticleData>
               </S.Item>

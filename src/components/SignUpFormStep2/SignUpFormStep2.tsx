@@ -8,7 +8,7 @@ import { Button, TextButton } from '@components/Button/Button'
 import { Input } from '@components/Input/Input'
 import { RootState } from '@state/store'
 import { Form } from '@styles/common.style'
-import { defaultProfile } from './data'
+import { defaultProfile } from '../../utils/defaultProfile'
 
 export const SignUpFormStep2: NextPage<{
   data?: any
@@ -69,8 +69,8 @@ export const SignUpFormStep2: NextPage<{
             required={false}
           />
           <p>
-            Did you know you can … *earn point, etc by sending your friends, family and collegues
-            invites? Find more on our communities page.
+            Did you know you can … *earn point, etc by sending your friends, family and collegues invites? Find more on our communities
+            page.
           </p>
           <Button type='submit'>Next</Button>
           <TextButton type='submit' mode='text'>

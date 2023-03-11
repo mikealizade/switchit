@@ -45,12 +45,13 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
 
   const {
     text = '',
-    articleImageName = '',
+    // articleImageName = '',
+    imageName = '',
     titleImageName = '',
     summary = '',
   } = posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
     Post,
-    'title' | 'text' | 'summary' | 'articleImageName' | 'titleImageName'
+    'title' | 'text' | 'summary' | 'imageName' | 'titleImageName'
   >
   const article = metaDataConfig[id as keyof typeof metaDataConfig]
   const metaTitle = article?.title
@@ -69,7 +70,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
       <SignedOutLayout>
         <S.ImageContainer
           style={{
-            backgroundImage: `url(${getArticleImageUrl(articleImageName)})`,
+            backgroundImage: `url(${getArticleImageUrl(imageName)})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             height: '450px',

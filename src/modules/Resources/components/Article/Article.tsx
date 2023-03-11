@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -58,15 +59,14 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
             <S.ArticleContent>
               <S.Article>
                 {/* <S.ArticleScrollContainer> */}
-                <Image src={getArticleImageUrl(imageName)} alt='' width={730} height={410} />
+                <img src={getArticleImageUrl(imageName)} alt='' />
                 <ArticleData align='right' small>
                   <Data>
                     <Image src={'/icons/icon_clock.svg'} alt='' width={20} height={20} />
                     {mins}min
                   </Data>
                   <Data>
-                    <Image src={'/icons/icon_star_blue.svg'} alt='' width={20} height={20} />+
-                    {points}
+                    <Image src={'/icons/icon_star_blue.svg'} alt='' width={20} height={20} />+{points}
                     pts
                   </Data>
                 </ArticleData>
@@ -85,12 +85,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                           <S.ImageContainer>
                             <Link href={`/resources/article/${id}`}>
                               <a>
-                                <Image
-                                  src={getArticleImageUrl(imageName, false, true)}
-                                  alt={title}
-                                  width={82}
-                                  height={82}
-                                />
+                                <Image src={getArticleImageUrl(imageName, false, true)} alt={title} width={82} height={82} />
                               </a>
                             </Link>
                           </S.ImageContainer>

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
 import { Button } from '@components/Button/Button.style'
 import { mediaQuery } from '@utils/functions'
 
@@ -145,7 +144,6 @@ export const ShareButton = styled(Button)<{ small?: boolean }>`
   border-radius: 20px;
   font-size: var(--fsLarge0);
   font-weight: bold;
-  /* box-shadow: 1px 3px 5px var(--gallery); */
   color: var(--white);
   border: 0;
 `

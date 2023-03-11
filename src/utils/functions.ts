@@ -30,8 +30,7 @@ export const mediaQuery = Object.entries(breakpoints)
 
 export const fetcher: Fetcher = (...args: any) => fetch.apply(null, args).then(res => res.json())
 
-export const setTotalPoints = (switchItPoints = []) =>
-  switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
+export const setTotalPoints = (switchItPoints = []) => switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
 
 export const onCopy = (str: string) => () => {
   if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
@@ -49,40 +48,26 @@ export const filterActionType =
       ? type !== 'hello'
       : true
 
-export const getRandomInt = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1) + min)
+export const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
 
 export const getUsersValue = (userAge: string) => {
-  const userValue =
-    impactCalculatorOptions
-      .find(({ value }) => value.split(':')[1] === userAge)
-      ?.value.split(':')[0] || 0
+  const userValue = impactCalculatorOptions.find(({ value }) => value.split(':')[1] === userAge)?.value.split(':')[0] || 0
 
   return userValue
 }
 
-export const formatNumber = (number: number): string =>
-  new Intl.NumberFormat('en-GB', { maximumSignificantDigits: 3 }).format(number)
+export const formatNumber = (number: number): string => new Intl.NumberFormat('en-GB', { maximumSignificantDigits: 3 }).format(number)
 
 export const calculateImpact = (impactTotal: number, index: number): string[] => {
   const { impact1, impact2, badUnitCost, goodUnitCost, badOp, goodOp } = impacts[index]
   const badCalc = badOp === '<' ? badUnitCost / impactTotal : impactTotal / badUnitCost
   const goodCalc = goodOp === '>' ? goodUnitCost / impactTotal : impactTotal / goodUnitCost
 
-  return [
-    impact1.replace('$', formatNumber(+badCalc.toFixed(2))),
-    impact2.replace('$', formatNumber(+goodCalc.toFixed(2))),
-  ]
+  return [impact1.replace('$', formatNumber(+badCalc.toFixed(2))), impact2.replace('$', formatNumber(+goodCalc.toFixed(2)))]
 }
 
-export const getArticleImageUrl = (
-  imageName: string,
-  isDashboard = false,
-  isThumbnail = false,
-): string =>
-  `${awsS3Uri}/assets/blog/${
-    isThumbnail ? `thumb_${imageName}` : isDashboard ? `dashboard_${imageName}` : `img_${imageName}`
-  }`
+export const getArticleImageUrl = (imageName: string, isDashboard = false, isThumbnail = false): string =>
+  `${awsS3Uri}/assets/blog/${isThumbnail ? `thumb_${imageName}` : isDashboard ? `dashboard_${imageName}` : `img_blog_${imageName}`}`
 
 export const toDateString = (date: string) => {
   const options = { year: 'numeric', month: 'short', day: 'numeric' } as const

@@ -14,9 +14,7 @@ import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 
-export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
-  data,
-}): JSX.Element => {
+export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({ data }): JSX.Element => {
   const methods = useForm()
   const dispatch = useDispatch()
   const updateUser = useUpdateUser()
@@ -62,7 +60,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
       )
       toast('Your details have been updated successfully', 'success')
     } catch (error) {
-      toast('An error occurred your details', 'error')
+      toast('An error occurred updating your details', 'error')
     }
   }
 
@@ -78,13 +76,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
     <>
       <S.ProfileHead isProfile>
         <S.Picture isProfile>
-          <Image
-            src={picture || '/icons/icon_noprofile.svg'}
-            alt={nickname}
-            width={imageSize}
-            height={imageSize}
-            unoptimized
-          />
+          <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={imageSize} height={imageSize} unoptimized />
         </S.Picture>
         <S.ProfileNames>
           <S.ProfileName>{nickname}</S.ProfileName>
@@ -130,12 +122,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               minLength={1}
               maxLength={50}
             />
-            <Input
-              name='campaigns'
-              label='Campaigns I support'
-              {...(campaigns && { defaultValue: campaigns })}
-              {...methods}
-            />
+            <Input name='campaigns' label='Campaigns I support' {...(campaigns && { defaultValue: campaigns })} {...methods} />
             <Input
               name='proudActions'
               label={`Climate actions I'm proud of`}
@@ -143,8 +130,7 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({
               {...methods}
             />
           </fieldset>
-          <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} />{' '}
-          {/* TODO handle isSubmitting */}
+          <FormButtons disabled={false} isSubmitting={false} onCancel={onCancel} /> {/* TODO handle isSubmitting */}
         </St.ProfileForm>
       </FormProvider>
     </>
