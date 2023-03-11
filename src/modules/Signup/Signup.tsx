@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as S from '@modules/Signup/Signup.style'
@@ -61,7 +62,10 @@ const Signup: NextPage = () => {
               </S.SignInButton>
 
               <S.SignIn>
-                Already have an account? <S.SignInLink>Sign in</S.SignInLink>
+                Already have an account?{' '}
+                <S.SignInLink>
+                  <Link href='/api/auth/login'>Sign in</Link>
+                </S.SignInLink>
               </S.SignIn>
             </Div>
           </S.SignupContent>
