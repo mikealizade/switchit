@@ -19,7 +19,6 @@ export const AppContent = styled.div<{ hasAside: boolean }>`
   flex: auto;
   position: relative;
   overflow: hidden;
-  /* background-color: var(--pampas); */
   padding-bottom: 80px;
   border-radius: 0;
 
@@ -48,8 +47,7 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   overflow-y: auto;
   z-index: 1;
   bottom: 0;
-  transform: ${({ isImpactCardOpen }) =>
-    console.log('isImpactCardOpen', isImpactCardOpen) || (isImpactCardOpen ? 'translateX(0)' : `translateX(100vw)`)};
+  transform: ${({ isImpactCardOpen }) => (isImpactCardOpen ? 'translateX(0)' : `translateX(100vw)`)};
   transition: all 0.2s ease-in-out;
   overflow: hidden;
 
@@ -62,7 +60,6 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
 
   ${() => mediaQuery.laptop} {
     overflow: hidden;
-    /* position: relative; */
     min-width: 400px;
     width: 400px;
     height: auto;
@@ -71,11 +68,9 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
 
   ${() => mediaQuery.xlaptop} {
     overflow: hidden;
-    /* position: relative; */
     min-width: 400px;
     width: 400px;
     height: auto;
-    /* top: 20px; */
   }
 
   ${() => mediaQuery.xxlaptop} {
@@ -86,12 +81,6 @@ export const Aside = styled.aside<{ isImpactCardOpen?: boolean }>`
   }
 `
 
-// export const ScrollContainer = styled.div`
-//   overflow: auto;
-//   flex: 1;
-//   display: flex;
-// `
-
 export const AsideContent = styled.section`
   display: flex;
   background-color: var(--white);
@@ -101,7 +90,6 @@ export const AsideContent = styled.section`
   overflow-y: auto;
 
   ${() => mediaQuery.laptop} {
-    /* padding: 40px; */
     border-radius: 16px;
   }
 `

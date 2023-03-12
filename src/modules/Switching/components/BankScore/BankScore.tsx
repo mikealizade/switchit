@@ -11,13 +11,8 @@ import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useModal } from '@hooks/useModal'
 import { useNextStep } from '@hooks/useNextStep'
-import {
-  SwitchingColumnContainer,
-  SwitchingColumn,
-  Buttons,
-  Header,
-} from '@modules/Switching/Switching.style'
-import { Content, ParagraphCopy, CopyContainer, BoldLink } from '@styles/common.style'
+import { SwitchingColumnContainer, SwitchingColumn, Buttons, Header } from '@modules/Switching/Switching.style'
+import { Content, CopyContainer, BoldLink } from '@styles/common.style'
 import { steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
 import * as S from '../BankScore/BankScore.style'
@@ -39,7 +34,7 @@ const colourConfig = {
 }
 
 export const BankScore = (): JSX.Element => {
-  const { back, push } = useRouter()
+  const { push } = useRouter()
   const { data } = useSWR('/api/json/bankdata', fetcher)
   const nextStep = useNextStep()
   const [isModalVisible, setToggleModal] = useModal()
@@ -66,11 +61,7 @@ export const BankScore = (): JSX.Element => {
   useEffect(() => {
     if (data && badBank) {
       const { bankScore = [], bankData = [] } = JSON.parse(String(data))
-      const {
-        score: selectedScore,
-        pertinentInformation: info,
-        summary,
-      } = bankData.find(({ bank }: { bank: string }) => bank === badBank)
+      const { score: selectedScore, pertinentInformation: info, summary } = bankData.find(({ bank }: { bank: string }) => bank === badBank)
       const result = bankScore.find(({ score }: { score: number }) => score === selectedScore)
       setBankScore({ ...result, info, summary })
       setValueEnd((score / 5) * 100)
@@ -120,11 +111,7 @@ export const BankScore = (): JSX.Element => {
                   </ProgressProvider>
                 </S.BankScoreContainer>
                 <S.BankData>
-                  <CopyContainer
-                    display='flex'
-                    dangerouslySetInnerHTML={{ __html: summary }}
-                    bold
-                  />
+                  <CopyContainer display='flex' dangerouslySetInnerHTML={{ __html: summary }} bold />
                   <BoldLink onClick={onToggleModal(true)}>
                     Why did {badBank} score {score}/5?
                   </BoldLink>
@@ -135,36 +122,19 @@ export const BankScore = (): JSX.Element => {
                 <>
                   {isGoodBank ? (
                     <Buttons>
-                      <Button
-                        type='button'
-                        size='small'
-                        mode='secondary'
-                        onClick={() => push('/switching/select-bank')}
-                      >
+                      <Button type='button' size='small' mode='secondary' onClick={() => push('/switching/select-bank')}>
                         Check Another Bank Score
                       </Button>
-                      <Button
-                        type='button'
-                        size='small'
-                        onClick={() => push('/resources/article/5')}
-                      >
+                      <Button type='button' size='small' onClick={() => push('/resources/article/5')}>
                         What Else Can I Do To Act?
                       </Button>
-                      <Button
-                        type='button'
-                        size='small'
-                        onClick={() => push('/switching/green-banks')}
-                      >
+                      <Button type='button' size='small' onClick={() => push('/switching/green-banks')}>
                         Other Green Banks
                       </Button>
                     </Buttons>
                   ) : (
                     <Buttons>
-                      <Button
-                        type='button'
-                        mode='secondary'
-                        onClick={() => push('/switching/select-bank')}
-                      >
+                      <Button type='button' mode='secondary' onClick={() => push('/switching/select-bank')}>
                         Previous Step
                       </Button>
                       <Button type='button' onClick={onNext}>

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { mediaQuery } from '@utils/functions'
 
 export const Articles = styled.div`
   display: flex;

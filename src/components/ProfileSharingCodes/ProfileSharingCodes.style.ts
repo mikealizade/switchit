@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { Button } from '@components/Button/Button.style'
 
 export const SentCodes = styled.div`
   display: flex;

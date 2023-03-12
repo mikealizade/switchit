@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { Div } from '@styles/common.style'
 import { mediaQuery } from '@utils/functions'
 
 export const BankFilter = styled.div`

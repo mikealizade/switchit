@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
-import Image from 'next/image'
+// import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react'
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from 'sanitize-html'

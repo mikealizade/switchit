@@ -17,7 +17,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
   const dispatch = useDispatch()
   const { isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
-  const { email = '', nickname = '', picture = '', isNewUser } = useSelector((state: RootState) => state.user)
+  const { nickname = '', picture = '', isNewUser } = useSelector((state: RootState) => state.user)
   const isSwitchingJourney = pathname.includes('/switching/')
   let [pageTitle] = [...mobileNav, ...subNav].map(({ text }) => text.toLowerCase()).filter((item: string) => pathname.includes(item))
   pageTitle = pageTitle === 'switching' ? 'Switching Journeys' : pageTitle

@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import Image from 'next/image'
 import { useState, isValidElement } from 'react'
-import { ParagraphCopy, CopyIcon, Div } from '@styles/common.style'
+import { CopyIcon, Div } from '@styles/common.style'
 import { onCopy } from '@utils/functions'
 import * as S from './Accordion.style'
 
@@ -14,9 +14,7 @@ type FAQ = {
   copy: string | string[]
 }
 
-const AccordionItem = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
-))(() => ({
+const AccordionItem = styled((props: AccordionProps) => <MuiAccordion disableGutters elevation={0} square {...props} />)(() => ({
   '&:not(:last-child)': {
     borderBottom: '1px solid #ada9a3',
   },
@@ -26,10 +24,7 @@ const AccordionItem = styled((props: AccordionProps) => (
 }))
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary
-    expandIcon={<Image src={'/icons/icon_chevron_right.svg'} alt='' width={18} height={18} />}
-    {...props}
-  />
+  <MuiAccordionSummary expandIcon={<Image src={'/icons/icon_chevron_right.svg'} alt='' width={18} height={18} />} {...props} />
 ))(() => ({
   color: '#153F45',
 
@@ -71,16 +66,8 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
       {data.map(({ text, copy }: FAQ, i: number) => {
         const content = Array.isArray(copy) ? copy.join('\n\n') : copy
         return (
-          <AccordionItem
-            key={`type${i}`}
-            expanded={expanded === `panel${i}`}
-            onChange={handleChange(`panel${i}`)}
-          >
-            <AccordionSummary
-              aria-controls='panel1d-content'
-              id='panel1d-header'
-              sx={{ padding: 0 }}
-            >
+          <AccordionItem key={`type${i}`} expanded={expanded === `panel${i}`} onChange={handleChange(`panel${i}`)}>
+            <AccordionSummary aria-controls='panel1d-content' id='panel1d-header' sx={{ padding: 0 }}>
               <Typography
                 sx={{
                   fontSize: '1.8rem',
@@ -95,12 +82,7 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
             <AccordionDetails>
               {hasCopyIcon && (
                 <CopyIcon onClick={() => onCopyText(content)}>
-                  <Image
-                    src={`/icons/icon_copy${hasCopied ? '_on' : ''}.svg`}
-                    alt=''
-                    width={25}
-                    height={32}
-                  />
+                  <Image src={`/icons/icon_copy${hasCopied ? '_on' : ''}.svg`} alt='' width={25} height={32} />
                 </CopyIcon>
               )}
 

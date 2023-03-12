@@ -8,15 +8,10 @@ import { RadioGroup } from '@components/RadioGroup/RadioGroup'
 import { useToast } from '@hooks/useToast'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import { RootState } from '@state/store'
-import { toast } from '@state/toast/toastSlice'
 import { setUser } from '@state/user/userSlice'
 import * as S from './AccountForm.style'
 
-export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boolean }> = ({
-  data,
-  disabled,
-  row = false,
-}): JSX.Element => {
+export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boolean }> = ({ data, disabled, row = false }): JSX.Element => {
   const methods = useForm()
   const dispatch = useDispatch()
   const updateUser = useUpdateUser()

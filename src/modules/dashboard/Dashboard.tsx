@@ -2,12 +2,14 @@ import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useDispatch, useSelector } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { DashboardHero } from '@components/Hero/DashboardHero'
 import { Loader } from '@components/Loader/Loader'
 import { Posts, Post } from '@pages/dashboard'
+import { RootState } from '@state/store'
 import * as S from '@styles/common.style'
 import { fetcher } from '@utils/functions'
 import { Blog } from './components/Blog/Blog'
@@ -24,8 +26,9 @@ type PageProps = {
 
 const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
   const { user: { sub = '' } = {} } = useUser()
+  const { profile: { sharingCodes = [] } = {} } = useSelector((state: RootState) => state.user)
   const {
-    data: { user: { switchJourneys = [], profile: { sharingCodes = [] } = {} } = {} } = {},
+    data: { user: { switchJourneys = [] } = {} } = {},
     // error,
     isValidating,
   } = useSWR(`/api/db/user/${sub}`, fetcher, { revalidateOnFocus: false }) as SWRResponse
@@ -53,21 +56,13 @@ const Dashboard: NextPage<PageProps> = ({ data: { posts = [] } = {} }) => {
               </Card>
             </S.Column>
             <S.Column>
-              <Card>
-                {isValidating ? (
-                  <Loader height={164} />
-                ) : (
-                  <SharingCodes total={sharingCodes.length} />
-                )}
-              </Card>
+              <Card>{isValidating ? <Loader height={164} /> : <SharingCodes total={sharingCodes.length} />}</Card>
               <Card stretch>
                 <Goals />
               </Card>
             </S.Column>
             <S.Column>
-              <Card stretch>
-                {isValidating ? <Loader /> : <SwitchingJourney switchJourneys={switchJourneys} />}
-              </Card>
+              <Card stretch>{isValidating ? <Loader /> : <SwitchingJourney switchJourneys={switchJourneys} />}</Card>
             </S.Column>
           </S.ColumnContainer>
         </S.Content>

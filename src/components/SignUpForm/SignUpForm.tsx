@@ -5,7 +5,6 @@ import { FormProvider, useForm, FieldValues } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
 import { Input } from '@components/Input/Input'
-import { InfoLink } from '@modules/Signup/Signup.style'
 import { setUser } from '@state/user/userSlice'
 import { Form } from '@styles/common.style'
 
@@ -15,8 +14,8 @@ export const SignUpForm: NextPage<{
   nextSlide: () => void
   previousSlide: () => void
   setToggleModal: (arg: boolean) => void
-}> = ({ data, disabled, nextSlide, previousSlide, setToggleModal }): JSX.Element => {
-  const { user = {}, error = {}, isLoading = false } = useUser()
+}> = ({ data, nextSlide }): JSX.Element => {
+  const { user = {} } = useUser()
   const dispatch = useDispatch()
   const methods = useForm()
   const { handleSubmit, reset } = methods
@@ -24,10 +23,6 @@ export const SignUpForm: NextPage<{
   const onSubmit = (data: FieldValues): void => {
     dispatch(setUser({ ...user, ...data }))
     nextSlide()
-  }
-
-  const onToggleModal = (): void => {
-    setToggleModal(true)
   }
 
   useEffect(() => {
@@ -63,7 +58,7 @@ export const SignUpForm: NextPage<{
               // disabled={disabled}
               required={false}
             />
-            <InfoLink onClick={onToggleModal}>Why do we want to know this information?</InfoLink>
+            {/* <InfoLink onClick={onToggleModal}>Why do we want to know this information?</InfoLink> */}
             <Button type='submit' disabled={false}>
               {'Next'}
             </Button>

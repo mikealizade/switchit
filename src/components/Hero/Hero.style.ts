@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const Hero = styled.div<{ type?: string }>`
+export const Hero = styled.div<{ type?: string; isLearningMore?: boolean }>`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -12,7 +12,7 @@ export const Hero = styled.div<{ type?: string }>`
   padding: 0;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
   position: relative;
-  height: 190px;
+  height: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '190px')};
   overflow: hidden;
 
   ${() => mediaQuery.tablet} {
@@ -36,28 +36,39 @@ export const Hero = styled.div<{ type?: string }>`
   }
 `
 
+export const Image = styled.div`
+  display: none;
+
+  ${() => mediaQuery.xmobile} {
+    display: block;
+  }
+`
+
 export const DashboardHero = styled(Hero)`
   padding: 30px;
 `
 
-export const Content = styled.div`
+export const Content = styled.div<{ isLearningMore: boolean }>`
   flex: 4;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
   flex: 5;
   justify-content: center;
-  padding-right: 20px;
+  /* padding-right: 20px; */
+  /* padding: 0 20px; */
+  padding: 20px;
 
   ${() => mediaQuery.tablet} {
     padding: 0;
   }
 
-  p {
+  p:not(:last-of-type) {
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '3')};
+    /* -webkit-line-clamp: 4; */
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: ${({ isLearningMore }) => (isLearningMore ? 'visible' : 'hidden')};
   }
 `
 
@@ -74,5 +85,13 @@ export const Text = styled.p`
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsLarge0);
+  }
+`
+
+export const LearnMore = styled.p`
+  text-decoration: underline;
+
+  ${() => mediaQuery.xmobile} {
+    display: none;
   }
 `

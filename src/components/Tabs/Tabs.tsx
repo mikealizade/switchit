@@ -21,14 +21,7 @@ interface TabsProps {
 
 const Panel = ({ children, value, index, ...rest }: TabPanelProps) => {
   return (
-    <div
-      role='tabpanel'
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...rest}
-      className='panel'
-    >
+    <div role='tabpanel' hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...rest} className='panel'>
       {value === index && <>{children}</>}
     </div>
   )
@@ -43,18 +36,11 @@ const a11yProps = (index: number) => {
 
 const isStringArray = (array: string[]): array is string[] => typeof array[0] === 'string'
 
-export const Tabs: NextPage<TabsProps> = ({
-  tabs = [],
-  panels = [],
-  centered = true,
-  onSelectTab,
-}): JSX.Element => {
+export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], onSelectTab }): JSX.Element => {
   const {
     query: { tab },
   } = useRouter()
-  const tabIndex = isStringArray(tabs)
-    ? tabs.findIndex(item => item.toLowerCase().replace(/\s/, '') === tab)
-    : 0
+  const tabIndex = isStringArray(tabs) ? tabs.findIndex(item => item.toLowerCase().replace(/\s/, '') === tab) : 0
   const [value, setValue] = useState(tabIndex >= 0 ? tabIndex : 0)
 
   const onChange = (event: React.SyntheticEvent, newValue: number) => {

@@ -3,10 +3,8 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
-import { useSelector } from 'react-redux'
 import { Button, TextButton } from '@components/Button/Button'
 import { Input } from '@components/Input/Input'
-import { RootState } from '@state/store'
 import { Form } from '@styles/common.style'
 import { defaultProfile } from '../../utils/defaultProfile'
 
@@ -15,7 +13,7 @@ export const SignUpFormStep2: NextPage<{
   nextSlide: () => void
   previousSlide: () => void
 }> = ({ data }): JSX.Element => {
-  const { user = {}, error = {}, isLoading = false } = useUser()
+  const { user = {} } = useUser()
 
   // const user = useSelector((state: RootState) => state.user)
   const methods = useForm()
