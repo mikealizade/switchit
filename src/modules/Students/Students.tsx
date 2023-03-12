@@ -52,7 +52,9 @@ const Students = (): JSX.Element => {
                 tracking, and more. Select your institution below.
               </S.Text>
               <S.Text>
-                <strong>Work or study at a school, sixth form, or college? Find out about our work with 16- to 18-year-olds</strong>
+                <strong>
+                  Work or study at a school, sixth form, or college? Get in touch to find out more about our work with 16 to 18 year olds.
+                </strong>
               </S.Text>
             </Div>
           </S.ContentContainer>

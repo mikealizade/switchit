@@ -9,7 +9,7 @@ const profiles = [
   {
     name: 'Anna Chirico',
     role: 'Co-founder | Creative Director ',
-    text: 'With an extensive background in design, Anna leads on all things creative; providing creative direction across all of our operations. As our resident UX/UI whizz kid, she designed & developed the entire Switching Platform, ensuring the switching journey is as simple as possible for our users. She also manages the Web Dev and Research teams.',
+    text: 'With an extensive background in design, Anna leads on all things creative; providing creative direction across all of our operations. As our resident UX/UI whizz kid, she designed & developed the entire Green Banking Platform, ensuring the switching journey is as simple as possible for our users. She also manages the Web Dev and Research teams.',
     image: 'img_anna_chirico.jpg',
   },
   {
@@ -96,9 +96,9 @@ const About = (): JSX.Element => {
         </S.PageSection>
         <S.PageSection rowGap={30}>
           <S.ContentContainer>
-            <S.PageHeaderMono>The Switching Platform</S.PageHeaderMono>
+            <S.PageHeaderMono>The Platform</S.PageHeaderMono>
             <Div>
-              <S.Text>Our Bank Switching Platform makes switching to a green bank as simple and impactful as possible.</S.Text>
+              <S.Text>Our Green Banking Platform makes switching to a green bank as simple and impactful as possible.</S.Text>
               <BulletList>
                 <li>See how your bank stacks up against our stringent investment criteria</li>
                 <li>Get to know exactly what your bank has been investing in behind your back</li>
@@ -110,9 +110,7 @@ const About = (): JSX.Element => {
                 <em>Plus much more!</em>
               </S.Text>
               <S.Text>
-                <strong>
-                  Create an account to get started. <em>Psst - {`It's`} free!</em>
-                </strong>
+                <strong>Create an account to get started.</strong> <em>Psst - {`It's`} free!</em>
               </S.Text>
             </Div>
             <S.BlockButton margin='30px 0 0'>

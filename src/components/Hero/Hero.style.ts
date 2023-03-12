@@ -12,8 +12,13 @@ export const Hero = styled.div<{ type?: string; isLearningMore?: boolean }>`
   padding: 0;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
   position: relative;
-  height: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '190px')};
   overflow: hidden;
+  border-bottom: 20px solid var(--alabaster);
+
+  ${() => mediaQuery.xmobile} {
+    height: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '190px')};
+    border: 0;
+  }
 
   ${() => mediaQuery.tablet} {
     flex-direction: row;
@@ -55,18 +60,15 @@ export const Content = styled.div<{ isLearningMore: boolean }>`
   row-gap: 20px;
   flex: 5;
   justify-content: center;
-  /* padding-right: 20px; */
-  /* padding: 0 20px; */
   padding: 20px;
 
   ${() => mediaQuery.tablet} {
-    padding: 0;
+    padding: 30px 0;
   }
 
   p:not(:last-of-type) {
     display: -webkit-box;
     -webkit-line-clamp: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '3')};
-    /* -webkit-line-clamp: 4; */
     -webkit-box-orient: vertical;
     overflow: ${({ isLearningMore }) => (isLearningMore ? 'visible' : 'hidden')};
   }

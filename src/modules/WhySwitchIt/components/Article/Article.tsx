@@ -7,6 +7,7 @@ import { useMediaQuery } from '@hooks/useMediaQuery'
 import { BlockButton } from '@modules/SignedOutLanding/SignedOutLanding.style'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Post } from '@pages/dashboard'
+import { Div, Text } from '@styles/common.style'
 import { getArticleImageUrl } from '@utils/functions'
 import * as S from './Article.style'
 
@@ -44,6 +45,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
   const { isTablet } = useMediaQuery()
 
   const {
+    id: postId,
     text = '',
     // articleImageName = '',
     imageName = '',
@@ -51,13 +53,14 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
     summary = '',
   } = posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
     Post,
-    'title' | 'text' | 'summary' | 'imageName' | 'titleImageName'
+    'id' | 'title' | 'text' | 'summary' | 'imageName' | 'titleImageName'
   >
   const article = metaDataConfig[id as keyof typeof metaDataConfig]
   const metaTitle = article?.title
   const metaDescription = article?.description
   const backgroundPositionY = article?.backgroundPositionY
 
+  console.log('postId:', postId)
   return (
     <>
       <Head>
@@ -92,6 +95,23 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
           <BlockButton margin='40px 0 0'>
             <Link href='/api/auth/login'>Switch To A Green Bank</Link>
           </BlockButton>
+
+          {postId === 'the-impact' && (
+            <div style={{ marginTop: '50px' }}>
+              <Text>
+                <Link href='/why-switch-it/article/get-involved'>Click here for more information on switching banks.</Link>
+              </Text>
+            </div>
+          )}
+
+          {postId === 'get-involved' && (
+            <div style={{ marginTop: '50px' }}>
+              <Text>
+                <Link href='/why-switch-it/article/the-problem'>Find out more about the link between banks and climate breakdown</Link> and{' '}
+                <Link href='/why-switch-it/article/the-impact'>why you should switch to a green bank.</Link>
+              </Text>
+            </div>
+          )}
         </S.Article>
       </SignedOutLayout>
     </>

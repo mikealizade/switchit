@@ -8,7 +8,10 @@ export const Content = styled.main`
   flex-direction: column;
   flex-grow: 1;
   padding: 0;
-  row-gap: 25px;
+
+  ${() => mediaQuery.xmobile} {
+    row-gap: 25px;
+  }
 
   ${() => mediaQuery.tablet} {
     padding: 40px;
@@ -22,6 +25,11 @@ export const ColumnContainer = styled.section`
   row-gap: 25px;
   position: relative;
   flex: 1;
+  flex-direction: column;
+
+  ${() => mediaQuery.tablet} {
+    flex-direction: initial;
+  }
 
   ${() => mediaQuery.xlaptop} {
     row-gap: inherit;
@@ -51,7 +59,6 @@ export const Column = styled.div<{ flex?: number }>`
   flex-direction: column;
   row-gap: 25px;
   flex: ${({ flex }) => (flex ? flex : '3')};
-  min-width: 400px;
 
   + section {
     flex: 4;
@@ -60,6 +67,10 @@ export const Column = styled.div<{ flex?: number }>`
     > section {
       flex: 1;
     }
+  }
+
+  ${() => mediaQuery.tablet} {
+    min-width: 400px;
   }
 `
 

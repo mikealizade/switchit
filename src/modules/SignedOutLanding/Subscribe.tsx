@@ -48,9 +48,7 @@ export const Subscribe: NextPage = (): JSX.Element => {
       <S.SubscribeHeader>Subscribe</S.SubscribeHeader>
       <>
         {isError ? (
-          <Text>
-            Sorry, we {`couldn't`} subscribe you to our newsletter. Please try again later.
-          </Text>
+          <Text>Sorry, we {`couldn't`} subscribe you to our newsletter. Please try again later.</Text>
         ) : hasEnteredEmail ? (
           <S.NewsletterThanks>Thanks for subscribing. {`We'll`} be in touch.</S.NewsletterThanks>
         ) : (
@@ -62,7 +60,7 @@ export const Subscribe: NextPage = (): JSX.Element => {
           </S.SubscribeForm>
         )}
       </>
-      <Div width='30%'>
+      <Div width='30%' flex='none'>
         <S.TextContainer mobileWidth={50}>
           <Text>Subscribe to our newsletter for news, insights, and updates.</Text>
           <Text>
