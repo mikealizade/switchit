@@ -84,24 +84,25 @@ export const MobileNSubnav = styled.ul`
   justify-content: center;
   align-self: center;
   column-gap: 40px;
-  margin-top: 100px;
 
   li {
     font-size: var(--fsMedium8);
     position: relative;
+    color: var(--pink);
+    font-weight: bold;
 
     &:first-of-type:after {
       content: '';
       position: absolute;
-      width: 1px;
-      background-color: var(--base);
+      width: 2px;
+      background-color: var(--pink);
       height: 18px;
       left: 84px;
     }
   }
 
   + ul {
-    margin: auto 0 60px;
+    margin: 30px 0 60px;
   }
 `
 

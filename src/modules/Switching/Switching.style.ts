@@ -8,12 +8,11 @@ export const NoJourneysTextContainer = styled.div`
   place-items: center;
   row-gap: 40px;
   flex: 1;
-  /* min-height: 300px; */
   justify-content: center;
 `
 
 export const NoJourneysText = styled.p`
-  font-size: var(--fsBase);
+  font-size: var(--fsLarge0);
   font-weight: bold;
   text-align: center;
 
@@ -71,22 +70,15 @@ export const NewJourney = styled.div`
   cursor: pointer;
   right: 0;
   top: 0;
+
+  ${() => mediaQuery.tablet} {
+    right: 0;
+    top: 0;
+  }
 `
 
-export const NewJourneyMobile = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  padding: 13px 15px;
-  background-color: var(--sushi);
-  border-radius: 10px;
-  color: var(--white);
-  font-weight: bold;
-  width: 350px;
-  font-size: var(--fsLarge2);
-  font-family: 'Konsolev SemiBold';
-  margin: -15px 0 15px;
+export const NewJourneyMobile = styled(NewJourney)`
+  position: static;
 `
 
 export const NextStep = styled.div`
@@ -214,8 +206,7 @@ export const Buttons = styled.div<{ align?: string }>`
   margin-top: auto;
 
   ${() => mediaQuery.tablet} {
-    justify-content: ${({ align }) =>
-      align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between'};
+    justify-content: ${({ align }) => (align === 'right' ? 'flex-end' : align === 'left' ? 'flex-start' : 'space-between')};
     flex-direction: row;
     padding: 0;
   }

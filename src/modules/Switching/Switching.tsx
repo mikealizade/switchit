@@ -156,8 +156,14 @@ const Switching = (): JSX.Element => {
               <S.NoJourneysText>
                 {`It's why you're here!`} Start your first switching
                 <br />
-                journey by clicking on the pink plus sign on the right.
+                <br />
+                journey by clicking on the pink plus sign {isMobile ? 'below' : 'on the right'}.
               </S.NoJourneysText>
+              {isMobile && (
+                <S.NewJourneyMobile onClick={addJourneyName}>
+                  <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                </S.NewJourneyMobile>
+              )}
               {/* <S.NoJourneysText>
                 Have multiple bank accounts? No problem! {`We'll`} switch one at a time
               </S.NoJourneysText> */}
