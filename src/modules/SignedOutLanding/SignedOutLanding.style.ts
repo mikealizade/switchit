@@ -570,6 +570,7 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 16px;
+    object-fit: contain;
   }
 `
 

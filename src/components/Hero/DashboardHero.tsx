@@ -10,14 +10,14 @@ import { heroConfig } from './data'
 
 export const DashboardHero: NextPage<{ post: Post }> = (): JSX.Element => {
   const { isNewUser } = useSelector((state: RootState) => state.user)
-  const [isLearningMore, setLearnMore] = useState(false)
+  const [isExpanded, setLearnMore] = useState(false)
   const hero = heroConfig['dashboard']
   const title = isNewUser ? hero.newUserTitle : hero.activeUserTitle
   const text = isNewUser ? hero.newUserText : hero.activeUserText
   const { isXMobile } = useMediaQuery()
 
   return (
-    <S.Hero isLearningMore={isLearningMore}>
+    <S.Hero isExpanded={isExpanded}>
       {isXMobile && (
         <S.Image
           style={{
@@ -32,10 +32,10 @@ export const DashboardHero: NextPage<{ post: Post }> = (): JSX.Element => {
           <Image src={`/images/${hero.icon}`} alt='' width={205} height={224} objectFit='cover' />
         </S.Image>
       )}
-      <S.Content isLearningMore={isLearningMore}>
+      <S.Content isExpanded={isExpanded}>
         <S.Title>{title}</S.Title>
-        <S.Text>{text}</S.Text>
-        <S.LearnMore onClick={() => setLearnMore(!isLearningMore)}>Learn {isLearningMore ? 'Less' : 'More'}</S.LearnMore>
+        <S.Text isExpanded={isExpanded}>{text}</S.Text>
+        <S.LearnMore onClick={() => setLearnMore(!isExpanded)}>Learn {isExpanded ? 'Less' : 'More'}</S.LearnMore>
       </S.Content>
     </S.Hero>
   )

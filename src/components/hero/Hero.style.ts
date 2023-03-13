@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const Hero = styled.div<{ type?: string; isLearningMore?: boolean }>`
+export const Hero = styled.div<{ type?: string; isExpanded?: boolean }>`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -16,7 +16,7 @@ export const Hero = styled.div<{ type?: string; isLearningMore?: boolean }>`
   border-bottom: 20px solid var(--alabaster);
 
   ${() => mediaQuery.xmobile} {
-    height: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '190px')};
+    height: ${({ isExpanded }) => (isExpanded ? 'initial' : '190px')};
     border: 0;
   }
 
@@ -53,7 +53,7 @@ export const DashboardHero = styled(Hero)`
   padding: 30px;
 `
 
-export const Content = styled.div<{ isLearningMore: boolean }>`
+export const Content = styled.div<{ isExpanded: boolean }>`
   flex: 4;
   display: flex;
   flex-direction: column;
@@ -65,13 +65,6 @@ export const Content = styled.div<{ isLearningMore: boolean }>`
   ${() => mediaQuery.tablet} {
     padding: 30px 0;
   }
-
-  p:not(:last-of-type) {
-    display: -webkit-box;
-    -webkit-line-clamp: ${({ isLearningMore }) => (isLearningMore ? 'initial' : '3')};
-    -webkit-box-orient: vertical;
-    overflow: ${({ isLearningMore }) => (isLearningMore ? 'visible' : 'hidden')};
-  }
 `
 
 export const Title = styled.h2`
@@ -82,8 +75,12 @@ export const Title = styled.h2`
   }
 `
 
-export const Text = styled.p`
+export const Text = styled.p<{ isExpanded: boolean }>`
   font-size: var(--fsSmall6);
+  display: -webkit-box;
+  -webkit-line-clamp: ${({ isExpanded }) => (isExpanded ? 'initial' : '3')};
+  -webkit-box-orient: vertical;
+  overflow: ${({ isExpanded }) => (isExpanded ? 'visible' : 'hidden')};
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsLarge0);

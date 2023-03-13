@@ -8,12 +8,12 @@ import { heroConfig, HeroConfig } from './data'
 export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => {
   const hero = heroConfig[type as keyof HeroConfig]
   const { isMobile, isXMobile } = useMediaQuery()
-  const [isLearningMore, setLearnMore] = useState(false)
+  const [isExpanded, setLearnMore] = useState(false)
   const width = isMobile ? hero.dimensions.mobileWidth : hero.dimensions.width
   const height = isMobile ? hero.dimensions.mobileHeight : hero.dimensions.height
 
   return (
-    <S.Hero isLearningMore={isLearningMore}>
+    <S.Hero isExpanded={isExpanded}>
       {isXMobile && (
         <S.Image
           style={{
@@ -27,10 +27,10 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
           <Image src={`/images/${heroConfig[type as keyof HeroConfig].icon}`} alt='' width={width} height={height} objectFit='contain' />
         </S.Image>
       )}
-      <S.Content isLearningMore={isLearningMore}>
+      <S.Content isExpanded={isExpanded}>
         <S.Title>{heroConfig[type as keyof HeroConfig].title}</S.Title>
-        <S.Text>{heroConfig[type as keyof HeroConfig].text}</S.Text>
-        <S.LearnMore onClick={() => setLearnMore(!isLearningMore)}>Learn {isLearningMore ? 'Less' : 'More'}</S.LearnMore>
+        <S.Text isExpanded={isExpanded}>{heroConfig[type as keyof HeroConfig].text}</S.Text>
+        <S.LearnMore onClick={() => setLearnMore(!isExpanded)}>Learn {isExpanded ? 'Less' : 'More'}</S.LearnMore>
       </S.Content>
     </S.Hero>
   )
