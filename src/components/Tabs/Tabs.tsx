@@ -52,17 +52,10 @@ export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], onSelectTab 
       <Box
         sx={{
           flexGrow: 1,
-          maxWidth: { xs: '90vw', sm: '100%' },
+          maxWidth: { xs: '85vw', sm: '90vw' },
         }}
       >
-        <TabsPanel
-          value={value}
-          onChange={onChange}
-          aria-label='Switching Journeys'
-          // centered={centered}
-          className='tabs-menu'
-          variant='scrollable'
-        >
+        <TabsPanel value={value} onChange={onChange} aria-label='Switching Journeys' className='tabs-menu' variant='scrollable'>
           {tabs.map((tab: any, i: number) => {
             const tabItem = onSelectTab ? tab.tab : tab
 
