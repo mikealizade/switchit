@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { mediaQuery } from '@utils/functions'
 
-export const Hero = styled.div<{ type?: string; isExpanded?: boolean }>`
+export const Hero = styled.div<{ type?: string }>`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -16,8 +16,21 @@ export const Hero = styled.div<{ type?: string; isExpanded?: boolean }>`
   border-bottom: 20px solid var(--alabaster);
 
   ${() => mediaQuery.xmobile} {
-    height: ${({ isExpanded }) => (isExpanded ? 'initial' : '190px')};
+    height: 190px;
     border: 0;
+
+    &.expanded {
+      height: auto;
+    }
+  }
+
+  &.expanded {
+    p:first-of-type {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
 
   ${() => mediaQuery.tablet} {
@@ -75,12 +88,8 @@ export const Title = styled.h2`
   }
 `
 
-export const Text = styled.p<{ isExpanded: boolean }>`
+export const Text = styled.p`
   font-size: var(--fsSmall6);
-  display: -webkit-box;
-  -webkit-line-clamp: ${({ isExpanded }) => (isExpanded ? 'none' : '3')};
-  -webkit-box-orient: vertical;
-  overflow: ${({ isExpanded }) => (isExpanded ? 'initial' : 'hidden')};
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsLarge0);

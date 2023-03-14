@@ -17,7 +17,7 @@ export const DashboardHero: NextPage<{ post: Post }> = (): JSX.Element => {
   const { isXMobile } = useMediaQuery()
 
   return (
-    <S.Hero isExpanded={isExpanded}>
+    <S.Hero className={isExpanded ? 'expanded' : ''}>
       {isXMobile && (
         <S.Image
           style={{
@@ -34,7 +34,7 @@ export const DashboardHero: NextPage<{ post: Post }> = (): JSX.Element => {
       )}
       <S.Content>
         <S.Title>{title}</S.Title>
-        <S.Text isExpanded={isExpanded}>{text}</S.Text>
+        <S.Text>{text}</S.Text>
         <S.LearnMore onClick={() => setLearnMore(!isExpanded)}>Learn {isExpanded ? 'Less' : 'More'}</S.LearnMore>
       </S.Content>
     </S.Hero>

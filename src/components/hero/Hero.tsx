@@ -13,7 +13,7 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
   const height = isMobile ? hero.dimensions.mobileHeight : hero.dimensions.height
 
   return (
-    <S.Hero isExpanded={isExpanded}>
+    <S.Hero className={isExpanded ? 'expanded' : ''}>
       {isXMobile && (
         <S.Image
           style={{
@@ -29,7 +29,7 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
       )}
       <S.Content>
         <S.Title>{heroConfig[type as keyof HeroConfig].title}</S.Title>
-        <S.Text isExpanded={isExpanded}>{heroConfig[type as keyof HeroConfig].text}</S.Text>
+        <S.Text>{heroConfig[type as keyof HeroConfig].text}</S.Text>
         <S.LearnMore onClick={() => setLearnMore(!isExpanded)}>Learn {isExpanded ? 'Less' : 'More'}</S.LearnMore>
       </S.Content>
     </S.Hero>
