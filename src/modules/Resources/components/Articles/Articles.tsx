@@ -1,9 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
 import * as S from '@modules/Resources/components/Articles/Articles.style'
 import { getArticleImageUrl } from '@utils/functions'
+
+//TODO usee Next image
 
 export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {
   return (
@@ -20,7 +23,8 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
               <S.Item key={id}>
                 <Link href={`/resources/article/${id}`}>
                   <S.ArticleLink>
-                    <Image src={getArticleImageUrl(imageName)} alt='' width={350} height={195} /> <S.Title>{title}</S.Title>
+                    <img src={getArticleImageUrl(imageName)} alt='' />
+                    <S.Title>{title}</S.Title>
                     <S.Intro>{summary}</S.Intro>
                   </S.ArticleLink>
                 </Link>
