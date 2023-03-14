@@ -78,7 +78,7 @@ export const Title = styled.h2`
 export const Text = styled.p<{ isExpanded: boolean }>`
   font-size: var(--fsSmall6);
   display: -webkit-box;
-  -webkit-line-clamp: ${({ isExpanded }) => (isExpanded ? 'initial' : '3')};
+  -webkit-line-clamp: ${({ isExpanded }) => (isExpanded ? 'none' : '3')};
   -webkit-box-orient: vertical;
   overflow: ${({ isExpanded }) => (isExpanded ? 'initial' : 'hidden')};
 
