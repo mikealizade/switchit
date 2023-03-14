@@ -1,12 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
 import * as S from '@modules/Resources/components/Articles/Articles.style'
 import { getArticleImageUrl } from '@utils/functions'
-
-//TODO usee Next image
 
 export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }): JSX.Element => {
   return (

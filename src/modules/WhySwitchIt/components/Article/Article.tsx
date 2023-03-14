@@ -7,7 +7,7 @@ import { useMediaQuery } from '@hooks/useMediaQuery'
 import { BlockButton } from '@modules/SignedOutLanding/SignedOutLanding.style'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { Post } from '@pages/dashboard'
-import { Div, Text } from '@styles/common.style'
+import { Text } from '@styles/common.style'
 import { getArticleImageUrl } from '@utils/functions'
 import * as S from './Article.style'
 
