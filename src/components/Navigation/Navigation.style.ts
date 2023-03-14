@@ -35,11 +35,11 @@ export const Navigation = styled.ul`
   flex-direction: column;
   row-gap: 16px;
 
-  ${() => mediaQuery.laptop} {
+  /* ${() => mediaQuery.laptop} {
     &:last-of-type {
       margin-top: auto;
     }
-  }
+  } */
 
   li {
     display: flex;
@@ -59,9 +59,13 @@ export const Navigation = styled.ul`
       }
     }
   }
-  + ul {
-    padding-bottom: 20px;
+`
 
+export const NavigationContainer = styled.div`
+  position: fixed;
+  bottom: 60px;
+
+  ul {
     a {
       padding-left: 20px;
     }

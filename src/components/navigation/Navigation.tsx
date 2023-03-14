@@ -19,8 +19,7 @@ export const Navigation: NextPage = (): JSX.Element => {
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.nav)
   const [current, setHover] = useState('')
-  const isActive = (route: string): boolean =>
-    pathname === `/${route}` || pathname.includes(`/${route}`)
+  const isActive = (route: string): boolean => pathname === `/${route}` || pathname.includes(`/${route}`)
 
   const logOut = () => {
     window.sessionStorage.clear()
@@ -45,9 +44,7 @@ export const Navigation: NextPage = (): JSX.Element => {
                 onMouseEnter={() => setHover(route)}
                 onMouseLeave={() => setHover('')}
                 style={{
-                  backgroundImage: `url(${icon}${
-                    isActive(route) || current === route ? '_on' : ''
-                  }.svg)`,
+                  backgroundImage: `url(${icon}${isActive(route) || current === route ? '_on' : ''}.svg)`,
                 }}
                 className={cs(route, { ['active']: isActive(route) })}
               >
@@ -58,18 +55,20 @@ export const Navigation: NextPage = (): JSX.Element => {
         ))}
       </S.Navigation>
 
-      <S.Navigation>
-        {subNav.map(({ text, route }: Omit<MobileNav, 'icon'>) => (
-          <li key={route}>
-            <Link href={`/${route}`}>
-              <a className={cs(route, { ['active']: isActive(route) })}>{text}</a>
-            </Link>
+      <S.NavigationContainer>
+        <S.Navigation>
+          {subNav.map(({ text, route }: Omit<MobileNav, 'icon'>) => (
+            <li key={route}>
+              <Link href={`/${route}`}>
+                <a className={cs(route, { ['active']: isActive(route) })}>{text}</a>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <S.LogoutLink onClick={logOut}>Log out</S.LogoutLink>
           </li>
-        ))}
-        <li>
-          <S.LogoutLink onClick={logOut}>Log out</S.LogoutLink>
-        </li>
-      </S.Navigation>
+        </S.Navigation>
+      </S.NavigationContainer>
     </S.Nav>
   )
 }
