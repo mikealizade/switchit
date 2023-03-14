@@ -53,7 +53,7 @@ export const DashboardHero = styled(Hero)`
   padding: 30px;
 `
 
-export const Content = styled.div<{ isExpanded: boolean }>`
+export const Content = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
@@ -80,7 +80,7 @@ export const Text = styled.p<{ isExpanded: boolean }>`
   display: -webkit-box;
   -webkit-line-clamp: ${({ isExpanded }) => (isExpanded ? 'initial' : '3')};
   -webkit-box-orient: vertical;
-  overflow: ${({ isExpanded }) => (isExpanded ? 'visible' : 'hidden')};
+  overflow: ${({ isExpanded }) => (isExpanded ? 'initial' : 'hidden')};
 
   ${() => mediaQuery.tablet} {
     font-size: var(--fsLarge0);

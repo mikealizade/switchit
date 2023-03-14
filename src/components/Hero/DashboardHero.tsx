@@ -32,7 +32,7 @@ export const DashboardHero: NextPage<{ post: Post }> = (): JSX.Element => {
           <Image src={`/images/${hero.icon}`} alt='' width={205} height={224} objectFit='cover' />
         </S.Image>
       )}
-      <S.Content isExpanded={isExpanded}>
+      <S.Content>
         <S.Title>{title}</S.Title>
         <S.Text isExpanded={isExpanded}>{text}</S.Text>
         <S.LearnMore onClick={() => setLearnMore(!isExpanded)}>Learn {isExpanded ? 'Less' : 'More'}</S.LearnMore>

@@ -27,7 +27,7 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
           <Image src={`/images/${heroConfig[type as keyof HeroConfig].icon}`} alt='' width={width} height={height} objectFit='contain' />
         </S.Image>
       )}
-      <S.Content isExpanded={isExpanded}>
+      <S.Content>
         <S.Title>{heroConfig[type as keyof HeroConfig].title}</S.Title>
         <S.Text isExpanded={isExpanded}>{heroConfig[type as keyof HeroConfig].text}</S.Text>
         <S.LearnMore onClick={() => setLearnMore(!isExpanded)}>Learn {isExpanded ? 'Less' : 'More'}</S.LearnMore>
