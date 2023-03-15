@@ -22,7 +22,7 @@ export const Nav = styled.nav<{ isNavOpen: boolean }>`
   ${() => mediaQuery.laptop} {
     position: static;
     box-shadow: none;
-    transform: translateX(0);
+    transform: none;
     box-shadow: none;
     overflow-y: none;
     border-radius: 16px 0 0 16px;
@@ -34,12 +34,6 @@ export const Navigation = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 16px;
-
-  /* ${() => mediaQuery.laptop} {
-    &:last-of-type {
-      margin-top: auto;
-    }
-  } */
 
   li {
     display: flex;
@@ -61,11 +55,10 @@ export const Navigation = styled.ul`
   }
 `
 
-export const NavigationContainer = styled.div`
+export const SubNavigation = styled(Navigation)`
   position: fixed;
   bottom: 60px;
-
-  ul {
+  li {
     a {
       padding-left: 20px;
     }

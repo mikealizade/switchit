@@ -11,6 +11,7 @@ import { useToast } from '@hooks/useToast'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import * as St from '@modules/Profile/Profile.style'
 import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
+import { FileUploader } from '@modules/Settings/components/UpdateProfile/FileUploader'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
 
@@ -76,7 +77,8 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({ data
     <>
       <S.ProfileHead isProfile>
         <S.Picture isProfile>
-          <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={imageSize} height={imageSize} unoptimized />
+          <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={imageSize} height={imageSize} />
+          <FileUploader isProfile />
         </S.Picture>
         <S.ProfileNames>
           <S.ProfileName>{nickname}</S.ProfileName>

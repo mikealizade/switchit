@@ -132,22 +132,24 @@ const Students = (): JSX.Element => {
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection>
-          <RegisterInterestContainer>
-            {isSubmitted ? (
-              <>
-                <RegisterInterestHeader>Thanks for your interest</RegisterInterestHeader>
-                <p>{`We'll`} be in touch soon</p>
-              </>
-            ) : (
-              <>
-                <RegisterInterestIntro>
-                  <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
-                  <p>Fill out the form and {`we'll`} be in touch.</p>
-                </RegisterInterestIntro>
-                <RegisterInterestForm onSendSuccess={onSendSuccess} />
-              </>
-            )}
-          </RegisterInterestContainer>
+          <S.ContentContainer>
+            <RegisterInterestContainer>
+              {isSubmitted ? (
+                <>
+                  <RegisterInterestHeader>Thanks for your interest</RegisterInterestHeader>
+                  <p>{`We'll`} be in touch soon</p>
+                </>
+              ) : (
+                <>
+                  <RegisterInterestIntro>
+                    <RegisterInterestHeader>{`Let's`} Talk Programs!</RegisterInterestHeader>
+                    <p>Fill out the form and {`we'll`} be in touch.</p>
+                  </RegisterInterestIntro>
+                  <RegisterInterestForm onSendSuccess={onSendSuccess} />
+                </>
+              )}
+            </RegisterInterestContainer>
+          </S.ContentContainer>
         </S.PageSection>
       </SignedOutLayout>
     </>

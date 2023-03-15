@@ -6,21 +6,29 @@ export const ImageContainer = styled.div`
   position: relative;
   display: flex;
   height: 700px;
+  justify-content: center;
 `
 
 export const ImageTitle = styled.div`
   font-size: var(--fsVLarge6);
   font-family: 'Konsolev SemiBold';
-  margin: auto 0 50px 40px;
+  margin: auto 0 50px 0;
   color: var(--white);
 
   ${() => mediaQuery.xmobile} {
-    margin: auto 0 50px 12%;
+    width: 72%;
   }
 
   ${() => mediaQuery.tablet} {
-    margin: auto 0 50px 18%;
     font-size: var(--fsHuge8);
+  }
+
+  ${() => mediaQuery.laptop} {
+    width: 60%;
+  }
+
+  ${() => mediaQuery.xlaptop} {
+    width: 56%;
   }
 `
 

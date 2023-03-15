@@ -1,14 +1,17 @@
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
+import { NextPage } from 'next'
+import Image from 'next/image'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useToast } from '@hooks/useToast'
+import * as S from '@modules/Profile/components/ProfileHead/ProfileHead.style'
 import { updateUser } from '@state/user/userSlice'
 import { sendRequest } from '@utils/functions'
 
-export const FileUploader = () => {
+export const FileUploader: NextPage<{ isProfile?: boolean }> = ({ isProfile }) => {
   const { user: { sub } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const dispatch = useDispatch()
@@ -21,7 +24,7 @@ export const FileUploader = () => {
   }
 
   const validateFileSize = () => {
-    const maxfilesize = 100_000 // 100KB
+    const maxfilesize = 2_000_000 // 100KB
     const filesize = file?.size
 
     return filesize > maxfilesize
@@ -68,7 +71,7 @@ export const FileUploader = () => {
 
   useEffect(() => {
     if (validateFileSize()) {
-      toast('The maximum file size is 100KB', 'error')
+      toast('The maximum file size is 2MB', 'error')
       return
     }
 
@@ -80,15 +83,16 @@ export const FileUploader = () => {
 
   return (
     <>
-      <Button type='button' mode='primary' onClick={handleClick}>
-        Update Profile Picture
-      </Button>
-      <input
-        type='file'
-        ref={fileInput}
-        onChange={(e: any) => setFile(e.target.files[0])}
-        style={{ display: 'none' }}
-      />
+      {isProfile ? (
+        <S.EditProfile onClick={handleClick}>
+          <Image src={'/icons/icon_edit_profile.svg'} alt='Edit profile picture' width={26} height={26} />
+        </S.EditProfile>
+      ) : (
+        <Button type='button' mode='primary' onClick={handleClick}>
+          Update Profile Picture
+        </Button>
+      )}
+      <input type='file' ref={fileInput} onChange={(e: any) => setFile(e.target.files[0])} style={{ display: 'none' }} />
     </>
   )
 }

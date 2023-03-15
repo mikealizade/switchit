@@ -10,7 +10,7 @@ export const MainSection: NextPage = (): JSX.Element => {
         <S.HomePageHeader>Feel powerless when it comes to climate breakdown?</S.HomePageHeader>
         <S.HomePageTextMonoBold>We did too</S.HomePageTextMonoBold>
         <S.TextContainer mobileWidth={90}>
-          <S.HomePageTextMono>Withdraw £1.5m from fossil fuel support today, even if you have £0 in your account</S.HomePageTextMono>
+          <S.HomePageTextMono>Withdraw £1.5m from fossil fuel support today, even if you have £0 in your account.</S.HomePageTextMono>
         </S.TextContainer>
         <BlockButton>
           <Link href='/api/auth/signup'> Switch to a green bank</Link>

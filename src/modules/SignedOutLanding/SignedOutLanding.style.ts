@@ -77,6 +77,11 @@ export const LogoName = styled.span`
   font-size: var(--fsMedium6);
   margin-right: auto;
   font-weight: bold;
+  display: none;
+
+  @media (min-width: 990px) {
+    display: inline;
+  }
 `
 
 export const MobileNSubnav = styled.ul`
@@ -123,7 +128,7 @@ export const BlockButton = styled.div<{ margin?: string }>`
   position: relative;
   align-self: flex-start;
   margin: ${({ margin }) => margin ?? '0'};
-  white-space: nowrap;
+  /* white-space: nowrap; */
 
   a,
   span {
@@ -174,11 +179,11 @@ export const Nav = styled.nav`
   background-color: var(--concrete);
   display: flex;
   justify-content: space-between;
-  padding: 20px 5%;
+  padding: 20px 4%;
   border-bottom: 1px solid var(--porcelain);
 
   ${() => mediaQuery.laptop} {
-    padding: 20px 12%;
+    padding: 20px 7%;
   }
 
   ${() => mediaQuery.xlaptop} {
@@ -222,18 +227,18 @@ export const PageSection = styled.section<{
   flex-direction: column;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
   font-size: var(--fsMedium8);
-  padding: 70px 40px 40px;
+  padding: 70px 0 40px;
 
-  a {
+  /* a {
     text-decoration: underline;
-  }
+  } */
 
   ${() => mediaQuery.xmobile} {
-    padding: ${({ padding }) => (padding ? padding : '40px 12%')};
+    padding: ${({ padding }) => (padding ? padding : '40px 0')};
   }
 
   ${() => mediaQuery.tablet} {
-    padding: ${({ padding }) => (padding ? padding : '40px 18%')};
+    padding: ${({ padding }) => (padding ? padding : '40px 0')};
 
     &:first-of-type {
       padding-top: 80px;
@@ -450,13 +455,20 @@ export const Subnav = styled.ul`
 `
 
 export const TeamImages = styled.ul`
-  gap: 30px;
+  gap: 20px;
   display: flex;
   flex-wrap: wrap;
+  /* width: 80%; */
+  align-self: center;
+  /* justify-content: center; */
+
+  /* ${() => mediaQuery.xmobile} {
+    width: 72%;
+  } */
 `
 
 export const Image = styled.li`
-  gap: 30px;
+  gap: 20px;
   position: relative;
   max-width: 335px;
 
@@ -489,7 +501,7 @@ export const Profile = styled.div`
   display: flex;
   row-gap: 10px;
   flex-direction: column;
-  padding: 25px 30px 30px;
+  padding: 25px;
 `
 
 export const HoverProfile = styled.div`
@@ -508,18 +520,18 @@ export const HoverProfile = styled.div`
 export const Name = styled.p`
   color: var(--white);
   font-weight: bold;
-  font-size: var(--fsMedium8);
+  font-size: var(--fsBase);
 `
 
 export const Role = styled.p`
   color: var(--white);
   font-style: italic;
-  font-size: var(--fsSmall5);
+  font-size: var(--fsSmall4);
 `
 
 export const Bio = styled(Role)`
   font-style: normal;
-  font-size: var(--fsSmall5);
+  font-size: var(--fsSmall4);
 `
 
 export const Donorbox = styled.div`
@@ -530,11 +542,46 @@ export const Donorbox = styled.div`
 export const ContentContainer = styled.div<{
   rowGap?: number
 }>`
-  max-width: 945px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-self: center;
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '24px')};
+
+  ${() => mediaQuery.xmobile} {
+    width: 72%;
+  }
+
+  ${() => mediaQuery.laptop} {
+    width: 60%;
+  }
+
+  ${() => mediaQuery.xlaptop} {
+    width: 56%;
+  }
+`
+
+export const TeamImagesContainer = styled(ContentContainer)`
+  /* gap: 30px; */
+  /* display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-direction: column; */
+  /* width: 80%; */
+  */
+  /* align-self: center; */
+  /* justify-content: center; */
+
+  ${() => mediaQuery.xmobile} {
+    width: 72%;
+  }
+
+  ${() => mediaQuery.laptop} {
+    width: 60%;
+  }
+
+  ${() => mediaQuery.xlaptop} {
+    width: 56%;
+  }
 `
 
 export const ArticlesList = styled.ul`
@@ -557,7 +604,6 @@ export const Item = styled.li`
   width: 100%;
 
   ${() => mediaQuery.laptop} {
-    /* width: 440px; */
     flex: 0 0 calc(50% - 70px);
   }
 `

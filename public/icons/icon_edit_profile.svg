@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="29px" viewBox="0 0 28 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>edit</title>
+    <defs>
+        <circle id="path-1" cx="13" cy="13" r="13"></circle>
+        <filter x="-5.8%" y="-5.8%" width="111.5%" height="111.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="dashboard---desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PROFILE---ACTIVE-USER-Copy-10" transform="translate(-1492.000000, -297.000000)">
+            <g id="Profile-pic" transform="translate(1381.000000, 168.000000)">
+                <g id="edit" transform="translate(112.000000, 130.250000)">
+                    <g id="Oval">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#EC3793" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Icono" transform="translate(6.240000, 7.280000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <path d="M11.5004854,10.4 C12.8015732,10.4 13.52,9.71172486 13.52,8.47608129 L13.52,1.92391871 C13.52,0.682855654 12.8015732,0 11.5004854,0 L2.01951464,0 C0.718426778,0 0,0.682855654 0,1.92391871 L0,8.47608129 C0,9.71714435 0.718426778,10.4 2.01951464,10.4 L11.5004854,10.4 Z M1.51605021,7.52225117 L1.51605021,2.10818134 C1.51605021,1.65294424 1.74798326,1.45242314 2.19487866,1.45242314 L11.3251213,1.45242314 C11.7663598,1.45242314 12.0039498,1.65294424 12.0039498,2.10818134 L12.0039498,7.3054716 L9.58845188,5.14309536 C9.33954812,4.93173528 9.04538912,4.817926 8.74557322,4.817926 C8.44010042,4.817926 8.15725523,4.9208963 7.90269456,5.13767587 L5.35143096,7.32173007 L4.31621757,6.42751433 C4.07297071,6.22157374 3.81275314,6.11860344 3.54687866,6.11860344 C3.27534728,6.11860344 3.06038494,6.21615425 2.82279498,6.41667535 L1.51605021,7.52225117 Z M4.73482845,5.39239187 C5.49851046,5.39239187 6.13208368,4.79082856 6.13208368,4.04835852 C6.13208368,3.31130797 5.49851046,2.69890568 4.73482845,2.69890568 C3.95983264,2.69890568 3.32625941,3.31130797 3.32625941,4.04835852 C3.32625941,4.79082856 3.95983264,5.39239187 4.73482845,5.39239187 Z" id="Icon"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -13,8 +13,8 @@ export const MainSection = styled(PageSection)`
   }
 
   ${() => mediaQuery.tablet} {
-    background: var(--concrete) no-repeat right bottom 30px;
-    background-image: url('/images/img_pointing.png');
+    background: var(--concrete) url('/images/img_pointing.png') no-repeat right bottom 30px;
+    background-size: 40%;
     padding: 60px 18% 80px 18%;
   }
 `
@@ -57,6 +57,7 @@ export const HomePageHeader = styled.h1`
 
   ${() => mediaQuery.tablet} {
     font-size: 5.4rem;
+    margin-bottom: 50px;
   }
 `
 
@@ -79,14 +80,21 @@ export const SpeechBubble = styled.div`
   transform: rotate(40deg);
 
   ${() => mediaQuery.xmobile} {
-    top: 105px;
+    top: 85px;
+  }
+
+  ${() => mediaQuery.xmobile} {
+    right: 150px;
   }
 
   ${() => mediaQuery.tablet} {
-    right: 100px;
+    right: 050px;
     width: 290px;
     height: 230px;
     transform: rotate(355deg);
+  }
+  ${() => mediaQuery.laptop} {
+    right: 200px;
   }
 `
 
@@ -247,7 +255,6 @@ export const TheImpact = styled(PageSection)`
     background-image: url('/images/img_globe_windmills.png');
     background-position: 10% center;
     background-size: 27%;
-    height: 650px;
     align-items: center;
   }
 

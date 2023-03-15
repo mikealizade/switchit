@@ -55,20 +55,18 @@ export const Navigation: NextPage = (): JSX.Element => {
         ))}
       </S.Navigation>
 
-      <S.NavigationContainer>
-        <S.Navigation>
-          {subNav.map(({ text, route }: Omit<MobileNav, 'icon'>) => (
-            <li key={route}>
-              <Link href={`/${route}`}>
-                <a className={cs(route, { ['active']: isActive(route) })}>{text}</a>
-              </Link>
-            </li>
-          ))}
-          <li>
-            <S.LogoutLink onClick={logOut}>Log out</S.LogoutLink>
+      <S.SubNavigation>
+        {subNav.map(({ text, route }: Omit<MobileNav, 'icon'>) => (
+          <li key={route}>
+            <Link href={`/${route}`}>
+              <a className={cs(route, { ['active']: isActive(route) })}>{text}</a>
+            </Link>
           </li>
-        </S.Navigation>
-      </S.NavigationContainer>
+        ))}
+        <li>
+          <S.LogoutLink onClick={logOut}>Log out</S.LogoutLink>
+        </li>
+      </S.SubNavigation>
     </S.Nav>
   )
 }

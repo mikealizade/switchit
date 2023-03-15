@@ -18,6 +18,19 @@ export const ProfileHead = styled.header<{ isProfile?: boolean }>`
   }
 `
 
+export const EditProfile = styled.div`
+  position: absolute;
+  top: 177px;
+  right: 132px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+
+  > span {
+    position: static !important;
+  }
+`
+
 export const Picture = styled.div<{ isProfile?: boolean }>`
   display: flex;
   flex-direction: column;
@@ -36,6 +49,7 @@ export const Picture = styled.div<{ isProfile?: boolean }>`
     border-radius: 15px;
     padding: 20px;
     margin: 0;
+    position: relative;
 
     ${() => mediaQuery.tablet} {
       border-radius: 15px;

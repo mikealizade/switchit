@@ -119,23 +119,27 @@ const About = (): JSX.Element => {
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection rowGap={30}>
-          <S.PageHeader>Who We Are</S.PageHeader>
-          <S.TeamImages>
-            {profiles.map(({ name, role, text, image }) => (
-              <S.Image key={name}>
-                <S.HoverProfile>
-                  <S.Name>{name}</S.Name>
-                  <S.Role>{role}</S.Role>
-                  <S.Bio>{text}</S.Bio>
-                </S.HoverProfile>
-                <S.Profile>
-                  <S.Name>{name}</S.Name>
-                  <S.Role>{role}</S.Role>
-                </S.Profile>
-                <Image src={`/images/${image}`} alt={`Picture of ${name}`} width={335} height={335} objectFit='cover' />
-              </S.Image>
-            ))}
-          </S.TeamImages>
+          {/* <S.ContentContainer> */}
+          <S.TeamImagesContainer>
+            <S.PageHeader>Who We Are</S.PageHeader>
+            <S.TeamImages>
+              {profiles.map(({ name, role, text, image }) => (
+                <S.Image key={name}>
+                  <S.HoverProfile>
+                    <S.Name>{name}</S.Name>
+                    <S.Role>{role}</S.Role>
+                    <S.Bio>{text}</S.Bio>
+                  </S.HoverProfile>
+                  <S.Profile>
+                    <S.Name>{name}</S.Name>
+                    <S.Role>{role}</S.Role>
+                  </S.Profile>
+                  <Image src={`/images/${image}`} alt={`Picture of ${name}`} width={290} height={290} objectFit='cover' />
+                </S.Image>
+              ))}
+            </S.TeamImages>
+            {/* </S.ContentContainer> */}
+          </S.TeamImagesContainer>
         </S.PageSection>
       </SignedOutLayout>
     </>
