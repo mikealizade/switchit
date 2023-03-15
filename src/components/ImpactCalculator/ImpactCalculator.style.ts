@@ -123,9 +123,10 @@ export const Header = styled.h3`
 `
 
 export const CalcFooter = styled.p`
-  font-size: var(--fsSmall5);
+  font-size: var(--fsSmall4);
   font-style: italic;
   cursor: pointer;
+  text-decoration: underline;
 `
 
 export const Bank = styled(PlainInput)`

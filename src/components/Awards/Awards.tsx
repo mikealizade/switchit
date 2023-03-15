@@ -21,28 +21,26 @@ export const Awards: NextPage<{ data: Award[] }> = ({ data = [] }): JSX.Element 
       </Title>
 
       <S.AwardsList noPoints={noPoints}>
-        {data.map(({ badge, total, id: icon }: Award, i: number) => (
-          <S.Item key={badge} noPoints={noPoints}>
-            <Image
-              src={`/icons/icon_${icon}${noPoints ? '_brown' : ''}.svg`}
-              alt=''
-              width={55}
-              height={i === 1 ? 38 : 48}
-            />
-            {!noPoints && (
-              <S.AwardData>
-                <S.Total>x {total}</S.Total>
-                <S.Label>{badge}</S.Label>
-              </S.AwardData>
-            )}
-          </S.Item>
-        ))}
+        {data.map(({ badge, total, id: icon }: Award) => {
+          const image = icon === 'programs' ? `${icon}_awards` : icon
+          return (
+            <S.Item key={badge} noPoints={noPoints}>
+              {icon === 'programs' ? (
+                <Image src={`/icons/icon_${image}${noPoints ? '_brown' : ''}.svg`} alt='' width={35} height={35} />
+              ) : (
+                <Image src={`/icons/icon_${image}.svg`} alt='' width={45} height={44} />
+              )}
+              {!noPoints && (
+                <S.AwardData>
+                  <S.Total>x {total}</S.Total>
+                  <S.Label>{badge}</S.Label>
+                </S.AwardData>
+              )}
+            </S.Item>
+          )
+        })}
       </S.AwardsList>
-      {noPoints && (
-        <S.NoPoints>
-          Collect badges by reading our resources, switching providers, inviting friends and more.
-        </S.NoPoints>
-      )}
+      {noPoints && <S.NoPoints>Collect badges by reading our resources, switching providers, inviting friends and more.</S.NoPoints>}
     </S.Awards>
   )
 }

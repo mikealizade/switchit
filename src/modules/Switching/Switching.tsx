@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
 import { Card } from '@components/Card/Card'
@@ -44,12 +44,11 @@ const getJourneys = (
       journeyType === journeyTypes.noBankAccount ? startJourneyNoBankConfig(String(goodBank)) : startJourneyConfig(String(goodBank))
 
     return (
-      <>
+      <Fragment key={id}>
         {isJourneyComplete ? (
-          <CompletedJourneyCard key={id} journeyType={journeyType} name={name} greenBank={greenBank} />
+          <CompletedJourneyCard journeyType={journeyType} name={name} greenBank={greenBank} />
         ) : (
           <JourneyCard
-            key={id}
             progress={progress}
             greenBank={greenBank}
             journeySteps={journeySteps}
@@ -60,7 +59,7 @@ const getJourneys = (
             // addJourneyName={addJourneyName}
           />
         )}
-      </>
+      </Fragment>
     )
   })
 }
@@ -164,9 +163,6 @@ const Switching = (): JSX.Element => {
                   <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
                 </S.NewJourneyMobile>
               )}
-              {/* <S.NoJourneysText>
-                Have multiple bank accounts? No problem! {`We'll`} switch one at a time
-              </S.NoJourneysText> */}
             </S.NoJourneysTextContainer>
           </Row>,
         ]

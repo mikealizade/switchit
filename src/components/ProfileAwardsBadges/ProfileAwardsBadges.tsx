@@ -2,11 +2,11 @@ import type { NextPage } from 'next'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import React from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 // import { Accordion } from '@components/Accordion/ProfileAccordion'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
-import { RootState } from '@state/store'
+// import { RootState } from '@state/store'
 import { HowItWorks } from './HowItWorks'
 
 type Award = {
@@ -48,22 +48,22 @@ const AwardsOverview = ({ data = [] }) => {
 }
 
 export const ProfileAwardsBadges: NextPage = (): JSX.Element => {
-  const {
-    profile: { badges = [] },
-  } = useSelector((state: RootState) => state.user)
+  // const {
+  //   profile: { badges = [] },
+  // } = useSelector((state: RootState) => state.user)
 
-  //Reinstate accordion V2
+  //Reinstate accordion and history tab V2
 
-  const panels: [React.ReactNode, React.ReactNode] = [
+  const panels: [React.ReactNode] = [
     // <Accordion key='accordion' data={badges} />,
-    <AwardsOverview key='accordion' data={badges} />,
+    // <AwardsOverview key='accordion' data={badges} />,
     <HowItWorks key='howItWorks' />,
   ]
 
   return (
     <>
       <StyledTabs>
-        <Tabs tabs={['Overview & History', 'How It Works']} panels={panels}></Tabs>
+        <Tabs tabs={['How It Works']} panels={panels}></Tabs>
       </StyledTabs>
     </>
   )

@@ -7,25 +7,15 @@ import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
-import {
-  Buttons,
-  SwitchingColumnContainer,
-  SwitchingColumn,
-} from '@modules/Switching/Switching.style'
+import { Buttons, SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import * as S from '@styles/common.style'
-import { actionText } from '@utils/constants'
-import {
-  UserContent,
-  VideoContainer,
-  CopyHeader,
-  WoohooContainer,
-  WoohooHeader,
-  WoohooText,
-} from './TellUs.style'
+import { actionText, journeyTypes, noBankAccountSteps } from '@utils/constants'
+import { UserContent, VideoContainer, CopyHeader, WoohooContainer, WoohooHeader, WoohooText } from './TellUs.style'
 import { Testimonial } from './Testimonial'
 import { Video } from './Video'
 
@@ -45,17 +35,24 @@ const WooHoo = () => {
 }
 
 export const TellUs: NextPage = () => {
+  const { push } = useRouter()
   const dispatch = useDispatch()
   const nextStep = useNextStep()
+  const { currentJourney, currentJourneyType } = useGetCurrentJourney()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const { addPoints } = useUpdatePoints('actions')
   const [isMaximised, setMaximised] = useState(false)
+  const isNoBankAccount = currentJourneyType === journeyTypes.noBankAccount
+  const journeySteps = isNoBankAccount ? noBankAccountSteps : steps
+  const totalSteps = Object.keys(journeySteps).length / 2
+  const isAllStepsComplete = currentJourney?.completedSteps.length === totalSteps
+  const btnText = isAllStepsComplete ? 'Complete Impact Actions' : 'Next Action'
 
   const onCompleteJourney = (): void => {
-    setMaximised(true)
     nextStep(steps.tellUs)
     addPoints(75, true)
+    isAllStepsComplete ? setMaximised(true) : push('/switching')
   }
 
   return (
@@ -69,11 +66,7 @@ export const TellUs: NextPage = () => {
                   <WooHoo />
                 ) : (
                   <>
-                    <ActionHeader
-                      header='Tell Us How It Went'
-                      subHeader='Get the word out'
-                      text={actionText.tellUs}
-                    />
+                    <ActionHeader header='Tell Us How It Went' subHeader='Get the word out' text={actionText.tellUs} />
                     <S.Div>
                       <S.TextLink>
                         <strong onClick={() => dispatch(toggleDrawer('tellUsPrompts'))}>
@@ -105,7 +98,7 @@ export const TellUs: NextPage = () => {
                         What happens if I give you permission to post publicly?
                       </S.TextLink>
                       <Button type='button' size='small' onClick={onCompleteJourney}>
-                        Complete Impact Actions
+                        {btnText}
                       </Button>
                     </Buttons>
                   </>

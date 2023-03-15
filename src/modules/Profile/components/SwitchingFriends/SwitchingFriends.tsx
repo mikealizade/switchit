@@ -19,20 +19,12 @@ export const SwitchingFriends: NextPage = (): JSX.Element => {
       <S.Friends>
         {!friends.length ? (
           <p>
-            Share Switch It Green with your friends to connect. Boost your impact and help us reach
-            our goal of £7 billion divested in 2023.
+            Share Switch It Green with your friends to connect. Boost your impact and help us reach our goal of £7 billion divested in 2023.
           </p>
         ) : (
           friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (
             <S.Friend key={nickname}>
-              <Image
-                src={picture}
-                alt={nickname}
-                width={72}
-                height={72}
-                unoptimized
-                title={nickname}
-              />
+              <Image src={picture || '/icons/icon_noprofile.svg'} alt={nickname} width={72} height={72} unoptimized title={nickname} />
             </S.Friend>
           ))
         )}
