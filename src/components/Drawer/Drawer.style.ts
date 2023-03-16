@@ -7,7 +7,7 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  row-gap: 15px;
   border-radius: 20px 20px 0 0;
   width: 100vw;
   height: 80vh;
@@ -15,7 +15,7 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
   bottom: 0;
   transform: ${({ isDrawerOpen }) => (isDrawerOpen ? 'translateY(0)' : `translateY(90vh)`)};
   transition: all 0.15s ease-in-out;
-  padding: 35px 40px;
+  padding: 0 40px 35px;
   z-index: 100;
   box-shadow: -2px 3px 5px var(--gallery);
 
@@ -29,8 +29,7 @@ export const Drawer = styled.section<{ isDrawerOpen: boolean; narrow?: boolean }
     width: ${drawerWidth};
     max-width: ${drawerWidth};
     min-width: ${drawerWidth};
-    transform: ${({ isDrawerOpen, narrow }) =>
-      isDrawerOpen ? 'translateX(0)' : `translateX(${narrow ? 420 : 490}px)`};
+    transform: ${({ isDrawerOpen, narrow }) => (isDrawerOpen ? 'translateX(0)' : `translateX(${narrow ? 420 : 490}px)`)};
   }
 `
 
@@ -54,12 +53,13 @@ export const DrawerBackLink = styled.h2`
   cursor: pointer;
   position: relative;
   justify-content: flex-start;
+  height: 60px;
 
   &:after {
     content: '';
     position: absolute;
     left: calc(50% - 10px);
-    top: -12px;
+    top: 20px;
     width: 32px;
     height: 4px;
     background-color: var(--gallery);

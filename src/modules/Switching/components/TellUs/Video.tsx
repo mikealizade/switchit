@@ -16,14 +16,10 @@ export const Video: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const text = useRef('')
   const { currentJourneyId } = useGetCurrentJourney()
-  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(
-    sub ? `/api/db/findSwitchJourneys?id=${sub}` : null,
-    fetcher,
-    { revalidateOnFocus: false },
-  ) as SWRResponse
-  const [{ videoUri = '' } = {}] = switchJourneys.filter(
-    ({ id }: JourneyId) => id === currentJourneyId,
-  )
+  const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
+    revalidateOnFocus: false,
+  }) as SWRResponse
+  const [{ videoUri = '' } = {}] = switchJourneys.filter(({ id }: JourneyId) => id === currentJourneyId)
   const [, setTestimonial] = useState('')
   const [canPostPublicly, setCanPostPublicly] = useState(false)
   const [file, setFile] = useState<any>(null)
@@ -50,13 +46,14 @@ export const Video: NextPage = () => {
           )}
         </S.VideoImage>
       </S.Testimonial>
-
-      {!isStepCompleted && (
-        <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>
-          <Checkbox id='canPostPublicly' isActive={canPostPublicly} />
-          Allow us to post publicly
-        </Label>
-      )}
+      <S.LabelContainer>
+        {!isStepCompleted && (
+          <Label htmlFor='canPostPublicly' onClick={() => setCanPostPublicly(!canPostPublicly)}>
+            <Checkbox id='canPostPublicly' isActive={canPostPublicly} />
+            Allow us to post publicly
+          </Label>
+        )}
+      </S.LabelContainer>
 
       <Buttons>
         <VideoUploader

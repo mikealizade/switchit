@@ -13,6 +13,8 @@ export type Award = {
 export const Awards: NextPage<{ data: Award[] }> = ({ data = [] }): JSX.Element => {
   const noPoints = data.every(({ total }) => total < 1)
 
+  console.log('noPoints:', noPoints)
+
   return (
     <S.Awards>
       <Title>
@@ -23,12 +25,18 @@ export const Awards: NextPage<{ data: Award[] }> = ({ data = [] }): JSX.Element 
       <S.AwardsList noPoints={noPoints}>
         {data.map(({ badge, total, id: icon }: Award) => {
           const image = icon === 'programs' ? `${icon}_awards` : icon
+
           return (
             <S.Item key={badge} noPoints={noPoints}>
               {icon === 'programs' ? (
-                <Image src={`/icons/icon_${image}${noPoints ? '_brown' : ''}.svg`} alt='' width={35} height={35} />
+                <Image
+                  src={`/icons/icon_${image}${noPoints ? '_brown' : ''}.svg`}
+                  alt=''
+                  width={noPoints ? 48 : 35}
+                  height={noPoints ? 48 : 35}
+                />
               ) : (
-                <Image src={`/icons/icon_${image}.svg`} alt='' width={45} height={44} />
+                <Image src={`/icons/icon_${image}${noPoints ? '_brown' : ''}.svg`} alt='' width={45} height={45} />
               )}
               {!noPoints && (
                 <S.AwardData>

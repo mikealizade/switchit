@@ -11,7 +11,6 @@ import { Navigation } from '@components/Navigation/Navigation'
 import { Toast } from '@components/Toast/Toast'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
 import { useMediaQuery } from '@hooks/useMediaQuery'
-import { useToast } from '@hooks/useToast'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import PageNotFound from '@modules/PageNotFound/PageNotFound'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
@@ -44,7 +43,6 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const updateUser = useUpdateUser()
   const { isLaptop } = useMediaQuery()
-  const toast = useToast()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
   const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it')
@@ -52,36 +50,32 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
 
   const saveNewUserData = useCallback(
     async (isNewUser: boolean) => {
-      try {
-        const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
-        const userData = {
-          ...auth0user,
-          ...user,
-          ...defaultProfile,
-          ...storedUser,
-          isNewUser,
-          picture: '',
-        }
-
-        //mongo errors if trying to overwrite _id
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { _id, ...newUserData } = userData
-        const body = {
-          filter: { sub },
-          payload: { $set: newUserData },
-          collection: 'users',
-          upsert: true,
-        }
-
-        request(body)
-
-        checkReferralCodeAndUpdate(`?referralCode=${storedUser.referralCode}`)
-        window.localStorage.removeItem('userData')
-
-        dispatch(setUser(newUserData))
-      } catch (error) {
-        toast('An error occurred saving your details', 'error')
+      const storedUser = JSON.parse(window.localStorage.getItem('userData')!)
+      const userData = {
+        ...auth0user,
+        ...user,
+        ...defaultProfile,
+        ...storedUser,
+        isNewUser,
+        picture: '',
       }
+
+      //mongo errors if trying to overwrite _id
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { _id, ...newUserData } = userData
+      const body = {
+        filter: { sub },
+        payload: { $set: newUserData },
+        collection: 'users',
+        upsert: true,
+      }
+
+      request(body)
+
+      checkReferralCodeAndUpdate(`?referralCode=${storedUser?.referralCode}`)
+      window.localStorage.removeItem('userData')
+
+      dispatch(setUser(newUserData))
     },
     [auth0user, user, sub, dispatch, checkReferralCodeAndUpdate, request],
   )

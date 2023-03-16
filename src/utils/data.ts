@@ -14,7 +14,7 @@ export const goodBanksConfig = {
     latestGreenProject: 'Watershed',
   },
   triodos: {
-    link: 'https://www.triodos.co.uk',
+    link: 'https://www.triodos.co.uk/current-accounts/current-account?utm_source=switchit&utm_medium=website&utm_campaign=pca&utm_content=switchit',
     name: 'triodos',
     fullName: 'Triodos Bank',
     latestGreenProject: 'Sea Lanes',

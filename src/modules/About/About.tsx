@@ -21,7 +21,7 @@ const profiles = [
   {
     name: 'Amber Hayward',
     role: 'Programs Manager',
-    text: 'As Co-founder of the Ecosia on Campus campaign movement, Amber is well-versed in mobilising students on climate issues. She develops & coordinates our work with schools, colleges, and universities; designing and implementing our student programs and managing our education partnerships. Amber has an MA in Environmental Humanities, which she puts to use as our content writer. ',
+    text: 'As Co-founder of the Ecosia on Campus campaign movement, Amber is well-versed in mobilising students on climate issues. She develops & coordinates our work with schools, colleges, and universities; designing and implementing our student programs and managing our education partnerships.',
     image: 'img_amber_hayward.jpg',
   },
   {

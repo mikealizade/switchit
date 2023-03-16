@@ -9,7 +9,7 @@ export const Banks: NextPage = (): JSX.Element => {
   const greenBank = goodBanksConfig[goodBank as keyof typeof goodBanksConfig]
 
   return (
-    <Div>
+    <Div flex='initial'>
       <S.Header>Current Bank</S.Header>
       <S.Bank defaultValue={badBank} placeholder='Not yet selected' disabled />
       <S.Header>New Bank</S.Header>

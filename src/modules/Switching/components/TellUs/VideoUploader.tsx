@@ -5,7 +5,10 @@ import { useRef, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
+import { useNextStep } from '@hooks/useNextStep'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useToast } from '@hooks/useToast'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { sendRequest } from '@utils/functions'
 
 export const VideoUploader: NextPage<{
@@ -18,6 +21,12 @@ export const VideoUploader: NextPage<{
 }> = ({ file, isStepCompleted, isUploaded, canPostPublicly = false, setFile, setIsUploaded }) => {
   const { user: { sub } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
+
+  const nextStep = useNextStep()
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
+  const { addPoints } = useUpdatePoints('actions')
+
   const toast = useToast()
   const { currentJourneyId } = useGetCurrentJourney()
   const fileInput = useRef<HTMLInputElement>(null)
@@ -116,31 +125,17 @@ export const VideoUploader: NextPage<{
 
     const uploadedFileDetail = async () => await uploadFile()
     uploadedFileDetail()
+    nextStep(steps.tellUs)
+    addPoints(75, true)
   }
 
   return (
     <>
-      <Button
-        type='button'
-        size='small'
-        mode='secondary'
-        onClick={handleClick}
-        disabled={isStepCompleted || isUploading || isUploaded}
-      >
+      <Button type='button' size='small' mode='secondary' onClick={handleClick} disabled={isStepCompleted || isUploading || isUploaded}>
         Attach
       </Button>
-      <input
-        type='file'
-        ref={fileInput}
-        onChange={(e: any) => setFile(e.target.files[0])}
-        style={{ display: 'none' }}
-      />
-      <Button
-        type='button'
-        size='small'
-        onClick={onUpload}
-        disabled={!file?.name || isUploading || isUploaded}
-      >
+      <input type='file' ref={fileInput} onChange={(e: any) => setFile(e.target.files[0])} style={{ display: 'none' }} />
+      <Button type='button' size='small' onClick={onUpload} disabled={!file?.name || isUploading || isUploaded}>
         {isUploading ? 'Uploading...' : 'Upload'}
       </Button>
     </>

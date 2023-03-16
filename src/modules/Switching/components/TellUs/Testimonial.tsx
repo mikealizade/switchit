@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { useUser } from '@auth0/nextjs-auth0'
-// import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react'
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from 'sanitize-html'
@@ -8,9 +7,10 @@ import useSWR, { SWRResponse } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { Button } from '@components/Button/Button'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-// import { useNextStep } from '@hooks/useNextStep'
-// import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
+import { useNextStep } from '@hooks/useNextStep'
+import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useToast } from '@hooks/useToast'
+import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { Checkbox, Label } from '@styles/common.style'
 import { sanitiseConfig } from '@utils/data'
@@ -19,16 +19,15 @@ import * as S from './TellUs.style'
 
 type JourneyId = { id: string }
 
-// TODO when savinvg journey steps to db, currently not refetching on any of the action pages
-
 export const Testimonial: NextPage = () => {
   const { user: { sub = '' } = {} } = useUser()
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const text = useRef('')
   const toast = useToast()
-  // const getSteps = useStepsByJourneyType()
-  // const steps = getSteps()
-  // const nextStep = useNextStep()
+  const nextStep = useNextStep()
+  const getSteps = useStepsByJourneyType()
+  const steps = getSteps()
+  const { addPoints } = useUpdatePoints('actions')
   const { currentJourneyId = {} } = useGetCurrentJourney()
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
     revalidateOnFocus: false,
@@ -36,10 +35,12 @@ export const Testimonial: NextPage = () => {
   const [{ testimonial = '' } = {}] = switchJourneys.filter(({ id }: JourneyId) => id === currentJourneyId)
   const [, setTestimonial] = useState('')
   const [isEditable, setEdit] = useState(false)
-  const [hasTestimonial, setHasTestimonial] = useState(false)
+  const [, setHasTestimonial] = useState(false)
   const [hasSentTestimonial, setHasSentTestimonial] = useState(false)
   const [canPostPublicly, setCanPostPublicly] = useState(false)
   const isStepCompleted = !!testimonial
+
+  console.log('testimonial:', testimonial)
 
   const onSave = async () => {
     try {
@@ -54,6 +55,7 @@ export const Testimonial: NextPage = () => {
         upsert: false,
       }
 
+      console.log('body:', body)
       request(body)
 
       // TODO success msg even when errors!
@@ -82,8 +84,9 @@ export const Testimonial: NextPage = () => {
       }
 
       request(body)
-      // nextStep(steps.tellUs)
       setHasSentTestimonial(true)
+      nextStep(steps.tellUs)
+      addPoints(75, true)
       toast('Your testimonial was sent successfully', 'success')
     } catch (error) {
       toast('An error occurred sending your testimonial', 'error')
@@ -97,6 +100,11 @@ export const Testimonial: NextPage = () => {
 
   const onToggleEditable = () => {
     setEdit(!isEditable)
+  }
+
+  const onSendTestimonial = () => {
+    onSave()
+    onSend()
   }
 
   useEffect(() => {
@@ -142,7 +150,7 @@ export const Testimonial: NextPage = () => {
         <Button type='button' size='small' mode='secondary' onClick={onSave} disabled={isStepCompleted || hasSentTestimonial}>
           Save Draft
         </Button>
-        <Button type='button' size='small' onClick={onSend} disabled={isStepCompleted || hasSentTestimonial}>
+        <Button type='button' size='small' onClick={onSendTestimonial} disabled={isStepCompleted || hasSentTestimonial}>
           Send
         </Button>
       </Buttons>
