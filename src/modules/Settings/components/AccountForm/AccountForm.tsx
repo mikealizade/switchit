@@ -80,9 +80,8 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boole
               minLength={1}
               maxLength={50}
               pattern='alphanumeric'
-              message='Please enter a valid username - letters or numbers only'
+              message='Please enter a valid username - letters and numbers only'
               disabled={disabled}
-              required={false}
             />
             <Input
               name='location'
@@ -94,7 +93,6 @@ export const AccountForm: NextPage<{ data?: any; disabled?: boolean; row?: boole
               pattern='alpha'
               message='Please enter a valid name'
               disabled={disabled}
-              required={false}
             />
             <RadioGroup
               label='Set profile to'

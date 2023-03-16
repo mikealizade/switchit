@@ -57,7 +57,7 @@ export const ActionSelector: NextPage<ActionSelectorProps> = ({
   }
 
   const closeImpactBar = () => {
-    dispatch(toggleImpactCard())
+    dispatch(toggleImpactCard(false))
   }
 
   const hasConfirmed = isJourneyComplete || !!completedSteps?.includes(journeySteps.confirmSwitch)

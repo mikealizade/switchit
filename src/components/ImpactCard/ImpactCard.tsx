@@ -39,7 +39,7 @@ export const ImpactCard: NextPage = (): JSX.Element => {
   const actions = actionsConfig.filter(filterActionType(currentJourneyType))
 
   const closeImpactCard = () => {
-    dispatch(toggleImpactCard())
+    dispatch(toggleImpactCard(false))
   }
 
   return (

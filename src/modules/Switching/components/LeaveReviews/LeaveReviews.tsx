@@ -12,11 +12,7 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
-import {
-  Buttons,
-  SwitchingColumnContainer,
-  SwitchingColumn,
-} from '@modules/Switching/Switching.style'
+import { Buttons, SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import { Content, TileLinks, Item, Anchor } from '@styles/common.style'
 import { actionHeaderSubText, steps } from '@utils/constants'
 import { fetcher } from '@utils/functions'
@@ -62,41 +58,23 @@ export const LeaveReviews: NextPage = () => {
                   <TileLinks isColumn>
                     {bank?.trustPilot && (
                       <Item>
-                        <Anchor
-                          href={`https://uk.trustpilot.com/evaluate/${bank?.trustPilot}`}
-                          target='_blank'
-                          rel='noreferrer'
-                        >
-                          <Image
-                            src={'/icons/icon_trustpilot.png'}
-                            alt=''
-                            width={203}
-                            height={50}
-                          />
+                        <Anchor href={`https://uk.trustpilot.com/evaluate/${bank?.trustPilot}`} target='_blank' rel='noreferrer'>
+                          <Image src={'/icons/icon_trustpilot.png'} alt='' width={203} height={50} />
                         </Anchor>
                       </Item>
                     )}
                     {bank?.google && (
                       <Item>
-                        <Anchor
-                          href={`https://www.google.com/search?q=${bank?.google}`}
-                          target='_blank'
-                          rel='noreferrer'
-                        >
-                          <Image
-                            src={'/icons/icon_google.png'}
-                            alt=''
-                            width={googleSize}
-                            height={googleSize}
-                          />
-                          <S.GoogleCopy>
-                            This will take you to google maps. We suggest leaving a review at your
-                            local branch
-                          </S.GoogleCopy>
+                        <Anchor href={`https://www.google.com/search?q=${bank?.google}`} target='_blank' rel='noreferrer'>
+                          <Image src={'/icons/icon_google.png'} alt='' width={googleSize} height={googleSize} />
+                          <S.GoogleCopy>This will take you to google maps. We suggest leaving a review at your local branch</S.GoogleCopy>
                         </Anchor>
                       </Item>
                     )}
                   </TileLinks>
+                  <S.GoogleCopyMobile>
+                    This will take you to google maps. We suggest leaving a review at your local branch
+                  </S.GoogleCopyMobile>
                 </S.Container>
 
                 <Buttons align='right'>

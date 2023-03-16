@@ -55,7 +55,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
                 <Link href='/profile'>{nickname}</Link>
               </p>
             </S.SignedInUser>
-            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard())}>
+            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard(true))}>
               <Image src={'/icons/icon_leaf.svg'} alt='' width={44} height={44} />
             </S.ImpactCardToggle>
             {/* <S.Notifications>
@@ -72,7 +72,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
             <S.SectionName>{pageTitle}</S.SectionName>
           </S.SectionHeader>
           {isSwitchingJourney && (
-            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard())}>
+            <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard(true))}>
               <Image src={'/icons/icon_leaf.svg'} alt='' width={34} height={34} />
             </S.ImpactCardToggle>
           )}

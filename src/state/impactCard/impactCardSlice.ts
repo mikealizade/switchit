@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type ImpactCard = {
   isImpactCardOpen: boolean
@@ -12,10 +12,10 @@ export const impactCard = createSlice({
   name: 'impactCard',
   initialState: initialNavState,
   reducers: {
-    toggleImpactCard: state => {
+    toggleImpactCard: (state, action: PayloadAction<any>) => {
       console.log('state.isImpactCardOpen', state.isImpactCardOpen)
       return {
-        isImpactCardOpen: !state.isImpactCardOpen,
+        isImpactCardOpen: action.payload,
       }
     },
   },

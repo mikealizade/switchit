@@ -7,11 +7,7 @@ import { ActionSelector } from '@components/ActionSelector/ActionSelector'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
-import {
-  SwitchingColumnContainer,
-  SwitchingColumn,
-  Buttons,
-} from '@modules/Switching/Switching.style'
+import { SwitchingColumnContainer, SwitchingColumn, Buttons } from '@modules/Switching/Switching.style'
 import * as S from '@modules/Switching/Switching.style'
 import { setActionCard } from '@state/generic/genericSlice'
 import { Content } from '@styles/common.style'
@@ -57,12 +53,7 @@ export const SelectAction = (): JSX.Element => {
                 subHeader={`We have developed six additional lobbying steps to harness the power of your switch. Complete the full set to reach your full switching potential. We've done all the hard parts for you, so you can spend more time spreading the word. `}
               />
 
-              <ActionSelector
-                currentAction={currentAction}
-                actions={actions}
-                selectAction={selectAction}
-                isDefault
-              />
+              <ActionSelector currentAction={currentAction} actions={actions} selectAction={selectAction} isDefault />
 
               <S.Section>
                 <Buttons>

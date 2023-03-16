@@ -30,19 +30,21 @@ export const Modal: FC<ModalProps> = ({
     <>
       <S.ModalContainer data-testid='modal-bg' {...(onClose && { onClick: onClose })} />
       <S.ModalContent role='dialog'>
-        {title && <h2>{title}</h2>}
-        <S.ModalBody>{children}</S.ModalBody>
+        <S.ModalBody>
+          {title && <h2>{title}</h2>}
+          {children}
 
-        <S.ButtonsContainer>
-          {showCancel && (
-            <Button type='button' mode='secondary' onClick={onClose}>
-              {cancelText}
+          <S.ButtonsContainer>
+            {showCancel && (
+              <Button type='button' mode='secondary' onClick={onClose}>
+                {cancelText}
+              </Button>
+            )}
+            <Button type='button' disabled={isDisabled} onClick={onConfirm}>
+              {confirmText}
             </Button>
-          )}
-          <Button type='button' disabled={isDisabled} onClick={onConfirm}>
-            {confirmText}
-          </Button>
-        </S.ButtonsContainer>
+          </S.ButtonsContainer>
+        </S.ModalBody>
       </S.ModalContent>
     </>
   )

@@ -203,7 +203,7 @@ export const TileLinks = styled.ul<{ isColumn?: boolean }>`
   column-gap: 50px;
   justify-content: flex-start;
   flex-wrap: wrap;
-  row-gap: 46px;
+  row-gap: 35px;
   flex: 1;
   min-width: 365px;
 `

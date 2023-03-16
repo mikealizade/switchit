@@ -26,12 +26,15 @@ export const ModalContent = styled.section`
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   z-index: 2;
   border-radius: 15px;
-  padding: 60px 25px;
+  padding: 35px 25px 30px;
   row-gap: 30px;
   z-index: 10;
+
+  ${() => mediaQuery.tablet} {
+    padding: 50px;
+  }
 
   ${() => mediaQuery.laptop} {
     left: 20%;
