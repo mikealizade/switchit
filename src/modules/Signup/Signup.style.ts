@@ -19,7 +19,7 @@ export const SignUpContainer = styled.main`
   background-size: 50%;
 
   ${() => mediaQuery.xlaptop} {
-    background-position: right -50px bottom;
+    background-position: right -50px bottom -160px;
   }
 `
 
