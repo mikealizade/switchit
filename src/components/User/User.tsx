@@ -8,6 +8,7 @@ import { mobileNav, subNav } from '@components/Navigation/data'
 import * as S from '@components/User/User.style'
 import { useGetTotalPoints } from '@hooks/useGetTotalPoints'
 import { useMediaQuery } from '@hooks/useMediaQuery'
+import { setNewJourneyMobile } from '@state/generic/genericSlice'
 import { toggleImpactCard } from '@state/impactCard/impactCardSlice'
 import { toggleNav } from '@state/nav/navSlice'
 import { RootState } from '@state/store'
@@ -18,6 +19,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
   const { isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
   const { nickname = '', picture = '', isNewUser } = useSelector((state: RootState) => state.user)
+  const isSwitchingLanding = pathname === '/switching'
   const isSwitchingJourney = pathname.includes('/switching/')
   let [pageTitle] = [...mobileNav, ...subNav].map(({ text }) => text.toLowerCase()).filter((item: string) => pathname.includes(item))
   pageTitle = pageTitle === 'switching' ? 'Switching Journeys' : pageTitle
@@ -71,6 +73,11 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
           <S.SectionHeader>
             <S.SectionName>{pageTitle}</S.SectionName>
           </S.SectionHeader>
+          {isSwitchingLanding && (
+            <S.ImpactCardToggle onClick={() => dispatch(setNewJourneyMobile(true))}>
+              <Image src={'/icons/icon_plus_white.svg'} alt='' width={34} height={34} />
+            </S.ImpactCardToggle>
+          )}
           {isSwitchingJourney && (
             <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard(true))}>
               <Image src={'/icons/icon_leaf.svg'} alt='' width={34} height={34} />

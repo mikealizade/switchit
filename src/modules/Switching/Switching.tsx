@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
 import { Card } from '@components/Card/Card'
 import { SwitchingHero } from '@components/Hero/SwitchingHero'
@@ -13,6 +13,8 @@ import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
 import { useMediaQuery } from '@hooks/useMediaQuery'
 import * as S from '@modules/Switching/Switching.style'
+import { setNewJourneyMobile } from '@state/generic/genericSlice'
+import { RootState } from '@state/store'
 import { setAddNewJourney, setCurrentJourney, setCurrentJourneyId, Journey } from '@state/switchJourney/switchJourneySlice'
 import { Content, Row } from '@styles/common.style'
 import { journeyTypes, steps, noBankAccountSteps } from '@utils/constants'
@@ -30,7 +32,6 @@ const getJourneys = (
   switchJourneys: Journey[],
   filter: ({ journeyType, completedSteps }: JourneyFilter) => boolean,
   resumeJourney: (route: string) => () => void,
-  // addJourneyName: () => void,
   isJourneyComplete: boolean,
 ) => {
   return switchJourneys.filter(filter).map((journey: Journey) => {
@@ -56,7 +57,6 @@ const getJourneys = (
             completedSteps={completedSteps}
             isJourneyComplete={isJourneyComplete}
             resumeJourney={resumeJourney}
-            // addJourneyName={addJourneyName}
           />
         )}
       </Fragment>
@@ -67,8 +67,9 @@ const getJourneys = (
 const Switching = (): JSX.Element => {
   const { user: { sub = '' } = {} } = useUser()
   const dispatch = useDispatch()
+  const { newJourneyMobile } = useSelector((state: RootState) => state.generic)
   const { push, pathname } = useRouter()
-  const { isMobile } = useMediaQuery()
+  const { isMobile, isLaptop } = useMediaQuery()
   const [value, setValue] = useState('')
   const [isAddName, setAddName] = useState(false)
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
@@ -89,6 +90,7 @@ const Switching = (): JSX.Element => {
   const addNewJourney = (): void => {
     const id = nanoid()
     dispatch(setAddNewJourney({ id, isVerified: false, name: value }))
+    !isLaptop && dispatch(setNewJourneyMobile(false))
     push('/switching/select-bank')
   }
 
@@ -104,21 +106,9 @@ const Switching = (): JSX.Element => {
     dispatch(setCurrentJourneyId(id))
   }
 
-  const activeJourneys = getJourneys(
-    switchJourneys,
-    activeJourneysFilter,
-    resumeJourney,
-    // addJourneyName,
-    false,
-  )
+  const activeJourneys = getJourneys(switchJourneys, activeJourneysFilter, resumeJourney, false)
 
-  const completedJourneys = getJourneys(
-    switchJourneys,
-    completedJourneysFilter,
-    resumeJourney,
-    // addJourneyName,
-    true,
-  )
+  const completedJourneys = getJourneys(switchJourneys, completedJourneysFilter, resumeJourney, true)
 
   const tabs = [
     ...(activeJourneys.length
@@ -133,6 +123,10 @@ const Switching = (): JSX.Element => {
       : []),
     ...(completedJourneys.length ? [{ tab: 'Completed Journeys', currentJourneyId: '' }] : []),
   ]
+
+  useEffect(() => {
+    newJourneyMobile && addJourneyName()
+  }, [newJourneyMobile])
 
   useEffect(() => {
     if (switchJourneys.length) {

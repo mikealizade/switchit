@@ -4,12 +4,14 @@ type Generic = {
   actionCardIndex: number
   signature: string
   userAge: string
+  newJourneyMobile: boolean
 }
 
 export const initialGenericState: Generic = {
   actionCardIndex: 0,
   signature: '',
   userAge: '',
+  newJourneyMobile: false,
 }
 
 export const generic = createSlice({
@@ -34,9 +36,15 @@ export const generic = createSlice({
         userAge: action.payload,
       }
     },
+    setNewJourneyMobile: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        newJourneyMobile: action.payload,
+      }
+    },
   },
 })
 
-export const { setActionCard, setSignature, setUserAge } = generic.actions
+export const { setActionCard, setSignature, setUserAge, setNewJourneyMobile } = generic.actions
 
 export default generic.reducer

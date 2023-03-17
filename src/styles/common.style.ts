@@ -199,13 +199,17 @@ export const Checkbox = styled.span<{ isActive?: boolean }>`
 
 export const TileLinks = styled.ul<{ isColumn?: boolean }>`
   display: flex;
-  flex-direction: ${({ isColumn }) => (isColumn ? 'column' : 'row')};
+  flex-direction: column;
   column-gap: 50px;
   justify-content: flex-start;
   flex-wrap: wrap;
   row-gap: 35px;
   flex: 1;
-  min-width: 365px;
+
+  ${() => mediaQuery.xmobile} {
+    min-width: 365px;
+    flex-direction: ${({ isColumn }) => (isColumn ? 'column' : 'row')};
+  }
 `
 
 export const Item = styled.li`

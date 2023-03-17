@@ -7,6 +7,7 @@ export const Card = styled.section<{
   padded?: boolean
   stretch?: boolean
   rowGap?: number
+  notPaddedMobile?: boolean
 }>`
   display: flex;
   flex-direction: column;
@@ -15,7 +16,7 @@ export const Card = styled.section<{
   row-gap: ${({ rowGap }) => (rowGap ? `${rowGap}px` : '80px')};
   border-radius: 0;
   background-color: var(--white);
-  padding: 30px;
+  padding: ${({ notPaddedMobile }) => (notPaddedMobile ? '0' : '30px')};
   flex: ${({ stretch }) => (stretch ? '1' : 'none')};
 
   ${() => mediaQuery.tablet} {

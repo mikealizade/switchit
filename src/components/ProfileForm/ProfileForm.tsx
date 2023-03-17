@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { FormProvider, useForm, FieldValues } from 'react-hook-form'
@@ -22,7 +21,6 @@ export const ProfileForm: NextPage<{ data?: any; disabled?: boolean }> = ({ data
   const { isMobile } = useMediaQuery()
   const toast = useToast()
   const { handleSubmit, reset } = methods
-  const { isLoading = false } = useUser()
   const user = useSelector((state: RootState) => state.user)
   const {
     nickname = '',

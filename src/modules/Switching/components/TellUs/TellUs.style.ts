@@ -75,7 +75,7 @@ export const LabelContainer = styled.div`
 export const VideoImage = styled(TestimonialImage)`
   min-height: 50px;
 
-  ${() => mediaQuery.tablet} {
+  ${() => mediaQuery.xmobile} {
     min-height: 235px;
   }
 `

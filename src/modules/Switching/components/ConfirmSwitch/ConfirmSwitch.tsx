@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 // import { useMediaQuery } from 'react-responsive'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
@@ -16,32 +16,15 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useUpdateAwards } from '@hooks/useUpdateAwards'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
-import {
-  WoohooContainer,
-  WoohooHeader,
-  WoohooText,
-} from '@modules/Switching/components/TellUs/TellUs.style'
-import { setSignature } from '@state/generic/genericSlice'
-import { RootState } from '@state/store'
+import { WoohooContainer, WoohooHeader, WoohooText } from '@modules/Switching/components/TellUs/TellUs.style'
+// import { setSignature } from '@state/generic/genericSlice'
+// import { RootState } from '@state/store'
 import { Form, Content, BoldLink } from '@styles/common.style'
 import { actionHeaderSubText, journeyTypes } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
   const { push } = useRouter()
@@ -52,10 +35,7 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
       <WoohooText>Thank you. Verifying your switch supports our work.</WoohooText>
       <WoohooText>
         {goodBank === 'starling' && (
-          <p>
-            A donation will be made to our charity partner once we have confirmed your switch with
-            your new provider.
-          </p>
+          <p>A donation will be made to our charity partner once we have confirmed your switch with your new provider.</p>
         )}
       </WoohooText>
       <Button type='button' onClick={() => push('/switching/select-action')}>
@@ -68,9 +48,9 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
 
 export const ConfirmSwitch: NextPage = () => {
   const { push } = useRouter()
-  const dispatch = useDispatch()
-  const signature = useSelector((state: RootState) => state.generic.signature)
-  const [value, setValue] = useState(signature)
+  // const dispatch = useDispatch()
+  // const signature = useSelector((state: RootState) => state.generic.signature)
+  const [value, setValue] = useState('')
   const nextStep = useNextStep()
   const updateAwards = useUpdateAwards('providers', 'actions')
   const { addPoints } = useUpdatePoints('actions')
@@ -94,7 +74,7 @@ export const ConfirmSwitch: NextPage = () => {
 
   const onSign = ({ target: { value } }: EventType): void => {
     setValue(value)
-    dispatch(setSignature(value))
+    // dispatch(setSignature(value))
   }
 
   return (
@@ -106,21 +86,17 @@ export const ConfirmSwitch: NextPage = () => {
               <CongratsMessage goodBank={goodBank} />
             ) : (
               <>
-                <ActionHeader
-                  header='Sign The Agreement'
-                  subHeader={actionHeaderSubText.confirmSwitch}
-                />
+                <ActionHeader header='Sign The Agreement' subHeader={actionHeaderSubText.confirmSwitch} />
 
                 <S.Agreement>
-                  I confirm that I have signed up for an account with my chosen provider on their
-                  website by providing all the necessary details.
+                  I confirm that I have signed up for an account with my chosen provider on their website by providing all the necessary
+                  details.
                   {currentJourneyType === journeyTypes.noBankAccount ? (
                     <>I intend to use this account as my sole, or primary, account.</>
                   ) : (
                     <>
-                      I have selected to switch my account and have chosen a switch day on which my
-                      old account will close. I do not intend to cancel my switch before the switch
-                      day I have selected.
+                      I have selected to switch my account and have chosen a switch day on which my old account will close. I do not intend
+                      to cancel my switch before the switch day I have selected.
                     </>
                   )}
                 </S.Agreement>
@@ -142,11 +118,7 @@ export const ConfirmSwitch: NextPage = () => {
                       </S.Date>
                     </S.SignatureFieldset>
                     <Buttons>
-                      <Button
-                        type='button'
-                        mode='secondary'
-                        onClick={() => push(`/switching/make-the-switch/${goodBank}`)}
-                      >
+                      <Button type='button' mode='secondary' onClick={() => push(`/switching/make-the-switch/${goodBank}`)}>
                         Previous Step
                       </Button>
                       {hasConfirmed ? (

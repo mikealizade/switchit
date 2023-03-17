@@ -25,10 +25,7 @@ export const GreenBanks = (): JSX.Element => {
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
-  const previousStep =
-    currentJourneyType === journeyTypes.noBankAccount
-      ? '/switching/select-bank'
-      : '/switching/bank-score'
+  const previousStep = currentJourneyType === journeyTypes.noBankAccount ? '/switching/select-bank' : '/switching/bank-score'
 
   useEffect(() => {
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
@@ -39,13 +36,9 @@ export const GreenBanks = (): JSX.Element => {
     const filteredBanks = bankConfig.filter(
       ({ accountTypes, features }: { accountTypes: string[]; features: any }) =>
         (selectedAccountTypes.length
-          ? selectedAccountTypes.every((selectedAccountType: string) =>
-              accountTypes.includes(selectedAccountType),
-            )
+          ? selectedAccountTypes.every((selectedAccountType: string) => accountTypes.includes(selectedAccountType))
           : true) &&
-        (selectedFeatures.length
-          ? selectedFeatures.every((selectedFeature: string) => features.includes(selectedFeature))
-          : true),
+        (selectedFeatures.length ? selectedFeatures.every((selectedFeature: string) => features.includes(selectedFeature)) : true),
     )
 
     setBankData(filteredBanks)

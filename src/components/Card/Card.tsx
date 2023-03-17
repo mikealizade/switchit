@@ -7,6 +7,7 @@ type CardProps = {
   padded?: boolean
   stretch?: boolean
   rowGap?: number
+  notPaddedMobile?: boolean
   children: React.ReactNode
 }
 
@@ -16,10 +17,11 @@ export const Card: NextPage<CardProps> = ({
   padded = false,
   rowGap = 80,
   stretch = false,
+  notPaddedMobile = false,
   children,
 }): JSX.Element => {
   return (
-    <S.Card column={column} shadow={shadow} padded={padded} stretch={stretch} rowGap={rowGap}>
+    <S.Card column={column} shadow={shadow} padded={padded} stretch={stretch} rowGap={rowGap} notPaddedMobile={notPaddedMobile}>
       {children}
     </S.Card>
   )

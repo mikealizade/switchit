@@ -5,10 +5,6 @@ export const EditableContent = styled.div`
   flex-direction: column;
   row-gap: 30px;
   background-color: var(--white);
-  /* min-width: 255px;
-  max-width: 365px; */
-  /* align-self: stretch; */
-  /* flex: 1; */
 `
 
 export const Container = styled.div`
