@@ -354,6 +354,10 @@ export const BulletList = styled.ul<{ fontsize?: number }>`
   row-gap: 4px;
 `
 
+export const BulletListBold = styled(BulletList)`
+  font-weight: bold;
+`
+
 export const OrderedList = styled.ol<{ app?: boolean }>`
   counter-reset: item;
   list-style-position: inside;
@@ -413,6 +417,10 @@ export const ParagraphCopy = styled.p<{ bold?: boolean; display?: string }>`
 
 export const Text = styled.p`
   font-size: var(--fsBase);
+`
+
+export const TextBold = styled(Text)`
+  font-weight: bold;
 `
 
 export const LoaderContainer = styled.div<{ height?: number }>`

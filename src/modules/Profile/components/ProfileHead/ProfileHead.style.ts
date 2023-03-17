@@ -20,11 +20,17 @@ export const ProfileHead = styled.header<{ isProfile?: boolean }>`
 
 export const EditProfile = styled.div`
   position: absolute;
-  top: 177px;
-  right: 132px;
+  top: 108px;
+  left: 100px;
   width: 26px;
   height: 26px;
   cursor: pointer;
+
+  ${() => mediaQuery.tablet} {
+    top: 177px;
+    right: 132px;
+    left: auto;
+  }
 
   > span {
     position: static !important;
@@ -50,6 +56,17 @@ export const Picture = styled.div<{ isProfile?: boolean }>`
     padding: 20px;
     margin: 0;
     position: relative;
+
+    /* > div:first-of-type {
+      top: 108px;
+      left: 100px;
+
+      ${() => mediaQuery.laptop} {
+        top: 177px;
+        right: 132px;
+        left: auto;
+      }
+    } */
 
     ${() => mediaQuery.tablet} {
       border-radius: 15px;

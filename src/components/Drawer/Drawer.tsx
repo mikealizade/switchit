@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { NextPage } from 'next'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from '@components/Drawer/Drawer.style'
 import { ProfileAwardsBadges } from '@components/ProfileAwardsBadges/ProfileAwardsBadges'
@@ -32,9 +33,7 @@ const Header = styled.h2`
 const ReadyToSwitch = () => {
   return (
     <>
-      <Header>
-        Ready to switch or {`can't `}switch but still want to open a green bank account
-      </Header>
+      <Header>Ready to switch or {`can't `}switch but still want to open a green bank account</Header>
       <p>
         {` Ready to Switch: We're so excited that you're ready to leave your dirty bank! Click ‘Next'
         and we'll start you on your switching jounrey.`}
@@ -144,26 +143,34 @@ const drawerConfig = {
 
 export const Drawer: NextPage<{ narrow?: boolean }> = ({ narrow }): JSX.Element => {
   window.scroll(0, 0)
-  const { isMobile } = useMediaQuery()
   const dispatch = useDispatch()
   const { isDrawerOpen, section } = useSelector((state: RootState) => state.drawer)
   const { backLink, component } = drawerConfig[section as keyof typeof drawerConfig] || {}
+  const { isMobileDevice } = useMediaQuery()
 
   const closeNav = () => {
     dispatch(toggleDrawer(section))
   }
+
+  useEffect(() => {
+    if (isMobileDevice) {
+      if (isDrawerOpen) {
+        document.body.classList.add('no-scroll')
+      } else {
+        document.body.classList.remove('no-scroll')
+      }
+    }
+  }, [isDrawerOpen])
 
   return (
     <>
       <S.MobileBackdrop isVisible={isDrawerOpen} onClick={closeNav}></S.MobileBackdrop>
       <S.Drawer isDrawerOpen={isDrawerOpen} narrow={narrow}>
         <S.DrawerBackLink onClick={closeNav}>
-          {!isMobile && (
-            <>
-              <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
-              {backLink}
-            </>
-          )}
+          <S.ChevronContainer>
+            <Image src={'/icons/icon_chevron_left.svg'} alt='' width={20} height={20} />
+            {backLink}
+          </S.ChevronContainer>
         </S.DrawerBackLink>
         <S.DrawerContent>{component}</S.DrawerContent>
       </S.Drawer>

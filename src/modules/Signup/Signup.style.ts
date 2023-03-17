@@ -19,7 +19,7 @@ export const SignUpContainer = styled.main`
   background-size: 50%;
 
   ${() => mediaQuery.xlaptop} {
-    background-position: right -50px;
+    background-position: right -50px bottom;
   }
 `
 
@@ -29,9 +29,11 @@ export const Content = styled.div`
   padding: 40px;
   display: flex;
   flex-direction: column;
+  row-gap: 20px;
 
   ${() => mediaQuery.laptop} {
     width: 50%;
+    row-gap: 40px;
   }
 `
 
@@ -39,7 +41,7 @@ export const SignupContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  row-gap: 50px;
+  row-gap: 40px;
   padding: 50px 0 20px;
   margin: auto;
 
@@ -50,7 +52,7 @@ export const SignupContent = styled.div`
 `
 
 export const SignupCopy = styled(Div)`
-  row-gap: 30px;
+  row-gap: 20px;
   p {
     font-size: var(--fsMedium8);
   }
@@ -59,7 +61,11 @@ export const SignupCopy = styled(Div)`
 export const SignupHeader = styled.h1`
   margin: 0;
   font-family: 'Konsolev SemiBold';
-  font-size: var(--fsVLarge6);
+  font-size: var(--fsLarge4);
+
+  ${() => mediaQuery.tablet} {
+    font-size: var(--fsVLarge6);
+  }
 `
 
 export const SignInButtonContainer = styled.div`

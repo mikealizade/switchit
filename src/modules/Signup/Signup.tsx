@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as S from '@modules/Signup/Signup.style'
-import { Div, Text } from '@styles/common.style'
+import { BulletListBold, Div, Text, TextBold } from '@styles/common.style'
 import Logo from '../../../public/switchit_logo.png'
 import { defaultProfile } from '../../utils/defaultProfile'
 
@@ -42,18 +42,24 @@ const Signup: NextPage = () => {
             <span>Switch It</span>
           </S.Logo>
           <S.SignupContent>
-            <S.SignupHeader>One switch, unlimited impact.</S.SignupHeader>
+            <S.SignupHeader>
+              Move £1.5 million out of fossil fuel support in 4 simple steps <em>...even with £0 in your account.</em>
+            </S.SignupHeader>
             <S.SignupCopy>
+              <Text>Since the Paris Agreement, banks have invested over £3.8 trillion in fossil fuels.</Text>
               <Text>
-                Elit consectetur duis labore ex sunt reprehenderit in id. In irure adipisicing esse voluptate consectetur tempor ipsum
-                aliqua sint. Tempor ea adipisicing commodo anim aliquip esse. Proident et reprehenderit ea ea est commodo anim culpa commodo
-                irure sit.
+                Take easy, effective climate action by switching your money out of fossil fuel support on our Green Banking Platform. Your
+                switch is worth more than you think!
               </Text>
-              <Text>
-                Elit consectetur duis labore ex sunt reprehenderit in id. In irure adipisicing esse voluptate consectetur tempor ipsum
-                aliqua sint. Tempor ea adipisicing commodo anim aliquip esse. Proident et reprehenderit ea ea est commodo anim culpa commodo
-                irure sit.
-              </Text>
+              <Text>Together, we can help end fossil fuel financing.</Text>
+              <TextBold>On our Green Banking Platform:</TextBold>
+              <BulletListBold>
+                <li>Find out what your bank is funding</li>
+                <li>Choose a new Switch-It-Green-approved provider</li>
+                <li>Make the switch alongside thousands of others in our collective push for change</li>
+                <li>Maximise your switch with our ready-to-go lobbying features</li>
+              </BulletListBold>
+              <TextBold>Ready to Switch It Green?</TextBold>
             </S.SignupCopy>
 
             <Div rowGap={35}>

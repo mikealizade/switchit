@@ -45,14 +45,7 @@ export const DrawerHeader = styled.h3`
 `
 
 export const DrawerBackLink = styled.h2`
-  font-size: var(--fsBase);
-  color: var(--slate);
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  cursor: pointer;
   position: relative;
-  justify-content: flex-start;
   height: 60px;
 
   &:after {
@@ -66,10 +59,25 @@ export const DrawerBackLink = styled.h2`
     border-radius: 8px;
   }
 
-  ${() => mediaQuery.tablet} {
+  ${() => mediaQuery.laptop} {
     &:after {
       content: none;
     }
+  }
+`
+
+export const ChevronContainer = styled.div`
+  display: none;
+
+  ${() => mediaQuery.laptop} {
+    font-size: var(--fsBase);
+    color: var(--slate);
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+    justify-content: flex-start;
+    height: 60px;
   }
 `
 

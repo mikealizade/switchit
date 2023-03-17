@@ -19,8 +19,8 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
   const { isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
   const { nickname = '', picture = '', isNewUser } = useSelector((state: RootState) => state.user)
-  const isSwitchingLanding = pathname === '/switching'
-  const isSwitchingJourney = pathname.includes('/switching/')
+  const isSwitchLanding = pathname === '/switching'
+  const isSwitchJourney = pathname.includes('/switching/')
   let [pageTitle] = [...mobileNav, ...subNav].map(({ text }) => text.toLowerCase()).filter((item: string) => pathname.includes(item))
   pageTitle = pageTitle === 'switching' ? 'Switching Journeys' : pageTitle
 
@@ -73,12 +73,12 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
           <S.SectionHeader>
             <S.SectionName>{pageTitle}</S.SectionName>
           </S.SectionHeader>
-          {isSwitchingLanding && (
+          {isSwitchLanding && (
             <S.ImpactCardToggle onClick={() => dispatch(setNewJourneyMobile(true))}>
               <Image src={'/icons/icon_plus_white.svg'} alt='' width={34} height={34} />
             </S.ImpactCardToggle>
           )}
-          {isSwitchingJourney && (
+          {isSwitchJourney && (
             <S.ImpactCardToggle onClick={() => dispatch(toggleImpactCard(true))}>
               <Image src={'/icons/icon_leaf.svg'} alt='' width={34} height={34} />
             </S.ImpactCardToggle>
