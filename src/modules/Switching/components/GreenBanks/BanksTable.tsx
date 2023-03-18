@@ -74,8 +74,11 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
     <>
       {isMobile ? (
         <S.BanksList>
-          {bankData.map(({ route, icon, bank, details, donation, fee, project }: BankData) => (
+          {bankData.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
             <S.BanksListItem key={route}>
+              <S.Ellipsis onClick={expandRow(expandedRow === i ? null : i)}>
+                <Image src={'/icons/icon_ellipsis.svg'} alt='' width={25} height={25} className='profile' />
+              </S.Ellipsis>
               <S.BankItemHeader>
                 <Image
                   src={logo[icon as keyof typeof logo].img.src}
@@ -89,7 +92,12 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
 
               <S.BankItemDetails>
                 <S.BankDetailsItem>
-                  <S.DetailHeader>Donation</S.DetailHeader>
+                  <S.DetailHeader>
+                    Donation
+                    <S.MoreInfo onClick={() => dispatch(toggleDrawer('calculateImpact'))}>
+                      <Image src={`/icons/icon_moreinfo.svg`} alt='' width={13} height={20} />
+                    </S.MoreInfo>
+                  </S.DetailHeader>
                   {donation}
                 </S.BankDetailsItem>
                 <S.BankDetailsItem>
@@ -98,9 +106,16 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                 </S.BankDetailsItem>
                 <S.BankDetailsItem>
                   <S.DetailHeader>Latest Green Project</S.DetailHeader>
-                  {project}
+                  <TextLink onClick={() => dispatch(toggleDrawer(projectLink))}>{project}</TextLink>
                 </S.BankDetailsItem>
               </S.BankItemDetails>
+              <S.ExpandableRowMobile isExpanded={expandedRow === i}>
+                <S.BankMeta>
+                  {meta.map((item: string) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </S.BankMeta>
+              </S.ExpandableRowMobile>
               <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
                 Make The Switch
               </Button>
@@ -121,61 +136,45 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
             </tr>
           </thead>
           <tbody>
-            {bankData.map(
-              (
-                { route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData,
-                i: number,
-              ) => (
-                <>
-                  <tr key={bank}>
-                    <td scope='row'>
-                      <Image
-                        src={logo[icon as keyof typeof logo].img.src}
-                        alt={bank}
-                        width={logo[icon as keyof typeof logo].width}
-                        height={logo[icon as keyof typeof logo].height}
-                      />
-                    </td>
-                    <td>{details}</td>
-                    <td>{fee}</td>
-                    <td>
-                      <TextLink onClick={() => dispatch(toggleDrawer(projectLink))}>
-                        {project}
-                      </TextLink>
-                    </td>
-                    <td>{donation}</td>
-                    <td>
-                      <TextButton
-                        type='button'
-                        mode='primary'
-                        onClick={expandRow(expandedRow === i ? null : i)}
-                      >
-                        <Image
-                          src={`/icons/icon_chevron_${expandedRow === i ? 'down' : 'right'}.svg`}
-                          alt=''
-                          width={15}
-                          height={15}
-                        />
-                      </TextButton>
-                    </td>
-                    <td>
-                      <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
-                        Switch
-                      </Button>
-                    </td>
-                  </tr>
-                  <S.ExpandableRow isExpanded={expandedRow === i}>
-                    <td colSpan={7}>
-                      <S.BankMeta>
-                        {meta.map((item: string) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </S.BankMeta>
-                    </td>
-                  </S.ExpandableRow>
-                </>
-              ),
-            )}
+            {bankData.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
+              <>
+                <tr key={bank}>
+                  <td scope='row'>
+                    <Image
+                      src={logo[icon as keyof typeof logo].img.src}
+                      alt={bank}
+                      width={logo[icon as keyof typeof logo].width}
+                      height={logo[icon as keyof typeof logo].height}
+                    />
+                  </td>
+                  <td>{details}</td>
+                  <td>{fee}</td>
+                  <td>
+                    <TextLink onClick={() => dispatch(toggleDrawer(projectLink))}>{project}</TextLink>
+                  </td>
+                  <td>{donation}</td>
+                  <td>
+                    <TextButton type='button' mode='primary' onClick={expandRow(expandedRow === i ? null : i)}>
+                      <Image src={`/icons/icon_chevron_${expandedRow === i ? 'down' : 'right'}.svg`} alt='' width={15} height={15} />
+                    </TextButton>
+                  </td>
+                  <td>
+                    <Button type='button' mode='primary' size='small' onClick={onNext(route)}>
+                      Switch
+                    </Button>
+                  </td>
+                </tr>
+                <S.ExpandableRow isExpanded={expandedRow === i}>
+                  <td colSpan={7}>
+                    <S.BankMeta>
+                      {meta.map((item: string) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </S.BankMeta>
+                  </td>
+                </S.ExpandableRow>
+              </>
+            ))}
           </tbody>
         </S.BanksTable>
       )}

@@ -117,11 +117,29 @@ export const ExpandableRow = styled.tr<{ isExpanded?: boolean }>`
   }
 `
 
+export const ExpandableRowMobile = styled.div<{ isExpanded?: boolean }>`
+  display: ${({ isExpanded }) => (isExpanded ? 'flex' : 'none')};
+`
+
 export const BankMeta = styled.ul`
   padding: 0 15px;
 
   li {
-    padding: 10px 0;
+    padding: 6px 10px;
+    font-size: var(--fsSmall5);
+
+    &:nth-of-type(even) {
+      background-color: var(--haze);
+    }
+
+    ${() => mediaQuery.tablet} {
+      padding: 10px 0;
+      font-size: var(--fsBase);
+
+      &:nth-of-type(even) {
+        background-color: var(--white);
+      }
+    }
 
     &:last-child {
       border: 0;
@@ -136,6 +154,7 @@ export const BanksList = styled.ul`
 `
 
 export const BanksListItem = styled.li`
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -145,6 +164,12 @@ export const BanksListItem = styled.li`
   button {
     align-self: center;
   }
+`
+
+export const Ellipsis = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `
 
 export const BankItemHeader = styled.div`
@@ -184,4 +209,14 @@ export const BankDetailsItem = styled.li`
 
 export const DetailHeader = styled.div`
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  text-align: center;
+`
+
+export const MoreInfo = styled.div`
+  cursor: pointer;
+  min-width: 13px;
 `
