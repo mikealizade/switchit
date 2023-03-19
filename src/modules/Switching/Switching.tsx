@@ -175,6 +175,16 @@ const Switching = (): JSX.Element => {
       <Head>
         <title>Switch It Green | Switching Journey</title>
         <meta name='description' content='Switch to a green bank on our Bank Switching Platform' />
+        <meta property='og:url' content='https://switchit-weld.vercel.app/profile' />
+        <meta property='og:type' content='website' />
+        <meta property='og:title' content='Switch It Green | Green Bank Switching Platform' />
+        <meta property='og:description' content='Switch to a green bank on our Bank Switching Platform' />
+        <meta property='og:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png' />
+        <meta property='og:image:secure_url' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png' />
+        <meta property='og:image:url' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png' />
+        <meta property='og:image:type' content='image/png' />
+        <meta property='og:image:width' content='124' />
+        <meta property='og:image:height' content='66' />
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
