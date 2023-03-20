@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app'
 import { UserProvider } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
+import { useEffect } from 'react'
+import TagManager from 'react-gtm-module'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Layout } from '@components/Layout/Layout'
@@ -29,10 +31,11 @@ import '@styles/globals.css'
 // dynamic import for drawer
 // integrate suspense
 
-//NTH
-// cypress tests
-
 const App = ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-TS6XKWR' })
+  }, [])
+
   return (
     <UserProvider>
       <Provider store={store}>

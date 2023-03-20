@@ -29,9 +29,9 @@ export const BankFinder = (): JSX.Element => {
     dispatch(setJourneyData({ badBank: bank, journeyType: journeyTypes.readyToSwitch }))
   }
 
-  const onNoBankAccountSelect = (): void => {
+  const onNoBankAccountSelect = (route: string): void => {
     dispatch(setJourneyData({ journeyType: journeyTypes.noBankAccount }))
-    push('/switching/green-banks')
+    push(route)
   }
 
   const onNext = (): void => {
@@ -61,10 +61,8 @@ export const BankFinder = (): JSX.Element => {
             onChange={onSelectBank}
           />
         </S.BankList>
-        <BoldLink onClick={onNoBankAccountSelect}>I {`don't`} have a bank account yet</BoldLink>
-        <BoldLink onClick={() => push('/switching/bank-not-listed')}>
-          My bank {`isn't`} listed
-        </BoldLink>
+        <BoldLink onClick={() => onNoBankAccountSelect('/switching/green-banks')}>I {`don't`} have a bank account yet</BoldLink>
+        <BoldLink onClick={() => onNoBankAccountSelect('/switching/bank-not-listed')}>My bank {`isn't`} listed</BoldLink>
       </S.BankSelector>
       <Buttons>
         <Button type='button' mode='secondary' onClick={() => push('/switching')}>
