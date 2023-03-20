@@ -11,13 +11,7 @@ import * as S from '@styles/common.style'
 import { HelpForm } from './HelpForm'
 import { research, general, programs, switching, legal } from './data'
 
-const panels: [
-  React.ReactNode,
-  React.ReactNode,
-  React.ReactNode,
-  React.ReactNode,
-  React.ReactNode,
-] = [
+const panels: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode] = [
   <Accordion key='accordion' data={general} />,
   <Accordion key='accordion' data={switching} />,
   <Accordion key='accordion' data={research} />,
