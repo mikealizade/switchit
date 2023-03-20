@@ -16,6 +16,7 @@ interface TabsProps {
   tabs: Array<string>
   panels: Array<React.ReactNode>
   centered?: boolean
+  hasMobileButtons?: boolean
   onSelectTab?: (id: string) => () => void
 }
 
@@ -36,7 +37,7 @@ const a11yProps = (index: number) => {
 
 const isStringArray = (array: string[]): array is string[] => typeof array[0] === 'string'
 
-export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], onSelectTab }): JSX.Element => {
+export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], hasMobileButtons = false, onSelectTab }): JSX.Element => {
   const {
     query: { tab },
   } = useRouter()
@@ -48,7 +49,7 @@ export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], onSelectTab 
   }
 
   return (
-    <S.Tabs>
+    <S.Tabs className={hasMobileButtons ? 'hasMobileButtons' : ''}>
       <Box
         sx={{
           flexGrow: 1,

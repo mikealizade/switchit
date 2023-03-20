@@ -41,7 +41,7 @@ const Faqs = (): JSX.Element => {
                 <HelpContainer>
                   <S.TabsContainer>
                     <StyledTabs>
-                      <Tabs tabs={tabs} panels={panels}></Tabs>
+                      <Tabs tabs={tabs} panels={panels} hasMobileButtons></Tabs>
                     </StyledTabs>
                   </S.TabsContainer>
                 </HelpContainer>
