@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { DisclaimerContent as Disclaimer } from '@modules/Disclaimer/Disclaimer'
 import { PrivacyPolicyContent as PrivacyPolicy } from '@modules/PrivacyPolicy/PrivacyPolicy'
 import { TermsContent as Terms } from '@modules/Terms/Terms'
@@ -276,7 +277,6 @@ export const switching = [
 
   {
     text: 'Will switching banks affect my credit score?',
-
     copy: (
       <S.Div>
         <S.ParagraphCopy>
@@ -297,13 +297,30 @@ export const switching = [
   },
   {
     text: 'Can I consolidate multiple accounts when I make the switch?',
-    copy: [
-      'It is important to close old, unused accounts when you switch to a green bank; and to switch all of your active accounts over to green accounts (not just your main account).',
-      'By just holding an account with a dirty bank, you are (inadvertently) supporting their continued fossil fuel investments. Find out more here.',
-      'The Current Account Switch Service does not enable multiple accounts to be automatically consolidated and closed in one switch.',
-      'We recommend that you use our platform to switch your main current account to a green bank and, once the switch is completed, either close or switch your other accounts. You can switch multiple accounts (one at a time) on our platform (and maximise each one).',
-      'Check the process for closing an account and transferring funds with your current provider(s) first.',
-    ],
+
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          It is important to close old, unused accounts when you switch to a green bank; and to switch all of your active accounts over to
+          green accounts (not just your main account).
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          By just holding an account with a dirty bank, you are (inadvertently) supporting their continued fossil fuel investments.{' '}
+          <S.AnchorLink href='/help?tab=ourresearch'>Find out more here.</S.AnchorLink>
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          The Current Account Switch Service does not enable multiple accounts to be automatically consolidated and closed in one switch.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          We recommend that you use our platform to switch your main current account to a green bank and, once the switch is completed,
+          either close or switch your other accounts. You can switch multiple accounts (one at a time) on our platform (and maximise each
+          one).
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Check the process for closing an account and transferring funds with your current provider(s) first.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'How long will it take to switch my current account?',
@@ -825,6 +842,26 @@ export const research = [
           <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
             hello@switchit.green
           </S.AnchorLink>
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
+  },
+
+  {
+    text: 'Why we need your age to calculate your impact',
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          Banks use their customer base as leverage to secure loans and assets; often the same loans and assets that allow them to invest in
+          fossil fuel projects and companies. {`Banks'`} customer numbers are frequently used as evidence that they are a secure product in
+          whom the market can trust. The market is mostly indifferent to how much money an individual customer has in their account, what
+          {` they're`} interested in is the customer themselves as an asset.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          We have researched how banks value their customers as stable assets which support their investments. This is partly based on the
+          {` customer's`} expected lifetime deposits. The younger you are, the more lifetime deposits you have ahead of you. We, therefore,
+          need to factor your age into our calculations to produce an accurate estimate of your worth to a bank - and how much money you are
+          pulling out of fossil fuel support, over your lifetime, by switching to a green bank.
         </S.ParagraphCopy>
       </S.Div>
     ),

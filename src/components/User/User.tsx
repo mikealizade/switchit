@@ -16,6 +16,7 @@ import { RootState } from '@state/store'
 export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX.Element => {
   const { pathname } = useRouter()
   const dispatch = useDispatch()
+  const { newJourneyMobile } = useSelector((state: RootState) => state.generic)
   const { isLaptop } = useMediaQuery()
   const totalPoints = useGetTotalPoints()
   const { nickname = '', picture = '', isNewUser } = useSelector((state: RootState) => state.user)
@@ -75,7 +76,7 @@ export const User: NextPage<{ isValidating: boolean }> = ({ isValidating }): JSX
           </S.SectionHeader>
           {isSwitchLanding && (
             <S.ImpactCardToggle onClick={() => dispatch(setNewJourneyMobile(true))}>
-              <Image src={'/icons/icon_plus_white.svg'} alt='' width={34} height={34} />
+              <Image src={`/icons/icon_plus_${newJourneyMobile ? 'grey' : 'white'}.svg`} alt='' width={34} height={34} />
             </S.ImpactCardToggle>
           )}
           {isSwitchJourney && (

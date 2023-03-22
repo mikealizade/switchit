@@ -58,6 +58,7 @@ export const SignatureInput = styled(PlainInput)`
   font-size: var(--fsLarge2);
   background-color: var(--concrete);
   font-family: 'BamBang';
+  width: 100%;
 
   ${() => mediaQuery.tablet} {
     padding: 30px;

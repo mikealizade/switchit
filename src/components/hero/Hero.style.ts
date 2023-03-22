@@ -24,7 +24,7 @@ export const Hero = styled.div<{ type?: string }>`
     }
   }
 
-  &.expanded {
+  &.hidden {
     p:first-of-type {
       display: -webkit-box;
       -webkit-line-clamp: 3;

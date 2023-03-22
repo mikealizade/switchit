@@ -3,13 +3,15 @@ import { mediaQuery } from '@utils/functions'
 import { PageSection, TextMono, TextMonoBold } from './SignedOutLanding.style'
 
 export const MainSection = styled(PageSection)`
-  padding: 50px 40px 155px;
+  padding: 50px 40px 240px;
   position: relative;
-  background: var(--concrete) no-repeat right bottom 30px;
+  background: var(--concrete) no-repeat left bottom 80px;
   background-image: url('/images/img_pointing_mobile.png');
 
   ${() => mediaQuery.xmobile} {
     padding: 60px 12% 80px 12%;
+    background: var(--concrete) url('/images/img_pointing.png') no-repeat right bottom 30px;
+    background-size: 45%;
   }
 
   ${() => mediaQuery.tablet} {
@@ -71,41 +73,40 @@ export const HomePageTextMonoBold = styled(TextMonoBold)`
 
 export const SpeechBubble = styled.div`
   position: absolute;
-  top: 178px;
-  right: 18px;
-  width: 131px;
-  height: 104px;
+  bottom: 20px;
+  right: 25px;
+  width: 190px;
+  height: 148px;
   background: url('/images/img_speech_bubble.png') no-repeat;
   background-size: contain;
-  transform: rotate(40deg);
+  transform: rotate(355deg);
 
   ${() => mediaQuery.xmobile} {
     top: 85px;
   }
 
   ${() => mediaQuery.xmobile} {
-    right: 150px;
+    right: 10%;
   }
 
   ${() => mediaQuery.tablet} {
-    right: 050px;
     width: 290px;
     height: 230px;
-    transform: rotate(355deg);
+    /* transform: rotate(355deg); */
   }
   ${() => mediaQuery.laptop} {
-    right: 200px;
+    right: 20%;
   }
 `
 
 export const SpeechBubbleText = styled.div`
-  font-size: var(--fsSmall1);
-  line-height: 12px;
-  transform: rotate(355deg);
+  font-size: var(--fsBase);
+  line-height: 18px;
+  transform: rotate(335deg);
   position: absolute;
-  top: 28px;
-  left: 14px;
-  width: 100px;
+  top: 42px;
+  left: 18px;
+  width: 150px;
   text-align: center;
 
   ${() => mediaQuery.tablet} {
@@ -125,14 +126,19 @@ export const TheProblem = styled(PageSection)`
   align-items: center;
   padding: 40px;
 
+  ${() => mediaQuery.xmobile} {
+    padding: 40px;
+  }
+
   ${() => mediaQuery.tablet} {
-    background-position: 10% center;
+    background-position: 20% center;
     background-image: url('/images/img_bank_chimneys.png');
     background-size: 35%;
   }
 
   ${() => mediaQuery.laptop} {
     background-size: 20%;
+    padding-left: 20%;
   }
 `
 
@@ -150,7 +156,7 @@ export const TheProblemContent = styled.div`
   }
 
   ${() => mediaQuery.laptop} {
-    width: 53%;
+    width: 45%;
     padding: 0;
     align-self: center;
   }
@@ -233,33 +239,24 @@ export const TheSolutionText = styled.p`
 `
 
 export const TheImpact = styled(PageSection)`
-  padding: 60px 40px 45px;
-  position: relative;
   background: #eff9fa no-repeat right bottom 30px;
   background-image: url('/images/img_globe_windmills_mobile.png');
+  align-items: center;
+  padding: 40px;
 
   ${() => mediaQuery.xmobile} {
-    background-image: url('/images/img_globe_windmills_mobile.png');
-    background-size: 30%;
-    padding: 60px 12% 80px 12%;
+    padding: 40px;
   }
 
   ${() => mediaQuery.tablet} {
+    background-position: 20% center;
     background-image: url('/images/img_globe_windmills.png');
-    background-size: 40%;
-    background-position: right bottom 20px;
+    background-size: 35%;
   }
 
   ${() => mediaQuery.laptop} {
-    padding: 60px 18% 80px 18%;
-    background-image: url('/images/img_globe_windmills.png');
-    background-position: 10% center;
-    background-size: 27%;
-    align-items: center;
-  }
-
-  ${() => mediaQuery.xlaptop} {
-    background-size: 22%;
+    background-size: 20%;
+    padding-left: 20%;
   }
 `
 
@@ -271,10 +268,61 @@ export const TheImpactContent = styled.div`
   padding: 0;
 
   ${() => mediaQuery.tablet} {
-    width: 67%;
-    padding: 0 0 0 112px;
+    width: 53%;
+    padding: 0;
+    align-self: flex-end;
+  }
+
+  ${() => mediaQuery.laptop} {
+    width: 60%;
+    padding-left: 5%;
+    align-self: center;
   }
 `
+
+// export const TheImpact = styled(PageSection)`
+//   padding: 60px 40px 45px;
+//   position: relative;
+//   background: #eff9fa no-repeat right bottom 30px;
+//   background-image: url('/images/img_globe_windmills_mobile.png');
+
+//   ${() => mediaQuery.xmobile} {
+//     background-image: url('/images/img_globe_windmills_mobile.png');
+//     background-size: 30%;
+//     padding: 60px 12% 80px 12%;
+//   }
+
+//   ${() => mediaQuery.tablet} {
+//     background-image: url('/images/img_globe_windmills.png');
+//     background-size: 40%;
+//     background-position: right bottom 20px;
+//   }
+
+//   ${() => mediaQuery.laptop} {
+//     padding: 60px 18% 80px 18%;
+//     background-image: url('/images/img_globe_windmills.png');
+//     background-position: 10% center;
+//     background-size: 27%;
+//     align-items: center;
+//   }
+
+//   ${() => mediaQuery.xlaptop} {
+//     background-size: 22%;
+//   }
+// `
+
+// export const TheImpactContent = styled.div`
+//   width: auto;
+//   display: flex;
+//   flex-direction: column;
+//   row-gap: 38px;
+//   padding: 0;
+
+//   ${() => mediaQuery.tablet} {
+//     width: 67%;
+//     padding: 0 0 0 112px;
+//   }
+// `
 
 export const TheImpactHeader = styled.h2`
   font-size: var(--fsVLarge6);
@@ -340,20 +388,23 @@ export const GetInvolvedList = styled.ul`
 `
 
 export const StudentPrograms = styled(PageSection)`
-  padding: 60px 40px 100px;
-  background: #eff9fa no-repeat right bottom;
-  background-image: url('/images/img_students_mobile.png');
-  align-items: flex-start;
+  padding: 60px 40px 175px;
+  position: relative;
+  background: #eff9fa url('/images/img_students_mobile.png') no-repeat right 10% bottom;
 
-  ${() => mediaQuery.tablet} {
-    height: 650px;
-    background-position: right -50px center;
-    background-image: url('/images/img_students.png');
-    background-size: 40%;
+  ${() => mediaQuery.xmobile} {
+    padding: 60px 12% 80px 12%;
+  }
+
+  ${() => mediaQuery.laptop} {
+    padding: 60px 18% 80px 18%;
+    background: #eff9fa url('/images/img_students.png') no-repeat right 20% center;
+    background-size: 30%;
   }
 
   ${() => mediaQuery.xlaptop} {
-    background-size: 35%;
+    background: #eff9fa url('/images/img_students.png') no-repeat right 20% center;
+    background-size: 27%;
   }
 `
 
@@ -362,16 +413,45 @@ export const StudentProgramsContent = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 38px;
-  padding: 0;
 
   ${() => mediaQuery.tablet} {
-    width: 67%;
-  }
-
-  ${() => mediaQuery.laptop} {
-    width: 67%;
+    width: 55%;
   }
 `
+
+// export const StudentPrograms = styled(PageSection)`
+//   padding: 60px 40px 100px;
+//   background: #eff9fa no-repeat right bottom;
+//   background-image: url('/images/img_students_mobile.png');
+//   align-items: flex-start;
+
+//   ${() => mediaQuery.tablet} {
+//     height: 650px;
+//     background-position: right -50px center;
+//     background-image: url('/images/img_students.png');
+//     background-size: 40%;
+//   }
+
+//   ${() => mediaQuery.xlaptop} {
+//     background-size: 35%;
+//   }
+// `
+
+// export const StudentProgramsContent = styled.div`
+//   width: auto;
+//   display: flex;
+//   flex-direction: column;
+//   row-gap: 38px;
+//   padding: 0;
+
+//   ${() => mediaQuery.tablet} {
+//     width: 67%;
+//   }
+
+//   ${() => mediaQuery.laptop} {
+//     width: 67%;
+//   }
+// `
 
 export const StudentProgramsHeader = styled.h2`
   font-size: var(--fsVLarge6);
@@ -393,24 +473,35 @@ export const WhySwitchIt = styled(PageSection)`
   align-items: flex-start;
 
   ${() => mediaQuery.xmobile} {
-    padding-bottom: 200px;
+    padding: 60px 40px 200px;
+    background-size: 40%;
+  }
+
+  ${() => mediaQuery.laptop} {
+    padding: 80px 40px 60px;
     background-position: right 100px bottom 70px;
     background-size: 45%;
   }
 
-  ${() => mediaQuery.tablet} {
+  ${() => mediaQuery.laptop} {
     background: #f5faf0 url('/images/img_greenbanking.png') no-repeat left 24% top 40%;
     align-items: flex-end;
     background-size: 394px 234px;
+    padding-left: 25%;
   }
 `
 
 export const WhySwitchItContent = styled.div`
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 38px;
   padding: 0;
+  align-self: center;
+
+  /* ${() => mediaQuery.xmobile} {
+    width: 67%;
+  } */
 
   ${() => mediaQuery.tablet} {
     width: 67%;
@@ -418,6 +509,7 @@ export const WhySwitchItContent = styled.div`
 
   ${() => mediaQuery.laptop} {
     width: 50%;
+    padding-left: 120px;
   }
 `
 
@@ -441,10 +533,19 @@ export const Subscribe = styled(PageSection)`
   row-gap: 30px;
   height: 480px;
   justify-content: center;
+  padding: 60px 40px 175px;
+
+  ${() => mediaQuery.xmobile} {
+    padding: 60px 12% 80px 12%;
+  }
 
   ${() => mediaQuery.tablet} {
     background-image: url('/images/img_subscribe.png');
     background-size: 25%;
+  }
+
+  ${() => mediaQuery.laptop} {
+    padding: 60px 18% 80px 18%;
   }
 `
 

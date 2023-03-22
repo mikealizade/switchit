@@ -43,11 +43,9 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
     query: { id },
   } = useRouter()
   const { isTablet } = useMediaQuery()
-
   const {
     id: postId,
     text = '',
-    // articleImageName = '',
     imageName = '',
     titleImageName = '',
     summary = '',
@@ -59,8 +57,9 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
   const metaTitle = article?.title
   const metaDescription = article?.description
   const backgroundPositionY = article?.backgroundPositionY
+  const width = titleImageName === 'the_impact' ? 300 : 320
+  const height = titleImageName === 'the_impact' ? 50 : 40
 
-  console.log('postId:', postId)
   return (
     <>
       <Head>
@@ -84,7 +83,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
         >
           {isTablet && (
             <S.ImageTitle>
-              <Image src={`/images/img_${titleImageName}.svg`} alt='' width={320} height={40} objectFit='contain' />
+              <Image src={`/images/img_${titleImageName}.svg`} alt='' width={width} height={height} objectFit='contain' />
             </S.ImageTitle>
           )}
         </S.ImageContainer>
@@ -98,20 +97,20 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
             </BlockButton>
 
             {postId === 'the-impact' && (
-              <div style={{ marginTop: '50px' }}>
+              <S.PostText style={{ marginTop: '50px' }}>
                 <Text>
                   <Link href='/why-switch-it/article/get-involved'>Click here for more information on switching banks.</Link>
                 </Text>
-              </div>
+              </S.PostText>
             )}
 
             {postId === 'get-involved' && (
-              <div style={{ marginTop: '50px' }}>
+              <S.PostText style={{ marginTop: '50px' }}>
                 <Text>
                   <Link href='/why-switch-it/article/the-problem'>Find out more about the link between banks and climate breakdown</Link>{' '}
                   and <Link href='/why-switch-it/article/the-impact'>why you should switch to a green bank.</Link>
                 </Text>
-              </div>
+              </S.PostText>
             )}
           </ContentContainer>
         </S.Article>

@@ -42,6 +42,10 @@ export const PostText = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+
+  a {
+    text-decoration: underline;
+  }
 `
 
 export const Article = styled(PageSection)`

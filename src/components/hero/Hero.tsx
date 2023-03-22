@@ -13,7 +13,7 @@ export const Hero: NextPage<{ type: string }> = ({ type = '' }): JSX.Element => 
   const height = isMobile ? hero.dimensions.mobileHeight : hero.dimensions.height
 
   return (
-    <S.Hero className={isExpanded ? 'expanded' : ''}>
+    <S.Hero className={isExpanded ? '' : 'hidden'}>
       {isXMobile && (
         <S.Image
           style={{

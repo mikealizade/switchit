@@ -147,16 +147,10 @@ const Switching = (): JSX.Element => {
           <Row key='switchJourneys'>
             <S.NoJourneysTextContainer>
               <S.NoJourneysText>
-                {`It's why you're here!`} Start your first switching
+                {`It's why you're here!`} <br />
                 <br />
-                <br />
-                journey by clicking on the pink plus sign {isMobile ? 'below' : 'on the right'}.
+                Start your first switching journey by clicking on the pink plus sign on the {isMobile ? 'top' : ''} right.
               </S.NoJourneysText>
-              {isMobile && (
-                <S.NewJourneyMobile onClick={addJourneyName}>
-                  <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-                </S.NewJourneyMobile>
-              )}
             </S.NoJourneysTextContainer>
           </Row>,
         ]

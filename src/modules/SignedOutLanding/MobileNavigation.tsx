@@ -36,7 +36,7 @@ export const subNav = [
   },
   {
     text: 'Get Started',
-    route: '/signup',
+    route: '/api/auth/signup',
   },
 ]
 

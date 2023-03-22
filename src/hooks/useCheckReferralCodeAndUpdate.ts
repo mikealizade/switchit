@@ -54,7 +54,7 @@ export const useCheckReferralCodeAndUpdate = () => {
 
           if (result?.sub) {
             updateLoggedInUser(sub, result?.sub, request, toast)
-            updaterReferralFriend(sub, result?.sub, request, toast)
+            // updaterReferralFriend(sub, result?.sub, request, toast)
           }
 
           return { success: true }

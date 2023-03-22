@@ -9,6 +9,11 @@ export const NoJourneysTextContainer = styled.div`
   row-gap: 40px;
   flex: 1;
   justify-content: center;
+
+  ${() => mediaQuery.tablet} {
+    justify-content: flex-start;
+    margin-top: 30px;
+  }
 `
 
 export const NoJourneysText = styled.p`

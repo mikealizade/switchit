@@ -17,7 +17,7 @@ export const DashboardHero: NextPage<{ post: Post }> = (): JSX.Element => {
   const { isXMobile } = useMediaQuery()
 
   return (
-    <S.Hero className={isExpanded ? 'expanded' : ''}>
+    <S.Hero className={isExpanded ? '' : 'hidden'}>
       {isXMobile && (
         <S.Image
           style={{

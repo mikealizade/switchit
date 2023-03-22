@@ -13,9 +13,7 @@ type Award = {
   id: string
 }
 
-const AccordionItem = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
-))(() => ({
+const AccordionItem = styled((props: AccordionProps) => <MuiAccordion disableGutters elevation={0} square {...props} />)(() => ({
   '&:not(:last-child)': {
     borderBottom: 0,
   },
@@ -25,11 +23,11 @@ const AccordionItem = styled((props: AccordionProps) => (
 }))
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary
-    expandIcon={<Image src={'/icons/icon_chevron_right.svg'} alt='' width={18} height={18} />}
-    {...props}
-  />
+  <MuiAccordionSummary expandIcon={<Image src={'/icons/icon_chevron_right.svg'} alt='' width={18} height={18} />} {...props} />
 ))(() => ({
+  '& .MuiAccordionSummary-expandIconWrapper': {
+    minWidth: '18px',
+  },
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
   },
@@ -49,15 +47,9 @@ export const Accordion = ({ data }: { data: any }) => {
   return (
     <S.AccordionContainer>
       {data.map(({ total, badge, id: icon }: Award, i: number) => (
-        <AccordionItem
-          key={`badge${i}`}
-          expanded={expanded === `panel${i}`}
-          onChange={handleChange(`panel${i}`)}
-        >
+        <AccordionItem key={`badge${i}`} expanded={expanded === `panel${i}`} onChange={handleChange(`panel${i}`)}>
           <AccordionSummary aria-controls='panel1d-content' id='panel1d-header' sx={{ padding: 0 }}>
-            <Typography
-              sx={{ fontSize: '1.6rem', display: 'flex', alignItems: 'center', columnGap: '20px' }}
-            >
+            <Typography sx={{ fontSize: '1.6rem', display: 'flex', alignItems: 'center', columnGap: '20px' }}>
               {total} x
               <Image src={`/icons/icon_${icon}.svg`} alt='' width={60} height={60} />
               {badge}

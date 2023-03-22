@@ -27,7 +27,9 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary expandIcon={<Image src={'/icons/icon_chevron_right.svg'} alt='' width={18} height={18} />} {...props} />
 ))(() => ({
   color: '#153F45',
-
+  '& .MuiAccordionSummary-expandIconWrapper': {
+    minWidth: '18px',
+  },
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
     fontFamily: 'Konsolev Regular',

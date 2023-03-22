@@ -1,6 +1,6 @@
 export const regexConfig: Record<string, string> = {
   alpha: '(^[^0-9_!¡?÷¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]]+)$',
-  alphanumeric: '(^[^_!¡?÷¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]]+)$',
+  alphanumeric: '(^[^\\s\\._!¡?÷¿/\\\\+=@#$%ˆ&*(){}|~<>;:[\\]]+)$',
   numeric: '^\\d+$',
   phone: '^[0-9 ()+]+$',
 }

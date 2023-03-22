@@ -79,10 +79,11 @@ export const ProfileColumnRight = styled.div`
   flex-direction: column;
   gap: 25px;
   flex: 3;
-  min-width: 400px;
 
   ${() => mediaQuery.tablet} {
+    min-width: 400px;
     flex-direction: row;
+
     > section {
       width: 50%;
     }
