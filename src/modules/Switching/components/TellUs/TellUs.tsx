@@ -12,7 +12,7 @@ import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { Buttons, SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
 import * as S from '@styles/common.style'
-import { actionText, journeyTypes, noBankAccountSteps } from '@utils/constants'
+import { actionText, journeyTypes } from '@utils/constants'
 import { UserContent, VideoContainer, CopyHeader, WoohooContainer, WoohooHeader, WoohooText } from './TellUs.style'
 import { Testimonial } from './Testimonial'
 import { Video } from './Video'
@@ -32,6 +32,22 @@ const WooHoo = () => {
   )
 }
 
+const routeConfig = {
+  6: '/switching/breakup-letter',
+  7: '/switching/hello-letter',
+  8: '/switching/post-to-socials',
+  9: '/switching/tell-your-community',
+  10: '/switching/leave-reviews',
+  11: '/switching/tell-us',
+}
+
+const noBankRouteConfig = {
+  4: '/switching/hello-letter',
+  5: '/switching/post-to-socials',
+  6: '/switching/tell-your-community',
+  7: '/switching/tell-us',
+}
+
 export const TellUs: NextPage = () => {
   const { push } = useRouter()
   const dispatch = useDispatch()
@@ -39,14 +55,16 @@ export const TellUs: NextPage = () => {
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const [isMaximised, setMaximised] = useState(false)
-  const isNoBankAccount = currentJourneyType === journeyTypes.noBankAccount
-  const journeySteps = isNoBankAccount ? noBankAccountSteps : steps
-  const totalSteps = Object.keys(journeySteps).length / 2
+  const totalSteps = Object.keys(steps).length / 2
+  const [nextIncompletedAction] = Array.from(Array(totalSteps + 1).keys())
+    .map((n, i) => (currentJourney!.completedSteps.indexOf(i) < 0 ? i : null))
+    .filter(Boolean)
   const isAllStepsComplete = currentJourney?.completedSteps.length === totalSteps
   const btnText = isAllStepsComplete ? 'Complete Impact Actions' : 'Next Action'
+  const routes = currentJourneyType === journeyTypes.noBankAccount ? noBankRouteConfig : routeConfig
 
   const onCompleteJourney = (): void => {
-    isAllStepsComplete ? setMaximised(true) : push('/switching')
+    isAllStepsComplete ? setMaximised(true) : push(routes[nextIncompletedAction as keyof typeof routeConfig])
   }
 
   return (

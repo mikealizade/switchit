@@ -2,8 +2,10 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import * as S from '@components/SelectActionCard/SelectActionCard.style'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { RootState } from '@state/store'
 import { actionsConfig } from '@utils/data'
+import { filterActionType } from '@utils/functions'
 
 export const SelectActionCard: NextPage<{ action: any; isActive: boolean }> = ({
   action: { actionTitle, actionText, icon },
@@ -22,10 +24,12 @@ export const SelectActionCard: NextPage<{ action: any; isActive: boolean }> = ({
 
 export const SelectActionCards = () => {
   const actionCardIndex = useSelector((state: RootState) => state.generic.actionCardIndex)
+  const { currentJourneyType = '' } = useGetCurrentJourney()
+  const actions = actionsConfig.filter(filterActionType(currentJourneyType))
 
   return (
     <S.SelectActionContainer>
-      {actionsConfig.map((action, i) => (
+      {actions.map((action, i) => (
         <SelectActionCard key={action.route} action={action} isActive={i === actionCardIndex} />
       ))}
     </S.SelectActionContainer>
