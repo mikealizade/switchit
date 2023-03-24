@@ -56,12 +56,11 @@ const App = ({ Component, pageProps }: AppProps) => {
           <meta property='og:image:width' content='1242' />
           <meta property='og:image:height' content='661' />
           <meta name='twitter:card' content='summary_large_image' />
-          <meta property='twitter:domain' content='switchit-weld.vercel.app' />
+          <meta property='twitter:domain' content='switchit.green' />
           <meta property='twitter:url' content='https://switchit.green' />
           <meta name='twitter:title' content='Switch It Green | Green Bank Switching Platform' />
           <meta name='twitter:description' content='Switch to a green bank on our Bank Switching Platform' />
           <meta name='twitter:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
-
           <link rel='icon' href='/favicon.ico' />
           <meta name='viewport' content='width=device-width, initial-scale=1' />
         </Head>
