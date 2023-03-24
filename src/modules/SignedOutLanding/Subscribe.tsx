@@ -25,8 +25,21 @@ export const Subscribe: NextPage = (): JSX.Element => {
         collection: 'newsletter',
         upsert: false,
       }
-
       request(body)
+
+      const response = await fetch('/api/subscribe/subscribe', {
+        method: 'POST',
+        body: JSON.stringify({ email: value }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      console.log('response:', response)
+      if (!response.ok) {
+        throw new Error(`Received an error HTTP status code: ${response.status}.`)
+      }
+
       setThanks(true)
     } catch (error) {
       setError(true)
@@ -52,22 +65,24 @@ export const Subscribe: NextPage = (): JSX.Element => {
         ) : hasEnteredEmail ? (
           <S.NewsletterThanks>Thanks for subscribing. {`We'll`} be in touch.</S.NewsletterThanks>
         ) : (
-          <S.SubscribeForm>
-            <>
-              <S.EmailField value={value} onChange={onChange} placeholder='Email' />
-              <S.EmailButton onClick={saveEmail}>Submit</S.EmailButton>
-            </>
-          </S.SubscribeForm>
+          <>
+            <S.SubscribeForm>
+              <>
+                <S.EmailField value={value} onChange={onChange} placeholder='Email' />
+                <S.EmailButton onClick={saveEmail}>Submit</S.EmailButton>
+              </>
+            </S.SubscribeForm>
+            <Div width='30%' flex='none'>
+              <S.TextContainer mobileWidth={50}>
+                <Text>Subscribe to our newsletter for news, insights, and updates.</Text>
+                <Text>
+                  No spam - <em>just the juicy bits</em>
+                </Text>
+              </S.TextContainer>
+            </Div>
+          </>
         )}
       </>
-      <Div width='30%' flex='none'>
-        <S.TextContainer mobileWidth={50}>
-          <Text>Subscribe to our newsletter for news, insights, and updates.</Text>
-          <Text>
-            No spam - <em>just the juicy bits</em>
-          </Text>
-        </S.TextContainer>
-      </Div>
     </S.Subscribe>
   )
 }
