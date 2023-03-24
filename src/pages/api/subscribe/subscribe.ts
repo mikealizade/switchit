@@ -6,7 +6,7 @@ const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
   const mailchimp = Mailchimp(process.env.MAILCHIMP_API_KEY)
 
   // const response = await mailchimpClient.users.ping()
-  // console.log(response)
+
   const { email } = req.body
 
   if (!email || !email.length) {
