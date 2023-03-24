@@ -42,25 +42,25 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Head>
           <title>Switch It Green | Green Bank Switching Platform</title>
           <meta name='description' content='Switch to a green bank on our Bank Switching Platform' />
-          <meta property='og:url' content='https://switchit-weld.vercel.app/profile' />
+          <meta property='og:url' content='https://switchit-weld.vercel.app/' />
           <meta property='og:type' content='website' />
           <meta property='og:title' content='Switch It Green | Green Bank Switching Platform' />
           <meta property='og:description' content='Switch to a green bank on our Bank Switching Platform' />
-          <meta property='og:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png' />
+          <meta property='og:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
           <meta
             property='og:image:secure_url'
-            content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png'
+            content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png'
           />
-          <meta property='og:image:url' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png' />
+          <meta property='og:image:url' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
           <meta property='og:image:type' content='image/png' />
-          <meta property='og:image:width' content='124' />
-          <meta property='og:image:height' content='66' />
+          <meta property='og:image:width' content='1242' />
+          <meta property='og:image:height' content='661' />
           <meta name='twitter:card' content='summary_large_image' />
           <meta property='twitter:domain' content='switchit-weld.vercel.app' />
-          <meta property='twitter:url' content='https://switchit-weld.vercel.app/profile' />
+          <meta property='twitter:url' content='https://switchit-weld.vercel.app/' />
           <meta name='twitter:title' content='Switch It Green | Green Bank Switching Platform' />
           <meta name='twitter:description' content='Switch to a green bank on our Bank Switching Platform' />
-          <meta name='twitter:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/switchit_logo.png' />
+          <meta name='twitter:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
 
           <link rel='icon' href='/favicon.ico' />
           <meta name='viewport' content='width=device-width, initial-scale=1' />

@@ -177,8 +177,8 @@ const Switching = (): JSX.Element => {
         <meta property='og:image:secure_url' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
         <meta property='og:image:url' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
         <meta property='og:image:type' content='image/png' />
-        <meta property='og:image:width' content='124' />
-        <meta property='og:image:height' content='66' />
+        <meta property='og:image:width' content='1242' />
+        <meta property='og:image:height' content='661' />
         <meta name='twitter:card' content='summary_large_image' />
         <meta property='twitter:domain' content='switchit-weld.vercel.app' />
         <meta property='twitter:url' content='https://switchit-weld.vercel.app/profile' />
