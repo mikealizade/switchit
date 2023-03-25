@@ -56,48 +56,34 @@ export const ProgramsForm: NextPage = (): JSX.Element => {
 
   return (
     <Div rowGap={30} flex={1}>
-      <Title>Programs</Title>
+      <Title>Interest Form</Title>
       <S.ProgramsContainer>
         {hasSubmitted ? (
           <Div rowGap={40}>
             <Header>Thanks for submitting!</Header>
 
-            <Text>
-              Keep an eye out for an email in your inbox featuring more information and ways we can
-              connect.
-            </Text>
+            <Text>Keep an eye out for an email in your inbox featuring more information and ways we can connect.</Text>
             <Buttons align='right'>
-              <Button
-                type='button'
-                mode='primary'
-                size='small'
-                onClick={() => setHasSubmitted(false)}
-              >
+              <Button type='button' mode='primary' size='small' onClick={() => setHasSubmitted(false)}>
                 Done
               </Button>
             </Buttons>
           </Div>
         ) : (
           <Div flex={1}>
-            <Header>
-              Interested in bringing a Switch It Green program to your school, university or
-              business?
-            </Header>
-            <Text>
-              Register your interest by filling out the details below and we will get in touch with
-              more information.
-            </Text>
-            <Text>Which best descibes you?</Text>
+            <Header>Interested in bringing a Switch It Green program to your school, university or business?</Header>
+            <Text>Register your interest by filling out the details below and we will get in touch with more information.</Text>
+            <Text>Which best describes you?</Text>
             <FormProvider {...methods}>
               <S.ProgramsForm onSubmit={handleSubmit(onSubmit)} className='form'>
                 <fieldset>
                   <RadioGroup
                     name='interestedUserData'
                     labels={[
-                      'Student at a school or university',
-                      'Faculty at a school or university',
-                      'Employee at a business',
-                      'Business owner',
+                      'student at a school or university',
+                      'faculty at a school or university',
+                      'employee at a business',
+                      'business owner',
                     ]}
                     {...methods}
                     disabled={false}

@@ -38,7 +38,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { sub: userId = '' } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
   const { pathname } = useRouter()
-  const { data: { user = {} } = {}, error, isValidating } = useSWR(!userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
+  const { data: { user = {} } = {}, isValidating } = useSWR(sub && !userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
   const updateUser = useUpdateUser()

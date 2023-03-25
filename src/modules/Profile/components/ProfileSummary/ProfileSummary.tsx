@@ -19,23 +19,20 @@ export const ProfileSummary: NextPage<{ data: Partial<ProfileSummaryProps> }> = 
     <Div rowGap={30} flex='1'>
       <S.ProfileSummary>
         <S.SummaryItem>
-          <h2>Switching Statement/Why I Switch</h2>
+          <h2>Why I Switch</h2>
           <p>{switchingStatement}</p>
         </S.SummaryItem>
         <S.SummaryItem>
-          <h2>Campaigns I support</h2>
+          <h2>Campaigns I support:</h2>
           <p>{campaigns}</p>
         </S.SummaryItem>
         <S.SummaryItem>
-          <h2>Climate action {`I'm`} proud of</h2>
+          <h2>Climate action {`I'm`} proud of:</h2>
           <p>{proudActions}</p>
         </S.SummaryItem>
       </S.ProfileSummary>
       {isNewUser && (
-        <S.SummaryHint>
-          Let your friends know why {`you're`} here and spread the word to promote other green
-          initiatives.
-        </S.SummaryHint>
+        <S.SummaryHint>Let your friends know why {`you're`} here and spread the word to promote other green initiatives.</S.SummaryHint>
       )}
     </Div>
   )

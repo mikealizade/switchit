@@ -39,6 +39,7 @@ const isStringArray = (array: string[]): array is string[] => typeof array[0] ==
 
 export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], hasMobileButtons = false, onSelectTab }): JSX.Element => {
   const {
+    replace,
     query: { tab },
   } = useRouter()
   const tabIndex = isStringArray(tabs) ? tabs.findIndex(item => item.toLowerCase().replace(/\s/, '') === tab) : 0
@@ -46,6 +47,7 @@ export const Tabs: NextPage<TabsProps> = ({ tabs = [], panels = [], hasMobileBut
 
   const onChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
+    tab && replace('/help', undefined, { shallow: true })
   }
 
   return (

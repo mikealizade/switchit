@@ -19,7 +19,8 @@ export const SwitchingFriends: NextPage = (): JSX.Element => {
       <S.Friends>
         {!friends.length ? (
           <p>
-            Share Switch It Green with your friends to connect. Boost your impact and help us reach our goal of £7 billion divested in 2023.
+            Friends who sign up using your sharing code will be added here. Invite friends to boost your impact and help us reach our goal
+            of £7 billion divested in 2023.
           </p>
         ) : (
           friends.map(({ nickname, picture }: { nickname: string; picture: string }) => (

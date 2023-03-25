@@ -21,7 +21,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total, hasEllipsis }
   return (
     <S.SharingCodes>
       <Title>
-        Sharing Codes
+        Sharing Code
         {hasEllipsis && <Ellipsis section='sharingCodes' />}
       </Title>
       {!total && isNaN(total) ? (
@@ -35,7 +35,7 @@ export const SharingCodes: NextPage<SharingCodesProps> = ({ total, hasEllipsis }
               <Image src={`/icons/icon_airplane.svg`} alt='' width={34} height={29} />
             </ShareButton>
           </S.TotalShared>
-          <Text>Share your unique code to collect points & multiply your impact</Text>
+          <Text>Invite friends to Switch It Green using your unique sharing code to collect points and multiply your impact</Text>
         </>
       )}
     </S.SharingCodes>

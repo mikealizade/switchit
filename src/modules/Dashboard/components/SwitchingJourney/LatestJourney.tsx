@@ -48,25 +48,15 @@ export const LatestJourney: NextPage<SwitchingJourneyProps> = ({
           <GreenPill>Switch Completed</GreenPill>
           <ActionSelector actions={actions} isSwitchLanding={false} isJourneyComplete={false} />
           {hasStartedMaximising ? (
-            <Button
-              type='button'
-              mode='primary'
-              onClick={() => push('/switching/select-action')}
-              bold
-            >
+            <Button type='button' mode='primary' onClick={() => push('/switching/select-action')} bold>
               Next Step
             </Button>
           ) : (
             <>
-              <Button
-                type='button'
-                mode='primary'
-                onClick={() => push('/switching/select-action')}
-                bold
-              >
+              <Button type='button' mode='primary' onClick={() => push('/switching/select-action')} bold>
                 Start Maximising
               </Button>
-              <p>Taking additional lobbying steps means your switch could be more impactful. </p>
+              <p>Make sure your switch {`doesn't`} go to waste by completing these ready-to-go lobbying steps.</p>
             </>
           )}
         </>

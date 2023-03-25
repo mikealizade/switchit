@@ -37,24 +37,23 @@ export const ProfilePoints: NextPage = (): JSX.Element => {
     <>
       <S.Header>About Points</S.Header>
       <p>
-        Track your impact by earning points. You earn points for taking actions which support the
-        campaign goals - moving money out of fossil fuel support and pressuring banks to change
-        their investment policies. Check back soon for exciting updates on how you can use your
-        points for good.
+        Track your impact by earning points. You earn points for taking actions which support the campaign goals - moving money out of
+        fossil fuel support and pressuring banks to change their investment policies. Check back soon for exciting updates on how you can
+        use your points for good.
       </p>
       <S.Header>Scoring Breakdown</S.Header>
       <S.Scoring>
         <li>5 x Send a code</li>
         {/* <li>25 x An Invited Friend Creates A Profile</li>
         <li>250 x An Invited Friend Makes The Switch</li> */}
-        <li>25 x Read An Article</li>
-        <li>50 x Post A Review To Trustpilot or Google</li>
-        <li>50 x Write A Hello Letter</li>
-        <li>75 x Share Your Switching Story</li>
-        <li>100 x Post to Socials</li>
-        <li>100 x Tell Your Community</li>
-        <li>150 x Write Your Breakup Letter</li>
-        <li>1000 x Switch Your Provider</li>
+        <li>25 x Read An article</li>
+        <li>50 x Post A review To Trustpilot or Google</li>
+        <li>50 x Write A {`'Hello Letter'`}</li>
+        <li>75 x Share Your {`'Switching Story'`}</li>
+        <li>100 x Post to socials</li>
+        <li>100 x Tell Your community</li>
+        <li>150 x Write Your {`'Breakup Letter'`}</li>
+        <li>1000 x Switch Your provider</li>
         {/* <li>10000 x Start a Program at Your school, University or business</li> */}
       </S.Scoring>
     </>,

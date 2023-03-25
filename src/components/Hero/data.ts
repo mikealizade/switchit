@@ -31,10 +31,10 @@ export const heroConfig: HeroConfig = {
     },
   },
   dashboard: {
-    newUserTitle: 'Welcome to Your Dashboard',
-    activeUserTitle: 'Welcome to Your Dashboard',
+    newUserTitle: 'Welcome to your Dashboard',
+    activeUserTitle: 'Welcome to your Dashboard',
     newUserText: `Here you have speedy access to our latest resources, your unique sharing code, and your ongoing switching journeys. Time to explore.`,
-    activeUserText: `In March 2023 we launched this platform to make taking part in climate action as simple and impactful as possible. There's more to come. Thanks for joining our campaign for a more liveable future.`,
+    activeUserText: `In March 2023, we launched this platform to make taking part in effective climate action as simple and impactful as possible. There's more to come. Thanks for joining our campaign for a more liveable future.`,
     icon: 'img_hero_dashboard.png',
     dimensions: {
       width: 205,

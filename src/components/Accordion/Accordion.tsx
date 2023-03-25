@@ -4,7 +4,8 @@ import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/Accord
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import Image from 'next/image'
-import { useState, isValidElement } from 'react'
+import { useRouter } from 'next/router'
+import { useState, isValidElement, useEffect } from 'react'
 import { CopyIcon, Div } from '@styles/common.style'
 import { onCopy } from '@utils/functions'
 import * as S from './Accordion.style'
@@ -46,10 +47,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(() => ({
 }))
 
 export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIcon?: boolean }) => {
+  const {
+    query: { panel },
+  } = useRouter()
+  console.log('panel:', panel)
   const [expanded, setExpanded] = useState<string | false>('')
   const [hasCopied, setHasCopied] = useState(false)
 
-  const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+  const onChange = (panel: string) => (newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false)
   }
 
@@ -63,12 +68,16 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
     }, 1000)
   }
 
+  useEffect(() => {
+    panel && onChange(`panel${panel}`)(true)
+  }, [panel])
+
   return (
     <S.AccordionContainer>
       {data.map(({ text, copy }: FAQ, i: number) => {
         const content = Array.isArray(copy) ? copy.join('\n\n') : copy
         return (
-          <AccordionItem key={`type${i}`} expanded={expanded === `panel${i}`} onChange={handleChange(`panel${i}`)}>
+          <AccordionItem key={`type${i}`} expanded={expanded === `panel${i}`} onChange={onChange(`panel${i}`)}>
             <AccordionSummary aria-controls='panel1d-content' id='panel1d-header' sx={{ padding: 0 }}>
               <Typography
                 sx={{

@@ -423,7 +423,7 @@ export const impacts = [
   },
   {
     impact1: 'Building $ oil rigs',
-    impact2: 'Cleaning up $ barrels of oil spills',
+    impact2: 'Cleaning up $ barrels worth of spilled oil',
     badUnitCost: 16_800_000,
     goodUnitCost: 619,
     badOp: '>',
@@ -439,7 +439,7 @@ export const impacts = [
   },
   {
     impact1: 'Taking $ private jets from London to New York',
-    impact2: 'Funding $ workshop on environmental justice',
+    impact2: 'Funding $ environmental justice workshops',
     badUnitCost: 255_000,
     goodUnitCost: 510,
     badOp: '>',
@@ -455,7 +455,7 @@ export const impacts = [
   },
   {
     impact1: 'Funding $ new airport terminals',
-    impact2: 'Building $ miles of flood barriers to low lying areas',
+    impact2: 'Building $ miles of flood barriers in low lying areas',
     badUnitCost: 3_000_000_000, // number too small for calculator
     goodUnitCost: 2_800_000,
     badOp: '>',
@@ -471,7 +471,7 @@ export const impacts = [
   },
   {
     impact1: 'Taking $ private jets from London to New York',
-    impact2: 'Purchasing $ annual bus pass',
+    impact2: 'Purchasing $ annual bus passes',
     badUnitCost: 255_000,
     goodUnitCost: 932,
     badOp: '>',
@@ -487,7 +487,7 @@ export const impacts = [
   },
   {
     impact1: 'Funding $ Shell CEO salaries',
-    impact2: 'Funding $ NHS nurses salaries',
+    impact2: 'Funding $ NHS nurses’ salaries',
     badUnitCost: 6_100_000,
     goodUnitCost: 33_000,
     badOp: '<',
@@ -495,7 +495,7 @@ export const impacts = [
   },
   {
     impact1: 'Buying $ pairs of jeans from a fast fashion retailer',
-    impact2: 'Buying $ kilograms of vintage clothes (£20 per kilogram)',
+    impact2: 'Buying $ kilograms of vintage clothes',
     badUnitCost: 10,
     goodUnitCost: 11,
     badOp: '>',

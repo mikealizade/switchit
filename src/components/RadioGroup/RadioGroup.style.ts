@@ -6,7 +6,6 @@ export const Label = styled.label`
   position: relative;
   padding-left: 24px;
   user-select: none;
-  text-transform: capitalize;
 `
 export const RadioGroup = styled.div<{ row?: boolean }>`
   cursor: default;

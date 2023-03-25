@@ -47,16 +47,18 @@ export const general = [
       <S.Div>
         <S.ParagraphCopy>There are a number of ways you can support the campaign and our work. These include:</S.ParagraphCopy>
         <S.BulletList fontsize={18}>
-          <li>Using our Bank Switching Platform to switch to a green bank</li>
+          <li>Using our Green Banking Platform to switch to a green bank</li>
           <li>Completing all of our ready-to-go lobbying steps to maximise your switch</li>
           <li>Following us on social media (@switchit.green)</li>
           <li>
-            Using your <S.AnchorLink href='/profile'>unique sharing code</S.AnchorLink> to spread the word to all your contacts
+            Using your <S.AnchorLink href='/profile'>unique sharing code</S.AnchorLink> to spread the word to all your contacts.
+            <em>Every 10 friends switched means over £10 million moved out of fossil fuel support!</em>
           </li>
-          <li>Every 10 friends switched means over £10 million moved out of fossil fuel support!</li>
-          <li>Inviting us to run a program at your place of work or study</li>
           <li>
-            <S.AnchorLink href='/programs'>Inviting us</S.AnchorLink> to run or attend an event by emailing{' '}
+            <S.AnchorLink href='/programs'>Inviting us</S.AnchorLink> to run a program at your place of work or study
+          </li>
+          <li>
+            Inviting us to run or attend an event by emailing{' '}
             <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
               hello@switchit.green
             </S.AnchorLink>
@@ -64,19 +66,19 @@ export const general = [
           <li>
             Helping us to keep the lights on and expand our work by <S.AnchorLink href='/donate-page'>making a donation.</S.AnchorLink>
           </li>
-          <li>
-            Run an organisation? Have a big following on social media? Got a famous friend? Let’s link up. Email us at{' '}
-            <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
-              hello@switchit.green
-            </S.AnchorLink>
-          </li>
-          <li>
-            Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
-            <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
-              hello@switchit.green
-            </S.AnchorLink>
-          </li>
         </S.BulletList>
+        <S.ParagraphCopy>
+          Run an organisation? Have a big following on social media? Got a famous friend? Let’s link up. Email us at{' '}
+          <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            hello@switchit.green
+          </S.AnchorLink>
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
+          <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            hello@switchit.green
+          </S.AnchorLink>
+        </S.ParagraphCopy>
       </S.Div>
     ),
   },
@@ -112,12 +114,12 @@ export const general = [
     ],
   },
   {
-    text: 'Divestment vs. stakeholder engagement',
+    text: 'The Divestment vs. stakeholder engagement debate',
     copy: [
       'Contrary to popular belief, we don’t believe that divestment and stakeholder engagement are necessarily mutually exclusive.',
       'Let’s break things down...',
       'The divestment vs. stakeholder engagement debate discusses whether moving money out of fossil fuel support is more or less powerful than using your position as a customer/stakeholder to push for positive change from the inside. It is often used in the context of shareholders and asset managers (being powerful stakeholders), as well as the average customer.',
-      'Our platform is designed o lobby banks to change their policies, as well as moving money out of fossil fuel support. Our ready-to-go breakup letters are a great way to use your stakeholder power to pressure your old bank to change its policies.',
+      'Our platform is designed to lobby banks to change their policies, as well as moving money out of fossil fuel support. Our ready-to-go breakup letters are a great way to use your stakeholder power to pressure your old bank to change its policies.',
     ],
   },
 
@@ -139,10 +141,23 @@ export const general = [
   },
   {
     text: 'Can I use Switch It Green to switch my business bank account?',
-    copy: [
-      'The future of Switch It Green is a one-stop shop for switching all of your financial providers in the most simple and impactful way possible. In February 2023, we launched with our new research on UK current accounts. Business banking, pensions, and more are already in the works. Follow our social media to be the first to know about new launches.',
-      'While our recommended providers for current accounts do offer business banking, our upcoming research will help you find the right green business account for your organisation - with support on the requirements for each provider.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          The future of Switch It Green is a one-stop shop for switching all of your financial providers in the most simple and impactful
+          way possible. In February 2023, we launched with our new research on UK current accounts. Business banking, pensions, and more are
+          already in the works. Follow our{' '}
+          <S.AnchorLink href='https://www.instagram.com/switchit.green' target='_blank' rel='noreferrer'>
+            social media
+          </S.AnchorLink>{' '}
+          to be the first to know about new launches.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          While our recommended providers for current accounts do offer business banking, our upcoming research will help you find the right
+          green business account for your organisation - with support on the requirements for each provider.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'Is Switch It Green expanding beyond the UK?',
@@ -191,7 +206,7 @@ export const programs = [
     copy: (
       <S.Div>
         <S.ParagraphCopy>
-          Our programs were developed to harness the power of switching en masse while delivering tangible climate education and financial
+          Our programs were developed to harness the power of switching en masse, while delivering tangible climate education and financial
           literacy to students and employees, and moving £ billions out of fossil fuel support.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
@@ -243,11 +258,11 @@ export const switching = [
     copy: (
       <S.Div>
         <S.ParagraphCopy>
-          Our Bank Switching Platform is designed to make switching to a green bank as simple and impactful as possible.
+          Our Green Banking Platform is designed to make switching to a green bank as simple and impactful as possible.
         </S.ParagraphCopy>
         <h3>Step 1: Find out what your bank is funding </h3>
         <S.ParagraphCopy>We’ve done the research so you don’t have to.</S.ParagraphCopy>
-        <h3>Step 2: Choose a new Switch-It-Green-Approved provider</h3>
+        <h3>Step 2: Choose a new Switch-It-Green-approved provider</h3>
         <S.ParagraphCopy>
           We’ve got a comparison table with all the information you need to choose a new bank with is aligned with your needs and your
           values.
@@ -264,7 +279,7 @@ export const switching = [
         </S.ParagraphCopy>
         <h3>Step 4: Verify your switch with us to support the campaign</h3>
         <S.ParagraphCopy>
-          It can take time to get the data on switching numbers. Verifying your switch helps support our work.
+          It can take time to get the data on switching numbers; verifying your switch helps support our work.
         </S.ParagraphCopy>
         <h3>Step 5: Maximise your switch with our ready-to-go lobbying features. </h3>
         <S.ParagraphCopy>
@@ -297,7 +312,6 @@ export const switching = [
   },
   {
     text: 'Can I consolidate multiple accounts when I make the switch?',
-
     copy: (
       <S.Div>
         <S.ParagraphCopy>
@@ -306,7 +320,7 @@ export const switching = [
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           By just holding an account with a dirty bank, you are (inadvertently) supporting their continued fossil fuel investments.{' '}
-          <S.AnchorLink href='/help?tab=ourresearch'>Find out more here.</S.AnchorLink>
+          <S.AnchorLink href='/help?tab=ourresearch&panel=6'>Find out more here.</S.AnchorLink>
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           The Current Account Switch Service does not enable multiple accounts to be automatically consolidated and closed in one switch.
@@ -324,11 +338,21 @@ export const switching = [
   },
   {
     text: 'How long will it take to switch my current account?',
-    copy: [
-      'It takes a matter of minutes to select a green bank on our platform and open an account with your new green provider.',
-      'When you are setting up your new account, you will choose a switch day when the funds (and direct debits, standing orders, payee details, etc.) will be transferred over from your old account. You can choose a switch day that suits you but it will be **at least 7 days** in the future.',
-      'In the meantime, you can get started on maximising your switch with our ready-to-go lobbying features.',
-    ],
+    copy: (
+      <S.Div>
+        <S.ParagraphCopy>
+          It takes a matter of minutes to select a green bank on our platform and open an account with your new green provider.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          When you are setting up your new account, you will choose a switch day when the funds (and direct debits, standing orders, payee
+          details, etc.) will be transferred over from your old account. You can choose a switch day that suits you but it will be{' '}
+          <em>at least 7 days</em> in the future.
+        </S.ParagraphCopy>
+        <S.ParagraphCopy>
+          In the meantime, you can get started on maximising your switch with our ready-to-go lobbying features.
+        </S.ParagraphCopy>
+      </S.Div>
+    ),
   },
   {
     text: 'What is the Current Account Switch Service (CASS)?',
@@ -408,7 +432,7 @@ export const switching = [
     copy: (
       <S.Div>
         <S.ParagraphCopy>
-          Our Bank Switching Platform was developed to make switching to a green bank as simple and impactful as possible.
+          Our Green Banking Platform was developed to make switching to a green bank as simple and impactful as possible.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           Once you have verified your switch on our platform, there are 6 quick and easy steps you can take to maximise the power of your
@@ -455,7 +479,7 @@ export const switching = [
       <S.Div>
         <S.ParagraphCopy>
           Moving your money out of fossil fuel support and into greener financial providers is one of the most impactful things you can do
-          for the planet. And our Bank Switching Platform was developed to make that switch as simple and impactful as possible.
+          for the planet. And our Green Banking Platform was developed to make that switch as simple and impactful as possible.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           If you are unable to switch today, here are some other ways you can support the campaign to end fossil fuel financing:
@@ -471,13 +495,13 @@ export const switching = [
           <li>
             Support our work by <S.AnchorLink href='/donate-page'>making a donation</S.AnchorLink> to Switch It Green.
           </li>
-          <li>
-            Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
-            <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
-              hello@switchit.green
-            </S.AnchorLink>
-          </li>
         </S.BulletList>
+        <S.ParagraphCopy>
+          Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
+          <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            hello@switchit.green
+          </S.AnchorLink>
+        </S.ParagraphCopy>
       </S.Div>
     ),
   },
@@ -501,18 +525,18 @@ export const switching = [
           <li>
             Support our work by <S.AnchorLink href='/donate-page'>making a donation</S.AnchorLink> to Switch It Green.
           </li>
-          <li>
-            Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
-            <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
-              hello@switchit.green
-            </S.AnchorLink>
-          </li>
         </S.BulletList>
+        <S.ParagraphCopy>
+          Want to get more involved? Reach out and let us know how you’d like to help by emailing{' '}
+          <S.AnchorLink href='mailto:hello@switchit.green' target='_blank' rel='noreferrer'>
+            hello@switchit.green
+          </S.AnchorLink>
+        </S.ParagraphCopy>
       </S.Div>
     ),
   },
   {
-    text: 'Why fossil fuels?',
+    text: 'Why does Switch It Green only focus on fossil fuel investments?',
     copy: (
       <S.Div>
         <S.ParagraphCopy>
@@ -546,8 +570,8 @@ export const switching = [
           </strong>
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          You can use our Bank Switching Platform to find out if your current bank invests in fossil fuels and to select a new provider
-          which is guaranteed fossil-free.
+          You can use our Green Banking Platform to find out if your current bank invests in fossil fuels and to select a new provider which
+          is guaranteed fossil-free.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           Whether or not a bank is tied to fossil fuels is a pretty good way of seeing whether or not they have a sound moral compass, and
@@ -567,7 +591,7 @@ export const switching = [
           and <S.AnchorLink href='/resources'>check out our resources</S.AnchorLink> and blog for more information.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          The bottom line is <strong>for now</strong> our research is centred around fossil fuels as we want to keep it as straightforward
+          The bottom line is, <strong>for now</strong>, our research is centred around fossil fuels as we want to keep it as straightforward
           as possible (plus it’s a pretty good indicator of a bank’s general ethics). However, as an organisation <em>we</em> care, and want
           to spread awareness, about all types of dirty and unethical investments - so, what our tool doesn’t cover, our content, website,
           and mouths will.
@@ -588,12 +612,12 @@ export const research = [
           which has caused an echo-chamber-like ecosystem of mutually endorsing narratives to emerge. This becomes a problem when the
           initial source of the data is lost along the line, the data becomes outdated, or the data was initially based on a bank’s
           historical reputation or, perhaps worse, the bank’s own ESG document. Users who want to dig deep into the data are often left
-          disappointed. How do these comparison sites *weigh* banks? What evaluative model are they applying to judge whether a bank is
-          ‘good’ or not? How are they getting this information?” - Dr William Sharkey, ethicist and Switch It Green Researcher.
+          disappointed. How do these comparison sites <em>weigh</em> banks? What evaluative model are they applying to judge whether a bank
+          is ‘good’ or not? How are they getting this information?” - Dr William Sharkey, ethicist and Switch It Green Researcher.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          To avoid these mistakes, we asked our trusted research team to establish normative criteria *first* and *then* apply it to banks.
-          We will always be totally transparent about our research, which will be regularly updated to ensure its accuracy.
+          To avoid these mistakes, we asked our trusted research team to establish normative criteria <em>first</em> and <em>then</em> apply
+          it to banks. We will always be totally transparent about our research, which will be regularly updated to ensure its accuracy.
         </S.ParagraphCopy>
         <S.ParagraphCopy> Our research is based on three main criteria:</S.ParagraphCopy>
         <S.OrderedList>
@@ -658,15 +682,15 @@ export const research = [
           </li>
         </S.BulletList>
         <S.ParagraphCopy>
-          We define ‘suitable’ commitments as those whose goal is to completely phase *out* (not *down*) fossil fuel funding - including
-          both projects and shares - with evidence of significant and measurable steps already being undertaken and with definitive
-          accountability for all targets. A ‘suitable’ divestment strategy is one which eliminates the possibility for future fossil fuel
-          investments, with clear and measurable steps for phasing fossil fuel funding *out* of existing investment portfolios and shares. A
-          timeline for divestment is deemed to be ‘suitable’ only if there are planned divestment measures already in place, a clear and
-          significant target set for 2025 at the latest, or a target for complete, water-tight divestment set for 2030 at the latest. We do
-          not accept ‘Net Zero’ commitments unless they include plans for complete divestment of all investments and shares by 2030, or are
-          demonstrating significant progress with an acceptable 2025 target - no matter how many pictures of wind turbines they manage to
-          cram into their swanky pdf.
+          We define ‘suitable’ commitments as those whose goal is to completely phase <em>out</em> (not <em>down</em>) fossil fuel funding -
+          including both projects and shares - with evidence of significant and measurable steps already being undertaken and with
+          definitive accountability for all targets. A ‘suitable’ divestment strategy is one which eliminates the possibility for future
+          fossil fuel investments, with clear and measurable steps for phasing fossil fuel funding <em>out</em> of existing investment
+          portfolios and shares. A timeline for divestment is deemed to be ‘suitable’ only if there are planned divestment measures already
+          in place, a clear and significant target set for 2025 at the latest, or a target for complete, water-tight divestment set for 2030
+          at the latest. We do not accept ‘Net Zero’ commitments unless they include plans for complete divestment of all investments and
+          shares by 2030, or are demonstrating significant progress with an acceptable 2025 target - no matter how many pictures of wind
+          turbines they manage to cram into their swanky pdf.
         </S.ParagraphCopy>
       </S.Div>
     ),
@@ -680,12 +704,12 @@ export const research = [
           which has caused an echo-chamber-like ecosystem of mutually endorsing narratives to emerge. This becomes a problem when the
           initial source of the data is lost along the line, the data becomes outdated, or the data was initially based on a bank’s
           historical reputation or, perhaps worse, the bank’s own ESG document. Users who want to dig deep into the data are often left
-          disappointed. How do these comparison sites *weigh* banks? What evaluative model are they applying to judge whether a bank is
-          ‘good’ or not? How are they getting this information?” - Dr William Sharkey, ethicist and Switch It Green Researcher.
+          disappointed. How do these comparison sites <em>weigh</em> banks? What evaluative model are they applying to judge whether a bank
+          is ‘good’ or not? How are they getting this information?” - Dr William Sharkey, ethicist and Switch It Green Researcher.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          To avoid these mistakes, we asked our trusted research team to establish normative criteria *first* and *then* apply it to banks.
-          We will always be totally transparent about our research, which will be regularly updated to ensure its accuracy.
+          To avoid these mistakes, we asked our trusted research team to establish normative criteria <em>first</em> and <em>then</em> apply
+          it to banks. We will always be totally transparent about our research, which will be regularly updated to ensure its accuracy.
         </S.ParagraphCopy>
       </S.Div>
     ),

@@ -352,7 +352,7 @@ export const BulletList = styled.ul<{ fontsize?: number }>`
   font-size: ${({ fontsize }) => (fontsize ? `${fontsize}px` : 'inherit')};
   display: flex;
   flex-direction: column;
-  row-gap: 4px;
+  row-gap: 8px;
 `
 
 export const BulletListBold = styled(BulletList)`

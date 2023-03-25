@@ -25,16 +25,14 @@ const Programs = (): JSX.Element => {
                 <S.Title>About Our Programs</S.Title>
                 <ProgramContent>
                   <Intro>
-                    Our programs deliver financial literacy and tangible climate education while
-                    moving £ billions out of fossil fuel support.
+                    Our programs deliver financial literacy and tangible climate education while moving £ billions out of fossil fuel
+                    support.
                   </Intro>
                   <Section>
                     <ListHeader>What to expect from a Switch It Green program:</ListHeader>
                     <BulletList>
                       <li>A tailored program of events, training, and resources.</li>
-                      <li>
-                        A bespoke portal with custom resources on our Bank Switching Platform.
-                      </li>
+                      <li>A bespoke portal with custom resources on our Green Banking Platform.</li>
                       <li>Impact tracking and data reporting for your organisation</li>
                     </BulletList>
                   </Section>
@@ -42,10 +40,7 @@ const Programs = (): JSX.Element => {
                     <ListHeader>Why run a Switch It Green program?</ListHeader>
                     <BulletList>
                       <li>Demonstrate your commitment to sustainability.</li>
-                      <li>
-                        Illustrate your dedication to student and/or employee development and
-                        welfare.
-                      </li>
+                      <li>Illustrate your dedication to student and/or employee development and welfare.</li>
                       <li>Champion the campaign against fossil fuel financing.</li>
                     </BulletList>
                   </Section>
