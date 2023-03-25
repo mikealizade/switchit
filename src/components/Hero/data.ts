@@ -107,7 +107,7 @@ export const heroConfig: HeroConfig = {
 export const heroTips = [
   {
     number: 'Switching Tip #13: Close Unused Accounts',
-    tip: 'Even if you have £0 in your account, you are still worth a hefty sum to your bank, who leverage their customer base to secure loans and assets, allowing them to continue pumping money into fossil fuel companies. Make sure to close old and unused accounts when you switch your main current account to your new green provider.',
+    tip: 'Even if you have £0 in your account, you are still worth a hefty sum to your bank, which leverages its customer base to secure loans and assets, allowing it to continue pumping money into fossil fuel companies. Make sure to close old and unused accounts when you switch your main current account to your new green provider.',
   },
   {
     number: `Switching Tip #4: What We're Switching`,
@@ -139,7 +139,7 @@ export const heroTips = [
   },
   {
     number: `Switching Tip #11: Finding 'The One'`,
-    tip: 'When choosing a green bank, think about your needs as well as your values. Some of our recommended providers have great app features, while others have local branches, and some offer student banking. You can compare all the options here in the dashboard when selecting your new provider.',
+    tip: 'When choosing a green bank, think about your needs as well as your values. Some of our recommended providers have great app features, while others have local branches, and some offer student banking. You can compare all the options in our handy comparison table when selecting your new provider.',
   },
   {
     number: 'Switching Tip #43: The 7-day Rule',

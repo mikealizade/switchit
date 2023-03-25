@@ -30,8 +30,8 @@ export const BankNotListed: NextPage = () => {
   const [isConfirmation, setConfirmation] = useState(false)
   const [value, setValue] = useState('')
   const sortSelect = ({ label: a }: Sort, { label: b }: Sort) => (a < b ? -1 : a > b ? 1 : 0)
-  const header = isConfirmation ? 'Thanks for letting us know!' : 'Add Your Bank To Our Database'
-  const subHeader = isConfirmation ? '' : actionText.bankNotListed
+  const header = isConfirmation ? 'Bank Submitted' : 'Add Your Bank To Our Database'
+  const subHeader = isConfirmation ? 'You can still make the switch' : actionText.bankNotListed
 
   const onSelectCountry = (value: string) => {
     setCountry(value)
@@ -57,12 +57,6 @@ export const BankNotListed: NextPage = () => {
     saveNotListedBank({ value, country })
   }
 
-  // const resetForm = (): void => {
-  //   setConfirmation(false)
-  //   setValue('')
-  //   setCountry('')
-  // }
-
   return (
     <>
       <Head>
@@ -77,36 +71,27 @@ export const BankNotListed: NextPage = () => {
           <S.SwitchingColumn>
             <Card column padded stretch>
               <ActionHeader header={header} subHeader={subHeader} />
-              <NarrowContent width='50%'>
-                {isConfirmation ? (
-                  <>
+              {isConfirmation ? (
+                <>
+                  <NarrowContent width='75%'>
                     <p>
-                      {`Though we haven't gotten to your bank yet, we still recommend switching.
-                      Here's why: If we don't have information on your bank yet, that probably means
-                      they don't have any environmental policy. That means we automatically score
-                      your bank 3/5.`}
+                      {`We'll get our research team digging into your current bank ASAP but you don't need to wait for them to make the switch! If we don't have the research on your bank yet, it usually means one of two things: either they don't have an environmental policy at all (meaning they would automatically score a 2/5 or below); or, they are not a registered bank (they can offer banking services but will store your money somewhere else - most likely a with a bank that is investing in fossil fuels). Switching to your new bank will work just the same, so you can continue your switching journey now. Next step: choose a new provider.`}
                     </p>
-                    <p>
-                      If they {`don't`} have one at all. Why risk it when you know you could be
-                      doing good.
-                    </p>
-                    <S.Buttons>
-                      <Button type='button' onClick={() => push('/switching/green-banks')}>
-                        Show Me Green Banks
-                      </Button>
-                    </S.Buttons>
-                  </>
-                ) : (
-                  <Form>
-                    <fieldset>
+                  </NarrowContent>
+
+                  <S.Buttons align='right'>
+                    <Button type='button' onClick={() => push('/switching/green-banks')}>
+                      Show Me Green Banks
+                    </Button>
+                  </S.Buttons>
+                </>
+              ) : (
+                <Form>
+                  <fieldset>
+                    <NarrowContent width='75%'>
                       <label htmlFor='bankName'>
                         Bank
-                        <Input
-                          id='bankName'
-                          name='bankName'
-                          value={value}
-                          onChange={e => setValue(e.target.value)}
-                        />
+                        <Input id='bankName' name='bankName' value={value} onChange={e => setValue(e.target.value)} />
                       </label>
                       <label>
                         Country
@@ -117,18 +102,18 @@ export const BankNotListed: NextPage = () => {
                           onChange={onSelectCountry}
                         />
                       </label>
-                    </fieldset>
-                    <S.Buttons>
-                      <Button type='button' mode='secondary' onClick={() => back()}>
-                        Back
-                      </Button>
-                      <Button type='button' disabled={!value || !country} onClick={onSubmit}>
-                        Submit
-                      </Button>
-                    </S.Buttons>
-                  </Form>
-                )}
-              </NarrowContent>
+                    </NarrowContent>
+                  </fieldset>
+                  <S.Buttons>
+                    <Button type='button' mode='secondary' onClick={() => back()}>
+                      Back
+                    </Button>
+                    <Button type='button' disabled={!value || !country} onClick={onSubmit}>
+                      Submit
+                    </Button>
+                  </S.Buttons>
+                </Form>
+              )}
             </Card>
           </S.SwitchingColumn>
         </S.SwitchingColumnContainer>

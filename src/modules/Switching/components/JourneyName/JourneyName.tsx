@@ -26,7 +26,7 @@ export const JourneyName: FC<{
       <S.JourneyNameHeader>
         <S.JourneyNameTitle>{`First, give this switching journey a name.`}</S.JourneyNameTitle>
         <S.JourneyNameSubHeader>
-          Get creative or be practical. You may have more than one bank to switch. This way you can set each journey apart
+          Get creative or be practical. You may have more than one bank to switch. This way you can set each journey apart.
         </S.JourneyNameSubHeader>
       </S.JourneyNameHeader>
 

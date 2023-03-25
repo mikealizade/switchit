@@ -40,15 +40,19 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({ hasPro
           </S.MoreInfo>
         </S.Header>
         <S.ImpactTotal value={impactTotal ? `£${formattedTotalSum}` : ''} placeholder='£1,510,000' />
-        <S.MoneyDivested>Money pulled out of fossil fuel support</S.MoneyDivested>
+        <S.MoneyDivested>Money withdrawn from fossil fuel support</S.MoneyDivested>
       </Div>
       {hasProgressBar && <ProgressBar step={impactBarWidth} type='impact' />}
       {impactTotal ? (
         <S.QuantifyImpact>
           <S.Header>Quantify Your Impact</S.Header>
           <p>
-            Taking <strong>£{formattedTotalSum}</strong> out of potential fossil fuel financing is equal to...
+            Taking <strong>£{formattedTotalSum}</strong> out of fossil fuel support is huge!
           </p>
+          <p>
+            <em>{`Let's`} put it into perspective...</em>
+          </p>
+          <p>£{formattedTotalSum} could</p>
           <S.Effect>
             {badImpact}
 
@@ -62,7 +66,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({ hasPro
       ) : (
         <S.ImpactCalculator>
           <S.Calculator>
-            <S.Header>Enter Your Age to Calculate Your Potential Climate Impact</S.Header>
+            <S.Header>Enter your age to calculate your Potential Climate Impact</S.Header>
             <Select
               name='impactCalculator'
               defaultValue={{ value: '', label: 'Select your age' }}
