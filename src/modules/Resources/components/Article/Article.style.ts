@@ -39,8 +39,6 @@ export const Article = styled.article`
     border-radius: 10px;
     background-color: var(--alabaster);
     margin: 10px;
-    display: flex;
-    flex-direction: column;
     row-gap: 20px;
 
     ${() => mediaQuery.tablet} {
