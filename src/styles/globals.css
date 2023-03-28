@@ -141,10 +141,11 @@ fieldset {
   outline: 2px;
   padding: 20px;
 }
-[contenteditable] div {
+
+/* [contenteditable] div {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .swiper {
   width: 100%;
@@ -272,6 +273,10 @@ fieldset {
 
 .transparent [class*='MuiSnackbarContent'] {
   background-color: transparent;
+}
+
+[class*='MuiAccordionDetails'] a {
+  text-decoration: underline;
 }
 
 @keyframes fadeIn {

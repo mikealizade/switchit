@@ -24,13 +24,7 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   return (
     <S.Buttons>
       <S.ButtonsAlign>
-        <Button
-          type='button'
-          onClick={onToggleEditable}
-          mode='secondary'
-          size='small'
-          disabled={isDisabled}
-        >
+        <Button type='button' onClick={onToggleEditable} mode='secondary' size='small' disabled={isDisabled}>
           Edit
         </Button>
         <Button type='button' size='small' mode='secondary' onClick={onSave} disabled={isDisabled}>
@@ -42,7 +36,7 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
           Send To {bankName}
         </Button>
         <Button type='button' size='small' onClick={onNext} disabled={!isNextDisabled}>
-          Next
+          Next Impact Action
         </Button>
       </S.ButtonsAlign>
     </S.Buttons>

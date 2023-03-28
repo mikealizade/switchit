@@ -82,7 +82,7 @@ export const BankScore = (): JSX.Element => {
           <SwitchingColumn>
             <Card column padded rowGap={40} stretch>
               <Header>
-                The results are in for <strong>{badBank}</strong> and your bank scored ...
+                Review your {`Bank's`} Score: <strong>{badBank}</strong>
               </Header>
               <S.Rating>
                 <S.RatingHeader>{scoreHeadline}</S.RatingHeader>
@@ -126,7 +126,7 @@ export const BankScore = (): JSX.Element => {
                         Check Another Bank Score
                       </Button>
                       <Button type='button' size='small' onClick={() => push('/resources/article/5')}>
-                        What Else Can I Do To Act?
+                        Other Actions I Can Take
                       </Button>
                       <Button type='button' size='small' onClick={() => push('/switching/green-banks')}>
                         Other Green Banks

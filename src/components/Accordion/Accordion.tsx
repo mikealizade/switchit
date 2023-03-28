@@ -100,7 +100,8 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
               {Array.isArray(copy) ? (
                 <Div>
                   {copy.map((item: string, i: number) => (
-                    <S.Para key={`para-${i}`}>{item}</S.Para>
+                    // <S.Para key={`para-${i}`}>{item}</S.Para>
+                    <S.Para key={`para-${i}`} dangerouslySetInnerHTML={{ __html: item }} />
                   ))}
                 </Div>
               ) : isValidElement(copy) ? (

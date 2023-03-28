@@ -24,7 +24,7 @@ export const actionHeaderSubText = {
   breakupLetter: `Banks don't want to lose customers. By sending thousands of letters to banks explaining why their customers are leaving, we can force them to improve their investment policies. We have drafted a breakup letter for you to edit and sign, which will be sent in batches with others' for maximum impact.`,
   helloLetter:
     'We love green banks and want everyone to be banking with them. Tell them why you joined and help them incentivise more people to make the switch.',
-  postToSocials: `Time to multiply your impact. For every 10 friends switched over £10 million is taken out of fossil fuel support. We've drafted social posts for you to edit and share directly from our site, with unique sharing codes to accurately track your impact.`,
+  postToSocials: `Time to multiply your impact. For every 10 friends switched over £10 million is taken out of fossil fuel support. We've drafted social posts for you to edit and share directly from our site.`,
   tellCommunity: `Imagine the impact if your whole class, team, or group chat made the switch. We've got drafted messages to help you spread the word and unique sharing codes to accurately track your impact as you get more people on board.`,
   leaveReviews:
     'Educate, warn, defame. Banks want to protect their image. And we want to deter people from unknowingly supporting the fossil fuel industry. Leaving public Trustpilot and Google reviews is a powerful way to support the campaign.',
@@ -34,7 +34,8 @@ export const actionHeaderSubText = {
 }
 
 export const actionText = {
-  greenBanks: `Banks can't pay us to recommend them. We only recommend banks that meet our stringent criteria against fossil fuel investments. `,
+  selectBank: '',
+  greenBanks: `Banks can't pay us to recommend them. We only recommend banks that meet our stringent criteria against fossil fuel investments.  Find out more about our `,
   breakupLetter: '',
   helloLetter: '',
   postToSocials: '',

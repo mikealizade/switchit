@@ -61,11 +61,7 @@ export const GreenBanks = (): JSX.Element => {
                 header='Choose Your Green Bank'
                 subHeader={`We've found 4 green banks for you`}
                 text={actionText.greenBanks}
-                component={
-                  <TextLink onClick={() => dispatch(toggleDrawer('research'))}>
-                    Find out more about our criteria for recommendation
-                  </TextLink>
-                }
+                component={<TextLink onClick={() => dispatch(toggleDrawer('research'))}>criteria for recommendation</TextLink>}
               />
 
               <S.Section>

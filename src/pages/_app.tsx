@@ -44,7 +44,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <meta name='description' content='Switch to a green bank on our Bank Switching Platform' />
           <meta property='og:url' content='https://switchit.green' />
           <meta property='og:type' content='website' />
-          <meta property='og:title' content='Switch It Green | Green Bank Switching Platform' />
+          <meta property='og:title' content='Switch It Green | Green Banking Platform' />
           <meta property='og:description' content='Switch to a green bank on our Bank Switching Platform' />
           <meta property='og:image' content='https://switchit-green.s3.eu-west-2.amazonaws.com/assets/images/logo_switchit.png' />
           <meta

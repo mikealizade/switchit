@@ -49,8 +49,8 @@ export const SelectAction = (): JSX.Element => {
           <SwitchingColumn>
             <Card column padded>
               <ActionHeader
-                header={`Let's design your switching journey, and maximise your impact`}
-                subHeader={`We have developed six additional lobbying steps to harness the power of your switch. Complete the full set to reach your full switching potential. We've done all the hard parts for you, so you can spend more time spreading the word. `}
+                header='Maximise Your Switch'
+                subHeader={`We have developed six additional lobbying steps to harness the power of your switch. Complete the set to reach your full switching potential. We've done all the hard parts for you, so you can spend more time spreading the word about green banking.`}
               />
 
               <ActionSelector currentAction={currentAction} actions={actions} selectAction={selectAction} isDefault />

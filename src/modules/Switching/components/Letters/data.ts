@@ -3,32 +3,31 @@ const goodBankLetterConfig = {
     name: 'Triodos Bank',
     intro:
       '<div>I am in the process of switching my current account to a Triodos account due to your unrivalled ethical credentials.</div>',
-    body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you [insert suggestion here e.g. had more in person branches; offered a student account options; accepted cash deposits] to incentivise more switchers.</div>`,
+    body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you <strong>[insert suggestion here e.g. had more in person branches; offered a student account option; accepted cash deposits]</strong> to incentivise more switchers.</div>`,
   },
   monzo: {
     name: 'Monzo',
     intro:
       '<div>I am in the process of switching my current account to Monzo due to your excellent ethical credentials and your stance against investing in fossil fuels.</div>',
-    body: `<div>I would love for more people to switch their bank to yours, however, some people will undoubtedly be hesitant due to the discrepancy in your investment policy. It would be great if you were to improve your current stance by publicly committing to never investing in the fossil fuel industry. I noted that this is something which other (competitor) green banks have done and strongly believe it would help to incentivise more sustainability-oriented switchers, as well as giving your current customers some piece of mind.</div>`,
+    body: `<div>I would love for more people to switch their bank to yours, however, some people will undoubtedly be hesitant due to the discrepancy in your investment policy. It would be great if you were to improve your current stance by publicly committing to never investing in the fossil fuel industry. I noted that this is something which other (competitor) green banks have done and strongly believe it would help to incentivise more sustainability-oriented switchers, as well as give your current customers some piece of mind.</div>`,
   },
   starling: {
     name: 'Starling Bank',
-    intro:
-      '<div>I am in the process of switching my current account to Starling due to your excellent green credentials.</div>',
-    body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you [insert suggestion here e.g. offered a competitive student account; publicly shared more information on your emissions relating to loans and investments; invested in more holistically informed green projects, rather than buying carbon offsets] to incentivise more switchers.</div>`,
+    intro: '<div>I am in the process of switching my current account to Starling due to your excellent green credentials.</div>',
+    body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you <strong>[insert suggestion here e.g. offered a competitive student account; publicly shared more information on your emissions relating to loans and investments; invested in more holistically informed green projects, rather than buying carbon offsets]</strong> to incentivise more switchers.</div>`,
   },
   nationwide: {
     name: 'Nationwide',
-    intro:
-      '<div>I am in the process of switching my current account to Nationwide due to your excellent green credentials.</div>',
-    body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you [insert suggestion here e.g. had a more competitive student account offering; added more features to your app; increased your investments in green community projects] to incentivise more switchers.</div>`,
+    intro: '<div>I am in the process of switching my current account to Nationwide due to your excellent green credentials.</div>',
+    body: `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. I would love for more people to switch their bank to yours, and think it would be fab if you <strong>[insert suggestion here e.g. had a more competitive student account offering; added more features to your app; increased your investments in green community projects]</strong> to incentivise more switchers.</div>`,
   },
 }
 const demands = `<ul><li>Stopping directly financing fossil fuel expansion activity.</li><li>Delivering notice to clients that they must stop expansion activity or face the financing consequences.</li><li>Ending relationships with those clients do not stop fossil fuel expansion</li></ul>`
 
-const badBankLetterConfig = {
+export const badBankLetterConfig = {
   Barclays: {
     name: 'Barclays',
+    amount: '£15.5 billion',
     body: `
     <div>When presented with information regarding your investment policies, around 2 million Barclays customers (10%) reported they would be 'very likely' to switch banks.  Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -37,6 +36,7 @@ const badBankLetterConfig = {
   },
   Halifax: {
     name: 'Halifax',
+    amount: '£1.1 billion',
     body: `
     <div>While The Lloyds Banking Group have taken the first step by ending finance to new oil, gas, and coal projects, I understand this represents a minute effort in proportion to your existing investments, stakes, and shares in the oil, gas, and coal industry. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>The next step involves improving your current commitments by additionally:</div><div><br /></div>
@@ -45,6 +45,7 @@ const badBankLetterConfig = {
   },
   'Lloyds Bank': {
     name: 'Lloyds Bank',
+    amount: '£1.1 billion',
     body: `
     <div>While you have taken the first step by ending finance to new oil, gas, and coal projects, I understand this represents a minute effort in proportion to your existing investments, stakes, and shares in the oil, gas, and coal industry. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>The next step involves improving your current commitments by additionally:</div><div><br /></div>
@@ -53,6 +54,7 @@ const badBankLetterConfig = {
   },
   'HSBC Bank': {
     name: 'HSBC Bank',
+    amount: '£14.6 billion',
     body: `
     <div>Research has shown that trust is one of the most influential factors for customers when choosing a bank, ahead of price or rate. HSBC's perceived trustworthiness has no doubt fallen due to your numerous attempts at greenwashing over the last few years. In order to retain some of your customer base, it is time to replace the deceit with meaningful climate action.</div><div><br /></div>
     <div>While you have taken the first step by ending finance to new oil and gas fields, I understand this represents a minute effort in proportion to your existing investments, stakes, and shares in the oil, gas, and coal industry. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
@@ -61,6 +63,7 @@ const badBankLetterConfig = {
   },
   Santander: {
     name: 'Santander',
+    amount: '£6.4 billion',
     body: `
     <div>I was shocked when I discovered that Santander invest in some of the most harmful fossil fuel projects, including tar sands oil and arctic oil and gas. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments. It is shameful that you continue to provide student banking services while actively investing in an unliveable future for young people.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -69,6 +72,7 @@ const badBankLetterConfig = {
   },
   Natwest: {
     name: 'Natwest',
+    amount: '£1.5 billion',
     body: `
     <div>I was shocked when I discovered that NatWest invest in some of the most harmful fossil fuel projects, including tar sands oil and arctic oil and gas. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -77,6 +81,7 @@ const badBankLetterConfig = {
   },
   'Bank of Scotland': {
     name: 'Bank of Scotland',
+    amount: '£1.1 billion',
     body: `
     <div>While The Lloyds Banking Group have taken the first step by ending finance to new oil, gas, and coal projects, I understand this represents a minute effort in proportion to your existing investments, stakes, and shares in the oil, gas, and coal industry. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>The next step involves improving your current commitments by additionally:</div><div><br /></div>
@@ -85,6 +90,7 @@ const badBankLetterConfig = {
   },
   RBS: {
     name: 'RBS',
+    amount: '£1.5 billion',
     body: `
     <div>I was shocked when I discovered that RBS (NatWest) invest in some of the most harmful fossil fuel projects, including tar sands oil and arctic oil and gas. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -93,6 +99,7 @@ const badBankLetterConfig = {
   },
   'The Co-operative Bank': {
     name: 'The Co-operative Bank',
+    amount: '£0',
     body: `
     <div>I have held an account with you for [insert number] years, and until recently believed that The Co-operative Bank was a green bank. However, I understand that The Co-operative Bank is now owned by various asset management companies, including hedge funds with strong links to fossil fuels. I am therefore writing to inform you that I am switching away due to your involvement with the fossil fuel industry.</div><div><br /></div>
     <div>Research has shown that trust is one of the most influential factors for customers when choosing a bank, ahead of price or rate. With the new information regarding your structure, I find The Co-operative Bank's messaging and marketing to constitute a form of greenwashing and I no longer consider you as trustworthy.</div><div><br /></div>
@@ -101,6 +108,7 @@ const badBankLetterConfig = {
   },
   'Virgin Money': {
     name: 'Virgin Money',
+    amount: '',
     body: `
     <div>Research has shown that trust is one of the most influential factors for customers when choosing a bank, ahead of price or rate. Claiming to take climate change seriously while failing to provide any transparency around your fossil fuel investments, or any meaningful divestment commitments, is deceiving.</div><div><br /></div>
     <div>Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
@@ -110,6 +118,7 @@ const badBankLetterConfig = {
   },
   'Alliance & Leicester': {
     name: 'Alliance & Leicester',
+    amount: '£6.4 billion',
     body: `
     <div>I was shocked when I discovered that Alliance & Leicester (Santander) invest in some of the most harmful fossil fuel projects, including tar sands oil and arctic oil and gas. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments. It is shameful that you continue to provide student banking services while actively investing in an unliveable future for young people.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -118,12 +127,14 @@ const badBankLetterConfig = {
   },
   'Bank Of Ireland': {
     name: 'Bank Of Ireland',
+    amount: '',
     body: `
     <div>Research has shown that trust is one of the most influential factors for customers when choosing a bank, ahead of price or rate. Claiming to take climate change seriously while only having a vague commitment to divest from fossil fuels by 2050 is simply misleading.</div><div><br /></div>
     <div>Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div>`,
   },
   TSB: {
     name: 'TSB',
+    amount: '',
     body: `
     <div>Research has shown that trust is one of the most influential factors for customers when choosing a bank, ahead of price or rate. Your lack of transparency around your fossil fuel investments is a bad business decision.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -132,6 +143,7 @@ const badBankLetterConfig = {
   },
   'Ulster Bank': {
     name: 'Ulster Bank',
+    amount: '£1.5 billion',
     body: `
     <div>Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -140,6 +152,7 @@ const badBankLetterConfig = {
   },
   Danske: {
     name: 'Danske',
+    amount: '£0.9 billion',
     body: `
     <div>I was shocked when I discovered that Danske are active investors in fossil fuel expansion projects. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
     <div>In 2021, the International Energy Agency (IEA) announced that there should be no investment in new oil, gas and coal. Some of your competitors have made a start, such as Lloyds, by ending direct finance to new oil, gas and coal projects.</div><div><br /></div>
@@ -148,6 +161,7 @@ const badBankLetterConfig = {
   },
   'First Direct': {
     name: 'First Direct',
+    amount: '£14.6 billion',
     body: `
     <div>Research has shown that trust is one of the most influential factors for customers when choosing a bank, ahead of price or rate. HSBC's perceived trustworthiness has no doubt fallen due to your numerous attempts at greenwashing over the last few years. In order to retain some of your customer base, it is time to replace the deceit with meaningful climate action.</div><div><br /></div>
     <div>While you have taken the first step by ending finance to new oil and gas fields, I understand this represents a minute effort in proportion to your existing investments, stakes, and shares in the oil, gas, and coal industry. Customers will continue to switch away unless you address your inadequate and detrimental policies and rapidly phase out your fossil fuel investments.</div><div><br /></div>
@@ -156,6 +170,16 @@ const badBankLetterConfig = {
   },
   'M&S Bank': {
     name: 'M&S Bank',
+    amount: '£14.6 billion',
+    body: `
+    <div>Missing copy</div><div><br /></div>
+    <div></div><div><br /></div>
+    <div></div><div><br /></div>
+    <div></div>`,
+  },
+  Chase: {
+    name: 'Chase',
+    amount: '£50.3 billion',
     body: `
     <div>Missing copy</div><div><br /></div>
     <div></div><div><br /></div>
@@ -164,6 +188,7 @@ const badBankLetterConfig = {
   },
   'Metro Bank': {
     name: 'Metro Bank',
+    amount: '',
     body: `
     <div>Missing copy</div><div><br /></div>
     <div></div><div><br /></div>
@@ -172,6 +197,7 @@ const badBankLetterConfig = {
   },
   Revolut: {
     name: 'Revolut',
+    amount: '£0',
     body: `
     <div>I understand that Revolut has recently applied for a banking licence in the UK, and is hoping to begin trading as a registered bank. I am writing to inform you that I am switching away due to your lack of commitment against future fossil fuel investments. And I am not alone, with 19% of the UK population planning on switching to a sustainable bank in the next 12 months.</div><div><br /></div>
     <div>Customers will continue to switch away unless you address your inadequate policies and commit to screening out future fossil fuel investments. As a newly registered bank, with no existing ties to fossil fuel companies, it would be a simple step to formulate an ethical investment policy - similar to some of your main competitors, including Monzo and Starling.</div><div><br /></div>
@@ -180,6 +206,7 @@ const badBankLetterConfig = {
   },
   Kroo: {
     name: 'Kroo',
+    amount: '',
     body: `
     <div></div><div><br /></div>
     <div></div><div><br /></div>
@@ -188,6 +215,7 @@ const badBankLetterConfig = {
   },
   triodos: {
     name: 'Triodos Bank',
+    amount: '',
     body: `
     <div>I have held an account with you for [insert number] years.</div><div><br /></div>
     <div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. However, I am writing to inform you that I am in the process of switching away in favour of a different green bank. This is because [insert reason for switching]. I think it is important that you address this area to improve the public perception of green banks and to encourage more people to move their money out of fossil fuel support.</div><div><br /></div>
@@ -195,6 +223,7 @@ const badBankLetterConfig = {
   },
   monzo: {
     name: 'Monzo',
+    amount: '',
     body: `
     <div>I have held an account with you for [insert number] years.</div><div><br /></div>
     <div>I think it's fantastic that you have strong ethical policies in a number of areas, however, I am writing to inform you that I am in the process of switching to a different green(er) bank.</div><div><br /></div>
@@ -203,6 +232,7 @@ const badBankLetterConfig = {
   },
   starling: {
     name: 'Starling Bank',
+    amount: '',
     body: `
     <div>I have held an account with you for [insert number] years.</div><div><br /></div>
     <div>I think your green credentials are fantastic and that you are setting a great example for others to follow suit. However, I am writing to inform you that I am in the process of switching away in favour of a different green bank. This is because [insert reason for switching]. I think it is important that you address this area to improve the public perception of green banks and to encourage more people to move their money out of fossil fuel support.</div><div><br /></div>
@@ -210,6 +240,7 @@ const badBankLetterConfig = {
   },
   nationwide: {
     name: 'Nationwide',
+    amount: '',
     body: `
     <div>I have held an account with you for [insert number] years.</div><div><br /></div>
     <div>I think your green credentials are fantastic and that you are setting a great example for others to follow suit. However, I am writing to inform you that I am in the process of switching away in favour of a different green bank. This is because [insert reason for switching]. I think it is important that you address this area to improve the public perception of green banks and to encourage more people to move their money out of fossil fuel support.</div><div><br /></div>
@@ -218,10 +249,7 @@ const badBankLetterConfig = {
 }
 // <div></div><div><br /></div>
 
-export const getDefaultHelloLetterText = (
-  bankName = '[bank name]',
-  nickname = '[your name]',
-): string => {
+export const getDefaultHelloLetterText = (bankName = '[bank name]', nickname = '[your name]'): string => {
   const bank = goodBankLetterConfig[bankName as keyof typeof goodBankLetterConfig]
   return `
   <div>
@@ -250,10 +278,7 @@ export const getDefaultHelloLetterText = (
   `
 }
 
-export const getDefaultBreakupLetterText = (
-  bankName = '[bank name]',
-  nickname = '[your name]',
-): string => {
+export const getDefaultBreakupLetterText = (bankName = '[bank name]', nickname = '[your name]'): string => {
   const bank = badBankLetterConfig[bankName as keyof typeof badBankLetterConfig]
   return `
   <div>
@@ -262,7 +287,7 @@ export const getDefaultBreakupLetterText = (
       <br />
     </div>
     <div>
-      I have held an account with you for [insert number] years. However, I am writing to inform you that I am switching away due to your continued investment in the fossil fuel industry. And I am not alone, with 19% of the UK population planning on switching to a sustainable bank in the next 12 months.
+      I have held an account with you for <strong>[insert number]</strong> years. However, I am writing to inform you that I am switching away due to your continued investment in the fossil fuel industry. And I am not alone, with 19% of the UK population planning on switching to a sustainable bank in the next 12 months.
     </div>
     <div>
       <br />

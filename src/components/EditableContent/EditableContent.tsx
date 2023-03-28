@@ -13,12 +13,7 @@ export type EditableContentProps = {
   meta?: any
 }
 
-export const EditableContent: NextPage<EditableContentProps> = ({
-  data,
-  type,
-  btnText,
-  meta,
-}): JSX.Element => {
+export const EditableContent: NextPage<EditableContentProps> = ({ data, type, btnText, meta }): JSX.Element => {
   const [isEditable, setEdit] = useState(false)
   const text = useRef('')
   const editableRef = useRef<HTMLDivElement>(null)
@@ -27,6 +22,7 @@ export const EditableContent: NextPage<EditableContentProps> = ({
   const onEdit = () => {
     setEdit(true)
   }
+
   const onChange = ({ target: { value } }: { target: { value: string } }) => {
     text.current = value
   }
@@ -40,9 +36,7 @@ export const EditableContent: NextPage<EditableContentProps> = ({
       const post = text.current
       //TODO add correct url and hashtag,
       const links = {
-        twitter: `http://twitter.com/share?text=${encodeURIComponent(
-          post,
-        )}&url=https://switchit.green&hashtags=switchit`,
+        twitter: `http://twitter.com/share?text=${encodeURIComponent(post)}&url=https://switchit.green&hashtags=switchit`,
         // facebook: `https://www.facebook.com/sharer/sharer.php?u=https://switchit.green&quote=${encodeURIComponent(
         //   text,
         // )}`,
@@ -81,12 +75,7 @@ export const EditableContent: NextPage<EditableContentProps> = ({
           <Button mode='secondary' colour='blue' type='button' onClick={onEdit} size='small'>
             Edit
           </Button>
-          <Button
-            type='button'
-            colour='blue'
-            size='small'
-            onClick={actions[type as keyof typeof actions]}
-          >
+          <Button type='button' colour='blue' size='small' onClick={actions[type as keyof typeof actions]}>
             {btnText}
           </Button>
         </Buttons>

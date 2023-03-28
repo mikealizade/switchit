@@ -8,6 +8,7 @@ import { Fallback } from '@components/Fallback/Fallback'
 import { SocialMediaLinks } from '@components/SocialMediaLinks/SocialMediaLinks'
 import { Tabs } from '@components/Tabs/Tabs'
 import { Tabs as StyledTabs } from '@components/Tabs/Tabs.style'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
@@ -24,10 +25,13 @@ export const PostToSocials: NextPage = () => {
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const { addPoints } = useUpdatePoints('actions')
+  const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
+
+  console.log('badBank:', badBank)
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <PostsContainer key='twitter'>
-      {socialPostsConfig.twitter.map((postsArray, i) => {
+      {socialPostsConfig(badBank).twitter.map((postsArray, i) => {
         return (
           <li key={i}>
             <EditableContent btnText='Post' data={postsArray.join('\n\n')} type='post' meta='twitter' />
@@ -36,7 +40,7 @@ export const PostToSocials: NextPage = () => {
       })}
     </PostsContainer>,
     <PostsContainer key='instagram'>
-      {socialPostsConfig.instagramPosts.map((postsArray, i) => {
+      {socialPostsConfig(badBank).instagramPosts.map((postsArray, i) => {
         return (
           <li key={i}>
             <EditableContent btnText='Post' data={postsArray.join('\n\n')} type='instagramPosts' meta='instagramPosts' />

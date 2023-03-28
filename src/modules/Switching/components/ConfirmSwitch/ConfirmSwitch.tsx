@@ -31,7 +31,7 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
 
   return (
     <WoohooContainer>
-      <WoohooHeader>Congrats on your new green bank account.</WoohooHeader>
+      <WoohooHeader>Congrats on your new green bank account</WoohooHeader>
       <WoohooText>Thank you. Verifying your switch supports our work.</WoohooText>
       <WoohooText>
         {goodBank === 'starling' && (
@@ -86,7 +86,7 @@ export const ConfirmSwitch: NextPage = () => {
               <CongratsMessage goodBank={goodBank} />
             ) : (
               <>
-                <ActionHeader header='Sign The Agreement' subHeader={actionHeaderSubText.confirmSwitch} />
+                <ActionHeader header='Verify Your Switch' subHeader={actionHeaderSubText.confirmSwitch} />
 
                 <S.Agreement>
                   I confirm that I have signed up for an account with my chosen provider on their website by providing all the necessary

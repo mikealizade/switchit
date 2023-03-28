@@ -54,8 +54,7 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
   const bank = goodBanksConfig[bankName as keyof typeof goodBanksConfig]
   const logo = logoConfig[bankName as keyof typeof logoConfig]
   const hasMadeSwitch = currentJourney?.completedSteps.includes(steps.makeSwitch)
-  const btnText =
-    currentJourneyType === journeyTypes.noBankAccount ? 'I Opened An Account' : 'I Made The Switch'
+  const btnText = currentJourneyType === journeyTypes.noBankAccount ? 'I Opened An Account' : 'I Made The Switch'
 
   const onMakeTheSwitch = () => {
     nextStep(steps.makeSwitch, null, { goodBank: bank?.name })
@@ -68,54 +67,37 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
         <Content>
           <Card column stretch rowGap={50}>
             <ActionHeader
-              header='Make The Switch With Switch It Green'
-              subHeader={`You've selected ${bank?.fullName}`}
+              header='Make The Switch'
+              subHeader={`You've selected ${bank?.fullName}.  Use the button below to open your new green account.`}
             />
             <div style={{ alignSelf: 'center' }}>
-              <Image
-                src={logo?.img.src}
-                alt={bank?.fullName}
-                width={logo?.width}
-                height={logo?.height}
-              />
+              <Image src={logo?.img.src} alt={bank?.fullName} width={logo?.width} height={logo?.height} />
             </div>
 
             <S.TextContent>
               <S.Text>{`Let's`} do this.</S.Text>
-              <S.Text>{`This will take you to ${bank?.fullName}'s`} website</S.Text>
               <S.Text>
-                Now {`you've`} selected your bank, you just need to fill out a few details on their
-                website to open your new account and the Current Account Switch Service will handle
-                the rest.
+                Now {`you've`} selected your bank, you just need to fill out a few details on their website to open your new account and the
+                Current Account Switch Service will handle the rest.
               </S.Text>
               <S.Text>
-                {`You're`} nearly done now - this will only take a few minutes! Then, {`you'll`}{' '}
-                just need to come back to this page to verify your switch.
+                {`You're`} nearly done now - this will only take a few minutes! Then, {`you'll`} just need to come back to this page to
+                verify your switch.
               </S.Text>
-              <BoldLink onClick={() => dispatch(toggleDrawer('dontWasteYourSwitch'))}>
-                {`Don't`} Waste Your Switch
-              </BoldLink>
+              <S.Text>
+                Open your new account through our site to make sure your switch is counted in our{' '}
+                <BoldLink onClick={() => dispatch(toggleDrawer('dontWasteYourSwitch'))}>collective push for change</BoldLink>
+              </S.Text>
               <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
             </S.TextContent>
             <Buttons>
-              <Button
-                type='button'
-                size='small'
-                mode='secondary'
-                onClick={() => push('/switching/green-banks')}
-              >
+              <Button type='button' size='small' mode='secondary' onClick={() => push('/switching/green-banks')}>
                 Previous Step
               </Button>
               <Button type='button' size='small' mode='primary' onClick={onMakeTheSwitch}>
                 Take Me To {bank?.fullName}
               </Button>
-              <Button
-                type='button'
-                size='small'
-                mode='primary'
-                disabled={!hasMadeSwitch}
-                onClick={() => push('/switching/confirm-switch')}
-              >
+              <Button type='button' size='small' mode='primary' disabled={!hasMadeSwitch} onClick={() => push('/switching/confirm-switch')}>
                 {btnText}, Take Me To Verify
               </Button>
             </Buttons>

@@ -3,7 +3,7 @@ import { journeyTypes } from '@utils/constants'
 
 type BaseNewJourney = {
   id: string
-  isVerified: boolean
+  isVerified: string | Date | boolean
   name: string
 }
 
@@ -48,6 +48,7 @@ export const switchJourneys = createSlice({
               helloLetter: '',
               testimonial: '',
               videoUri: '',
+              isVerified: false,
             },
           ],
         ],

@@ -13,10 +13,7 @@ export const useSaveStep = () => {
   //TODO save other data to user, not just step and good bank
 
   // if currentJourneyId does not exist in db push, else update
-  const saveStep = async (
-    step: number,
-    { goodBank, isVerified }: { goodBank: string; isVerified?: Date },
-  ) => {
+  const saveStep = async (step: number, { goodBank, isVerified }: { goodBank: string; isVerified?: Date }) => {
     try {
       const insert = {
         filter: { sub, 'switchJourneys.id': currentJourneyId },
@@ -24,9 +21,7 @@ export const useSaveStep = () => {
           $set: {
             ...(goodBank && { 'switchJourneys.$.goodBank': goodBank }),
             ...(isVerified && { 'switchJourneys.$.isVerified': isVerified }),
-            'switchJourneys.$.completedSteps': Array.from(
-              new Set([...currentJourney!.completedSteps, step]),
-            ),
+            'switchJourneys.$.completedSteps': Array.from(new Set([...currentJourney!.completedSteps, step])),
           },
         },
       }

@@ -21,11 +21,17 @@ import { badBanksConfig } from './data'
 
 export const LeaveReviews: NextPage = () => {
   const { data } = useSWR('/api/json/leavereviews', fetcher)
+
+  console.log('data:', data)
+
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
   const nextStep = useNextStep()
   const { addPoints } = useUpdatePoints('actions')
   const [copy, setCopy] = useState('')
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
+
+  console.log('badBank:', badBank)
+
   const bank = badBanksConfig[badBank as keyof typeof badBanksConfig]
   const googleSize = isMobile ? 62 : 100
 
@@ -38,6 +44,8 @@ export const LeaveReviews: NextPage = () => {
     if (data) {
       const reviewsData = JSON.parse(String(data))
       const copy = reviewsData[badBank]
+
+      console.log('copy:', copy)
 
       setCopy(copy)
     }
@@ -67,13 +75,13 @@ export const LeaveReviews: NextPage = () => {
                       <Item>
                         <Anchor href={`https://www.google.com/search?q=${bank?.google}`} target='_blank' rel='noreferrer'>
                           <Image src={'/icons/icon_google.png'} alt='' width={googleSize} height={googleSize} />
-                          <S.GoogleCopy>This will take you to google maps. We suggest leaving a review at your local branch</S.GoogleCopy>
+                          <S.GoogleCopy>This will take you to google maps. We suggest leaving a review at your local branch.</S.GoogleCopy>
                         </Anchor>
                       </Item>
                     )}
                   </TileLinks>
                   <S.GoogleCopyMobile>
-                    This will take you to google maps. We suggest leaving a review at your local branch
+                    This will take you to google maps. We suggest leaving a review at your local branch.
                   </S.GoogleCopyMobile>
                 </S.Container>
 
