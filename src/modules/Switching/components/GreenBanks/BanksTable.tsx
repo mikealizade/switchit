@@ -94,7 +94,7 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                 <S.BankDetailsItem>
                   <S.DetailHeader>
                     Donation
-                    <S.MoreInfo onClick={() => dispatch(toggleDrawer('calculateImpact'))}>
+                    <S.MoreInfo onClick={() => dispatch(toggleDrawer('donation'))}>
                       <Image src={`/icons/icon_moreinfo.svg`} alt='' width={13} height={20} />
                     </S.MoreInfo>
                   </S.DetailHeader>
@@ -130,7 +130,14 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
               <th scope='col'></th>
               <th scope='col'>Monthly Fee</th>
               <th scope='col'>Latest Green Project</th>
-              <th scope='col'>Bank Donation</th>
+              <th scope='col'>
+                <S.DonationHeader>
+                  Bank Donation
+                  <S.MoreInfo onClick={() => dispatch(toggleDrawer('donation'))}>
+                    <Image src={`/icons/icon_moreinfo.svg`} alt='' width={13} height={20} />
+                  </S.MoreInfo>
+                </S.DonationHeader>
+              </th>
               <th scope='col'>Bank Details</th>
               <th scope='col'></th>
             </tr>

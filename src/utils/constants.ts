@@ -42,7 +42,7 @@ export const actionText = {
   tellCommunity: '',
   leaveReviews: '',
   tellUs:
-    'Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people on the importance of green banking. Write or record your switching story, or simply film yourself cutting up your old card.',
+    'Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people of the importance of green banking. Write or record your switching story, or simply film yourself cutting up your old card.',
   confirmSwitch: '',
   bankNotListed: `It looks like we haven't got all the data on your bank yet. Adding it to our database tells our research team to keep searching for more information.`,
 }

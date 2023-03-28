@@ -220,3 +220,13 @@ export const MoreInfo = styled.div`
   cursor: pointer;
   min-width: 13px;
 `
+
+export const DonationHeader = styled.div`
+  position: relative;
+
+  > div {
+    position: absolute;
+    top: -3px;
+    right: 10px;
+  }
+`

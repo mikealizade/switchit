@@ -60,7 +60,7 @@ export const TellUs: NextPage = () => {
     .map((n, i) => (currentJourney!.completedSteps.indexOf(i) < 0 ? i : null))
     .filter(Boolean)
   const isAllStepsComplete = currentJourney?.completedSteps.length === totalSteps
-  const btnText = isAllStepsComplete ? 'Complete Impact Actions' : 'Next Action'
+  const btnText = isAllStepsComplete ? 'Complete Impact Actions' : 'Next Impact Action'
   const routes = currentJourneyType === journeyTypes.noBankAccount ? noBankRouteConfig : routeConfig
 
   const onCompleteJourney = (): void => {
@@ -78,7 +78,7 @@ export const TellUs: NextPage = () => {
                   <WooHoo />
                 ) : (
                   <>
-                    <ActionHeader header='Tell Us How It Went' subHeader='Get the word out' text={actionText.tellUs} />
+                    <ActionHeader header='Share Your Switching Story"' subHeader={actionText.tellUs} />
                     <S.Div>
                       <S.TextLink>
                         <strong onClick={() => dispatch(toggleDrawer('tellUsPrompts'))}>

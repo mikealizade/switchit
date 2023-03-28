@@ -68,6 +68,28 @@ export const PotentialClimateImpactCopy = () => (
   </Div>
 )
 
+export const DonationCopy = () => (
+  <Div>
+    <p>
+      Banks {`can't`} buy space on our site. We have researched all UK current account offerings and only recommend those banks which score
+      4/5 or above against our stringent investment policy criteria. Our recommended banks are displayed alongside all the information you
+      need to make an informed decision on which is the best green bank for you.
+    </p>
+    <p>
+      We work with our recommended providers to keep up to date on their work and to pass on feedback on their services from our switchers
+      (like you).
+    </p>
+    <p>
+      Some of our recommended providers pay us a small commission for each customer we send their way. This support helps ramp up our work
+      and allows us to educate more people on the power of their money.
+    </p>
+    <p>
+      For each commission we receive, we donate a small percentage to environmental justice projects. So, if you select a bank which is part
+      of our donation scheme, you know your switch is having even more of a positive environmental impact.
+    </p>
+  </Div>
+)
+
 export const DisclaimerCopy = () => (
   <Div>
     <DrawerHeader>Disclaimer</DrawerHeader>
@@ -110,11 +132,11 @@ export const TellUsPromptsCopy = () => (
     <BulletList>
       <li>What was the final straw with your old bank?</li>
       <li>What cinched the deal with your new green provider?</li>
-      <li>How did Switch It support your decision and the switching process?</li>
+      <li>How did Switch It Green support your decision and the switching process?</li>
       <li>How was the switching process?</li>
-      <li>Did you take any other actions to supercharge switch?</li>
-      <li>What would you like to see next from Switch It?</li>
-      <li>Would you be interested in a Switch It program coming to your workplace or school/university?</li>
+      <li>Did you take any other actions to maximise your switch?</li>
+      <li>What would you like to see next from Switch It Green?</li>
+      <li>Would you be interested in a Switch It Green program coming to your workplace or school/university?</li>
     </BulletList>
   </Div>
 )

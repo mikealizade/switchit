@@ -467,7 +467,7 @@ export const switching = [
         <h3>SHARE YOUR SWITCHING STORY</h3>
         <S.ParagraphCopy>
           Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing
-          social media content, your input will help convince hundreds of people on the importance of green banking. Tell us your switching
+          social media content, your input will help convince hundreds of people of the importance of green banking. Tell us your switching
           story, or simply record yourself cutting up your old card.
         </S.ParagraphCopy>
       </S.Div>

@@ -86,7 +86,7 @@ export const actionsConfig = [
     pointsEarned: '100',
     route: 'tell-us',
     actionTitle: 'Share Your Switching Story',
-    actionText: `Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people on the importance of green banking. Tell us your switching story, or simply record yourself cutting up your old card. `,
+    actionText: `Genuine customer testimonies are a vital part of the campaign. From quotes for pitches and presentations, to high-performing social media content, your input will help convince hundreds of people of the importance of green banking. Tell us your switching story, or simply record yourself cutting up your old card. `,
   },
 ]
 

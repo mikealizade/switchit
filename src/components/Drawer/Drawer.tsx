@@ -24,6 +24,7 @@ import {
   TriodosProjectCopy,
   PostingPublicly,
   CalculateAgeImpact,
+  DonationCopy,
 } from './DrawerCopy'
 
 const Header = styled.h2`
@@ -90,6 +91,10 @@ const drawerConfig = {
   scoreBanks: {
     component: <div>How we score banks</div>,
     backLink: 'Impact Card View',
+  },
+  donation: {
+    component: <DonationCopy />,
+    backLink: 'Bank Donation',
   },
   calculateImpact: {
     component: <PotentialClimateImpactCopy />,
