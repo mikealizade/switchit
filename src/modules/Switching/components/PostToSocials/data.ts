@@ -7,6 +7,10 @@ export type SocialPostConfig = {
 export const socialPostsConfig = (bankName = '[bank name]'): SocialPostConfig => {
   const bank = badBankLetterConfig[bankName as keyof typeof badBankLetterConfig]
 
+  // console.log('bankName:', bankName)
+
+  console.log('bank:', bank)
+
   return {
     twitter: [
       [

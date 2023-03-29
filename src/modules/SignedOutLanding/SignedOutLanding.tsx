@@ -14,10 +14,10 @@ export const SignedOutLanding: NextPage = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Switch It Green | Green Bank Switching Platform</title>
+        <title>Switch It Green | Green Banking Platform</title>
         <meta
           name='description'
-          content='Switch to a green bank on our Bank Switching Platform. Find out if your bank funds fossil fuels and maximise your switch with our six ready-to-go steps.'
+          content='Find out if your bank funds fossil fuels and maximise your switch to a green bank on our Green Banking Platform. Take effective climate action today.'
         />
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />

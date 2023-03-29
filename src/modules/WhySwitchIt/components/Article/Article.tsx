@@ -33,7 +33,7 @@ const metaDataConfig = {
   'get-involved': {
     title: 'How Do I Switch Banks? | Switch It Green',
     description:
-      'Our Bank Switching Platform makes switching to a green bank as easy and impactful as possible. Follow our step-by-step guide & harness the power of your switch.',
+      'Our Green Banking Platform makes switching to a green bank as easy and impactful as possible. Follow our step-by-step guide & harness the power of your switch.',
     backgroundPositionY: 'center',
   },
 }

@@ -40,8 +40,7 @@ const Profile = (): JSX.Element => {
   const dispatch = useDispatch()
   const user = useSelector((state: RootState) => state.user)
   const [userData, setUserData] = useState<User>(user)
-  const { profile: { badges = [], sharingCodes = [], switchItPoints = [], summary = {} } = {} } =
-    userData
+  const { profile: { badges = [], sharingCodes = [], switchItPoints = [], summary = {} } = {} } = userData
 
   useEffect(() => {
     if (user) {
@@ -53,7 +52,7 @@ const Profile = (): JSX.Element => {
     <>
       <Head>
         <title>Switch It Green | Your Profile</title>
-        <meta name='description' content='Switch to a green bank on our Bank Switching Platform' />
+        <meta name='description' content='Switch to a green bank on our Green Banking Platform' />
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>

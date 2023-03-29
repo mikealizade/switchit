@@ -16,6 +16,10 @@ export const LetterContainer = styled.div`
     ul {
       list-style: disc;
       list-style-position: inside;
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+      margin: 10px 0;
     }
 
     ${() => mediaQuery.tablet} {

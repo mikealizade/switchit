@@ -51,7 +51,7 @@ const About = (): JSX.Element => {
         <title>Switch It Green | About</title>
         <meta
           name='description'
-          content='Banks are funding climate breakdown. Find out how your switch to a green bank can help end fossil fuel financing with our Bank Switching Platform.'
+          content='Banks are funding climate breakdown. Find out how your switch to a green bank can help end fossil fuel financing with our Green Banking Platform.'
         />
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />

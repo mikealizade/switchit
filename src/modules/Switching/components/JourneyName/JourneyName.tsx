@@ -21,6 +21,12 @@ export const JourneyName: FC<{
     !isLaptop && dispatch(setNewJourneyMobile(false))
   }
 
+  const onEnterKey = e => {
+    if (e.key === 'Enter') {
+      addNewJourney()
+    }
+  }
+
   return (
     <S.JourneyNameContainer>
       <S.JourneyNameHeader>
@@ -38,6 +44,7 @@ export const JourneyName: FC<{
           value={value}
           placeholder='Switching Journey #1'
           maxLength={20}
+          onKeyDown={onEnterKey}
         />
       </S.Label>
       <Buttons>

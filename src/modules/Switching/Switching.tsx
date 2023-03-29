@@ -168,7 +168,7 @@ const Switching = (): JSX.Element => {
     <>
       <Head>
         <title>Switch It Green | Switching Journey</title>
-        <meta name='description' content='Switch to a green bank on our Bank Switching Platform' />
+        <meta name='description' content='Switch to a green bank on our Green Banking Platform' />
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
