@@ -107,8 +107,9 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
             {postId === 'how-to-switch-banks' && (
               <S.PostText style={{ marginTop: '50px' }}>
                 <Text>
+                  Find out more about{' '}
                   <Link href='/why-switch-it/article/how-do-banks-contribute-to-climate-change'>
-                    Find out more about the link between banks and climate breakdown
+                    the link between banks and climate breakdown
                   </Link>{' '}
                   and <Link href='/why-switch-it/article/why-should-I-switch-banks'>why you should switch to a green bank.</Link>
                 </Text>
