@@ -45,7 +45,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
   const { isLaptop } = useMediaQuery()
   const { user_metadata: { isNewUser = false } = {} } = user || {}
   const isHome = pathname === '/'
-  const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it-green')
+  const isSignedOutPage = signedOutPages.includes(pathname) || pathname.includes('why-switch-it')
   const is404 = pathname === '/404'
 
   const saveNewUserData = useCallback(
