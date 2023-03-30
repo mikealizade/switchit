@@ -16,8 +16,8 @@ export const footerNav = [
     route: '/about',
   },
   {
-    text: 'Why Switch It?',
-    route: '/why-switch-it',
+    text: 'Why Switch It Green?',
+    route: '/why-switch-it-green',
   },
   {
     text: 'Contact Us',
@@ -59,25 +59,13 @@ export const Footer: NextPage = (): JSX.Element => {
         </S.FooterNavContainer>
         <S.Social>
           <S.InstagramFeed>
-            <AnchorLink
-              href='https://www.instagram.com/switchit.green'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <AnchorLink href='https://www.instagram.com/switchit.green' target='_blank' rel='noreferrer'>
               <Image src={'/images/img_igfeed1.jpeg'} alt='' width={igWidth} height={igWidth} />
             </AnchorLink>
-            <AnchorLink
-              href='https://www.instagram.com/switchit.green'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <AnchorLink href='https://www.instagram.com/switchit.green' target='_blank' rel='noreferrer'>
               <Image src={'/images/img_igfeed2.jpeg'} alt='' width={igWidth} height={igWidth} />
             </AnchorLink>
-            <AnchorLink
-              href='https://www.instagram.com/switchit.green'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <AnchorLink href='https://www.instagram.com/switchit.green' target='_blank' rel='noreferrer'>
               <Image src={'/images/img_igfeed3.jpeg'} alt='' width={igWidth} height={igWidth} />
             </AnchorLink>
           </S.InstagramFeed>

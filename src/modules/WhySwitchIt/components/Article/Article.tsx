@@ -96,19 +96,21 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
               <Link href='/api/auth/login'>Switch To A Green Bank</Link>
             </BlockButton>
 
-            {postId === 'the-impact' && (
+            {postId === 'why-should-I-switch-banks' && (
               <S.PostText style={{ marginTop: '50px' }}>
                 <Text>
-                  <Link href='/why-switch-it/article/get-involved'>Click here for more information on switching banks.</Link>
+                  <Link href='/why-switch-it/article/how-to-switch-banks'>Click here for more information on switching banks.</Link>
                 </Text>
               </S.PostText>
             )}
 
-            {postId === 'get-involved' && (
+            {postId === 'how-to-switch-banks' && (
               <S.PostText style={{ marginTop: '50px' }}>
                 <Text>
-                  <Link href='/why-switch-it/article/the-problem'>Find out more about the link between banks and climate breakdown</Link>{' '}
-                  and <Link href='/why-switch-it/article/the-impact'>why you should switch to a green bank.</Link>
+                  <Link href='/why-switch-it/article/how-do-banks-contribute-to-climate-change'>
+                    Find out more about the link between banks and climate breakdown
+                  </Link>{' '}
+                  and <Link href='/why-switch-it/article/why-should-I-switch-banks'>why you should switch to a green bank.</Link>
                 </Text>
               </S.PostText>
             )}

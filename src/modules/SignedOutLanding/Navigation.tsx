@@ -8,7 +8,7 @@ import * as S from './SignedOutLanding.style'
 
 export const navigation = [
   {
-    text: 'Why Switch It?',
+    text: 'Why Switch It Green?',
     route: '/why-switch-it-green',
   },
   {

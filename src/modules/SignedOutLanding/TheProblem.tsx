@@ -14,11 +14,11 @@ export const TheProblem: NextPage = (): JSX.Element => {
         </S.TheProblemText>
         <S.TextContainer mobileWidth={50} mobileMarginTop={50} marginTop={70}>
           <S.PinkLink>
-            <Link href='/why-switch-it/article/the-problem'>How do banks contribute to climate change?</Link>
+            <Link href='/why-switch-it/article/how-do-banks-contribute-to-climate-change'>How do banks contribute to climate change?</Link>
           </S.PinkLink>
         </S.TextContainer>
         <BlockButton>
-          <Link href='/why-switch-it/article/the-problem'>Find out more</Link>
+          <Link href='/why-switch-it/article/how-do-banks-contribute-to-climate-change'>Find out more</Link>
         </BlockButton>
       </S.TheProblemContent>
     </S.TheProblem>

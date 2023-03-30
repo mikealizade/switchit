@@ -12,8 +12,8 @@ import logo from '../../../public/images/logo_switchit_teal.svg'
 
 export const navigation = [
   {
-    text: 'Why Switch It?',
-    route: '/why-switch-it',
+    text: 'Why Switch It Green?',
+    route: '/why-switch-it-green',
   },
   {
     text: 'About',
