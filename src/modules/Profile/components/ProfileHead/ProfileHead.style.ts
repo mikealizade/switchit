@@ -32,8 +32,9 @@ export const EditProfile = styled.div`
     left: auto;
   }
 
-  > span {
+  > span:last-of-type {
     position: static !important;
+    height: 26px !important;
   }
 `
 
@@ -57,24 +58,13 @@ export const Picture = styled.div<{ isProfile?: boolean }>`
     margin: 0;
     position: relative;
 
-    /* > div:first-of-type {
-      top: 108px;
-      left: 100px;
-
-      ${() => mediaQuery.laptop} {
-        top: 177px;
-        right: 132px;
-        left: auto;
-      }
-    } */
-
     ${() => mediaQuery.tablet} {
       border-radius: 15px;
       margin: ${({ isProfile }) => (isProfile ? '0' : '0')};
     }
   }
 
-  span {
+  span:first-of-type {
     border-radius: 50%;
     border: 2px solid var(--white) !important;
 

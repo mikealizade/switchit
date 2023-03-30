@@ -78,7 +78,7 @@ export const TellUs: NextPage = () => {
                   <WooHoo />
                 ) : (
                   <>
-                    <ActionHeader header='Share Your Switching Story"' subHeader={actionText.tellUs} />
+                    <ActionHeader header='Share Your Switching Story' subHeader={actionText.tellUs} />
                     <S.Div>
                       <S.TextLink>
                         <strong onClick={() => dispatch(toggleDrawer('tellUsPrompts'))}>

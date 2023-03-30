@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
 import { NextPage } from 'next'
@@ -85,7 +86,7 @@ export const FileUploader: NextPage<{ isProfile?: boolean }> = ({ isProfile }) =
     <>
       {isProfile ? (
         <S.EditProfile onClick={handleClick}>
-          <Image src={'/icons/icon_edit_profile.svg'} alt='Edit profile picture' width={26} height={26} />
+          <img src={'/icons/icon_edit_profile.svg'} alt='Edit profile picture' width={26} height={26} />
         </S.EditProfile>
       ) : (
         <Button type='button' mode='primary' onClick={handleClick}>

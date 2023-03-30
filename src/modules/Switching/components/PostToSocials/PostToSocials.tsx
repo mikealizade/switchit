@@ -27,8 +27,6 @@ export const PostToSocials: NextPage = () => {
   const { addPoints } = useUpdatePoints('actions')
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
 
-  console.log('badBank:', badBank)
-
   const panels: [React.ReactNode, React.ReactNode] = [
     <PostsContainer key='twitter'>
       {socialPostsConfig(badBank).twitter.map((postsArray, i) => {

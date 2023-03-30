@@ -21,17 +21,14 @@ export const ProgramsInfo: NextPage = (): JSX.Element => {
 
       <S.ProgramsContainer>
         <Div rowGap={30}>
-          <Header>
-            Interested in bringing a Switch It Green program to your school, university or business?
-          </Header>
+          <Header>Interested in bringing a Switch It Green program to your school, university or business?</Header>
           <Text>
-            Get access to bespoke resources, high-profile guest speaker events, exclusive workshops,
-            tailored data reporting & impact tracking, and more while moving £ millions out of
-            fossil fuel support.
+            Get access to bespoke resources, high-profile guest speaker events, exclusive workshops, tailored data reporting & impact
+            tracking, and more while moving £ millions out of fossil fuel support.
           </Text>
           <Buttons align='right'>
             <Button type='button' mode='primary' size='small' onClick={() => push('/programs')}>
-              Register Yout Interest
+              Register Your Interest
             </Button>
           </Buttons>
         </Div>
