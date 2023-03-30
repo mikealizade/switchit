@@ -147,7 +147,7 @@ export const heroTips = [
   },
   {
     number: 'Switching Tip #26 - The Switch Guarantee',
-    tip: 'In the unlikely event that anything goes wrong with your switch, your new bank will refund any interest and charges you incur. This is part of the Current Account Switch guarantee. Get in touch with your new bank to sort out any unexpected hiccups.',
+    tip: 'In the unlikely event that anything goes wrong with your switch, your new bank will refund any interest and charges you incur. This is part of the Current Account Switch Service guarantee. Get in touch with your new bank to sort out any unexpected hiccups.',
   },
   {
     number: 'Switching Tip #1 - The Essentials',

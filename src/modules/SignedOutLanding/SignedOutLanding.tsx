@@ -17,7 +17,7 @@ export const SignedOutLanding: NextPage = (): JSX.Element => {
         <title>Switch It Green | Green Banking Platform</title>
         <meta
           name='description'
-          content='Find out if your bank funds fossil fuels and maximise your switch to a green bank on our Green Banking Platform. Take effective climate action today.'
+          content='Switch to a green bank on our Green Banking Platform. Find out if your bank funds fossil fuels and maximise your switch with our six ready-to-go steps.'
         />
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />

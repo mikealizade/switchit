@@ -12,17 +12,12 @@ const Students = (): JSX.Element => {
 
   const onSendSuccess = () => {
     setSubmitted(true)
-
-    // const delay = setTimeout(() => {
-    //   setSubmitted(false)
-    //   clearTimeout(delay)
-    // }, 5000)
   }
 
   return (
     <>
       <Head>
-        <title>Switch It Green | Our Student Programs</title>
+        <title>Our Student Programs | Switch It Green</title>
         <meta
           name='description'
           content='Study or work at a university? Engage students & staff in the campaign against fossil fuel financing. Register your interest in a Switch It Green Program here.'

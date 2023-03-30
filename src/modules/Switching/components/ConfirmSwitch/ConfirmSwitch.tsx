@@ -3,13 +3,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { useMediaQuery } from 'react-responsive'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { Fallback } from '@components/Fallback/Fallback'
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
+import { useEmail } from '@hooks/useEmail'
 import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
@@ -17,8 +16,6 @@ import { useUpdateAwards } from '@hooks/useUpdateAwards'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { WoohooContainer, WoohooHeader, WoohooText } from '@modules/Switching/components/TellUs/TellUs.style'
-// import { setSignature } from '@state/generic/genericSlice'
-// import { RootState } from '@state/store'
 import { Form, Content, BoldLink } from '@styles/common.style'
 import { actionHeaderSubText, journeyTypes } from '@utils/constants'
 import { EventType } from '@utils/types'
@@ -48,8 +45,7 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
 
 export const ConfirmSwitch: NextPage = () => {
   const { push } = useRouter()
-  // const dispatch = useDispatch()
-  // const signature = useSelector((state: RootState) => state.generic.signature)
+  const sendEmail = useEmail('confirmSwitch')
   const [value, setValue] = useState('')
   const nextStep = useNextStep()
   const updateAwards = useUpdateAwards('providers', 'actions')
@@ -69,12 +65,12 @@ export const ConfirmSwitch: NextPage = () => {
     nextStep(steps.confirmSwitch, null, { isVerified: new Date() })
     updateAwards(1_000, 'add')
     addPoints(1_000)
+    sendEmail()
     setConfirmed(true)
   }
 
   const onSign = ({ target: { value } }: EventType): void => {
     setValue(value)
-    // dispatch(setSignature(value))
   }
 
   return (

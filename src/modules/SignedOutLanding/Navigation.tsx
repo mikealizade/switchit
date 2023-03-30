@@ -9,7 +9,7 @@ import * as S from './SignedOutLanding.style'
 export const navigation = [
   {
     text: 'Why Switch It?',
-    route: '/why-switch-it',
+    route: '/why-switch-it-green',
   },
   {
     text: 'About',

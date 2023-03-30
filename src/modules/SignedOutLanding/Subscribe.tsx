@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
+import { useEmail } from '@hooks/useEmail'
 import { Div } from '@styles/common.style'
 import { sendRequest } from '@utils/functions'
 import { EventType } from '@utils/types'
@@ -12,6 +13,7 @@ export const Subscribe: NextPage = (): JSX.Element => {
   const [value, setEmail] = useState('')
   const [hasEnteredEmail, setThanks] = useState(false)
   const [isError, setError] = useState(false)
+  const sendEmail = useEmail('subscribe')
 
   const onChange = ({ target: { value } }: EventType) => {
     setEmail(value)
@@ -25,21 +27,9 @@ export const Subscribe: NextPage = (): JSX.Element => {
         collection: 'newsletter',
         upsert: false,
       }
+
       request(body)
-
-      const response = await fetch('/api/subscribe/subscribe', {
-        method: 'POST',
-        body: JSON.stringify({ email: value }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      console.log('response:', response)
-      if (!response.ok) {
-        throw new Error(`Received an error HTTP status code: ${response.status}.`)
-      }
-
+      sendEmail(value)
       setThanks(true)
     } catch (error) {
       setError(true)
