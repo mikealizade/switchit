@@ -51,9 +51,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
     Post,
     'id' | 'title' | 'text' | 'summary' | 'imageName' | 'titleImageName'
   >
-  console.log('id:', id)
   const article = metaDataConfig[id as keyof typeof metaDataConfig]
-
   const metaTitle = article?.title
   const metaDescription = article?.description
   const backgroundPositionY = article?.backgroundPositionY

@@ -13,8 +13,6 @@ export type Award = {
 export const Awards: NextPage<{ data: Award[] }> = ({ data = [] }): JSX.Element => {
   const noPoints = data.every(({ total }) => total < 1)
 
-  console.log('noPoints:', noPoints)
-
   return (
     <S.Awards>
       <Title>

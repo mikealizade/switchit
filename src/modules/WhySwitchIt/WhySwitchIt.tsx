@@ -44,8 +44,6 @@ const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] })
             </S.Text>
             <S.ArticlesList>
               {articles.map(({ id, title, summary, imageName }) => {
-                console.log('imageName link..', getArticleImageUrl(imageName))
-
                 return (
                   <S.Item key={id}>
                     <Link href={`/why-switch-it/article/${id}`}>

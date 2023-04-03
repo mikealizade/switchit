@@ -40,8 +40,6 @@ export const Testimonial: NextPage = () => {
   const [canPostPublicly, setCanPostPublicly] = useState(false)
   const isStepCompleted = !!testimonial
 
-  console.log('testimonial:', testimonial)
-
   const onSave = async () => {
     try {
       const body = {
@@ -55,7 +53,6 @@ export const Testimonial: NextPage = () => {
         upsert: false,
       }
 
-      console.log('body:', body)
       request(body)
 
       // TODO success msg even when errors!

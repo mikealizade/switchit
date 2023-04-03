@@ -20,7 +20,6 @@ if (!cached) {
 }
 
 export async function connectToDatabase() {
-  console.log('process.env.MONGO_URI', process.env.MONGO_URI)
   if (cached.conn) {
     return cached.conn
   }

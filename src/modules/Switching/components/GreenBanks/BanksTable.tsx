@@ -3,6 +3,7 @@ import { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useMediaQuery } from 'react-responsive'
 import { Button, TextButton } from '@components/Button/Button'
+import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
@@ -55,12 +56,15 @@ const logo = {
 
 export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
   const dispatch = useDispatch()
-
+  const {
+    currentJourney: { badBank = '' },
+  } = useGetCurrentJourney()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const nextStep = useNextStep()
   const [expandedRow, setExpandRow] = useState<number | null>(null)
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+  const banks = bankData.filter(({ bank }) => bank !== badBank)
 
   const expandRow = (index: number | null) => (): void => {
     setExpandRow(index)
@@ -74,7 +78,7 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
     <>
       {isMobile ? (
         <S.BanksList>
-          {bankData.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
+          {banks.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
             <S.BanksListItem key={route}>
               <S.Ellipsis onClick={expandRow(expandedRow === i ? null : i)}>
                 <Image src={'/icons/icon_ellipsis.svg'} alt='' width={25} height={25} className='profile' />
@@ -143,7 +147,7 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
             </tr>
           </thead>
           <tbody>
-            {bankData.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
+            {banks.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
               <>
                 <tr key={bank}>
                   <td scope='row'>

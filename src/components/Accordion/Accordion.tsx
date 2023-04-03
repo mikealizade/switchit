@@ -50,11 +50,10 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
   const {
     query: { panel },
   } = useRouter()
-  console.log('panel:', panel)
   const [expanded, setExpanded] = useState<string | false>('')
   const [hasCopied, setHasCopied] = useState(false)
 
-  const onChange = (panel: string) => (newExpanded: boolean) => {
+  const onChange = (panel: string) => (event?: React.SyntheticEvent, newExpanded?: boolean) => {
     setExpanded(newExpanded ? panel : false)
   }
 
@@ -69,7 +68,7 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
   }
 
   useEffect(() => {
-    panel && onChange(`panel${panel}`)(true)
+    panel && onChange(`panel${panel}`)(undefined, true)
   }, [panel])
 
   return (
@@ -100,7 +99,6 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
               {Array.isArray(copy) ? (
                 <Div>
                   {copy.map((item: string, i: number) => (
-                    // <S.Para key={`para-${i}`}>{item}</S.Para>
                     <S.Para key={`para-${i}`} dangerouslySetInnerHTML={{ __html: item }} />
                   ))}
                 </Div>

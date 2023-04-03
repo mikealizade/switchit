@@ -17,8 +17,6 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
         {resources
           .filter(({ type }) => type === 'app')
           .map(({ id, title, summary, mins, points, imageName }) => {
-            console.log('imageName', imageName)
-
             return (
               <S.Item key={id}>
                 <Link href={`/resources/article/${id}`}>
