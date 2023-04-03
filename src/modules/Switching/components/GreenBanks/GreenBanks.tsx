@@ -59,7 +59,7 @@ export const GreenBanks = (): JSX.Element => {
             <Card column padded rowGap={60}>
               <ActionHeader
                 header='Choose Your Green Bank'
-                subHeader={`We've found 4 green banks for you`}
+                subHeader={`We've found 3 green banks for you`}
                 text={actionText.greenBanks}
                 component={<TextLink onClick={() => dispatch(toggleDrawer('research'))}>criteria for recommendation</TextLink>}
               />
