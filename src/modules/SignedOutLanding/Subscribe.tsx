@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
 import { useEmail } from '@hooks/useEmail'
 import { Div } from '@styles/common.style'
+import { email } from '@utils/constants'
 import { sendRequest } from '@utils/functions'
 import { EventType } from '@utils/types'
 import * as S from './SignedOutHome.style'
@@ -13,7 +14,7 @@ export const Subscribe: NextPage = (): JSX.Element => {
   const [value, setEmail] = useState('')
   const [hasEnteredEmail, setThanks] = useState(false)
   const [isError, setError] = useState(false)
-  const sendEmail = useEmail('subscribe')
+  const sendEmail = useEmail(email.subscribe)
 
   const onChange = ({ target: { value } }: EventType) => {
     setEmail(value)

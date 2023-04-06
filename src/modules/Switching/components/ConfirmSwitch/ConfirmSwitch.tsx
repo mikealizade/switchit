@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
@@ -17,7 +18,7 @@ import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { WoohooContainer, WoohooHeader, WoohooText } from '@modules/Switching/components/TellUs/TellUs.style'
 import { Form, Content, BoldLink } from '@styles/common.style'
-import { actionHeaderSubText, journeyTypes } from '@utils/constants'
+import { actionHeaderSubText, journeyTypes, email } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
 
@@ -38,14 +39,16 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
       <Button type='button' onClick={() => push('/switching/select-action')}>
         Maximise My Switch
       </Button>
-      <BoldLink href='/switching/'>Journey Homepage</BoldLink>
+      <BoldLink>
+        <Link href='/switching/'>Journey Homepage</Link>
+      </BoldLink>
     </WoohooContainer>
   )
 }
 
 export const ConfirmSwitch: NextPage = () => {
   const { push } = useRouter()
-  const sendEmail = useEmail('confirmSwitch')
+  const sendEmail = useEmail(email.confirmSwitch)
   const [value, setValue] = useState('')
   const nextStep = useNextStep()
   const updateAwards = useUpdateAwards('providers', 'actions')

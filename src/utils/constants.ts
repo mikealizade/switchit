@@ -48,6 +48,12 @@ export const actionText = {
   bankNotListed: `It looks like we haven't got all the data on your bank yet. Adding it to our database tells our research team to keep searching for more information.`,
 }
 
+export const email = {
+  subscribe: '/api/email/subscribe',
+  confirmSwitch: '/api/email/confirmSwitch',
+  signUp: '/api/email/signup',
+}
+
 export enum journeyTypes {
   readyToSwitch = 'readyToSwitch',
   notReadyToSwitch = 'notReadyToSwitch',

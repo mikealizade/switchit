@@ -56,9 +56,7 @@ const logo = {
 
 export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
   const dispatch = useDispatch()
-  const {
-    currentJourney: { badBank = '' },
-  } = useGetCurrentJourney()
+  const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const nextStep = useNextStep()

@@ -10,12 +10,14 @@ import { MobileNavigation } from '@components/Navigation/MobileNavigation'
 import { Navigation } from '@components/Navigation/Navigation'
 import { Toast } from '@components/Toast/Toast'
 import { useCheckReferralCodeAndUpdate } from '@hooks/useCheckReferralCodeAndUpdate'
+import { useEmail } from '@hooks/useEmail'
 import { useMediaQuery } from '@hooks/useMediaQuery'
 import { useUpdateUser } from '@hooks/useUpdateUser'
 import PageNotFound from '@modules/PageNotFound/PageNotFound'
 import SignedInApp from '@modules/SignedInApp/SignedInApp'
 import { RootState } from '@state/store'
 import { setUser } from '@state/user/userSlice'
+import { email } from '@utils/constants'
 import { defaultProfile } from '@utils/defaultProfile'
 import { sendRequest, setTotalPoints, fetcher } from '@utils/functions'
 
@@ -34,10 +36,11 @@ const signedOutPages = [
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {
   const { user: auth0user = {} } = useUser()
-  const { sub } = auth0user
+  const { sub, email: emailAddress } = auth0user
   const { sub: userId = '' } = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
   const { pathname } = useRouter()
+  const sendEmail = useEmail(email.signUp)
   const { data: { user = {} } = {}, isValidating } = useSWR(sub && !userId ? `/api/db/user/${sub}` : null, fetcher) as SWRResponse
   const { trigger: request } = useSWRMutation('/api/db/updateOne', sendRequest)
   const checkReferralCodeAndUpdate = useCheckReferralCodeAndUpdate()
@@ -90,6 +93,7 @@ export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element =
         if (isNewUser) {
           saveNewUserData(isNewUser)
           updateIsNewUser()
+          emailAddress && sendEmail(emailAddress)
         } else {
           dispatch(
             setUser({
