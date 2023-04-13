@@ -13,13 +13,6 @@ type ButtonProps = {
   disabled?: boolean
 }
 
-type LinkProps = {
-  children: string | React.ReactNode
-  mode?: string
-  size?: string
-  disabled?: boolean
-}
-
 export const Button: NextPage<ButtonProps> = ({
   onClick,
   children,
@@ -30,14 +23,7 @@ export const Button: NextPage<ButtonProps> = ({
   size = 'normal',
   bold = false,
 }): JSX.Element => (
-  <S.Button
-    type={type}
-    onClick={onClick}
-    className={cs(mode, { [colour]: !!colour })}
-    disabled={disabled}
-    size={size}
-    bold={bold}
-  >
+  <S.Button type={type} onClick={onClick} className={cs(mode, { [colour]: !!colour })} disabled={disabled} size={size} bold={bold}>
     {children}
   </S.Button>
 )
@@ -52,8 +38,4 @@ export const TextButton: NextPage<ButtonProps> = ({
   <S.TextButton type={type} onClick={onClick} className={mode} disabled={disabled}>
     {children}
   </S.TextButton>
-)
-
-export const TextLink: NextPage<LinkProps> = ({ children, mode = 'primary' }): JSX.Element => (
-  <S.TextLink className={mode}>{children}</S.TextLink>
 )
