@@ -1,13 +1,17 @@
 import type { NextPage } from 'next'
 import { Button } from '@components/Button/Button'
+import { ButtonLink } from '@components/Button/Button.style'
 import * as S from '@modules/Switching/Switching.style'
 
 type LetterButtonsProps = {
   bankName: string
   onToggleEditable: () => void
+  onToggleModal: (arg: boolean) => () => void
   onSave: () => void
   onSend: () => void
   onNext: () => void
+  getEmailLink: () => string
+  isEmail: boolean
   isDisabled: boolean
   isNextDisabled: boolean
 }
@@ -15,12 +19,19 @@ type LetterButtonsProps = {
 export const LetterButtons: NextPage<LetterButtonsProps> = ({
   bankName,
   onToggleEditable,
+  onToggleModal,
   onSave,
   onSend,
   onNext,
+  getEmailLink,
+  isEmail,
   isDisabled,
   isNextDisabled,
 }) => {
+  const openEmailClient = () => {
+    window.open(getEmailLink(), '_blank', 'noreferrer')
+  }
+
   return (
     <S.Buttons>
       <S.ButtonsAlign>
@@ -32,9 +43,16 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
         </Button>
       </S.ButtonsAlign>
       <S.ButtonsAlign>
-        <Button type='button' size='small' onClick={onSend} disabled={isDisabled}>
-          Send To {bankName}
-        </Button>
+        {isEmail ? (
+          // <Button type='button' size='small' onClick={onSend} disabled={isDisabled}>
+          <Button type='button' onClick={openEmailClient}>
+            Send To {bankName}
+          </Button>
+        ) : (
+          <Button type='button' onClick={onToggleModal(true)}>
+            How To Send
+          </Button>
+        )}
         <Button type='button' size='small' onClick={onNext} disabled={!isNextDisabled}>
           Next Impact Action
         </Button>

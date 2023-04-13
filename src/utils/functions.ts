@@ -81,3 +81,14 @@ export const formatDate = (date: Date) => {
 
   return new Date(dateString).toLocaleDateString('en-GB', options)
 }
+
+export const htmlToNewLine = (text: string) => {
+  const newText = text
+    ?.replace(/(<br \/>|<br>)/gi, '\n\n')
+    // ?.replaceAll('<br />', '\n\n')
+    // .replaceAll('<br>', '\n\n')
+    .replace(/(<([^>]+)>)/gi, '')
+
+  console.log('newText:', newText)
+  return newText
+}

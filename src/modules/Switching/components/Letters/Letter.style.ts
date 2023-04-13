@@ -12,6 +12,7 @@ export const LetterContainer = styled.div`
     background-color: var(--concrete);
     border-radius: 10px;
     padding: 20px;
+    white-space: pre-wrap;
 
     ul {
       list-style: disc;

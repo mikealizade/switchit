@@ -2,8 +2,9 @@ import type { NextPage } from 'next'
 import { useEffect, useState, useRef } from 'react'
 import ContentEditable from 'react-contenteditable'
 import { Button } from '@components/Button/Button'
+import { useCopyText } from '@hooks/useCopyText'
 import { Buttons } from '@styles/common.style'
-import { onCopy } from '@utils/functions'
+import { onCopy, htmlToNewLine } from '@utils/functions'
 import * as S from './EditableContent.style'
 
 export type EditableContentProps = {
@@ -18,6 +19,7 @@ export const EditableContent: NextPage<EditableContentProps> = ({ data, type, bt
   const text = useRef('')
   const editableRef = useRef<HTMLDivElement>(null)
   const [, setCopy] = useState('')
+  const [hasCopied, setHasCopied] = useCopyText()
 
   const onEdit = () => {
     setEdit(true)
@@ -45,15 +47,16 @@ export const EditableContent: NextPage<EditableContentProps> = ({ data, type, bt
       window.open(links[meta as keyof typeof links], '_blank', 'noreferrer')
     },
     copy() {
-      onCopy(text.current)()
+      onCopy(htmlToNewLine(text.current))()
       setEdit(false)
+      setHasCopied(true)
     },
   }
 
   useEffect(() => {
     text.current = data
     setCopy(text.current)
-  }, [data, text])
+  }, [data, text, isEditable])
 
   return (
     <S.EditableContent>
@@ -76,7 +79,7 @@ export const EditableContent: NextPage<EditableContentProps> = ({ data, type, bt
             Edit
           </Button>
           <Button type='button' colour='blue' size='small' onClick={actions[type as keyof typeof actions]}>
-            {btnText}
+            {btnText !== 'Copy' || (btnText === 'Copy' && !hasCopied) ? btnText : 'Copied'}
           </Button>
         </Buttons>
       </S.Container>

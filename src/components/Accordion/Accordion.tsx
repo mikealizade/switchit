@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState, isValidElement, useEffect } from 'react'
+import { useCopyText } from '@hooks/useCopyText'
 import { CopyIcon, Div } from '@styles/common.style'
 import { onCopy } from '@utils/functions'
 import * as S from './Accordion.style'
@@ -51,7 +52,7 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
     query: { panel },
   } = useRouter()
   const [expanded, setExpanded] = useState<string | false>('')
-  const [hasCopied, setHasCopied] = useState(false)
+  const [hasCopied, setHasCopied] = useCopyText()
 
   const onChange = (panel: string) => (event?: React.SyntheticEvent, newExpanded?: boolean) => {
     setExpanded(newExpanded ? panel : false)
@@ -60,11 +61,6 @@ export const Accordion = ({ data, hasCopyIcon = false }: { data: any; hasCopyIco
   const onCopyText = (content: string) => {
     onCopy(content)()
     setHasCopied(true)
-
-    const delay = setTimeout(() => {
-      setHasCopied(false)
-      clearTimeout(delay)
-    }, 1000)
   }
 
   useEffect(() => {

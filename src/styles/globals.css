@@ -147,9 +147,9 @@ figcaption {
   padding: 20px;
 }
 
-/* [contenteditable] div {
-  display: flex;
-  flex-direction: column;
+/* [contenteditable],
+[contenteditable] * {
+  white-space: pre-wrap;
 } */
 
 .react-select [class$='control'] {

@@ -1,4 +1,10 @@
 // shared config objects go here
+import { badBanks } from '@utils/constants'
+const textIntro = 'Currently, the best way to send a letter to '
+const copyEmail = 'Copy Email Address'
+const visitForm = 'Visit Online Form'
+const feedbackForm = 'Visit Feedback Form'
+const complaintsForm = 'Visit Complaints Form'
 
 export const goodBanksConfig = {
   starling: {
@@ -24,6 +30,150 @@ export const goodBanksConfig = {
     name: 'nationwide',
     fullName: 'Nationwide Building Society',
     latestGreenProject: 'Sustainable Housing',
+  },
+}
+
+export const badBanksConfig = {
+  [badBanks.barclays]: {
+    trustPilot: 'www.barclays.co.uk',
+    google: 'barclays',
+    breakupText: `${textIntro} $ is to email Laura Barlow, the Group Head of Sustainability: laura.barlow@Barclays.com`,
+    breakupLink: 'laura.barlow@Barclays.com',
+    buttonText: copyEmail,
+  },
+  [badBanks.halifax]: {
+    trustPilot: 'www.halifax.co.uk',
+    google: 'halifax',
+    breakupText: `${textIntro} $ is using the bank's online complaints form.`,
+    breakupLink: 'https://www.halifax.co.uk/contactus/how-to-complain/complain-online.html',
+    buttonText: complaintsForm,
+  },
+  [badBanks.lloyds]: {
+    trustPilot: 'lloydsbank.com',
+    google: 'lloyds+bank',
+    breakupText: `${textIntro} $ is to email Dr Rebecca Heaton, the Director of Environmental Sustainability: rebecca.heaton@lloydsbanking.com`,
+    breakupLink: 'rebecca.heaton@lloydsbanking.com',
+    buttonText: copyEmail,
+  },
+  [badBanks.hsbc]: {
+    trustPilot: 'www.hsbc.co.uk',
+    google: 'hsbc',
+    breakupText: `${textIntro} $ is to email Tim Lord, the Head of Climate Change at HSBC UK: tim.lord@hsbc.com`,
+    breakupLink: 'tim.lord@hsbc.com',
+    buttonText: copyEmail,
+  },
+  [badBanks.santander]: {
+    trustPilot: 'www.santander.co.uk',
+    google: 'santander',
+    breakupText: `${textIntro} $ is to email the bank's complaints department: customerrelations@santanderconsumer.co.uk`,
+    breakupLink: 'customerrelations@santanderconsumer.co.uk',
+    buttonText: copyEmail,
+  },
+  [badBanks.natwest]: {
+    trustPilot: 'www.natwest.com',
+    google: 'natwest',
+    breakupText: `${textIntro} $ is using the bank's online complaints form.`,
+    breakupLink: 'https://www.natwest.com/support-centre/feedback-form.html?cq_ck=1481891972279&cq_ck=1588238907493',
+    buttonText: complaintsForm,
+  },
+  [badBanks.bankOfScotland]: {
+    trustPilot: 'www.bankofscotland.co.uk',
+    google: 'bank+of+scotland',
+    breakupText: `${textIntro} $ is using the bank's online complaints form.`,
+    breakupLink: 'https://www.bankofscotland.co.uk/contactus/complain/make-a-complaint-online.html',
+    buttonText: complaintsForm,
+  },
+  [badBanks.rbs]: {
+    trustPilot: 'personal.rbs.co.uk',
+    google: 'rbs',
+    breakupText: `${textIntro} $ is using the bank's online complaints form.`,
+    breakupLink: 'https://www.rbs.co.uk/support-centre/feedback-form.html?cq_ck=1588238907493&cq_ck=1481891380692',
+    buttonText: complaintsForm,
+  },
+  [badBanks.coop]: {
+    trustPilot: 'co-operativebank.co.uk',
+    google: 'coop+bank',
+    breakupText: `${textIntro} $ is to email the bank's complaints department: complaints@co-operativebank.co.uk`,
+    breakupLink: 'complaints@co-operativebank.co.uk',
+    buttonText: copyEmail,
+  },
+  [badBanks.virgin]: {
+    trustPilot: 'uk.virginmoney.com',
+    google: 'virgin+money',
+    breakupText: `${textIntro} $  is to email the bankj's customer relations department: customerrelations@virginmoney.com`,
+    breakupLink: 'customerrelations@virginmoney.com',
+    buttonText: copyEmail,
+  },
+  [badBanks.allianceLeicester]: {
+    trustPilot: '',
+    google: '',
+    breakupText: `Alliance and Leicester was completely absorbed into Santander in 2013. Currently, the best way to send a letter to Santander is to email the bank's customer relations department: customerrelations@santanderconsumer.co.uk`,
+    breakupLink: 'customerrelations@santanderconsumer.co.uk',
+    buttonText: copyEmail,
+  },
+  [badBanks.bankOfIreland]: {
+    trustPilot: 'bankofirelanduk.com',
+    google: 'bank+of+ireland',
+    breakupText: `${textIntro} $ is to send an email to: contactus@boi.com`,
+    breakupLink: 'contactus@boi.com',
+    buttonText: copyEmail,
+  },
+  [badBanks.tsb]: {
+    trustPilot: 'tsb.co.uk',
+    google: 'tsb',
+    breakupText: `${textIntro} $ is using the bank's online complaints form.`,
+    breakupLink:
+      'https://tsbbank.eu1.adobesign.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhDGygQ0-9r87-Ul-w6W-FCnvnBYGCk43YyTisTORHg8i3Fvs8cj0xTC4eeVWrlPfac*',
+    buttonText: complaintsForm,
+  },
+  [badBanks.ulster]: {
+    trustPilot: 'www.ulsterbank.co.uk',
+    google: 'ulster+bank',
+    breakupText: `${textIntro} $ is to email the bank's customer care department: customercare@bankulster.uk`,
+    breakupLink: 'customercare@bankulster.uk',
+    buttonText: copyEmail,
+  },
+  [badBanks.danske]: {
+    trustPilot: 'danskebank.co.uk',
+    google: 'danske+bank',
+    breakupText: `${textIntro} $  is using the bank's online feedback form.`,
+    breakupLink: 'https://danskebank.co.uk/personal/help/feedback',
+    buttonText: feedbackForm,
+  },
+  [badBanks.firstDirect]: {
+    trustPilot: 'www.firstdirect.com',
+    google: '',
+    breakupText: `${textIntro} $ is using the bank's online complaints form.`,
+    breakupLink: 'https://www.firstdirect.com/legals/listening/complaints-form/',
+    buttonText: complaintsForm,
+  },
+  [badBanks.marksSpencer]: {
+    trustPilot: 'bank.marksandspencer.com',
+    google: '',
+    breakupText: `${textIntro} $ `,
+    breakupLink: '',
+    buttonText: '',
+  },
+  [badBanks.metro]: {
+    trustPilot: 'www.metrobankonline.co.uk',
+    google: 'metro+bank',
+    breakupText: `${textIntro} $ `,
+    breakupLink: '',
+    buttonText: '',
+  },
+  [badBanks.revolut]: {
+    trustPilot: 'www.revolut.com',
+    google: '',
+    breakupText: `${textIntro} $ is to email help@revolut.com`,
+    breakupLink: 'help@revolut.com',
+    buttonText: copyEmail,
+  },
+  [badBanks.kroo]: {
+    trustPilot: 'kroo.com',
+    google: '',
+    breakupText: `${textIntro} $ `,
+    breakupLink: '',
+    buttonText: '',
   },
 }
 

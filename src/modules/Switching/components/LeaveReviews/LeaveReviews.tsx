@@ -15,9 +15,9 @@ import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons, SwitchingColumnContainer, SwitchingColumn } from '@modules/Switching/Switching.style'
 import { Content, TileLinks, Item, Anchor } from '@styles/common.style'
 import { actionHeaderSubText, steps } from '@utils/constants'
+import { badBanksConfig } from '@utils/data'
 import { fetcher } from '@utils/functions'
 import * as S from './LeaveReviews.style'
-import { badBanksConfig } from './data'
 
 export const LeaveReviews: NextPage = () => {
   const { data } = useSWR('/api/json/leavereviews', fetcher)
