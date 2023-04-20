@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /profile
+Disallow: /dashboard
+Disallow: /switching
+Disallow: /switching/
+Disallow: /programs
+Disallow: /resources
+Disallow: /resources/
+Disallow: /donate-page
+Disallow: /settings
+Disallow: /help
+
+User-agent: *
+Allow: /
