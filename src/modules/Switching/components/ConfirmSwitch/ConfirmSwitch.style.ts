@@ -60,6 +60,11 @@ export const SignatureInput = styled(PlainInput)`
   font-family: 'BamBang';
   width: 100%;
 
+  &::placeholder {
+    font-family: 'Konsolev Regular';
+    font-size: var(--fsBase);
+  }
+
   ${() => mediaQuery.tablet} {
     padding: 30px;
     width: 280px;

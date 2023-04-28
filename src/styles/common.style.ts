@@ -341,6 +341,7 @@ export const TextLink = styled.span<{ isGrey?: boolean }>`
 export const AnchorLink = styled.a`
   text-decoration: underline;
   display: inline;
+  cursor: pointer;
 `
 
 export const BulletList = styled.ul<{ fontsize?: number }>`

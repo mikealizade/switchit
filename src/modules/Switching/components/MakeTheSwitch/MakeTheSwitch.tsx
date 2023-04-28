@@ -12,7 +12,7 @@ import { useGetCurrentJourney } from '@hooks/useGetCurrentJourney'
 import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { toggleDrawer } from '@state/drawer/drawerSlice'
-import { Content, BoldLink, Buttons } from '@styles/common.style'
+import { Content, AnchorLink, Buttons } from '@styles/common.style'
 import { journeyTypes } from '@utils/constants'
 import { goodBanksConfig } from '@utils/data'
 import * as S from './MakeTheSwitch.style'
@@ -86,9 +86,9 @@ const MakeTheSwitch: NextPage<{ bankName: string }> = ({ bankName }) => {
               </S.Text>
               <S.Text>
                 Open your new account through our site to make sure your switch is counted in our{' '}
-                <BoldLink onClick={() => dispatch(toggleDrawer('dontWasteYourSwitch'))}>collective push for change</BoldLink>
+                <AnchorLink onClick={() => dispatch(toggleDrawer('dontWasteYourSwitch'))}>collective push for change</AnchorLink>
               </S.Text>
-              <BoldLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</BoldLink>
+              <AnchorLink onClick={() => dispatch(toggleDrawer('disclaimer'))}>Disclaimer</AnchorLink>
             </S.TextContent>
             <Buttons>
               <Button type='button' size='small' mode='secondary' onClick={() => push('/switching/green-banks')}>

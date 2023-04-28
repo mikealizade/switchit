@@ -19,13 +19,14 @@ import { bankConfig } from './data'
 export const GreenBanks = (): JSX.Element => {
   const { push } = useRouter()
   const dispatch = useDispatch()
-  const { currentJourneyType } = useGetCurrentJourney()
+  const { currentJourneyType, currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
   const [bankData, setBankData] = useState(bankConfig)
   const [selectedAccountTypes, selectAccountType] = useState<string[]>([])
   const [selectedFeatures, selectFeatures] = useState<string[]>([])
   const getSteps = useStepsByJourneyType()
   const steps = getSteps()
   const previousStep = currentJourneyType === journeyTypes.noBankAccount ? '/switching/select-bank' : '/switching/bank-score'
+  const offeredBanks = bankData.filter(({ bank }) => bank !== badBank).length
 
   useEffect(() => {
     if (!selectedAccountTypes.length && !selectedFeatures.length) {
@@ -59,7 +60,7 @@ export const GreenBanks = (): JSX.Element => {
             <Card column padded rowGap={60}>
               <ActionHeader
                 header='Choose Your Green Bank'
-                subHeader={`We've found 3 green banks for you`}
+                subHeader={`We've found ${offeredBanks} green banks for you`}
                 text={actionText.greenBanks}
                 component={<TextLink onClick={() => dispatch(toggleDrawer('research'))}>criteria for recommendation</TextLink>}
               />

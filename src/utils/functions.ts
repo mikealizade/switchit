@@ -33,10 +33,7 @@ export const fetcher: Fetcher = (...args: any) => fetch.apply(null, args).then(r
 export const setTotalPoints = (switchItPoints = []) => switchItPoints.reduce((acc: number, { points }: any) => acc + points, 0)
 
 export const onCopy = (str: string) => () => {
-  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-    return navigator.clipboard.writeText(str)
-  }
-  return Promise.reject('Unable to copy.')
+  return navigator?.clipboard?.writeText ? navigator.clipboard.writeText(str) : Promise.reject('Unable to copy.')
 }
 
 export const filterActionType =

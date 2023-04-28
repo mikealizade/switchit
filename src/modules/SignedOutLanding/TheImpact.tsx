@@ -11,7 +11,7 @@ export const TheImpact: NextPage = (): JSX.Element => {
         <S.TheImpactSubHeader>Together, we will move £7 billion out of fossil fuel support this year. </S.TheImpactSubHeader>
         <S.TheImpactText>
           “Our {`switchers'`} actions, at scale, will force banks to change policies in respond to consumer demand - shifting priorities
-          away from environmetally destructive projects, and towards those that will support a sustainable future” <br />- Sophie Cowen,
+          away from environmentally destructive projects, and towards those that will support a sustainable future” <br />- Sophie Cowen,
           Co-Founder - Switch It Green
         </S.TheImpactText>
         <S.TextContainer mobileWidth={60}>

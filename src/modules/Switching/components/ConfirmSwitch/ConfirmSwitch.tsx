@@ -104,7 +104,7 @@ export const ConfirmSwitch: NextPage = () => {
                   <Form>
                     <S.SignatureFieldset>
                       <S.Label htmlFor='bankName'>
-                        <S.SignatureInput name='signature' onChange={onSign} value={value} />
+                        <S.SignatureInput name='signature' onChange={onSign} value={value} placeholder='Type your name' />
 
                         <span>
                           <span>Signature</span>

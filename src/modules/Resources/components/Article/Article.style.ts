@@ -112,11 +112,6 @@ export const Date = styled.time`
   color: var(--juniper);
 `
 
-// export const ArticleScrollContainer = styled.div`
-//   height: 690px;
-//   overflow-y: scroll;
-// `
-
 export const PostTitle = styled.h1`
   font-size: var(--fsLarge3);
   font-weight: normal;
