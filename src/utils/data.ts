@@ -2,7 +2,6 @@
 import { badBanks } from '@utils/constants'
 const textIntro = 'Currently, the best way to send a letter to '
 const copyEmail = 'Copy Email Address'
-const visitForm = 'Visit Online Form'
 const feedbackForm = 'Visit Feedback Form'
 const complaintsForm = 'Visit Complaints Form'
 

@@ -161,7 +161,10 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
     setToggleModal(isVisible!)
   }
 
-  const getEmailLink = () => `mailto:${breakupLink}?subject=Goodbye&body=${encodeURIComponent(htmlToNewLine(text.current))}`
+  const getEmailLink = () =>
+    `mailto:${breakupLink}?subject="Closing My ${bankName} Account - Sustainability Policy 2023&body=${encodeURIComponent(
+      htmlToNewLine(text.current),
+    )}`
 
   useEffect(() => {
     if (isStepCompleted) {

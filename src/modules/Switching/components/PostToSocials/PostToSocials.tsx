@@ -1,9 +1,12 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
+import { useRef } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
 import { Card } from '@components/Card/Card'
 import { EditableContent } from '@components/EditableContent/EditableContent'
+import { Container } from '@components/EditableContent/EditableContent.style'
 import { Fallback } from '@components/Fallback/Fallback'
 import { SocialMediaLinks } from '@components/SocialMediaLinks/SocialMediaLinks'
 import { Tabs } from '@components/Tabs/Tabs'
@@ -13,9 +16,9 @@ import { useNextStep } from '@hooks/useNextStep'
 import { useStepsByJourneyType } from '@hooks/useStepsByJourneyType'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import * as S from '@modules/Switching/Switching.style'
-import { Content, TabsContainer } from '@styles/common.style'
+import { Content, TabsContainer, Buttons } from '@styles/common.style'
 import { actionHeaderSubText } from '@utils/constants'
-import { PostsContainer } from './PostToSocials.style'
+import { PostsContainer, PostContent, ImageContainer } from './PostToSocials.style'
 import { socialPostsConfig } from './data'
 
 const tabs: string[] = ['Twitter', 'Instagram Posts']
@@ -26,6 +29,15 @@ export const PostToSocials: NextPage = () => {
   const steps = getSteps()
   const { addPoints } = useUpdatePoints('actions')
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
+  const igStory1 = useRef<HTMLAnchorElement>(null)
+  const igStory2 = useRef<HTMLAnchorElement>(null)
+  const igStory3 = useRef<HTMLAnchorElement>(null)
+
+  const onDownload = (image: HTMLAnchorElement | null) => () => {
+    console.log('image:', image)
+
+    image!.click()
+  }
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <PostsContainer key='twitter'>
@@ -38,13 +50,48 @@ export const PostToSocials: NextPage = () => {
       })}
     </PostsContainer>,
     <PostsContainer key='instagram'>
-      {socialPostsConfig(badBank).instagramPosts.map((postsArray, i) => {
-        return (
-          <li key={i}>
-            <EditableContent btnText='Post' data={postsArray.join('\n\n')} type='instagramPosts' meta='instagramPosts' />
-          </li>
-        )
-      })}
+      <li>
+        <Container>
+          <PostContent ref={igStory1} download='Switch It Green_IG stories_option 1.jpg' href='/images/instagram_stories_1.jpg'>
+            <ImageContainer>
+              <Image src={'/images/instagram_stories_1.jpg'} alt='' width={216} height={385} />
+            </ImageContainer>
+            <Buttons align='right'>
+              <Button type='button' mode='primary' colour='blue' size='small'>
+                Download
+              </Button>
+            </Buttons>
+          </PostContent>
+        </Container>
+      </li>
+      <li>
+        <Container>
+          <PostContent ref={igStory1} download='Switch It Green_IG stories_option 2.jpg' href='/images/instagram_stories_2.jpg'>
+            <ImageContainer>
+              <Image src={'/images/instagram_stories_2.jpg'} alt='' width={216} height={385} />
+            </ImageContainer>
+            <Buttons align='right'>
+              <Button type='button' mode='primary' colour='blue' size='small'>
+                Download
+              </Button>
+            </Buttons>
+          </PostContent>
+        </Container>
+      </li>
+      <li>
+        <Container>
+          <PostContent ref={igStory1} download='Switch It Green_IG stories_option 3.jpg' href='/images/instagram_stories_3.jpg'>
+            <ImageContainer>
+              <Image src={'/images/instagram_stories_3.jpg'} alt='' width={216} height={385} />
+            </ImageContainer>
+            <Buttons align='right'>
+              <Button type='button' mode='primary' colour='blue' size='small'>
+                Download
+              </Button>
+            </Buttons>
+          </PostContent>
+        </Container>
+      </li>
     </PostsContainer>,
   ]
 

@@ -7,8 +7,19 @@ export const PostsContainer = styled.ul`
 
   li {
     display: flex;
+    flex-direction: column;
     align-self: stretch;
-    min-height: 520px;
+  }
+`
+
+export const PostContent = styled.a`
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  span {
+    flex: 1;
   }
 `
 
@@ -26,4 +37,12 @@ export const FollowUs = styled.ul`
 export const Item = styled.li`
   font-weight: bold;
   margin-right: 20px;
+`
+
+export const ImageContainer = styled.div`
+  background-color: var(--white);
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
 `
