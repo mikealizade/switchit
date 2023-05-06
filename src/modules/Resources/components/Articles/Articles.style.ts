@@ -32,8 +32,8 @@ export const Data = styled.li`
 `
 
 export const Item = styled.li`
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   gap: 18px;
   border-radius: 8px;
   border: 1px solid var(--porcelain);
