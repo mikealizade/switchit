@@ -606,6 +606,11 @@ export const Item = styled.li`
   ${() => mediaQuery.laptop} {
     flex: 0 0 calc(50% - 70px);
   }
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+  }
 `
 
 export const ArticleLink = styled.div`
@@ -616,7 +621,7 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 16px;
-    object-fit: contain;
+    /* object-fit: contain; */
   }
 `
 
