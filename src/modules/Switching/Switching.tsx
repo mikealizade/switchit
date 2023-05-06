@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useSWR, { SWRResponse } from 'swr'
 import { Card } from '@components/Card/Card'
@@ -22,7 +22,7 @@ import { actionsConfig, goodBanksConfig } from '@utils/data'
 import { fetcher, filterActionType } from '@utils/functions'
 import { CompletedJourneyCard } from './components/CompletedJourneyCard/CompletedJourneyCard'
 import { JourneyCard } from './components/JourneyCard/JourneyCard'
-import { JourneyName } from './components/JourneyName/JourneyName'
+// import { JourneyName } from './components/JourneyName/JourneyName'
 import { startJourneyConfig, startJourneyNoBankConfig } from './data'
 
 export type JourneyStep = { step: string; text: string; route: string }
@@ -70,8 +70,8 @@ const Switching = (): JSX.Element => {
   const { newJourneyMobile } = useSelector((state: RootState) => state.generic)
   const { push, pathname } = useRouter()
   const { isMobile, isLaptop } = useMediaQuery()
-  const [value, setValue] = useState('')
-  const [isAddName, setAddName] = useState(false)
+  // const [value, setValue] = useState('')
+  // const [isAddName, setAddName] = useState(false)
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
     revalidateOnFocus: false,
   }) as SWRResponse
@@ -89,14 +89,19 @@ const Switching = (): JSX.Element => {
 
   const addNewJourney = (): void => {
     const id = nanoid()
-    dispatch(setAddNewJourney({ id, isVerified: false, name: value }))
+    dispatch(setAddNewJourney({ id, isVerified: false, name: `Switching Journey ${switchJourneys.length + 1}` }))
     !isLaptop && dispatch(setNewJourneyMobile(false))
     push('/switching/select-bank')
   }
 
-  const addJourneyName = (): void => {
-    setAddName(true)
+  const onAddNewJourney = (): void => {
+    addNewJourney()
   }
+
+  // const addJourneyName = (): void => {
+  // add name via mobile
+  //   setAddName(true)
+  // }
 
   const resumeJourney = (route: string) => (): void => {
     push(route)
@@ -125,7 +130,7 @@ const Switching = (): JSX.Element => {
   ]
 
   useEffect(() => {
-    newJourneyMobile && addJourneyName()
+    newJourneyMobile && onAddNewJourney()
   }, [newJourneyMobile])
 
   useEffect(() => {
@@ -177,22 +182,22 @@ const Switching = (): JSX.Element => {
         {pathname === '/switching' && !isMobile && <SwitchingHero type='switching' hasLoaded={!!sub} />}
         <Card stretch>
           <S.SwitchingColumnContainer>
-            {isAddName ? (
+            {/* {isAddName ? (
               <S.NoJourneysTextContainer>
                 <JourneyName value={value} setValue={setValue} setAddName={setAddName} addNewJourney={addNewJourney} />
               </S.NoJourneysTextContainer>
-            ) : (
-              <>
-                <StyledTabs wide>
-                  <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
-                </StyledTabs>
-                {!isMobile && (
-                  <S.NewJourney onClick={addJourneyName}>
-                    <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
-                  </S.NewJourney>
-                )}
-              </>
-            )}
+            ) : ( */}
+            <>
+              <StyledTabs wide>
+                <Tabs tabs={tabs} panels={panels} onSelectTab={onSelectTab}></Tabs>
+              </StyledTabs>
+              {!isMobile && (
+                <S.NewJourney onClick={onAddNewJourney}>
+                  <Image src={'/icons/icon_plus.svg'} alt='' width={45} height={45} />
+                </S.NewJourney>
+              )}
+            </>
+            {/* )} */}
           </S.SwitchingColumnContainer>
         </Card>
       </Content>

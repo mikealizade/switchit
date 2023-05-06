@@ -125,7 +125,7 @@ export const BankScore = (): JSX.Element => {
                       <Button type='button' size='small' mode='secondary' onClick={() => push('/switching/select-bank')}>
                         Check Another Bank Score
                       </Button>
-                      <Button type='button' size='small' onClick={() => push('/resources/article/5')}>
+                      <Button type='button' size='small' onClick={() => push('/resources/article/lobby-banks-fossil-fuel-policies')}>
                         Other Actions I Can Take
                       </Button>
                       <Button type='button' size='small' onClick={() => push('/switching/green-banks')}>

@@ -12,7 +12,7 @@ import { Buttons } from '@modules/Switching/Switching.style'
 import { Div } from '@styles/common.style'
 import { sendRequest, formatDate } from '@utils/functions'
 import * as S from './ContactUs.style'
-import { PageSection, Text, PageHeader, PageHeaderMono } from '../SignedOutLanding/SignedOutLanding.style'
+import { PageSection, ContentContainer, Text, PageHeader, PageHeaderMono } from '../SignedOutLanding/SignedOutLanding.style'
 
 export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({ data, disabled }): JSX.Element => {
   const methods = useForm()
@@ -59,58 +59,60 @@ export const ContactUs: NextPage<{ data?: any; disabled?: boolean }> = ({ data, 
   return (
     <SignedOutLayout>
       <PageSection rowGap={60}>
-        {hasSubmitted ? (
-          <>
-            <PageHeader>Thanks for writing</PageHeader>
-            <Div rowGap={40}>
-              <Text>{`We'll`} be in touch.</Text>
-              <Buttons>
-                <Button type='button' mode='primary' onClick={() => setHasSubmitted(false)}>
-                  Done
-                </Button>
-              </Buttons>
-            </Div>
-          </>
-        ) : (
-          <>
-            <PageHeaderMono>Hello!</PageHeaderMono>
-            <Text>Questions about our student programs? Press inquiries? Use the form below to get in touch.</Text>
-            <FormProvider {...methods}>
-              <S.ContactUsForm onSubmit={handleSubmit(onSubmit)} className='form'>
-                <fieldset>
-                  <S.InputsContainer>
-                    <Input
-                      name='nickname'
-                      label='Name'
-                      {...methods}
-                      minLength={1}
-                      maxLength={50}
-                      pattern='alpha'
-                      message='Please enter a valid name'
-                      disabled={disabled}
-                      required
-                      placeholder='Jane Doe'
-                    />
-                    <Input
-                      name='email'
-                      label='Email'
-                      {...methods}
-                      minLength={1}
-                      maxLength={50}
-                      pattern='email'
-                      message='Please enter a valid email'
-                      disabled={disabled}
-                      required
-                      placeholder='you@email.com'
-                    />
-                  </S.InputsContainer>
-                  <Textarea name='message' {...methods} label='Message' height={220} required />
-                </fieldset>
-                <FormButtons disabled={!nickname || !email || !message} isSubmitting={false} text='Submit' />
-              </S.ContactUsForm>
-            </FormProvider>
-          </>
-        )}
+        <ContentContainer>
+          {hasSubmitted ? (
+            <>
+              <PageHeader>Thanks for writing</PageHeader>
+              <Div rowGap={40}>
+                <Text>{`We'll`} be in touch.</Text>
+                <Buttons>
+                  <Button type='button' mode='primary' onClick={() => setHasSubmitted(false)}>
+                    Done
+                  </Button>
+                </Buttons>
+              </Div>
+            </>
+          ) : (
+            <>
+              <PageHeaderMono>Hello!</PageHeaderMono>
+              <Text>Questions about our student programs? Press inquiries? Use the form below to get in touch.</Text>
+              <FormProvider {...methods}>
+                <S.ContactUsForm onSubmit={handleSubmit(onSubmit)} className='form'>
+                  <fieldset>
+                    <S.InputsContainer>
+                      <Input
+                        name='nickname'
+                        label='Name'
+                        {...methods}
+                        minLength={1}
+                        maxLength={50}
+                        pattern='alpha'
+                        message='Please enter a valid name'
+                        disabled={disabled}
+                        required
+                        placeholder='Jane Doe'
+                      />
+                      <Input
+                        name='email'
+                        label='Email'
+                        {...methods}
+                        minLength={1}
+                        maxLength={50}
+                        pattern='email'
+                        message='Please enter a valid email'
+                        disabled={disabled}
+                        required
+                        placeholder='you@email.com'
+                      />
+                    </S.InputsContainer>
+                    <Textarea name='message' {...methods} label='Message' height={220} required />
+                  </fieldset>
+                  <FormButtons disabled={!nickname || !email || !message} isSubmitting={false} text='Submit' />
+                </S.ContactUsForm>
+              </FormProvider>
+            </>
+          )}
+        </ContentContainer>
       </PageSection>
     </SignedOutLayout>
   )

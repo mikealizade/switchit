@@ -149,16 +149,16 @@ export const badBanksConfig = {
   [badBanks.marksSpencer]: {
     trustPilot: 'bank.marksandspencer.com',
     google: '',
-    breakupText: `${textIntro} $ `,
-    breakupLink: '',
-    buttonText: '',
+    breakupText: `${textIntro} $ is to email its parent company, HSBC. The best person to email at HSBC is Tim Lord, the Head of Climate Change at HSBC UK: tim.lord@hsbc.com`,
+    breakupLink: 'tim.lord@hsbc.com',
+    buttonText: copyEmail,
   },
   [badBanks.metro]: {
     trustPilot: 'www.metrobankonline.co.uk',
     google: 'metro+bank',
-    breakupText: `${textIntro} $ `,
-    breakupLink: '',
-    buttonText: '',
+    breakupText: `${textIntro} $ is to email enquiries@metrobank.plc.uk`,
+    breakupLink: 'enquiries@metrobank.plc.uk',
+    buttonText: copyEmail,
   },
   [badBanks.revolut]: {
     trustPilot: 'www.revolut.com',
@@ -173,6 +173,28 @@ export const badBanksConfig = {
     breakupText: `${textIntro} $ `,
     breakupLink: '',
     buttonText: '',
+  },
+  // obv these aren't bad banks :)
+  Monzo: {
+    trustPilot: '',
+    google: '',
+    breakupText: `${textIntro} $ is to brighten someone's day in the complaints department by sending an email to: complaints@monzo.com`,
+    breakupLink: 'complaints@monzo.com',
+    buttonText: copyEmail,
+  },
+  'Triodos Bank': {
+    trustPilot: '',
+    google: '',
+    breakupText: `${textIntro} $ is using the bank's online contact form.`,
+    breakupLink: 'https://join.triodos.co.uk/raf/contact-us',
+    buttonText: 'Contact form',
+  },
+  'Starling Bank': {
+    trustPilot: '',
+    google: '',
+    breakupText: `${textIntro} $ through email.`,
+    breakupLink: 'anne@starlingbank.co.uk',
+    buttonText: 'copyEmail',
   },
 }
 

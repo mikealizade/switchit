@@ -21,7 +21,7 @@ export const general = [
           people on the power of their money.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          <S.AnchorLink href='/donate-page'>If you would like to support our work, you can donate here.</S.AnchorLink>{' '}
+          <Link href='/donate-page'>If you would like to support our work, you can donate here.</Link>{' '}
         </S.ParagraphCopy>
       </S.Div>
     ),
@@ -51,11 +51,11 @@ export const general = [
           <li>Completing all of our ready-to-go lobbying steps to maximise your switch</li>
           <li>Following us on social media (@switchit.green)</li>
           <li>
-            Using your <S.AnchorLink href='/profile'>unique sharing code</S.AnchorLink> to spread the word to all your contacts.
+            Using your <Link href='/profile'>unique sharing code</Link> to spread the word to all your contacts.
             <em>Every 10 friends switched means over £10 million moved out of fossil fuel support!</em>
           </li>
           <li>
-            <S.AnchorLink href='/programs'>Inviting us</S.AnchorLink> to run a program at your place of work or study
+            <Link href='/programs'>Inviting us</Link> to run a program at your place of work or study
           </li>
           <li>
             Inviting us to run or attend an event by emailing{' '}
@@ -64,7 +64,7 @@ export const general = [
             </S.AnchorLink>
           </li>
           <li>
-            Helping us to keep the lights on and expand our work by <S.AnchorLink href='/donate-page'>making a donation.</S.AnchorLink>
+            Helping us to keep the lights on and expand our work by <Link href='/donate-page'>making a donation.</Link>
           </li>
         </S.BulletList>
         <S.ParagraphCopy>
@@ -210,7 +210,7 @@ export const programs = [
           literacy to students and employees, and moving £ billions out of fossil fuel support.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
-          <S.AnchorLink href='programs'>Find out more on our programs page.</S.AnchorLink>{' '}
+          <Link href='/programs'>Find out more on our programs page.</Link>{' '}
         </S.ParagraphCopy>
       </S.Div>
     ),
@@ -222,8 +222,8 @@ export const programs = [
       <S.Div>
         <S.ParagraphCopy>
           If you are unsure if there is an active or pending program at your school, university or business, simply{' '}
-          <S.AnchorLink href='programs'>register your interest</S.AnchorLink> in our programs and we will let you know if there is anything
-          in the works - if not, we can explore what a program at your place of work or study might look like and get the ball rolling.
+          <Link href='/programs'>register your interest</Link> in our programs and we will let you know if there is anything in the works -
+          if not, we can explore what a program at your place of work or study might look like and get the ball rolling.
         </S.ParagraphCopy>
       </S.Div>
     ),
@@ -296,7 +296,7 @@ export const switching = [
       <S.Div>
         <S.ParagraphCopy>
           There seem to be a lot of myths flying around about switching banks and credit scores. We get this question a lot so we have
-          created <S.AnchorLink href='/resources/article/3'>a resource answering it in detail here.</S.AnchorLink>
+          created <Link href='/resources/article/switching-banks-credit-score'>a resource answering it in detail here.</Link>
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           Long story short, a one-off switch to a green bank should not cause your credit score to take a hit. In fact, as you are
@@ -304,8 +304,8 @@ export const switching = [
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           If you are currently in an overdraft or thinking about applying for a large loan or mortgage in the next 6 months,{' '}
-          <S.AnchorLink href='/resources/article/3'> check out our resource</S.AnchorLink> to ensure you’ve got everything you need to make
-          an informed decision.
+          <Link href='/resources/article/switching-banks-credit-score'> check out our resource</Link> to ensure you’ve got everything you
+          need to make an informed decision.
         </S.ParagraphCopy>
       </S.Div>
     ),
@@ -388,8 +388,8 @@ export const switching = [
     copy: (
       <S.Div>
         <S.ParagraphCopy>
-          You can use the comparison table on your <S.AnchorLink href='/switching'>Switching Journey</S.AnchorLink> to help find a bank that
-          fits your needs as well as your values.
+          You can use the comparison table on your <Link href='/switching'>Switching Journey</Link> to help find a bank that fits your needs
+          as well as your values.
         </S.ParagraphCopy>
         <S.ParagraphCopy>We want there to be a green bank for everyone.</S.ParagraphCopy>
         <S.ParagraphCopy>
@@ -486,14 +486,14 @@ export const switching = [
         </S.ParagraphCopy>
         <S.BulletList fontsize={18}>
           <li>
-            <S.AnchorLink href='/resources/article/5'>Check out our resource</S.AnchorLink> on other actions you can take besides switching.
+            <Link href='/resources/article/lobby-banks-fossil-fuel-policies'>Check out our resource</Link> on other actions you can take
+            besides switching.
           </li>
           <li>
-            Get clued up on all things green finance by checking out our <S.AnchorLink href='/resources'>additional resources</S.AnchorLink>
-            .
+            Get clued up on all things green finance by checking out our <Link href='/resources'>additional resources</Link>.
           </li>
           <li>
-            Support our work by <S.AnchorLink href='/donate-page'>making a donation</S.AnchorLink> to Switch It Green.
+            Support our work by <Link href='/donate-page'>making a donation</Link> to Switch It Green.
           </li>
         </S.BulletList>
         <S.ParagraphCopy>
@@ -516,14 +516,14 @@ export const switching = [
         <S.ParagraphCopy>Here’s some more ways to support the campaign against fossil fuel financing:</S.ParagraphCopy>
         <S.BulletList fontsize={18}>
           <li>
-            <S.AnchorLink href='/resources/article/5'>Check out our resource</S.AnchorLink> on other actions you can take besides switching.
+            <Link href='/resources/article/lobby-banks-fossil-fuel-policies'>Check out our resource</Link> on other actions you can take
+            besides switching.
           </li>
           <li>
-            Get clued up on all things green finance by checking out our <S.AnchorLink href='/resources'>additional resources</S.AnchorLink>
-            .
+            Get clued up on all things green finance by checking out our <Link href='/resources'>additional resources</Link>.
           </li>
           <li>
-            Support our work by <S.AnchorLink href='/donate-page'>making a donation</S.AnchorLink> to Switch It Green.
+            Support our work by <Link href='/donate-page'>making a donation</Link> to Switch It Green.
           </li>
         </S.BulletList>
         <S.ParagraphCopy>
@@ -588,7 +588,7 @@ export const switching = [
           <S.AnchorLink href='https://www.instagram.com/switchit.green' target='_blank' rel='noreferrer'>
             Follow our socials
           </S.AnchorLink>{' '}
-          and <S.AnchorLink href='/resources'>check out our resources</S.AnchorLink> and blog for more information.
+          and <Link href='/resources'>check out our resources</Link> and blog for more information.
         </S.ParagraphCopy>
         <S.ParagraphCopy>
           The bottom line is, <strong>for now</strong>, our research is centred around fossil fuels as we want to keep it as straightforward

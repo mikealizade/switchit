@@ -162,7 +162,7 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
   }
 
   const getEmailLink = () =>
-    `mailto:${breakupLink}?subject="Closing My ${bankName} Account - Sustainability Policy 2023&body=${encodeURIComponent(
+    `mailto:${breakupLink}?subject=Closing My ${bankName} Account - Sustainability Policy 2023&body=${encodeURIComponent(
       htmlToNewLine(text.current),
     )}`
 
@@ -205,7 +205,7 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
             onSend={onSend}
             onNext={onNext}
             getEmailLink={getEmailLink}
-            isEmail={breakupLink.includes('@')}
+            isEmail={breakupLink?.includes('@')}
             isDisabled={!text.current || isStepCompleted}
             isNextDisabled={isStepCompleted}
           />

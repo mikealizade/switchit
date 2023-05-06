@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { useRef } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
@@ -29,15 +28,6 @@ export const PostToSocials: NextPage = () => {
   const steps = getSteps()
   const { addPoints } = useUpdatePoints('actions')
   const { currentJourney: { badBank = '' } = {} } = useGetCurrentJourney()
-  const igStory1 = useRef<HTMLAnchorElement>(null)
-  const igStory2 = useRef<HTMLAnchorElement>(null)
-  const igStory3 = useRef<HTMLAnchorElement>(null)
-
-  const onDownload = (image: HTMLAnchorElement | null) => () => {
-    console.log('image:', image)
-
-    image!.click()
-  }
 
   const panels: [React.ReactNode, React.ReactNode] = [
     <PostsContainer key='twitter'>
@@ -50,48 +40,22 @@ export const PostToSocials: NextPage = () => {
       })}
     </PostsContainer>,
     <PostsContainer key='instagram'>
-      <li>
-        <Container>
-          <PostContent ref={igStory1} download='Switch It Green_IG stories_option 1.jpg' href='/images/instagram_stories_1.jpg'>
-            <ImageContainer>
-              <Image src={'/images/instagram_stories_1.jpg'} alt='' width={216} height={385} />
-            </ImageContainer>
-            <Buttons align='right'>
-              <Button type='button' mode='primary' colour='blue' size='small'>
-                Download
-              </Button>
-            </Buttons>
-          </PostContent>
-        </Container>
-      </li>
-      <li>
-        <Container>
-          <PostContent ref={igStory1} download='Switch It Green_IG stories_option 2.jpg' href='/images/instagram_stories_2.jpg'>
-            <ImageContainer>
-              <Image src={'/images/instagram_stories_2.jpg'} alt='' width={216} height={385} />
-            </ImageContainer>
-            <Buttons align='right'>
-              <Button type='button' mode='primary' colour='blue' size='small'>
-                Download
-              </Button>
-            </Buttons>
-          </PostContent>
-        </Container>
-      </li>
-      <li>
-        <Container>
-          <PostContent ref={igStory1} download='Switch It Green_IG stories_option 3.jpg' href='/images/instagram_stories_3.jpg'>
-            <ImageContainer>
-              <Image src={'/images/instagram_stories_3.jpg'} alt='' width={216} height={385} />
-            </ImageContainer>
-            <Buttons align='right'>
-              <Button type='button' mode='primary' colour='blue' size='small'>
-                Download
-              </Button>
-            </Buttons>
-          </PostContent>
-        </Container>
-      </li>
+      {[1, 2, 3].map(story => (
+        <li key={story}>
+          <Container>
+            <PostContent download={`Switch It Green_IG stories_option ${story}.png`} href={`/images/instagram_stories_${story}.png`}>
+              <ImageContainer>
+                <Image src={`/images/instagram_stories_${story}.png`} alt='' width={216} height={385} />
+              </ImageContainer>
+              <Buttons align='right'>
+                <Button type='button' mode='primary' colour='blue' size='small'>
+                  Download
+                </Button>
+              </Buttons>
+            </PostContent>
+          </Container>
+        </li>
+      ))}
     </PostsContainer>,
   ]
 
