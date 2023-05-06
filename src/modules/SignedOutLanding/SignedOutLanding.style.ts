@@ -603,10 +603,6 @@ export const Item = styled.li`
   border-radius: 8px;
   width: 100%;
 
-  ${() => mediaQuery.laptop} {
-    flex: 0 0 calc(50% - 70px);
-  }
-
   img {
     width: 100%;
     border-radius: 12px;

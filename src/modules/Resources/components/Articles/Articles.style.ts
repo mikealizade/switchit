@@ -11,6 +11,7 @@ export const ArticlesList = styled.ul`
   gap: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  flex: 1 1 0%;
 `
 
 export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`

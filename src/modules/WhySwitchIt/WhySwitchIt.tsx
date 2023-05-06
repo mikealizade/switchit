@@ -1,23 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ResourcesType } from '@modules/Resources/Resources'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { getArticleImageUrl } from '@utils/functions'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
-
-//img_assets
-//img_greenbanking
-//img_sustainability
-//img_neobank
-
-// img_divestment
-//  img_creditscore
-//  img_greenbankaccount
-
-// TODO replace native image with next image
 
 const WhySwitchIt: NextPage<{ resources: ResourcesType }> = ({ resources = [] }): JSX.Element => {
   const articles = resources.filter(({ type }) => type === 'website')
