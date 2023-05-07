@@ -39,7 +39,6 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
             )
           })}
       </S.ArticlesList>
-      ..
     </S.Articles>
   )
 }
