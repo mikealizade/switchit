@@ -12,7 +12,6 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
   return (
     <S.Articles>
       <S.ResourcesTitle>Articles</S.ResourcesTitle>
-
       <S.ArticlesList>
         {resources
           .filter(({ type }) => type === 'app')
@@ -40,6 +39,7 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
             )
           })}
       </S.ArticlesList>
+      .
     </S.Articles>
   )
 }
