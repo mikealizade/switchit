@@ -62,7 +62,7 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 12px;
-    height: inherit;
+    height: initial;
   }
 `
 
