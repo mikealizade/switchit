@@ -61,6 +61,7 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 12px;
+    max-height: 201px;
   }
 `
 
