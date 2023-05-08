@@ -458,13 +458,7 @@ export const TeamImages = styled.ul`
   gap: 20px;
   display: flex;
   flex-wrap: wrap;
-  /* width: 80%; */
   align-self: center;
-  /* justify-content: center; */
-
-  /* ${() => mediaQuery.xmobile} {
-    width: 72%;
-  } */
 `
 
 export const Image = styled.li`
@@ -562,15 +556,6 @@ export const ContentContainer = styled.div<{
 `
 
 export const TeamImagesContainer = styled(ContentContainer)`
-  /* gap: 30px; */
-  /* display: flex;
-  /* flex-wrap: wrap; */
-  /* flex-direction: column; */
-  /* width: 80%; */
-  */
-  /* align-self: center; */
-  /* justify-content: center; */
-
   ${() => mediaQuery.xmobile} {
     width: 72%;
   }

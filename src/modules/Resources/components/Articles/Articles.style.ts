@@ -83,6 +83,8 @@ export const Item = styled.li`
   row-gap: 18px;
   border-radius: 8px;
   width: 100%;
+  border: 1px solid var(--porcelain);
+  padding: 22px;
 
   img {
     width: 100%;
