@@ -64,7 +64,7 @@ export const ArticleLink = styled.div`
     border-radius: 12px;
     max-height: 178px;
 
-    ${() => mediaQuery.tablet} {
+    ${() => mediaQuery.laptop} {
       max-height: none;
     }
   }
