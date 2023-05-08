@@ -19,12 +19,12 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
             return (
               <S.Item key={id}>
                 <S.ArticleLink>
-                  {/* <Link href={`/resources/article/${id}`}> */}
-                  <img src={getArticleImageUrl(imageName)} alt='' />
-                  <S.Title>{title}</S.Title>
-                  <S.Intro>{summary}</S.Intro>
-                  {/* </Link> */}
+                  <Link href={`/resources/article/${id}`}>
+                    <img src={getArticleImageUrl(imageName)} alt='' />
+                  </Link>
                 </S.ArticleLink>
+                <S.Title>{title}</S.Title>
+                <S.Intro>{summary}</S.Intro>
 
                 <S.ArticleData>
                   <S.Data>
