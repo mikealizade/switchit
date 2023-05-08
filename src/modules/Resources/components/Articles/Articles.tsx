@@ -20,7 +20,9 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
               <S.Item key={id}>
                 <Link href={`/resources/article/${id}`}>
                   <S.ArticleLink>
-                    <img src={getArticleImageUrl(imageName)} alt='' />
+                    <div>
+                      <img src={getArticleImageUrl(imageName)} alt='' />
+                    </div>
                     <S.Title>{title}</S.Title>
                     <S.Intro>{summary}</S.Intro>
                   </S.ArticleLink>
