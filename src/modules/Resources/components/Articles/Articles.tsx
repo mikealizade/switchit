@@ -18,15 +18,13 @@ export const Articles: NextPage<{ resources: ResourcesType }> = ({ resources }):
           .map(({ id, title, summary, mins, points, imageName }) => {
             return (
               <S.Item key={id}>
-                <S.ArticleLink>
-                  <Link href={`/resources/article/${id}`}>
+                <Link href={`/resources/article/${id}`}>
+                  <S.ArticleLink>
                     <img src={getArticleImageUrl(imageName)} alt='' />
-                  </Link>
-                </S.ArticleLink>
-                <S.ArticleLink>
-                  <S.Title>{title}</S.Title>
-                  <S.Intro>{summary}</S.Intro>
-                </S.ArticleLink>
+                    <S.Title>{title}</S.Title>
+                    <S.Intro>{summary}</S.Intro>
+                  </S.ArticleLink>
+                </Link>
 
                 <S.ArticleData>
                   <S.Data>
