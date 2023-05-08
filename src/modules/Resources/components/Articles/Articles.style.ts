@@ -12,7 +12,6 @@ export const ArticlesList = styled.ul`
   gap: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  align-items: flex-start;
 `
 
 export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`
@@ -38,6 +37,7 @@ export const Item = styled.li`
   border: 1px solid var(--porcelain);
   padding: 22px;
   justify-content: center;
+  align-items: flex-start;
 `
 
 export const Title = styled.h3`
