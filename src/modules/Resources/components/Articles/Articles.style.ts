@@ -37,7 +37,6 @@ export const Item = styled.li`
   border: 1px solid var(--porcelain);
   padding: 22px;
   justify-content: center;
-  align-items: flex-start;
 `
 
 export const Title = styled.h3`
@@ -63,6 +62,7 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 12px;
+    height: inherit;
   }
 `
 
