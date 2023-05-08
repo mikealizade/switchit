@@ -7,12 +7,12 @@ export const Articles = styled.div`
   row-gap: 20px;
 `
 
-export const ArticlesList = styled.ul`
-  width: 100%;
-  gap: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-`
+// export const ArticlesList = styled.ul`
+//   width: 100%;
+//   gap: 30px;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+// `
 
 export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`
   width: 100%;
@@ -31,13 +31,13 @@ export const Data = styled.li`
   font-size: inherit;
 `
 
-export const Item = styled.li`
-  gap: 18px;
-  border-radius: 8px;
-  border: 1px solid var(--porcelain);
-  padding: 22px;
-  justify-content: center;
-`
+// export const Item = styled.li`
+//   gap: 18px;
+//   border-radius: 8px;
+//   border: 1px solid var(--porcelain);
+//   padding: 22px;
+//   justify-content: center;
+// `
 
 export const Title = styled.h3`
   font-size: var(--fsLarge1);
@@ -54,15 +54,51 @@ export const Intro = styled.p`
   overflow: hidden;
 `
 
+// export const ArticleLink = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   row-gap: 20px;
+//   cursor: pointer;
+
+//   img {
+//     border-radius: 12px;
+//   }
+// `
+
+export const ArticlesList = styled.ul`
+  width: 100%;
+  gap: 60px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  ${() => mediaQuery.xxlaptop} {
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  }
+`
+
+export const Item = styled.li`
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+  border-radius: 8px;
+  width: 100%;
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+  }
+`
+
 export const ArticleLink = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 16px;
   cursor: pointer;
 
   img {
     border-radius: 12px;
-    object-fit: contain;
+    /* object-fit: contain; */
   }
 `
 
