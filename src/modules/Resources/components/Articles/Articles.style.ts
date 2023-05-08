@@ -8,15 +8,11 @@ export const Articles = styled.div`
 `
 
 export const ArticlesList = styled.ul`
-  /* width: 100%;
+  width: 100%;
   gap: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-  width: 100%;
-  gap: 60px;
-  flex: 1 1 0%;
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: flex-start;
 `
 
 export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`
@@ -37,16 +33,11 @@ export const Data = styled.li`
 `
 
 export const Item = styled.li`
-  /* gap: 18px;
+  gap: 18px;
   border-radius: 8px;
-  padding: 22px;
-  justify-content: center; */
-  display: flex;
   border: 1px solid var(--porcelain);
-  flex-direction: column;
-  row-gap: 18px;
-  border-radius: 8px;
-  width: 100%;
+  padding: 22px;
+  justify-content: center;
 `
 
 export const Title = styled.h3`
@@ -65,14 +56,9 @@ export const Intro = styled.p`
 `
 
 export const ArticleLink = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  cursor: pointer; */
-
   display: flex;
   flex-direction: column;
-  row-gap: 16px;
+  row-gap: 20px;
   cursor: pointer;
 
   img {
