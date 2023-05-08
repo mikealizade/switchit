@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { mediaQuery } from '@utils/functions'
 
 export const Articles = styled.div`
   display: flex;
@@ -61,7 +62,11 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 12px;
-    max-height: 201px;
+    max-height: 178px;
+
+    ${() => mediaQuery.tablet} {
+      max-height: none;
+    }
   }
 `
 
