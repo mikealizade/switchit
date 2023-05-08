@@ -62,11 +62,6 @@ export const ArticleLink = styled.div`
 
   img {
     border-radius: 12px;
-    max-height: 178px;
-
-    ${() => mediaQuery.laptop} {
-      max-height: none;
-    }
   }
 `
 
