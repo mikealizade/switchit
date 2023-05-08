@@ -4,16 +4,16 @@ import { mailchimpTransactionApiUri } from '@utils/constants'
 
 const emailConfig = {
   subscribe: {
-    template: 'untitled-template',
-    subject: 'Switch It Green newsletter',
+    template: 'mvp-signed-up-1',
+    subject: `You've Subscribed`,
   },
   signup: {
-    template: 'untitled-template',
-    subject: 'Welcome to Switch It Green',
+    template: 'mvp-created-an-account-2',
+    subject: `You've created an account`,
   },
   confirmSwitch: {
-    template: 'untitled-template',
-    subject: `You've confirmed your switch!`,
+    template: 'mvp-switched-3',
+    subject: `Your switch has been verified`,
   },
 }
 
