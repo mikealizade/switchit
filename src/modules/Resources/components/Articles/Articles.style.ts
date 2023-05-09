@@ -7,13 +7,6 @@ export const Articles = styled.div`
   row-gap: 20px;
 `
 
-// export const ArticlesList = styled.ul`
-//   width: 100%;
-//   gap: 30px;
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-// `
-
 export const ArticleData = styled.ul<{ align?: string; small?: boolean }>`
   width: 100%;
   display: flex;
@@ -31,14 +24,6 @@ export const Data = styled.li`
   font-size: inherit;
 `
 
-// export const Item = styled.li`
-//   gap: 18px;
-//   border-radius: 8px;
-//   border: 1px solid var(--porcelain);
-//   padding: 22px;
-//   justify-content: center;
-// `
-
 export const Title = styled.h3`
   font-size: var(--fsLarge1);
   font-weight: normal;
@@ -53,17 +38,6 @@ export const Intro = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
 `
-
-// export const ArticleLink = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   row-gap: 20px;
-//   cursor: pointer;
-
-//   img {
-//     border-radius: 12px;
-//   }
-// `
 
 export const ArticlesList = styled.ul`
   width: 100%;

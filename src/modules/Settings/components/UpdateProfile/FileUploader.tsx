@@ -2,7 +2,7 @@
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
 import { NextPage } from 'next'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWRMutation from 'swr/mutation'
@@ -25,7 +25,7 @@ export const FileUploader: NextPage<{ isProfile?: boolean }> = ({ isProfile }) =
   }
 
   const validateFileSize = () => {
-    const maxfilesize = 2_000_000 // 100KB
+    const maxfilesize = 5_000_000 // 5MB
     const filesize = file?.size
 
     return filesize > maxfilesize
@@ -72,7 +72,7 @@ export const FileUploader: NextPage<{ isProfile?: boolean }> = ({ isProfile }) =
 
   useEffect(() => {
     if (validateFileSize()) {
-      toast('The maximum file size is 2MB', 'error')
+      toast('The maximum file size is 5MB', 'error')
       return
     }
 
