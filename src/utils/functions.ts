@@ -86,6 +86,5 @@ export const htmlToNewLine = (text: string) => {
     // .replaceAll('<br>', '\n\n')
     .replace(/(<([^>]+)>)/gi, '')
 
-  console.log('newText:', newText)
   return newText
 }

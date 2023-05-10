@@ -156,7 +156,7 @@ export const badBankLetterConfig = {
 
 export const getDefaultHelloLetterText = (bankName = '[bank name]', nickname = '[your name]'): string => {
   const bank = goodBankLetterConfig[bankName as keyof typeof goodBankLetterConfig]
-  return `<div>Dear ${bank?.name},<div><br /></div><div><br /></div>${bank?.intro}<div><br /></div>${bank?.body}<div><br /></div><div>I'm looking forward to a long financial relationship with you.</div><div><br /></div><div>Yours sincerely,</div><div><br /></div><div>${nickname}</div></div>`
+  return `<div>Dear ${bank?.name},<div><br /></div>${bank?.intro}<div><br /></div>${bank?.body}<div><br /></div><div>I'm looking forward to a long financial relationship with you.</div><div><br /></div><div>Yours sincerely,</div><div><br /></div><div>${nickname}</div></div>`
 }
 
 const goodBankBody = `<div>I think it's fantastic that you are leading the way in terms of green finance, and setting a great example for others to follow suit. However, I am writing to inform you that I am in the process of switching away in favour of a different green bank. This is because [insert reason for switching]. I think it is important that you address this area to improve the public perception of green banks and to encourage more people to move their money out of fossil fuel support.</div>`

@@ -45,6 +45,7 @@ type BreakUpInstructionsProps = {
     buttonText: string
   }
   bankName: string
+  onSend: () => void
 }
 
 // NOTE: letters are not stored in redux as local state is maintained between pages through text.current useRef
@@ -54,12 +55,18 @@ const BreakUpInstructions: NextPage<BreakUpInstructionsProps> = ({
   text,
   bank: { breakupLink = '', breakupText = '', buttonText = '' } = {},
   bankName,
+  onSend,
 }) => {
   const [hasCopied, setHasCopied] = useCopyText()
 
   const onCopyText = (text: string) => {
     onCopy(htmlToNewLine(text))()
     setHasCopied(true)
+  }
+
+  const onVisitBank = () => {
+    onSend()
+    window.open(breakupLink, '_blank', 'noreferrer')
   }
 
   return (
@@ -69,9 +76,9 @@ const BreakUpInstructions: NextPage<BreakUpInstructionsProps> = ({
         <Button type='button' onClick={() => onCopyText(text)}>
           {hasCopied ? 'Copied' : 'Copy Letter Text'}
         </Button>
-        <ButtonLink href={breakupLink} size='normal' target='_blank' rel='noreferrer'>
+        <Button type='button' onClick={onVisitBank}>
           {buttonText}
-        </ButtonLink>
+        </Button>
       </Buttons>
     </>
   )
@@ -124,26 +131,24 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
 
   const onSend = async () => {
     try {
-      const sendBody = {
-        filter: {},
-        payload: {
-          $push: {
-            [letterType]: {
-              dateSent: new Date(),
-              letterText: sanitizeHtml(text.current, sanitiseConfig),
-              userId: sub,
-            },
-          },
-        },
-        collection: 'userLetters',
-        upsert: false,
-      }
+      // const sendBody = {
+      //   filter: {},
+      //   payload: {
+      //     $push: {
+      //       [letterType]: {
+      //         dateSent: new Date(),
+      //         letterText: sanitizeHtml(text.current, sanitiseConfig),
+      //         userId: sub,
+      //       },
+      //     },
+      //   },
+      //   collection: 'userLetters',
+      //   upsert: false,
+      // }
+      // request(sendBody)
 
-      request(sendBody)
       nextStep(step)
       addPoints(isBadBank ? 150 : 50, true)
-
-      toast('Your letter was sent successfully', 'success')
     } catch (error) {
       toast('An error occurred sending your letter', 'error')
     }
@@ -161,10 +166,10 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
     setToggleModal(isVisible!)
   }
 
-  const getEmailLink = () =>
-    `mailto:${breakupLink}?subject=Closing My ${bankName} Account - Sustainability Policy 2023&body=${encodeURIComponent(
-      htmlToNewLine(text.current),
-    )}`
+  const getEmailLink = () => {
+    const subject = isBadBank ? `subject=Closing My ${bankName} Account - Sustainability Policy 2023` : 'subject=New Bank Account'
+    return `mailto:${breakupLink}?${subject}&body=${encodeURIComponent(htmlToNewLine(text.current))}`
+  }
 
   useEffect(() => {
     if (isStepCompleted) {
@@ -218,7 +223,7 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
             onConfirm={onToggleModal(false)}
             onClose={onToggleModal(false)}
           >
-            <BreakUpInstructions text={text.current} bank={bank} bankName={bankName} />
+            <BreakUpInstructions text={text.current} bank={bank} bankName={bankName} onSend={onSend} />
           </Modal>
         )}
       </Container>

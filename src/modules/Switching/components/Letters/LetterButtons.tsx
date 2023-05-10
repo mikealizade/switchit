@@ -29,6 +29,7 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
   isNextDisabled,
 }) => {
   const openEmailClient = () => {
+    onSend()
     window.open(getEmailLink(), '_blank', 'noreferrer')
   }
 
