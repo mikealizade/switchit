@@ -105,4 +105,5 @@ export enum badBanks {
   metro = 'Metro Bank',
   revolut = 'Revolut',
   kroo = 'Kroo',
+  chase = 'Chase',
 }

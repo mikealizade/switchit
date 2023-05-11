@@ -174,6 +174,13 @@ export const badBanksConfig = {
     breakupLink: '',
     buttonText: '',
   },
+  [badBanks.chase]: {
+    trustPilot: 'www.chase.com',
+    google: '',
+    breakupText: `If you're an existing customer, just sign in to chase.com to send a secure message. From your accounts page, go to the side menu (the three-line icon in the top left corner) and choose "Secure messages.".`,
+    breakupLink: 'https://www.chase.com',
+    buttonText: feedbackForm,
+  },
   // obv these aren't bad banks :)
   Monzo: {
     trustPilot: '',
