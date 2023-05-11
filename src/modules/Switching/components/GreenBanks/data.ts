@@ -1,7 +1,7 @@
 export const bankConfig = [
   {
     accountTypes: ['personal'],
-    route: 'starling',
+    route: 'starling?utm_source=webapp&utm_medium=digital&utm_campaign=Starling&utm_id=greenbank',
     icon: 'starling',
     bank: 'Starling Bank',
     details: 'Best current account',
@@ -26,7 +26,7 @@ export const bankConfig = [
   },
   {
     accountTypes: ['personal'],
-    route: 'monzo',
+    route: 'monzo?utm_source=webapp&utm_medium=digital&utm_campaign=Monzo&utm_id=greenbank',
     icon: 'monzo',
     bank: 'Monzo',
     details: 'Best money managment features',
@@ -51,7 +51,7 @@ export const bankConfig = [
   },
   {
     accountTypes: ['personal'],
-    route: 'triodos',
+    route: 'triodos?utm_source=webapp&utm_medium=digital&utm_campaign=Triodos&utm_id=greenbank',
     icon: 'triodos',
     bank: 'Triodos Bank',
     details: 'Best environmental policy overall',
@@ -76,7 +76,7 @@ export const bankConfig = [
   },
   {
     accountTypes: ['personal', 'student'],
-    route: 'nationwide',
+    route: 'nationwide?utm_source=webapp&utm_medium=digital&utm_campaign=Nationwide&utm_id=greenbank',
     icon: 'nationwide',
     bank: 'Nationwide',
     details: 'Best for in person banking',
