@@ -39,7 +39,7 @@ export const ImpactCalculator: NextPage<{ hasProgressBar: boolean }> = ({ hasPro
             <Image src={`/icons/icon_moreinfo.svg`} alt='' width={20} height={20} />
           </S.MoreInfo>
         </S.Header>
-        <S.ImpactTotal value={impactTotal ? `£${formattedTotalSum}` : ''} placeholder='£1,510,000' />
+        <S.ImpactTotal value={impactTotal ? `£${formattedTotalSum}` : ''} placeholder='£1,510,000' readOnly />
         <S.MoneyDivested>Money withdrawn from fossil fuel support</S.MoneyDivested>
       </Div>
       {hasProgressBar && <ProgressBar step={impactBarWidth} type='impact' />}

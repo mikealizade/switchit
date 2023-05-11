@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FC, useState } from 'react'
+import { FC, useState, Fragment } from 'react'
 import { useDispatch } from 'react-redux'
 import { useMediaQuery } from 'react-responsive'
 import { Button, TextButton } from '@components/Button/Button'
@@ -146,8 +146,8 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
           </thead>
           <tbody>
             {banks.map(({ route, icon, bank, details, donation, fee, project, projectLink, meta }: BankData, i: number) => (
-              <>
-                <tr key={bank}>
+              <Fragment key={bank}>
+                <tr>
                   <td scope='row'>
                     <Image
                       src={logo[icon as keyof typeof logo].img.src}
@@ -182,7 +182,7 @@ export const BanksTable: FC<BanksTableProps> = ({ bankData }): JSX.Element => {
                     </S.BankMeta>
                   </td>
                 </S.ExpandableRow>
-              </>
+              </Fragment>
             ))}
           </tbody>
         </S.BanksTable>

@@ -329,10 +329,10 @@ export const Buttons = styled.div<{ align?: string }>`
   }
 `
 
-export const TextLink = styled.span<{ isGrey?: boolean }>`
+export const TextLink = styled.span<{ isGrey?: boolean; isPink?: boolean }>`
   text-decoration: underline;
   cursor: pointer;
-  color: ${({ isGrey }) => (isGrey ? 'var(--grey)' : 'initial')};
+  color: ${({ isGrey, isPink }) => (isGrey ? 'var(--grey)' : isPink ? 'var(--pink)' : 'initial')};
 
   p span {
     color: var(--nileBlue);

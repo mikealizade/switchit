@@ -17,7 +17,7 @@ import { useUpdateAwards } from '@hooks/useUpdateAwards'
 import { useUpdatePoints } from '@hooks/useUpdatePoints'
 import { Buttons } from '@modules/Switching/Switching.style'
 import { WoohooContainer, WoohooHeader, WoohooText } from '@modules/Switching/components/TellUs/TellUs.style'
-import { Form, Content, BoldLink } from '@styles/common.style'
+import { Form, Content, TextLink } from '@styles/common.style'
 import { actionHeaderSubText, journeyTypes, email } from '@utils/constants'
 import { EventType } from '@utils/types'
 import * as S from './ConfirmSwitch.style'
@@ -39,9 +39,9 @@ const CongratsMessage = ({ goodBank }: { goodBank: string }) => {
       <Button type='button' onClick={() => push('/switching/select-action')}>
         Maximise My Switch
       </Button>
-      <BoldLink>
+      <TextLink isPink>
         <Link href='/switching/'>Journey Homepage</Link>
-      </BoldLink>
+      </TextLink>
     </WoohooContainer>
   )
 }
