@@ -32,6 +32,7 @@ const signedOutPages = [
   '/terms',
   '/signup',
   '/contact-us',
+  '/stats',
 ]
 
 export const Layout: NextPage<{ children: any }> = ({ children }): JSX.Element => {

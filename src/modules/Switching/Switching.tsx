@@ -75,6 +75,7 @@ const Switching = (): JSX.Element => {
   const { data: [{ switchJourneys = [] } = {}] = [], isValidating } = useSWR(sub ? `/api/db/findSwitchJourneys?id=${sub}` : null, fetcher, {
     revalidateOnFocus: false,
   }) as SWRResponse
+
   const activeJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
     (journeyType === 'noBankAccount' && completedSteps.length < 7) || (journeyType === 'readyToSwitch' && completedSteps.length < 11)
   const completedJourneysFilter = ({ journeyType, completedSteps }: JourneyFilter) =>
@@ -164,7 +165,7 @@ const Switching = (): JSX.Element => {
       {completedJourneys.length ? (
         <Row wrap>{completedJourneys}</Row>
       ) : (
-        <S.JourneyCard>You {`haven't`} completed any journeys</S.JourneyCard>
+        <S.JourneyCard>You {`haven't`} completed any journeys.</S.JourneyCard>
       )}
     </Row>,
   ]

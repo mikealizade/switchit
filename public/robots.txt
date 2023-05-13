@@ -9,6 +9,7 @@ Disallow: /resources/
 Disallow: /donate-page
 Disallow: /settings
 Disallow: /help
+Disallow: /stats
 
 User-agent: *
 Allow: /
