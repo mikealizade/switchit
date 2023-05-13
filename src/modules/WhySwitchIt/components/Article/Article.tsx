@@ -91,7 +91,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
 
             <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
             <BlockButton margin='40px 0 0'>
-              <Link href='/api/auth/login'>Switch To A Green Bank</Link>
+              <Link href='/api/auth/signup'>Switch To A Green Bank</Link>
             </BlockButton>
 
             {postId === 'why-should-I-switch-banks' && (

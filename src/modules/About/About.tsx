@@ -114,7 +114,7 @@ const About = (): JSX.Element => {
               </S.Text>
             </Div>
             <S.BlockButton margin='30px 0 0'>
-              <Link href='/signup'>Start my switching journey</Link>
+              <Link href='/api/auth/signup'>Start my switching journey</Link>
             </S.BlockButton>
           </S.ContentContainer>
         </S.PageSection>
