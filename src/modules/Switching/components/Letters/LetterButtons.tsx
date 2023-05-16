@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { Button } from '@components/Button/Button'
-import { ButtonLink } from '@components/Button/Button.style'
 import * as S from '@modules/Switching/Switching.style'
 
 type LetterButtonsProps = {
@@ -45,7 +44,6 @@ export const LetterButtons: NextPage<LetterButtonsProps> = ({
       </S.ButtonsAlign>
       <S.ButtonsAlign>
         {isEmail ? (
-          // <Button type='button' size='small' onClick={onSend} disabled={isDisabled}>
           <Button type='button' onClick={openEmailClient}>
             Send To {bankName}
           </Button>

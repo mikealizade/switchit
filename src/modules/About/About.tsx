@@ -119,7 +119,6 @@ const About = (): JSX.Element => {
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection rowGap={30}>
-          {/* <S.ContentContainer> */}
           <S.TeamImagesContainer>
             <S.PageHeader>Who We Are</S.PageHeader>
             <S.TeamImages>
@@ -138,7 +137,6 @@ const About = (): JSX.Element => {
                 </S.Image>
               ))}
             </S.TeamImages>
-            {/* </S.ContentContainer> */}
           </S.TeamImagesContainer>
         </S.PageSection>
       </SignedOutLayout>
