@@ -47,10 +47,10 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
     imageName = '',
     titleImageName = '',
     summary = '',
-  } = posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
+  } = (posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
     Post,
     'id' | 'title' | 'text' | 'summary' | 'imageName' | 'titleImageName'
-  >
+  >) || {}
   const article = metaDataConfig[id as keyof typeof metaDataConfig]
   const metaTitle = article?.title
   const metaDescription = article?.description
