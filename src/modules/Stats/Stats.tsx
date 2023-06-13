@@ -10,7 +10,7 @@ const Stats = (): JSX.Element => {
 
   const items = data
     .map(({ switchJourneys, email }) => {
-      const confirmed = switchJourneys.find(({ completedSteps }) => completedSteps.includes(5))
+      const confirmed = switchJourneys?.find(({ completedSteps }) => completedSteps.includes(5))
 
       return confirmed
         ? {
