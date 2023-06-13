@@ -24,12 +24,12 @@ const profiles = [
     text: 'As Co-founder of the Ecosia on Campus campaign movement, Amber is well-versed in mobilising students on climate issues. She develops & coordinates our work with schools, colleges, and universities; designing and implementing our student programs and managing our education partnerships.',
     image: 'img_amber_hayward.jpg',
   },
-  {
-    name: 'Will Sharkey',
-    role: 'Lead Researcher',
-    text: 'Economic researcher and esteemed ethicist Dr. Sharkey leads all of our independent research. Will developed our normative criteria for rating banks and conducts in-depth research on every provider to check if their investment policies meet our high standards.  ',
-    image: 'img_will_sharkey.jpg',
-  },
+  // {
+  //   name: 'Will Sharkey',
+  //   role: 'Lead Researcher',
+  //   text: 'Economic researcher and esteemed ethicist Dr. Sharkey leads all of our independent research. Will developed our normative criteria for rating banks and conducts in-depth research on every provider to check if their investment policies meet our high standards.  ',
+  //   image: 'img_will_sharkey.jpg',
+  // },
   {
     name: 'Mike Alizade',
     role: 'Lead Web Developer',
