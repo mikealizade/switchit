@@ -47,10 +47,10 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
     imageName = '',
     titleImageName = '',
     summary = '',
-  } = posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
+  } = (posts.find(({ id: postId }: { id: string }) => postId === id) as Pick<
     Post,
     'id' | 'title' | 'text' | 'summary' | 'imageName' | 'titleImageName'
-  >
+  >) || {}
   const article = metaDataConfig[id as keyof typeof metaDataConfig]
   const metaTitle = article?.title
   const metaDescription = article?.description
@@ -91,7 +91,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts = [] }) => {
 
             <S.PostText dangerouslySetInnerHTML={{ __html: text }} />
             <BlockButton margin='40px 0 0'>
-              <Link href='/api/auth/login'>Switch To A Green Bank</Link>
+              <Link href='/api/auth/signup'>Switch To A Green Bank</Link>
             </BlockButton>
 
             {postId === 'why-should-I-switch-banks' && (

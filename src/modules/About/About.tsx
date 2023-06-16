@@ -24,12 +24,12 @@ const profiles = [
     text: 'As Co-founder of the Ecosia on Campus campaign movement, Amber is well-versed in mobilising students on climate issues. She develops & coordinates our work with schools, colleges, and universities; designing and implementing our student programs and managing our education partnerships.',
     image: 'img_amber_hayward.jpg',
   },
-  {
-    name: 'Will Sharkey',
-    role: 'Lead Researcher',
-    text: 'Economic researcher and esteemed ethicist Dr. Sharkey leads all of our independent research. Will developed our normative criteria for rating banks and conducts in-depth research on every provider to check if their investment policies meet our high standards.  ',
-    image: 'img_will_sharkey.jpg',
-  },
+  // {
+  //   name: 'Will Sharkey',
+  //   role: 'Lead Researcher',
+  //   text: 'Economic researcher and esteemed ethicist Dr. Sharkey leads all of our independent research. Will developed our normative criteria for rating banks and conducts in-depth research on every provider to check if their investment policies meet our high standards.  ',
+  //   image: 'img_will_sharkey.jpg',
+  // },
   {
     name: 'Mike Alizade',
     role: 'Lead Web Developer',
@@ -114,12 +114,11 @@ const About = (): JSX.Element => {
               </S.Text>
             </Div>
             <S.BlockButton margin='30px 0 0'>
-              <Link href='/signup'>Start my switching journey</Link>
+              <Link href='/api/auth/signup'>Start my switching journey</Link>
             </S.BlockButton>
           </S.ContentContainer>
         </S.PageSection>
         <S.PageSection rowGap={30}>
-          {/* <S.ContentContainer> */}
           <S.TeamImagesContainer>
             <S.PageHeader>Who We Are</S.PageHeader>
             <S.TeamImages>
@@ -138,7 +137,6 @@ const About = (): JSX.Element => {
                 </S.Image>
               ))}
             </S.TeamImages>
-            {/* </S.ContentContainer> */}
           </S.TeamImagesContainer>
         </S.PageSection>
       </SignedOutLayout>

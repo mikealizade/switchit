@@ -8,7 +8,6 @@ import useSWR, { SWRResponse } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { ActionHeader } from '@components/ActionHeader/ActionHeader'
 import { Button } from '@components/Button/Button'
-import { ButtonLink } from '@components/Button/Button.style'
 import { Card } from '@components/Card/Card'
 import { Modal } from '@components/Modal/Modal'
 import { useCopyText } from '@hooks/useCopyText'
@@ -131,21 +130,21 @@ export const Letter: NextPage<LetterProps> = ({ header, subHeader, headerText, g
 
   const onSend = async () => {
     try {
-      // const sendBody = {
-      //   filter: {},
-      //   payload: {
-      //     $push: {
-      //       [letterType]: {
-      //         dateSent: new Date(),
-      //         letterText: sanitizeHtml(text.current, sanitiseConfig),
-      //         userId: sub,
-      //       },
-      //     },
-      //   },
-      //   collection: 'userLetters',
-      //   upsert: false,
-      // }
-      // request(sendBody)
+      const sendBody = {
+        filter: {},
+        payload: {
+          $push: {
+            [letterType]: {
+              dateSent: new Date(),
+              letterText: sanitizeHtml(text.current, sanitiseConfig),
+              userId: sub,
+            },
+          },
+        },
+        collection: 'userLetters',
+        upsert: false,
+      }
+      request(sendBody)
 
       nextStep(step)
       addPoints(isBadBank ? 150 : 50, true)
