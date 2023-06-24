@@ -4,15 +4,28 @@ import useSWR, { SWRResponse } from 'swr'
 import { SignedOutLayout } from '@modules/SignedOutLanding/SignedOutLayout'
 import { BulletList } from '@styles/common.style'
 import { fetcher, formatDate } from '@utils/functions'
+import { Details, Summary, Header, Stat, StatTotal, StatContent } from './Stats.style'
 import * as S from '../SignedOutLanding/SignedOutLanding.style'
 
 const Stats = (): JSX.Element => {
   const { data = [] } = useSWR('/api/stats/findConfimedSwitches', fetcher) as SWRResponse
+  const greenBanks = ['Triodos Bank', 'Starling Bank', 'Monzo', 'Nationwide']
+  const team = [
+    'mike@sciondigital.co.uk',
+    'lewisjones21@hotmail.com',
+    'chico2189@gmail.com',
+    'hello@switchit.green',
+    'amber@switchit.green',
+    'sophie@switchit.green',
+    'amberella.ah@gmail.com',
+    'anna@switchit.green',
+    'mikealizade@hotmail.com',
+  ]
 
   const percentageOfUsers = (step: number) => {
     return data
       .map(({ switchJourneys, email }) => {
-        const confirmed = switchJourneys?.find(({ completedSteps }) => completedSteps.includes(step))
+        const confirmed = switchJourneys?.find(({ completedSteps }) => completedSteps.includes(step) && !team.includes(email))
 
         return confirmed
           ? {
@@ -26,29 +39,33 @@ const Stats = (): JSX.Element => {
 
   const getUsersMaximised = () => {
     return data
-      .map(({ switchJourneys, email }) => {
-        const confirmed = switchJourneys?.find(
-          ({ completedSteps }) =>
-            // [6, 7, 8, 9, 10, 11].some(maximisingStep => completedSteps.includes(maximisingStep)),
-            completedSteps.includes(6) ||
-            completedSteps.includes(7) ||
-            completedSteps.includes(8) ||
-            completedSteps.includes(9) ||
-            completedSteps.includes(10) ||
-            completedSteps.includes(11),
+      .map(({ switchJourneys }) => {
+        return switchJourneys?.find(({ completedSteps }) =>
+          [6, 7, 8, 9, 10, 11].some(maximisingStep => completedSteps.includes(maximisingStep)),
         )
+      })
+      .filter(Boolean)
+  }
 
-        return confirmed
-          ? {
-              email,
-              verified: formatDate(confirmed.isVerified),
-            }
-          : null
+  const getUsersGreenBank = () => {
+    return data
+      .map(({ switchJourneys }) => {
+        return switchJourneys?.find(
+          ({ completedSteps, badBank }) => completedSteps.includes(2) && !completedSteps.includes(3) && greenBanks.includes(badBank),
+        )
       })
       .filter(Boolean)
   }
 
   const usersMaximised = getUsersMaximised()
+  const usersGreenBank = getUsersGreenBank()
+  const stepText = [
+    'Users who have selected current bank',
+    'Users who have received bank score',
+    'Users who have selected a green bank',
+    'Users who have clicked on green bank link',
+    'Users who have signed switch agreement',
+  ]
 
   return (
     <>
@@ -62,17 +79,18 @@ const Stats = (): JSX.Element => {
         <S.PageSection>
           <S.ContentContainer>
             <S.PageHeader>Stats</S.PageHeader>
-            <h2>Total users</h2>
-            <p style={{ fontSize: '30px' }}>{data.length}</p>
+            <Header>Total users</Header>
+            <StatTotal>{data.filter(item => !team.includes(item.email)).length}</StatTotal>
 
             {[1, 2, 3, 4, 5].map(step => {
               const users = percentageOfUsers(step)
+
               return (
-                <details key={step} style={{ marginBottom: '24px' }}>
-                  <summary style={{ fontSize: '24px' }}>Users who have completed step {step}</summary>
+                <Details key={step}>
+                  <Summary>{stepText[step - 1]}</Summary>
                   <br />
 
-                  <div style={{ display: 'flex', flexDirection: 'column', rowGap: '14px', paddingLeft: '20px' }}>
+                  <StatContent>
                     <p>
                       <strong>Total: {users.length}</strong>
                     </p>
@@ -86,14 +104,18 @@ const Stats = (): JSX.Element => {
                         </li>
                       ))}
                     </BulletList>
-                  </div>
-                </details>
+                  </StatContent>
+                </Details>
               )
             })}
 
-            <h2>Number/percentage of users who have completed at least one maximise action</h2>
-            <p style={{ fontSize: '30px' }}>Total: {usersMaximised.length}</p>
-            <p style={{ fontSize: '30px' }}>Percentage: {Math.ceil((usersMaximised.length / data.length) * 100)}%</p>
+            <Header>Users who have completed at least one maximise action</Header>
+            <Stat>Total: {usersMaximised.length}</Stat>
+            <Stat>Percentage: {Math.ceil((usersMaximised.length / data.length) * 100)}%</Stat>
+
+            <Header>Users who have selected a green bank and have not gone any further</Header>
+            <Stat>Total: {usersGreenBank.length}</Stat>
+            <Stat>Percentage: {Math.ceil((usersGreenBank.length / data.length) * 100)}%</Stat>
           </S.ContentContainer>
         </S.PageSection>
       </SignedOutLayout>
