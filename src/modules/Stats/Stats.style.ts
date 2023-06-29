@@ -4,9 +4,10 @@ export const Header = styled.h2`
   font-size: 25px;
 `
 
-export const StatTotal = styled.h2`
+export const StatTotal = styled.span`
   font-size: 28px;
   margin-bottom: 30px;
+  display: inline-flex;
 `
 
 export const Stat = styled.p`
