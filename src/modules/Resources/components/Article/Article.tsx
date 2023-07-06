@@ -25,7 +25,6 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const {
     title = '',
     text = '',
-    created = '',
     mins,
     points,
     imageName,
@@ -77,7 +76,7 @@ const Article: NextPage<{ posts: Post[] }> = ({ posts }) => {
                 <S.ArticlesList>
                   {posts
                     .filter(({ id: articleId, type }) => type === 'app' && articleId !== id)
-                    .map(({ id, title, imageName }) => {
+                    .map(({ id, title, imageName, created }) => {
                       return (
                         <S.MoreItem key={id}>
                           <S.ImageContainer>
