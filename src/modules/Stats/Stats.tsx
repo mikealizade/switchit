@@ -25,7 +25,7 @@ const team = [
 ]
 
 const stepText = [
-  'Users who have selected current bank, excluding green banks',
+  'Users who have selected current bank',
   'Users who have received bank score',
   'Users who have selected a green bank',
   'Users who have clicked on green bank link',
@@ -37,7 +37,6 @@ const greenBanks = ['Triodos Bank', 'Starling Bank', 'Monzo', 'Nationwide']
 const Stats = (): JSX.Element => {
   const { data = [] } = useSWR('/api/stats/findConfimedSwitches', fetcher) as SWRResponse
   const filteredUsers = data.filter(({ email }) => !team.includes(email))
-  console.log('filteredUsers:', filteredUsers)
 
   const percentageOfUsers = (step: number) => {
     return filteredUsers
